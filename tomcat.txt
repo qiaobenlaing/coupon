@@ -1,0 +1,2 @@
+tail -f catalina.out   查看tomcat 日志
+ps -ef|grep java 查看tomcat 是否关闭

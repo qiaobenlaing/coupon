@@ -1,0 +1,15 @@
+1.先安装composer
+https://getcomposer.org/Composer-Setup.exe
+2.将composer改为中国镜像
+打开命令行窗口（windows用户）或控制台（Linux、Mac 用户）并执行如下命令：
+composer config -g repo.packagist composer https://packagist.phpcomposer.com
+3.通过composer 方式安装laravel
+composer global require "laravel/installer"
+4.如果安装最新版本laravel（需要php7以上版本支持）
+composer create-project --prefer-dist laravel/laravel blog
+如果要下载其他版本，比如5.2版本，可以使用这个命令：composer create-project --prefer-dist laravel/laravel you_project 5.2.*。
+
+查看laravel 安装版本
+php artisan --version
+php 依赖包查看
+https://packagist.org/packages

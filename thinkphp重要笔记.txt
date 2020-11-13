@@ -1,0 +1,13 @@
+thinkphp一个input输入框判断多个字段查询，这时候我们就需要使用组合查询方法来实现；   
+$search = array();
+        $form_search = I('get.prike');
+        if($form_search!=null || $form_search !=""){
+            $search['bank_name'] = array(array("LIKE","%{$form_search}%"));
+            $search['bank_account'] = array(array("LIKE","%{$form_search}%"));
+            $search['_logic'] =  "or";
+            $map['_complex'] = $search;
+            $map['Users_ID'] =  C("Users_ID");
+        }
+        $count = $ModelInfo->where($map)->field($pkID)->count();
+        $p = new Page($count,$pageNum);
+        $list = $ModelInfo->where($map)->field("*")->limit($p->firstRow.','.$p->listRows)->order($order)->select();
