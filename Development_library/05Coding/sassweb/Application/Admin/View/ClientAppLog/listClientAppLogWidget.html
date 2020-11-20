@@ -1,0 +1,29 @@
+<table class="fp-table table table-striped table-bordered table-condensed" id="data_table">
+    <thead>
+    <tr>
+        <th>版本名称</th>
+        <th>版本号</th>
+        <th>创建时间</th>
+        <th>升级路径</th>
+        <th class="width-95">是否必须更新</th>
+        <th>升级内容</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    <foreach name="dataList" item="item">
+        <tr>
+            <td>{$item.versionName}</td>
+            <td>{$item.versionCode}</td>
+            <td>{$item.createTime}</td>
+            <td>{$item.updateUrl}</td>
+            <td><eq name="item.isMustUpdate" value="1">是<else/>否</eq></td>
+            <td>{$item.updateContent}</td>
+            <td>
+                <a href="/Admin/ClientAppLog/editClientAppLog?logCode={$item.logCode}&page={$pager:page}" class="btn btn-xs btn-primary">编辑</a>
+            </td>
+        </tr>
+    </foreach>
+    </tbody>
+</table>
+<include file="Application/Admin/View/Widget/pager.html" /> 

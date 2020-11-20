@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/LyOutSet"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray_transparent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        style="@style/LyWHFourth"
+        android:layout_width="200dp"
+        android:layout_gravity="right"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:id="@+id/ry_title"
+            style="@style/LyWHFourth"
+            android:layout_height="48dp"
+            android:background="@color/white" >
+
+            <TextView
+                android:id="@+id/tv_cancel"
+                style="@style/LyWHSecond"
+                android:layout_width="65dp"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:text="@string/tv_actadd_cancel"
+                android:textColor="@drawable/text_title_color_selector" />
+
+            <TextView
+                android:id="@+id/tv_selection"
+                style="@style/LyWHSecond"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:text="@string/selection"
+                android:textColor="@color/deep_grey" />
+		   <TextView
+                android:id="@+id/tv_sure"
+                style="@style/LyWHSecond"
+                android:layout_width="65dp"
+                android:layout_marginRight="10dp"
+                android:layout_height="wrap_content"
+			    android:layout_alignParentRight="true"
+			    android:layout_centerVertical="true"
+			    android:gravity="center|right"
+                android:text="@string/dialog_ok"
+                android:textColor="@drawable/text_title_color_selector" />
+        </RelativeLayout>
+        <TextView
+            style="@style/LyWHFourth"
+            android:layout_height="1dp"
+            android:background="@color/light_grey" />
+
+        <LinearLayout
+            style="@style/LyWHFourth"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:id="@+id/menuLayout"
+                style="@style/LyWHFourth"
+                android:layout_height="48dp"
+                android:background="@color/white" 
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/tv_date"
+                    style="@style/LyWHSecond"
+                    android:layout_width="55dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/bg_text_border"
+                    android:text="@string/date"
+                    android:textColor="@drawable/text_color_selector" />
+
+                <TextView
+                    android:id="@+id/tv_week"
+                    style="@style/LyWHSecond"
+                    android:layout_width="55dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="5dp"
+                    android:background="@drawable/bg_text_border"
+                    android:text="@string/week"
+                    android:textColor="@drawable/text_color_selector" />
+
+                <TextView
+                    android:id="@+id/tv_month"
+                    style="@style/LyWHSecond"
+                    android:layout_width="55dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/bg_text_border"
+                    android:text="@string/month"
+                    android:textColor="@drawable/text_color_selector" />
+            </RelativeLayout>
+
+            <TextView
+                style="@style/LyWHFourth"
+                android:layout_height="1dp"
+                android:background="@color/light_grey" />
+
+            <LinearLayout
+                android:id="@+id/ry_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:divider="@drawable/shape_divider"
+                android:orientation="vertical"
+                android:showDividers="middle" >
+
+                <Button
+                    android:id="@+id/btn_untreated_order"
+                    android:layout_width="match_parent"
+                    android:layout_height="47dp"
+                    android:background="@color/white"
+                    android:text="@string/untreated"
+                    android:textColor="@drawable/text_color_selector"
+                    android:textSize="14sp" />
+
+                <Button
+                    android:id="@+id/btn_payment_order"
+                    android:layout_width="match_parent"
+                    android:layout_height="47dp"
+                    android:background="@color/white"
+                    android:text="@string/obligation"
+                    android:textColor="@drawable/text_color_selector"
+                    android:textSize="14sp" />
+
+                <Button
+                    android:id="@+id/btn_deliveries_order"
+                    android:layout_width="match_parent"
+                    android:layout_height="47dp"
+                    android:background="@color/white"
+                    android:text="@string/distribution"
+                    android:textColor="@drawable/text_color_selector"
+                    android:textSize="14sp" />
+
+                <Button
+                    android:id="@+id/btn_trading_success"
+                    android:layout_width="match_parent"
+                    android:layout_height="47dp"
+                    android:background="@color/white"
+                    android:text="@string/trading_success"
+                    android:textColor="@drawable/text_color_selector"
+                    android:textSize="14sp" />
+
+                <Button
+                    android:id="@+id/btn_trade_cancellation"
+                    android:layout_width="match_parent"
+                    android:layout_height="47dp"
+                    android:background="@color/white"
+                    android:text="@string/trade_cancellation"
+                    android:textColor="@drawable/text_color_selector"
+                    android:textSize="14sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

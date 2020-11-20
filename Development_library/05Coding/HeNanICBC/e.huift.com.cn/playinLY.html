@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>玩在洛阳</title>
+    <meta content="IE=edge"  http-equiv="X-UA-Compatible"> <meta name="viewport"  content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"> <meta name="viewport"  content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0"> <meta name="apple-mobile-web-app-capable"  content="yes"> <meta name="apple-mobile-web-app-status-bar-style"  content="black"> <meta name="format-detection"  content="telephone=no"> <meta name="format-detection"  content="address=no">
+
+    <link rel="stylesheet" type="text/css" href="css/common.css" />
+<!-- <script type="text/javascript" src="plugin/hybrid_app.js"></script> -->
+<!-- <script type="text/javascript" src="plugin/hybrid.js"></script> -->
+<script type="text/javascript" src="plugin/autoview.js"></script>
+</head>
+<body>
+    <header class="header hide">
+        <section class="hd clearfix">
+            <a class="hd_l hdback"  href="javascript:void(0);"><img alt=""  src="http://v.icbc.com.cn/userfiles/Resources/WAP/eshapp/back.png" /> </a> <h1>玩在洛阳</h1>
+<!-- <a class="hd_r hdshare"  href="javascript:void(0);"><img alt=""  src="http://v.icbc.com.cn/userfiles/Resources/WAP/eshapp/share.png" /> </a> -->
+</section>
+</header> 
+<div id="app">
+<!-- <div class="banner"><img data alt=""  src="http://v.icbc.com.cn/userfiles/Resources/WAP/eshfh/henan/luoyang/chizailuoyang_toutu.png" /> </div> -->
+<div class="jump"  data-link="https://elife.icbc.com.cn/ELIFECUSTOMH5/dist/#/discount/customers/17050016355/g01705180428020094"><img alt=""  src="http://gonghangimg.oss-cn-hangzhou.aliyuncs.com/gonghangimg/daimeishan.jpg" /> </div>
+<div class="jump"  data-link="https://elife.icbc.com.cn/ELIFECUSTOMH5/dist/#/discount/customers/17050034536/g01705180428020096"><img alt=""  src="http://gonghangimg.oss-cn-hangzhou.aliyuncs.com/gonghangimg/shenlinzhai.jpg" /> </div>
+</div>
+</body>
+</html>
+<script src="http://www.icbc.com.cn/ICBC/html/card/elife/js/2017/0703/jquery-1.11.1.js"></script>
+<script>
+
+var loginCallback = $.Callbacks();
+
+function Hybrid () {
+    this.ua = navigator.userAgent;
+};
+
+//判断是否是融e联 ios
+Hybrid.prototype.isRELIphone = function() {
+    var me = this;
+    if (me.ua.indexOf('ICBCiPhoneBS') > -1) {
+        return true;
+    }
+    return false;
+};
+
+
+
+//  判断是否是融e联 android
+Hybrid.prototype.isRELAndroid = function() {
+    var me = this;
+    if (me.ua.indexOf('ICBCAndroidBS')>-1 ) { 
+        return true;
+    }
+    return false;
+};
+/**
+ * 检测当前浏览器是否为Android(Chrome)
+ */
+Hybrid.prototype.isAndroid = function() {
+    var me = this;
+    if (me.ua.indexOf('Android')>-1) {
+        return true;
+    }
+    return false;
+};
+
+/**
+ * 检测当前浏览器是否为iPhone(Safari)
+ */
+Hybrid.prototype.isIPhone = function () {
+    var me = this;
+    if (me.ua.indexOf('iPhone') > -1) {
+        return true;
+    }
+    return false;
+};
+
+Hybrid.prototype.connectWebViewJavascriptBridge = function(callback) {
+    if(window.WebViewJavascriptBridge){
+        return callback(WebViewJavascriptBridge);
+    }else{
+        document.addEventListener('WebViewJavascriptBridgeReady', function() {
+            callback(WebViewJavascriptBridge);
+        }, false);
+    }
+    if(window.WVJBCallbacks) { return window.WVJBCallbacks.push(callback); }
+    window.WVJBCallbacks = [callback];
+    var WVJBIframe=document.createElement('iFrame');
+    WVJBIframe.style.display='none';
+    WVJBIframe.src='wvjbscheme://__BRIDGE_LOADED__';
+    document.documentElement.appendChild(WVJBIframe);
+    setTimeout(function(){document.documentElement.removeChild(WVJBIframe)});    
+};
+
+/*  function connectWebViewJavascriptBridge(callback) {
+
+
+   }*/
+
+
+
+
+// 调起端上的分享
+Hybrid.prototype.share = function (shareInfo) {
+    var me = this;
+    if (me.isAndroid()) {
+        Myutils.share(shareInfo);
+    } else {
+        //（ios需要将参数base64加密）
+        window.ICBCBridge.callHandler("Myutils.share", me.base64Encode(shareInfo));
+    } 
+};
+
+//第三方显示或隐藏tabbar isShow:true显示tabbar 反之隐藏
+Hybrid.prototype.showToolBar = function(isShow){
+    var me = this;
+    //如果是安卓
+    if(me.isAndroid()){
+        Myutils.showToolBar(isShow);
+    }else{  //ios
+        window.ICBCBridge.callHandler("Myutils.showToolBar",isShow)
+    }
+}
+
+//第三方返回上一级页面
+Hybrid.prototype.back = function(){
+    var me = this;
+    //如果是安卓
+    if(me.isAndroid()){
+        Myutils.back();
+    }else{  //ios
+        window.ICBCBridge.callHandler("Myutils.back");
+    }
+}
+
+//第三方开启定位
+Hybrid.prototype.openGPS = function(){
+    var me = this;
+    //如果是安卓
+    if(me.isAndroid()){
+        Myutils.openGPS();
+    }else{  //ios
+        window.ICBCBridge.callHandler("Myutils.openGPS")
+    }
+}
+
+//第三方关闭定位
+Hybrid.prototype.closeGPS = function(){
+    var me = this;
+    //如果是安卓
+    if(me.isAndroid()){
+        Myutils.closeGPS();
+    }else{  //ios
+        window.ICBCBridge.callHandler("Myutils.closeGPS")
+    }
+}
+
+//第三方获取定位  参数是回调的函数名的字符串
+Hybrid.prototype.getMyLocation = function(getGps){
+    var me = this;
+    //如果是安卓
+    if(me.isAndroid()){
+        Myutils.getMyLocation(getGps);
+    }else{  //ios
+        window.ICBCBridge.callHandler("Myutils.getMyLocation",getGps)
+    }
+}
+
+//第三方打电话功能  参数是电话号
+Hybrid.prototype.callPhoneNumber = function(tel){
+    var me = this;
+    //如果是安卓
+    if(me.isAndroid()){
+        Myutils.callPhoneNumber(tel);
+    }else{  //ios
+        window.ICBCBridge.callHandler("Myutils.callPhoneNumber",tel)
+    }
+}
+
+//跳转id方法
+Hybrid.prototype.getActivityInfo = function(actId){
+    var me = this;
+    //如果是安卓
+    if(me.isAndroid()){
+        Myutils.getActivityInfo(actId);
+    }else{  //ios
+        window.ICBCBridge.callHandler("Myutils.getActivityInfo",actId);
+    }
+}
+
+//跳转url方法
+Hybrid.prototype.ApplicationCard = function(url){
+    var me = this;
+    //如果是安卓
+    if(me.isAndroid()){
+        Myutils.ApplicationCard(url);
+    }else{  //ios
+        window.ICBCBridge.callHandler("Myutils.ApplicationCard",url);
+    }
+}
+
+//中途登录
+Hybrid.prototype.merLogin = function (callback) {
+    var me = this;  
+    loginCallback.add(callback);
+    //如果是安卓
+    if (me.isAndroid()) {
+        Myutils.open("callLogin");
+    } else if (me.isIPhone()) { //ios        
+        window.ICBCBridge.callHandler("Myutils.open", "callLogin")
+    }
+    //else {
+    //    var data = "pSs6sElROJtRtloIy8UMGDzS2AmQ8ag8qRqoCs7wK8UvAb26eR4Nm5tdKJGgkZiDUND4VadZ9yFZlogZGo2u+jIR/dwOkV/cNg1PFgqbqkXTQUl4G3huFQvqDLLBb2DQRgzwOUMEgMbWntHQ+DAdVIvTt72AtoNXI0tjuelsbmy2lHMF5dt5XMD1v+eNxeIP01Jr71tH2uBlWePD9oYt7CrpLRDIFj9Rf/dj258d8Ejo18obBDighlLNOaIbuce7yH+dLq5YJLSbmHKWUZJ/txiuovIbm70zROSbueWeevM=";
+    //    callLogin(data);
+    //}
+    
+}
+
+Hybrid.prototype.decryptLoginCallback = function (data) {
+    var _res = data["Res"][0].Res;
+    if (_res == 1) {
+        var userId = data["CustInfo"][0].ID;
+        var mobile = data["CustInfo"][0].Mobile;
+        var custId = data["CustInfo"][0].CustNo;
+        $.cookie(WXCOOKIEPRE + "txtMobile", mobile);
+        $.cookie(WXCOOKIEPRE + "userId", userId);
+        $.cookie(WXCOOKIEPRE + "icbceCustId", custId);
+        $.cookie(WXCOOKIEPRE + "storeId", 311497);
+        $.cookie(WXCOOKIEPRE + "mobile", mobile);
+        $.cookie(WXCOOKIEPRE + "GLOBALUSERID", userId, { path: "/" });
+        $.cookie(WXCOOKIEPRE + "GLOBALMOBILE", mobile, { path: "/" });
+        $.cookie(WXCOOKIEPRE + "GLOBALSTOREID", 311497, { path: "/" });        
+        loginCallback.fire();
+    } else {
+        alert("中间登录失败");
+    }
+}
+//中途登录的回调
+Hybrid.prototype.callLogin = function (param) {
+    var me = this;
+    //解密参数
+    $.ajax({
+        type: "post",
+        url: "/laomi/IcbcLogin",
+        data: { data: param },
+        success: me.decryptLoginCallback
+    });
+}
+
+Hybrid.prototype.decryptLoginCallback = function (data) {
+    var _res = data["Res"][0].Res;
+    if (_res == 1) {
+        var userId = data["CustInfo"][0].ID;
+        var mobile = data["CustInfo"][0].Mobile;
+        var custId = data["CustInfo"][0].CustNo;
+        $.cookie(WXCOOKIEPRE + "txtMobile", mobile);
+        $.cookie(WXCOOKIEPRE + "userId", userId);
+        $.cookie(WXCOOKIEPRE + "icbceCustId", custId);
+        $.cookie(WXCOOKIEPRE + "storeId", 311497);
+        $.cookie(WXCOOKIEPRE + "mobile", mobile);
+        $.cookie(WXCOOKIEPRE + "GLOBALUSERID", userId, { path: "/" });
+        $.cookie(WXCOOKIEPRE + "GLOBALMOBILE", mobile, { path: "/" });
+        $.cookie(WXCOOKIEPRE + "GLOBALSTOREID", 311497, { path: "/" });
+        
+        loginCallback.fire();
+    } else {
+        alert("中间登录失败");
+    }
+}
+//获取定位信息的回调
+Hybrid.prototype.getGps = function (param) {
+
+}
+Hybrid.prototype.goBack1 = function () {
+    var me = this;
+    if (me.isRELIphone() || me.isRELAndroid()) {
+        me.back();
+    } else {
+        window.history.go(-1);
+    }
+}
+
+Hybrid.prototype.initPage = function () {
+    var me = this;
+    if (me.ua.indexOf('elife_moblie') < 0) {
+        $('.footer_absolute_box').show();
+        //隐藏分享按钮
+        $('#btnShare').hide();
+    }
+
+    me.connectWebViewJavascriptBridge(function(bridge) {
+        //bridge.init();
+        //bridge.registerHandler("callback",callback)
+        bridge.registerHandler("callback");
+    });
+
+    var ICBCBridge = {
+        callHandler: function(name, params, callback) {
+            me.connectWebViewJavascriptBridge(function(bridge) {
+                bridge.callHandler(name, params, callback);
+            });
+        },
+        send: function(params, callback) {
+            me.connectWebViewJavascriptBridge(function(bridge) {
+                bridge.send(params, callback);
+            });
+        }
+    };
+    window.ICBCBridge = ICBCBridge;
+}
+
+//跳转下载APP
+Hybrid.prototype.openApp = function() {
+    var me = this;
+    var timer;
+    var downUrl = "http://a.app.qq.com/o/simple.jsp?pkgname=com.icbc.elife";
+
+    //判断是否是融e联
+    if (me.ua.indexOf('ICBCAndroidBS') > -1) {
+        window.location.href = 'com.icbc.elife://elife'; //跳到 安卓 url scheme
+        timer = window.setTimeout(function () {
+            window.location.href = downUrl;
+        }, 1000)
+    } else if (me.ua.indexOf('ICBCiPhoneBS') > -1) {
+        window.location.href = 'com.icbc.elife://';//跳到ios  url scheme地址
+        timer = window.setTimeout(function () {
+            window.location.href = downUrl;
+        }, 1000)
+    } else {
+        window.location.href = downUrl;//应用宝地址  
+    }
+}
+</script>
+<script>
+    !(function($){
+        function PageHeader() {        }
+
+        PageHeader.prototype.init = function() {          
+            var me = this;
+            me.hybrid_app = new Hybrid();
+            me.hybrid_app.initPage();
+            if (me.hybrid_app.isRELIphone() || me.hybrid_app.isRELAndroid()) {
+                $('.header').removeClass('hide');
+                me.bindEvent();
+            }      
+        };
+
+        PageHeader.prototype.bindEvent = function() {
+            var me = this;
+            $('.header').on('click', '.hdback', function(e) {
+                e.preventDefault();
+                
+                me.hybrid_app.goBack1();
+            });
+            $('.header').on('click', '.hdshare', function(e) {
+                e.preventDefault();
+                me.share();
+            });
+        }
+        PageHeader.prototype.share = function() {
+            var me = this;
+            //pngUrl：分享后链接显示的图片地址
+            var pngUrl = "http://v.icbc.com.cn/userfiles/Resources/WAP/eshapp/logo.jpg";
+
+            //shareUrl：分享后点击链接需要跳转的地址
+            var shareUrl = window.location.href;
+
+            //title：分享后链接显示的标题
+            var title = "爱购牡丹季之吃在洛阳！";
+
+            //content：分享后链接显示的内容
+            var content = "吃在洛阳乐享优惠团购券";
+
+            //封装需要分享的对象
+            var shareInfo = {
+                PNGUrl: pngUrl,
+                ShareUrl: shareUrl,
+                Title: title,
+                Content: content
+            };
+            // 将对象转为字符串
+            shareInfo = JSON.stringify(shareInfo);
+            me.hybrid_app.share(shareInfo);
+        };
+
+
+        function Merry() {
+        }
+
+        Merry.prototype.init = function() {
+            var me = this;            
+            me.bindEvent();
+            me.hybrid_app = new Hybrid();
+            me.hybrid_app.initPage();
+            new PageHeader().init();
+        };
+
+        Merry.prototype.bindEvent = function() {
+            var me = this;
+            var isApp = false;
+            var ua = navigator.userAgent;
+            if (ua.indexOf('ICBCAndroidBS') > -1 || ua.indexOf('ICBCiPhoneBS') > -1) {
+                isApp = true;
+            }
+
+            $('.jump').on('click', function(e) {
+                e.preventDefault();
+                var link = $(this).data('link');
+                if (isApp) {
+                    me.hybrid_app.ApplicationCard(link);                   
+                } else {
+                    me.hybrid_app.openApp();
+                }
+            });
+        };
+
+        $(document).ready(function () {
+            var merry = new Merry();
+            merry.init();
+        });
+    })(jQuery)
+</script>

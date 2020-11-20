@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/LyWHFirst"
+    android:background="@color/app_bg"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/navigation_bar"
+        android:background="@color/red"
+        android:gravity="center_vertical" >
+
+        <TextView
+            android:id="@+id/tv_area"
+            style="@style/LyWHSecond"
+            android:layout_alignParentLeft="true"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="@dimen/navigation_left"
+            android:drawablePadding="5dp"
+            android:gravity="center_vertical|center_horizontal"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/tv_turn"
+            style="@style/LyWHSecond"
+            android:layout_alignParentLeft="true"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="@dimen/navigation_left"
+            android:drawablePadding="5dp"
+            android:gravity="center_vertical|center_horizontal"
+            android:textColor="@color/white" />
+
+        <RelativeLayout
+            android:id="@+id/ry_serch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true" >
+
+            <TextView
+                android:id="@+id/tv_search_left"
+                style="@style/LyWHSecond"
+                android:layout_height="35dp"
+                android:background="@drawable/search_left"
+                android:gravity="center_vertical|center_horizontal"
+                android:textColor="@color/white" />
+
+            <AutoCompleteTextView
+                android:id="@+id/edt_search"
+                style="@style/LyWHSecond"
+                android:layout_width="150dp"
+                android:layout_height="35dp"
+                android:layout_centerInParent="true"
+                android:layout_toRightOf="@+id/tv_search_left"
+                android:background="@drawable/search_right"
+                android:gravity="left|center_vertical"
+                android:hint="@string/search_shopcoupon"
+                android:imeOptions="actionSearch"
+                android:inputType="text"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textSize="16sp" />
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/iv_map"
+            style="@style/LyWHSecond"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:layout_marginRight="@dimen/navigation_right"
+            android:background="@drawable/map"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/index_swipe_refresh"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="visible" >
+
+            <com.huift.hfq.base.view.XListView
+                android:id="@+id/lv_timelimit_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:cacheColorHint="#00000000"
+                android:divider="@color/transparent"
+                android:scrollbars="none"
+                android:visibility="invisible" />
+        </android.support.v4.widget.SwipeRefreshLayout>
+
+        <include layout="@layout/comm_no_data" />
+    </FrameLayout>
+
+</LinearLayout>

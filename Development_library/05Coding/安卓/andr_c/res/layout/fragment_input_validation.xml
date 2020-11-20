@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/LyCommSet"
+    android:orientation="vertical" >
+    <LinearLayout 
+        style="@style/LyWHFourth"
+        android:layout_height="@dimen/layout_height"
+        android:background="@color/white">
+        
+    </LinearLayout>
+</LinearLayout>

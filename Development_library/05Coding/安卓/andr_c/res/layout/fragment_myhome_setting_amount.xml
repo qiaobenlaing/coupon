@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout style="@style/NavigationTopBar" >
+
+        <ImageView
+            android:id="@+id/iv_turn_in"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerInParent="true"
+            android:background="@drawable/backup"
+            android:paddingLeft="@dimen/navigation_left_r" />
+
+        <TextView
+            android:id="@+id/tv_mid_content"
+            style="@style/LyWHSecond"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="小额免密支付"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="15dp"
+        android:background="@color/bgall" />
+
+    <LinearLayout
+        android:id="@+id/layout_is_password"
+        style="@style/LyWHFourth"
+        android:layout_height="48dp"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
+
+        <TextView
+            style="@style/LyWHSecond"
+            android:paddingLeft="22dp"
+            android:text="小额免密设置" />
+
+        <LinearLayout
+            style="@style/LyWHFourth"
+            android:gravity="right" >
+
+            <CheckBox
+                android:id="@+id/small_amount_switch"
+                android:layout_width="55dp"
+                android:layout_height="35dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/sel_checkbox_green"
+                android:button="@null" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <RadioGroup
+        android:id="@+id/small_amount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:visibility="gone" >
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="100" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="200" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="300" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="400" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="500" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/btn_pay"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/layout_height"
+        android:layout_margin="10dp"
+        android:background="@drawable/login_btn"
+        android:gravity="center"
+        android:text="确定"
+        android:textColor="@color/white" />
+
+</LinearLayout>

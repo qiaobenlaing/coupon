@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/LyWHFourth"
+    android:orientation="vertical" >
+        <LinearLayout
+            android:id="@+id/ly_nbuy_time"
+            style="@style/LyCoupon_setrow"
+            android:background="@color/white"
+            android:paddingLeft="34dp"
+            android:visibility="visible">
+            <TextView
+                style="@style/Tv_CouponSetFont"
+                android:text="@string/tv_cong" />
+            <EditText
+                android:id="@+id/edt_start_time"
+                style="@style/Edt_Couponset"
+                android:focusable="false"
+                android:maxLength="8"
+                android:textSize="14sp" />
+            <TextView
+                style="@style/Tv_CouponSetFont"
+                android:text="@string/tv_dao" />
+            <EditText
+                android:id="@+id/edt_end_time"
+                style="@style/Edt_Couponset"
+                android:focusable="false"
+                android:maxLength="8"
+                android:textSize="14sp" />
+           <TextView 
+	            android:id="@+id/del_item"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:background="@drawable/add"/>
+        </LinearLayout>
+</LinearLayout>

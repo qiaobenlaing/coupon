@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/LyOutSet" >
+
+    <LinearLayout
+        android:id="@+id/ly_deliverylist"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/ly_total"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical" >
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/ly_total"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="center_vertical"
+        android:layout_margin="10dp"  >
+
+        <LinearLayout
+            android:id="@+id/ly_add_delivery"
+            style="@style/LyWHFourth"
+            android:layout_height="50dp"
+            android:layout_marginBottom="15dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/login_btn"
+            android:gravity="center"
+            android:visibility="visible" >
+
+            <TextView
+                style="@style/LyWHSecond"
+                android:text="添加"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

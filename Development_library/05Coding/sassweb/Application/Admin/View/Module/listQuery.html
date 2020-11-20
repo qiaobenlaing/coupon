@@ -1,0 +1,171 @@
+<layout name="layout_admin" />
+<div id="data_table_wrapper">
+    <a class="btn btn-sm btn-info" data-toggle="modal" data-target=".bs-example-modal-lg"><span class="glyphicon glyphicon-plus"></span>新增筛选条件</a>
+    <table class="fp-table table table-striped table-bordered table-condensed" id="data_table">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>查询名</th>
+            <th>所属模块</th>
+            <th>是否显示</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <foreach name="dataList" item="item" key="key">
+            <tr>
+                <td><?php echo $key + 1;?></td>
+                <td>{$item.queryName}</td>
+                <td><if condition="$item.field eq 30">智能排序<elseif condition="$item.field eq 40"/>筛选</if></td>
+                <td><if condition="$item.isDisplay eq 1">是<else/>否</if></td>
+                <td>
+                    <a  data-id="{$item.id}" data-toggle="modal" data-target=".bs-example-modal-lg" class="btn btn-xs btn-primary edit_query">编辑</a>
+                </td>
+            </tr>
+        </foreach>
+        </tbody>
+    </table>
+</div>
+<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">新增筛选条件</h4>
+      </div>
+      <form id="query_add_form" action="/Admin/Module/editShopQuery" method="post" class="form-horizontal">
+      <input type="hidden" name="id" id="queryId"/>
+      <div class="modal-body">
+        	<div class="form-group">
+			    <label for="queryName" class="col-sm-3 control-label"><span class='required-ele'>*</span>查询名</label>
+			    <div class="col-sm-9">
+			      <input type="text" class="form-control" name="queryName" id="queryName" placeholder="查询名">
+			    </div>
+		  	</div>
+		  	<div class="form-group">
+			    <label for="field" class="col-sm-3 control-label"><span class='required-ele'>*</span>所属模块</label>
+			    <div class="col-sm-9">
+			    	<select name="field" class="form-control" id="field">
+			    		<foreach name="field" key="key" item="item">
+			    			<option value="{$key}">{$item}</option>
+			    		</foreach>
+			    	</select>
+			    </div>
+		  	</div>
+		  	<div class="form-group">
+		        <label for="txtContent" class="col-sm-3 control-label">选中时图片</label>
+		        <div class="col-sm-9">
+		            <input type="hidden" name="focusedUrl" id ="focusedUrl"/>
+		            <div class="fileinput fileinput-new  col-xs-12 col-sm-6" data-provides="fileinput">
+		                <div class="fileinput-new thumbnail"><img id="focusedImg"/></div>
+		                <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 400px; max-height: 150px;"></div>
+		                <div>
+		            <span class="btn btn-default btn-file">
+		                <span class="fileinput-new">选择图片</span>
+		                <span class="fileinput-exists">换一张</span>
+		                <input type="file" name="upfile" class="ajax-file-upload" data-imgname="focusedUrl" data-url="/Admin/Util/imageUp" multiple>
+		            </span>
+		                    <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">移除</a>
+		                    <span id="state_focusedUrl" class="ajax-file-state"></span>
+		                </div>
+		            </div>
+		        </div>
+		    </div>
+		    <div class="form-group">
+		        <label for="txtContent" class="col-sm-3 control-label">未选中时图片</label>
+		        <div class="col-sm-9">
+		            <input type="hidden" name="notFocusedUrl" id ="notFocusedUrl"/>
+		            <div class="fileinput fileinput-new  col-xs-12 col-sm-6" data-provides="fileinput">
+		                <div class="fileinput-new thumbnail"><img id="notFocusedImg"/></div>
+		                <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 400px; max-height: 150px;"></div>
+		                <div>
+		                <span class="btn btn-default btn-file">
+		                    <span class="fileinput-new">选择图片</span>
+		                    <span class="fileinput-exists">换一张</span>
+		                    <input type="file" name="upfile" class="ajax-file-upload" data-imgname="notFocusedUrl" data-url="/Admin/Util/imageUp" multiple>
+		                </span>
+		                    <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">移除</a>
+		                    <span id="state_notFocusedUrl" class="ajax-file-state"></span>
+		                </div>
+		            </div>
+		        </div>
+		    </div>
+		    <div class="form-group">
+		     	<label for="txtContent" class="col-sm-3 control-label"><span class='required-ele'>*</span>是否显示</label>
+		        <div class="col-sm-9">
+		        	<label class="radio-inline">
+		                <input type="radio" name="isDisplay" value="1"> 是
+		            </label>
+		            <label class="radio-inline">
+		                <input type="radio" name="isDisplay" value="0"> 否
+		            </label>
+		        </div>
+		    </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+        <button type="submit" class="btn btn-primary">保存</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+<style>
+.modal-dialog{
+	  left: 0%;
+}
+</style>
+<script src="__PUBLIC__/js/vendor/jquery.ui.widget.js"></script>
+<script src="__PUBLIC__/js/jquery.iframe-transport.js"></script>
+<script src="__PUBLIC__/js/jquery.fileupload.js"></script>
+<script type="text/javascript">
+    ;(function(){
+    	$('#query_add_form').on('submit', function() {
+            var frm = $(this);
+            $.post(frm.attr('action'), frm.serialize(), function(resp) {
+                if (resp.status == sz.STATUS_SUCC) {
+                    location.href = '/Admin/Module/listQuery';
+                } else {
+                    sz.showErrMsg(resp.msg.code, 3);
+                }
+            });
+            return false;
+        });
+    	$(".edit_query").on('click', function() {
+			var queryId = $(this).data('id');
+    		$.get('/Admin/Module/editShopQuery', {id:queryId}, function(result) {
+    			$("#queryId").val(result.id);
+    			$("#queryName").val(result.queryName);
+    			$("#field").val(result.field);
+    			$("#focusedImg").attr('src', result.focusedUrl);
+    			$("#notFocusedImg").attr('src', result.notFocusedUrl);
+    			if(result.isDisplay == 1){
+    				$("input[name='isDisplay'][value=1]").attr("checked",true); 
+    			}else{
+    				$("input[name='isDisplay'][value=0]").attr("checked",true);
+    			}
+    		});
+    	});
+    	$('.ajax-file-upload').fileupload({
+            dataType: 'json',
+            add: function (e, data) {
+                var imgname = $(this).data('imgname'); // imgname为 activityImg或者activityLogo
+                data.context = $('#state_' + imgname).text('正在上传...');
+                data.submit();
+            },
+            done: function (e, data) {
+                var resp = data.result;
+                if (resp.state == 'SUCCESS') {
+                    data.context.text('上传完成');
+                    var imgname = data.context.attr('id').substr('state_'.length);
+                    var imgUrl = resp.url.substr(0, 1) == '.' ? resp.url.substr(1) : resp.url; // 去掉"./"中的"."
+                    $('#query_add_form input[name=' + imgname + ']').val('/'+ imgUrl);
+                } else {
+                    data.context.text('上传失败');
+                    $('#query_add_form input[name=' + imgname + ']').val('');
+                }
+            }
+        });
+    })();
+</script>

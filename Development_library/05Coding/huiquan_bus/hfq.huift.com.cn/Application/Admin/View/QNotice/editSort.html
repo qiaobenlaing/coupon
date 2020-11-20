@@ -1,0 +1,73 @@
+<layout name="layout_admin" />
+<form class="form-horizontal" id="card_add_form" action="/Admin/QNotice/editSort" method="post">
+    <input type="hidden" name="id" value="{$sortInfo.id}" />
+    <div class="form-group">
+        <label for="title" class="col-sm-2 control-label"><span class='required-ele'>*</span>分类标题</label>
+        <div class="col-sm-5">
+            <input type="text" class="form-control" name="title" value="{$sortInfo.title}" id="title" placeholder="分类标题">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="shop-code" class="col-sm-2 control-label"><span class='required-ele'>*</span>商圈名称</label>
+        <div class="col-sm-5">
+            <select class="form-control frm-select" name="bank_id" id="shop-code">
+                <option value="">请选择商圈</option>
+                <foreach name="bankList" item="item">
+                    <option value="{$item.id}" <eq name="sortInfo.bank_id" value="$item.id">selected="selected"</eq>>{$item.name}</option>
+                </foreach>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label"><span class='required-ele'>*</span>广告状态</label>
+        <div class="col-sm-6">
+            <label class="radio-inline">
+                <input type="radio" name="state" value="1" <eq name="sortInfo.state" value="1">checked="checked"</eq> checked="checked"> 启用
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="state" value="2" <eq name="sortInfo.state" value="2">checked="checked"</eq>> 禁用
+            </label>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="discount-require" class="col-sm-2 control-label"><span class='required-ele'>*</span>排序号</label>
+        <div class="col-sm-5">
+            <input type="number" class="form-control" name="sort" value="{$sortInfo.sort}" id="discount-require" placeholder="序号(纯数字)">
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <label for="txtContent" class="col-sm-2 control-label">备注</label>
+        <div class="col-sm-5">
+            <textarea class="form-control" name="remark" rows="6" id="txtContent">{$sortInfo.remark}</textarea>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-primary" id="submit">保存</button>
+        </div>
+    </div>
+</form>
+<script src="__PUBLIC__/js/vendor/jquery.ui.widget.js"></script>
+<script src="__PUBLIC__/js/jquery.iframe-transport.js"></script>
+<script src="__PUBLIC__/js/jquery.fileupload.js"></script>
+<script type="text/javascript">
+    $('#shop-code').select2();
+    $('#card_add_form').on('submit', function() {
+        var frm = $(this);
+        $.post(frm.attr('action'), frm.serialize(), function(resp) {
+            console.log(resp);
+            if (resp.status == sz.STATUS_SUCC) {
+                location.href = '/Admin/QNotice/listSort/page/{$page}';
+            } else {
+                sz.showErrMsg(resp.msg, 3);
+            }
+        });
+        return false;
+    });
+</script>
+

@@ -1,0 +1,463 @@
+<layout name="layout_admin" />
+<script src="__PUBLIC__/js/knockout.js" charset="UTF-8"></script>
+<script>
+    var __actData = {$actData|json_encode};
+</script>
+<form class="form-horizontal" id="card_add_form" action="/Admin/Activity/editActivity" method="post">
+<input type="hidden" name="activityCode" value="{$activityInfo.activityCode}" />
+<!--<input type="hidden" name="activityBelonging" value="{$activityInfo.activityBelonging}" />-->
+<div class="form-group">
+    <label for="activity-name" class="col-sm-1 control-label"><span class='required-ele'>*</span>活动主题</label>
+    <div class="col-sm-11">
+        <input type="text" class="form-control" name="activityName" value="{$activityInfo.activityName}" id="activity-name" placeholder="活动主题">
+    </div>
+</div>
+<div class="form-group">
+    <label for="activity-location" class="col-sm-1 control-label"><span class='required-ele'>*</span>活动地点</label>
+    <div class="col-sm-11">
+        <input type="text" class="form-control" name="activityLocation" value="{$activityInfo.activityLocation}" id="activity-location" placeholder="活动地点">
+    </div>
+</div>
+<div class="form-group">
+    <label for="shop-code" class="col-sm-1 control-label"><span class='required-ele'>*</span>主办商店</label>
+    <div class="col-sm-5">
+        <select class="form-control frm-select" name="shopCode" id="shop-code">
+            <option value="">请选择商店</option>
+            <foreach name="getShopName" item="item">
+                <option value="{$item.shopCode}" <eq name="activityInfo.shopCode" value="$item.shopCode">selected="selected"</eq>>{$item.shopName}</option>
+            </foreach>
+        </select>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-sm-1 control-label"><span class='required-ele'>*</span>活动归属</label>
+    <div class="col-sm-6">
+        <label class="radio-inline">
+            <input type="radio" name="activityBelonging" value="1" <if condition="$activityInfo.activityBelonging neq 2 AND $activityInfo.activityBelonging neq 3">checked="checked"</if>> 平台活动
+        </label>
+        <label class="radio-inline">
+            <input type="radio" name="activityBelonging" value="2" <eq name="activityInfo.activityBelonging" value="2">checked="checked"</eq>> 工行活动
+        </label>
+        <label class="radio-inline">
+            <input type="radio" name="activityBelonging" value="3" <eq name="activityInfo.activityBelonging" value="3">checked="checked"</eq>> 商家活动
+        </label>
+    </div>
+</div>
+<div class="form-group">
+    <label for="actType" class="col-sm-1 control-label">活动类型</label>
+    <div class="col-sm-5">
+        <select class="form-control frm-select" name="actType" id="actType">
+            <option value="">请选择活动类型</option>
+            <foreach name="activityType" item="item">
+                <option value="{$item.value}" <eq name="activityInfo.actType" value="$item.value">selected="selected"</eq>>{$item.name}</option>
+            </foreach>
+        </select>
+    </div>
+</div>
+<div class="form-group">
+    <div class="col-sm-offset-1 col-sm-2">
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" id="totalPayment" value="0" name="totalPayment" <?php if(!isset($activityInfo['totalPayment'])):?>checked="checked"<?php else:?><eq name="activityInfo.totalPayment" value="0">checked="checked"</eq><?php endif;?>> 免费
+            </label>
+        </div>
+    </div>
+    <div class="col-sm-9" <?php if(!isset($activityInfo['totalPayment'])):?>style="display:none;"<?php else:?><eq name="activityInfo.totalPayment" value="0">style="display:none;"</eq><?php endif;?> id="feeScaleDiv">
+    <div class="form-group">
+        <label class="col-sm-2 control-label">收费规格:&nbsp;&nbsp;<button type="button" class="btn btn-success btn-xs plus" data-bind="click:addScale"><div class="glyphicon glyphicon-plus"></div></button></label>
+        <div class="col-sm-10">
+            <!-- ko foreach: scale -->
+            <div class="form-group">
+                <input type="hidden" name="scaleId[]" data-bind="value:id">
+                <div class="col-sm-3">
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="scaleDes[]" data-bind="value:des" placeholder="收费规格">
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="scalePrice[]" data-bind="value:price" placeholder="金额">
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <button type="button" class="btn btn-danger btn-xs minus" data-bind="click:$parent.delScale, style: { display: $index() == 0 ? 'none' : 'inline' }"><div class="glyphicon glyphicon-minus"></div></button>
+                </div>
+            </div>
+            <!-- /ko -->
+        </div>
+    </div>
+</div>
+</div>
+<div class="form-group" <?php if(!isset($activityInfo['totalPayment'])):?>style="display:none;"<?php else:?><eq name="activityInfo.totalPayment" value="0">style="display:none;"</eq><?php endif;?> id="isRegisterRequiredDiv">
+<div class="col-sm-offset-1 col-sm-2">
+    <div class="radio">
+        <label>
+            <input type="radio" id="isRegisterRequired" value="1" name="isRegisterRequired" checked="checked"> 需要报名
+        </label>
+    </div>
+</div>
+<div class="col-sm-5">
+    <div class="form-group">
+        <label class="col-sm-4 control-label">提前预约天数</label>
+        <div class="col-sm-8">
+            <div class="input-group">
+                <input type="text" class="form-control checkNum" name="dayOfBooking" value="{$activityInfo.dayOfBooking|default='0'}" id="dayOfBooking">
+                <span class="input-group-addon">天（0为活动开始前都可报名）</span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-sm-4">
+    <div class="form-group">
+        <label class="col-sm-4 control-label">单人报名人数上限</label>
+        <div class="col-sm-8">
+            <div class="input-group">
+                <input type="text" class="form-control checkNum" name="registerNbrRequired" value="{$activityInfo.registerNbrRequired|default='5'}" id="registerNbrRequired">
+                <span class="input-group-addon">人（最多为5人）</span>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<!--<div class="form-group" <?php if(!isset($activityInfo['totalPayment'])):?>style="display:none;"<?php else:?><eq name="activityInfo.totalPayment" value="0">style="display:none;"</eq><?php endif;?> id="isPrepayRequiredDiv">-->
+<!--<div class="col-sm-offset-1 col-sm-2">-->
+<!--<div class="checkbox">-->
+<!--<label>-->
+<!--<input type="checkbox" id="isPrepayRequired" value="1" name="isPrepayRequired" <eq name="activityInfo.isPrepayRequired" value="1">checked="checked"</eq>> 是否需要预付款-->
+<!--</label>-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class="col-sm-9">-->
+<!--<div class="form-group">-->
+<!--<label class="col-sm-2 control-label">预付款金额</label>-->
+<!--<div class="col-sm-4">-->
+<!--<div class="input-group">-->
+<!--<input type="text" class="form-control checkNum" name="prePayment" value="{$activityInfo.prePayment|default='0'}" id="prePayment" <eq name="activityInfo.isPrepayRequired" value="0">disabled</eq> disabled>-->
+<!--<span class="input-group-addon">元</span>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<div class="form-group" <?php if(!isset($activityInfo['totalPayment'])):?>style="display:none;"<?php else:?><eq name="activityInfo.totalPayment" value="0">style="display:none;"</eq><?php endif;?> id="limitedParticipatorsDiv">
+<label for="limited-participators" class="col-sm-1 control-label"><span class='required-ele'>*</span>上限人数</label>
+<div class="col-sm-5">
+    <div class="input-group">
+        <input type="text" class="form-control checkNum" name="limitedParticipators" value="{$activityInfo.limitedParticipators|default='0'}" id="limited-participators" placeholder="上限人数">
+        <span class="input-group-addon frm-span">人(0表示无上限)</span>
+    </div>
+</div>
+</div>
+<div class="form-group" <?php if(!isset($activityInfo['totalPayment'])):?>style="display:none;"<?php else:?><eq name="activityInfo.totalPayment" value="0">style="display:none;"</eq><?php endif;?> id="refundRequiredDiv">
+<label class="col-sm-1 control-label"><span class='required-ele'>*</span>退款要求</label>
+<div class="col-sm-5">
+    <select class="form-control frm-select" name="refundRequired" id="refundRequired">
+        <option value="0">请选择退款要求</option>
+        <foreach name="refundRequired" item="item">
+            <option value="{$item.value}" <eq name="activityInfo.refundRequired" value="$item.value">selected="selected"</eq>>{$item.name}</option>
+        </foreach>
+    </select>
+</div>
+</div>
+<div class="form-group">
+    <label for="start-time" class="col-sm-1 control-label"><span class='required-ele'>*</span>开始时间</label>
+    <div class="col-sm-3">
+        <input type="text" class="form-control form_datetime" name="startTime" value="{$activityInfo.startTime}" readonly id="start-time" placeholder="活动开始时间">
+    </div>
+    <label for="end-time" class="col-sm-1 control-label col-sm-offset-2"><span class='required-ele'>*</span>结束时间</label>
+    <div class="col-sm-3">
+        <input type="text" class="form-control form_datetime" name="endTime" value="{$activityInfo.endTime}" readonly id="end-time" placeholder="活动结束时间">
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-sm-1 control-label"><span class='required-ele'>*</span>联系人</label>
+    <div class="col-sm-3">
+        <input type="text" class="form-control" name="contactName" value="{$activityInfo.contactName}" placeholder="联系人">
+    </div>
+    <label class="col-sm-1 control-label col-sm-offset-2"><span class='required-ele'>*</span>联系方式</label>
+    <div class="col-sm-3">
+        <input type="text" class="form-control" name="contactMobileNbr" value="{$activityInfo.contactMobileNbr}" placeholder="联系方式">
+    </div>
+</div>
+<!--<div class="form-group">-->
+<!--<label for="create-time" class="col-sm-1 control-label">发起时间</label>-->
+<!--<div class="col-sm-5">-->
+<!--<input type="text" class="form-control form_datetime" name="createTime" value="{$activityInfo.createTime}" readonly id="create-time" placeholder="活动发起时间">-->
+<!--</div>-->
+<!--</div>-->
+<div class="form-group">
+    <label for="txtContent" class="col-sm-1 control-label"><span class='required-ele'>*</span>活动说明</label>
+    <div class="col-sm-11">
+        <textarea class="form-control" name="txtContent" rows="6" id="txtContent">{$activityInfo.txtContent}</textarea>
+    </div>
+</div>
+<div class="form-group">
+    <label for="txtContent" class="col-sm-1 control-label">活动简介(富文本形式)</label>
+    <div class="col-sm-11">
+        <script id="richTextContent" type="text/plain" name="richTextContent"></script>
+    </div>
+</div>
+<div class="form-group">
+    <label for="pos" class="col-sm-1 control-label">位置信息</label>
+    <div class="col-sm-5">
+        <select class="form-control frm-select" name="pos" id="pos">
+            <foreach name="posArr" item="item">
+                <option value="{$item.value}" <eq name="activityInfo.pos" value="$item.value">selected="selected"</eq>>{$item.name}</option>
+            </foreach>
+        </select>
+    </div>
+</div>
+
+<div class="form-group" id="button_div" <if condition="$activityInfo.pos neq 1">style="display:none;"</if>>
+<label class="control-label col-sm-offset-1">内部按钮(没有则不填)&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-info btn-xs" data-bind="click: addExButton"><div class="glyphicon glyphicon-plus"></div></button></label>
+<div class="col-sm-12" style="margin-top: 10px;">
+    <div class="col-sm-3 text-center">链接（例如：hs://getShopInfo?shopCode=***）</div>
+    <div class="col-sm-2 text-center">宽度（例如：25%）</div>
+    <div class="col-sm-2 text-center">高度（例如：25%[固定高度]，auto[自适应]）</div>
+    <div class="col-sm-2 text-center">左边缘（例如：25%）</div>
+    <div class="col-sm-2 text-center">上边缘（例如：25%）</div>
+</div>
+<!-- ko foreach: exButton -->
+<div class="col-sm-12">
+    <div class="col-sm-3">
+        <input type="text" class="form-control" name="exButtonList[ebLink][]" data-bind="value:ebLink" />
+    </div>
+    <div class="col-sm-2">
+        <input type="text" class="form-control" name="exButtonList[ebWidth][]" data-bind="value:ebWidth" />
+    </div>
+    <div class="col-sm-2">
+        <input type="text" class="form-control" name="exButtonList[ebHeight][]" data-bind="value:ebHeight" />
+    </div>
+    <div class="col-sm-2">
+        <input type="text" class="form-control" name="exButtonList[ebLeft][]" data-bind="value:ebLeft" />
+    </div>
+    <div class="col-sm-2">
+        <input type="text" class="form-control" name="exButtonList[ebTop][]" data-bind="value:ebTop" />
+    </div>
+    <div class="col-sm-1">
+        <button type="button" class="btn btn-danger btn-xs minus" data-bind="click:$parent.delExButton, style: { display: $index() == 0 ? 'none' : 'inline' }"><div class="glyphicon glyphicon-minus"></div></button>
+    </div>
+</div>
+<!-- /ko -->
+</div>
+
+<div class="form-group">
+    <label for="webUrl" class="col-sm-1 control-label">webURL</label>
+    <div class="col-sm-5">
+        <input type="text" class="form-control" name="webUrl" value="{$activityInfo.webUrl|default='ActModule/cGetScrollInfo?activityCode='}" id="webUrl" placeholder="webURL">
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-sm-1 control-label"><span class='required-ele'>*</span>logo图片</label>
+    <div class="col-sm-11">
+        <input type="hidden" name="activityLogo" value="{$activityInfo.activityLogo}" />
+        <div class="fileinput fileinput-new  col-xs-12 col-sm-6" data-provides="fileinput">
+            <div class="fileinput-new thumbnail"><img src="{$activityInfo.activityLogo}"/></div>
+            <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 400px; max-height: 150px;"></div>
+            <div>
+            <span class="btn btn-default btn-file">
+                <span class="fileinput-new">选择图片</span>
+                <span class="fileinput-exists">换一张</span>
+                <input type="file" name="upfile" class="ajax-file-upload" data-imgname="activityLogo" data-url="/Admin/Util/imageUp" multiple>
+            </span>
+                <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">移除</a>
+                <span id="state_activityLogo" class="ajax-file-state"></span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-sm-1 control-label"><span class='required-ele'>*</span>长条图片(滚屏位置)</label>
+    <div class="col-sm-5">
+        <input type="hidden" name="activityImg" value="{$activityInfo.activityImg}" />
+        <div class="fileinput fileinput-new  col-xs-12 col-sm-6" data-provides="fileinput">
+            <div class="fileinput-new thumbnail"><img src="{$activityInfo.activityImg}"/></div>
+            <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 400px; max-height: 150px;"></div>
+            <div>
+                <span class="btn btn-default btn-file">
+                    <span class="fileinput-new">选择图片</span>
+                    <span class="fileinput-exists">换一张</span>
+                    <input type="file" name="upfile" class="ajax-file-upload" data-imgname="activityImg" data-url="/Admin/Util/imageUp" multiple>
+                </span>
+                <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">移除</a>
+                <span id="state_activityImg" class="ajax-file-state"></span>
+            </div>
+        </div>
+    </div>
+    <label class="col-sm-3 control-label"><span class='required-ele'>*</span>长条图片(滚屏位置)：宽 / 图片高</label>
+    <div class="col-sm-2">
+        <input type="text" class="form-control" name="imgRate" value="{$activityInfo.imgRate|default='2'}" />
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-sm-1 control-label"><span class='required-ele'>*</span>海报图片</label>
+    <div class="col-sm-11">
+        <input type="hidden" name="posterImg" value="{$activityInfo.posterImg}" />
+        <div class="fileinput fileinput-new  col-xs-12 col-sm-6" data-provides="fileinput">
+            <div class="fileinput-new thumbnail"><img src="{$activityInfo.posterImg}"/></div>
+            <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 400px; max-height: 150px;"></div>
+            <div>
+                <span class="btn btn-default btn-file">
+                    <span class="fileinput-new">选择图片</span>
+                    <span class="fileinput-exists">换一张</span>
+                    <input type="file" name="upfile" class="ajax-file-upload" data-imgname="posterImg" data-url="/Admin/Util/imageUp" multiple>
+                </span>
+                <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">移除</a>
+                <span id="state_posterImg" class="ajax-file-state"></span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="form-group">
+    <div class="col-sm-offset-1 col-sm-10">
+        <button type="submit" class="btn btn-primary" id="submit">保存</button>
+    </div>
+</div>
+</form>
+<!-- 配置文件 -->
+<script type="text/javascript" src="/Public/Ueditor/ueditor.config.js"></script>
+<!-- 编辑器源码文件 -->
+<script type="text/javascript" src="/Public/Ueditor/ueditor.all.js"></script>
+<script src="__PUBLIC__/js/vendor/jquery.ui.widget.js"></script>
+<script src="__PUBLIC__/js/jquery.iframe-transport.js"></script>
+<script src="__PUBLIC__/js/jquery.fileupload.js"></script>
+<script type="text/javascript">
+    var richTextContent = UE.getEditor('richTextContent');
+    $(function(){
+        var rtc = '<?php echo htmlspecialchars_decode(htmlspecialchars_decode($activityInfo["richTextContent"]));?>';
+        rtc = $.trim(rtc);
+        richTextContent.ready(function() {
+            richTextContent.setContent(rtc);
+        });
+        $('#shop-code').select2();
+        $('#pos').select2();
+        $('#refundRequired').select2();
+        $('#actType').select2();
+        $('.form_datetime').datetimepicker({
+            formmat: 'yyyy-mm-dd hh:ii',
+            todayBtn: true,
+            autoclose: true
+        });
+
+        $('#pos').change(function(){
+            var pos = $(this).val();
+            if(pos == 1){
+                $('#button_div').show();
+            }else{
+                $('#button_div').hide();
+            }
+        });
+        sz.checkNum();
+        $('#card_add_form').on('submit', function() {
+            var frm = $(this);
+            $.post(frm.attr('action'), frm.serialize(), function(resp) {
+                if (resp.status == sz.STATUS_SUCC) {
+                    location.href = '/Admin/Activity/list{$bk}Activity';
+                } else {
+                    sz.showErrMsg(resp.msg.code, 3);
+                }
+            });
+            return false;
+        });
+
+//        $('#isPrepayRequired').on('click', function() {
+//            if($('#isPrepayRequired').is(':checked') == true){
+//                $('#prePayment').removeAttr('disabled');
+//            }else {
+//                $('#prePayment').attr('disabled', true);
+//                $('#prePayment').val('0');
+//            }
+//        });
+//
+//        $('#isRegisterRequired').on('click', function() {
+//            if($('#isRegisterRequired').is(':checked') == true){
+//                $('#dayOfBooking').removeAttr('disabled');
+//            }else {
+//                $('#dayOfBooking').attr('disabled', true);
+//                $('#dayOfBooking').val('0');
+//            }
+//        });
+
+        $('#totalPayment').on('click', function() {
+            if($('#totalPayment').is(':checked') == true){
+                $('#feeScaleDiv').hide();
+                $('#isRegisterRequiredDiv').hide();
+//                $('#isPrepayRequiredDiv').hide();
+                $('#limitedParticipatorsDiv').hide();
+                $('#refundRequiredDiv').hide();
+            }else {
+                $('#feeScaleDiv').show();
+                $('#isRegisterRequiredDiv').show();
+//                $('#isPrepayRequiredDiv').show();
+                $('#limitedParticipatorsDiv').show();
+                $('#refundRequiredDiv').show();
+            }
+        });
+
+        $('.ajax-file-upload').fileupload({
+            dataType: 'json',
+            add: function (e, data) {
+                var imgname = $(this).data('imgname'); // imgname为 activityImg或者activityLogo
+                data.context = $('#state_' + imgname).text('正在上传...');
+                data.submit();
+            },
+            /* progressall: function (e, data) {
+             var progress = parseInt(data.loaded / data.total * 100, 10);
+             $('#progress_img_quare .bar').css('width', progress + '%');
+             }, */
+            done: function (e, data) {
+                var resp = data.result;
+                if (resp.state == 'SUCCESS') {
+                    data.context.text('上传完成');
+                    var imgname = data.context.attr('id').substr('state_'.length);
+                    var imgUrl = resp.url.substr(0, 1) == '.' ? resp.url.substr(1) : resp.url; // 去掉"./"中的"."
+                    $('#card_add_form input[name=' + imgname + ']').val('/'+ imgUrl);
+                } else {
+                    data.context.text('上传失败');
+                    $('#card_add_form input[name=' + imgname + ']').val('');
+                }
+            }
+        });
+    });
+
+    ;(function(){
+        __actData = __actData || [];
+        var Scale = function(id, des, price){
+            this.id = id || 0;
+            this.des = des || '';
+            this.price = price || '';
+            return this;
+        };
+
+        var Button = function(ebLink, ebWidth, ebHeight, ebLeft, ebTop){
+            this.ebLink = ebLink || '';
+            this.ebWidth = ebWidth || '';
+            this.ebHeight = ebHeight || '';
+            this.ebLeft = ebLeft || '';
+            this.ebTop = ebTop || '';
+            return this;
+        };
+
+        var viewMdl = function(data){
+            var self = this;
+            self.scale = ko.observableArray(data.feeScale);
+            self.exButton = ko.observableArray(data.exButtonList);
+
+            self.addScale = function(){
+                self.scale.push(new Scale());
+            };
+            self.delScale = function(){
+                self.scale.remove(this);
+            };
+
+            self.addExButton = function(){
+                self.exButton.push(new Button());
+            };
+            self.delExButton = function(){
+                self.exButton.remove(this);
+            };
+        };
+
+        ko.applyBindings(new viewMdl(__actData));
+    })();
+</script>

@@ -1,0 +1,358 @@
+<layout name="layout_admin" />
+<script src="__PUBLIC__/js/knockout.js" charset="UTF-8"></script>
+<script type="text/javascript" src="__PUBLIC__/js/jscolor.min.js"></script>
+<script>
+    var __exButtonList = {$dataInfo.exButtonList|json_encode};
+</script>
+<div class="row">
+<div class="col-md-11">
+<form id="sub_module_add_form" action="/Admin/Module/editSubModule" method="post" class="form-horizontal">
+<input type="hidden" name="id" value="{$dataInfo.id}" />
+<input type="hidden" name="parentModuleId" value="{$dataInfo.parentModuleId}" />
+<input type="hidden" name="cityId" value="{$dataInfo.cityId}" />
+<div class="form-group">
+    <label for="title" class="col-sm-2 control-label">标题</label>
+    <div class="col-sm-4">
+        <input type="text" class="form-control" id="title" placeholder="标题" name="title" value="{$dataInfo.title}">
+    </div>
+
+    <label for="titleColor" class="col-sm-2 control-label">标题颜色(16进制形式)</label>
+    <div class="col-sm-4">
+        <input type="text" class="form-control jscolor" id="titleColor" name="titleColor" value="{$dataInfo.titleColor|default='000000'}">
+    </div>
+</div>
+<div class="form-group">
+    <label for="subTitle" class="col-sm-2 control-label">子标题</label>
+    <div class="col-sm-4">
+        <input type="text" class="form-control" id="subTitle" placeholder="子标题" name="subTitle" value="{$dataInfo.subTitle}">
+    </div>
+
+    <label for="subTitleColor" class="col-sm-2 control-label">子标题颜色(16进制形式)</label>
+    <div class="col-sm-4">
+        <input type="text" class="form-control jscolor" id="subTitleColor" name="subTitleColor" value="{$dataInfo.subTitleColor|default='000000'}">
+    </div>
+</div>
+<div class="form-group"><hr /></div>
+<div class="form-group" id="link_div">
+    <label class="col-sm-2 control-label">链接类型</label>
+    <div class="col-sm-2">
+        <label class="radio-inline">
+            <input type="radio" name="linkType" value="0" <if condition="$dataInfo.linkType neq 1 AND $dataInfo.linkType neq 2">checked="checked"</if>> H5
+        </label>
+    </div>
+    <label class="col-sm-2 control-label">链接</label>
+    <div class="col-sm-4">
+        <if condition="$dataInfo.linkType neq 1 AND $dataInfo.linkType neq 2 AND $dataInfo.linkType neq 3">
+            <input type="text" class="form-control" placeholder="链接" name="content" value="{$dataInfo.content}">
+            <else />
+            <input type="text" class="form-control" placeholder="链接" name="content" disabled>
+        </if>
+    </div>
+</div>
+<div class="form-group" id="sList_div">
+    <label class="col-sm-2 control-label"></label>
+    <div class="col-sm-2">
+        <label class="radio-inline">
+            <input type="radio" name="linkType" value="1" <eq name="dataInfo.linkType" value="1">checked="checked"</eq>> 商家列表
+        </label>
+    </div>
+    <label class="col-sm-2 control-label">商家类型</label>
+    <div class="col-sm-4">
+        <select class="form-control" name="shopType" <neq name="dataInfo.linkType" value="1">disabled</neq>>
+        <foreach name="shopTypeList" item="vo">
+            <option value="{$vo.typeValue}" <eq name="dataInfo.content" value="$vo.typeValue">selected="selected"</eq>>{$vo.typeZh}</option>
+        </foreach>
+        </select>
+    </div>
+</div>
+<div class="form-group" id="cList_div">
+    <label class="col-sm-2 control-label"></label>
+    <div class="col-sm-2">
+        <label class="radio-inline">
+            <input type="radio" name="linkType" value="2" <eq name="dataInfo.linkType" value="2">checked="checked"</eq>> 优惠券列表
+        </label>
+    </div>
+    <label class="col-sm-2 control-label">优惠券类型</label>
+    <div class="col-sm-4">
+        <select class="form-control" name="couponType" <neq name="dataInfo.linkType" value="2">disabled</neq>>
+        <option value="0">未知</option>
+        <foreach name="couponTypeList" item="vo">
+            <option value="{$vo.value}" <eq name="dataInfo.content" value="$vo.value">selected="selected"</eq>>{$vo.name}</option>
+        </foreach>
+        </select>
+    </div>
+</div>
+<div class="form-group" id="bList_div">
+    <label class="col-sm-2 control-label"></label>
+    <div class="col-sm-2">
+        <label class="radio-inline">
+            <input type="radio" name="linkType" value="3" <eq name="dataInfo.linkType" value="3">checked="checked"</eq>> 工银特惠
+        </label>
+    </div>
+    <label class="col-sm-2 control-label">商家类型</label>
+    <div class="col-sm-4">
+        <select class="form-control" name="shopType" <neq name="dataInfo.linkType" value="3">disabled</neq>>
+        <foreach name="shopTypeList" item="vo">
+            <option value="{$vo.typeValue}" <eq name="dataInfo.content" value="$vo.typeValue">selected="selected"</eq>>{$vo.typeZh}</option>
+        </foreach>
+        </select>
+    </div>
+</div>
+<div class="form-group"><hr /></div>
+<div class="form-group">
+    <label class="col-sm-2 control-label">图片</label>
+    <div class="col-sm-10">
+        <input type="hidden" name="imgUrl" value="{$dataInfo.imgUrl}" />
+        <div class="fileinput fileinput-new" data-provides="fileinput">
+            <div class="fileinput-new thumbnail"><img src="{$dataInfo.imgUrl}" style="max-width: 400px; max-height: 100px;" /></div>
+            <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 400px; max-height: 100px;"></div>
+            <div>
+                    <span class="btn btn-default btn-file">
+                        <span class="fileinput-new">选择背景图片</span>
+                        <span class="fileinput-exists">换一张</span>
+                        <input type="file" name="upfile" class="ajax-file-upload" data-imgname="imgUrl" data-url="/Admin/Util/imageUp" multiple>
+                    </span>
+                <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">移除</a>
+                <span id="state_imgUrl" class="ajax-file-state"></span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="form-group">
+    <label for="imgPosition" class="col-sm-2 control-label">图片位置（相对块而言）</label>
+    <div class="col-sm-4">
+        <select class="form-control" name="imgPosition" id="imgPosition">
+            <option value="0" <eq name="dataInfo.imgPosition" value="0">selected="selected"</eq>>左边</option>
+            <option value="1" <eq name="dataInfo.imgPosition" value="1">selected="selected"</eq>>上边</option>
+            <option value="2" <eq name="dataInfo.imgPosition" value="2">selected="selected"</eq>>右边</option>
+            <option value="3" <eq name="dataInfo.imgPosition" value="3">selected="selected"</eq>>下边</option>
+            <option value="4" <eq name="dataInfo.imgPosition" value="4">selected="selected"</eq>>全屏</option>
+        </select>
+    </div>
+
+    <label for="imgSize" class="col-sm-2 control-label">图片大小（单位：px，width|height）(适用于老版本)</label>
+    <div class="col-sm-4">
+        <input type="text" class="form-control" id="imgSize" placeholder="图片大小（如：80|80）" name="imgSize" value="{$dataInfo.imgSize}">
+    </div>
+</div>
+<div class="form-group">
+    <label for="imgRate" class="col-sm-2 control-label">图片宽 / 图片高(适用于新版本)</label>
+    <div class="col-sm-4">
+        <input type="text" class="form-control" id="imgRate" name="imgRate" value="{$dataInfo.imgRate|default='2'}">
+    </div>
+    <label for="screenRate" class="col-sm-2 control-label">图片宽 / 屏幕宽</label>
+    <div class="col-sm-4">
+        <input type="text" class="form-control" id="screenRate" placeholder="0~1的数" name="screenRate" value="{$dataInfo.screenRate|default='0.5'}">
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-sm-2 control-label">是否显示</label>
+    <div class="col-sm-4">
+        <label class="radio-inline">
+            <input type="radio" name="hide" value="0" <neq name="dataInfo.hide" value="1">checked="checked"</neq>> 显示
+        </label>
+        <label class="radio-inline">
+            <input type="radio" name="hide" value="1" <eq name="dataInfo.hide" value="1">checked="checked"</eq>> 隐藏
+        </label>
+    </div>
+
+    <label for="bgColor" class="col-sm-2 control-label">背景色(16进制形式)</label>
+    <div class="col-sm-4">
+        <input type="text" class="form-control jscolor" id="bgColor" name="bgColor" value="{$dataInfo.bgColor|default='FFFFFF'}">
+    </div>
+</div>
+<div class="form-group"><hr /></div>
+<div class="form-group">
+    <label class="col-sm-2 control-label">商家列表页分类图片（选中）</label>
+    <div class="col-sm-4">
+        <input type="hidden" name="focusedUrl" value="{$dataInfo.focusedUrl}" />
+        <div class="fileinput fileinput-new" data-provides="fileinput">
+            <div class="fileinput-new thumbnail"><img src="{$dataInfo.focusedUrl}" style="max-width: 400px; max-height: 100px;" /></div>
+            <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 400px; max-height: 100px;"></div>
+            <div>
+                    <span class="btn btn-default btn-file">
+                        <span class="fileinput-new">选择背景图片</span>
+                        <span class="fileinput-exists">换一张</span>
+                        <input type="file" name="upfile" class="ajax-file-upload" data-imgname="focusedUrl" data-url="/Admin/Util/imageUp" multiple>
+                    </span>
+                <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">移除</a>
+                <span id="state_focusedUrl" class="ajax-file-state"></span>
+            </div>
+        </div>
+    </div>
+
+    <label class="col-sm-2 control-label">商家列表页分类图片（未选中）</label>
+    <div class="col-sm-4">
+        <input type="hidden" name="notFocusedUrl" value="{$dataInfo.notFocusedUrl}" />
+        <div class="fileinput fileinput-new" data-provides="fileinput">
+            <div class="fileinput-new thumbnail"><img src="{$dataInfo.notFocusedUrl}" style="max-width: 400px; max-height: 100px;" /></div>
+            <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 400px; max-height: 100px;"></div>
+            <div>
+                    <span class="btn btn-default btn-file">
+                        <span class="fileinput-new">选择背景图片</span>
+                        <span class="fileinput-exists">换一张</span>
+                        <input type="file" name="upfile" class="ajax-file-upload" data-imgname="notFocusedUrl" data-url="/Admin/Util/imageUp" multiple>
+                    </span>
+                <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">移除</a>
+                <span id="state_notFocusedUrl" class="ajax-file-state"></span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="form-group"><hr /></div>
+<div class="form-group" id="button_div" <if condition="$dataInfo.linkType neq 0">style="display:none;"</if>>
+<label class="col-sm-2 control-label">H5背景图</label>
+<div class="col-sm-10">
+    <input type="hidden" name="bgUrl" value="{$dataInfo.bgUrl}" />
+    <div class="fileinput fileinput-new" data-provides="fileinput">
+        <div class="fileinput-new thumbnail"><img src="{$dataInfo.bgUrl}" style="max-width: 400px; max-height: 200px;" /></div>
+        <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 400px; max-height: 200px;"></div>
+        <div>
+            <span class="btn btn-default btn-file">
+                <span class="fileinput-new">选择背景图片</span>
+                <span class="fileinput-exists">换一张</span>
+                <input type="file" name="upfile" class="ajax-file-upload" data-imgname="bgUrl" data-url="/Admin/Util/imageUp" multiple>
+            </span>
+            <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">移除</a>
+            <span id="state_bgUrl" class="ajax-file-state"></span>
+        </div>
+    </div>
+</div>
+<label class="control-label col-sm-offset-1">内部按钮(没有则不填)&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-info btn-xs" data-bind="click: addExButton"><div class="glyphicon glyphicon-plus"></div></button></label>
+<div class="col-sm-12" style="margin-top: 10px;">
+    <div class="col-sm-3 text-center">链接（例如：hs://getShopInfo?shopCode=***）</div>
+    <div class="col-sm-2 text-center">宽度（例如：25%）</div>
+    <div class="col-sm-2 text-center">高度（例如：25%[固定高度]，auto[自适应]）</div>
+    <div class="col-sm-2 text-center">左边缘（例如：25%）</div>
+    <div class="col-sm-2 text-center">上边缘（例如：25%）</div>
+</div>
+<!-- ko foreach: exButton -->
+<div class="col-sm-12">
+    <div class="col-sm-3">
+        <input type="text" class="form-control" name="exButtonList[ebLink][]" data-bind="value:ebLink" />
+    </div>
+    <div class="col-sm-2">
+        <input type="text" class="form-control" name="exButtonList[ebWidth][]" data-bind="value:ebWidth" />
+    </div>
+    <div class="col-sm-2">
+        <input type="text" class="form-control" name="exButtonList[ebHeight][]" data-bind="value:ebHeight" />
+    </div>
+    <div class="col-sm-2">
+        <input type="text" class="form-control" name="exButtonList[ebLeft][]" data-bind="value:ebLeft" />
+    </div>
+    <div class="col-sm-2">
+        <input type="text" class="form-control" name="exButtonList[ebTop][]" data-bind="value:ebTop" />
+    </div>
+    <div class="col-sm-1">
+        <button type="button" class="btn btn-danger btn-xs minus" data-bind="click:$parent.delExButton, style: { display: $index() == 0 ? 'none' : 'inline' }"><div class="glyphicon glyphicon-minus"></div></button>
+    </div>
+</div>
+<!-- /ko -->
+</div>
+<div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-primary">保存</button>
+    </div>
+</div>
+</form>
+</div>
+</div>
+<script src="__PUBLIC__/js/vendor/jquery.ui.widget.js"></script>
+<script src="__PUBLIC__/js/jquery.iframe-transport.js"></script>
+<script src="__PUBLIC__/js/jquery.fileupload.js"></script>
+<script type="text/javascript">
+    $(function(){
+        $('input[name="linkType"]').change(function(){
+            var value = $('input[name="linkType"]:checked').val();
+            if(value == 0){
+                $('#link_div').find('input[name="content"]').attr('disabled', false);
+                $('#sList_div').find('select').attr('disabled', true);
+                $('#cList_div').find('select').attr('disabled', true);
+                $('#bList_div').find('select').attr('disabled', true);
+                $('#button_div').show();
+            }else if(value == 1){
+                $('#sList_div').find('select').attr('disabled', false);
+                $('#link_div').find('input[name="content"]').attr('disabled', true);
+                $('#cList_div').find('select').attr('disabled', true);
+                $('#bList_div').find('select').attr('disabled', true);
+                $('#button_div').hide();
+            }else if(value == 2){
+                $('#cList_div').find('select').attr('disabled', false);
+                $('#link_div').find('input[name="content"]').attr('disabled', true);
+                $('#sList_div').find('select').attr('disabled', true);
+                $('#bList_div').find('select').attr('disabled', true);
+                $('#button_div').hide();
+            }else{
+                $('#bList_div').find('select').attr('disabled', false);
+                $('#cList_div').find('select').attr('disabled', true);
+                $('#link_div').find('input[name="content"]').attr('disabled', true);
+                $('#sList_div').find('select').attr('disabled', true);
+                $('#button_div').hide();
+            }
+        });
+
+        $('#sub_module_add_form').on('submit', function() {
+            $('button[type="submit"]').attr('disabled', true);
+            var frm = $(this);
+            $.post(frm.attr('action'), frm.serialize(), function(resp) {
+                if (resp.status == sz.STATUS_SUCC) {
+                    sz.showSuccMsg(resp.msg, 3);
+                    location.href = '/Admin/District/listCityIndexModule?id={$dataInfo.cityId}';
+                } else {
+                    sz.showErrMsg(resp.msg, 3);
+                    $('button[type="submit"]').attr('disabled', false);
+                }
+            });
+            return false;
+        });
+
+        $('.ajax-file-upload').fileupload({
+            dataType: 'json',
+            add: function (e, data) {
+                var imgname = $(this).data('imgname'); // imgname为 activityImg或者activityLogo
+                data.context = $('#state_' + imgname).text('正在上传...');
+                data.submit();
+            },
+            /* progressall: function (e, data) {
+             var progress = parseInt(data.loaded / data.total * 100, 10);
+             $('#progress_img_quare .bar').css('width', progress + '%');
+             }, */
+            done: function (e, data) {
+                var resp = data.result;
+                if (resp.state == 'SUCCESS') {
+                    data.context.text('上传完成');
+                    var imgname = data.context.attr('id').substr('state_'.length);
+                    var imgUrl = resp.url.substr(0, 1) == '.' ? resp.url.substr(1) : resp.url; // 去掉"./"中的"."
+                    $('#sub_module_add_form input[name=' + imgname + ']').val('/'+ imgUrl);
+                } else {
+                    data.context.text('上传失败');
+                    $('#sub_module_add_form input[name=' + imgname + ']').val('');
+                }
+            }
+        });
+    });
+    ;(function(){
+        __exButtonList = __exButtonList || [];
+        var ExButton = function(ebLink, ebWidth, ebHeight, ebLeft, ebTop){
+            this.ebLink = ebLink || '';
+            this.ebWidth = ebWidth || '';
+            this.ebHeight = ebHeight || '';
+            this.ebLeft = ebLeft || '';
+            this.ebTop = ebTop || '';
+            return this;
+        };
+
+        var viewMdl = function(data){
+            var self = this;
+            self.exButton = ko.observableArray(data);
+            self.addExButton = function(){
+                self.exButton.push(new ExButton());
+            };
+            self.delExButton = function(){
+                self.exButton.remove(this);
+            };
+        };
+
+        ko.applyBindings(new viewMdl(__exButtonList));
+    })();
+</script>

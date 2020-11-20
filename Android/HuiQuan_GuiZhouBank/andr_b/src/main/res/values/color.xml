@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- 深灰色 -->
+    <color name="app_bg">#F0EFF5</color>
+    <color name="app_item_bg">#FFFFFFFF</color>
+    <color name="gold">#FFD700</color>
+    <color name="lightgoldenrodyellow">#FAFAD2</color>
+    <color name="darkgoldenrod">#B8860B</color>
+    <color name="snow">#FFFAFA</color>
+    <color name="dark">#000000</color>
+    <color name="bule">#0033CC</color>
+    <color name="result_view">#b0000000</color>
+    <color name="viewfinder_mask">#60000000</color>
+    <color name="possible_result_points">#c0ffff00</color>
+    <color name="albumback">#E1E0DE</color>
+    <color name="bule_overlay">#660D92DD</color>
+    <color name="dark_gray">#333333</color>
+    <color name="gray_version">#C0C0C0</color>
+    <color name="gray_transparent">#b0000000</color>
+    <color name="app_title_bg">#FFC30A18</color>
+    <color name="shop_nameother">#9E9E9E</color>
+    <color name="home_font">#666666</color>
+    <!-- 浅灰色 -->
+    <color name="order_grad">#999999</color>
+    <color name="order_grad_add">#E6E6E6</color>
+    <!-- 透明颜色 -->
+    <color name="shop_photo_bg">#7f666666</color>
+    <color name="light_gray_transparent">#7fDCDCDC</color>
+    <!-- 浅灰色 线条颜色 -->
+    <color name="line_gray">#DCDCDC</color>
+    <!-- 红色 -->
+    <color name="red">#C5000A</color>
+    <!-- 白色背景 -->
+    <color name="white">#ffffff</color>
+    <!-- app的背景颜色 -->
+    <color name="bgall">#F0EFF5</color>
+    <!-- 浅灰色 -->
+    <color name="light_grey">#E5E5E5</color>
+    <!-- 深灰色 -->
+    <color name="deep_grey">#666666</color>
+    <color name="light_black">#343434</color>
+    <!-- 首页活动商家的颜色 -->
+    <color name="act_shop">#F1FCFF</color>
+    <!-- E支付的颜色 -->
+    <color name="e_csm">#F4E8E8</color>
+    <!-- 优惠券查询字体颜色 -->
+    <color name="coupon_fontgrey">#666666</color>
+    <color name="coupon_hometopfont">#5D5D5D</color>
+    <!-- 首页上面六个图标的字体颜色 -->
+    <color name="home_topsixfont">#333333</color>
+    <color name="suggeste_time">#787878</color>
+    <color name="tab_fontsel">#c5000B</color>
+    <color name="tab_fontnosel">#868A91</color>
+    <!-- 消息的颜色 -->
+    <color name="msg_font">#BBBBBB</color>
+
+    <!-- 黑色 -->
+    <color name="black">#000000</color>
+    <!-- 暗红色 -->
+    <color name="burgundy">#BD5123</color>
+    <color name="accntburgundy">#CD6802</color>
+    <!-- 很浅的灰色 -->
+    <color name="bghome">#EDEDED</color>
+    <!-- 员工类别的字体颜色灰色 -->
+    <color name="tvstaffcolor">#777777</color>
+    <!-- myhome退出登录字体颜色浅灰色 -->
+    <color name="tvcolor">#6F6F6F</color>
+    <!-- myshopinfo赋值字体颜色 浅灰色 -->
+    <color name="ivcolor">#808080</color>
+    <!-- 店员管理的背景颜色 浅白色 -->
+    <color name="bgstaff">#F0EFF5</color>
+    <!-- 蓝紫色 -->
+    <color name="blue_violet">#3333CC</color>
+    <!-- RadioButton -->
+    <color name="radio_font_active">#D6000E</color>
+    <color name="radio_font">#FFFFFF</color>
+    <color name="radiobutton_normal">#FFFFFF</color>
+    <color name="radiobutton_pressed">#FFFFFF</color>
+    <color name="radio_colors">#FFFFFFFF</color>
+
+    <!-- 灰色 -->
+    <color name="just_gray">#BCBCBC</color>
+    <color name="gray">#FF666666</color>
+    <!-- 标准颜色 -->
+    <color name="transparent">#00000000</color>
+    <!-- 浅灰色的分割线 -->
+    <color name="shallow_gray">#E9E9E9</color>
+    <!-- shopdetail -->
+    <color name="shopdetail_title">#1E1E1E</color>
+    <color name="shopdetail_content">#646464</color>
+    <color name="shopdetail_divider">#D7D7D7</color>
+    <!-- 日历 -->
+    <color name="calendar_title">#C5010A</color>
+    <color name="calendar_font">#989898</color>
+    <!-- 优惠券预览的颜色 -->
+    <color name="coupon_preview">#A0A0A0</color>
+    <!-- 活动 -->
+    <color name="actadd_back">#E1E1E1</color>
+    <color name="actadd_read">#C6000C</color>
+    <color name="actadd_gray">#C7C7C7</color>
+    <color name="nodate_bg">#efeff4</color>
+
+    <!-- 修改密码 -->
+    <color name="tv_forget_pwd">#5077DF</color>
+    <!-- 图片浏览 -->
+    <color name="none_color">#00000000</color>
+    <color name="blue">#0000ff</color>
+ 	<!-- 蓝色 -->
+    <color name="plugin_camera_black">#000000</color>
+    <!-- 黄色 -->
+    <color name="after_order_yellow">#FAFEC2</color>
+    <!-- 默认字体颜色 -->
+    <color name="hint_light_gray">#CCCCCC</color>
+    <color name="sold_light_gray">#EBEBEB</color>
+    <color name="deep_red">#C5000B</color>
+    <color name="status_corlor">#4D4D4D</color>
+    <color name="line_corlor">#D0D0D3</color>
+    <!-- 粉色 -->
+    <color name="pink">#FFCCCC</color>
+    <!-- 百度自动升级的颜色 -->
+    <color name="baidu_app_upp">#666666</color>
+    <color name="act_title_bg">#3f000000</color>
+    <color name="input_my_order">#EFEFF4</color>
+    <color name="list_order">#747474</color>
+
+</resources>

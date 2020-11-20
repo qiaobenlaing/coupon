@@ -1,0 +1,106 @@
+<layout name="layout_admin" />
+<div class="container-fluid">
+    <form class="form-inline">
+        <div class="form-group">
+            <label for="slt-province">区域</label>
+            <select class="form-control" name="province" id="slt-province"></select>
+            <select class="form-control" name="city" id="slt-city"></select>
+            <select class="form-control" name="district" id="slt-district"></select>
+        </div>
+        <div class="form-group">
+            <label for="type">行业</label>
+            <select name="type" id="type" class="form-control">
+                <option value="">所有类型</option>
+                <foreach name="shopTypeList" item="item">
+                    <option value="{$item.typeValue}" <php>if($item['typeValue'] === $get['type']) {echo 'selected="selected"';}</php>>{$item.typeZh}</option>
+                </foreach>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="shop-status">入驻</label>
+            <select name="shopStatus" id="shop-status" class="form-control">
+                <option value="">全部</option>
+                <option value="1" <eq name="get.shopStatus" value="1">selected="selected"</eq>>未入驻</option>
+                <option value="2" <eq name="get.shopStatus" value="2">selected="selected"</eq>>已入驻</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="is-accept-bank-card">工行卡支付</label>
+            <select name="isAcceptBankCard" id="is-accept-bank-card" class="form-control">
+                <option value="">全部</option>
+                <option value="1" <eq name="get.isAcceptBankCard" value="1">selected="selected"</eq>>已开通</option>
+                <option value="0" <eq name="get.isAcceptBankCard" value="0">selected="selected"</eq>>未开通</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="start-time">时间</label>
+            <input type="text" class="form_datetime form-control ipt-date-time-picker" id="start-time" name="startTime" value="{$get.startTime}" readonly placeholder="开始时间">
+        </div>
+        <div class="form-group">
+            <label for="end-time">至</label>
+            <input type="text" class="form_datetime form-control ipt-date-time-picker" id="end-time" name="endTime" value="{$get.endTime}" readonly placeholder="结束时间">
+        </div>
+        <button type="submit" class="btn btn-sm btn-primary">查询</button>
+    </form>
+</div>
+<div style="float: right;margin-right: 15px;margin-bottom: 5px;">
+    商家总数： <span class="label label-success" style="background-color: #7CB5EC;">{$sumData.totalAmount}</span>&nbsp;&nbsp;&nbsp;&nbsp;
+    增加数量： <span class="label label-danger" style="background-color: #434348;">{$sumData.incAmount}</span>
+</div>
+<div id="container" style="min-width:700px;height:400px"></div>
+<table id="datatable" style="display: none;">
+    <thead>
+    <tr>
+        <th></th>
+        <th>商家总数</th>
+        <th>增加数量</th>
+    </tr>
+    </thead>
+    <tbody>
+    <foreach name="data" item="vo">
+        <tr>
+            <th>{$vo.name}</th>
+            <td>{$vo.totalAmount}</td>
+            <td>{$vo.incAmount}</td>
+        </tr>
+    </foreach>
+    </tbody>
+</table>
+<script type="text/javascript" src="__PUBLIC__/js/highcharts/highcharts.js"></script>
+<script src="__PUBLIC__/js/highcharts/data.js"></script>
+<script type="text/javascript">
+    $(function () {
+        // 地区初始化
+        sz.initDistrict('{$get.province}', '{$get.city}', '{$get.district}', '#slt-province', '#slt-city', '#slt-district');
+        $(".form_datetime").datetimepicker({
+            format: 'yyyy-mm-dd',
+            autoclose: true,
+            todayBtn: true,
+            minView: "month"
+        });
+
+        $('#container').highcharts({
+            data: {
+                table: 'datatable'
+            },
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: '商家入驻统计'
+            },
+            yAxis: {
+                allowDecimals: false,
+                title: {
+                    text: '入驻数量 ( 家 )'
+                }
+            },
+            tooltip: {
+                formatter: function () {
+                    return '<b>' + this.series.name + '</b><br/>' +
+                            this.point.y + ' ' + this.point.name.toLowerCase();
+                }
+            }
+        });
+    });
+</script>

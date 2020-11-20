@@ -1,0 +1,65 @@
+<layout name="layout_admin" />
+<div class="container-fluid">
+    <form class="form-inline" role="form" id="data_search_form" action="#" method="get">
+        <div class="form-group">
+            <label>时间</label>
+            <select class="form-control input-sm" name="time">
+                <option value="">所有时间</option>
+                <option value="1" <eq name="get.time" value="1">selected="selected"</eq>>最近1天</option>
+                <option value="3" <eq name="get.time" value="3">selected="selected"</eq>>最近3天</option>
+                <option value="7" <eq name="get.time" value="7">selected="selected"</eq>>最近一周</option>
+                <option value="15" <eq name="get.time" value="15">selected="selected"</eq>>最近半个月</option>
+                <option value="30" <eq name="get.time" value="30">selected="selected"</eq>>最近一个月</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>城市</label>
+            <select class="form-control input-sm" name="city">
+                <option value="">所有城市</option>
+                <foreach name="cityList" item="item">
+                    <option value="{$item.name}" <eq name="get.city" value="$item.name">selected="selected"</eq>>{$item.name}</option>
+                </foreach>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>商户类型</label>
+            <select class="form-control input-sm" name="type">
+                <option value="" <eq name="get.type" value="">selected="selected"</eq>>所有商户</option>
+                <option value="0" <eq name="get.type" value="0">selected="selected"</eq>>未知</option>
+                <option value="1" <eq name="get.type" value="1">selected="selected"</eq>>美食</option>
+                <option value="2" <eq name="get.type" value="2">selected="selected"</eq>>咖啡</option>
+                <option value="3" <eq name="get.type" value="3">selected="selected"</eq>>健身</option>
+                <option value="4" <eq name="get.type" value="4">selected="selected"</eq>>娱乐</option>
+                <option value="5" <eq name="get.type" value="5">selected="selected"</eq>>服装</option>
+                <option value="6" <eq name="get.type" value="6">selected="selected"</eq>>其他</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>最小面值</label>
+            <select class="form-control input-sm" name="lowerValue">
+                <option value="" <eq name="get.lowerValue" value="0">selected="selected"</eq>>不限</option>
+                <option value="0" <eq name="get.lowerValue" value="0">selected="selected"</eq>>0元</option>
+                <option value="10" <eq name="get.lowerValue" value="10">selected="selected"</eq>>10元</option>
+                <option value="20" <eq name="get.lowerValue" value="20">selected="selected"</eq>>20元</option>
+                <option value="30" <eq name="get.lowerValue" value="30">selected="selected"</eq>>30元</option>
+                <option value="50" <eq name="get.lowerValue" value="50">selected="selected"</eq>>50元</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>最大面值</label>
+            <select class="form-control input-sm" name="upperValue">
+                <option value="" <eq name="get.lowerValue" value="0">selected="selected"</eq>>不限</option>
+                <option value="10" <eq name="get.upperValue" value="10">selected="selected"</eq>>10元</option>
+                <option value="20" <eq name="get.upperValue" value="20">selected="selected"</eq>>20元</option>
+                <option value="30" <eq name="get.upperValue" value="30">selected="selected"</eq>>30元</option>
+                <option value="50" <eq name="get.upperValue" value="50">selected="selected"</eq>>50元</option>
+                <option value="100" <eq name="get.upperValue" value="100">selected="selected"</eq>>100元</option>
+            </select>
+        </div>
+        <input type="hidden" id="frm_ele_page" name="page" value="1" />
+        <button type="submit" class="btn btn-sm btn-primary">查询</button>
+    </form>
+</div>
+<div id="data_table_wrapper">
+    <include file="./Application/Admin/View/Bonus/analysisBonusWidget.html" />
+</div>

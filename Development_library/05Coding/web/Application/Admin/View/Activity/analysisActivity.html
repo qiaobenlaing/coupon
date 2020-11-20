@@ -1,0 +1,168 @@
+<layout name="layout_admin" />
+<ul class="nav nav-tabs" role="tablist">
+     <li role="presentation" class="active"><a href="#sexAnalysis" role="tab" data-toggle="tab">活动人气统计</a></li>
+     <li role="presentation"><a href="#districtAnalysis" role="tab" data-toggle="tab">活动消费统计</a></li>
+     <li role="presentation"><a href="#consumptionAnalysis" role="tab" data-toggle="tab">活动效果统计</a></li>
+</ul>
+
+<div class="tab-content">
+  <div class="tab-pane active" id='sexAnalysis'>
+  <div id="container" style="min-width:700px;height:400px"></div>
+  </div>
+<div id='districtAnalysis' class="tab-pane" >
+<div id="district" style="min-width:700px;height:400px"></div>
+</div>
+<div id='consumptionAnalysis' class="tab-pane" >
+<div id="consumption" style="min-width:700px;height:400px"></div>
+</div>
+</div>
+
+ <script type="text/javascript" src="__PUBLIC__/js/highcharts/highcharts.js"></script>
+<script type="text/javascript">
+  $(function(){
+    $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {     
+    });
+  });
+  $(function () {
+	    $('#container').highcharts({
+	        chart: {
+	            type: 'column',
+	            margin: [ 50, 50, 100, 80]
+	        },
+	        title: {
+	            text: '活动人气统计'
+	        },
+	        xAxis: {
+	            categories: [
+	                '男',
+	                '女',
+	                '未知'
+	            ],
+	            labels: {
+	                rotation: -45,
+	                align: 'right',
+	                style: {
+	                    fontSize: '13px',
+	                    fontFamily: 'Verdana, sans-serif'
+	                }
+	            }
+	        },
+	        yAxis: {
+	            min: 0,
+	            title: {
+	                text: '百分比'
+	            }
+	        },
+	        legend: {
+	            enabled: false
+	        },
+	        tooltip: {
+	            pointFormat: '商户百分比: <b>{point.y:.1f}</b>',
+	        },
+	        series: [{
+	            name: 'Population',
+	            data: [0.5, 0.3, 0.2],
+	            dataLabels: {
+	                enabled: true,
+	                rotation: -90,
+	                color: '#FFFFFF',
+	                align: 'right',
+	                x: 4,
+	                y: 10,
+	                style: {
+	                    fontSize: '13px',
+	                    fontFamily: 'Verdana, sans-serif',
+	                    textShadow: '0 0 3px black'
+	                }
+	            }
+	        }]
+	    });
+	    $('#districtAnalysis').highcharts({
+	        chart: {
+	            plotBackgroundColor: null,
+	            plotBorderWidth: null,
+	            plotShadow: false
+	        },
+	        title: {
+	            text: '活动消费统计'
+	        },
+	        tooltip: {
+	    	    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+	        },
+	        plotOptions: {
+	            pie: {
+	                allowPointSelect: true,
+	                cursor: 'pointer',
+	                dataLabels: {
+	                    enabled: true,
+	                    color: '#000000',
+	                    connectorColor: '#000000',
+	                    format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+	                }
+	            }
+	        },
+	        series: [{
+	            type: 'pie',
+	            name: '区域比例',
+	            data: [
+	                ['中南',   22.5],
+	                ['西南',   10.0],
+	                {
+	                    name: '西北',
+	                    y: 9.0,
+	                    sliced: true,
+	                    selected: true
+	                },
+	                ['东北',    13.0],
+	                ['华东',    22.0],
+	                ['华北',    23.5]
+	            ]
+	        }]
+	    });
+	    
+		var chart;
+	    
+	    $(document).ready(function () {
+	    	
+	    	// Build the chart
+	        $('#consumptionAnalysis').highcharts({
+	            chart: {
+	                plotBackgroundColor: null,
+	                plotBorderWidth: null,
+	                plotShadow: false
+	            },
+	            title: {
+	                text: '活动效果统计'
+	            },
+	            tooltip: {
+	        	    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+	            },
+	            plotOptions: {
+	                pie: {
+	                    allowPointSelect: true,
+	                    cursor: 'pointer',
+	                    dataLabels: {
+	                        enabled: false
+	                    },
+	                    showInLegend: true
+	                }
+	            },
+	            series: [{
+	                type: 'pie',
+	                name: '所属比例',
+	                data: [
+	                    ['A',   2.0],
+	                    ['B',       39],
+	                    {
+	                        name: 'C',
+	                        y: 52,
+	                        sliced: true,
+	                        selected: true
+	                    },
+	                    ['D',    7.0]
+	                ]
+	            }]
+	        });
+	    });
+	});
+</script>

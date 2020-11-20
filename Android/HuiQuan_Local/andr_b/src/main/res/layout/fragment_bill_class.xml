@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/LyCommSet" >
+
+    <include layout="@layout/common_title_order_scan" />
+    
+    <RelativeLayout 
+        android:id="@+id/rl_bill_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:background="@color/white">
+        
+        <EditText 
+            android:id="@+id/et_bill_input"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/layout_height"
+            android:layout_centerVertical="true"
+            android:textSize="14sp"
+            android:background="@null"
+            android:layout_marginLeft="10dp"
+            android:hint="@string/tv_bill_input"/>
+        
+        
+        <TextView 
+            android:id="@+id/tv_bill_select"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:gravity="center"
+            android:layout_marginLeft="10dp"
+            android:textSize="16sp"
+            android:text="@string/tv_bill_select"/>
+        
+    </RelativeLayout>
+    
+    <TextView style="@style/VLine"/>
+
+    <LinearLayout
+        android:id="@+id/ly_bill_date"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/layout_height"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:visibility="visible"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/tv_today"
+            style="@style/tvCircleTitle"
+            android:background="@drawable/bottom_red_border"
+            android:enabled="true"
+            android:text="@string/tv_billclass_today"
+            android:textColor="@color/red" />
+
+        <View style="@style/VLineVCircle" />
+
+        <TextView
+            android:id="@+id/tv_weekday"
+            style="@style/tvCircleTitle"
+            android:text="@string/tv_billclass_weekday"
+            android:textColor="@color/gray" />
+
+        <View style="@style/VLineVCircle" />
+
+        <TextView
+            android:id="@+id/tv_month"
+            style="@style/tvCircleTitle"
+            android:text="@string/tv_billclass_month"
+            android:textColor="@color/gray" />
+
+        <View
+            style="@style/VLineVCircle"
+            android:visibility="visible" />
+
+        <TextView
+            android:id="@+id/tv_all"
+            style="@style/tvCircleTitle"
+            android:text="@string/tv_billclass_all"
+            android:textColor="@color/gray"
+            android:visibility="visible" />
+    </LinearLayout>
+    
+    <TextView style="@style/VLine"/>
+    
+    <LinearLayout
+        android:id="@+id/ly_bill_billpay" 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:visibility="gone"
+        android:orientation="vertical">
+        <RelativeLayout 
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp">
+            <TextView 
+                android:id="@+id/tv_billclass_liquidationdate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:textColor="@color/gray"
+                android:text="@string/tv_billclass_liquidationdate"/>
+            
+            <TextView 
+                android:id="@+id/tv_bill_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/gray"
+                android:layout_toRightOf="@+id/tv_billclass_liquidationdate"
+                android:layout_centerVertical="true"
+                android:text=""/>
+            
+        </RelativeLayout>
+        
+        <RelativeLayout 
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp">
+            <TextView 
+                android:id="@+id/tv_billclass_platform"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:textColor="@color/gray"
+                android:text="@string/tv_billclass_platform"/>
+            
+            <TextView 
+                android:id="@+id/tv_bill_platform"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/gray"
+                android:layout_toRightOf="@+id/tv_billclass_platform"
+                android:layout_centerVertical="true"
+                android:text=""/>
+            
+        </RelativeLayout>
+        
+    </LinearLayout>
+    
+    <LinearLayout
+        android:id="@+id/ly_bill_subsidy" 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:visibility="gone"
+        android:orientation="vertical">
+        <RelativeLayout 
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp">
+            <TextView 
+                android:id="@+id/tv_billclass_subsidydata"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:textColor="@color/gray"
+                android:text="@string/tv_billtoday_subsidydata"/>
+            
+            <TextView 
+                android:id="@+id/tv_bill_subsidydata"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/gray"
+                android:layout_toRightOf="@+id/tv_billclass_subsidydata"
+                android:layout_centerVertical="true"
+                android:text=""/>
+            
+        </RelativeLayout>
+        
+        <RelativeLayout 
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp">
+            <TextView 
+                android:id="@+id/tv_billclass_subsidymoney"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:textColor="@color/gray"
+                android:text="@string/tv_billtoday_subsidymoney"/>
+            
+            <TextView 
+                android:id="@+id/tv_bill_subsidymoney"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/gray"
+                android:layout_toRightOf="@+id/tv_billclass_subsidymoney"
+                android:layout_centerVertical="true"
+                android:text=""/>
+            
+        </RelativeLayout>
+        
+    </LinearLayout>
+    
+    <LinearLayout
+        android:id="@+id/linear_bill_content"
+        style="@style/LyWHFirst"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal" >
+    </LinearLayout>
+
+</LinearLayout>

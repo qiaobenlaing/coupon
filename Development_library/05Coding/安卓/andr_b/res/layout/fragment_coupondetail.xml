@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bgall"
+    android:orientation="vertical" >
+
+    <include layout="@layout/common_title_commit" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/tv_couponbatch"
+                style="@style/tvCouponDetail"
+                android:text="优惠券批次:0" />
+
+            <TextView
+                android:id="@+id/tv_totalvolume"
+                style="@style/tvCouponDetail"
+                android:text="优惠券数量:0" />
+
+            <TextView
+                android:id="@+id/tv_startUseDate"
+                style="@style/tvCouponDetail"
+                android:text="领取截止日期:0"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/tv_endUseDate"
+                style="@style/tvCouponDetail"
+                android:text="每天使用时间:0"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/tv_endDrawDate"
+                style="@style/tvCouponDetail"
+                android:text="结束使用日期:0"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/tv_availablePrice"
+                style="@style/tvCouponDetail"
+                android:text="满0抵扣0" />
+
+            <TextView
+                android:id="@+id/tv_couponType"
+                style="@style/tvCouponDetail"
+                android:text="满就送:0"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/tv_couponremark"
+                style="@style/tvCouponDetail"
+                android:text="优惠券说明:0"
+                android:visibility="gone" />
+
+            <TextView
+                style="@style/VLine"
+                android:layout_height="1px"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/black" />
+
+            <TextView
+                android:id="@+id/tv_draw_person"
+                style="@style/tvCouponDetail"
+                android:text="@string/draw_person"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:id="@+id/ly_progess"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/layout_height"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:visibility="gone" >
+
+                <com.huift.hfq.base.utils.MyProgress
+                    android:id="@+id/progress_drawP"
+                    style="@style/StyleProgressBarMini"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_progressbar_bg" />
+
+                <TextView
+                    android:id="@+id/coupon_drawpercentage"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_weight="1"
+                    android:text="未领取 (0/0)"
+                    android:textColor="@color/coupon_hometopfont"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <TextView
+                style="@style/tvCouponDetail"
+                android:text="@string/use_person" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/layout_height"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <com.huift.hfq.base.utils.MyProgress
+                    android:id="@+id/progress_use"
+                    style="@style/StyleProgressBarMini"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_progressbar_bg" />
+
+                <TextView
+                    android:id="@+id/coupon_usepercentage"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_weight="1"
+                    android:text="未使用(0/0)"
+                    android:textColor="@color/coupon_hometopfont"
+                    android:textSize="12sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

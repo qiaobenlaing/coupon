@@ -1,0 +1,189 @@
+<layout name="layout_api" />
+<style>
+    .invite-code-wrap{
+        background-image: url('/Public/img/regAct/share_bg.png');
+    	background-size: 100% 100%;
+  		background-repeat: no-repeat;
+        background-repeat: no-repeat;
+        padding-bottom: 38px;
+        background-color: #FCEAD2;
+    }
+    .invite-code-wrap .huiquan-title img{
+    	width:100%;
+    	height:auto;
+    }
+    .invite-code-wrap .text{
+        text-align: center;
+    }
+    .invite-code-wrap .text .text-img{
+        width: 100%;
+    }
+    .invite-code-wrap .invite-code-text{
+        text-align: center;
+        margin-top: 30px;
+        color: #E22138;
+        font-weight: 600;
+    }
+    .invite-code-wrap .coupon-wrap{
+        padding: 0 55px;
+    }
+    .invite-code-wrap .coupon-wrap .coupon-bg{
+        background-image: url('/Public/img/regAct/rice_top.png');
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        height: 75px;
+        padding-left: 50px;
+    }
+    .invite-code-wrap .coupon-wrap .coupon-bg .coupon-value{
+        padding-top: 12px;
+        font-size: 27px;
+        color: #FF562D;
+    }
+    .invite-code-wrap .coupon-wrap .coupon-bg .coupon-title{
+        font-size: 13px;
+        color: #303030;
+    }
+    .invite-code-wrap .huiquan-download-wrap{
+        padding: 0 59px;
+        /*margin-top: 26px;*/
+    }
+    .invite-code-wrap .huiquan-download-wrap a{
+        display: block;
+    }
+    .invite-code-wrap .huiquan-download-wrap .huiquan-download-bg-ios{
+        background-image: url('/Public/img/regAct/ios.png');
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        height: 44px;
+        line-height: 40px;
+        color: #F1CC13;
+        font-size: 15px;
+        font-weight: 600;
+    }
+	.invite-code-wrap .huiquan-download-wrap .huiquan-download-bg-android{
+        background-image: url('/Public/img/regAct/android.png');
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        height: 44px;
+        line-height: 40px;
+        color: #F1CC13;
+        font-size: 15px;
+        font-weight: 600;
+    }
+    .invite-code-wrap .huiquan-divide-line-wrap{
+        background-image: url('/Public/img/regAct/rice_intro.png');background-size: 90% 100%;background-repeat: no-repeat;text-align: center;color: #fff;font-size: 16px;line-height: 2;margin-top: 10px;background-position: center;
+    }
+    .invite-code-wrap .huiquan-divide-line-wrap .huiquan-divide-line-bg{
+        background-image: url('/Public/img/regAct/rice_intro.png');
+        background-size: 100%;
+        background-position: 1px;
+        background-repeat: no-repeat;
+        padding: 0 111px;
+    }
+    .invite-code-wrap .huiquan-divide-line-wrap .huiquan-divide-line-bg .huiquan-divide-line-text{
+        font-size: 15px;
+        color: #fff;
+    }
+    .invite-code-wrap .huiquan-intro-wrap{
+        margin: 13px 10px 0 10px;
+        color: #767400;
+        padding: 15px 10px 50px 10px;
+        text-align: start;
+    	font-weight: bold;
+    }
+    .shadow{
+        display: none;
+        position: absolute;
+        width: 100%;
+        right: 2px;
+        top: 5px;
+        text-align: center;
+    }
+    .shadow img{
+        height: 88px;
+    }
+    .ten_img{margin-top: 15px;}
+    .abstract{color: rgb(122,116,2);font-weight: bold;font-size: 16px;}
+    .abstract span{font-weight: bold;font-size: 18px;color: rgb(197,1,23);}
+	.time, .receiving{font-size: 14px;margin: 15px 0;font-weight: bold;}
+    .time span, .receiving span{background-image: url('/Public/img/regAct/rice.png');background-size: 100% 100%;background-repeat: no-repeat;font-size: 14px;color: #fff;padding: 5px 15px;}
+    .description{padding: 5px 3%;}
+</style>
+<!-- Views -->
+<div class="views">
+    <!-- Your main view, should have "view-main" class -->
+    <div class="view view-main">
+        <!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
+        <div class="pages">
+            <!-- Page, "data-page" contains page name -->
+            <div data-page="index" class="page">
+                <!-- Scrollable page content -->
+                <div class="page-content">
+                    <div class="invite-code-wrap">
+                    	<div class="huiquan-title"><img src="/Public/img/regAct/rice_banner.png"/></div>
+                        <div class="huiquan-divide-line-wrap">
+                            活动详情
+                        </div>
+                        <div class="description">
+                            <div class="abstract">
+                                活动期间成功邀请<span>5</span>位好友进入惠圈并签约惠支付就能兑换价值<span>120</span>元的恒大兴安绿色大米一袋
+                            </div>
+                            <div class="time">
+                                <span>活动时间</span> {$activityInfo.startTime|substr=5,5} - {$activityInfo.endTime|substr=5,5}(送完为止)
+                            </div>
+                            <div class="receiving">
+                                <span>领取方式</span><p style="display: inline;"> 每集齐5名好友便可获得价值120元的恒大兴安绿色大米一袋(1月25日之前成功推荐的好友数量不计算在内，所获红包不参与此次兑换活动)。点击下方的按钮领取兑换券，当场点击使用（数量有限，先到先得，本活动仅限湖州地区用户参与）</p>
+                            </div>
+                        </div>
+                        <div class="invite-code-text">
+                        <notempty name="userInfo">
+                            <p style="margin-bottom: 2px;color:#7f3E13;font-size: 17px;">使用我的邀请码<span style="font-size: 19px;color:#C50118;">{$userInfo.inviteCode}</span>注册惠圈</p>
+                        </notempty>
+                            <!--<p style="margin-bottom: 2px;color:#7f3E13;font-size: 17px;">首单立减<span style="font-size: 19px;color:#C50118;">10元</span></p>-->
+                        </div>
+                        <div class="huiquan-download-wrap">
+                            <a href="https://itunes.apple.com/cn/app/id1027791544?l=cn&mt=8" onclick="_hmt.push(['_trackEvent', 'software', 'download', 'IOS_huiquan', '{$activityInfo.activityCode}']);"  class="external download"><div class="huiquan-download-bg-ios"></div></a>
+                        </div>
+                        <div class="huiquan-download-wrap">
+                            <a onclick="_hmt.push(['_trackEvent', 'software', 'download', 'huiquan', '{$activityInfo.activityCode}']);" class="external download android"><div class="huiquan-download-bg-android"></div></a>
+                        </div>
+                        <div class="huiquan-divide-line-wrap">
+                            <div class="huiquan-divide-line-bg">
+                                <div class="huiquan-divide-line-text">惠圈简介</div>
+                            </div>
+                        </div>
+                        <div class="huiquan-intro-wrap">
+                            	惠圈，给老百姓提供一个便捷的本地化生活服务的商圈！随时，随地，简单，便捷地获取真实，可靠的本地化优惠活动信息与服务！
+                        </div>
+                    </div>
+                    <div class="shadow">
+                        <img src="/Public/img/webchat/jiantou.png" alt=""/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    ;(function(){
+        function isWeiXin(){
+            var navgator = window.navigator.userAgent.toLowerCase();
+            if(navgator.match(/MicroMessenger/i) == 'micromessenger'){
+                $('.shadow').show();
+                return false;
+            }else{
+                return true;
+            }
+        }
+        $('.android').on('click', function(){
+        	var href = '{$cDownloadUrl}';
+        	$(this).attr('href', href);
+        });
+        // 检测浏览器是否为微信浏览器
+        $('.download').on('click', isWeiXin);
+        // 隐藏提示
+        $('.shadow').on('click', function(){
+            $(this).hide();
+        })
+    })();
+</script>

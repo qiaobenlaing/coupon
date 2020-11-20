@@ -1,0 +1,340 @@
+<layout name="layout_admin" />
+<div id="myTabContent" class="tab-content">
+<div role="tabpanel" class="tab-pane active">
+<form class="" role="form" id="bonus_add_form" action="/Admin/Bonus/editBonus" method="post">
+<input type="hidden" name="bonusCode" value="{$bonusInfo.bonusCode}" />
+<input type="hidden" name="bonusBelonging" value="{$bonusInfo.bonusBelonging}" />
+<div class="row row-top">
+    <div class="col-xs-12 col-sm-3">
+        <div class="input-group">
+            <span class="input-group-addon frm-span"><span class='required-ele'>*</span>红包名</span>
+            <input type="text" class="form-control" name="bonusName" value="{$bonusInfo.bonusName}">
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-3">
+        <div class="input-group" >
+            <span class="input-group-addon frm-span"><span class='required-ele'>*</span>红包类型</span>
+            <select class="form-control frm-select" name="bonusType">
+                <option value="1" <eq name="bonusInfo.bonusType" value="1">selected="selected"</eq>>供用户抢的红包</option>
+                <option value="2" <eq name="bonusInfo.bonusType" value="2">selected="selected"</eq>>奖励邀请人的红包</option>
+            </select>
+        </div>
+    </div>
+    <empty name="bonusInfo.shopCode">
+        <div class="col-xs-12 col-sm-6">
+            <div class="input-group" >
+                <span class="input-group-addon frm-span"><span class='required-ele'>*</span>商店名</span>
+                <select class="form-control frm-select" name="shopCode">
+                    <option value="{$bonusInfo.shopCode}">苞米平台</option>
+                </select>
+            </div>
+        </div>
+        <else />
+        <neq name="bonusInfo.shopCode" value="$bmCode">
+            <div class="col-xs-12 col-sm-6">
+                <div class="input-group">
+                    <span class="input-group-addon frm-span"><span class='required-ele'>*</span>商店名</span>
+                    <select class="form-control frm-select" name="shopCode">
+                        <foreach name="getShopName" item="item">
+                            <option value="{$item.shopCode}" <eq name="bonusInfo.shopCode" value="$item.shopCode">selected="selected"</eq>>{$item.shopName}</option>
+                        </foreach>
+                    </select>
+                </div>
+            </div>
+            <else />
+            <div class="col-xs-12 col-sm-6">
+                <div class="input-group" >
+                    <span class="input-group-addon frm-span"><span class='required-ele'>*</span>商店名</span>
+                    <select class="form-control frm-select" name="shopCode">
+                        <option value="{$bonusInfo.shopCode}">苞米平台</option>
+                    </select>
+                </div>
+            </div>
+        </neq>
+    </empty>
+</div>
+<div class="row row-top">
+    <div class="col-xs-12 col-sm-6">
+        <div class="input-group">
+            <span class="input-group-addon frm-span"><span class='required-ele'>*</span>红包最低金额</span>
+            <input type="text" class="form-control checkNum" name="lowerPrice" value="{$bonusInfo.lowerPrice}"/>
+            <span class="input-group-addon">元</span>
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-6">
+        <div class="input-group">
+            <span class="input-group-addon frm-span"><span class='required-ele'>*</span>红包最高金额</span>
+            <input type="text" class="form-control checkNum" name="upperPrice" value="{$bonusInfo.upperPrice}">
+            <span class="input-group-addon">元</span>
+
+        </div>
+    </div>
+</div>
+<div class="row row-top">
+    <div class="col-xs-12 col-sm-6">
+        <div class="input-group">
+            <span class="input-group-addon frm-span"><span class='required-ele'>*</span>红包发行总额（-1：无限）</span>
+            <input type="text" class="form-control" name="totalValue" value="{$bonusInfo.totalValue}">
+            <span class="input-group-addon frm-span">元</span>
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-6">
+        <div class="input-group">
+            <span class="input-group-addon frm-span"><span class='required-ele'>*</span>发行总量（-1：无限）</span>
+            <input type="text" class="form-control" name="totalVolume" value="{$bonusInfo.totalVolume}" id="total-volume">
+        </div>
+    </div>
+
+</div>
+<div class="row row-top">
+    <div class="col-xs-12 col-sm-6">
+        <div class="input-group">
+            <span class="input-group-addon frm-span">剩余数量</span>
+            <input type="text" class="form-control checkNum" name="remaining" value="{$bonusInfo.remaining}" id="remaining">
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-6">
+        <div class="input-group">
+            <span class="input-group-addon frm-span">每天发放数(0表示无限制)</span>
+            <input type="text" class="form-control checkNum" name="nbrPerDay" value="{$bonusInfo.nbrPerDay|default='0'}">
+        </div>
+    </div>
+</div>
+<div class="row row-top">
+    <div class="col-xs-12 col-sm-6">
+        <div class="input-group">
+            <span class="input-group-addon frm-span"><span class='required-ele'>*</span>每个ID可领数量</span>
+            <input type="text" class="form-control checkNum" name="nbrPerPerson" value="{$bonusInfo.nbrPerPerson|default='1'}">
+        </div>
+    </div>
+</div>
+<div class="row row-top">
+    <div class="col-xs-12 col-sm-6">
+        <div class="input-group">
+            <span class="input-group-addon frm-span"><span class='required-ele'>*</span>抢红包开始时间</span>
+            <input type="text" class="form-control form_datetime" name="startTime" value="{$bonusInfo.startTime}" readonly>
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-6">
+        <div class="input-group">
+            <span class="input-group-addon frm-span"><span class='required-ele'>*</span>抢红包结束时间</span>
+            <input type="text" class="form-control form_datetime" name="endTime" value="{$bonusInfo.endTime}" readonly>
+        </div>
+    </div>
+</div>
+<!--<div class="row row-top">-->
+<!--<div class="col-xs-12">-->
+<!--<div class="input-group">-->
+<!--<span class="input-group-addon frm-span"><span-->
+<!--class='required-ele'>*</span>使用红包时间</span> <input type="date"-->
+<!--class="form-control" name="startUseTime"-->
+<!--value="{$bonusInfo.startUseTime|substr=0,10}"> <span-->
+<!--class="input-group-addon ">至</span> <input type="date"-->
+<!--class="form-control" name="endUseTime"-->
+<!--value="{$bonusInfo.endUseTime|substr=0,10}">-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<div class="row row-top">
+    <div class="col-xs-12">
+        <div class="input-group">
+            <span class="input-group-addon frm-span">红包规则说明</span>
+            <textarea class="form-control" name="rule" rows="10" id="rule_textarea" onfocus="document.onkeydown = keyDown_rule;">{$bonusInfo.rule}</textarea>
+        </div>
+    </div>
+</div>
+<div class="row row-top">
+    <div class="col-xs-12">
+        <div class="input-group">
+            <span class="input-group-addon frm-span">红包分享说明</span>
+            <textarea class="form-control" name="shareRule" rows="10" id="shareRule_textarea" onfocus="document.onkeydown = keyDown_shareRule;">{$bonusInfo.rule}</textarea>
+        </div>
+    </div>
+</div>
+<div class="row row-top">
+    <div class="col-xs-12 col-sm-6">
+        <div class="input-group">
+            <span class="input-group-addon frm-span radio-title">红包背景图片</span>
+            <input type="hidden" name="url" value="" />
+            <div class="fileinput fileinput-new  col-xs-12 col-sm-6" data-provides="fileinput">
+                <div class="fileinput-new thumbnail"><img src="{$bonusInfo.url}"/></div>
+                <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 400px; max-height: 150px;"></div>
+                <div>
+                    <span class="btn btn-default btn-file">
+                        <span class="fileinput-new">选择图片</span>
+                        <span class="fileinput-exists">换一张</span>
+                        <input type="file" name="upfile" class="ajax-file-upload" data-imgname="url" data-url="/Admin/Util/imageUp" multiple>
+                    </span>
+                    <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">移除</a>
+                    <span id="state_url" class="ajax-file-state"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-6">
+        <div class="input-group">
+            <span class="input-group-addon frm-span radio-title">抢红包之前图片</span>
+            <input type="hidden" name="preUrl" value="{$bonusInfo.preUrl}" />
+            <div class="fileinput fileinput-new  col-xs-12 col-sm-6" data-provides="fileinput">
+                <div class="fileinput-new thumbnail"><img src="{$bonusInfo.preUrl}"/></div>
+                <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 400px; max-height: 150px;"></div>
+                <div>
+                    <span class="btn btn-default btn-file">
+                        <span class="fileinput-new">选择图片</span>
+                        <span class="fileinput-exists">换一张</span>
+                        <input type="file" name="upfile" class="ajax-file-upload" data-imgname="preUrl" data-url="/Admin/Util/imageUp" multiple>
+                    </span>
+                    <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">移除</a>
+                    <span id="state_preUrl" class="ajax-file-state"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row row-top">
+    <div class="col-xs-12 col-sm-6">
+        <div class="input-group">
+            <span class="input-group-addon frm-span radio-title">抢红包中图片</span>
+            <input type="hidden" name="ingUrl" value="{$bonusInfo.ingUrl}" />
+            <div class="fileinput fileinput-new  col-xs-12 col-sm-6" data-provides="fileinput">
+                <div class="fileinput-new thumbnail"><img src="{$bonusInfo.ingUrl}"/></div>
+                <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 400px; max-height: 150px;"></div>
+                <div>
+                    <span class="btn btn-default btn-file">
+                        <span class="fileinput-new">选择图片</span>
+                        <span class="fileinput-exists">换一张</span>
+                        <input type="file" name="upfile" class="ajax-file-upload" data-imgname="ingUrl" data-url="/Admin/Util/imageUp" multiple>
+                    </span>
+                    <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">移除</a>
+                    <span id="state_ingUrl" class="ajax-file-state"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-6">
+        <div class="input-group">
+            <span class="input-group-addon frm-span radio-title">抢红包之后图片</span>
+            <input type="hidden" name="afterUrl" value="{$bonusInfo.afterUrl}" />
+            <div class="fileinput fileinput-new  col-xs-12 col-sm-6" data-provides="fileinput">
+                <div class="fileinput-new thumbnail"><img src="{$bonusInfo.afterUrl}"/></div>
+                <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 400px; max-height: 150px;"></div>
+                <div>
+                    <span class="btn btn-default btn-file">
+                        <span class="fileinput-new">选择图片</span>
+                        <span class="fileinput-exists">换一张</span>
+                        <input type="file" name="upfile" class="ajax-file-upload" data-imgname="afterUrl" data-url="/Admin/Util/imageUp" multiple>
+                    </span>
+                    <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">移除</a>
+                    <span id="state_afterUrl" class="ajax-file-state"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row row-top row-btn">
+    <div class="btn-group ">
+        <input type="submit" class="btn btn-primary" id="submit" value="保存" />
+    </div>
+</div>
+</form>
+</div>
+</div>
+<script src="__PUBLIC__/js/vendor/jquery.ui.widget.js"></script>
+<script src="__PUBLIC__/js/jquery.iframe-transport.js"></script>
+<script src="__PUBLIC__/js/jquery.fileupload.js"></script>
+<script>
+    function keyDown_rule(e) {
+        var keycode = e.which;
+        var realkey = String.fromCharCode(e.which);
+        if(keycode == 13){
+            insertAtCursor(document.getElementById('rule_textarea'),'<br />');
+        }
+    }
+    function keyDown_shareRule(e) {
+        var keycode = e.which;
+        var realkey = String.fromCharCode(e.which);
+        if(keycode == 13){
+            insertAtCursor(document.getElementById('shareRule_textarea'),'<br />');
+        }
+    }
+
+    function insertAtCursor(myField, myValue) {
+//IE support
+        if (document.selection) {
+            myField.focus();
+            sel = document.selection.createRange();
+            sel.text = myValue;
+            sel.select();
+        }
+//MOZILLA/NETSCAPE support
+        else if (myField.selectionStart || myField.selectionStart == '0') {
+            var startPos = myField.selectionStart;
+            var endPos = myField.selectionEnd;
+// save scrollTop before insert www.keleyi.com
+            var restoreTop = myField.scrollTop;
+            myField.value = myField.value.substring(0, startPos) + myValue + myField.value.substring(endPos, myField.value.length);
+            if (restoreTop > 0) {
+                myField.scrollTop = restoreTop;
+            }
+            myField.focus();
+            myField.selectionStart = startPos + myValue.length;
+            myField.selectionEnd = startPos + myValue.length;
+        } else {
+            myField.value += myValue;
+            myField.focus();
+        }
+    }
+</script>
+<script type="text/javascript">
+    ;(function(){
+        $('.form_datetime').datetimepicker({
+            format: 'yyyy-mm-dd hh:ii',
+            autoclose: true,
+            todayBtn: true
+        });
+
+        $('#bonus_add_form').on('submit', function() {
+            var frm = $(this);
+            $.post(frm.attr('action'), frm.serialize(), function(resp) {
+                if (resp.status == sz.STATUS_SUCC) {
+                    location.href = '/Admin/Bonus/{$back}?page={$page}';
+                } else {
+                    sz.showErrMsg(resp.msg.code, 3);
+                }
+            });
+            return false;
+        });
+
+        $('#total-volume').keyup(function(){
+            var totalVolume = $(this).val();
+            $('#remaining').val(totalVolume);
+        });
+        sz.checkNum();
+
+        $('.ajax-file-upload').fileupload({
+            dataType: 'json',
+            add: function (e, data) {
+                var imgname = $(this).data('imgname'); // imgname为 activityImg或者activityLogo
+                data.context = $('#state_' + imgname).text('正在上传...');
+                data.submit();
+            },
+            /* progressall: function (e, data) {
+             var progress = parseInt(data.loaded / data.total * 100, 10);
+             $('#progress_img_quare .bar').css('width', progress + '%');
+             }, */
+            done: function (e, data) {
+                var resp = data.result;
+                if (resp.state == 'SUCCESS') {
+                    data.context.text('上传完成');
+                    var imgname = data.context.attr('id').substr('state_'.length);
+                    var imgUrl = resp.url.substr(0, 1) == '.' ? resp.url.substr(1) : resp.url; // 去掉"./"中的"."
+                    $('#bonus_add_form input[name=' + imgname + ']').val('/'+ imgUrl);
+                } else {
+                    data.context.text('上传失败');
+                    $('#bonus_add_form input[name=' + imgname + ']').val('');
+                }
+            }
+        });
+    })();
+
+</script>

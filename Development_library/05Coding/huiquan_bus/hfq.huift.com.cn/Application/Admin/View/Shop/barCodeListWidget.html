@@ -1,0 +1,84 @@
+<table class="fp-table table table-striped table-bordered table-condensed" id="data_table"
+       xmlns="http://www.w3.org/1999/html">
+    <thead>
+    <tr>
+        <th>商户编号</th>
+        <th>商户名称</th>
+        <th>商户付款码</th>
+        <th>付款码说明</th>
+        <th>商户状态</th>
+        <th>商户入驻情况</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    <foreach name="dataList" item="item">
+        <tr>
+            <td>{$item.shopCode}</td>
+            <td>{$item.shopName}</td>
+            <if condition = "$item.barCodeUrl neq ''" >
+                <td><img src="{$item.barCodeUrl}"  width="100"/></a></td>
+            <else />
+                <td>暂无可用付款码</td>
+            </if>
+
+            <td width="12%">{$item.explain}</td>
+            <td class="status">
+                <!--<div class="dropdown">-->
+                    <switch name="item.status">
+                        <case value="1">
+                            <button type="button" class="btn btn-xs btn-success" >
+                                <span>启用</span>
+                            </button>
+                        </case>
+                        <case value="0">
+                            <button type="button" class="btn btn-xs btn-default">
+                                <span>禁用</span>
+                            </button>
+                        </case>
+                    </switch>
+            </td>
+            <td>
+                <switch name="item.shopStatus">
+                    <case value="2">
+                        <button type="button" class="btn btn-xs btn-success" >
+                            <span>已入驻</span>
+                        </button>
+                    </case>
+                    <case value="1">
+                        <button type="button" class="btn btn-xs btn-default">
+                            <span>未入驻</span>
+                        </button>
+                    </case>
+                </switch>
+                </td>
+            <td>
+                <if condition="($item.status eq 1) and ($item.shopStatus eq 2)">
+                    <a href="/Admin/Shop/addShopBarCode?id={$item.shopCode}" class="btn btn-xs btn-primary">生成</a>
+                </if>
+                <if condition="($item.barCodeUrl)">
+                    <a href="/Admin/Util/downLoadCodeImage?url={$item.barCodeUrl}&name={$item.shopName}" class="btn btn-xs btn-primary" >下载</a></br>
+                    <a url = "{$item.barCodeUrl}" class="btn btn-xs btn-danger delBarCode" style="margin-top: 8px;">删除付款码</a>
+                </if>
+            </td>
+        </tr>
+    </foreach>
+    </tbody>
+</table>
+<include file="Application/Admin/View/Widget/pager.html" />
+<script>
+    $(function () {
+        $('.delBarCode').click(function () {
+            var url = $(this).attr('url');
+            $.post('/Admin/Shop/delCodeImage?url='+url,function (res) {
+                var res = JSON.parse(res);
+                if(res.status == 'success'){
+                    window.location.reload();
+                }else{
+                    sz.showErrMsg(res.msg, 3);
+                }
+            })
+        })
+    })
+</script>
+

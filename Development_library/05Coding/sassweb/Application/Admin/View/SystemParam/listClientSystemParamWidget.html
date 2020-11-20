@@ -1,0 +1,49 @@
+<table class="fp-table table table-striped table-bordered table-condensed" id="data_table">
+    <thead>
+    <tr>
+        <th>参数</th>
+        <th>参数中文描述</th>
+        <th>参数值</th>
+        <th>创建时间</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    <foreach name="dataList" item="item">
+        <tr>
+            <td>{$item.param}</td>
+            <td>{$item.zhParam}</td>
+            <td><eq name="item.paramType" value="2"><img src="{$item.value}" style="width: 40px;height: auto;" /><else />{$item.value}</eq></td>
+            <td>{$item.createTime}</td>
+            <td>
+                <a href="#" class="btn btn-danger btn-xs del-system-param" data-id="{$item.id}" data-page="{$pager:page}" data-url="/Admin/SystemParam/delSystemParam">删除</a>
+                <a href="/Admin/SystemParam/editSystemParam?id={$item.id}" class="btn btn-primary btn-xs">编辑</a>
+            </td>
+        </tr>
+    </foreach>
+    </tbody>
+</table>
+<script>
+    // 删除系统参数
+    ;(function(){
+        $('.del-system-param').on('click', function(){
+            var url = $(this).data('url');
+            var id = $(this).data('id');
+            var page = $(this).data('page');
+            $.post(
+                    url,
+                    {'id' : id},
+                    function(resp){
+                        if(resp.status == sz.STATUS_SUCC) {
+                            location.href = '/Admin/SystemParam/listClientSystemParam?page=' + page;
+                        } else {
+                            sz.showErrMsg(resp.msg)
+                        }
+                    }
+            );
+            return false;
+        });
+    })();
+</script>
+<include file="Application/Admin/View/Widget/pager.html" />
+    

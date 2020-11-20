@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <include
+        android:id="@+id/aboutTop"
+        layout="@layout/common_title_commit" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:divider="@drawable/shape_divider"
+            android:orientation="vertical"
+            android:showDividers="middle" >
+
+            <LinearLayout
+                android:id="@+id/about_call"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/layout_mheight"
+                android:orientation="horizontal"
+                android:background="@color/white"
+                android:padding="10dp" >
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/service_tel" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:text="服务电话：400-04-95588" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/about_wechat"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/layout_mheight"
+                android:orientation="horizontal"
+                android:background="@color/white"
+                android:padding="10dp" >
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/public_num" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:text="微信公众号：huifuquanvip" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/about_huiquan"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/layout_mheight"
+                android:orientation="horizontal"
+                android:background="@color/white"
+                android:padding="10dp" >
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/ic_launcher" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:text="@string/func_desc_about" />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/release_check"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/layout_mheight"
+                android:orientation="horizontal"
+                android:background="@color/white"
+                android:padding="10dp" >
+
+                <ImageView
+                    android:id="@+id/iv_app_upp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentLeft="true"
+                    android:src="@drawable/uppapk" />
+
+                <TextView
+                    android:id="@+id/tv_checkversion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@+id/iv_app_upp"
+                    android:text="检查版本" />
+
+                <TextView
+                    android:id="@+id/myhome_version"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="15dp"
+                    android:layout_toRightOf="@+id/tv_checkversion"
+                    android:text="@string/app_full_version"
+                    android:textColor="@color/gray_version" />
+
+                <TextView
+                    android:id="@+id/tv_appUpdate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:text="可更新"
+                    android:textColor="@color/deep_grey"
+                    android:visibility="gone" />
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

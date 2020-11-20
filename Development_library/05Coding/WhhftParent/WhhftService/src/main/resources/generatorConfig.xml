@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+
+	<classPathEntry location="C:\.m2\repo\mysql\mysql-connector-java\5.1.41\mysql-connector-java-5.1.41.jar" />  
+
+  <context id="context1">
+    <jdbcConnection connectionURL="jdbc:mysql://112.74.168.186:3306/web_core?characterEncoding=utf8" driverClass="com.mysql.jdbc.Driver" password="fox" userId="fox" />
+    <javaModelGenerator targetPackage="com.whhft.sysmanage.service.entity" targetProject="WhHftSysManageService" >
+    	<property name="rootClass" value="com.whhft.sysmanage.service.base.BaseEntity"/>
+    </javaModelGenerator>
+    <sqlMapGenerator targetPackage="com.whhft.sysmanage.service.mapper" targetProject="WhHftSysManageService" />
+    <!-- 
+    <javaClientGenerator targetPackage="com.whhft.sysmanage.service.mapper" targetProject="WhHftSysManageService" type="XMLMAPPER">
+	    	<property name="rootInterface" value="com.whhft.sysmanage.service.base.BaseMapper"/>
+	</javaClientGenerator>h
+	 -->
+	 <!-- 
+	    <table tableName="action_info"  domainObjectName="ActionInfo"></table>
+	    <table tableName="dict_define"  domainObjectName="DictDefine"></table>
+	    <table tableName="dict_detail"  domainObjectName="DictDetail"></table>
+	    <table tableName="server_info"  domainObjectName="ServerInfo"></table>
+	    <table tableName="sys_auth"  domainObjectName="SysAuth"></table>
+	    <table tableName="sys_log"  domainObjectName="SysLog"></table>
+	    <table tableName="sys_role"  domainObjectName="SysRole"></table>
+	    <table tableName="role_auth_rs"  domainObjectName="RoleAuthRs"></table>
+	    <table tableName="user_role_rs"  domainObjectName="UserRoleRs"></table>
+	    -->
+	    <table tableName="sys_user"  domainObjectName="SysUser"></table>
+  </context>
+</generatorConfiguration>

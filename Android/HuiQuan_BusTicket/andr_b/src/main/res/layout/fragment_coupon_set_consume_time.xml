@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ly_coupon_set"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical" >
+
+    <include layout="@layout/coupon_rule_set_top" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#000" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tv_coupon_limit_draw_time" />
+        <!-- 优惠券 截止领取时间 -->
+
+        <EditText
+            android:id="@+id/edt_limit_draw_time"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/sel_edt_input"
+            android:editable="false" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tv_coupon_limit_use_time" />
+        <!-- 优惠券截止使用日期 -->
+
+        <EditText
+            android:id="@+id/edt_limit_csm_time"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/sel_edt_input"
+            android:editable="false" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="60dp"
+        android:background="#000" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:orientation="horizontal"
+        android:paddingTop="5dp" >
+
+        <!-- 优惠券  第一个“上一步” -->
+
+        <Button
+            android:id="@+id/btn_coupon_first_last_step"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_margin="5dp"
+            android:background="@drawable/card_set_btn"
+            android:text="@string/coupon_last_step" />
+        <!-- 优惠券  第二个“下一步” -->
+
+        <Button
+            android:id="@+id/btn_coupon_second_next"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/card_set_btn"
+            android:text="@string/coupon_next" />
+    </LinearLayout>
+
+</LinearLayout>

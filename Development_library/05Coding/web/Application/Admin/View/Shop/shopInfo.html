@@ -1,0 +1,104 @@
+<layout name="layout_admin" />
+<div class="row">
+    <div class="col-md-2">
+        <img src="{$shopInfo.logoUrl}" title="商户头像" alt="商户头像" class="img-responsive img-rounded" style="width: 140px;height: 140px" />
+    </div>
+    <div class="col-md-3">
+        <p>商户号：{$shopInfo.shopId}</p>
+        <p>商户编号：{$shopInfo.shopCode}</p>
+        <p>商店名称：{$shopInfo.shopName}</p>
+        <p>商店类型：
+            <foreach name="shopTypeList" item="shopType">
+                <eq name="shopInfo.type" value="$shopType.typeValue">{$shopType.typeZh}</eq>
+            </foreach>
+        </p>
+        <p>商店子类型：{$shopInfo.subType}</p>
+        <p>商户简介：{$shopInfo.shortDes}</p>
+    </div>
+    <div class="col-md-3">
+        <p>国家：{$shopInfo.country}</p>
+        <p>省份：{$shopInfo.province}</p>
+        <p>城市：{$shopInfo.city}</p>
+        <p>地址：{$shopInfo.street}</p>
+        <p>电话：{$shopInfo.tel}</p>
+    </div>
+    <div class="col-md-3">
+        <p>移动电话：{$shopInfo.mobileNbr}</p>
+        <p>店主姓名：{$bigMngInfo.realName}</p>
+        <p>会员数量：{$shopInfo.nbrOfMember}</p>
+        <p>商店状态：<eq name="shopInfo.status" value="0">禁用<else/>启用</eq></p>
+        <p>商家诚信值：{$shopInfo.creditPoint}</p>
+    </div>
+    <if condition="$user.mobileNbr eq '13588305490'">
+    <div class="col-md-3"><p>营业执照：<img src="{$shopInfo.licenseUrl}" width="200px"></p></div>
+    <div class="col-md-3"><p>银行卡图片：<img src="{$shopInfo.bankCardUrl}" width="200px"></p></div>
+    <div class="col-md-6"><p>银行卡图片：<foreach name="shopInfo.IDcardUrl" item="item"><img src="{$item.url}" width="200px">&nbsp;</foreach></p></div>
+	</if>
+</div>
+<ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active">
+        <a href="#shopStaff" role="tab" data-toggle="tab">商户员工列表</a>
+    </li>
+    <li role="presentation">
+        <a href="#shopCard" role="tab" data-toggle="tab">商户会员卡列表</a>
+    </li>
+    <li role="presentation">
+        <a href="#shopBatchCoupon" role="tab" data-toggle="tab">商户优惠券列表</a>
+    </li>
+    <li role="presentation">
+        <a href="#shopActivity" role="tab" data-toggle="tab">商户活动列表</a>
+    </li>
+</ul>
+<div class="tab-content">
+    <form action="#" method="get" id="data_search_form" role="form">
+        <input type="hidden" id="shopCode" name="shopCode" value="{$shopCode}"/>
+        <input type="hidden" id="frm_ele_page" name="page" value="1" />
+        <button type="submit" class="btn" id="search_form_submit_btn" style="display: none">查询</button>
+    </form>
+    <div class="tab-pane active" id='shopStaff'>
+        <div class="shopStaff-data-wrap"></div>
+    </div>
+    <div id='shopCard' class="tab-pane">
+        <div class="shopCard-data-wrap"></div>
+    </div>
+    <div id='shopBatchCoupon' class="tab-pane">
+        <div class="shopBatchCoupon-data-wrap"></div>
+    </div>
+    <div id='shopActivity' class="tab-pane">
+        <div class="shopActivity-data-wrap"></div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function(){
+        // 获得tab下的数据
+        function getTabData() {
+            // 切换tab时，页码初始成第1页
+            $('#frm_ele_page').val(1);
+            var divTable = $('div.tab-content div.active');
+            var funName = divTable.attr('id');
+            var searchFrm = $(sz.SEARCH_FORM_ID);
+            searchFrm.attr('action','/Admin/Shop/' + funName);
+            var linkAddress = searchFrm.attr('action');
+            $.get(linkAddress, searchFrm.serialize(), function(resp){
+                if (resp.status == sz.STATUS_SUCC) {
+                    var dataWrap = divTable.find('.' + funName + '-data-wrap');
+                    if(resp.html) {
+                        dataWrap.html(resp.html);
+                    }else {
+                        dataWrap.text('暂无记录!');
+                    }
+                    $(sz.DATA_LIST_TABLE_WRAPPER_ID).removeAttr('id');
+                    dataWrap.attr('id','data_table_wrapper');
+                } else {
+                    sz.showErrMsg(resp.msg);
+                }
+            });
+        };
+        // 切换tab时，获得tab下的数据
+        $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+            getTabData();
+        });
+        // 初始化tab下的数据
+        getTabData();
+    });
+</script>

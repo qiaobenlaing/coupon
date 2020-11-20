@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/LyOutSet" >
+
+    <include layout="@layout/common_title_home" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="vertical" >
+
+        <TextView
+            style="@style/VSpace"
+            android:layout_height="16dp"
+            android:background="@color/bgall" />
+
+        <TextView
+            style="@style/VLine"
+            android:layout_height="1px" />
+
+        <LinearLayout
+            style="@style/LyCradGradeSet"
+            android:background="@color/white" >
+
+            <TextView
+                style="@style/LyWHSecond"
+                android:layout_marginLeft="10dp"
+                android:text="@string/cardvip_gd_sum"
+                android:textColor="@color/home_topsixfont"
+                android:textSize="16sp" />
+            <!-- 会员卡等级 -->
+
+            <LinearLayout style="@style/LyCradGradeSetRow" >
+
+                <TextView
+                    android:id="@+id/tv_card_gdsum"
+                    style="@style/LyWHSecond"
+                    android:layout_marginRight="13dp"
+                    android:text="@string/cardvip_gd_"
+                    android:textColor="@color/home_topsixfont"
+                    android:textSize="16sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView
+            style="@style/VLine"
+            android:layout_height="1px" />
+
+        <TextView
+            style="@style/VSpace"
+            android:background="@color/bgall" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:orientation="vertical" >
+
+            <Button
+                android:id="@+id/btn_card_next"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/login_btn"
+                android:text="@string/coupon_next"
+                android:textColor="@color/white" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

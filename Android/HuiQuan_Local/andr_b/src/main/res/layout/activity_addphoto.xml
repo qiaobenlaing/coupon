@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/LyOutSet"
+    android:background="@color/bgall" >
+
+    <include layout="@layout/common_title_commit" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/album_name"
+        android:textColor="@color/ivcolor"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/et_photo_name"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/navigation_bar"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/bg_border"
+        android:gravity="center_vertical"
+        android:hint="@string/no_photoname"
+        android:inputType="text" />
+
+</LinearLayout>

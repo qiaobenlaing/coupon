@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:id="@+id/ly_nodate"
+        style="@style/LyWHFirst"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="visible" >
+
+        <ImageView
+            android:id="@+id/iv_nodata"
+            style="@style/LyWHSecond"
+            android:scaleType="centerInside"
+            android:src="@drawable/no_message"
+            android:visibility="gone" />
+
+        <ProgressBar
+            android:id="@+id/prog_nodata"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:background="@color/red"
+            android:visibility="gone" />
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,177 @@
+<layout name="layout_normal" />
+<!-- Views -->
+<div class="views">
+    <!-- Your main view, should have "view-main" class -->
+    <div class="view view-main">
+        <!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
+        <div class="pages">
+            <!-- Page, "data-page" contains page name -->
+            <div data-page="index" class="page">
+                <!-- Scrollable page content -->
+                <div class="page-content batch-coupon-share-wrap">
+                    <div class="upper-wrap">
+                        <div class="plat-logo-url"><img src="/Public/img/webchat/huiquan.png" alt="惠圈"/></div>
+                        <div class="shop-logo-url"><img src="{$batchCouponInfo.logoUrl}" alt="{$batchCouponInfo.shopName}"/></div>
+                        <div class="coupon-content">
+                            <div class="coupon-type">
+                                <switch name="batchCouponInfo.couponType">
+                                    <case value="1">N元购</case>
+                                    <case value="3">抵扣券</case>
+                                    <case value="4">折扣券</case>
+                                    <case value="5">实物券</case>
+                                    <case value="6">体验券</case>
+                                    <default/>优惠券
+                                </switch>
+                            </div>
+                            <div class="coupon-value">
+                                <eq name="batchCouponInfo.isTaken" value="1">
+                                    <switch name="batchCouponInfo.couponType">
+                                        <case value="1">
+                                            <div class="coupon-value-wrap">
+                                                <div class="instead-price">{$batchCouponInfo.insteadPrice} 元</div>
+                                                <div class="function">{$batchCouponInfo.function}</div>
+                                            </div>
+                                        </case>
+                                        <case value="3">
+                                            <div class="coupon-value-wrap">
+                                                <div class="instead-price">
+                                                    满{$batchCouponInfo.availablePrice}元减{$batchCouponInfo.insteadPrice} 元
+                                                </div>
+                                            </div>
+                                        </case>
+                                        <case value="4">
+                                            <div class="coupon-value-wrap">
+                                                <div class="instead-price">
+                                                    满{$batchCouponInfo.availablePrice}元打{$batchCouponInfo.discountPercent} 折
+                                                </div>
+                                            </div>
+                                        </case>
+                                        <case value="5">
+                                            <div class="coupon-value-wrap">{$batchCouponInfo.function}</div>
+                                        </case>
+                                        <case value="6">
+                                            <div class="coupon-value-wrap">{$batchCouponInfo.function}</div>
+                                        </case>
+                                    </switch>
+                                <else/>
+                                    <if condition="$batchCouponInfo.totalVolume GT 0 AND $batchCouponInfo.remaining EQ 0">
+                                        已抢完
+                                    <else/>
+                                        已过期
+                                    </if>
+                                </eq>
+                            </div>
+                        </div>
+                        <div class="get-coupon-wrap" <if condition="($batchCouponInfo.isTaken eq 0) OR ($batchCouponInfo.totalVolume GT 0 AND $batchCouponInfo.remaining EQ 0)">style="display:none"</if>>
+                            <form method="post" action="/Wechat/UserCoupon/getVirtualCoupon" id="get-coupon-frm">
+                                <input type="hidden" name="batchCouponCode" value="{$batchCouponInfo.batchCouponCode}"/>
+                                <input type="text" name="mobileNbr" class="input-mobileNbr" placeholder="输入手机号码"/>
+                                <p>
+                                    <button type="submit" class="button button-big button-fill color-red">领取优惠券</button>
+                                </p>
+                            </form>
+                        </div>
+                        <div class="ret-wrap" <if condition="($batchCouponInfo.isTaken eq 0) OR ($batchCouponInfo.totalVolume GT 0 AND $batchCouponInfo.remaining EQ 0)">style="display:block"</if>>
+                            <div class="ret-msg"></div>
+                            <a class="external button button-big button-fill color-red download" href="/Wechat/Index/cdownload">惠圈下载</a>
+                        </div>
+                    </div>
+                    <div class="lower-bg-part1"></div>
+                    <div class="lower-bg-part2">活动规则</div>
+                    <div class="lower-wrap">
+                        <div style="padding-left: 20px;padding-right: 20px; padding-top: 16px;  padding-bottom: 16px;">
+                            <div class="rule-content">
+                                <p><span class="rule-content-title"><span class="rule-content-title-number">1</span>.</span>使用优惠券的下单手机号需为抢券时使用的手机号。</p>
+                                <p><span class="rule-content-title"><span class="rule-content-title-number">2</span>.</span>注册惠圈APP需要使用领券手机号才能激活本券。</p>
+                                <p><span class="rule-content-title"><span class="rule-content-title-number">3</span>.</span>本优惠券使用时间截止时间到{$batchCouponInfo.expireTime|substr=0,4}年{$batchCouponInfo.expireTime|substr=5,2}月{$batchCouponInfo.expireTime|substr=8,2}日23时59分59秒。</p>
+                                <p><span class="rule-content-title"><span class="rule-content-title-number">4</span>.</span>领券一小时内未成为惠圈用户，本券自动失效。</p>
+                                <p><span class="rule-content-title"><span class="rule-content-title-number">5</span>.</span>惠圈保留对本券分享活动的最终解释权。</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="shadow">
+                        <img src="/Public/img/webchat/jiantou.png" alt=""/>
+                        <div class="tip">在浏览器打开</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="__PUBLIC__/js/jweixin-1.0.0.js"></script>
+<script>
+//    ;(function(){
+//        function isWeiXin(){
+//            var navgator = window.navigator.userAgent.toLowerCase();
+//            if(navgator.match(/MicroMessenger/i) == 'micromessenger'){
+//                $('.shadow').show();
+//                return false;
+//            }else{
+//                return true;
+//            }
+//        }
+//        $('.download').on('click', isWeiXin);
+//        $('.shadow').on('click', function(){
+//            $(this).hide();
+//        })
+//    })();
+    ;(function() {
+        $('#get-coupon-frm').on('submit', function(){
+            var frm = $(this);
+            $.post(frm.attr('action'), frm.serialize(), function(resp){
+                if(resp.status == sz.STATUS_SUCC) {
+                    if(resp.msg == '您领用的数量已达上限') {
+                        $('.coupon-value').text('已抢过');
+                    }
+                    var html = '优惠券已经存入账户<span class="ret-msg-mobileNbr">' + $('.input-mobileNbr').val() + '</span><br/>登录APP即可使用';
+                    $('.ret-msg').html(html);
+                    $('.get-coupon-wrap').hide();
+                    $('.ret-wrap').show();
+                } else {
+                    myApp.alert(resp.msg, '');
+                }
+            });
+           return false;
+        });
+    })();
+
+    $(function() {
+        var imgUrl = 'http://web.huiquan.suanzi.cn/Public/img/huiquan-icon.png';
+        var link = 'http://web.huiquan.suanzi.cn/Wechat/BatchCoupon/share?batchCouponCode={$batchCouponInfo.batchCouponCode}';
+        wx.config({
+            debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+            appId: '{$appId}', // 必填，公众号的唯一标识
+            timestamp: '{$timestamp}', // 必填，生成签名的时间戳
+            nonceStr: '{$nonceStr}', // 必填，生成签名的随机串
+            signature: '{$signature}',// 必填，签名，见附录1
+            jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+        });
+
+        /**
+         * 微信分享
+         */
+        wx.ready(function() {
+            wx.onMenuShareTimeline({
+                title: '{$title}', // 分享标题
+                link: link, // 分享链接
+                imgUrl: imgUrl, // 分享图标
+                success: function (res) {
+                    // 用户确认分享后执行的回调函数
+                    hasShared = true;
+                }
+            });
+            wx.onMenuShareAppMessage({
+                title: '{$title}', // 分享标题
+                desc: '惠圈优惠券', // 分享描述
+                link: link, // 分享链接
+                imgUrl: imgUrl, // 分享图标
+                type: 'link', // 分享类型,music、video或link，不填默认为link
+                dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+                success: function (res) {
+                    // 用户确认分享后执行的回调函数
+                    hasShared = true;
+                }
+            });
+        });
+    });
+</script>

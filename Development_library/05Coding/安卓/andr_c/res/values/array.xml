@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="cardType">
+        <item>身份证</item>
+        <item>护照</item>
+        <item>军官证</item>
+        <item>士兵证</item>
+        <item>港澳通行证</item>
+        <item>临时身份证</item>
+        <item>户口簿</item>
+        <item>其他</item>
+        <item>警官证</item>
+        <item>外国人居留证</item>
+    </string-array>
+    
+     <string-array name="errorInfo">
+	    <item>商家店名</item>  
+	    <item>商家地址</item>  
+	    <item>地址经纬度</item>  
+	    <item>商家联系方式</item>  
+	    <item>商家图片</item>  
+	    <item>商品/服务图片</item>  
+    </string-array>
+
+</resources>

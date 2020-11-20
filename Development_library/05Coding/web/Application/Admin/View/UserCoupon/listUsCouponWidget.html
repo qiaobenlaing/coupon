@@ -1,0 +1,330 @@
+<table class="fp-table table table-striped table-bordered table-condensed" id="data_table">
+    <thead>
+    <tr>
+        <th>用户优惠券编号</th>
+        <th>用户手机号码</th>
+        <th>商户名</th>
+        <th>优惠券批次</th>
+        <th>券号</th>
+        <th>类型</th>
+        <th>获取时间</th>
+        <th>有效期</th>
+        <th>状态</th>
+        <th>微信卡包</th>
+        <!--<th>操作</th>-->
+    </tr>
+    </thead>
+    <tbody>
+    <foreach name="dataList" item="item">
+        <tr>
+            <td>{$item.mobileNbr}</td>
+            <td>{$item.shopName}</td>
+            <td>{$item.batchNbr}</td>
+            <td>{$item.userCouponNbr}</td>
+            <td>
+                <switch name="item.couponType">
+                    <case value="1">
+                        <span class="label n-yuan-gou">N元购</span>
+                        <div class="">面值：{$item.insteadPrice}元，{$item.function}</div>
+                    </case>
+                    <case value="3">
+                        <span class="label man-jian">抵扣券</span>
+                        <div class="">抵扣：{$item.insteadPrice}元</div>
+                    </case>
+                    <case value="4">
+                        <span class="label limit-time">折扣券</span>
+                        <div class="">折扣：{$item.discountPercent}折</div>
+                    </case>
+                    <case value="5">
+                        <span class="label shi-wu">实物券</span>
+                        <div class="">内容：{$item.function|default='空'}</div>
+                    </case>
+                    <case value="6">
+                        <span class="label ti-yan">体验券</span>
+                        <div class="">内容：{$item.function|default='空'}</div>
+                    </case>
+                    <case value="7">
+                        <span class="label dui-huan">兑换券</span>
+                        <div class="">内容：{$item.insteadPrice}元 {$item.function|default='空'}</div>
+                    </case>
+                    <case value="8">
+                        <span class="label dai-jin">代金券</span>
+                        <div class="">内容：￥{$item.payPrice}代{$item.insteadPrice}元{$item.function|default='空'}</div>
+                    </case>
+                    <case value="32">
+                        <span class="label label-default">送新用户抵扣券</span>
+                        <div class="">抵扣：{$item.insteadPrice}元</div>
+                    </case>
+                    <case value="33">
+                        <span class="label label-primary">送邀请人的抵扣券</span>
+                        <div class="">抵扣：{$item.insteadPrice}元</div>
+                    </case>
+                </switch>
+            </td>
+            <td>{$item.applyTime}</td>
+            <td>
+                <in name="item.couponType" value="32,33">
+                    <eq name="item.validityPeriod" value="0">
+                        <span class="label label-success">无期限</span>
+                        <else/>
+                        领用后{$item.validityPeriod}天内有效
+                    </eq>
+                    <else/>
+                    {$item.startUsingTime|substr=0,10}至{$item.expireTime|substr=0,10}
+                    <if condition='$nowTime gt strtotime($item["expireTime"])'>
+                        <span class="label label-danger">已失效</span>
+                        <elseif condition='$nowTime lt strtotime($item["startUsingTime"])'/>
+                        <span class="label label-default">未生效</span>
+                        <else />
+                        <span class="label label-success">可使用</span>
+                    </if>
+                </in>
+            </td>
+            <td class="user-coupon-status-{$item.userCouponCode}">
+                <if condition="$item.status eq 0">
+                    <span class="label label-warning">
+                    <if condition="$item.orderCouponStatus eq 10">订单未付款，不可用
+                        <elseif condition="$item.orderCouponStatus eq 11"/>已退，不可用
+                        <elseif condition="$item.orderCouponStatus eq 12"/>申请退款中，不可用
+                        <else/>
+                        不可用
+                    </if>
+                    </span>
+                    <elseif condition="$item.status eq 1"/>
+                    <span class="label label-success">可用</span>
+                    <elseif condition="$item.status eq 3"/>
+                    <span class="label label-info">冻结</span>
+                    <else/>
+                    <button class="btn btn-xs btn-danger used-coupon" data-user-coupon-code="{$item.userCouponCode}" title="点击查看使用详情">
+                        已使用
+                        <switch name="item.consumeStatus" >
+                            <case value="1"><span class="label label-default">未付款</span></case>
+                            <case value="2"><span class="label label-default">付款中</span></case>
+                            <case value="3"><span class="label label-success">已付款</span></case>
+                            <case value="4"><span class="label label-danger">已取消付款</span></case>
+                            <case value="5"><span class="label label-danger">付款失败</span></case>
+                            <default />未知
+                        </switch>
+                    </button>
+                </if>
+            </td>
+            <td>
+                <div >
+                    <switch name="item.inWeixinCard">
+                        <case value="1">
+                            <button type="button" class="btn btn-xs btn-success" >
+                                <span class="status-text">已添加</span>
+                            </button>
+                        </case>
+                        <case value="2">
+                            <button type="button" class="btn btn-xs btn-warning "  >
+                                <span class="status-text">未添加</span>
+                            </button>
+                        </case>
+                        <case value="3">
+                            <button type="button" class="btn btn-xs btn-danger "  >
+                                <span class="status-text">已删除</span>
+                            </button>
+                        </case>
+                        <case value="4">
+                            <button type="button" class="btn btn-xs btn-info ">
+                                <span class="status-text">已核销</span>
+                            </button>
+                        </case>
+                    </switch>
+                    <!--<ul class="dropdown-menu" style="min-width: 0">-->
+                    <!--<li><a href="#" data-user-coupon-code="{$item.userCouponCode}" data-in-weixin-card="1" class="change-user-coupon-inweixincard">已添加</a></li>-->
+                    <!--<li><a href="#" data-user-coupon-code="{$item.userCouponCode}" data-in-weixin-card="2" class="change-user-coupon-inweixincard">未添加</a></li>-->
+                    <!--</ul>-->
+                </div>
+            </td>
+            <!--<td>-->
+            <!--<eq name="item.status" value="2">-->
+            <!--<neq name="item.consumeStatus" value="3">-->
+            <!--<a href="#" data-url="/Admin/UserCoupon/release" data-user-coupon-code="{$item.userCouponCode}"  data-page="{$pager:page}" class="btn btn-xs btn-warning user-coupon-release" data-key="{$item.consumeCode}">释放</a>-->
+            <!--</neq>-->
+            <!--</eq>-->
+            <!--<in name="item.status" value="1,3">-->
+            <!--<a class="btn btn-xs btn-danger delete-user-coupon" href="#" data-url="/Admin/UserCoupon/delUserCoupon" data-user-coupon-code="{$item.userCouponCode}" data-page="{$pager:page}">删除</a>-->
+            <!--</in>-->
+            <!--</td>-->
+        </tr>
+    </foreach>
+    </tbody>
+</table>
+<div class="panel panel-primary consume-info-wrap-s-window">
+    <!-- Default panel contents -->
+    <div class="panel-heading">使用详情<span class="glyphicon glyphicon-remove consume-info-wrap-s-window-close" aria-hidden="true"></span></div>
+    <!-- List group -->
+    <ul class="list-group">
+        <li class="list-group-item">订单编码：<span class="consume-info-order-nbr"></span></li>
+        <li class="list-group-item">使用地点：<span class="consume-info-shop-name"></span></li>
+        <li class="list-group-item">使用日期：<span class="consume-info-consume-time"></span></li>
+        <li class="list-group-item">消费金额：
+            <span class="consume-info-total-price"></span>元
+            <span class="label consume-info-status"></span>
+        </li>
+        <li class="list-group-item">实际支付金额：<span class="consume-info-real-pay"></span>元</li>
+        <li class="list-group-item">总抵扣金额：
+            <span class="consume-info-deduction"></span>元
+        </li>
+        <li class="list-group-item">会员卡抵扣金额：
+            <span class="consume-info-card-deduction"></span>元
+        </li>
+        <li class="list-group-item">优惠券抵扣金额：
+            <span class="consume-info-coupon-deduction"></span>元
+        </li>
+        <li class="list-group-item">平台红包抵扣金额：
+            <span class="consume-info-plat-bonus-deduction"></span>元
+        </li>
+        <li class="list-group-item">商户红包抵扣金额：
+
+            <span class="consume-info-shop-bonus-deduction"></span>元
+        </li>
+    </ul>
+</div>
+<script>
+    // 释放用户优惠券
+    ;(function(){
+        $('.user-coupon-release').on('click', function(){
+            var btn = $(this);
+            var url = btn.data('url');
+            var userCouponCode = $(this).data('userCouponCode');
+            var page = btn.data('page');
+            var key = $(this).data('key');
+            console.log(key);
+            $.post(
+                url,
+                {'userCouponCode' : userCouponCode, 'page' : page, 'key': key},
+                function(resp){
+                    console.log(resp);
+                    if(resp.status == sz.STATUS_SUCC) {
+                        $('.user-coupon-status-' + userCouponCode).html('<span class="label label-success">可用</span>');
+                        btn.hide(); // 隐藏按钮
+                        var html = '<a class="btn btn-xs btn-danger delete-user-coupon" href="#" data-url="/Admin/UserCoupon/delUserCoupon" data-user-coupon-code="' + userCouponCode + '" data-page="{$pager:page}">删除</a>';
+                        btn.parent().html(html);
+                    } else {
+                        sz.showErrMsg(resp.msg);
+                    }
+                }
+            );
+            return false;
+        });
+    })();
+    // 删除用户优惠券
+    ;(function(){
+        $('.delete-user-coupon').on('click', function(){
+            var url = $(this).data('url');
+            var userCouponCode = $(this).data('userCouponCode');
+            var page = $(this).data('page');
+            var mobileNbr = $('#mobile-nbr').val();
+            var shopName = $('#shop-name').val();
+            var batchNbr = $('#batch-nbr').val();
+            var userCouponNbr = $('#user-coupon-nbr').val();
+            var couponType = $('#coupon-type').val();
+            var status = $('#status').val();
+            $.post(
+                url,
+                {'userCouponCode' : userCouponCode, 'page' : page},
+                function(resp){
+                    if(resp.status == sz.STATUS_SUCC) {
+                        location.href = '/Admin/UserCoupon/listUsCoupon?page=' + page + '&mobileNbr=' + mobileNbr + '&shopName=' + shopName + '&batchNbr=' + batchNbr + '&userCouponNbr=' + userCouponNbr + '&couponType=' + couponType + '&status=' + status;
+                    } else {
+                        sz.showErrMsg(resp.msg)
+                    }
+                }
+            );
+            return false;
+        });
+    })();
+    // 查看优惠券使用详情
+    ;(function(){
+        $('.used-coupon').on('click', function(){
+            $("#data_table_wrapper tr").removeClass('payed-coupon-selected');
+            $(this).parent().parent().addClass('payed-coupon-selected');
+            $('.consume-info-wrap-s-window').show();
+            var userCouponCode = $(this).data('userCouponCode');
+            $.post('/Admin/UserCoupon/getConsumeInfo', {'userCouponCode': userCouponCode}, function(resp){
+                $('.consume-info-order-nbr').text(resp.data.orderNbr);
+                $('.consume-info-shop-name').text(resp.data.shopName);
+                $('.consume-info-consume-time').text(resp.data.consumeTime);
+                var totalPrice = resp.data.orderAmount;
+                var status = resp.data.status;
+                var statusText = '';
+                $(".consume-info-status").removeClass('label-default').removeClass('label-success').removeClass('label-danger');
+                switch(status) {
+                    case '1':
+                        $(".consume-info-status").addClass('label-default');
+                        statusText = '未付款';
+                        break;
+                    case '2':
+                        $(".consume-info-status").addClass('label-default');
+                        statusText = '付款中';
+                        break;
+                    case '3':
+                        $(".consume-info-status").addClass('label-success');
+                        statusText= '已付款';
+                        break;
+                    case '4':
+                        $(".consume-info-status").addClass('label-danger');
+                        statusText = '已取消付款';
+                        break;
+                    case '5':
+                        $(".consume-info-status").addClass('label-danger');
+                        statusText = '付款失败';
+                        break;
+                }
+                $('.consume-info-total-price').text(totalPrice);
+                $('.consume-info-status').text(statusText);
+                $('.consume-info-real-pay').text(resp.data.realPay);
+                $('.consume-info-deduction').text( resp.data.deduction);
+                $('.consume-info-card-deduction').text( resp.data.cardDeduction);
+                $('.consume-info-coupon-deduction').text( resp.data.couponDeduction);
+                $('.consume-info-plat-bonus-deduction').text( resp.data.platBonus);
+                $('.consume-info-shop-bonus-deduction').text( resp.data.shopBonus);
+            });
+        });
+        $('.consume-info-wrap-s-window-close').on('click', function(){
+            $("#data_table_wrapper tr").removeClass('payed-coupon-selected');
+            $('.consume-info-wrap-s-window').hide();
+        });
+    })();
+
+    // 修改优惠券是否添加进微信卡包的状态
+    // ;(function(){
+    //     $('.change-user-coupon-inweixincard').on('click', function(){
+    //         var userCouponCode = $(this).data("userCouponCode");
+    //
+    //         var inWeixinCard   = $(this).data('inWeixinCard');
+    //
+    //         var btnShopStatus = $('.btn-user-coupon-inweixincard-' + userCouponCode);
+    //         btnShopStatus.removeClass('btn-default').removeClass('btn-success').removeClass('btn-danger');
+    //         $.get(
+    //             '/Admin/UserCoupon/inWeixinCard',
+    //             {'userCouponCode': userCouponCode, 'inWeixinCard': inWeixinCard},
+    //             function(resp){
+    //                 if(resp.status == sz.STATUS_SUCC) {
+    //                     switch(inWeixinCard){
+    //                         case 1:
+    //                             btnShopStatus.children().filter('.status-text').html('已添加');
+    //                             btnShopStatus.addClass('btn-success');
+    //                             break;
+    //                         case 2:
+    //                             btnShopStatus.children().filter('.status-text').html('未添加');
+    //                             btnShopStatus.addClass('btn-danger');
+    //                             break;
+    //                     }
+    //                     // 隐藏下拉框
+    //                     btnShopStatus.dropdown('toggle');
+    //                 } else {
+    //                     sz.showErrMsg(resp.msg)
+    //                 }
+    //             }
+    //         );
+    //         return false;
+    //     });
+
+    })();
+
+</script>
+<include file="Application/Admin/View/Widget/pager.html" />

@@ -1,0 +1,92 @@
+<table class="fp-table table table-bordered table-condensed table-hover" id="data_table">
+    <thead>
+    <tr>
+        <th>订单号</th>
+        <th>商户名</th>
+        <th>所属商圈</th>
+        <th>时间</th>
+        <th>消费者昵称</th>
+        <th>消费者手机号</th>
+        <th>消费金额（元）</th>
+        <th>订单类型</th>
+        <th>订单状态</th>
+        <th>支付状态</th>
+    </tr>
+    </thead>
+    <tbody>
+    <foreach name="dataList" item="item">
+        <tr>
+            <td>
+                <a href="/Admin/ConsumeOrder/getOrderInfo?orderCode={$item.orderCode}&page={$pager:page}">{$item.orderNbr}</a>
+            </td>
+            <td>{$item.shopName}</td>
+            <td>{:getName("Bank","name","id='".$item['bank_id']."'")}</td>
+            <td>{$item.orderTime}</td>
+            <td>{$item.nickName}</td>
+            <td>{$item.userMobileNbr}</td>
+            <td>{$item.orderAmount}</td>
+            <td>
+                <switch name="item.orderType" >
+                    <case value="10">
+                        <span class="order-type-other">其他</span>
+                    </case>
+                    <case value="20">
+                        <span class="order-type-ts">堂食</span>
+                    </case>
+                    <case value="21">
+                        <span class="order-type-wm">外卖</span>
+                    </case>
+                    <case value="30">
+                        <span class="order-type-coupon">买券</span>
+                    </case>
+                    <case value="40">
+                        <span class="order-type-coupon">活动</span>
+                    </case>
+                </switch>
+            </td>
+            <td>
+                <switch name="item.orderStatus" >
+                    <case value="0">
+                        见支付状态
+                    </case>
+                    <case value="20">
+                        已下单
+                    </case>
+                    <case value="21">
+                        已接单
+                    </case>
+                    <case value="22">
+                        已派送
+                    </case>
+                    <case value="23">
+                        已送达
+                    </case>
+                    <case value="24">
+                        已撤单
+                    </case>
+                    <case value="25">
+                        待下单
+                    </case>
+                </switch>
+            </td>
+            <td>
+                <switch name="item.status" >
+                    <case value="0"><span class="red">不能支付</span></case>
+                    <case value="1"><span class="grey">未付款</span></case>
+                    <case value="2"><span class="grey">付款中</span></case>
+                    <case value="3"><span class="green">已付款</span></case>
+                    <case value="4"><span class="red">已取消付款</span></case>
+                    <case value="5"><span class="red">付款失败</span></case>
+                    <case value="6"><span class="grey">退款申请中</span></case>
+                    <case value="7"><span class="green">退款成功</span></case>
+                    <case value="8"><span class="green">部分退款成功</span></case>
+                    <default /><span class="grey">未知</span>
+                </switch>
+            </td>
+        </tr>
+    </foreach>
+    </tbody>
+</table>
+<include file="Application/Admin/View/Widget/pager.html" />
+
+    

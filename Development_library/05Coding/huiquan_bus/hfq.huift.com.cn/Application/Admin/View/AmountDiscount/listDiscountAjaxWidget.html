@@ -1,0 +1,70 @@
+<table class="fp-table table table-striped table-bordered table-condensed" id="data_table">
+    <thead>
+    <tr>
+        <th>id</th>
+        <th>活动名</th>
+        <th>活动码</th>
+        <th>商户</th>
+        <th>让利平台</th>
+        <th>让利额度(分)</th>
+        <th>状态</th>
+    </tr>
+    </thead>
+    <tbody>
+    <?php foreach($amountData as $v):?>
+        <tr>
+            <td> <?php echo $v['id'];?></td>
+            <td><?php echo $v['activityName'];?></td>
+            <td><?php echo $v['actCode'];?></td>
+            <td><?php echo $v['shopName'];?></td>
+            <?php if($v['activityBelonging']==1):?>
+            <td>平台活动</td>
+            <?php endif;?>
+            <?php if($v['activityBelonging']==2):?>
+            <td>银行活动</td>
+            <?php endif;?>
+            <?php if($v['activityBelonging']==3):?>
+            <td>商户活动</td>
+            <?php endif;?>
+
+            <td  class = 'totaldiscount'><?php echo $v['discount'];?></td>
+
+            <?php if($v['status']=='0'):?>
+            <td>用户退款成功，让利失败</td>
+            <?php endif;?>
+            <?php if($v['status']==1):?>
+            <td>用户付款中，让利进行</td>
+            <?php endif;?>
+            <?php if($v['status']==2):?>
+            <td>用户完成付款，让利成功</td>
+            <?php endif;?>
+            <?php if($v['status']==3):?>
+            <td>用户取消订单，让利取消</td>
+            <?php endif;?>
+
+        </tr>
+    <?php endforeach;?>
+        <tr>
+            <td class="colStyle"></td>
+            <td class="colStyle"></td>
+            <td class="colStyle"></td>
+            <td class="colStyle"></td>
+            <td> 总额</td>
+            <td id="totaldiscount"></td>
+            <td class="colStyle"></td>
+         </tr>
+    </tbody>
+</table>
+<include file="Application/Admin/View/Widget/pager.html" />
+<script>
+    $(document).ready(function(){
+        if($('.totaldiscount')){
+            var totaldiscount = 0;
+            $('.totaldiscount').each(function(x,y){
+                totaldiscount += parseInt($(y).text());
+            })
+            $('#totaldiscount').text(totaldiscount);
+        }
+    })
+
+</script>

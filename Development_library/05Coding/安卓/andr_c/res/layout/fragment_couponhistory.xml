@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#EEEE"
+    android:orientation="vertical" >
+
+    <include
+        android:id="@+id/historylist"
+        layout="@layout/item_historylist" />
+
+    <LinearLayout
+        android:id="@+id/linear_couponlist_content"
+        style="@style/LyWHFirst"
+        android:layout_below="@id/historylist"
+        android:orientation="horizontal" >
+    </LinearLayout>
+
+</RelativeLayout>

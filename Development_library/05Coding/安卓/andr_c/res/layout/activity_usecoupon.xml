@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bgall"
+    android:orientation="vertical" >
+
+    <include layout="@layout/common_title_commit" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <RelativeLayout
+                android:id="@+id/rl_shop_coupon"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="16dp"
+                android:background="@color/white" >
+
+                <LinearLayout
+                    android:id="@+id/ly_shophead"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/bg_border" >
+
+                    <ImageView
+                        android:id="@+id/iv_shophead"
+                        style="@style/LyWHSecond"
+                        android:layout_width="62dp"
+                        android:layout_height="62dp"
+                        android:scaleType="centerCrop" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ly_coupon_content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_margin="10dp"
+                    android:layout_toRightOf="@+id/ly_shophead"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/tv_coupon_function"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="吃吃吃吃吃吃吃"
+                        android:textColor="@color/shopdetail_title"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/tv_use_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="@string/focus_validityl"
+                        android:textColor="@color/shopdetail_content"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/tv_use_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/tv_coupon_user_time"
+                        android:textColor="@color/shopdetail_content"
+                        android:textSize="14sp" />
+                </LinearLayout>
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/tv_define_use"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/rl_shop_coupon"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="30dp"
+                android:text="@string/define_use"
+                android:textColor="@color/coupon_price"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/tv_use_detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_define_use"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:text="@string/tv_use_detail"
+                android:textColor="@color/shopdetail_content" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_use_detail" >
+
+                <ImageView
+                    android:id="@+id/iv_define_use"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/define_use"
+                    android:visibility="invisible" />
+
+                <Button
+                    android:id="@+id/btn_define_use"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/layout_height"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/shape_red_btn"
+                    android:text="@string/btn_define_use"
+                    android:textColor="@color/white" />
+            </FrameLayout>
+        </RelativeLayout>
+    </ScrollView>
+
+</LinearLayout>

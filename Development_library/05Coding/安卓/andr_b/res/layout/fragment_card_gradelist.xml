@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/LyOutSet" >
+
+    <include layout="@layout/common_title_commit" />
+
+    <ListView
+        android:id="@+id/lv_gradelist"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@color/light_grey"
+        android:dividerHeight="1dp"
+        android:scrollbars="none" >
+    </ListView>
+
+</LinearLayout>

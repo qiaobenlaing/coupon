@@ -1,0 +1,195 @@
+<layout name="layout_api" />
+<!-- Views -->
+<div class="views">
+    <!-- Your main view, should have "view-main" class -->
+    <div class="view view-main">
+        <!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
+        <div class="pages toolbar-through">
+            <!-- Page, "data-page" contains page name -->
+            <div data-page="index" class="page">
+                <!-- Scrollable page content -->
+                <div class="page-content" style="padding-bottom: 0;">
+                    <div style="background-color: rgba(128,128,128,0.5);;border-radius: 100px;width: 35px;height: 35px;text-align: center;position: absolute;left: 2%;top: 1%;"><a href="hg://backup" class="external"><img src="/Public/img/icon/backup.png" style="width: 115%;height:auto;" /></a></div>
+                    <div style="background-image: url('/Public/img/regAct/rice_bg.png');background-size: 100% 100%;background-repeat: no-repeat;">
+                        <img src="/Public/img/regAct/rice_banner.png" style="width: 100%;height: auto;" />
+                        <div class="huiquan-divide-line-wrap">
+                            活动详情
+                        </div>
+                        <div class="description">
+                            <div class="abstract">
+                                活动期间成功邀请<span>5</span>位好友进入惠圈并签约惠支付就能兑换价值<span>120</span>元的恒大兴安绿色大米一袋
+                            </div>
+                            <div class="time">
+                                <span>活动时间</span> {$activityInfo.startTime|substr=5,5} - {$activityInfo.endTime|substr=5,5}(送完为止)
+                            </div>
+                            <div class="receiving">
+                                <span>领取方式</span><p style="display: inline;"> 每集齐5名好友便可将所获50元红包兑换价值120元的恒大兴安绿色大米一袋(1月25日之前成功推荐的好友数量不计算在内，所获红包不参与此次兑换活动)。点击下方的按钮领取兑换券，当场点击使用（数量有限，先到先得）</p>
+                            </div>
+                        </div>
+                        <div class="row" style="margin: 10px;">
+                            <!-- Each "cell" has col-[widht in percents] class -->
+                            <div class="col-33" style="border-right: 2px solid rgb(185,96,40);"><div style="padding-bottom: 5px;">推荐人数/人</div><span id="sign"><?php if(!empty($userInfo)):?>{$signBankAccountCount}<?php else:?>0<?php endif;?></span></div>
+                            <div class="col-33"><div style="padding-bottom: 5px;">可领取大米/袋</div><span id="can_receive"><?php if(!empty($userInfo)):?>{$canReceiveCount}<?php else:?>0<?php endif;?></span></div>
+                            <div class="col-33" style="border-left: 2px solid rgb(185,96,40);"><div style="padding-bottom: 5px;">已领取大米/袋</div><span id="has_received"><?php if(!empty($userInfo)):?>{$hasReceivedCount}<?php else:?>0<?php endif;?></span></div>
+                        </div>
+                        <?php if(strtotime($activityInfo['startTime']) <= time() && strtotime($activityInfo['endTime']) >= time()):?>
+                        <?php if(!empty($userInfo)):?>
+                            <div class="button_css"><a href="#" class="button receive_coupon" usercode="{$userCode}" batchcouponcode="{$batchCouponCode}"><img src="/Public/img/regAct/rice_receive.png" /></a></div>
+                            <div class="inviteCode">
+                                <span style="font-weight: bold;color: rgb(185,96,40);">您的推荐码</span><br />
+                                <span style="font-weight: bold;font-size: 20px;color: rgb(119,56,15);">{$userInfo.inviteCode}</span>
+                            </div>
+                            <?php
+                        $params = array(
+                            'icon'    => 'http://web.huiquan.suanzi.cn/Public/img/regAct/rice_icon.png',
+                            'link'    => 'http://'.$http_host.'/Api/Browser/riceDownload?userCode='.$userCode.'&activityCode='.$activityCode,
+                            'title'   => '工行福利！呼朋唤友将价值120元大米扛回家！',
+                            'content' => '推荐好友成功加入惠圈即可领取惠圈豪华大礼包，多邀多得，上不封顶！
+                            '
+                            );
+                            $params = json_encode($params);
+                            ?>
+                            <div class="button_css"><a href="hg://share?params={$params|urlencode}" class="external button"><img src="/Public/img/regAct/rice_share.png" /></a></div>
+                            <?php else:?>
+                            <div class="button_css"><a href="javascript:void(0);" class="external button" onclick="login_modal();"><img src="/Public/img/regAct/rice_receive.png" /></a></div>
+                            <div class="button_css"><a href="javascript:void(0);" class="external button" onclick="login_modal();"><img src="/Public/img/regAct/rice_share.png" /></a></div>
+                        <?php endif;?>
+                        <?php endif;?>
+                        <div class="huiquan-divide-line-wrap">
+                            活动说明
+                        </div>
+                        <div class="huiquan-intro-wrap">
+                            1.打开惠圈，进入本活动页点击【推荐好友领更多大米】按钮，分享邀请好友通过您的推荐码注册惠圈。<br/>
+                            2.好友使用自己的推荐码进行注册并在“我的银行卡”下开通工行卡快捷支付。<br/>
+                            3.邀请好友数量达到5且好友签约惠支付后即可在本页面进行实物券兑换。兑换后红包金额相应减少。<br/>
+                            4.兑换次数限定每人3次。<br/>
+                            5.兑换地址：人民路221号 湖州工商银行。<br/>
+                            6.兑换券有效时间：{$activityInfo.startTime|substr=5,5} - {$activityInfo.endTime|substr=5,5}。送完为止，领券后请及时兑换大米。<br/>
+                            7.本活动仅限湖州市区。<br/>
+                            8.如有疑问，请联系客服：400-04-95588 转 8。<br/>
+                            9.本活动最终解释权归惠圈所有。<br/>
+                        </div>
+                    </div>
+                    <div style="background-color: rgb(178,95,43);height: 44px;width: 100%;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .abstract{color: rgb(122,116,2);font-weight: bold;font-size: 16px;}
+    .abstract span{font-weight: bold;font-size: 18px;color: rgb(197,1,23);}
+    .time, .receiving{font-size: 14px;margin: 15px 0;font-weight: bold;}
+    .time span, .receiving span{background-image: url('/Public/img/regAct/rice.png');background-size: 100% 100%;background-repeat: no-repeat;font-size: 14px;color: #fff;padding: 5px 15px;}
+    .description{padding: 5px 3%;}
+    .row{font-size: 12px;text-align: center;background-color: rgb(235,228,222);border: 2px solid rgb(185,96,40);color: rgb(185,96,40);font-weight: bold;}
+    .row .col-33{margin:5px 0;min-height: 45px;line-height: 1.5;}
+    .button_css{margin-left:auto;margin-right:auto;width:70%;}
+    .button_css a{border: none;height: auto;}
+    .button_css img{width: 100%;height: auto;}
+    .inviteCode{background-color: rgb(235,228,222);margin-left:auto;margin-right:auto;width:60%;border: 2px solid rgb(185,96,40);border-radius: 4px;text-align: center;line-height: 2;margin-bottom: 10px;}
+    .huiquan-divide-line-wrap{
+        background-image: url('/Public/img/regAct/rice_intro.png');background-size: 90% 100%;background-repeat: no-repeat;text-align: center;color: #fff;font-size: 16px;line-height: 2;margin-top: 10px;background-position: center;
+    }
+    .huiquan-intro-wrap{
+        margin: 13px 10px 0 10px;
+        padding-bottom: 50px;
+        border-radius: 6px;
+        color: rgb(122,116,2);
+        font-size: 12px;
+        font-weight: bold;
+        padding-top: 15px;
+        padding-left: 10px;
+        padding-right: 10px;
+        text-align: start;
+    }
+</style>
+<script>
+    $(function() {
+        $('.receive_coupon').click(function(){
+            myApp.closeModal();
+            receive_coupon($(this));
+        });
+        function receive_coupon(obj){
+            obj.attr('disabled', true);
+            var a = $('#sign').text();
+            var b = $('#can_receive').text();
+            var c = $('#has_received').text();
+
+            var userCode = obj.attr('usercode');
+            var batchCouponCode = obj.attr('batchcouponcode');
+            if(Number(c) >= 3){
+                other_modal('您的领取机会已用完！');
+                obj.attr('disabled', false);
+            }else if(Number(b) <= 0){
+                var need = 5 * (Number(c) + 1) - Number(a);
+                myApp.modal({
+                    title: '提醒<a href="javascript:void(0);" class="external" onclick="myApp.closeModal();" style="float:right;color: #928B8B;margin-top: -10px;margin-right: -5px;font-family: cursive;">X</a>',
+                    text: '您还需要再邀请<strong>'+need+'</strong>位好友才能领取哦！',
+                    afterText:'<div style="margin: 30px 0 15px 0;"><a href="hg://share?params={$params|urlencode}" class="external" style="border: 1px solid #007aff;border-radius: 4px;padding: 2px 10%;">分享我的推荐码</a></div>'
+                });
+                obj.attr('disabled', false);
+            }else{
+                $.post(
+                        '/Api/Browser/riceCoupon',
+                        {
+                            userCode:userCode,
+                            batchCouponCode:batchCouponCode,
+                            isAjax:true
+                        },
+                        function(result){
+                            var text = '';
+                            if(result.status == 0){
+                                b = Number(b) - 1;
+                                c = Number(c) + 1;
+                                $('#can_receive').text(b);
+                                $('#has_received').text(c);
+                                myApp.modal({
+                                    title:  '提醒<a href="javascript:void(0);" class="external" onclick="myApp.closeModal();" style="float:right;color: #B80000;margin-top: -10px;margin-right: -5px;">X</a>',
+                                    text: '恭喜您获取恒大兴安绿色大米兑换券一张<br />到活动地点领取即可',
+                                    afterText: '<div style="margin: 30px 0 15px 0;"><a href="#" class="external receive_coupon"  data-user-code="{$userCode}" data-batch-coupon-code="'+result.data.batchCouponCode+'" style="border: 1px solid #007aff;border-radius: 4px;padding: 2px 10%;">再来一袋</a></div>'
+                                });
+
+                                $('.receive_coupon').click(function(){
+                                    myApp.closeModal();
+                                    receive_coupon($(this));
+                                });
+                                obj.attr('disabled', false);
+                            }else{
+                                obj.attr('disabled', false);
+                                if(result.data.code == 80223){
+                                    text = '该优惠券不存在！';
+                                }else if(result.data.code == 80220){
+                                    text = '该优惠券已过期！';
+                                }else if(result.data.code == 80221){
+                                    text = '该优惠券已被领完！';
+                                }else if(result.data.code == 80222){
+                                    text = '您领取该优惠券已达上限！';
+//                            }else if(result.data.code == 50720){
+//                                text = '红包不可用！';
+//                            }else if(result.data.code == 50721){
+//                                text = '红包不够用！';
+                                }else{
+                                    text = '领取失败，请重试！';
+                                }
+                                other_modal(text);
+                            }
+                        }
+                );
+            }
+        }
+
+        function other_modal(text) {
+            myApp.modal({
+                title:  '提醒',
+                text: text,
+                buttons: [
+                    {
+                        text: '确定'
+                    }
+                ]
+            });
+        }
+    });
+</script>
+

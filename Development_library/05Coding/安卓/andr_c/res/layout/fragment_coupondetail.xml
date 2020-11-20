@@ -1,0 +1,446 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/LyWHFirst"
+    android:background="@color/app_bg"
+    android:orientation="vertical" >
+
+    <include layout="@layout/common_title_theme" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility="visible" >
+
+                        <android.support.v4.view.ViewPager
+                            android:id="@+id/viewPager"
+                            style="@style/LyWHFirst"
+                            android:layout_height="250dp"
+                            android:background="@drawable/no_message" />
+
+                        <LinearLayout
+                            style="@style/LyWHFourth"
+                            android:layout_gravity="center_vertical|bottom"
+                            android:background="@color/white"
+                            android:orientation="vertical" >
+
+                            <TextView
+                                android:id="@+id/shop_name"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal|left"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="90dp"
+                                android:layout_marginTop="5dp"
+                                android:minHeight="@dimen/layout_height"
+                                android:text="店铺名称"
+                                android:textColor="@color/shopdetail_title"
+                                android:textSize="@dimen/app_title_bar_font" />
+
+                            <LinearLayout
+                                style="@style/LyWHFourth"
+                                android:background="@color/white"
+                                android:gravity="left"
+                                android:orientation="horizontal" >
+
+                                <TextView
+                                    android:id="@+id/tv_popularity"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="5dp"
+                                    android:layout_marginLeft="10dp"
+                                    android:gravity="left"
+                                    android:text="@string/popularity"
+                                    android:textColor="@color/shopdetail_content" />
+
+                                <TextView
+                                    android:id="@+id/tv_repeat"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_horizontal|left"
+                                    android:layout_marginBottom="5dp"
+                                    android:layout_marginLeft="35dp"
+                                    android:text="@string/repeatcustomer"
+                                    android:textColor="@color/shopdetail_content" />
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="right|bottom"
+                            android:layout_marginBottom="40dp"
+                            android:background="@drawable/bg_border"
+                            android:orientation="vertical" >
+
+                            <ImageView
+                                android:id="@+id/shop_logo"
+                                android:layout_width="80dp"
+                                android:layout_height="80dp"
+                                android:scaleType="centerCrop" />
+                        </LinearLayout>
+                    </FrameLayout>
+
+                    <TextView style="@style/VLine" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@color/white"
+                        android:divider="@drawable/shape_divider"
+                        android:orientation="vertical"
+                        android:showDividers="middle"
+                        android:visibility="visible" >
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/layout_height"
+                            android:paddingLeft="10dp"
+                            android:paddingRight="10dp" >
+
+                            <TextView
+                                android:id="@+id/tv_availableprice"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentLeft="true"
+                                android:layout_centerVertical="true"
+                                android:layout_toLeftOf="@+id/btn_immediately_use"
+                                android:text="XXXX"
+                                android:textColor="@color/shopdetail_title" />
+
+                            <Button
+                                android:id="@+id/btn_immediately_use"
+                                android:layout_width="wrap_content"
+                                android:layout_height="35dp"
+                                android:layout_alignParentRight="true"
+                                android:layout_centerVertical="true"
+                                android:background="@drawable/shape_couponfail"
+                                android:paddingLeft="10dp"
+                                android:paddingRight="10dp"
+                                android:text="@string/use"
+                                android:textColor="@color/white"
+                                android:textSize="12sp" />
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/layout_lheight"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="10dp"
+                            android:paddingRight="10dp" >
+
+                            <TextView
+                                android:id="@+id/tv_couponcode"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentLeft="true"
+                                android:layout_toLeftOf="@+id/tv_couponcode"
+                                android:text="@string/user_coupon_code"
+                                android:textColor="@color/shopdetail_content" />
+
+                            <ImageView
+                                android:id="@+id/iv_barcode"
+                                style="@style/LyWHSecond"
+                                android:layout_below="@+id/tv_couponcode"
+                                android:layout_centerHorizontal="true"
+                                android:layout_centerVertical="true"
+                                android:layout_marginBottom="5dp"
+                                android:layout_marginTop="5dp" />
+                        </RelativeLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:orientation="vertical"
+                        android:visibility="visible" >
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/layout_height"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="10dp"
+                            android:paddingRight="10dp" >
+
+                            <ImageView
+                                android:id="@+id/red1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignBottom="@+id/tv_coupontype_title"
+                                android:layout_alignParentLeft="true"
+                                android:layout_alignTop="@+id/tv_coupontype_title"
+                                android:scaleType="centerInside"
+                                android:src="@drawable/red_point" />
+
+                            <TextView
+                                android:id="@+id/tv_coupontype_title"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dp"
+                                android:layout_toRightOf="@+id/red1"
+                                android:gravity="center_vertical"
+                                android:text="@string/coupon_type"
+                                android:textColor="@color/shopdetail_content" />
+
+                            <TextView
+                                android:id="@+id/tv_coupontype"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignLeft="@+id/tv_coupontype_title"
+                                android:layout_below="@+id/tv_coupontype_title"
+                                android:textColor="@color/shopdetail_content" />
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/layout_height"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="10dp"
+                            android:paddingRight="10dp" >
+
+                            <ImageView
+                                android:id="@+id/red2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignBottom="@+id/tv_date_title"
+                                android:layout_alignParentLeft="true"
+                                android:layout_alignTop="@+id/tv_date_title"
+                                android:scaleType="centerInside"
+                                android:src="@drawable/red_point" />
+
+                            <TextView
+                                android:id="@+id/tv_date_title"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dp"
+                                android:layout_toRightOf="@+id/red2"
+                                android:text="@string/coupon_use_date"
+                                android:textColor="@color/shopdetail_content" />
+
+                            <TextView
+                                android:id="@+id/tv_couponuse_date"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignLeft="@+id/tv_date_title"
+                                android:layout_below="@+id/tv_date_title"
+                                android:gravity="center_vertical"
+                                android:textColor="@color/shopdetail_content" />
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/layout_height"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="10dp"
+                            android:paddingRight="10dp" >
+
+                            <ImageView
+                                android:id="@+id/red3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignBottom="@+id/tv_daytime_title"
+                                android:layout_alignParentLeft="true"
+                                android:layout_alignTop="@+id/tv_daytime_title"
+                                android:scaleType="centerInside"
+                                android:src="@drawable/red_point" />
+
+                            <TextView
+                                android:id="@+id/tv_daytime_title"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dp"
+                                android:layout_toRightOf="@+id/red3"
+                                android:text="@string/coupon_use_time"
+                                android:textColor="@color/shopdetail_content" />
+
+                            <TextView
+                                android:id="@+id/tv_couponday_time"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignLeft="@+id/tv_daytime_title"
+                                android:layout_below="@+id/tv_daytime_title"
+                                android:textColor="@color/shopdetail_content" />
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/layout_height"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="10dp"
+                            android:paddingRight="10dp" >
+
+                            <ImageView
+                                android:id="@+id/red4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignBottom="@+id/tv_status_title"
+                                android:layout_alignParentLeft="true"
+                                android:layout_alignTop="@+id/tv_status_title"
+                                android:scaleType="centerInside"
+                                android:src="@drawable/red_point" />
+
+                            <TextView
+                                android:id="@+id/tv_status_title"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dp"
+                                android:layout_toRightOf="@+id/red4"
+                                android:text="@string/coupon_status"
+                                android:textColor="@color/shopdetail_content" />
+
+                            <TextView
+                                android:id="@+id/tv_coupon_status"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignLeft="@+id/tv_status_title"
+                                android:layout_below="@+id/tv_status_title"
+                                android:textColor="@color/shopdetail_content" />
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:minHeight="@dimen/layout_height"
+                            android:paddingLeft="10dp"
+                            android:paddingRight="10dp" >
+
+                            <ImageView
+                                android:id="@+id/red5"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignBottom="@+id/coupon_remark"
+                                android:layout_alignParentLeft="true"
+                                android:layout_alignTop="@+id/coupon_remark"
+                                android:scaleType="centerInside"
+                                android:src="@drawable/red_point" />
+
+                            <TextView
+                                android:id="@+id/coupon_remark"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dp"
+                                android:layout_toRightOf="@+id/red5"
+                                android:text="@string/coupon_use_remark"
+                                android:textColor="@color/shopdetail_content" />
+
+                            <TextView
+                                android:id="@+id/tv_coupon_remark"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignLeft="@+id/coupon_remark"
+                                android:layout_below="@+id/coupon_remark"
+                                android:layout_centerVertical="true"
+                                android:layout_toRightOf="@+id/coupon_remark"
+                                android:text="XXXXXX"
+                                android:textColor="@color/shopdetail_content" />
+                        </RelativeLayout>
+
+                        <TextView style="@style/VLine" />
+                    </LinearLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/rl_shopinfo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/cardbg"
+                        android:minHeight="@dimen/layout_height" >
+
+                        <ImageView
+                            android:id="@+id/tv_shophead"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_centerVertical="true"
+                            android:layout_margin="10dp"
+                            android:background="@drawable/food"
+                            android:scaleType="centerCrop" />
+
+                        <LinearLayout
+                            android:id="@+id/ly_shopinfo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="5dp"
+                            android:layout_toLeftOf="@+id/iv_arrow"
+                            android:layout_toRightOf="@+id/tv_shophead"
+                            android:orientation="vertical" >
+
+                            <TextView
+                                android:id="@+id/tv_shopname"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:gravity="center_vertical"
+                                android:singleLine="true"
+                                android:text="XXXXXXXXXXXXX"
+                                android:textColor="@color/shopdetail_content"
+                                android:textSize="@dimen/app_item_content_font" />
+
+                            <TextView
+                                android:id="@+id/tv_shopaddres"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:gravity="center_vertical"
+                                android:singleLine="true"
+                                android:text="XXXXXXXXXXXXX"
+                                android:textColor="@color/shopdetail_content"
+                                android:textSize="@dimen/app_item_content_font" />
+
+                            <TextView
+                                android:id="@+id/tv_shoptel"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="10dp"
+                                android:layout_marginTop="10dp"
+                                android:gravity="center_vertical"
+                                android:singleLine="true"
+                                android:text="XXXXXXXXXXXXX"
+                                android:textColor="@color/shopdetail_content"
+                                android:textSize="@dimen/app_item_content_font" />
+                        </LinearLayout>
+
+                        <ImageView
+                            android:id="@+id/iv_arrow"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:scaleType="centerInside"
+                            android:src="@drawable/shop_arrow" />
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <ProgressBar
+                    android:id="@+id/prog_center_nodata"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_gravity="center_horizontal"
+                    android:visibility="visible" />
+            </FrameLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

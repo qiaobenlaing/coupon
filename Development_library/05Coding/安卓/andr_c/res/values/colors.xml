@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- 全局颜色 -->
+    <color name="app_bg">#F0EFF5</color>
+    <color name="batch_app_bg">#EFEEF5</color>
+    <color name="app_item_bg">#FFFFFFFF</color>
+    <color name="app_line_bg">#FF000000</color>
+    <color name="app_title_bg">#FFC30A18</color>
+    <color name="app_title_bar_font">#FFFEFDFD</color>
+    <color name="app_list_bg">#FF000000</color>
+    <color name="app_list_item_bg">#FF000000</color>
+    <color name="app_list_divider">#F0EFF0</color>
+    <color name="app_bottom_bar_bg">#F5F5F5</color>
+    <color name="app_item_title">#FF000000</color>
+    <color name="app_item_content">#9E9796</color>
+    <!-- 下拉圈圈的颜色 -->
+    <color name="tint_bar">#ff79211d</color>
+    <color name="pink">#FFFFC0Cb</color>
+    <color name="orange">#FFFF8D00</color>
+    <color name="yellow">#FFFFFF00</color>
+    <!-- 标准颜色 -->
+    <color name="transparent">#00000000</color>
+    <color name="black">#FF000000</color>
+    <color name="red">#C5000A</color>
+    <color name="shallow_red">#E54B2E</color>
+    <color name="gray">#FF666666</color>
+    <!-- 浅灰色 线条颜色 -->
+    <color name="line_gray">#DCDCDC</color>
+    <!-- 灰色 -->
+    <color name="just_gray">#BCBCBC</color>
+    <!-- 绿色 -->
+    <color name="light_green">#009800</color>
+    <!-- 蓝色 -->
+    <color name="deep_blue">#3200FE</color>
+    <!-- 黄色 -->
+    <color name="pale_yellow">#EB9500</color>
+    <!-- 橘黄色 -->
+    <color name="saffron_yellow">#FE783D</color>
+    <!-- 浅黄色 -->
+    <color name="light_yellow">#FFFCCC</color>
+    <color name="dark_gray">#FF444444</color>
+    <color name="blue">#FF3F6FAB</color>
+    <color name="green">#FF507F00</color>
+    <color name="purple">#3333CC</color>
+
+    <!-- 修改密码 -->
+    <color name="tv_forget_pwd">#5077DF</color>
+    <!-- 暗红色 -->
+    <color name="burgundy">#BD5123</color>
+
+    <!-- 其它颜色 -->
+    <color name="gold">#FFD700</color>
+    <color name="lightgoldenrodyellow">#FAFAD2</color>
+    <color name="darkgoldenrod">#B8860B</color>
+    <color name="snow">#FFFAFA</color>
+    <color name="dark">#000000</color>
+    <color name="bule">#0033CC</color>
+    <color name="result_view">#b0000000</color>
+    <color name="viewfinder_mask">#60000000</color>
+    <color name="possible_result_points">#c0ffff00</color>
+    <color name="linerlayout">#CCCC66</color>
+    <color name="textCorlor">#003399</color>
+    <color name="gray_version">#C0C0C0</color>
+
+    <!-- 选项卡字体颜色 -->
+    <color name="tab_fontsel">#c5000B</color>
+    <color name="tab_fontnosel">#868A91</color>
+    <!-- 白色 -->
+    <color name="white">#ffffff</color>
+    <!-- 买单 -->
+    <color name="pay_bill_gray">#888888</color>
+    <color name="home_topfont">#333333</color>
+    <!-- 首页字体颜色 -->
+    <color name="home_font">#666666</color>
+    <color name="home_lstopfont">#4D4D4D</color>
+    <color name="shop_namefont">#505050</color>
+    <color name="shop_nameother">#9E9E9E</color>
+    <!-- 温馨提示的颜色 -->
+    <color name="home_tipsfont">#575756</color>
+    <!-- 消息的颜色 -->
+    <color name="msg_font">#BBBBBB</color>
+    <!-- RadioButton -->
+    <color name="radio_font_active">#D6000E</color>
+    <color name="radio_font">#FFFFFF</color>
+    <color name="radiobutton_normal">#FFFFFF</color>
+    <color name="radiobutton_pressed">#FFFFFF</color>
+    <color name="radio_colors">#FFFFFFFF</color>
+    <color name="gray_transparent">#b0000000</color>
+    <color name="light_gray_transparent">#7fDCDCDC</color>
+
+    <!-- app的背景颜色 -->
+    <color name="bgall">#efeff4</color>
+    <!-- 工银特惠界面颜色  银白色 -->
+    <color name="silvery_white">#F8F8F8</color>
+    <!-- 工银特惠界面  距离字体的颜色  淡灰色 -->
+    <color name="dove_color">#8F8F8F</color>
+    <!-- 分割线的颜色  超淡灰色 -->
+    <color name="very_gray">#E5E5E5</color>
+    <color name="thin_gray">#EAEAEA</color>
+    <color name="very_thin_gray">#F3F3F3</color>
+    <!-- 内容的字体颜色 -->
+    <color name="content_color">#666666</color>
+    <!-- 会员卡详情 -->
+    <color name="point_color">#E54C2D</color>
+    <!-- 字体颜色 -->
+    <color name="textcolor">#777777</color>
+    <!-- 深灰色 -->
+    <color name="deep_grey">#666666</color>
+    <!-- 深色分割线颜色 -->
+    <color name="deep_gray">#D9D9DA</color>
+    <!-- 浅灰色的分割线 -->
+    <color name="shallow_gray">#E9E9E9</color>
+    <!-- shopdetail -->
+    <color name="shopdetail_title">#1E1E1E</color>
+    <color name="shopdetail_content">#646464</color>
+    <color name="shopdetail_divider">#D7D7D7</color>
+    <!-- 优惠券详情文字颜色  橘色 -->
+    <color name="coupondetail_font">#FE7D46</color>
+    <!-- shopFragment -->
+    <color name="shop_btn_bg">#3200FF</color>
+    <!-- 筛选查询 -->
+    <color name="condition_sel">#F7F7F7</color>
+    <!-- 优惠券 -->
+    <color name="shop_coupon">#88C7F7</color>
+    <!-- 上新 -->
+    <color name="shop_new">#7CD49A</color>
+    <!-- 工行卡折扣 -->
+    <color name="icbc_discount">#FF6C6C</color>
+    <!-- 首单立减 -->
+    <color name="is_first">#FFB6C1</color>
+    <!-- 活动 -->
+    <color name="shop_act">#48D0E3</color>
+    <!-- activity dialog 的背景颜色 -->
+    <color name="activity_dialog_bg">#FBFBFB</color>
+    <!-- 透明颜色 -->
+    <color name="shop_photo_bg">#7f666666</color>
+    <color name="activity_dialog_title">#A2A2A2</color>
+    <!-- 限时购 -->
+    <color name="timelimit_font_color">#989898</color>
+    <!-- 支付失败 -->
+    <color name="payfail_color">#FBEEE8</color>
+    <!-- 搜索商店之间的分割线 -->
+    <color name="search_shop">#EAEAEA</color>
+    <color name="search_shop_deep">#E2E2E2</color>
+    <color name="grab_moneyfont">#FFD90B</color>
+    <color name="deep_textcolor">#333333</color>
+    <!-- 买单字体的颜色 -->
+    <color name="pay_bill_font">#D68332</color>
+    <!-- 买单满就送 -->
+    <color name="pay_bill_full_send">#FFFCED</color>
+    <color name="thin_addresscolor">#B6B6B6</color>
+
+    <!-- 工银特惠界面 -->
+    <color name="tv_shopname_color">#454545</color>
+    <color name="tv_content_color">#666666</color>
+    <color name="nodate_bg">#efeff4</color>
+
+    <!-- 我的活动 -->
+    <color name="coupon_hometopfont">#5D5D5D</color>
+    <!-- popupw -->
+    <color name="pop_textcolor">#4E4E4E</color>
+    <!-- 灰色 -->
+    <color name="tv_text_gray">#6E6E6E</color>
+    <!-- shopDetailFragment -->
+    <!-- 橘色 -->
+    <color name="coupon_price">#E35E00</color>
+    <color name="user_coupon_code">#4F4F4F</color>
+    <!-- nby优惠颜色 -->
+    <color name="nbuy_bg">#FC764A</color>
+    <color name="nbuy_bottom">#FA3715</color>
+    <!-- discount优惠颜色 -->
+    <color name="discount_bg">#F19A1A</color>
+    <color name="discount_bottom">#E45D03</color>
+    <!-- dedcut优惠颜色 -->
+    <color name="dedcut_bg">#F06565</color>
+    <color name="dedcut_bottom">#E42828</color>
+    <!-- real优惠颜色 -->
+    <color name="real_bg">#16CD8D</color>
+    <color name="real_bottom">#02A34D</color>
+    <!-- experience优惠颜色 -->
+    <color name="experience_bg">#7FCF33</color>
+    <color name="experience_bottom">#3FA80A</color>
+    <!-- fail优惠颜色   （失效优惠券） -->
+    <color name="fail_bg">#B2B2B2</color>
+    <color name="fail_bottom">#7C7C7C</color>
+    <!-- 足迹 -->
+    <color name="myconnon_blue">#009900</color>
+    <!-- 确认使用过的优惠券 -->
+    <color name="define_use_gray">#7f9D9B9C</color>
+    <!-- 优惠券总金额 -->
+    <color name="coupon_total">#DB5A04</color>
+    <!-- 优惠券优惠金额 -->
+    <color name="coupon_money">#E3762D</color>
+    <!-- 优惠券字体 -->
+    <color name="coupon_text">#999999</color>
+     <!-- 上传图片添加的颜色 -->
+ 	<color name="none_color">#00000000</color>
+ 	<color name="plugin_camera_black">#000000</color>
+ 	<color name="albumback">#E1E0DE</color>
+	<color name="coupon_fontgrey">#666666</color>
+	<!-- 同一批次优惠券详情界面 -->
+	<!-- 黄色 -->
+	<color name="batch_total_money">#F9FCAB</color>
+	<!-- 深黄色 -->
+	<color name="money_font">#F37B47</color>
+	<!-- 浅灰色（提示性文字） -->
+	<color name="prompt_font">#787878</color>
+	<!-- 输入框灰色 -->
+	<color name="edt_act">#7B7B7B</color>
+	<!-- 活动详情 -->
+	<color name="book_varchers_act">#717172</color>
+	<!-- 活动时间和人数价格的颜色 -->
+	<color name="act_time">#666666</color>
+	<!-- 活动 -->
+	<color name="act_title_bg">#3f000000</color>
+	
+	
+</resources>

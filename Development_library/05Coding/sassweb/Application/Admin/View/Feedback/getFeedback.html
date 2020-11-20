@@ -1,0 +1,31 @@
+<layout name="layout_admin" />
+<form class="row" role="form" id="data_search_form" action="#" method="get">
+    <input type="hidden" id="frm_ele_page" name="page" value="1" />
+</form>
+<div style="margin-bottom: 60px;">
+    <form method="post" action="/Admin/Feedback/replyFeedback" id="reply-feedback">
+        <label>反馈</label>
+        <input type="hidden" name="targetCode" id="targetCode" value="{$shopCode}{$userCode}" />
+        <input type="hidden" name="type" id="type" value="{$type}" />
+        <div class="form-group">
+            <textarea class="form-control" rows="3" name="message"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" style="float: right;">保存</button>
+    </form>
+</div>
+<div id="data_table_wrapper">
+    <include file="./Application/Admin/View/Feedback/getFeedbackWidget.html" />
+</div>
+<script>
+    $('#reply-feedback').on('submit', function() {
+        var frm = $(this);
+        $.post(frm.attr('action'), frm.serialize(), function(resp) {
+            if (resp.status == sz.STATUS_SUCC) {
+                location.reload();
+            } else {
+                sz.showErrMsg(resp.msg.code, 3);
+            }
+        });
+        return false;
+    });
+</script>

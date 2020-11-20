@@ -1,0 +1,264 @@
+<link th:replace="/include/header" />
+<script th:src="@{/easyui/datagrid-scrollview.js}"></script>
+<style type="text/css" title="text/css">
+/* <![CDATA[ */
+
+/* ]]> */
+</style>
+<script th:inline="javascript">
+/*<![CDATA[*/ 
+var loginNameValid =[[@{/sysuser/loginNameValid}]];           
+       
+function formatType(id,row,index){
+	return $g.form.formatType($g.comboData.BOOLEAN_TYPE, id, null, null, "否");
+}
+
+function onSelect(index, row){
+	$('#userForm').form('load', [[@{/sysuser/load?userId=}]]+ row.userId);
+	// $('#_easyui_textbox_input3').attr("readonly",true);
+	$('#p').panel('open');
+	$('#changepwd').panel('close');
+}
+
+function save(){
+      	var node = $('#userForm').serializeArray();
+      	if ($('#userForm').form('validate')) {
+      		$.post([[@{/sysuser/save}]], node, function(data){
+    		var json = $.parseJSON(data);
+    		if(2 == json.result){
+    			$g.showMsg('消息', "账号名称和用户名称不能为空");
+    		}else{
+    			$g.showMsg('消息', "添加成功");
+    			$('#dg').datagrid('reload');
+    		}
+    		$('#p').panel('close');
+    	});
+      	}
+      	
+}
+
+function remove_account(){
+	var rows = $('#dg').datagrid('getChecked');
+	//如果用户没有选中任何行，就无需进行删除动作
+	if(rows.length <=0) {
+		$g.showMsg('消息', '请选择需要删除的账号！');
+		return;
+	}
+	$.messager.confirm('删除确认', "删除操作无法撤销，是否确定？", function(result){  
+	      if (result){
+	      	console.log(rows);
+	    	  $('#p').panel('close');
+	    	  userIds  = "";
+	    	  for(var i=0 ; i < rows.length; i++){
+	    		  if(userIds.length > 0) userIds += ",";
+	    		  userIds += rows[i].userId;
+	    	  }
+	    	  $.post([[@{/sysuser/removeAll?userIds=}]]+userIds).done(function(data){
+	    	  	$g.showMsg('消息', '删除成功！');
+	    	  	$('#dg').datagrid('reload');
+	    	  });
+		  }  
+	});  
+	
+}
+
+//重置密码
+function changepwd(){
+$('#userForm').form('clear');
+$('#p').panel('close');
+	passWordInit();
+}
+
+function add(){
+	$('#userForm').form('clear');
+	$('#enabled').switchbutton('check');
+	$('#changepwd').panel('close');
+	// $('#_easyui_textbox_input3').attr("readoSnly",false);
+	$('#p').panel('open');
+	$('#p_edit').panel('close');
+}
+
+function searchGrid(){
+	var options = $('#dg').datagrid('options');
+	options.pageNumber = 1;
+	$('#dg').datagrid('reload');
+}
+
+function clearSearch(){
+	$('#searchForm').form('clear');
+}
+
+function onBeforeLoad(param){
+	$.each( $("#searchForm").serializeArray(), function(index, item){
+		param[item.name]=item.value;
+	});
+}
+
+$(document).ready(function() {
+	$('#dg').datagrid({  
+		url: [[@{/sysuser/page}]], 
+		pageSize: 40,
+		onBeforeLoad: onBeforeLoad
+	}); 
+	
+	$('#roleIds').combobox({
+		url: [[@{/sysrole/findAll}]],
+	});
+});
+
+/*重置密码*/
+    function passWordInit(){
+    	//判断选中
+    	var rows = $('#dg').datagrid('getChecked');
+    	if (rows.length<1) {
+    		$g.showMsg('消息', '未选中任何账户！');
+    		return;
+    	}else if (rows.length>1) {
+			$g.showMsg('消息', '一次请只选中一个');
+			return;
+		}
+		//确认显示
+    	var nodes = "";
+        for(var i=0;i<rows.length;i++){
+            nodes += "<span>账号名称：" + rows[i].loginName +"，用户名称：" +rows[i].userName + "</span><br>";
+        }
+        $("#initpwd").html(nodes);
+        var passwordEdit = $('#passWordEdit_inner').dialog({
+            width: 460,
+            height: 260,
+            modal: true,
+            title: '修改密码',
+            buttons: [{
+                text: '重置',
+                id: 'btn-sure',
+                handler: function() {
+                    
+					
+					rows = rows[0];
+
+					$.post([[@{/sysuser/initPassword}]], rows , function(data){
+						var json = $.parseJSON(data);
+						$g.showMsg('消息', json.message);
+						$('#dg').datagrid('reload');
+						passwordEdit.panel('close');
+					});    
+                }
+            }, {
+                text: '关闭',
+                handler: function() {
+                    passwordEdit.panel('close');
+                    console.log('此时应取消重置密码');
+                }
+            }],
+            onOpen: function() {
+            	console.log('点击即打开');
+            }
+        });
+    };
+</script>
+<div data-options="region:'west'" style="width: 50%; border-top: 0px; border-left: 0px; border-bottom:0px;" class="layout-have-right-border">
+	<div class="easyui-layout" data-options="fit:true,border:false" style="padding: 10px 0px 10px 10px;">
+		<div data-options="region:'north',border:false,title:'查询条件'" style="height: 100px; padding: 5px;">
+			<form id="searchForm" class="editForm">
+				<label>账号名称:</label> 
+				<input type="text" class="easyui-textbox" name="loginName" style="width: 200px; height: 25px;"/><br/>
+				<label style="line-height: 27px;">用户名称:</label> 
+				<input type="text" class="easyui-textbox" name="userName" style="width: 200px; height: 25px; bottom: 12px;"/> 
+				<a href="javascript:void(0)" data-options=" iconCls:'icon-search'" class="easyui-linkbutton"
+					style="position: absolute; right: 50px; bottom: 32px; line-height: 28px; height: 26px;"
+					onclick="searchGrid();">查询</a> 
+				<a href="javascript:void(0)" data-options=" iconCls:'icon-reload'" class="easyui-linkbutton"
+					style="position: absolute; right: 50px; bottom: 3px; line-height: 28px; height: 26px;"
+					onclick="clearSearch();">清空</a>
+			</form>
+		</div>
+		<!-- 数据字典左列表 -->
+		<div data-options="region:'center',border:false"
+			class="layout-have-top-border">
+			<div id="tb" style="padding: 2px 5px;">
+				<a href="javascript:void(0)" class="easyui-linkbutton"
+					data-options="iconCls:'icon-add',plain:true" onclick="add();">新增</a>
+				<a href="javascript:void(0)" class="easyui-linkbutton"
+					data-options="iconCls:'icon-remove',plain:true" onclick="remove_account()">删除</a>
+					<a id="passWordInit" href="javascript:void(0)" class="easyui-linkbutton"
+					data-options="iconCls:'icon-lock',plain:true" onclick="changepwd();">重置密码</a>
+			</div>
+			<table id="dg" class="easyui-datagrid"
+				data-options="view:scrollview,toolbar:'#tb',title: '操作员管理',fitColumns:true,nowrap:true,border:false,singleSelect:true,selectOnCheck:false,checkOnSelect:false,autoRowHeight:false,onSelect:onSelect"
+				style="height: 100%">
+				<thead>
+					<tr>
+						<th data-options="field:'ck',checkbox:true"></th>
+						<th data-options="field:'loginName',width:160">账号名称</th>
+						<th data-options="field:'userName',width:160">用户名称</th>
+						<th data-options="field:'enabled',width:100,formatter:formatType">是否启用</th>
+						<th data-options="field:'updateTime',width:200">更新时间</th>
+					</tr>
+				</thead>
+			</table>
+		</div>
+	</div>
+</div>
+<div data-options="region:'center',border:false">
+	<div id="p" class="easyui-panel" title="用户编辑"
+		data-options="border:false,closed:true">
+		<div class="easyui-panel layout-have-bottom-border"
+			style="padding: 2px;" data-options="border:false">
+			<a href="javascript:void(0)" class="easyui-linkbutton"
+				data-options="iconCls:'icon-save',plain:true" onclick="save();">保存</a>
+		</div>
+
+		<form id="userForm" class="editForm2" method="post"
+			style="padding: 10px;">
+			<table>
+				<tr>
+					<td>账号名称:</td>
+					<td><input id="loginName" class="easyui-textbox"
+						name="loginName"
+						data-options="required:true,validateOnCreate:false,validateOnBlur:true,
+								validType:{length:[0,16], unique:[loginNameValid, '#userId']}" />
+						<input id="userId" type="hidden" name="userId" />
+					<!-- 隐藏域 --></td>
+				</tr>
+				<tr>
+					<td>用户名称:</td>
+					<td><input class="easyui-textbox" name="userName"
+						data-options="required:true,validateOnCreate:false,validateOnBlur:true,validType:'length[0,16]'"></input></td>
+				</tr>
+				<tr>
+					<td>是否启用:</td>
+					<td><input id="enabled" class="easyui-switchbutton"
+						data-options="onText:'是',offText:'否'" name="enabled" value="1"></td>
+				</tr>
+				<tr>
+					<td>备注:</td>
+					<td><input class="easyui-textbox" name="remark"
+						style="width: 350px;" data-options="validType:'length[0,256]'"></input></td>
+				</tr>
+				<tr>
+					<td>用户角色:</td>
+					<td><input id="roleIds" class="easyui-combobox" name="roleIds"
+						style="width: 350px;"
+						data-options="valueField:'roleId',textField:'roleName',multiple:true,editable:false,panelHeight:'auto'" /></td>
+				</tr>
+			</table>
+			<!-- <input id="userId" type="hidden" name="userId"></input>
+			<label>账号名称:</label><input id="loginName" class="easyui-textbox" name="loginName" data-options="required:true,validateOnCreate:false,validateOnBlur:true,
+			validType:{length:[0,16], unique:[loginNameValid, '#userId']}"></input><br/>
+			<label>用户名称:</label><input class="easyui-textbox" name="userName" data-options="required:true,validateOnCreate:false,validateOnBlur:true,validType:'length[0,16]'"></input><br/>
+			<label>是否启用:</label><input id="enabled" class="easyui-switchbutton" data-options="onText:'是',offText:'否'" name="enabled" value="1"><br/>
+			<label>备注:</label><input class="easyui-textbox" name="remark" style="width:350px;" data-options="validType:'length[0,256]'"></input>
+			<label>用户角色:</label><div id="roleIds" class="easyui-combobox" name="roleIds" style="width:350px;" 
+				data-options="valueField:'roleId',textField:'roleName',multiple:true,editable:false,panelHeight:'auto'"></div> -->
+		</form>
+	</div>
+	
+	<!-- 修改密码 -->
+<div id="passWordEdit_inner" style="display:none">
+	<div style="margin: 19px 0 0 33px;">
+   <p>您的此次修改无法撤销！请确认是否重置以下账户的密码</p>
+   <p id="initpwd"></p>
+   </div>
+</div>
+</div>
+<link th:replace="/include/footer" />

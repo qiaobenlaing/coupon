@@ -1,0 +1,78 @@
+<layout name="layout_admin" />
+<div class="container-fluid">
+    <form class="form-inline">
+        <div class="form-group">
+            <label>发卡时间</label>
+            <select class="form-control input-sm" name="time">
+                <option value="">所有时间</option>
+                <option value="7" <eq name="get.time" value="7">selected="selected"</eq>>近一周</option>
+                <option value="30" <eq name="get.time" value="30">selected="selected"</eq>>近一月</option>
+                <option value="90" <eq name="get.time" value="90">selected="selected"</eq>>近一季</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>城市</label>
+            <select class="form-control input-sm" name="city">
+                <option value="">所有城市</option>
+                <foreach name="cityList" item="item">
+                    <option value="{$item.name}" <eq name="get.city" value="$item.name">selected="selected"</eq>>{$item.name}</option>
+                </foreach>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>商户类型</label>
+            <select class="form-control input-sm" name="type">
+                <option value="" <eq name="get.type" value="">selected="selected"</eq>>所有商户</option>
+                <option value="0" <eq name="get.type" value="0">selected="selected"</eq>>未知</option>
+                <option value="1" <eq name="get.type" value="1">selected="selected"</eq>>美食</option>
+                <option value="2" <eq name="get.type" value="2">selected="selected"</eq>>咖啡</option>
+                <option value="3" <eq name="get.type" value="3">selected="selected"</eq>>健身</option>
+                <option value="4" <eq name="get.type" value="4">selected="selected"</eq>>娱乐</option>
+                <option value="5" <eq name="get.type" value="5">selected="selected"</eq>>服装</option>
+                <option value="6" <eq name="get.type" value="6">selected="selected"</eq>>其他</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>会员卡类型</label>
+            <select class="form-control input-sm" name="cardType">
+                <option value="">全部类型</option>
+                <option value="银卡" <eq name="get.cardType" value="银卡">selected="selected"</eq>>银卡</option>
+                <option value="金卡" <eq name="get.cardType" value="金卡">selected="selected"</eq>>金卡</option>
+                <option value="白金卡" <eq name="get.cardType" value="白金卡">selected="selected"</eq>>白金卡</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>会员性别</label>
+            <select class="form-control input-sm" name="sex">
+                <option value="">不限</option>
+                <option value="M" <eq name="get.sex" value="M">selected="selected"</eq>>男</option>
+                <option value="F" <eq name="get.sex" value="F">selected="selected"</eq>>女</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-sm btn-primary">查询</button>
+    </form>
+</div>
+<table class="fp-table table table-striped table-bordered" id="data_table">
+    <thead>
+    <tr>
+        <th>商家数量</th>
+        <th>会员数量</th>
+        <th>会员积分</th>
+        <th>增长数量</th>
+        <th>增长率</th>
+        <th>累计消费金额(元)</th>
+        <th>消费次数</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td id="shop-count">{$data.shopCount}</td>
+        <td>{$data.vipCount}</td>
+        <td>{$data.vipPoints}</td>
+        <td>增长数量</td>
+        <td>增长率</td>
+        <td>{$data.consumeAmount}</td>
+        <td>{$data.consumeCount}</td>
+    </tr>
+    </tbody>
+</table>

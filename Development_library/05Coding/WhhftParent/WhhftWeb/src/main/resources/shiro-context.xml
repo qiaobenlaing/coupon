@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="
+          http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+          http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+          http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+          http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd
+          http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.3.xsd" 
+          default-lazy-init="true">
+	
+	<bean id="cacheManager" class="org.apache.shiro.cache.MemoryConstrainedCacheManager" />
+	 
+	<bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>
+	
+	<bean id="shiroRealm" class="com.whhft.sysmanage.web.shiro.ShiroRealm">
+		 <property name="credentialsMatcher">
+            <bean class="org.apache.shiro.authc.credential.Sha256CredentialsMatcher">
+                <property name="storedCredentialsHexEncoded" value="false"/>
+                <property name="hashSalted" value="true"/>
+                <property name="hashIterations" value="1024"/>
+            </bean>
+        </property>
+        <property name="sysUserService" ref="sysUserService"/>
+        <property name="sysAuthService" ref="sysAuthService"/>
+	</bean>
+	
+	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+	    <property name="realm" ref="shiroRealm"/>
+	    <property name="cacheManager" ref="cacheManager" />
+	</bean>
+
+
+	<bean id="shiroFilter" class="com.whhft.sysmanage.web.shiro.ShiroFilterFactoryExtBean" init-method="init">
+	    <property name="securityManager" ref="securityManager"/>
+	    <property name="loginUrl" value="/login"/>
+	    <property name="successUrl" value="/main"/>
+	    <property name="unauthorizedUrl" value="/login"/>
+	    <property name="sysAuthService" ref="sysAuthService"/>
+	    <property name="filterChainDefinitionsHead">
+	        <value>
+	        	/login = anon
+	        	/main = anon
+	        	/sysauth/userMainMenu = authc
+	        </value>
+	    </property>
+	    <property name="filterChainDefinitionsEnd">
+	        <value>
+	        	/p/** = authc
+	        	/include/** = anon
+	        	/** = anon
+	        </value>
+	    </property>
+	</bean>
+	
+	<!-- Enable Shiro Annotations for Spring-configured beans.  Only run after -->
+	<!-- the lifecycleBeanProcessor has run: -->
+	<bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator" depends-on="lifecycleBeanPostProcessor"/>
+	<bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
+	    <property name="securityManager" ref="securityManager"/>
+	</bean>
+
+
+</beans>

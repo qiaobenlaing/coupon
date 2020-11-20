@@ -1,0 +1,73 @@
+<layout name="layout_admin" />
+<div>
+    <form class="form-inline" id="data_search_form" action="#" method="get">
+        <div class="form-group">
+            <label for="mobile-nbr">手机号码</label>
+            <input type="text" class="form-control" name="mobileNbr" value="{$get.mobileNbr}" id="mobile-nbr" placeholder="手机号码">
+        </div>
+        <div class="form-group">
+            <label for="real-name">用户名</label>
+            <input type="text" class="form-control" name="realName" value="{$get.realName}" id="real-name" placeholder="用户名">
+        </div>
+        <div class="form-group">
+            <label for="status">状态</label>
+            <select class="form-control" name="status" id="status">
+                <option value="" <eq name="get.status" value="">selected="selected"</eq>>所有</option>
+                <option value="1" <eq name="get.status" value="1">selected="selected"</eq>>启用</option>
+                <option value="0" <eq name="get.status" value="0">selected="selected"</eq>>禁用</option>
+                <option value="2" <eq name="get.status" value="2">selected="selected"</eq>>未注册</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="reg-date">所属商圈</label>
+            <select class="form-control" name="bank_id" id="bank_id">
+                <foreach name="bankList" item="vo">
+                    <option value="{$vo.id}" <eq name="get.bank_id" value="$vo.bank_id">selected="selected"</eq>>{$vo.name}</option>
+                </foreach>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="reg-date">注册时间</label>
+            <div class="input-group date reg_date">
+                <input type="text" class="form-control ipt-date-time-picker" id="reg-date" name="registerTimeStart" value="{$get.registerTimeStart}" readonly placeholder="开始时间" />
+                <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="reg-end-date">至</label>
+            <div class="input-group date reg_date">
+                <input type="text" class="form-control ipt-date-time-picker" id="reg-end-date" name="registerTimeEnd" value="{$get.registerTimeEnd}" readonly placeholder="结束时间" />
+                <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary btn-sm" id="search_form_submit_btn">查询</button>
+        <button type="button" class="btn btn-primary btn-sm" id="export">导出</button>
+        <input type="hidden" id="frm_ele_page" name="page" value="1" />
+    </form>
+</div>
+<div id="data_table_wrapper">
+    <include file="./Application/Admin/View/User/listUserWidget.html" />
+</div>
+<script type="text/javascript">
+    $(function() {
+        $("#input-box").attr("name", "shopName");
+        $('.reg_date').datetimepicker({
+            format: 'yyyy-mm-dd',
+            autoclose: true,
+            todayBtn: true,
+            minView: 'month',
+            pickerPosition: "bottom-left"
+        })
+        $("#select").change(function() {
+            var val = $('#select').val();
+            $("#input-box").attr("name", val);
+        });
+        // 导出用户信息
+        $('#export').click(function(){
+            var frm = $('#data_search_form');
+            location.href = '/Admin/User/exportAllUser?' + frm.serialize();
+        });
+    });
+</script>

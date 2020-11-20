@@ -1,0 +1,51 @@
+<table class="fp-table table table-striped table-bordered table-condensed" id="data_table">
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>城市</th>
+        <th>商户</th>
+        <th>活动编码</th>
+        <th>操作系统</th>
+        <th>下载次数</th>
+    </tr>
+    </thead>
+    <tbody>
+    <foreach name="dataList" item="item">
+        <tr id="pre-shop-{$item.shopCode}">
+            <td>{$item.id}</td>
+            <td>{$item.name}</td>
+            <td>{$item.shopName}</td>
+            <td>{$item.activityNbr}</td>
+            <td>
+                <switch name="item.operation">
+                    <case value="1"><span style="color: #0B3408;">Android</span></case>
+                    <case value="2"><span style="color: #B612A8;">IOS</span></case>
+                </switch>
+                版
+            </td>
+            <td>{$item.downloadTimes}</td>
+        </tr>
+    </foreach>
+    </tbody>
+</table>
+<script>
+    // 采用该商店
+    ;(function(){
+        $('.use-the-shop').on('click', function(){
+            var btn = $(this);
+            var url = btn.data('url');
+            var shopCode = btn.data('shopCode');
+            $.post(url, {'shopCode' : shopCode}, function(resp){
+                console.log(resp);
+                if(resp.status == sz.STATUS_SUCC) {
+                    sz.showSuccMsg(resp.msg, 2);
+                    $('#pre-shop-' + shopCode + ' .status').text('已采用，时间：'  + resp.data.useTime);
+                    $('#pre-shop-' + shopCode + ' .operation').empty();
+                } else {
+                    sz.showErrMsg(resp.msg);
+                }
+            });
+        })
+    })()
+</script>
+<include file="Application/Admin/View/Widget/pager.html" />

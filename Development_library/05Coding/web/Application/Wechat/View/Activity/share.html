@@ -1,0 +1,112 @@
+<layout name="layout_normal" />
+<!-- Views -->
+<div class="views">
+    <!-- Your main view, should have "view-main" class -->
+    <div class="view view-main">
+        <!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
+        <div class="pages toolbar-through">
+            <!-- Page, "data-page" contains page name -->
+            <div data-page="index" class="page">
+                <!-- Scrollable page content -->
+                <div class="page-content act">
+                    <div class="body act-body">
+                        <div class="act-name">{$actInfo.activityName}</div>
+                        <div class="img">
+                            <img src="{$actInfo.activityImg|default='/Public/img/act.jpg'}" alt=""/>
+                        </div>
+                        <div class="detail">
+                            <div class="act-time">
+                                活动时间：{$actInfo.startTime|substr=0,16} - {$actInfo.endTime|substr=0,16}
+                            </div>
+                            <div class="act-location">
+                                活动地点：{$actInfo.activityLocation}
+                            </div>
+                            <div class="act-limit-nbr">
+                                人数限制：
+                                <if condition="($actInfo.limitedParticipators EQ '') OR ($actInfo.limitedParticipators EQ 0)">
+                                    无人数限制
+                                    <else/>
+                                    不能多于{$actInfo.limitedParticipators|default="0"}人
+                                </if>
+                            </div>
+                            <div class="act-limit-other">
+                                其他限制：
+                            </div>
+                        </div>
+                        <div class="act-content">活动说明：
+                            <p>{$actInfo.tetContent|default="暂无活动说明"}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="__PUBLIC__/js/jweixin-1.0.0.js"></script>
+<script>
+    $(function() {
+        var myAvatar = '{$actInfo.activityImg}';
+        var link = 'http://web.huiquan.suanzi.cn/Wechat/Activity/share/activityCode/{$actInfo.activityCode}';
+        wx.config({
+            debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+            appId: '{$appId}', // 必填，公众号的唯一标识
+            timestamp: '{$timestamp}', // 必填，生成签名的时间戳
+            nonceStr: '{$nonceStr}', // 必填，生成签名的随机串
+            signature: '{$signature}',// 必填，签名，见附录1
+            jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+        });
+
+        /**
+         * 微信分享
+         */
+        wx.ready(function() {
+            wx.onMenuShareTimeline({
+                title: '苞米活动分享', // 分享标题
+                link: link, // 分享链接
+                imgUrl: myAvatar, // 分享图标
+                success: function (res) {
+                    // 用户确认分享后执行的回调函数
+                    hasShared = true;
+                    alert("分享成功！");
+//                    $.get('{:U("/Agent/Possess/addPossess",array("coupon_id"=>$couponInfo["id"]))}',
+//                            [],
+//                            function(ret){
+//                                alert(ret.msg);
+//                                if(ret.status == 0){
+//                                    window.location.href='{:U("/Agent/Possess/listPossess")}';
+//                                }
+//                            }
+//                    );
+                }
+            });
+            wx.onMenuShareAppMessage({
+                title: '苞米活动分享', // 分享标题
+                desc: '苞米活动分享', // 分享描述
+                link: link, // 分享链接
+                imgUrl: myAvatar, // 分享图标
+                type: 'link', // 分享类型,music、video或link，不填默认为link
+                dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+                success: function (res) {
+                    // 用户确认分享后执行的回调函数
+                    hasShared = true;
+                    alert("分享成功！");
+//                    $.get('{:U("/Agent/Possess/addPossess",array("coupon_id"=>$couponInfo["id"]))}',
+//                            [],
+//                            function(ret){
+//                                alert(ret.msg);
+//                                if(ret.status == 0){
+//                                    window.location.href='{:U("/Agent/Possess/listPossess")}';
+//                                }
+//                            }
+//                    );
+                }
+            });
+        });
+
+        // 百度统计
+//        var hm = document.createElement("script");
+//        hm.src = "//hm.baidu.com/hm.js?086fb61bd38301e2d91254c2c423c76b";
+//        var s = document.getElementsByTagName("script")[0];
+//        s.parentNode.insertBefore(hm, s);
+    });
+</script>

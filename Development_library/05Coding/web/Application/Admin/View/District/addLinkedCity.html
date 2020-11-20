@@ -1,0 +1,50 @@
+<layout name="layout_admin" />
+<div class="row">
+    <div class="col-md-11">
+        <form id="linked_add_form" action="/Admin/District/addLinkedCity" method="post" class="form-horizontal">
+            <input type="hidden" name="cityId" value="{$cityId}" />
+            <div class="form-group add-linked-city-wrap">
+                <label class="col-sm-2 control-label">添加模块</label>
+                <div class="col-sm-10">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">模块列表</div>
+                        <div class="panel-body">
+                            <div class="col-md-12">
+                                <label class="control-label">模块</label>
+                                <select class="js-data-add-city-ajax"  multiple="multiple" name="linkedModule[]" style="width: 100%">
+                                    <foreach name="indexModuleList" item="item">
+                                        <option value="{$item.id}" <foreach name="linkedList" item="linkedModule"><eq name="linkedModule.indexModuleId" value="$item.id">selected="selected"</eq></foreach>>{$item.moduleTitle}</option>
+                                    </foreach>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-primary">保存</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function(){
+        $(".js-data-add-city-ajax").select2();
+        $('#linked_add_form').on('submit', function() {
+            $('button[type="submit"]').attr('disabled', true);
+            var frm = $(this);
+            $.post(frm.attr('action'), frm.serialize(), function(resp) {
+                if (resp.status == sz.STATUS_SUCC) {
+                    sz.showSuccMsg(resp.msg, 3);
+                    location.href = '/Admin/District/listCityIndexModule?id={$cityId}';
+                } else {
+                    sz.showErrMsg(resp.msg, 3);
+                    $('button[type="submit"]').attr('disabled', false);
+                }
+            });
+            return false;
+        });
+    });
+</script>

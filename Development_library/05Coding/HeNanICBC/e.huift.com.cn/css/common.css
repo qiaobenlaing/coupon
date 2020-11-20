@@ -1,0 +1,60 @@
+html{color:#000;overflow-y:scroll;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}html *{outline:0;-webkit-text-size-adjust:none;-webkit-tap-highlight-color:transparent}body,html{font-family:sans-serif}article,aside,blockquote,body,button,code,dd,details,div,dl,dt,fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,hr,input,legend,li,menu,nav,ol,p,pre,section,td,textarea,th,ul{margin:0;padding:0}input,select,textarea{font-size:100%}table{border-collapse:collapse;border-spacing:0}fieldset,img{border:0}abbr,acronym{border:0;font-variant:normal}del{text-decoration:line-through}address,caption,cite,code,dfn,em,th,var{font-style:normal;font-weight:500}ol,ul{list-style:none}caption,th{text-align:left}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:500}q:after,q:before{content:''}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-.5em}sub{bottom:-.25em}a:hover{text-decoration:underline}a,ins{text-decoration:none}.clearfix:after{content:".";display:block;visibility:hidden;clear:both;height:0}.clearfix{display:inline-table}* html .clearfix{height:1%}.clearfix{display:block}.hide{display:none !important;}html{height:100%;tap-highlight-color:transparent;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}body{width:100%;height:100%;position:relative;background:#fff}.banner{width:100%;position:relative}.banner img{width:100%;display:block;padding:0;margin:0;border:0}
+            .jump, .banner {
+                width: 100%;
+                margin:0.1rem 0;
+            }
+            .banner a{
+                display: block;
+            }
+            .jump a{
+                display: block;
+            }
+            .jump img, .banner img {
+                display: block;
+                width: 98%;
+                border: 0;
+                margin: 0 auto;
+                padding: 0;
+            }
+            .header {
+                width: 100%;
+                height: 1.5rem;
+                background: #fff;              
+            }
+            .header .hd {
+                width: 100%;
+                padding: 0.4rem 0;
+                position: fixed;
+                left: 0;
+                top: 0;
+                background: #ffffff;
+                z-index: 9999;
+                border-bottom: 1px solid #ddd;
+
+            } 
+            .header .hd_l, .header .hd_r {
+                width: 8%;
+                padding-top: 0.1rem;
+            }
+            .header .hd_l img, .header .hd_r img{
+                width: 0.5rem;
+                height: 0.5rem;
+                display: inline-block;
+            }
+            .header .hd_l {
+                float: left;
+                display: block;
+                margin-left: 4%;
+            }
+            .header .hd_r {
+                float: right;
+                display: block;
+                margin-right: 4%;
+                text-align: right;
+            }
+            .header h1 {
+                width: 76%;
+                float: left;
+                text-align: center;
+                font-size: 0.5rem;
+            } 

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/LyWHFirst"
+    android:orientation="vertical"
+    android:background="@color/bgall" >
+    
+	<RelativeLayout 
+	    style="@style/LyWHFourth"
+	    android:layout_height="72dp"
+	    android:background="@color/white"
+	    android:layout_gravity="center">
+	    <TextView 
+	        android:id="@+id/tv_act_verification_content"
+	        style="@style/LyWHSecond"
+	        android:text="@string/security_code"
+	        android:layout_margin="10dp"/>
+	    <TextView 
+	        android:id="@+id/tv_act_verification"
+	        style="@style/LyWHSecond"
+	        android:text="xxxx"
+	        android:layout_toRightOf="@+id/tv_act_verification_content"
+	        android:layout_marginTop="10dp"/>
+	    <TextView 
+	        android:id="@+id/tv_act_status"
+	        style="@style/LyWHSecond"
+	        android:text="xxxx"
+	        android:layout_marginTop="10dp"
+	        android:layout_alignParentRight="true"
+	        android:layout_marginRight="10dp"/>
+	    <TextView 
+		    android:id="@+id/tv_verification_name"
+		    style="@style/LyWHSecond"
+		    android:text="王小明"
+		    android:layout_marginLeft="10dp"
+		    android:layout_below="@+id/tv_act_verification_content"/>	</RelativeLayout>
+</LinearLayout>

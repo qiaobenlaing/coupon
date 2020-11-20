@@ -1,0 +1,40 @@
+<layout name="layout_api" />
+<!-- Views -->
+<div class="views">
+    <!-- Your main view, should have "view-main" class -->
+    <div class="view view-main">
+        <!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
+        <div class="pages toolbar-through">
+            <!-- Page, "data-page" contains page name -->
+            <div data-page="index" class="page">
+                <!-- Scrollable page content -->
+                <div class="page-content reg-succ">
+                    <div>
+                        <img class="congratulations" src="/Public/img/regSucc/congratulations.png" alt=""/>
+                    </div>
+                    <div class="coupon-content-wrap">
+                        <div class="coupon-content-bg">
+                            <div class="coupon-name">优惠券</div>
+                            <div class="coupon-value">10元</div>
+                        </div>
+                    </div>
+                    <div class="go-to-look-look">
+                        <a href="hq://getUserCouponInfo?userCouponCode={$regInfo.userCouponCode}" class="external">去看看></a>
+                    </div>
+                    <div class="dividing-line">
+                        <img class="dividing-line-img" src="/Public/img/regSucc/dividingLine.png" alt=""/>
+                    </div>
+                    <div class="invite-code-wrap">
+                        <a href="hq://getUserInviteCode" class="external">
+                            <p>推荐好友赢更多福利</p>
+                            <p>我的推荐码:</p>
+                            <div class="invite-code">
+                                {$regInfo.inviteCode}
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,338 @@
+/*----------定义头部菜单样式-------------------start-----------------*/
+.theme-north {
+	background-color: #0870C9;
+}
+.theme-navigation-title {
+	float: left;
+	line-height: 60px;
+	color: #fff;
+	font-size: 24px;
+	font-weight: bold;
+	padding-left: 20px
+}
+
+.theme-navigation-main {
+    width: 100%;
+    float: left;
+    font-size: 14px;
+    text-align: center;
+}
+
+
+.theme-navigation-main > div {
+    height: 100%;
+    color: #F5F5F5;
+    cursor: pointer;
+    margin-left: 370px;
+}
+
+.theme-navigation-main ul {
+    display: block;
+    margin: 0;
+    float: left;
+    height: 60px;
+}
+
+
+
+
+/*                     */
+
+.theme-setting-left {
+	/* border:1px solid red; */
+    float: left;
+    margin-left: 100px;
+    width:350px;
+}
+
+.theme-setting-left ul {
+    padding-left: 0px;
+}
+.theme-setting-left li {
+    list-style: none;
+    display: inline-block;
+    float: left;
+    width: 80px;
+    height: 40px;
+    line-height: 40px;
+    cursor: pointer;
+    transition: background-color .3s;
+    border-radius:10px;
+	margin-top: 10px;
+	margin-left: 20px;
+}
+
+.theme-setting-left li:hover {
+    background-color: #0092dc;
+}
+
+.theme-setting-left .fa{
+    margin-left: 3px;
+}
+
+.theme-setting-right {
+    float: right;
+}
+.theme-setting-right li {
+    list-style: none;
+    display: inline-block;
+    float: left;
+    height: 60px;
+    min-width: 45px;
+    padding: 0 5px;
+    cursor: pointer;
+    transition: background-color .3s;
+}
+
+
+.theme-setting-right .user {
+    width: 150px;
+}
+.theme-setting-right .user-icon{
+  	position: relative;
+  	display: inline-block;
+	width: 40px;
+	height: 40px;
+	border-radius: 40px;
+	margin-bottom: 5px;
+	font-size: 20px;
+}
+
+.theme-setting-right img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    margin-top: -15px;
+    left: 10px;
+}
+.theme-setting-right .user>span{
+	display: inline-block;
+	float: left;
+}
+
+
+
+.theme-setting-right .logout{
+	background-color: #0550a0;
+	
+}
+.theme-setting-right .logout:hover{
+	background-color: #0092dc;
+	
+}
+
+.user{
+	right: 5px;
+}
+
+
+/*----------定义头部菜单样式---------------------end-------------------*/
+/*----------弹框---------------------start-------------------*/
+.window {
+    padding: initial;
+}
+
+.window,
+.window-shadow {
+    border-radius: 3px;
+}
+
+.window .window-body {
+    border: none;
+}
+
+.dialog-toolbar,
+.dialog-button {
+    border: none;
+}
+
+.window .window-header {
+    background: #f3f3f3;
+    padding: 10px 0;
+}
+
+.window-header .panel-title {
+    padding: 0 10px;
+}
+
+.window .window-header .panel-tool {
+    right: 5px;
+}
+
+.window .window-header .panel-icon,
+.window .window-header .panel-tool {
+    top: 60%;
+}
+
+.window-shadow {
+    box-shadow: 2px 2px 10px #cccccc;
+    -webkit-box-shadow: 2px 2px 10px #cccccc;
+}
+
+.messager-body {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    display: -webkit-flex;
+    -webkit-align-items: center;
+}
+
+.messager-icon {
+    margin: 0 10px 0 0;
+}
+
+.dialog-button .l-btn {
+    width: 70px;
+}
+
+#btn-sure {
+    color: #fff;
+    background: #3498db;
+    border: 1px solid #3498db;
+}
+
+#btn-sure:hover {
+    background: #2980b9;
+    border: 1px solid #2980b9;
+}
+
+.themeBut{
+	margin-left: 55px;
+	margin-top: 10px;
+}
+.themeButFirst{
+	margin-top: 30px;
+	margin-left: 55px;
+}
+
+/*----------弹框---------------------end-------------------*/
+
+/*表格*/
+
+.datagrid-header td,
+.datagrid-body td,
+.datagrid-footer td {
+    /* border-style: solid; */
+}
+
+.datagrid-header-row,
+.datagrid-row {
+    height: 42px;
+}
+
+.datagrid-row-selected {
+	background: #c4d5d7;
+    color: #000;
+    /* background: #fbfbfb;
+    color: #000; */
+}
+
+
+.datagrid-row-over,
+.datagrid-header td.datagrid-header-over {
+   /*  background: #fbfbfb; */
+   background: #c4d5d7;
+}
+
+/*树*/
+.tree-node-selected {
+    background: #e4fefd;
+    color: #0000ff;
+}
+
+/*----------主题---------------------start-------------------*/
+.themeItem {
+    padding: 15px 0 15px 15px;
+    display: none;
+}
+
+.themeItem ul li {
+    list-style: none;
+    width: 100px;
+    height: 60px;
+    float: left;
+    text-align: center;
+    line-height: 60px;
+    color: #fff;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    transition: font-size .3s;
+    cursor: pointer;
+    position: relative;
+}
+
+.themeItem ul li:last-child {
+    margin-right: 0px;
+}
+
+.themeItem ul li:hover {
+    font-size: 14px;
+}
+
+/* 主题选中打勾勾 */
+.themeActive {
+    color: #000 !important;
+    font-size: 14px;
+}
+
+.themeActive:after {
+    content: '';
+    width: 6px;
+    height: 12px;
+    border-right: 3px solid #000;
+    border-bottom: 3px solid #000;
+    right: -2px;
+    bottom: 5px;
+    position: absolute;
+    transform: rotate(40deg);
+}
+
+.default {
+    background: #1abc9c;
+}
+
+.gray {
+    background: #2ecc71;
+}
+
+.black {
+    background: #3498db;
+}
+
+.bootstrap {
+    background: #9b59b6;
+}
+
+ .material {
+    background: #34495e;
+}
+
+.metro {
+    background: #f1c40f;
+}
+
+/*.CARROT {
+    background: #e67e22;
+}
+
+.ALIZARIN {
+    background: #e74c3c;
+} */
+/*----------主题---------------------end-------------------*/
+
+#menu{
+	display: none;
+}
+/*----------cki内部样式---------------------start-------------*/
+ .cke_dialog_page_contents {
+    height: 70vh!important;
+    overflow:scroll;
+} 
+.cke_dialog_ui_input_file{
+    width: auto!important;
+}
+
+
+

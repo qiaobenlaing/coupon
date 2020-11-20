@@ -1,0 +1,58 @@
+<layout name="layout_api" />
+<style>
+    .icbc-act-wrap{display: none;}
+    .icbc-act-wrap .kongbai{height: 25px;}
+    .icbc-act-wrap .kongbai img{
+        width: 100%;
+        position: absolute;
+        top: 10px;
+    }
+    .icbc-act-wrap .content{
+        background-color: #FFD900;
+        padding-top: 19px;
+        padding-left: 1px;
+        padding-right: 1px;
+    }
+    .icbc-act-wrap .content img{
+        width: 100%;
+    }
+    .icbc-act-wrap  .content .textcq{width: 74%;}
+    .icbc-act-wrap  .content .textytbc{width: 74%;}
+    .icbc-act-wrap  .content .textletao{width: 74%;}
+</style>
+<!-- Views -->
+<div class="views">
+    <!-- Your main view, should have "view-main" class -->
+    <div class="view view-main">
+        <!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
+        <div class="pages">
+            <!-- Page, "data-page" contains page name -->
+            <div data-page="index" class="page">
+                <!-- Scrollable page content -->
+                <div class="page-content">
+                    <div style="text-align:center;display: block">
+                        <p style="padding-top:100px;padding-bottom:10px"><img src="/Public/img/webchat/huiquan.png" alt="工银特惠" /></p>
+                        <p style="padding-bottom:10px">工银特惠</p>
+                        <p style="padding-bottom:10px">敬请期待...</p>
+                    </div>
+
+                    <div class="icbc-act-wrap">
+                        <div class="kongbai">
+                            <a href=""><img src="/Public/img/themeAct/icbc/cq.png" alt=""/></a>
+                        </div>
+                        <div class="content">
+                            <a href=""><img src="/Public/img/themeAct/icbc/zb.png" alt="" class="textcq"/></a>
+                            <a href=""><img src="/Public/img/themeAct/icbc/imgzb.png" alt=""/></a>
+                            <a href=""><img src="/Public/img/themeAct/icbc/mdl.png" alt="" class="textmdl"/></a>
+                            <a href=""><img src="/Public/img/themeAct/icbc/imgmdl.png" alt=""/></a>
+                            <a href=""><img src="/Public/img/themeAct/icbc/ytbc.png" alt="" class="textytbc"/></a>
+                            <a href=""><img src="/Public/img/themeAct/icbc/imgytbc.png" alt=""/></a>
+                            <a href=""><img src="/Public/img/themeAct/icbc/letao.png" alt="" class="textletao"/></a>
+                            <a href=""><img src="/Public/img/themeAct/icbc/imglt.png" alt=""/></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

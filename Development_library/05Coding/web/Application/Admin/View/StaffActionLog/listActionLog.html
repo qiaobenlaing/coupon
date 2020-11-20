@@ -1,0 +1,28 @@
+<layout name="layout_admin" />
+<div>
+    <form class="form-inline" id="data_search_form" action="#" method="get">
+        <div class="form-group">
+            <label for="real-name">操作员</label>
+            <input type="text" class="form-control" name="realName" value="{$get.realName}" placeholder="操作员姓名" id="real-name">
+        </div>
+        <div class="form-group">
+            <label for="action-time">操作时间</label>
+            <input type="text" class="form_datetime form-control ipt-date-time-picker" name="actionTime" value="{$get.actionTime}" id="action-time" readonly placeholder="操作时间">
+        </div>
+        <button type="submit" class="btn btn-primary" id="search_form_submit_btn">查询</button>
+        <input type="hidden" id="frm_ele_page" name="page" value="1" />
+    </form>
+</div>
+<div id="data_table_wrapper">
+    <include file="./Application/Admin/View/StaffActionLog/listActionLogWidget.html" />
+</div>
+<script>
+    ;(function(){
+        $(".form_datetime").datetimepicker({
+            format: 'yyyy-mm-dd',
+            autoclose: true,
+            todayBtn: true,
+            minView: 'month'
+        });
+    })();
+</script>

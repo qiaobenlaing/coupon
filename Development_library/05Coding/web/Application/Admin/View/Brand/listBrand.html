@@ -1,0 +1,12 @@
+<layout name="layout_admin" />
+<form class="form-inline" role="form" id="data_search_form" action="#" method="get">
+    <div class="form-group">
+        <label for="brandName">名称</label>
+        <input type="text" class="form-control" id="brandName" placeholder="名称" name="brandName" value="{$get.brandName}">
+    </div>
+    <button type="submit" class="btn btn-primary btn-sm" id="search_form_submit_btn">查询</button>
+    <input type="hidden" id="frm_ele_page" name="page" value="1" />
+</form>		
+<div id="data_table_wrapper">
+  <include file="./Application/Admin/View/Brand/listBrandWidget.html" />
+</div>

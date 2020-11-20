@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.whhft.sysmanage.service.mapper.NewsMapper">
+  <resultMap id="BaseResultMap" type="com.whhft.sysmanage.common.entity.News">
+    <id column="news_id" jdbcType="BIGINT" property="newsId" />
+    <result column="modified_date" jdbcType="VARCHAR" property="modifiedDate" />
+    <result column="news_title" jdbcType="VARCHAR" property="newsTitle" />
+    <result column="catalog_id" jdbcType="INTEGER" property="catalogId" />
+    <result column="FILE_SEQ" jdbcType="VARCHAR" property="fileSeq" />
+  </resultMap>
+  <resultMap id="NewsExtMap" type="com.whhft.sysmanage.common.model.NewsExt"
+        >
+        <id column="news_id" property="newsId" jdbcType="BIGINT" />
+        <result column="modified_date" property="modifiedDate"
+            jdbcType="VARCHAR" />
+        <result column="news_title" property="newsTitle" jdbcType="VARCHAR" />
+        <result column="catalog_id" property="catalogId" jdbcType="INTEGER" />
+        <result column="FILE_SEQ" property="fileSeq" jdbcType="VARCHAR" />
+        <result column="CATALOG_NAME" jdbcType="VARCHAR" property="catalogName" />
+
+    </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.whhft.sysmanage.common.entity.News">
+    <result column="content" jdbcType="LONGVARCHAR" property="content" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    news_id, modified_date, news_title, catalog_id, FILE_SEQ
+  </sql>
+  <sql id="Blob_Column_List">
+    content
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="com.whhft.sysmanage.common.entity.NewsExample" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from news
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" parameterType="com.whhft.sysmanage.common.entity.NewsExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from news
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from news
+    where news_id = #{newsId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from news
+    where news_id = #{newsId,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.whhft.sysmanage.common.entity.NewsExample">
+    delete from news
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.whhft.sysmanage.common.entity.News">
+    insert into news (news_id, modified_date, news_title, 
+      catalog_id, FILE_SEQ, content
+      )
+    values (#{newsId,jdbcType=BIGINT}, #{modifiedDate,jdbcType=VARCHAR}, #{newsTitle,jdbcType=VARCHAR}, 
+      #{catalogId,jdbcType=INTEGER}, #{fileSeq,jdbcType=VARCHAR}, #{content,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.whhft.sysmanage.common.entity.News">
+    insert into news
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="newsId != null">
+        news_id,
+      </if>
+      <if test="modifiedDate != null">
+        modified_date,
+      </if>
+      <if test="newsTitle != null">
+        news_title,
+      </if>
+      <if test="catalogId != null">
+        catalog_id,
+      </if>
+      <if test="fileSeq != null">
+        FILE_SEQ,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="newsId != null">
+        #{newsId,jdbcType=BIGINT},
+      </if>
+      <if test="modifiedDate != null">
+        #{modifiedDate,jdbcType=VARCHAR},
+      </if>
+      <if test="newsTitle != null">
+        #{newsTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="catalogId != null">
+        #{catalogId,jdbcType=INTEGER},
+      </if>
+      <if test="fileSeq != null">
+        #{fileSeq,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.whhft.sysmanage.common.entity.NewsExample" resultType="java.lang.Integer">
+    select count(*) from news
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update news
+    <set>
+      <if test="record.newsId != null">
+        news_id = #{record.newsId,jdbcType=BIGINT},
+      </if>
+      <if test="record.modifiedDate != null">
+        modified_date = #{record.modifiedDate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.newsTitle != null">
+        news_title = #{record.newsTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="record.catalogId != null">
+        catalog_id = #{record.catalogId,jdbcType=INTEGER},
+      </if>
+      <if test="record.fileSeq != null">
+        FILE_SEQ = #{record.fileSeq,jdbcType=VARCHAR},
+      </if>
+      <if test="record.content != null">
+        content = #{record.content,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update news
+    set news_id = #{record.newsId,jdbcType=BIGINT},
+      modified_date = #{record.modifiedDate,jdbcType=VARCHAR},
+      news_title = #{record.newsTitle,jdbcType=VARCHAR},
+      catalog_id = #{record.catalogId,jdbcType=INTEGER},
+      FILE_SEQ = #{record.fileSeq,jdbcType=VARCHAR},
+      content = #{record.content,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update news
+    set news_id = #{record.newsId,jdbcType=BIGINT},
+      modified_date = #{record.modifiedDate,jdbcType=VARCHAR},
+      news_title = #{record.newsTitle,jdbcType=VARCHAR},
+      catalog_id = #{record.catalogId,jdbcType=INTEGER},
+      FILE_SEQ = #{record.fileSeq,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.whhft.sysmanage.common.entity.News">
+    update news
+    <set>
+      <if test="modifiedDate != null">
+        modified_date = #{modifiedDate,jdbcType=VARCHAR},
+      </if>
+      <if test="newsTitle != null">
+        news_title = #{newsTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="catalogId != null">
+        catalog_id = #{catalogId,jdbcType=INTEGER},
+      </if>
+      <if test="fileSeq != null">
+        FILE_SEQ = #{fileSeq,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where news_id = #{newsId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.whhft.sysmanage.common.entity.News">
+    update news
+    set modified_date = #{modifiedDate,jdbcType=VARCHAR},
+      news_title = #{newsTitle,jdbcType=VARCHAR},
+      catalog_id = #{catalogId,jdbcType=INTEGER},
+      FILE_SEQ = #{fileSeq,jdbcType=VARCHAR},
+      content = #{content,jdbcType=LONGVARCHAR}
+    where news_id = #{newsId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.whhft.sysmanage.common.entity.News">
+    update news
+    set modified_date = #{modifiedDate,jdbcType=VARCHAR},
+      news_title = #{newsTitle,jdbcType=VARCHAR},
+      catalog_id = #{catalogId,jdbcType=INTEGER},
+      FILE_SEQ = #{fileSeq,jdbcType=VARCHAR}
+    where news_id = #{newsId,jdbcType=BIGINT}
+  </update>
+    
+    <!-- 根据条件查询 -->
+    <select id="find" parameterType="map" resultMap="NewsExtMap">
+        SELECT  n.`catalog_id`,n.`content`,n.`modified_date`,n.`news_id`,n.`news_title`,n.`FILE_SEQ`,c.`catalog_name`
+        FROM `news` AS n,`news_catalog` AS c 
+        
+        <where> 
+            c.`catalog_id`=n.`catalog_id`
+            <if test="catalogName != null and catalogName !=''">
+             AND c.`catalog_name` like '%${catalogName}%'
+            </if>
+            <if test="newsTitle!= null and newsTitle !=''">
+                AND n.`news_title` like '%${newsTitle}%'
+            </if>
+        </where>
+        order by `CATALOG_ID` DESC,`modified_date` DESC
+    </select>
+</mapper>

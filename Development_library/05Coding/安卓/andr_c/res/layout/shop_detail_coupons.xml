@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/navigation_bar"
+        android:background="@color/red"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:id="@+id/backup"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:src="@drawable/backup" />
+
+        <TextView
+            style="@style/TvSet"
+            android:layout_centerInParent="true"
+            android:text="优惠券"
+            android:textColor="@color/white"
+            android:textSize="@dimen/app_title_bar_font" />
+    </RelativeLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical"
+        android:visibility="visible" />
+
+    <LinearLayout
+        android:id="@+id/ly_nodate"
+        style="@style/LyWHFirst"
+        android:background="@color/activity_dialog_bg"
+        android:gravity="center"
+        android:visibility="gone" >
+
+        <ImageView
+            style="@style/LyWHSecond"
+            android:layout_gravity="center"
+            android:scaleType="center"
+            android:src="@drawable/no_message" />
+    </LinearLayout>
+
+</LinearLayout>

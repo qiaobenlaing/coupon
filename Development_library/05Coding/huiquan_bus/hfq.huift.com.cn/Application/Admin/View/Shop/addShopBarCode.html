@@ -1,0 +1,52 @@
+<layout name="layout_admin" />
+<div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="tab_basic_info">
+        <form class="form-horizontal" role="form" id="frm_edit_user"
+              action="/Admin/Shop/addShopBarCode" method="post">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">商户名称</label>
+                <div class="col-sm-8">
+                    <input type="text" name="shopName" class="form-control"
+                           id=""  value="{$shopInfo.shopName}">
+                    <input type="hidden" name="logoUrl" class="form-control"
+                           id=""  value="{$shopInfo.logoUrl}">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">商户编码</label>
+                <div class="col-sm-8">
+                    <input type="text" name="shopCode" class="form-control"
+                           id="thirdShopCode"  value="{$shopInfo.shopCode}">
+                </div>
+            </div>
+            <div class="row row-top row-btn">
+                <div class="btn-group ">
+                    <input type="submit" class="btn btn-primary" id="submit" value="生成" />
+                </div>
+            </div>
+            <div class="row row-top row-btn">
+                <div class="btn-group " id="img">
+                    <img src="{$shopInfo.barCodeUrl}" alt="">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function($) {
+        $('#frm_edit_user').on('submit', function() {
+            var frm = $(this);
+            $.post(frm.attr('action'), frm.serialize(), function(resp) {
+                var resp = JSON.parse(resp);
+                if (resp.status == 1) {
+                    $('#img').html();
+                    $('#img').html(resp.html);
+                } else {
+                    sz.showErrMsg(resp.msg, 3);
+                }
+            });
+            return false;
+        });
+    });
+</script>
+

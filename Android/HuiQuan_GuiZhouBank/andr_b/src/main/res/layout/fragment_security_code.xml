@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/LyWHFirst" 
+    android:orientation="vertical"
+    android:background="@color/bgall">
+    <include layout="@layout/common_title_commit" />
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/layout_height"
+		    android:orientation="horizontal"
+        android:visibility="gone">
+        <RadioGroup
+            android:id="@+id/rg_card_type"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fadingEdge="none"
+            android:orientation="horizontal"
+        	android:background="@color/white"
+        	android:layout_marginTop="1dp" >
+            <RadioButton
+                android:id="@+id/rbtn_couponorvoucher_verification"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/selector_radio_code_left"
+                android:button="@null"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:checked="true"
+                android:text="@string/couponorvoucher"
+                android:textColor="@drawable/selector_radio_card_checked_font" />
+            <RadioButton
+                android:id="@+id/rbtn_activity_verification"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/selector_radio_card_middle"
+                android:button="@null"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/tv_actlist_activity"
+                android:textColor="@drawable/selector_radio_card_checked_font" />
+        </RadioGroup>
+     </LinearLayout>
+    <LinearLayout
+        android:id="@+id/linear_cardlist_content"
+        style="@style/LyWHFirst"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal" >
+    </LinearLayout>
+
+</LinearLayout>

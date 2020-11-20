@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/LyWHFirst"
+    android:background="@color/bgall"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/tv_check_phototype"
+        style="@style/LyWHSecond"
+        android:layout_margin="15dp"
+        android:text="xxx"
+        android:textColor="@color/deep_grey"
+        android:textSize="18sp" />
+
+</LinearLayout>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/LyWHFirst"
+    android:background="@color/bgall"
+    android:orientation="vertical" >
+
+    <include layout="@layout/common_title_commit" />
+
+    <ImageView
+        android:id="@+id/iv_upload_photo"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_margin="10dp"
+        android:scaleType="centerCrop" />
+
+    <TextView
+        style="@style/VLine"
+        android:layout_height="0.5dp"
+        android:background="@color/shallow_gray" />
+
+    <TextView
+        style="@style/VLine"
+        android:layout_height="0.5dp"
+        android:background="@color/shallow_gray" />
+
+    <TextView
+        style="@style/LyWHSecond"
+        android:layout_gravity="center|left"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:text="照片标题:"
+        android:textSize="16sp" />
+
+    <EditText
+        android:id="@+id/et_product_title"
+        style="@style/LyWHFourth"
+        android:layout_height="50dp"
+        android:layout_margin="10dp"
+        android:background="@drawable/bg_border"
+        android:gravity="center|left"
+        android:hint="请输入照片标题"
+        android:inputType="text"
+        android:textColorHint="@color/deep_grey"
+        android:textSize="14sp" />
+
+</LinearLayout>

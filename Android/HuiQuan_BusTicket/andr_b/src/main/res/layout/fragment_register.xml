@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/LyOutSet">
+
+    <include layout="@layout/common_title_home" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/navigation_bar"
+            android:layout_marginTop="10dp"
+            android:background="@color/white">
+
+            <TextView
+                android:id="@+id/tv_register_name"
+                android:layout_width="65dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="15dp"
+                android:text="@string/identify_phone" />
+
+            <EditText
+                android:id="@+id/edt_register_phonenum"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@+id/tv_register_name"
+                android:background="@null"
+                android:hint="@string/hint_input_phonenum"
+                android:inputType="number"
+                android:maxLength="11"
+                android:singleLine="true"
+                android:textSize="16sp"></EditText>
+
+            <TextView
+                android:id="@+id/btn_register_send_iden_code"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/bg_back"
+                android:gravity="center"
+                android:text="@string/send_identify_code" />
+
+        </RelativeLayout>
+
+        <TextView style="@style/VLine" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/navigation_bar"
+            android:background="@color/white"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/tv_register_indencode"
+                android:layout_width="65dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:text="验证码" />
+            <!-- 验证码 -->
+            <EditText
+                android:id="@+id/edt_register_idencode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@+id/tv_register_indencode"
+                android:background="@null"
+                android:hint="@string/hint_input_indentify_code"
+                android:inputType="number"
+                android:maxLength="6"
+                android:singleLine="true"
+                android:textSize="16sp" />
+        </RelativeLayout>
+
+        <TextView style="@style/VLine" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/navigation_bar"
+            android:background="@color/white"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_register_password"
+                android:layout_width="65dp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="15dp"
+                android:text="@string/pwd_reset" />
+            <!-- 密码 -->
+            <EditText
+                android:id="@+id/edt_register_pwd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_toLeftOf="@+id/tv_register_showpassword"
+                android:layout_toRightOf="@+id/tv_register_password"
+                android:background="@null"
+                android:digits="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                android:hint="@string/hint_input_pwd"
+                android:inputType="textPassword"
+                android:singleLine="true"
+                android:textSize="16sp"></EditText>
+
+            <CheckBox
+                android:id="@+id/tv_register_showpassword"
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="15dp"
+                android:background="@null"
+                android:button="@drawable/sel_loginpass_state"
+                android:clickable="true" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <TextView style="@style/VLine" />
+
+    <Button
+        android:id="@+id/btn_register_ok"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/navigation_bar"
+        android:background="@drawable/login_btn"
+        android:gravity="center"
+        android:layout_margin="20dp"
+        android:text="@string/confirm"
+        android:textColor="@color/white" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="bottom"
+        android:paddingBottom="40dp"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/icbc_logo" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
+                android:text="@string/tv_register_icbc"
+                android:textColor="@color/coupon_hometopfont" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="18dip"
+                android:layout_height="18dip"
+                android:layout_gravity="center"
+                android:background="@drawable/xinli_logo" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
+                android:text="@string/tv_register_xinli"
+                android:textColor="@color/coupon_hometopfont" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/tv_register_huiquan"
+                android:textColor="@color/coupon_hometopfont" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,19 @@
+<table class="fp-table table table-striped table-bordered table-condensed" id="data_table">
+    <thead>
+    <tr>
+        <th>时间</th>
+        <th>文件</th>
+    </tr>
+    </thead>
+    <tbody>
+    <foreach name="dataList" item="item">
+        <tr>
+            <td>{$item.createTime}</td>
+            <td><a href="{$item.url}">log文件</a></td>
+        </tr>
+    </foreach>
+    </tbody>
+</table>
+<include file="Application/Admin/View/Widget/pager.html" />
+
+    

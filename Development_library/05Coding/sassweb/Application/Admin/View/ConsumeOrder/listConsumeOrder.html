@@ -1,0 +1,104 @@
+<layout name="layout_admin" />
+<div>
+    <form class="form-inline" id="data_search_form" action="#" method="get">
+        <div class="form-group">
+            <label for="order-time-start">订单时间</label>
+            <div class="input-group date frm-date">
+                <input type="text" class="form-control ipt-date-time-picker" id="order-time-start" name="orderTimeStart" value="{$get.orderTimeStart}" readonly placeholder="开始时间"/>
+                <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="order-time-end">至</label>
+            <div class="input-group date frm-date">
+                <input type="text" class="form-control ipt-date-time-picker" name="orderTimeEnd" value="{$get.orderTimeEnd}" readonly placeholder="结束时间" id="order-time-end"/>
+                <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+            </div>
+        </div>
+        <!--<div class="form-group">-->
+            <!--<label for="pay-time-start">支付时间</label>-->
+            <!--<div class="input-group date frm-date">-->
+                <!--<input type="text" class="form-control" id="pay-time-start" name="payTimeStart" value="{$get.payTimeStart}" readonly placeholder="开始时间"/>-->
+                <!--<span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>-->
+                <!--<span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="form-group">-->
+            <!--<label for="pay-time-end">至</label>-->
+            <!--<div class="input-group date frm-date">-->
+                <!--<input type="text" class="form-control" name="payTimeEnd" value="{$get.payTimeEnd}" readonly placeholder="结束时间" id="pay-time-end"/>-->
+                <!--<span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>-->
+                <!--<span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>-->
+            <!--</div>-->
+        <!--</div>-->
+        <div class="form-group">
+            <label for="order-nbr">订单号</label>
+            <input type="text" class="form-control" name="orderNbr" value="{$get.orderNbr}" placeholder="订单号" id="order-nbr">
+        </div>
+        <div class="form-group">
+            <label for="shop-name">商家名</label>
+            <input type="text" class="form-control" name="shopName" value="{$get.shopName}" placeholder="商家名" id="shop-name">
+        </div>
+        <div class="form-group">
+            <label for="shop-name">消费者手机号</label>
+            <input type="text" class="form-control" name="mobileNbr" value="{$get.mobileNbr}" placeholder="消费者手机号" id="mobileNbr">
+        </div>
+        <div class="form-group">
+            <label for="status">支付状态</label>
+            <select class="form-control" name="status" id="status">
+                <option value="">全部类型</option>
+                <option value="100" <eq name="get.status" value="100">selected="selected"</eq>>不能支付</option>
+                <option value="1" <eq name="get.status" value="1">selected="selected"</eq>>未付款</option>
+                <option value="2" <eq name="get.status" value="2">selected="selected"</eq>>付款中</option>
+                <option value="3" <eq name="get.status" value="3">selected="selected"</eq>>已付款</option>
+                <option value="4" <eq name="get.status" value="4">selected="selected"</eq>>已取消付款</option>
+                <option value="5" <eq name="get.status" value="5">selected="selected"</eq>>付款失败</option>
+                <option value="6" <eq name="get.status" value="6">selected="selected"</eq>>退款中</option>
+                <option value="7" <eq name="get.status" value="7">selected="selected"</eq>>退款成功</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="order-type">订单类型</label>
+            <select class="form-control" name="orderType" id="order-type">
+                <option value="">全部类型</option>
+                <option value="10" <eq name="get.orderType" value="10">selected="selected"</eq>>其他订单</option>
+                <option value="20" <eq name="get.orderType" value="20">selected="selected"</eq>>堂食订单</option>
+                <option value="21" <eq name="get.orderType" value="21">selected="selected"</eq>>外卖订单</option>
+                <option value="30" <eq name="get.orderType" value="30">selected="selected"</eq>>买券订单</option>
+                <option value="40" <eq name="get.orderType" value="40">selected="selected"</eq>>活动订单</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="city">城市</label>
+            <select class="form-control" name="city" id="city">
+                <option value="">全部类型</option>
+                <foreach name="openCity" item="item">
+                    <option value="{$item.name}" <eq name="get.city" value="$item.name">selected="selected"</eq>>{$item.name}</option>
+                </foreach>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-sm btn-primary" id="search_form_submit_btn">查询</button>
+        <button type="button" class="btn btn-sm btn-primary" id="export">导出</button>
+        <input type="hidden" id="frm_ele_page" name="page" value="1" />
+    </form>
+</div>
+<div id="data_table_wrapper">
+  <include file="./Application/Admin/View/ConsumeOrder/listConsumeOrderWidget.html" />
+</div>
+<script>
+    $(function(){
+        $('.frm-date').datetimepicker({
+            format: 'yyyy-mm-dd',
+            autoclose: true,
+            todayBtn: true,
+            minView: 'month',
+            pickerPosition: "bottom-left"
+        });
+        $('#export').click(function(){
+            var frm = $('#data_search_form');
+            location.href= '/Admin/ConsumeOrder/exportConsumeOrder?' + frm.serialize();
+        });
+    });
+</script>

@@ -1,0 +1,1061 @@
+<layout name="layout_api" />
+<link href="__PUBLIC__/css/swiper.min.css" type="text/css" rel="stylesheet" />
+<link href="__PUBLIC__/css/shopInfo.css" type="text/css" rel="stylesheet" />
+<!--<script type="text/javascript" src="__PUBLIC__/js/swiper.jquery.min.js"></script>-->
+<script type="text/javascript" src="__PUBLIC__/js/swiper.min.js"></script>
+<!-- Views -->
+<div class="views">
+<!-- Your main view, should have "view-main" class -->
+<div class="view view-main">
+<!-- 是否关注 -->
+<?php if(!isset($shopInfo['openId'])):?>
+<div class="navbar shop-info-nav">
+    <div class="navbar-inner">
+        <div class="left">
+            <a href="hs://backup" class="external"><img src="/Public/img/icon/backup.png" /></a>
+        </div>
+        <div class="center"></div>
+        <div class="right">
+            <a href="hs://follow" class="button_nothing follow following external" shopCode="{$shopInfo.shopCode}" userCode="{$userCode}" followed="0" <neq name="shopInfo.isFollowed" value="0">style="display:none;"</neq>> 立即关注 </a>
+            <a href="hs://follow" class="button_nothing follow followed external" shopCode="{$shopInfo.shopCode}" userCode="{$userCode}" followed="1" <eq name="shopInfo.isFollowed" value="0">style="display:none;"</eq>> 取消关注 </a>
+            <neq name="operationType" value="ios">
+                <neq name="isAppear" value="1">
+                    <a href="hs://jiucuo" class="button_nothing jiucuo external" shopCode="{$shopInfo.shopCode}" userCode="{$userCode}"> 纠错 </a>
+                </neq>
+            </neq>
+        </div>
+    </div>
+</div>
+<?php endif;?>
+<!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
+<div class="pages navbar-through">
+<!-- Page, "data-page" contains page name -->
+<div data-page="index" class="page">
+<!-- Scrollable page content -->
+<div class="page-content" style="padding: 0;">
+<!-- 装饰图片 -->
+<div class="shop_decoration">
+    <!-- Swiper -->
+    <div class="swiper-container sd-swiper-container">
+        <div class="swiper-wrapper">
+            <?php $photoArr = array();
+                $index = 0;
+                if(empty($shopDecoration)):?>
+            <?php
+                        $inImg = '/Public/img/no_shopLogo.png';
+                        $photoArr[] = $inImg;
+                    ?>
+            <div class="swiper-slide">
+                <!--<a href="hs://bigImg?url={$inImg|urlencode}" class="external">-->
+                <a href="#bigImg" class="external big_img" order_index="<?php echo $index;?>">
+                    <img src="{$inImg}" />
+                </a>
+            </div>
+            <?php else:?>
+            <foreach name="shopDecoration" item="vo">
+                <div class="swiper-slide">
+                    <!--<a href="hs://bigImg?url={$vo.imgUrl|urlencode}" class="external">-->
+                    <a href="#bigImg" class="external big_img" order_index="<?php echo $index;?>">
+                        <img src="{$vo.imgUrl}" />
+
+                    </a>
+                </div>
+                <?php
+                        $index += 1;
+                        $photoArr[] = $vo['imgUrl'];
+                    ?>
+            </foreach>
+            <!-- Add Pagination -->
+            <!--<div class="swiper-pagination"></div>-->
+            <!-- Add Arrows -->
+            <!--<div class="swiper-button-next"></div>-->
+            <!--<div class="swiper-button-prev"></div>-->
+            <?php endif;?>
+        </div>
+    </div>
+
+    <!-- 店铺 logo -->
+    <div class="shop_logo">
+        <?php
+                if(empty($shopInfo['logoUrl'])){
+                    $shopInfo['logoUrl'] = '/Public/img/huiquan.png';
+                }
+                $photoArr[] = $shopInfo['logoUrl'];
+            ?>
+        <!--<a href="hs://bigImg?url={$shopInfo.logoUrl|urlencode}" class="external">-->
+        <a href="#bigImg" class="external big_img" order_index="<?php echo $index;?>">
+            <img src="{$shopInfo.logoUrl}" style="width: 100%;height:100%;border-radius: 10px;" />
+        </a>
+    </div>
+</div>
+<!-- 店铺简介 -->
+<div class="shop_intro">
+    <p class="shop_name">{$shopInfo.shopName}</p>
+    <span>人气：{$shopInfo.popularity}</span>
+</div>
+
+<if condition="$shopInfo.isCatering eq 1">
+    <!-- 点餐菜单栏 -->
+    <div class="menu_col">
+        <if condition="$shopInfo.isOpenEat eq 1">
+            <div class="sub_menu"><a href="/Api/Browser/cEatOrder?shopCode={$shopInfo.shopCode}&userCode={$userCode}&openId={$shopInfo.openId}" class="external"><img src="/Public/img/icon/a.png" /><p>点餐</p></a></div>
+            <else />
+            <div class="sub_menu"><a href="#" onclick="other_modal('敬请期待...');" class="external"><img src="/Public/img/icon/a.png" /><div class="coming_soon"><div style="margin-top: 7%;">敬请<br />期待</div></div><p>点餐</p></a></div>
+        </if>
+        <?php if($shopInfo['isOuttake'] == 1 && $shopInfo['isOpenTakeout'] == 1 && !isset($shopInfo['openId']) && $shopInfo['isAcceptBankCard'] == 1):?>
+        <div class="sub_menu"><a href="/Api/Browser/cTakeawayOrder?shopCode={$shopInfo.shopCode}&userCode={$userCode}" class="external"><img src="/Public/img/icon/b.png" /><p>外卖</p></a></div>
+        <?php else:?>
+        <div class="sub_menu"><a href="#" onclick="other_modal('敬请期待...');" class="external"><img src="/Public/img/icon/b.png" /><div class="coming_soon"><div style="margin-top: 7%;">敬请<br />期待</div></div><p>外卖</p></a></div>
+        <?php endif;?>
+        <div class="sub_menu"><a href="javascript:void(0);" onclick="other_modal('敬请期待...');" class="external"><img src="/Public/img/icon/c.png" /><div class="coming_soon"><div style="margin-top: 7%;">敬请<br />期待</div></div><p>预定</p></a></div>
+        <div class="sub_menu"><a href="/Api/Browser/cGetOrder?shopCode={$shopInfo.shopCode}&userCode={$userCode}&openId={$shopInfo.openId}" class="external"><img src="/Public/img/icon/d.png" /><p>订单</p></a></div>
+    </div>
+</if>
+
+<!-- 店铺详情 -->
+<div class="shop_info">
+    <div style="background-image: url('/Public/img/icon/address.png');background-position: 0 30%;-moz-background-size:5% auto;background-size:5% auto;background-repeat: no-repeat;"><p>{$shopInfo.district}{$shopInfo.street}</p></div>
+    <div style="background-image: url('/Public/img/icon/time.png');background-position: 0 40%;-moz-background-size:6% auto;background-size:6% auto;background-repeat: no-repeat;"><p><foreach name="shopInfo.businessHours" item="hour">{$hour.open} - {$hour.close}&nbsp;&nbsp;&nbsp;&nbsp;</foreach></p></div>
+    <?php if(!isset($shopInfo['openId'])):?>
+    <a href="hs://call?tel={$shopInfo.tel|urlencode}" class="external">
+        <div style="background-image: url('/Public/img/icon/tel.png');background-position: center left;-moz-background-size:5% auto;background-size:5% auto;background-repeat: no-repeat;"><p>{$shopInfo.tel}</p></div>
+    </a>
+    <a href="hs://feedback?shopName={$shopInfo.shopName|urlencode}" class="external" userCode="{$userCode}">
+        <div style="background-image: url('/Public/img/icon/message.png');background-position: center left;-moz-background-size:5% auto;background-size:5% auto;background-repeat: no-repeat;border: none;"><p>给商家留言</p></div>
+    </a>
+    <?php else:?>
+    <a href="tel:{$shopInfo.tel}" class="external">
+        <div style="background-image: url('/Public/img/icon/tel.png');background-position: center left;-moz-background-size:5% auto;background-size:5% auto;background-repeat: no-repeat;"><p>{$shopInfo.tel}</p></div>
+    </a>
+    <?php endif;?>
+</div>
+
+<!-- 商家活动 -->
+<?php if($actList):?>
+<div class="shop_act">
+    <foreach name="actList" item="vo" key="k">
+        <a href="hs://getActInfo?activityCode={$vo.activityCode|urlencode}" class="external">
+            <div class="shop-act-img">
+                <?php if($k > 0):?>
+                <p class="act-more-than-one">{$vo.activityName}</p>
+                <?php else:?>
+                <img src="{$vo.activityImg}">
+                <p class="act-only-one">{$vo.activityName}</p>
+                <?php endif;?>
+            </div>
+            <div class="shop-act-info">
+                <div class="act-item-info" style="float: left;display: inline-table;">{$vo.startTime|substr=5,5} - {$vo.endTime|substr=5,5}</div>
+                <if condition="$vo.totalPayment gt 0">
+                    <div class="act-item-info" style="display: inline-block;margin-left: 10px;">已报名：{$vo.participators|default="0"}<if condition="$vo.limitedParticipators gt 0">/{$vo.limitedParticipators}</if></div>
+                </if>
+                <div class="act-item-info" style="float: right;display: inline-table;"><if condition="$vo.totalPayment gt 0">￥<?php if(isset($vo['minPrice']) && $vo['minPrice'] < $vo['totalPayment']):?>{$vo.minPrice}-<?php endif;?>{$vo.totalPayment}<else />免费</if></div>
+                <div class="clear"></div>
+            </div>
+        </a>
+        <?php if($k != count($actList) - 1):?><hr style="margin:0;" /><?php endif;?>
+    </foreach>
+</div>
+<?php endif;?>
+
+<!-- 邀请商家入驻 -->
+<eq name="shopInfo.shopStatus" value="1">
+    <div class="invite-shop-wrap">
+        <div class="invite-shop" id="invite-shop">
+            <empty name="record">
+                <a class="external invite-shop-button"  data-shop-code="{$shopInfo.shopCode}" data-user-code="{$userCode}"><span class="span-invite-shop-icon remind-shop">邀请商家入驻惠圈</span></a>
+                <else/>
+                <span class="span-invited-shop-icon">{$countRecord}人邀请商家入驻惠圈</span>
+            </empty>
+        </div>
+    </div>
+</eq>
+<if condition="($shopInfo.hasWifi eq 1) || ($shopInfo.isFreeParking eq 1) || ($shopInfo.isAllowPet eq 1)">
+    <div class="shop-service-wrap">
+        <div class="shop-service-title">商家服务</div>
+        <eq name="shopInfo.hasWifi" value="1">
+            <span class="span-shop-service-icon span-wifi-icon">无线网</span>
+            <else/>
+            <!--<span class="span-shop-service-icon n-span-wifi-icon">无线网</span>-->
+        </eq>
+        <eq name="shopInfo.isFreeParking" value="1">
+            <span class="span-shop-service-icon span-parking-icon">停车</span>
+            <else/>
+            <!--<span class="span-shop-service-icon n-span-parking-icon">停车</span>-->
+        </eq>
+        <eq name="shopInfo.isAllowPet" value="1">
+            <span class="span-shop-service-icon span-pet-icon">宠物</span>
+            <else/>
+            <!--<span class="span-shop-service-icon n-span-pet-icon">宠物</span>-->
+        </eq>
+    </div>
+</if>
+<if condition="($shopInfo.onlinePaymentDiscount NEQ 10) AND ($shopInfo.isAcceptBankCard EQ 1)">
+    <div class="icbc-discount-wrap">
+        <span class="icbc-icon">工行卡在线支付享受{$shopInfo.onlinePaymentDiscount}折</span>
+    </div>
+</if>
+<!-- 店铺图片 -->
+<?php if(!empty($shopPhotoList) && $shopInfo['isCatering'] != 1):?>
+<div class="shop-product-wrap">
+    <div class="shop-product-title">商品/服务</div>
+    <div class="shop-product-more-wrap">
+        <a href="/Api/Browser/shopProductList?shopCode={$shopInfo.shopCode}&userCode={$userCode}" class="shop-product-more external">更多<span class="more-icon"></span></a>
+    </div>
+    <div class="clear"></div>
+</div>
+<div class="shop_photo" style="padding-left: 5%;  padding-right: 5%;">
+    <div class="swiper-container sp-swiper-container" style="width: 100%;float: left;">
+        <div class="swiper-wrapper" style="width: 32%;">
+            <foreach name="shopPhotoList" item="vo">
+                <div class="swiper-slide">
+                    <a href="/Api/Browser/shopProductInfo?productId={$vo.productId}&shopCode={$shopInfo.shopCode}&userCode={$userCode}&backup=h5&backAction=shopProductList" class="external" style="width: 100%;height:100%;">
+                        <img src="{$vo.url}" style="width: 76%;  height: 74%;  margin-left: 12%;" />
+                        <div style="color: #000;  font-size: 14px;  text-align: center;">{$vo.productName}</div>
+                    </a>
+                </div>
+            </foreach>
+        </div>
+        If we need scrollbar
+        <div class="swiper-scrollbar"></div>
+    </div>
+    <!--<a href="hs://shopAlbum" class="external"><div class="shop_album"></div></a>-->
+</div>
+<?php elseif((empty($shopPhotoList) || $shopInfo['isCatering'] != 1) && $shopInfo['shopStatus'] == 2):?>
+<div class="invite-shop-wrap">
+    <div class="shop-product-wrap">
+        <div class="shop-product-title">商品/服务</div>
+        <div class="clear"></div>
+    </div>
+    <div class="invite-shop" id="remind-shop">
+        <empty name="remind">
+            <a class="external remind-shop-button"  data-shop-code="{$shopInfo.shopCode}" data-user-code="{$userCode}"><span class="span-invite-shop-icon tixing-shop">提醒商家上商品(服务)</span></a>
+            <else/>
+            <span class="span-invited-shop-icon">{$countRemind}人提醒商家上商品(服务)</span>
+        </empty>
+    </div>
+</div>
+<?php endif;?>
+
+<?php if(!isset($shopInfo['openId'])):?>
+<!-- 用户领取的优惠券 -->
+<div class="grabbed_coupon" <?php if(empty($couponList['userCoupon'])):?>style="display: none;"<?php endif;?>>
+<a href="#" class="external" style="color: #000;" onclick="showDisplay($(this), $('.grabbed_coupon').find('.coupon_list'), 1);" data-type="0"><div class="coupon_title">我的优惠券<img src="/Public/img/icon/up_arrow.png" /></div></a>
+<div class="coupon_list" id="my_coupon">
+    <foreach name="couponList.userCoupon" item="vo" key="k">
+        <div class="coupon_info" data_k="{$k}_a">
+            <div class="left">
+                <!--跳到 用户 优惠券详情页-->
+                <!--<if condition="$vo.couponType eq 1 OR $vo.couponType eq 5 OR $vo.couponType eq 6 OR $vo.couponType eq 7">-->
+                    <!--<a href="hs://couponInfo?userCouponCode={$vo.userCouponCode|urlencode}" class="external" style="color: #000;">-->
+                        <!--<else />-->
+                        <!--<gt name="vo.userCount" value="1">-->
+                            <!--<a href="javascript:void(0);" class="external my_coupon_info" style="color: #000;" data-batch-coupon-code="{$vo.batchCouponCode}" data-user-code="{$userCode}">-->
+                                <!--<else />-->
+                                <!--<a href="hs://couponInfo?userCouponCode={$vo.userCouponCode|urlencode}" class="external" style="color: #000;">-->
+                        <!--</gt>-->
+                <!--</if>-->
+                <!--跳到 批次 优惠券详情页-->
+                <a href="hs://batchCouponInfo?batchCouponCode={$vo.batchCouponCode|urlencode}&couponType={$vo.couponType|urlencode}" class="external" style="color: #000;">
+                    <div>
+                        <if condition="$vo.couponType eq 1 OR $vo.couponType eq 7">
+                            <span class="price">￥{$vo.insteadPrice}</span>&nbsp;
+                            <span class="function">{$vo.function}</span><br />
+                            <elseif condition="$vo.couponType eq 3"/>
+                            <span class="price">满{$vo.availablePrice}元立减{$vo.insteadPrice}元</span><br />
+                            <elseif condition="$vo.couponType eq 4"/>
+                            <span class="price">满{$vo.availablePrice}元打{$vo.discountPercent}折</span><br />
+                            <elseif condition="$vo.couponType eq 8"/>
+                            <span class="price">￥{$vo.payPrice}</span>&nbsp;
+                            <span class="function">代{$vo.insteadPrice}元</span><br />
+                            <else />
+                            <span class="price">{$vo.function}</span><br />
+                        </if>
+                    <span class="using_time">
+                                <if condition="$vo.validityPeriod eq 0">永久有效
+                                    <elseif condition="$vo.validityPeriod GT 0" />有效期{$vo.validityPeriod}天
+                                    <else/>{$vo.startUsingTime} - {$vo.expireTime}
+                                </if>
+                            </span>
+                        <div class="intro">
+                            <?php
+                        $time = '';
+                        if(($vo['dayEndUsingTime'] == '23:59' || $vo['dayEndUsingTime'] == '00:00') && $vo['dayStartUsingTime'] == '00:00'){
+                        $time = '全天使用';
+                        }else{
+                        $time = $vo['dayStartUsingTime'].' - '.$vo['dayEndUsingTime'];
+                        }
+                        ?>
+                            <if condition="$vo.couponType neq 1 AND $vo.couponType neq 5 AND $vo.couponType neq 6 AND $vo.userCount gt 1">
+                                <span>批次号：{$vo.batchNbr}</span><br />
+                            </if>
+                            <span>使用时间：{$time}</span><br />
+                            <if condition="($vo.couponType neq 1 AND $vo.couponType neq 5 AND $vo.couponType neq 6 AND $vo.userCount eq 1) OR $vo.couponType eq 1 OR $vo.couponType eq 5 OR $vo.couponType eq 6">
+                                <span>优惠券编码：{$vo.userCouponNbr}</span><br />
+                            </if>
+                            <span>优惠券说明：{$vo.remark|default='暂无说明'}</span>
+                        </div>
+                    </div>
+                </a>
+                <?php
+                                        $string = array(
+                                        'city' => $vo['city'],
+                'couponType' => $vo['couponType'],
+                'availablePrice' => $vo['availablePrice'],
+                'insteadPrice' => $vo['insteadPrice'],
+                'discountPercent' => $vo['discountPercent'],
+                'function' => $vo['function'],
+                'shopName' => $vo['shopName'],
+                'batchCouponCode' => $vo['batchCouponCode']
+                );
+                $string = json_encode($string);
+                ?>
+                <a href="hs://share?params={$string|urlencode}" class="external"><img src="/Public/img/icon/share.png" /></a>
+            </div>
+            <div class="right">
+                <div class="coupon_type coupon_type_up_{$vo.couponType}">
+                    <if condition="$shopInfo.isAcceptBankCard eq 1">
+                        <?php
+                        if(in_array($vo['couponType'],array(1,5,6))){
+                        $string = array(
+                            'userCouponCode'=>$vo['userCouponCode'],
+                        'batchCouponCode'=> $vo['batchCouponCode'],
+                        'couponType'=>$vo['couponType']
+                        );
+                        }else{
+                        $string = array(
+                        'shopCode'=>$shopInfo['shopCode'],
+                        'shopName'=>$vo['shopName'],
+                        'logoUrl'=>$shopInfo['logoUrl'],
+                        'couponType'=>$vo['couponType'],
+                        'batchCouponCode'=> $vo['batchCouponCode'],
+                        );
+                        }
+                        $string = json_encode($string);
+                        ?>
+                        <a href="hs://useCoupon?params={$string|urlencode}" class="external use" userCode="{$userCode}" data-day-start-using-time="{$vo.dayStartUsingTime}" data-day-end-using-time="{$vo.dayEndUsingTime}" data-validity-period="{$vo.validityPeriod}" data-start-using-time="{$vo.startUsingTime}" data-expire-time="{$vo.expireTime}"><span class="userCount">X {$vo.userCount}</span> <span style="font-size: 12px;">使用</span></a>
+                        <else />
+                        <a href="javascript:void(0);" class="external cc" onclick="other_modal('工行卡支付，敬请期待！');"><span class="userCount">X {$vo.userCount}</span> <span style="font-size: 12px;">使用</span></a>
+                    </if>
+                </div>
+                <div class="coupon_type_down_{$vo.couponType}">
+                    <button data-type="1" class="button_nothing coupon_info_show"><img src="/Public/img/icon/arrow_down.png" /></button>
+                </div>
+            </div>
+        </div>
+    </foreach>
+</div>
+</div>
+
+<!-- 用户未领取的优惠券 -->
+<div class="no_grab_coupon" <?php if(empty($couponList['shopCoupon'])):?>style="display: none;"<?php endif;?>>
+<a href="#" class="external" style="color: #000;" onclick="showDisplay($(this), $('.no_grab_coupon').find('.coupon_list'), 1);" data-type="0"><div class="coupon_title">未领取的优惠券<img src="/Public/img/icon/up_arrow.png" /></div></a>
+<div class="coupon_list">
+    <foreach name="couponList.shopCoupon" item="vo" key="k">
+        <div class="coupon_info" data_k="{$k}_b">
+            <div class="left">
+                <a href="hs://batchCouponInfo?batchCouponCode={$vo.batchCouponCode|urlencode}&couponType={$vo.couponType|urlencode}" class="external" style="color: #000;">
+                    <div>
+                        <if condition="$vo.couponType eq 1 OR $vo.couponType eq 7">
+                            <span class="price">￥{$vo.insteadPrice}</span>&nbsp;
+                            <span class="function">{$vo.function}</span><br />
+                            <elseif condition="$vo.couponType eq 3"/>
+                            <span class="price">满{$vo.availablePrice}元立减{$vo.insteadPrice}元</span><br />
+                            <elseif condition="$vo.couponType eq 4"/>
+                            <span class="price">满{$vo.availablePrice}元打{$vo.discountPercent}折</span><br />
+                            <elseif condition="$vo.couponType eq 8"/>
+                            <span class="price">￥{$vo.payPrice}</span>&nbsp;
+                            <span class="function">代{$vo.insteadPrice}元</span><br />
+                            <else />
+                            <span class="price">{$vo.function}</span><br />
+                        </if>
+                        <span class="using_time">
+                        <if condition="$vo.validityPeriod eq 0">永久有效
+                            <elseif condition="$vo.validityPeriod GT 0" />有效期{$vo.validityPeriod}天
+                            <else/>{$vo.startUsingTime} - {$vo.expireTime}
+                        </if>
+                        </span>
+                        <div class="intro">
+                            <?php
+                        $time = '';
+                        if(($vo['dayEndUsingTime'] == '23:59' || $vo['dayEndUsingTime'] == '00:00') && $vo['dayStartUsingTime'] == '00:00'){
+                        $time = '全天使用';
+                        }else{
+                        $time = $vo['dayStartUsingTime'].' - '.$vo['dayEndUsingTime'];
+                        }
+                        ?>
+                            <span>使用时间：{$time}</span><br /><span>优惠券说明：{$vo.remark|default='暂无说明'}</span>
+                        </div>
+                    </div>
+                </a>
+                <?php
+                $string = array(
+                    'city' => $vo['city'],
+                    'couponType' => $vo['couponType'],
+                    'availablePrice' => $vo['availablePrice'],
+                    'insteadPrice' => $vo['insteadPrice'],
+                    'discountPercent' => $vo['discountPercent'],
+                    'function' => $vo['function'],
+                    'shopName' => $vo['shopName'],
+                    'batchCouponCode' => $vo['batchCouponCode']
+                );
+                $string = json_encode($string);
+                ?>
+                <a href="hs://share?params={$string|urlencode}" class="external"><img src="/Public/img/icon/share.png" /></a>
+            </div>
+            <div class="right">
+                <div class="coupon_type coupon_type_up_{$vo.couponType}">
+                    <if condition="$vo.payPrice gt 0">
+                        <?php if($shopInfo['isAcceptBankCard'] == 1):?>
+                        <!-- 工行卡支付 -->
+                        <a href="hs://couponPay?batchCouponCode={$vo.batchCouponCode|urlencode}" class="external grab_pay" userCode="{$userCode}">抢购</a>
+                        <?php else:?>
+                        <a href="javascript:void(0);" class="external" onclick="other_modal('工行支付尚未开通，敬请期待！您可进行到店现金支付。');">抢购</a>
+                        <?php endif;?>
+                        <else />
+                        <a href="#" class="external grab" userCode="{$userCode}" batchCouponCode="{$vo.batchCouponCode}">领取</a>
+                    </if>
+                </div>
+                <div class="coupon_type_down_{$vo.couponType}">
+                    <button data-type="1" class="button_nothing coupon_info_show"><img src="/Public/img/icon/arrow_down.png" /></button>
+                </div>
+            </div>
+        </div>
+    </foreach>
+</div>
+</div>
+
+<?php if($shopInfo['showPayBtn'] == 1):?>
+    <eq name="shopInfo.isAcceptBankCard" value="1">
+        <!-- 工行卡支付 -->
+        <?php
+        $string = array(
+            'shopCode'=>$shopInfo['shopCode'],
+            'shopName'=>$shopInfo['shopName'],
+            'logoUrl'=>$shopInfo['logoUrl']
+        );
+        $string = json_encode($string);
+        ?>
+        <div class="icbc_pay">
+            <a href="hs://icbcPay?params={$string|urlencode}" class="external" userCode="{$userCode}" style="padding: 2% 28%;" <eq name="shopInfo.ifCanPay" value="0">disabled</eq>>使用惠支付</a>
+            <if condition="$shopInfo.isFirst eq 1">
+                <p style="text-align: left;padding: 0 4%;"><span style="padding: 0 5px;background-color: rgb(161,161,161);border-radius: 4px;color: #fff;">首单</span><span style="color: #E35E00;margin-left: 5px;">新用户使用工行卡立减10元</span></p>
+            </if>
+            <!--<if condition="$shopInfo.onlinePaymentDiscount neq 10">-->
+            <!--<p style="text-align: left;padding: 0 4%;">*使用工行卡快捷支付可享受 <span style="color: rgb(182, 0, 12);">{$shopInfo.onlinePaymentDiscount}</span> 折优惠</p>-->
+            <!--</if>-->
+        </div>
+    <else />
+        <div class="icbc_pay">
+            <a href="javascript:void(0);" class="external" onclick="other_modal('敬请期待！');" style="padding: 2% 28%;" <eq name="shopInfo.ifCanPay" value="0">disabled</eq>>使用惠支付</a>
+        </div>
+    </eq>
+<?php endif;?>
+
+<?php endif;?>
+<!-- 店铺简介 -->
+<div class="shop_des">
+    <p>店铺简介</p>
+    <div>{$shopInfo.shortDes}</div>
+</div>
+<?php if(isset($shopInfo['openId'])):?>
+<div style="text-align: center;padding: 20px 10px 20px 10px;">
+    <a href="javascript:void(0);" class="external" onclick="$(this).parent().remove();"><img src="/Public/img/icon/close.png" style="width: 25px;height:25px;float: right;" /></a>
+    <p style="font-size: 16px;font-weight: bold;margin: 2em 0;">下载惠圈，移动点餐结账，享受更多优惠</p>
+    <a href="/Wechat/Index/cdownload" class="external" style="background-color: #C5000A;border-radius: 4px;border: none;color: #fff;font-size: 18px;padding: 2% 20%;">下载惠圈</a>
+</div>
+<?php endif;?>
+</div>
+</div>
+</div>
+</div>
+</div>
+<?php
+        $weChatUserCode = '';
+        $weChatOpenId = '';
+        if(isset($shopInfo['openId'])){
+        $weChatOpenId = $shopInfo['openId'];
+        }
+        if(isset($userInfo['userCode'])){
+        $weChatUserCode = $userInfo['userCode'];
+        }
+
+        $html = '';
+        if(!empty($unPayedOrderList)){
+        foreach($unPayedOrderList as $v){
+        $html .= '<a href="/Api/Browser/unReceiveOrder?orderCode='.$v['orderCode'].'&openId='.$shopInfo['openId'].'" class="external">订单编号 '.substr($v['orderNbr'], -3).' >></a><br />';
+}
+}
+$photoArr = json_encode($photoArr);
+?>
+<style>
+    .modal{width: 80%;margin-left: 0;left: 10%;}
+    .modal-inner{background-color: #fff;border-bottom: none;}
+    .list-block{background-color: #e8e8e8;}
+    .list-block .item-input{background-color: #e8e8e8;}
+    .modal-button{background-color: #fff;}
+    .product_div{position: absolute;width:100%;height:100%;left:0;top:0;text-align: center;background-color: rgba(0,0,0,0.3);}
+</style>
+<script>
+$(function() {
+    var cObj = $('.coming_soon');
+    for(var c = 0; c < cObj.length; c++){
+        var imgObj = $(cObj.get(c)).parent().find('img');
+        var imgW = imgObj.width();
+        var imgH = imgObj.height();
+        $(cObj.get(c)).css('width', imgW);
+        $(cObj.get(c)).css('height', imgH);
+    }
+
+    for(var act = 0; act < $('.act-more-than-one').length; act++){
+        $($('.act-more-than-one').get(act)).css('color', rgb());
+    }
+
+//        window.location
+//        属性  描述
+//        hash 设置或获取 href 属性中在井号“#”后面的分段。
+//        host 设置或获取 location 或 URL 的 hostname 和 port 号码。
+//        hostname 设置或获取 location 或 URL 的主机名称部分。
+//        href 设置或获取整个 URL 为字符串。
+//        pathname 设置或获取对象指定的文件名或路径。
+//        port 设置或获取与 URL 关联的端口号码。
+//        protocol 设置或获取 URL 的协议部分。
+//        search 设置或获取 href 属性中跟在问号后面的部分。
+//    console.log(window.location.hash);
+
+    var swiper1 = new Swiper('.sd-swiper-container', {
+//        pagination: '.sd-swiper-container .swiper-pagination',
+//        nextButton: '.swiper-button-next',
+//        prevButton: '.swiper-button-prev',
+//        paginationClickable: true,
+        spaceBetween: 30,
+        centeredSlides: true,
+        autoplay: 2500,
+        autoplayDisableOnInteraction: false
+    });
+    swiper1.on('onSliderMove', function(){
+        var slideObj = $('.sd-swiper-container').find('.swiper-slide');
+        var index = swiper1.activeIndex;
+        if(index == slideObj.length - 1){
+            var targetObj = $(slideObj.get(index));
+            var productObj = targetObj.find('.product_div');
+            if(productObj.length == 0){
+                targetObj.append('<div class="product_div"><a href="hs://shopAlbum" class="button external" style="width: 40%;margin-left: 30%;margin-top: 18%;border-color: #fff;color: #fff;">进入相册</a></div>');
+                $('.product_div').on('click', function(){
+                    $(this).remove();
+                });
+            }
+        }
+    });
+
+    var swiper2 = new Swiper('.sp-swiper-container', {
+        scrollbar: '.sp-swiper-container .swiper-scrollbar',
+        scrollbarHide: true,
+        slidesPerView: 'auto',
+        centeredSlides: false,
+        spaceBetween: 5,
+        grabCursor: true
+    });
+
+    /*=== Standalone Dark ===*/
+    var myPhotoBrowserDark = myApp.photoBrowser({
+        photos : {$photoArr},
+        theme: 'dark',
+        backLinkText: '返回',
+        ofText: '/',
+        onClose: function(){
+            location.href = '#';
+        }
+    });
+    $('.big_img').on('click', function () {
+        var index = $(this).attr('order_index');
+        myPhotoBrowserDark.open(index);
+    });
+
+    var obj = $('.coupon_info').find('.left');
+    var arr_height1 = [];
+    var arr_height2 = [];
+    for(var i = 0; i < obj.length; i++){
+        var height = $(obj.get(i)).height();
+        var a = $(obj.get(i)).parent().attr('data_k');
+        a = a.split('_');
+        if(a[1] == 'a'){
+            arr_height1.push(height);
+        }else{
+            arr_height2.push(height);
+        }
+        $($('.coupon_type').get(i)).css('height', height*0.92);
+    }
+//    console.log(arr_height1);
+//    console.log(arr_height2);
+
+    var weChatOpenId = '{$weChatOpenId}';
+    var weChatUserCode = '{$weChatUserCode}';
+    if(weChatOpenId != '' && weChatUserCode == ''){
+        myApp.modal({
+            title: '客官，为了更好的为您服务<br />请告诉小二您的手机号码',
+            text: '',
+            afterText: '<div id="mobile_error" style="margin: 10px 0;padding: 5px;background-color: #f0ad4e;text-align: left;display: none;"></div>' +
+                    '<div class="list-block" style="margin: 20px 0 0 0;"><ul style="border: none;">' +
+                    '<li><div class="item-content" style="padding: 0;">' +
+                    '<div class="item-inner" style="padding:0;">' +
+                    '<div class="item-input">' +
+                    '<input type="tel" name="mobileNbr" placeholder="您输入的手机号码将成为您的惠圈账号" style="border: 1px solid #B9B9B9;padding: 0 5px;font-size: 12px;text-align: center;">' +
+                    '</div>' +
+                    '</div>' +
+                    '</div></li></ul></div>',
+            buttons: [
+                {
+                    text: '<span style="color: #C5000A;border-radius: 4px;border: 1px solid #C5000A;padding: 1% 10%;">下一步</span>',
+                    close: false,
+                    onClick: function(value){
+                        var mobileNbr = $(value[0]).find('input[name="mobileNbr"]').val();
+
+                        if(mobileNbr == ''){
+                            $(value[0]).find('#mobile_error').text('请输入手机号！');
+                            $(value[0]).find('#mobile_error').show().fadeOut(2000);
+                        }else{
+                            var regx = /\D/;
+                            var index = regx.exec(mobileNbr);
+                            if (mobileNbr.length != 11 || (!(!index && typeof(index)!="undefined" && index!=0) && index.index >= 0)){
+                                $(value[0]).find('#mobile_error').text('请输入正确的手机号！');
+                                $(value[0]).find('#mobile_error').show().fadeOut(2000);
+                            }else{
+                                myApp.closeModal();
+                                myApp.modal({
+                                    title: '客官，为了更好的为您服务<br />请告诉小二您的手机号码',
+                                    text: '',
+                                    afterText: '<div id="validate_error" style="margin: 10px 0;padding: 5px;background-color: #f0ad4e;text-align: left;display: none;"></div><div class="list-block" style="margin: 20px 0 0 0;"><ul style="border: none;">' +
+                                            '<li><div class="item-content" style="padding: 0;">' +
+                                            '<div class="item-inner" style="padding:0;position: relative;">' +
+                                            '<div class="item-input" style="width: 65%;">' +
+                                            '<input type="text" name="validateCode" placeholder="请输入短信验证码" style="border: 1px solid #B9B9B9;padding: 0 5px;font-size: 12px;">' +
+                                            '</div>' +
+                                            '<a href="javascript:void(0);" onclick="getValCode('+mobileNbr+', $(this))" class="external" style="border: 1px solid #C5000A;font-size: 12px;border-radius: 4px;padding: 3% 2%;position: absolute;top: 13%;right: 5px;color:#C5000A;">获取验证码</a>' +
+                                            '</div>' +
+                                            '</div></li>' +
+                                            '</ul></div>',
+                                    buttons: [
+                                        {
+                                            text: '<span style="color: #C5000A;border-radius: 4px;border: 1px solid #C5000A;padding: 1% 10%;">去点餐</span>',
+                                            close: false,
+                                            onClick: function(value){
+                                                var validateCode = $(value[0]).find('input[name="validateCode"]').val();
+                                                if(validateCode == ''){
+                                                    $(value[0]).find('#validate_error').text('请输入验证码！');
+                                                    $(value[0]).find('#validate_error').show().fadeOut(2000);
+                                                }else{
+                                                    if(validateCode.length != 6){
+                                                        $(value[0]).find('#validate_error').text('请输入正确的验证码！');
+                                                        $(value[0]).find('#validate_error').show().fadeOut(2000);
+                                                    }else{
+                                                        $.post('/Api/Browser/wechatRegister',
+                                                                {   mobileNbr:mobileNbr,
+                                                                    wechatId:weChatOpenId,
+                                                                    validateCode:validateCode,
+                                                                    isAjax:true },
+                                                                function(resp){
+                                                                    if(resp.status != sz.STATUS_SUCC){
+                                                                        if(resp.data.code == 80011){
+                                                                            $(value[0]).find('#validate_error').text('验证码错误，请重试！');
+                                                                            $(value[0]).find('#validate_error').show().fadeOut(2000);
+                                                                        }else{
+                                                                            $(value[0]).find('#validate_error').text('网络异常，请重试！');
+                                                                            $(value[0]).find('#validate_error').show().fadeOut(2000);
+                                                                        }
+                                                                    }else{
+                                                                        location.href = '/Api/Browser/getShopInfo?shopCode={$shopInfo.shopCode}&openId='+weChatOpenId;
+                                                                    }
+                                                                });
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    ]
+                                });
+                            }
+                        }
+                    }
+                }
+            ]
+        });
+    }else{
+        var unPayedOrder = '{$html}';
+        if(unPayedOrder != ''){
+            myApp.modal({
+                title: '您有未支付的订单？',
+                text: '',
+                afterText: '<div style="line-height: 2;border-top: 1px solid darkgray;max-height: 300px;overflow-y: auto;">'+unPayedOrder+'</div>',
+                buttons: [
+                    {
+                        text: '稍后再付'
+                    }
+                ]
+            })
+        }
+    }
+    $('.invite-shop-button').on('click', function(){
+        var obj = $(this);
+        obj.attr('disabled', true);
+        var shopCode = $(this).data('shopCode');
+        var userCode = $(this).data('userCode');
+        if(userCode == ''){
+            login_modal();
+            return false;
+        }
+        $.get('/Api/Browser/inviteShopSettled',{shopCode:shopCode, userCode:userCode}, function(resp){
+            if(resp.status == 0){
+                $("#invite-shop").removeAttr("span");
+                $("#invite-shop").html('<span class="span-invited-shop-icon">'+resp.data+'人邀请商家入驻惠圈</span>');
+            }else{
+                myApp.modal({
+                    title:  '提醒',
+                    text: '邀请失败!',
+                    buttons: [
+                        {
+                            text: '确定'
+                        }
+                    ]
+                });
+                obj.attr('disabled', false);
+            }
+        });
+        return false;
+    });
+    $('.remind-shop-button').on('click', function(){
+        var obj = $(this);
+        obj.attr('disabled', true);
+        var shopCode = $(this).data('shopCode');
+        var userCode = $(this).data('userCode');
+        if(userCode == ''){
+            login_modal();
+            return false;
+        }
+        $.get('/Api/Browser/remindShop',{shopCode:shopCode, userCode:userCode}, function(resp){
+            if(resp.status == 0){
+                $("#remind-shop").removeAttr("span");
+                $("#remind-shop").html('<span class="span-invited-shop-icon">'+resp.data+'人提醒商家上商品(服务)</span>');
+            }else{
+                myApp.modal({
+                    title:  '提醒',
+                    text: '提醒失败!',
+                    buttons: [
+                        {
+                            text: '确定'
+                        }
+                    ]
+                });
+                obj.attr('disabled', false);
+            }
+        });
+        return false;
+    });
+    $('.coupon_info_show').unbind('click').click(function(){
+        var a = $(this).parent().parent().parent().attr('data_k');
+        a = a.split('_');
+        if(a[1] == 'a'){
+            height = arr_height1[a[0]];
+        }else{
+            height =arr_height2[a[0]];
+        }
+        showDisplay($(this), $(this).parent().parent().parent().find('.intro'), 2);
+        var type = $(this).attr('data-type');
+        if(type == 0){
+            var h = $(this).parent().parent().parent().find('.left').height();
+            $(this).parent().parent().find('.coupon_type').css('height', h * 0.95);
+            $(this).parent().parent().find('.grab').css('line-height',5.6);
+            $(this).parent().parent().find('.use').css('line-height',6.5);
+        }else{
+            $(this).parent().parent().parent().find('.left').css('height', height);
+            $(this).parent().parent().find('.coupon_type').css('height', height * 0.92);
+            $(this).parent().parent().find('.grab').css('line-height',3);
+            $(this).parent().parent().find('.use').css('line-height',3);
+        }
+    });
+
+    $('.follow').click(function(){
+        var shop_code = $(this).attr('shopCode');
+        var user_code = $(this).attr('userCode');
+        var followed = $(this).attr('followed');
+        if(user_code == ''){
+            $(this).on('click', login_modal());
+        }else{
+            var url = '';
+            var showObj = '';
+            var hideObj = '';
+            if(followed == 0){
+                url = '/Api/Browser/followShop';
+                showObj = $('.followed');
+                hideObj = $('.following');
+            }else{
+                url = '/Api/Browser/cancelFollowShop';
+                showObj = $('.following');
+                hideObj = $('.followed');
+            }
+            $.post(url,
+                    {   userCode:user_code,
+                        shopCode:shop_code,
+                        isAjax:true },
+                    function(result){
+                        var text = '';
+                        if(result.status == 0){
+                            showObj.show();
+                            hideObj.hide();
+                            if(followed == 0){
+                                text = '恭喜您关注成功！';
+                            }else{
+                                text = '您已取消关注！';
+                            }
+                        }else{
+                            if(result.data.code == 50004){
+                                text = '您已关注过该商家！';
+                            }else{
+                                if(followed == 0){
+                                    text = '关注失败，请重试！';
+                                }else{
+                                    text = '您还未取消关注，请重试！';
+                                }
+                            }
+                        }
+                        other_modal(text);
+                    });
+        }
+    });
+
+    $('.grab').click(function(){
+        $(this).attr('disabled', true);
+        var a = $(this).parent().parent().parent().attr('data_k');
+        a = a.split('_');
+        height =arr_height2[a[0]];
+        var userCode = $(this).attr('userCode');
+        var batchCouponCode = $(this).attr('batchCouponCode');
+        if(userCode == ''){
+            $(this).attr('disabled', false);
+            $(this).on('click', login_modal());
+        }else{
+            $.post('/Api/Browser/grabCoupon',
+                    {   userCode:userCode,
+                        batchCouponCode:batchCouponCode,
+                        isAjax:true },
+                    function(result){
+                        var text = '';
+                        if(result.status == 0){
+                            myApp.modal({
+                                title:  '提醒',
+                                text: '恭喜你领取成功！',
+                                buttons: [
+                                    {
+                                        text: '确定',
+                                        onClick:function(){
+                                            location.href = '/Api/Browser/getShopInfo?shopCode={$shopInfo.shopCode}&userCode={$userCode}'
+                                        }
+                                    }
+                                ]
+                            });
+                        }else{
+                            $(this).attr('disabled', false);
+                            if(result.data.code == 80223){
+                                text = '该优惠券已不存在！';
+                            }else if(result.data.code == 80220){
+                                text = '该优惠券已过期！';
+                            }else if(result.data.code == 80221){
+                                text = '该优惠券已被领完！';
+                            }else if(result.data.code == 80222){
+                                text = '您领取该优惠券已达上限！';
+                            }else{
+                                text = '领取失败，请重试！';
+                            }
+                            other_modal(text);
+                        }
+                    });
+        }
+    });
+    click_event($('.shop_info').find('a').eq(1), 0);
+    click_event($('.use'), 1);
+    click_event($('.icbc_pay').find('a'), 0);
+    click_event($('.grab_pay'), 0);
+
+    my_coupon_info();
+
+});
+function getValCode(mobileNbr, obj){
+    $.post('/Api/Browser/getValCode',
+            {   mobileNbr:mobileNbr,
+                action:1,
+                isAjax:true },
+            function(resp){
+                if (resp.status != sz.STATUS_SUCC) {
+                    if(resp.data.code != 20000){
+                        myApp.modal({
+                            title:  '提醒',
+                            text: '发送失败，请重试！',
+                            buttons: [
+                                {
+                                    text: '确定',
+                                    onClick: function(){
+                                        obj.attr('disabled',false);
+                                        obj.text('获取验证码');
+                                    }
+                                }
+                            ]
+                        });
+                    }
+                }else{
+                    settime(obj);
+                }
+            });
+}
+function my_coupon_info(){
+    $('.my_coupon_info').click(function(){
+        var batchCouponCode = $(this).data('batchCouponCode');
+        var userCode = $(this).data('userCode');
+        $.post('/Api/Browser/myCouponInfo',
+                {   userCode:userCode,
+                    batchCouponCode:batchCouponCode,
+                    isAjax:true },
+                function(result){
+                    var html = '<div style="line-height: 2;margin-bottom: -15px;">';
+                    for(var i=0;i<result.userCount;i++){
+                        html = html + '<a href="hs://couponInfo?userCouponCode='+encodeURIComponent(result.userCoupon[i].userCouponCode)+'" class="external">'+result.userCoupon[i].userCouponNbr+' ></a><br />';
+                    }
+                    html = html + '</div>';
+                    myApp.modal({
+                        title:  '',
+                        text: '请选择一张优惠券(以下是你领的优惠券号):',
+                        afterText: html,
+                        buttons: [
+                            {
+                                text: '取消'
+                            }
+                        ]
+                    });
+                });
+    });
+}
+function showDisplay(aObj, divObj, type){
+    var val = aObj.attr("data-type");
+    var html = '';
+    if(type == 1){
+        html = "width: 16px;height:auto;float: right;margin-top: 6px;";
+    }else if(type == 2){
+        html = "";
+    }
+    if(val==1){
+        divObj.show();
+        aObj.attr("data-type","0");
+        if(type == 1){
+            aObj.find('img').remove();
+            aObj.find('div').append('<img src="/Public/img/icon/up_arrow.png" style="'+html+'" />');
+        }else if(type == 2){
+            aObj.empty().html('<img src="/Public/img/icon/arrow_up.png" style="'+html+'" />');
+        }
+    }else{
+        divObj.hide();
+        aObj.attr("data-type","1");
+        if(type == 1){
+            aObj.find('img').remove();
+            aObj.find('div').append('<img src="/Public/img/icon/down_arrow.png" style="'+html+'" />');
+        }else if(type == 2){
+            aObj.empty().html('<img src="/Public/img/icon/arrow_down.png" style="'+html+'" />');
+        }
+    }
+}
+
+
+
+function click_event(obj, other) {
+    obj.click(function(){
+        var user_code = $(this).attr('userCode');
+        if(user_code == ''){
+            login_modal();
+            return false;
+        }
+        if(other == 1){
+            var validityPeriod = $(this).data('validityPeriod');
+            var startUsingTime = $(this).data('startUsingTime');
+            var expireTime = $(this).data('expireTime');
+            var dayStartUsingTime = $(this).data('dayStartUsingTime');
+            var dayEndUsingTime = $(this).data('dayEndUsingTime');
+
+            var cst = startUsingTime.split('.');
+            var cet = expireTime.split('.');
+            var ds = dayStartUsingTime.split(":");
+            var de = dayEndUsingTime.split(":");
+            var startDateString = cst[0].concat(cst[1], cst[2]);
+            var endDateString = cet[0].concat(cet[1], cet[2]);
+            var startTimeString = ds[0].concat(ds[1]);
+            var endTimeString = de[0].concat(de[1]);
+
+            var myDate = new Date();
+            var year = myDate.getFullYear(); //以四位数字返回年份获取当前的年份
+            var month = myDate.getMonth(); //获取当前的月份(0 ~ 11)
+            month = parseInt(month) + 1;
+            var date = myDate.getDate(); //获取当前的日期(0 ~ 31)
+            var hour = myDate.getHours(); //获取当前小时数(0-23)
+            var minute = myDate.getMinutes(); //获取当前分钟数(0-59)
+
+            month = initialTime(month);
+            date = initialTime(date);
+            hour = initialTime(hour);
+            minute = initialTime(minute);
+            var curDateString = year.toString().concat(month.toString(), date.toString());
+            var curTimeString = hour.toString().concat(minute.toString());
+
+            if(validityPeriod < 0){
+                if(!(parseInt(startDateString) <= parseInt(curDateString) && parseInt(endDateString) >= parseInt(curDateString))){
+                    other_modal('不在使用时间内！');
+                    return false;
+                }
+            }
+
+            if(!(parseInt(startTimeString) == 0 && (parseInt(endTimeString) == 0 || parseInt(endTimeString) == 2359))){
+                if(!(parseInt(startTimeString) <= parseInt(curTimeString) && parseInt(endTimeString) >= parseInt(curTimeString))){
+                    other_modal('不在使用时间内！');
+                    return false;
+                }
+            }
+        }
+    });
+}
+
+function other_modal(text) {
+    myApp.modal({
+        title:  '提醒',
+        text: text,
+        buttons: [
+            {
+                text: '确定'
+            }
+        ]
+    });
+}
+var countdown = 60;
+function settime(obj) {
+    if (countdown == 0) {
+        obj.attr("disabled", false);
+        obj.text("获取验证码");
+        countdown = 60;
+        return false;
+    } else {
+        obj.attr("disabled", true);
+        obj.text(countdown+"s 后重试");
+        countdown--;
+    }
+    setTimeout(function() {
+        settime(obj);
+    },1000);
+}
+
+function initialTime(time){
+    if(parseInt(time) < 10){
+        time = '0' + time.toString();
+    }
+    return time;
+}
+function rgb(){
+    var r=Math.floor(Math.random()*255);
+    var g=Math.floor(Math.random()*255);
+    var b=Math.floor(Math.random()*255);
+    var rgb='rgb('+r+','+g+','+b+')';
+    return rgb;
+}
+</script>

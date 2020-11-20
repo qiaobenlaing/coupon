@@ -1,0 +1,331 @@
+<table class="fp-table table table-striped table-bordered table-condensed" id="data_table">
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>地区</th>
+        <th>清算文件</th>
+        <th>清算结果文件</th>
+        <th>是否处理</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    <foreach name="dataList" item="item" key="k">
+        <tr>
+            <td>{$k+1}</td>
+            <td>{$item.name}</td>
+            <td><a href="{$item.initialFileUrl}">{$item.initialFileUrl|substr=34}</a></td>
+            <td>
+                <div id="div_{$item.id}" style="display: inline-table;">
+                    <a href="{$item.resultFileUrl}">{$item.resultFileUrl|substr=40}</a>
+                </div>
+                <if condition="$item.isLiquidated neq 1">
+                    <div class="row-fluid employee-item-img" style="display: inline-table;" id="{$item.id}_img">
+                        <div class="employee-item-imgdiv">
+                            <img src="" class="J_business_card img-responsive img-rounded" liquidation_id="{$item.id}" date="{$item.initialFileUrl|substr=23,10}">
+                        </div>
+                        <div class="J_card" liquidation_id="{$item.id}" date="{$item.initialFileUrl|substr=23,10}"></div>
+                    </div>
+                </if>
+            </td>
+            <td id="{$item.id}_td">
+                <if condition="$item.isLiquidated eq 1"><span class="label label-success">已处理</span>
+                    <else/><span class="label label-danger">未处理</span>
+                </if>
+            </td>
+            <td>
+                <button class="btn btn-xs btn-primary" action="liquidation" data-id="{$item.id}" <?php if(!($item['isLiquidated'] != 1 && $item['resultFileUrl'])):?>style="display: none;"<?php endif;?>>处理</button>
+                <button class="btn btn-xs btn-info" action="result" data-result="{$item.id}" data-district="{$item.name}" <if condition="$item.isLiquidated neq 1">style="display: none;"</if>>查看处理结果</button>
+            </td>
+        </tr>
+    </foreach>
+    </tbody>
+</table>
+<include file="Application/Admin/View/Widget/pager.html" />
+
+<div class="modal bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" id="resultModal" style="top:10%;display: none;">
+    <div class="modal-dialog" style="left: 0;width: 70%;">
+        <div class="modal-content" style="padding-bottom: 0;">
+            <div class="modal-header" >
+                <a href="javascript:void(0);" class="close" data-dismiss="modal">&times;</a>
+                <h4 class="modal-title" style="font-size: 25px"></h4>
+            </div>
+            <div class="modal-body" style="max-height: 300px;overflow-y: auto;"></div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">关闭</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<style>
+    .employee-item{
+        display: block;
+        padding: 4px;
+        margin-bottom: 20px;
+        line-height: 1.42857143;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        overflow: hidden;
+        font-size: 12px;
+    }
+
+    .employee-item-imgdiv{
+        position: relative;
+    }
+    .employee-item-imgdiv .edit-img-btn {
+        display: none;
+        position: absolute;
+        color: #fff;
+        bottom: 0;
+        left: 0;
+        height: 30px;
+        width: 100%;
+        opacity: 0.8;
+        font-size: 14px;
+        text-align: center;
+        vertical-align: middle;
+        line-height: 30px;
+    }
+    .employee-item-img{
+        /*margin-top: 10px;*/
+        overflow: hidden;
+        width: 100px;
+        height: 20px;
+    }
+    .employee-item-img img{
+        width: 100%;
+        height: auto;
+        text-align: center;
+        /*margin: 0 10px;*/
+    }
+    #shopDecoration img{
+        width: auto;
+        height: 150px;
+        margin: 10px 0;
+    }
+    .employee-item-img img.avatar{
+        /*margin-top: 14%;*/
+    }
+    .employee-item .s1{
+        padding-right: 10px;
+        color: #999;
+    }
+    .employee-item p{
+        overflow: hidden;
+    }
+
+    @media (max-width: 993px){
+        .information-wrap{
+            width: 100%;
+        }
+        .vendor-picture{
+            display: none;
+        }
+    }
+    @media (max-width: 992px ) {
+        .information .title {
+            width: 100%;
+            text-align: left;
+        }
+        .information .value {
+            width: 100%;
+            padding: 0 10px;
+            color: #18BC9C;
+        }
+    }
+    .add-employee{
+        position: absolute;
+        right: 1px;
+        top: 4px;
+    }
+    .employee-wrap{
+        border-left: none;
+        border-right: none;
+    }
+    .employee-wrap .panel-heading{
+        margin-bottom: 10px;
+    }
+
+    .employee-add-error {
+        border-color: rgb(169, 68, 66);
+        -webkit-box-shadow: rgba(0, 0, 0, 0.0745098) 0px 1px 1px inset;
+        box-shadow: rgba(0, 0, 0, 0.0745098) 0px 1px 1px inset;
+    }
+
+    .employee-add-error:focus {
+        border-color: rgb(169, 68, 66);
+        -webkit-box-shadow: rgba(0, 0, 0, 0.0745098) 0px 1px 1px inset;
+        box-shadow: rgba(0, 0, 0, 0.0745098) 0px 1px 1px inset;
+    }
+
+    @media (max-width: 768px){
+        .employee-item{
+            text-align: center;
+            font-size: 15px;
+        }
+        .employee-item .hidden-xs{
+            display: none;
+
+        }
+        .employee-item p{
+            line-height: 30px;
+            clear: both;
+        }
+        .employee-item .s1{
+            display: block;
+            width: 50%;
+            float: left;
+            text-align: right;
+        }
+        .employee-item .s2{
+            display: block;
+            width: 40%;
+            float: left;
+            text-align: left;
+        }
+    }
+    @media (max-width: 1024px){
+        .employee-item-img img.avatar{
+            margin-top: 25%;
+        }
+    }
+    .webuploader-container {
+        position: relative;
+        top: -21px;
+    }
+    .webuploader-element-invisible {
+        position: absolute !important;
+        clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+        clip: rect(1px,1px,1px,1px);
+    }
+    .webuploader-pick {
+        position: relative;
+        display: inline-block;
+        cursor: pointer;
+        background: #00b7ee;
+        color: #fff;
+        text-align: center;
+        border-radius: 3px;
+        overflow: hidden;
+        width: 100%;
+        height: 100%;
+        opacity: 0.4;
+    }
+    .webuploader-pick-hover {
+        background: #00a2d4;
+        opacity: 0.9;
+    }
+
+    .webuploader-pick-disable {
+        opacity: 0.6;
+        background-color: red;
+        pointer-events:none;
+    }
+    .upload_swf_cls{
+        top: 0 !important;
+    }
+
+
+    .file {
+        position: relative;
+    }
+    .file label {
+        /*  background: #39D2B4;*/
+        padding: 5px 20px;
+        color: #fff;
+        font-weight: bold;
+        font-size: .9em;
+        transition: all .4s;
+    }
+    .file input {
+        position: absolute;
+        display: inline-block;
+        left: 0;
+        top: 0;
+        opacity: 0.01;
+        cursor: pointer;
+    }
+    .file input:hover + label,
+    .file input:focus + label {
+        background: #34495E;
+        color: #39D2B4;
+    }
+</style>
+<script>
+    $(function(){
+        $('.employee-item-imgdiv').hover(function(){
+            $(this).find('.edit-img-btn').show();
+        },function(){
+            $(this).find('.edit-img-btn').hide();
+        });
+
+        var type = 'application/*,image/*,text/*,images/*,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/vnd.ms-excel application/x-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-powerpoint,application/vnd.openxmlformats-officedocument.presentationml.presentation,application/octet-stream,application/x-zip-compressed,';
+        setTimeout(function () {
+            var upload_card_config;
+            var card = $('.J_business_card');
+            var uploadId = 0;
+            var uploadDate = '';
+            var liquidation_id = parseInt(card.attr('liquidation_id'));
+            var date = card.attr('date');
+
+            upload_card_config = {
+                server: '/Admin/Liquidation/uploadLiquidationResultFile',
+                picker: '.J_card',
+                pickerLabel: '上传',
+                formData: { upload_id: liquidation_id, upload_date:date },
+                allowtype: 'txt',
+                allowtitle: 'Files',
+                allowmime: 'text/*,',
+                uploadBeforeSend: function (obj, data, header) {
+                    uploadId = this.getFiles()[0].source.getRuntime().getContainer().parents('.J_card').attr('liquidation_id');
+                    uploadDate = this.getFiles()[0].source.getRuntime().getContainer().parents('.J_card').attr('date');
+                    data.upload_id = uploadId;
+                    data.upload_date = uploadDate;
+                },
+                uploadSuccess: function (file, res) {
+                    this.reset();
+                    console.log(res);
+                    if (res.msgCode == 200) {
+                        var obj = $('#div_' + uploadId);
+                        obj.empty().prepend('<a href="'+res.url+'">'+res.url.substring(40)+'</a>');
+                        $('button[data-id="'+uploadId+'"]').show();
+                    }
+                    alert(res.code);
+                }
+            };
+            new upload(upload_card_config);
+        }, 0);
+
+
+        $('button[action="liquidation"]').click(function(){
+            var id = $(this).data('id');
+            $.post('/Admin/Liquidation/liquidate',
+                    {   id:id,
+                        isAjax:true },
+                    function(result){
+                        if(result.status == sz.STATUS_SUCC){
+                            $('button[data-id="'+id+'"]').hide();
+                            $('button[data-result="'+id+'"]').show();
+                            $('#'+id+'_img').remove();
+                            $('#'+id+'_td').html('<span class="label label-success">已处理</span>');
+                        }
+                        alert(result.msg);
+                    });
+        });
+
+        $('button[action="result"]').click(function(){
+            var id = $(this).data('result');
+            var districit = $(this).data('district');
+            $('#resultModal').find('.modal-title').text(districit);
+            $('#resultModal').modal('show');
+            $.post('/Admin/Liquidation/liquidateResult',
+                    {   id:id,
+                        isAjax:true },
+                    function(result){
+                        $('#resultModal').find('.modal-body').empty().append(result.html);
+                    });
+        });
+    });
+</script>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/LyWHFirst"
+    android:background="@color/bgall"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/navigation_bar"
+        android:background="@color/red"
+        android:gravity="center_vertical" >
+
+        <LinearLayout
+            android:id="@+id/ly_area"
+            style="@style/LyWHSecond"
+            android:layout_alignParentLeft="true"
+            android:layout_centerInParent="true" >
+
+            <TextView
+                android:id="@+id/tv_area"
+                style="@style/LyWHSecond"
+                android:layout_width="wrap_content"
+                android:layout_marginLeft="@dimen/navigation_left_r"
+                android:drawablePadding="3dp"
+                android:drawableRight="@drawable/sel_city"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="杭州市"
+                android:textColor="@color/white" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="10dp" >
+
+            <TextView
+                android:id="@+id/tv_search_left"
+                style="@style/LyWHSecond"
+                android:layout_height="35dp"
+                android:layout_marginLeft="50dp"
+                android:background="@drawable/search_left"
+                android:gravity="center_vertical|center_horizontal"
+                android:textColor="@color/white" />
+
+            <EditText
+                android:id="@+id/edt_search"
+                style="@style/LyWHSecond"
+                android:layout_width="150dp"
+                android:layout_height="35dp"
+                android:layout_centerInParent="true"
+                android:layout_toRightOf="@+id/tv_search_left"
+                android:background="@drawable/search_right"
+                android:gravity="left|center_vertical"
+                android:hint="搜索优惠券"
+                android:imeOptions="actionSearch"
+                android:inputType="text"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:textColor="@color/white" />
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/iv_map"
+            style="@style/LyWHSecond"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:layout_marginRight="@dimen/navigation_right"
+            android:background="@drawable/map" />
+    </RelativeLayout>
+
+    <com.huift.hfq.base.view.XListView
+        android:id="@+id/listView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/no_message"
+        android:cacheColorHint="#00000000"
+        android:divider="@color/line_gray"
+        android:dividerHeight="1dp"
+        android:scrollbars="none" />
+
+</LinearLayout>

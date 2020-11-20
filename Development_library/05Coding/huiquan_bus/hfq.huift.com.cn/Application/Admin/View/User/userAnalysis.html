@@ -1,0 +1,449 @@
+<layout name="layout_admin" />
+<ul class="nav nav-tabs" role="tablist" style="margin-top: 10px;">
+    <li role="presentation" <?php if(!in_array($get['analysisType'], array(2,3,4,5))):?>class="active"<?php endif;?>><a href="#sexAnalysis" role="tab" data-toggle="tab" data-tab="1">用户性别统计</a></li>
+    <li role="presentation" <if condition="$get.analysisType eq 2">class="active"</if>><a href="#districtAnalysis" role="tab" data-toggle="tab" data-tab="2">用户区域统计</a></li>
+    <li role="presentation" <if condition="$get.analysisType eq 4">class="active"</if>><a href="#registerAnalysis" role="tab" data-toggle="tab" data-tab="4">用户注册统计</a></li>
+    <li role="presentation" <if condition="$get.analysisType eq 5">class="active"</if>><a href="#bankCardAnalysis" role="tab" data-toggle="tab" data-tab="5">用户绑卡统计</a></li>
+</ul>
+<div class="container-fluid" style="padding-top: 15px;">
+    <form class="form-inline" method="get">
+        <div class="btn-group" data-toggle="buttons" <?php if(in_array($get['analysisType'], array(4))):?>style="display: inline-table;"<?php else:?>style="display: none;"<?php endif;?> id="searchType">
+        <label <if condition="$get.options neq 2 AND $get.options neq 3">class="btn btn-primary active"<else />class="btn btn-primary"</if>>
+        <input type="radio" name="options" value="1" autocomplete="off" <if condition="$get.options neq 2 AND $get.options neq 3">checked</if>> 分时
+        </label>
+        <label <if condition="$get.options eq 2">class="btn btn-primary active"<else />class="btn btn-primary"</if>>
+        <input type="radio" name="options" value="2" autocomplete="off" <if condition="$get.options eq 2">checked</if>> 按日
+        </label>
+        <label <if condition="$get.options eq 3">class="btn btn-primary active"<else />class="btn btn-primary"</if>>
+        <input type="radio" name="options" value="3" autocomplete="off" <if condition="$get.options eq 3">checked</if>> 按月
+        </label>
+</div>
+<div <?php if(!in_array($get['analysisType'], array(4))):?>style="display: inline-table;"<?php else:?>style="display: none;"<?php endif;?> id="otherTime">
+<div class="form-group">
+    <label>时间</label>
+    <input type="text" class="form_datetime form-control ipt-date-time-picker" name="startTime" value="{$get.startTime}" readonly placeholder="开始时间">
+</div>
+<div class="form-group">
+    <label>至</label>
+    <input type="text" class="form_datetime form-control ipt-date-time-picker" name="endTime" value="{$get.endTime}" readonly placeholder="结束时间">
+</div>
+</div>
+<div <?php if(in_array($get['analysisType'], array(4))):?>style="display: inline-table;"<?php else:?>style="display: none;"<?php endif;?> id="searchTime">
+<div class="form-group">
+    <label>时间</label>
+    <input type="text" class="form_datetime_active form-control ipt-date-time-picker" name="timeOne" <if condition="$get.options eq 2">value="{$get.timeOnStartDay}"<elseif condition="$get.options eq 3"/>value="{$get.timeOnStartMonth}"<else />value="{$get.timeOnHour}"</if> readonly placeholder="开始时间">
+</div>
+<div class="form-group" <if condition="$get.options neq 2 AND $get.options neq 3">style="display: none;"</if>>
+<label>至</label>
+<input type="text" class="form_datetime_active form-control" name="timeTwo" <if condition="$get.options eq 2">value="{$get.timeOnEndDay}"<elseif condition="$get.options eq 3"/>value="{$get.timeOnEndMonth}"</if> readonly placeholder="结束时间">
+</div>
+</div>
+<input type="hidden" name="analysisType" value="{$get.analysisType|default='1'}" />
+<button type="submit" class="btn btn-sm btn-primary">查询</button>
+</form>
+</div>
+<div class="tab-content">
+    <div <?php if(!in_array($get['analysisType'], array(2,3,4,5))):?>class="tab-pane active"<?php else:?>class="tab-pane"<?php endif;?> id='sexAnalysis'>
+    <div style="float: right;margin-right: 15px;margin-bottom: 5px;">
+        用户总数： <span class="label label-success" style="background-color: #7CB5EC;">{$totalAmount}</span>&nbsp;&nbsp;&nbsp;&nbsp;
+        增加数量： <span class="label label-danger" style="background-color: #434348;">{$incAmount}</span>
+    </div>
+    <div id="container" style="min-width:700px;height:400px"></div>
+</div>
+<div <if condition="$get.analysisType eq 2">class="tab-pane active"<else />class="tab-pane"</if> id='districtAnalysis'>
+    <div class="col-md-offset-8 col-md-2">注册总人数：<span style="background-color: #434348;color: #ffffff;padding: 0 3px;">{$userDistrictData.regNbr}</span></div>
+    <div class="col-md-2">注册并绑卡总人数：<span style="background-color: #7CB5EC;color: #ffffff;padding: 0 3px;">{$userDistrictData.regSignedNbr}</span></div>
+<div id="district" style="min-width:700px;height:400px"></div>
+</div>
+<div <if condition="$get.analysisType eq 3">class="tab-pane active"<else />class="tab-pane"</if> id='consumptionAnalysis'>
+<div id="consumption" style="min-width:700px;height:400px"></div>
+</div>
+<div <if condition="$get.analysisType eq 4">class="tab-pane active"<else />class="tab-pane"</if> id='registerAnalysis'>
+<div id="register_hour" <if condition="$get.options neq 2 AND $get.options neq 3">style="width:80%;min-width:700px;height:400px"<else />style="width:80%;min-width:700px;height:400px;display:none;"</if>></div>
+<div id="register_day" <if condition="$get.options eq 2">style="width:80%;min-width:700px;height:400px"<else />style="width:80%;min-width:700px;height:400px;display:none;"</if>></div>
+<div id="register_month" <if condition="$get.options eq 3">style="width:80%;min-width:700px;height:400px"<else />style="width:80%;min-width:700px;height:400px;display:none;"</if>></div>
+</div>
+<div <if condition="$get.analysisType eq 5">class="tab-pane active"<else />class="tab-pane"</if> id='bankCardAnalysis'>
+<div style="float: right;margin-right: 15px;margin-bottom: 5px;">
+    <strong>绑卡总数</strong>： <span class="label label-success">{$totalBind}</span>&nbsp;&nbsp;&nbsp;&nbsp;
+    <strong>解绑总数</strong>： <span class="label label-danger">{$totalUnbind}</span>
+</div>
+<div id="bankCard" style="width:80%;min-width:700px;height:auto;"></div>
+<table id="bankCardTable" class="table table-striped table-bordered table-condensed">
+    <thead>
+    <tr>
+        <th></th>
+        <th>绑卡人数</th>
+        <th>解绑人数</th>
+    </tr>
+    </thead>
+    <tbody>
+    <foreach name="bankAccount" key="k" item="vo">
+        <tr>
+            <th><?php echo $k;?></th>
+            <td>{$vo.bind}</td>
+            <td>{$vo.unbind}</td>
+        </tr>
+    </foreach>
+    </tbody>
+</table>
+</div>
+</div>
+<table id="datatable" style="display: none;">
+    <thead>
+    <tr>
+        <th></th>
+        <th>用户总数</th>
+        <th>增加数量</th>
+    </tr>
+    </thead>
+    <tbody>
+    <foreach name="data" item="vo">
+        <tr>
+            <th>{$vo.name}</th>
+            <td>{$vo.totalAmount}</td>
+            <td>{$vo.incAmount}</td>
+        </tr>
+    </foreach>
+    </tbody>
+</table>
+<script type="text/javascript" src="__PUBLIC__/js/highcharts/highcharts.js"></script>
+<script src="__PUBLIC__/js/highcharts/data.js"></script>
+<script type="text/javascript">
+var currentDay = new Date(); //今天
+$(function(){
+    $(".form_datetime").datetimepicker({
+        format: 'yyyy-mm-dd',
+        autoclose: true,
+        todayBtn: true,
+        endDate: currentDay,
+        minView: 'month'
+    });
+
+    <?php if($get['options'] == 3):?>
+    $(".form_datetime_active").datetimepicker({
+        format: 'yyyy-mm',
+        autoclose: true,
+        todayBtn: false,
+        startView:3,
+        minView: 3
+    });
+    <?php else:?>
+    $(".form_datetime_active").datetimepicker({
+        format: 'yyyy-mm-dd',
+        autoclose: true,
+        todayBtn: true,
+        endDate: currentDay,
+        minView: 'month'
+    });
+    <?php endif;?>
+
+    $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+        var activeTab = e.target; // newly activated tab
+        var activeId = $(activeTab).attr('href');
+        var tab = $(activeTab).data('tab');
+        if(activeId == '#registerAnalysis'){
+            $('#searchType').show();
+            $('#searchTime').show();
+            $('#searchTime').css('display', 'inline-table');
+            $('#otherTime').hide();
+        }else{
+            $('#searchType').hide();
+            $('#searchTime').hide();
+            $('#otherTime').show();
+            $('#otherTime').css('display', 'inline-table');
+        }
+        $('input[name="analysisType"]').val(tab);
+    });
+
+    $('input[name="options"]').change(function(){
+        var checkedValue = $('input[name="options"]:checked').val();
+        if(checkedValue == 1){
+            $('input[name="timeOne"]').val('{$get.timeOnHour}');
+            $('input[name="timeTwo"]').val('');
+            $('#searchTime').find('.form-group:eq(1)').hide();
+            $('.form_datetime_active').datetimepicker('remove');
+            $(".form_datetime_active").datetimepicker({
+                format: 'yyyy-mm-dd',
+                autoclose: true,
+                todayBtn: true,
+                endDate: currentDay,
+                minView: 'month'
+            });
+            $('#register_hour').show();
+            $('#register_day').hide();
+            $('#register_month').hide();
+        }else{
+            $('#searchTime').find('.form-group:eq(1)').show();
+            if(checkedValue == 2){
+                $('input[name="timeOne"]').val('{$get.timeOnStartDay}');
+                $('input[name="timeTwo"]').val('{$get.timeOnEndDay}');
+                $('.form_datetime_active').datetimepicker('remove');
+                $(".form_datetime_active").datetimepicker({
+                    format: 'yyyy-mm-dd',
+                    autoclose: true,
+                    todayBtn: true,
+                    endDate: currentDay,
+                    minView: 'month'
+                });
+                $('#register_hour').hide();
+                $('#register_day').show();
+                $('#register_month').hide();
+            }else{
+                $('input[name="timeOne"]').val('{$get.timeOnStartMonth}');
+                $('input[name="timeTwo"]').val('{$get.timeOnEndMonth}');
+                $('.form_datetime_active').datetimepicker('remove');
+                $(".form_datetime_active").datetimepicker({
+                    format: 'yyyy-mm',
+                    autoclose: true,
+                    todayBtn: false,
+                    startView:3,
+                    minView: 3
+                });
+                $('#register_hour').hide();
+                $('#register_day').hide();
+                $('#register_month').show();
+            }
+        }
+    });
+});
+
+$(function () {
+    var hour_xAxis = [];
+    var hour_series = [];
+    var day_xAxis = [];
+    var day_series = [];
+    var month_xAxis = [];
+    var month_series = [];
+    <?php foreach($hourData as $hk => $hv):?>
+    <?php if($hk + 1 < 10):?>hour_xAxis.push('0{$hk+1}:00');<?php else:?>hour_xAxis.push('{$hk+1}:00');<?php endif;?>
+    hour_series.push({$hv});
+    <?php endforeach;?>
+
+    <?php foreach($dayData as $dk => $dv):?>
+    day_xAxis.push('{$dk}');
+    day_series.push({$dv});
+    <?php endforeach;?>
+
+    <?php foreach($monthData as $mk => $mv):?>
+    month_xAxis.push('{$mk}');
+    month_series.push({$mv});
+    <?php endforeach;?>
+
+    $('#container').highcharts({
+        data: {
+            table: 'datatable'
+        },
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: '用户性别统计'
+        },
+        yAxis: {
+            allowDecimals: false,
+            title: {
+                text: '用户数量 ( 人 )'
+            }
+        },
+        tooltip: {
+            formatter: function () {
+                return '<b>' + this.series.name + '</b><br/>' +
+                        this.point.y + ' ' + this.point.name.toLowerCase();
+            }
+        }
+    });
+
+    $('#register_hour').highcharts({
+        title: {
+            text: '用户注册统计',
+            x: -20 //center
+        },
+        subtitle: {
+            text: '{$get.timeOnHour}',
+            x: -20
+        },
+        xAxis: {
+            categories: hour_xAxis
+        },
+        yAxis: {
+            title: {
+                text: '注册人数 (人)'
+            },
+            plotLines: [{
+                value: 0,
+                width: 1,
+                color: '#808080'
+            }]
+        },
+        tooltip: {
+            valueSuffix: '人'
+        },
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'middle',
+            borderWidth: 0
+        },
+        series: [{
+            name: '注册数',
+            data: hour_series
+        }]
+    });
+
+    $('#register_day').highcharts({
+        title: {
+            text: '用户注册统计',
+            x: -20 //center
+        },
+        subtitle: {
+            text: '{$get.timeOnStartDay} - {$get.timeOnEndDay}',
+            x: -20
+        },
+        xAxis: {
+            categories: day_xAxis
+        },
+        yAxis: {
+            title: {
+                text: '注册人数 (人)'
+            },
+            plotLines: [{
+                value: 0,
+                width: 1,
+                color: '#808080'
+            }]
+        },
+        tooltip: {
+            valueSuffix: '人'
+        },
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'middle',
+            borderWidth: 0
+        },
+        series: [{
+            name: '注册数',
+            data: day_series
+        }]
+    });
+
+    $('#register_month').highcharts({
+        title: {
+            text: '用户注册统计',
+            x: -20 //center
+        },
+        subtitle: {
+            text: '{$get.timeOnStartMonth} - {$get.timeOnEndMonth}',
+            x: -20
+        },
+        xAxis: {
+            categories: month_xAxis
+        },
+        yAxis: {
+            title: {
+                text: '注册人数 (人)'
+            },
+            plotLines: [{
+                value: 0,
+                width: 1,
+                color: '#808080'
+            }]
+        },
+        tooltip: {
+            valueSuffix: '人'
+        },
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'middle',
+            borderWidth: 0
+        },
+        series: [{
+            name: '注册数',
+            data: month_series
+        }]
+    });
+
+    $('#bankCard').highcharts({
+        data: {
+            table: document.getElementById('bankCardTable')
+        },
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: '用户绑卡统计'
+        },
+        subtitle: {
+            text: '{$get.startTime} - {$get.endTime}'
+        },
+        yAxis: {
+            allowDecimals: false,
+            title: {
+                text: '用户数量 ( 人 )'
+            }
+        },
+        tooltip: {
+            formatter: function() {
+                return '<b>'+ this.series.name +'</b>' + ' ' + this.y;
+            }
+        }
+    });
+});
+;(function(){
+    // 用户区域统计图
+    $('#district').highcharts({
+        chart: {
+            type: 'bar'
+        },
+        title: {
+            text: '用户地域统计图'
+        },
+        subtitle: {
+            text: ''
+        },
+        xAxis: {
+            categories: {$userDistrictData['xAxisData']},
+            title: {
+                text: null
+            }
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: '人数 (个)',
+                align: 'high'
+            },
+            labels: {
+                overflow: 'justify'
+            }
+        },
+        tooltip: {
+            valueSuffix: ' 人'
+        },
+        plotOptions: {
+            bar: {
+                dataLabels: {
+                    enabled: true
+                }
+            }
+        },
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'top',
+            x: -40,
+            y: 80,
+            floating: true,
+            borderWidth: 1,
+            backgroundColor: ((Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'),
+            shadow: true
+        },
+        credits: {
+            enabled: false
+        },
+        series: {$userDistrictData['series']}
+    });
+})();
+</script>

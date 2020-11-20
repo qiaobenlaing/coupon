@@ -1,0 +1,619 @@
+<layout name="layout_admin" />
+<script src="__PUBLIC__/js/knockout.js" charset="UTF-8"></script>
+<script>
+    var __exRuleList = {$exRuleList|json_encode};
+</script>
+<div class="container-fluid">
+    <form method="post" class="form-horizontal" id="shop_add_form" action="/Admin/BatchCoupon/editCoupon">
+        <input type="hidden" name="batchCouponCode" value="{$couponInfo.batchCouponCode}" id="batch-coupon-code"/>
+        <div class="form-group">
+            <label for="couponType" class="col-sm-2 control-label"><span class='required-ele'>*</span>优惠券类型</label>
+            <div class="col-sm-4">
+                <select class="form-control" name="couponType" id="couponType">
+                    <option value="" >请选择优惠券类型</option>
+                    <foreach name="couponTypeList" item="coupon">
+                        <option value="{$coupon.value}" <eq name="couponInfo.couponType" value="$coupon.value">selected="selected"</eq>>{$coupon.name}</option>
+                    </foreach>
+                </select>
+            </div>
+            <div class="col-sm-2">
+                <input id="is-available" type="checkbox" value="1" name="isAvailable" <eq name="couponInfo.isAvailable" value="1">checked="checked"</eq>>
+                <label for="is-available" class="control-label">在顾客端APP显示</label>
+            </div>
+            <div class="col-sm-2">
+                <input type="checkbox" value="1" name="isConsumeRequired" id="is-consume-required">
+                <label for="is-consume-required" class="control-label">消费后才可领用</label>
+            </div>
+
+            <!--<label for="couponSubType" class="col-sm-2 control-label">子类型</label>-->
+            <!--<div class="col-sm-4">-->
+            <!--<input type="text" class="form-control" name="couponSubType" value="{$couponInfo.couponSubType}" disabled="disabled" id="couponSubType">-->
+            <!--</div>-->
+        </div>
+        <div class="form-group">
+            <label for="shopName-select" class="col-sm-2 control-label"><span class='required-ele'>*</span>发行商户</label>
+            <div class="col-sm-10">
+                <select id="shopName-select" style="width: 100%" name="shopCode" <?php if(!empty($shopInfo)):?>disabled="disabled"<?php endif;?>>
+                <option></option>
+                <foreach name="getShopName" item="item">
+                    <option value="{$item.shopCode}" <eq name="couponInfo.shopCode" value="$item.shopCode">selected="selected"</eq>>{$item.shopName}({$item.city})</option>
+                </foreach>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="startTakingTime" class="col-sm-2 control-label"><span class='required-ele'>*</span>领取日期</label>
+            <div class="col-sm-4">
+                <div class="input-group ">
+                    <input type="text" name="startTakingTime" value="{$couponInfo.startTakingTime}" readonly class="form-control form_datetime ipt-date-time-picker" id="startTakingTime" placeholder="开始日期">
+                    <span class="input-group-addon frm-span">至</span>
+                    <input type="text" name="endTakingTime" value="{$couponInfo.endTakingTime}" readonly class="form-control form_datetime ipt-date-time-picker" placeholder="结束日期">
+                </div>
+            </div>
+            <label for="startUsingTime" class="col-sm-2 control-label"><span class='required-ele'>*</span>使用日期</label>
+            <div class="col-sm-4">
+                <div class="input-group ">
+                    <input type="text" name="startUsingTime" value="{$couponInfo.startUsingTime}" readonly class="form-control form_datetime ipt-date-time-picker" id="startUsingTime" placeholder="开始日期">
+                    <span class="input-group-addon frm-span">至</span>
+                    <input type="text" name="expireTime" value="{$couponInfo.expireTime}" readonly class="form-control form_datetime ipt-date-time-picker" placeholder="结束日期">
+                </div>
+            </div>
+        </div>
+        <div class="form-group" id="frm-group-validity-period">
+            <label for="validityPeriod" class="col-sm-2 control-label">使用有效期<br/></label>
+            <div class="col-sm-4">
+                <div class="input-group">
+                    <input type="text" class="form-control" name="validityPeriod" value="{$couponInfo.validityPeriod}" readonly id="validityPeriod" placeholder="有效期">
+                    <span class="input-group-addon">天</span>
+                </div>
+                <div><span style="color: #ff211c"><strong>0：永久；-1：无此项设置，按使用日期来使用</strong></span></div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="dayStartUsingTime" class="col-sm-2 control-label"><span class='required-ele'>*</span>每日使用时间</label>
+            <div class="col-sm-4">
+                <div class="input-group ">
+                    <input type="text" class="form-control form_time ipt-date-time-picker" name="dayStartUsingTime" value="{$couponInfo.dayStartUsingTime}" readonly  id="dayStartUsingTime" placeholder="开始时间">
+                    <span class="input-group-addon frm-span">至</span>
+                    <input type="text" class="form-control form_time ipt-date-time-picker" name="dayEndUsingTime" value="{$couponInfo.dayEndUsingTime}" readonly  placeholder="结束时间">
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <input type="checkbox" value="1" name="allDay" id="all-day" <eq name="couponInfo.allDay" value="1">checked="checked"</eq>/>
+                <label for="all-day" class="control-label">24小时可用</label>
+            </div>
+            <label class="col-sm-4 control-label" id="businessHours" style="text-align: left!important;">商家营业时间：&nbsp;
+                <?php if(!empty($shopInfo)):?>
+                    <?php if(!empty($shopInfo['businessHours'])):?>
+                        <foreach name="shopInfo.businessHours" item="hour" key="k">
+                            {$hour.open} - {$hour.close}<?php if($k < count($shopInfo['businessHours']) - 1):?>, <?php endif;?>
+                        </foreach>
+                    <?php else:?>
+                    未设置
+                    <?php endif;?>
+                <?php endif;?>
+            </label>
+        </div>
+        <div class="form-group">
+            <label for="totalVolume" class="col-sm-2 control-label"><span class='required-ele'>*</span>发行总量(-1：无限)</label>
+            <div class="col-sm-2">
+                <div class="input-group">
+                    <input type="text" class="form-control" name="totalVolume" value="{$couponInfo.totalVolume}" id="totalVolume">
+                    <div class="input-group-addon">张</div>
+                </div>
+            </div>
+            <label for="limitedNbr" class="col-sm-2 control-label"><span class='required-ele'>*</span>每笔订单限用张数</label>
+            <div class="col-sm-2">
+                <div class="input-group ">
+                    <input type="text" class="form-control checkNum" name="limitedNbr" value="{$couponInfo.limitedNbr|default='1'}" id="limitedNbr">
+                    <div class="input-group-addon">张</div>
+                </div>
+            </div>
+            <label for="nbrPerPerson" class="col-sm-2 control-label"><span class='required-ele'>*</span>单个用户可领张数</label>
+            <div class="col-sm-2">
+                <div class="input-group ">
+                    <input type="text" class="form-control checkNum" name="nbrPerPerson" value="{$couponInfo.nbrPerPerson|default='1'}" id="nbrPerPerson">
+                    <div class="input-group-addon">张</div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group" id="frm-group-instead-price">
+                    <label for="insteadPrice" class="col-sm-4 control-label"><span class='required-ele'>*</span>面值</label>
+                    <div class="col-sm-8">
+                        <div class="input-group ">
+                            <input type="text" class="form-control checkNum" name="insteadPrice" value="{$couponInfo['insteadPrice']}" id="insteadPrice" placeholder="如：10">
+                            <span class="input-group-addon">元</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group" id="frm-group-discount-percent">
+                    <label for="discountPercent" class="col-sm-4 control-label"><span class='required-ele'>*</span>折扣</label>
+                    <div class="col-sm-8">
+                        <div class="input-group ">
+                            <input type="text" class="form-control" name="discountPercent" value="{$couponInfo.discountPercent}" id="discountPercent" placeholder="如：9.5">
+                            <span class="input-group-addon">折</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group"  id="frm-group-pay-price">
+                    <label for="payPrice" class="col-sm-4 control-label"><span class='required-ele'>*</span>优惠券价格</label>
+                    <div class="col-sm-8">
+                        <div class="input-group">
+                            <input type="text" class="form-control checkNum" name="payPrice" value="{$couponInfo.payPrice|default=0}" id="payPrice" placeholder="若该券不需要购买，填0">
+                            <div class="input-group-addon">元</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="canTakePrice" class="col-sm-4 control-label"><span class='required-ele'>*</span>满多少元可领取</label>
+                    <div class="col-sm-8">
+                        <div class="input-group ">
+                            <input type="text" class="form-control" name="canTakePrice" value="{$couponInfo['canTakePrice']|default='0'}" id="canTakePrice">
+                            <span class="input-group-addon frm-span">元</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="availablePrice" class="col-sm-4 control-label"><span class='required-ele'>*</span>满多少元可使用</label>
+                    <div class="col-sm-8">
+                        <div class="input-group ">
+                            <input type="text" class="form-control checkNum" name="availablePrice" value="{$couponInfo['availablePrice']|default='0'}" id="availablePrice">
+                            <span class="input-group-addon frm-span">元</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="hq-subsidy" class="col-sm-4 control-label"><span class='required-ele'>*</span>平台补贴</label>
+                    <div class="col-sm-8">
+                        <div class="input-group ">
+                            <input type="text" class="form-control checkNum" name="hqSubsidy" value="{$couponInfo.hqSubsidy}" id="hq-subsidy" placeholder="平台补贴">
+                            <span class="input-group-addon">元/折</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="shop-subsidy" class="col-sm-4 control-label"><span class='required-ele'>*</span>商家让利</label>
+                    <div class="col-sm-8">
+                        <div class="input-group ">
+                            <input type="text" class="form-control checkNum" name="shopSubsidy" value="{$couponInfo.shopSubsidy}" id="shop-subsidy" placeholder="平台补贴">
+                            <span class="input-group-addon">元/折</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="icbc-subsidy" class="col-sm-4 control-label"><span class='required-ele'>*</span>工行补贴</label>
+                    <div class="col-sm-8">
+                        <div class="input-group ">
+                            <input type="text" class="form-control checkNum" name="icbcSubsidy" value="{$couponInfo.icbcSubsidy}" id="icbc-subsidy" placeholder="工行补贴">
+                            <span class="input-group-addon">元/折</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group" id="frm-group-function">
+                    <label for="function" class="col-sm-4 control-label"><span class='required-ele'>*</span>优惠券作用描述</label>
+                    <div class="col-sm-8">
+                        <textarea style="resize: none" class="form-control" name="function" rows="6" id="function" <in name="couponInfo.couponType" value="3,4">readonly="readonly"</in>>{$couponInfo.function}</textarea>
+                    </div>
+                </div>
+                <div class="form-group" id="frm-group-remark">
+                    <label class="col-sm-4 control-label" for="remark">优惠券使用说明</label>
+                    <div class="col-sm-8">
+                        <textarea style="resize: none" class="form-control" id="remark" name="remark" rows="6">{$couponInfo.remark}</textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label sr-only"></label>
+            <div class="col-sm-2">
+                <input id="is-send" type="checkbox" value="1" name="isSend" <eq name="couponInfo.isSend" value="1">checked="checked"</eq>>
+                <label for="is-send" class="control-label is-send">满就送</label>
+            </div>
+            <div class="col-sm-4">
+                <div class="input-group">
+                    <span class="input-group-addon">满</span>
+                    <input type="text" class="form-control checkNum" id="sendRequired" name="sendRequired" value="{$couponInfo.sendRequired|default=0}" <eq name="couponInfo.isSend" value="0">readonly="readonly"</eq>>
+                    <span class="input-group-addon">元可送</span>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="input-group">
+                    <span class="input-group-addon">每单限送</span>
+                    <input type="text" class="form-control checkNum" id="limitedSendNbr" name="limitedSendNbr" value="{$couponInfo.limitedSendNbr|default='1'}" <eq name="couponInfo.isSend" value="0">readonly="readonly"</eq>>
+                    <span class="input-group-addon">张</span>
+                </div>
+            </div>
+        </div>
+        <div class="form-group is-universal-wrap" <neq name="couponInfo.couponBelonging" value="2">style="display:none"</neq>>
+        <label class="col-sm-2 control-label"></label>
+        <div class="col-sm-10">
+            <div class="input-group">
+                <input id="is-universal" type="checkbox" value="1" name="isUniversal" <eq name="couponInfo.isUniversal" value="1">checked="checked"</eq>>
+                <label for="is-universal">所有商家通用</label>
+            </div>
+        </div>
+        </div>
+        <div class="form-group add-linked-shop-wrap" <neq name="couponInfo.couponBelonging" value="2">style="display:none"</neq>>
+            <label class="col-sm-2 control-label"></label>
+            <div class="col-sm-10">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">商家列表</div>
+                    <div class="panel-body">
+                        <div class="col-md-12">
+                            <label class="control-label">商户</label>
+                            <select class="js-data-add-shop-ajax"  multiple="multiple" name="linkedShop[]" style="width: 100%">
+                                <foreach name="getShopName" item="item">
+                                    <option value="{$item.shopCode}" <foreach name="linkedShopList" item="linkedShop"><eq name="linkedShop.shopCode" value="$item.shopCode">selected="selected"</eq></foreach>>{$item.shopName}</option>
+                                </foreach>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="function" class="col-sm-2 control-label">额外规则</label>
+            <div class="col-sm-10">
+                <div class="row">
+                    <!-- ko foreach: exRuleInfo -->
+                    <div class="col-sm-12">
+                        <button type="button" class="btn btn-info btn-xs" data-bind="click: addExrule">添加额外规则</button>
+                    </div>
+                    <!-- ko foreach: exRule -->
+                    <input type="hidden" class="form-control" name="ruleCode[]" data-bind="value:ruleCode" />
+                    <div class="col-xs-11">
+                        <input type="text" class="form-control" name="ruleDes[]" data-bind="value:ruleDes" placeholder="扩展规则" />
+                    </div>
+                    <div class="col-xs-1">
+                        <button type="button" class="btn btn-info btn-xs" style="margin-top: 6px;" data-bind="click: $parent.delExrule, style: { display: $index() == 0 ? 'none' : 'block' }">删除</button>
+                    </div>
+                    <!-- /ko -->
+                    <!-- /ko -->
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="remark">背景图片</label>
+            <div class="col-sm-10">
+                <input type="hidden" name="url"  value = {$couponInfo.url} />
+                <div class="fileinput fileinput-new" data-provides="fileinput">
+                    <div class="fileinput-new thumbnail">
+                        <img src="{$couponInfo.url}"/>
+                    </div>
+                    <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 400px; max-height: 100px;"></div>
+                    <div>
+                        <span class="btn btn-default btn-file">
+                            <span class="fileinput-new">选择背景图片</span>
+                            <span class="fileinput-exists">换一张</span>
+                            <input type="file" name="upfile" class="ajax-file-upload" data-imgname="url" data-url="/Admin/Util/imageUp" multiple>
+                        </span>
+                        <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">移除</a>
+                        <span id="state_url" class="ajax-file-state"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group" <if condition="$couponInfo.batchCouponCode neq ''">style="display:none;"</if>>
+            <label for="batchCount" class="col-sm-4 control-label">相同类型优惠券同时设置批次数</label>
+            <div class="col-sm-2">
+                <div class="input-group">
+                    <input type="text" class="form-control checkNum" name="batchCount" value="1" id="batchCount">
+                    <div class="input-group-addon">批</div>
+                </div>
+            </div>
+        </div>
+        <input type="hidden" name="prizeRuleId" value="{$prizeRuleInfo.id}" />
+        <div class="form-group" style="border-top: 1px solid #000;padding-top: 10px;">
+            <div class="form-group" style="padding-left: 5%;font-weight: bold;font-size: 18px;">作为抢礼盒活动的礼品需要设置一下参数(要求拆礼品的人数小于等于零，为不设置)：</div>
+            <div class="form-group">
+                <label for="convertNbr" class="col-sm-2 control-label">要求拆礼品的人数</label>
+                <div class="col-sm-2">
+                    <div class="input-group">
+                        <input type="text" class="form-control checkNum" name="convertNbr" value="{$prizeRuleInfo.convertNbr}" id="convertNbr">
+                        <div class="input-group-addon">人</div>
+                    </div>
+                </div>
+                <label for="limitTime" class="col-sm-2 control-label">拆礼盒的时间限制(0无限制)</label>
+                <div class="col-sm-2">
+                    <div class="input-group">
+                        <input type="text" class="form-control checkNum" name="limitTime" value="{$prizeRuleInfo.limitTime|default=3}" id="limitTime">
+                        <div class="input-group-addon">小时</div>
+                    </div>
+                </div>
+                <label for="limitNbr" class="col-sm-2 control-label">每天限发礼品数量(0无限制)</label>
+                <div class="col-sm-2">
+                    <div class="input-group">
+                        <input type="text" class="form-control checkNum" name="limitNbr" value="{$prizeRuleInfo.limitNbr|default=2}" id="limitNbr">
+                        <div class="input-group-addon">份</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">礼品奖励活动期间</label>
+                <div class="col-sm-2">
+                    <div class="input-group">
+                        <input type="date" class="form-control" name="prizeStartDay" id="prizeStartDay" value="{$prizeRuleInfo.startDay}">
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="input-group">
+                        <input type="date" class="form-control" name="prizeEndDay" id="prizeEndDay" value="{$prizeRuleInfo.endDay}">
+                    </div>
+                </div>
+
+                <label for="prizeLevel" class="col-sm-2 control-label">礼品等级(数值越大,等级越大;现阶段默认为1)</label>
+                <div class="col-sm-4">
+                    <select class="form-control frm-select" name="prizeLevel" id="prizeLevel" disabled>
+                        <option value="1" <eq name="prizeRuleInfo.prizeLevel" value="1">selected="selected"</eq>>1级</option>
+                        <option value="2" <eq name="prizeRuleInfo.prizeLevel" value="2">selected="selected"</eq>>2级</option>
+                        <option value="3" <eq name="prizeRuleInfo.prizeLevel" value="3">selected="selected"</eq>>3级</option>
+                        <option value="4" <eq name="prizeRuleInfo.prizeLevel" value="4">selected="selected"</eq>>4级</option>
+                        <option value="5" <eq name="prizeRuleInfo.prizeLevel" value="5">selected="selected"</eq>>5级</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-2">
+                <button type="submit" class="btn btn-default btn-primary btn-block" id="submit">保存</button>
+            </div>
+        </div>
+        </form>
+</div>
+<script src="__PUBLIC__/js/vendor/jquery.ui.widget.js"></script>
+<script src="__PUBLIC__/js/jquery.iframe-transport.js"></script>
+<script src="__PUBLIC__/js/jquery.fileupload.js"></script>
+<script type="text/javascript">
+// 检查是否后填写满就送
+;(function(){
+    function checkIsSend() {
+        var isChecked = $('#is-send').prop('checked');
+        var sendRequired = $('#sendRequired');
+        var limitedSendNbr = $('#limitedSendNbr');
+        if(isChecked == true) {
+            sendRequired.attr('readonly', false);
+            limitedSendNbr.attr('readonly', false);
+        } else {
+            sendRequired.val('').attr('readonly', 'readonly');
+            limitedSendNbr.val('').attr('readonly', 'readonly');
+        }
+    }
+    $('#is-send').on('click', checkIsSend);
+    checkIsSend();
+})();
+// 选择优惠券类型时的变化
+;(function(){
+    function hideDiv(div) {
+        div.find('input').val('').attr('readonly', 'readonly');
+        div.find('textarea').val('').attr('readonly', 'readonly');
+        div.hide();
+    }
+    function showDiv(div) {
+        div.find('input').attr('readonly', false);
+        div.find('textarea').attr('readonly', false);
+        div.show();
+    }
+    function change_type() {
+        var type = $('#couponType').val();
+        var insteadPrice = $('#frm-group-instead-price');
+        var discountPercent = $('#frm-group-discount-percent');
+        var couponFunction = $('#frm-group-function');
+        var validityPeriod = $('#frm-group-validity-period');
+        var payPrice = $('#frm-group-pay-price');
+        switch(type) {
+            case '1': // N元购
+                showDiv(insteadPrice);
+                hideDiv(discountPercent);
+                showDiv(couponFunction);
+                hideDiv(validityPeriod);
+                hideDiv(payPrice);
+                break;
+            case '3': // 抵扣券
+                showDiv(insteadPrice);
+                hideDiv(discountPercent);
+                hideDiv(couponFunction);
+                hideDiv(validityPeriod);
+                hideDiv(payPrice);
+                break;
+            case '4': // 折扣券
+                hideDiv(insteadPrice);
+                showDiv(discountPercent);
+                hideDiv(couponFunction);
+                hideDiv(validityPeriod);
+                hideDiv(payPrice);
+                break;
+            case '5': // 实物券
+                hideDiv(insteadPrice);
+                hideDiv(discountPercent);
+                showDiv(couponFunction);
+                hideDiv(validityPeriod);
+                hideDiv(payPrice);
+                break;
+            case '6': // 体验券
+                hideDiv(insteadPrice);
+                hideDiv(discountPercent);
+                showDiv(couponFunction);
+                hideDiv(validityPeriod);
+                hideDiv(payPrice);
+                break;
+            case '7': // 兑换券
+                hideDiv(insteadPrice);
+                hideDiv(discountPercent);
+                showDiv(couponFunction);
+                hideDiv(validityPeriod);
+                showDiv(payPrice);
+                break;
+            case '8': // 代金券
+                showDiv(insteadPrice);
+                hideDiv(discountPercent);
+                showDiv(couponFunction);
+                hideDiv(validityPeriod);
+                showDiv(payPrice);
+                break;
+            case '32': // 送新用户的抵扣券
+                showDiv(insteadPrice);
+                hideDiv(discountPercent);
+                hideDiv(couponFunction);
+                showDiv(validityPeriod);
+                hideDiv(payPrice);
+                break;
+            case '33': // 送邀请人的抵扣券
+                showDiv(insteadPrice);
+                hideDiv(discountPercent);
+                hideDiv(couponFunction);
+                showDiv(validityPeriod);
+                hideDiv(payPrice);
+                break;
+        }
+    }
+    $('#couponType').on('change', change_type);
+    change_type();
+})();
+sz.checkNum();
+;(function(){
+    $(".form_datetime").datetimepicker({
+        format: 'yyyy-mm-dd',
+        autoclose: true,
+        todayBtn: true,
+        minView: "month"
+    });
+
+    $(".form_time").datetimepicker({
+        format: 'hh:ii',
+        autoclose: true,
+        todayBtn: true,
+        minuteStep: 1,
+        startView: 1
+    });
+    // 初始化选择发行商户的选择框
+    $('#shopName-select').select2({
+        placeholder: '请选择发行商家',
+        allowClear: true
+    });
+    $("#shopName-select").on("select2:select", function (e) {
+        var shopCode = e.params.data.id;
+        if(shopCode == sz.HQ_CODE) {
+            $('.is-universal-wrap').show();
+            var isUniversalChecked = $('#is-universal').prop('checked');
+            if(isUniversalChecked == false) {
+                $('.add-linked-shop-wrap').show();
+            }
+        } else {
+            $('#is-universal').prop('checked', '');
+            $('.is-universal-wrap, .add-linked-shop-wrap').hide();
+            $.post(
+                    '/Admin/BatchCoupon/getShopBusinessHours',
+                    {shopCode:shopCode,isAjax:true },
+                    function(result){
+                        $('#businessHours').empty().append(result.html);
+                    }
+            );
+        }
+    });
+    $(".js-data-add-shop-ajax").select2();
+    function checkIsUniveral() {
+        var isUniversalChecked = $('#is-universal').prop('checked');
+        var shopCode = $('#shopName-select').val();
+        if(isUniversalChecked == false && shopCode == sz.HQ_CODE) {
+            $('.add-linked-shop-wrap').show();
+        } else {
+            $('.add-linked-shop-wrap').hide();
+            $(".js-data-add-shop-ajax").val(null).trigger("change");
+        }
+    }
+    $('.is-universal-wrap').on('click', checkIsUniveral);
+    checkIsUniveral();
+    // 提交表单
+    $('#shop_add_form').on('submit', function() {
+        var shopNameSlt = $('#shopName-select');
+        shopNameSlt.prop("disabled", false);
+        var frm = $(this);
+        $.post(frm.attr('action'), frm.serialize(), function(resp) {
+            if (resp.status == sz.STATUS_SUCC) {
+                shopNameSlt.prop("disabled", "disabled");
+   //             location.href = '/Admin/BatchCoupon/list{$getData.back|default=Sp}Coupon?page={$getData.page}&batchNbr={$getData.batchNbr}&shopName={$getData.shopName}&couponType={$getData.couponType}&isAvailable={$getData.isAvailable}';
+                sz.showSuccMsg('保存成功', 3);
+            } else {
+                sz.showErrMsg(resp.msg.code, 3);
+            }
+        });
+        return false;
+    });
+    $('.ajax-file-upload').fileupload({
+        dataType: 'json',
+        add: function (e, data) {
+            var imgname = $(this).data('imgname'); // imgname为 url
+            data.context = $('#state_' + imgname).text('正在上传...');
+            data.submit();
+        },
+        /* progressall: function (e, data) {
+         var progress = parseInt(data.loaded / data.total * 100, 10);
+         $('#progress_img_quare .bar').css('width', progress + '%');
+         }, */
+        done: function (e, data) {
+            var resp = data.result;
+            /* data.result结果为:
+             {name: "14165352127461.jpg", originalName: "xueche.jpg", size: 49710, state: "SUCCESS", type: ".jpg", url: "./upload/20141121/14165352127461.jpg"}
+             */
+            console.log(resp);
+            /* $.each(data.result.files, function (index, file) {
+             $('<p/>').text(file.name).appendTo(document.body);
+             }); */
+            if (resp.state == 'SUCCESS') {
+                data.context.text('上传完成');
+                var imgname = data.context.attr('id').substr('state_'.length);
+                var imgUrl = resp.url.substr(0, 1) == '.' ? resp.url.substr(1) : resp.url; // 去掉"./"中的"."
+                $('#shop_add_form input[name=' + imgname + ']').val('/'+ imgUrl);
+            } else {
+                data.context.text('上传失败');
+                $('#shop_add_form input[name=' + imgname + ']').val('');
+            }
+        }
+    });
+})();
+;(function(){
+    __exRuleList = __exRuleList || [];
+    var Exrule = function(ruleCode, ruleDes){
+        this.ruleCode = ruleCode || '';
+        this.ruleDes = ruleDes || '';
+        return this;
+    };
+
+    var exRuleDataModel = function(exRuleData) {
+        var self = exRuleData;
+
+        self.exRule = ko.observableArray();
+        if (exRuleData.length == 0) exRuleData.push(new Exrule());
+
+        exRuleData.forEach(function (item) {
+            self.exRule.push(new Exrule(item.ruleCode, item.ruleDes));
+        });
+
+        self.addExrule = function(){
+            self.exRule.push(new Exrule());
+        };
+        self.delExrule = function(){
+            self.exRule.remove(this);
+        };
+        return self;
+    };
+
+    var viewMdl = function(){
+        var self = this;
+        self.exRuleInfo = ko.observableArray();
+        self.init = function(data){
+            self.exRuleInfo([]);
+            data.forEach(function (item) {
+                self.exRuleInfo.push(new exRuleDataModel(item));
+            });
+        };
+        self.init(__exRuleList);
+    };
+
+    ko.applyBindings(viewMdl);
+})();
+</script>

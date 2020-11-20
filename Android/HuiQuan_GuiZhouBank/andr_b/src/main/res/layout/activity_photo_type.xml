@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/LyOutSet"
+    android:background="@color/app_bg" >
+
+    <include layout="@layout/common_title_commit" />
+
+    <ListView
+        android:id="@+id/lv_phototype"
+        style="@style/LyWHFirst"
+        android:background="@color/app_bg"
+        android:cacheColorHint="#00000000"
+        android:divider="@color/light_grey"
+        android:dividerHeight="0.5dp"
+        android:scrollbars="none" />
+
+</LinearLayout>

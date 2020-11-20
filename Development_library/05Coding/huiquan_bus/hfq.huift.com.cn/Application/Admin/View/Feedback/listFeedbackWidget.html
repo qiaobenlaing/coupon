@@ -1,0 +1,111 @@
+<table class="fp-table table table-bordered" id="data_table">
+    <thead>
+    <tr>
+        <th>时间</th>
+        <th>{$tableHeader.sender}</th>
+        <th>内容</th>
+        <th>{$tableHeader.number}</th>
+        <eq name="title" value="用户建议与反馈">
+        <th>纠错部位</th>
+        <th>纠错图片</th>
+        <th>纠错商户</th>
+        </eq>
+        <th>操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    <foreach name="dataList" item="item">
+        <tr <if condition="($item.unreadCount neq 0)">style="background-color:rgb(228, 69, 69);;"</if>>
+        <td>{$item.createTime}</td>
+        <td>
+            <if condition="($item.shopCode eq $hqCode)">
+                {$item.userName}
+                <else />
+                {$item.shopName}
+            </if>
+        </td>
+        <td>{$item.message}</td>
+        <td>
+            <if condition="($item.shopCode eq $hqCode)">
+                {$item.userMobileNbr}
+                <else />
+                {$item.shopTel}<if condition="($item.shopTel eq '')">{$item.shopMobileNbr}<else /> ({$item.shopMobileNbr})</if>
+            </if>
+        </td>
+       	<eq name="title" value="用户建议与反馈">
+	        <td><switch name="item.errorInfo" >
+							<case value="1">商家店名</case>
+							<case value="2">商家地址</case>
+							<case value="3">地址经纬度</case>
+							<case value="4">商家联系方式</case>
+							<case value="5">商家图片</case>
+							<case value="6">商品/服务图片</case>
+						</switch></td>
+	        <td><foreach name="item.errorImg" item="vo"><img src="{$vo}" class="errorImg"/></foreach></td>
+	        <td>{$item.errorShopName}</td>
+        </eq>
+        <td>
+            <a class="btn btn-primary btn-xs check-button" <if condition="($item.shopCode eq $hqCode)">href="/Admin/Feedback/{$tableHeader.url}{$item.userCode}&type=USER"<else />href="/Admin/Feedback/{$tableHeader.url}{$item.shopCode}&type=SHOP"</if>>查看</a>
+            <button type="button" class="btn btn-primary btn-xs reply-button" data-toggle="modal" data-target=".bs-example-modal-lg" <if condition="($item.shopCode eq $hqCode)">data-creator-code="{$item.userCode}" data-type="USER"<else />data-creator-code="{$item.shopCode}" data-type="SHOP"</if>>回复</button>
+        </td>
+        </tr>
+    </foreach>
+    </tbody>
+</table>
+<include file="Application/Admin/View/Widget/pager.html" />
+<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" style="left: 0">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"
+                        aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">回复</h4>
+            </div>
+            <div class="modal-body">
+                <form method="post" action="/Admin/Feedback/replyFeedback" id="reply-feedback">
+                    <label></label>
+                    <input type="hidden" name="targetCode" id="targetCode"/>
+                    <input type="hidden" name="type" id="type"/>
+                    <div class="form-group">
+                        <textarea class="form-control" rows="3" name="message" id="message"></textarea>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">回复</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+.errorImg{
+	width: 150px;
+	height:200px;
+}
+</style>
+<script type="text/javascript">
+    $(function(){
+        $('.reply-button').on('click', function(){
+            $('#message').empty();
+            var creatorCode = $(this).data('creatorCode');
+            $('#targetCode').val(creatorCode);
+            var type = $(this).data('type');
+            $('#type').val(type);
+        })
+    });
+    $('#reply-feedback').on('submit', function() {
+        var frm = $(this);
+        $.post(frm.attr('action'), frm.serialize(), function(resp) {
+            console.log(resp);
+            if (resp.status == sz.STATUS_SUCC) {
+                location.reload();
+            } else {
+                sz.showErrMsg(resp.msg.code, 3);
+            }
+        });
+        return false;
+    });
+</script>

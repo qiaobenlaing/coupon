@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ly_coupon_item"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#EEEE"
+    android:orientation="horizontal"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:paddingTop="8dp" >
+
+    <RelativeLayout
+        android:id="@+id/left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_toLeftOf="@+id/right"
+        android:background="@drawable/couponlist_left" >
+
+        <ImageView
+            android:id="@+id/iv_couponpic"
+            style="@style/LyWHSecond"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:layout_alignParentLeft="true"
+            android:layout_margin="10dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/food" />
+
+        <LinearLayout
+            android:id="@+id/ly_center"
+            style="@style/LyWHSecond"
+            android:layout_marginTop="8dp"
+            android:layout_toRightOf="@+id/iv_couponpic"
+            android:gravity="center_vertical"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/tv_shopname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_toLeftOf="@+id/tv_distance"
+                    android:singleLine="true"
+                    android:text="aaaaa"
+                    android:textColor="@color/home_lstopfont"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/tv_distance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginRight="5dp"
+                    android:text="0km"
+                    android:textColor="@color/home_lstopfont"
+                    android:textSize="12sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                style="@style/LyWHSecond"
+                android:layout_marginTop="5dp"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:id="@+id/ly_money"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:gravity="center"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/tv_money"
+                        style="@style/LyWHSecond"
+                        android:text="@string/home_money"
+                        android:textColor="@color/money_font"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/tv_coupon_price"
+                        style="@style/LyWHSecond"
+                        android:singleLine="true"
+                        android:text="0"
+                        android:textColor="@color/money_font"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/tv_symbol"
+                        style="@style/LyWHSecond"
+                        android:text="@string/home_discount"
+                        android:textColor="@color/money_font"
+                        android:textSize="15sp"
+                        android:visibility="gone" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_coupon_gd"
+                    style="@style/LyWHSecond"
+                    android:layout_centerInParent="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="5dp"
+                    android:layout_toRightOf="@+id/ly_money"
+                    android:text="满198.00元可使用"
+                    android:textColor="@color/home_font"
+                    android:textSize="12sp" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/tv_coupon_effet"
+                style="@style/LyWHSecond"
+                android:singleLine="true"
+                android:text="ds"
+                android:textColor="@color/home_font"
+                android:textSize="12sp" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/right"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/left"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@id/left"
+        android:background="@drawable/available_n"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/tv_couponcount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="X1"
+            android:textColor="@color/white"
+            android:textSize="26sp" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/right"
+        android:layout_marginTop="-18dp"
+        android:layout_toRightOf="@+id/left"
+        android:gravity="center_horizontal" >
+
+        <TextView
+            android:id="@+id/tv_couponedraw"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="实物券"
+            android:textColor="@color/white"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/right1"
+        android:layout_width="80dp"
+        android:layout_height="match_parent"
+        android:layout_alignBottom="@+id/left"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/left"
+        android:layout_toRightOf="@+id/left"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:id="@+id/ckb_coupon_up"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginBottom="18dp"
+            android:scaleType="fitCenter"/>
+    </RelativeLayout>
+
+</RelativeLayout>

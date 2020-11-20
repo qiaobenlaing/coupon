@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/LyOutSet"
+    android:background="@color/bgall" >
+
+    <include layout="@layout/common_title_commit" />
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:fadingEdge="vertical"
+        android:scrollbars="vertical" >
+
+        <LinearLayout
+            style="@style/LyWHFirst"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                style="@style/LyWHFourth"
+                android:layout_height="@dimen/layout_height"
+                android:background="@color/bgall"
+                android:gravity="center_vertical|left"
+                android:orientation="horizontal" >
+
+                <TextView
+                    style="@style/textview"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    android:text="@string/service_type"
+                    android:textColor="@color/ivcolor" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/LyWHFourth"
+                android:layout_height="@dimen/layout_height"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <ImageView
+                    style="@style/imageview"
+                    android:layout_marginLeft="10dp"
+                    android:src="@drawable/pos_material" />
+
+                <TextView
+                    style="@style/textview"
+                    android:layout_marginLeft="10dp"
+                    android:text="@string/material_distribution"
+                    android:textSize="18sp" />
+
+                <LinearLayout
+                    style="@style/LyWHFourth"
+                    android:gravity="right" >
+
+                    <CheckBox
+                        android:id="@+id/ck_pos_material"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/sel_poscheckbox"
+                        android:button="@null"
+                        android:checked="true" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                style="@style/VLine"
+                android:layout_height="0.5dp"
+                android:background="@color/shallow_gray" />
+
+            <LinearLayout
+                style="@style/LyWHFourth"
+                android:layout_height="@dimen/layout_height"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <ImageView
+                    style="@style/imageview"
+                    android:layout_marginLeft="10dp"
+                    android:src="@drawable/pos_fault" />
+
+                <TextView
+                    style="@style/textview"
+                    android:layout_marginLeft="10dp"
+                    android:text="@string/repair_service"
+                    android:textSize="18sp" />
+
+                <LinearLayout
+                    style="@style/LyWHFourth"
+                    android:gravity="right" >
+
+                    <CheckBox
+                        android:id="@+id/ck_pos_repair"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/sel_poscheckbox"
+                        android:button="@null" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                style="@style/VLine"
+                android:layout_height="0.5dp"
+                android:background="@color/shallow_gray" />
+
+            <LinearLayout
+                style="@style/LyWHFourth"
+                android:layout_height="@dimen/layout_height"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <ImageView
+                    style="@style/imageview"
+                    android:layout_marginLeft="10dp"
+                    android:src="@drawable/pos_other" />
+
+                <TextView
+                    style="@style/textview"
+                    android:layout_marginLeft="10dp"
+                    android:text="@string/other"
+                    android:textSize="18sp" />
+
+                <LinearLayout
+                    style="@style/LyWHFourth"
+                    android:gravity="right" >
+
+                    <CheckBox
+                        android:id="@+id/ck_pos_other"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/sel_poscheckbox"
+                        android:button="@null" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/LyWHFourth"
+                android:layout_height="@dimen/layout_height"
+                android:background="@color/bgall"
+                android:gravity="center_vertical|left"
+                android:orientation="horizontal" >
+
+                <TextView
+                    style="@style/textview"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center_vertical|left"
+                    android:text="@string/service_description"
+                    android:textColor="@color/ivcolor" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/LyWHFourth"
+                android:background="@color/bgall"
+                android:gravity="center" >
+
+                <EditText
+                    android:id="@+id/et_service_descr"
+                    android:layout_width="300dp"
+                    android:layout_height="100dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginRight="3dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/sel_edt_input"
+                    android:gravity="top"
+                    android:inputType="textMultiLine"
+                    android:minLines="10" />
+            </LinearLayout>
+
+            <TextView
+                style="@style/VLine"
+                android:layout_height="0.5dp"
+                android:background="@color/shallow_gray" />
+
+            <LinearLayout
+                android:id="@+id/ly_apply_pos"
+                style="@style/LyWHFourth"
+                android:layout_height="@dimen/layout_height"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <ImageView
+                    style="@style/imageview"
+                    android:layout_marginLeft="10dp"
+                    android:src="@drawable/pos_apply" />
+
+                <TextView
+                    style="@style/textview"
+                    android:layout_marginLeft="10dp"
+                    android:text="@string/card"
+                    android:textSize="18sp" />
+
+                <LinearLayout
+                    style="@style/LyWHFourth"
+                    android:gravity="right" >
+
+                    <ImageView
+                        style="@style/imageview"
+                        android:src="@drawable/shop_arrow" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                style="@style/VLine"
+                android:layout_height="0.5dp"
+                android:background="@color/shallow_gray" />
+
+            <LinearLayout
+                android:id="@+id/lv_card_problem"
+                style="@style/LyWHFourth"
+                android:layout_height="@dimen/layout_height"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <ImageView
+                    style="@style/imageview"
+                    android:layout_marginLeft="10dp"
+                    android:src="@drawable/pos_issue" />
+
+                <TextView
+                    style="@style/textview"
+                    android:layout_marginLeft="10dp"
+                    android:text="@string/card_problem"
+                    android:textSize="18sp" />
+
+                <LinearLayout
+                    style="@style/LyWHFourth"
+                    android:gravity="right" >
+
+                    <ImageView
+                        style="@style/imageview"
+                        android:src="@drawable/shop_arrow" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                style="@style/VLine"
+                android:layout_height="0.5dp"
+                android:background="@color/shallow_gray" />
+
+            <LinearLayout
+                android:id="@+id/ly_mypos_serv_phone"
+                style="@style/LyWHFourth"
+                android:layout_height="@dimen/layout_height"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <ImageView
+                    style="@style/imageview"
+                    android:layout_marginLeft="10dp"
+                    android:src="@drawable/pos_cusservice" />
+
+                <TextView
+                    style="@style/textview"
+                    android:layout_marginLeft="10dp"
+                    android:text="@string/service_phone"
+                    android:textSize="18sp" />
+
+                <LinearLayout
+                    style="@style/LyWHFourth"
+                    android:gravity="right" >
+
+                    <ImageView
+                        style="@style/imageview"
+                        android:src="@drawable/shop_arrow" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                style="@style/VLine"
+                android:layout_height="0.5dp"
+                android:background="@color/shallow_gray" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

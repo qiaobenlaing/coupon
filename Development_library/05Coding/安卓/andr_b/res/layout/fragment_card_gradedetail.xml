@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/LyOutSet" >
+
+    <include layout="@layout/common_title_home" />
+
+    <ScrollView
+        style="@style/LyWHFourth"
+        android:scrollbars="none" >
+
+        <LinearLayout
+            style="@style/LyWHFourth"
+            android:orientation="vertical" >
+
+            <TextView
+                style="@style/VSpace"
+                android:background="@color/bgall" />
+
+            <LinearLayout
+                style="@style/LyWHFourth"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    style="@style/LyCradGradeSet"
+                    android:background="@color/white" >
+
+                    <!-- 每个等级对应的卡 -->
+
+                    <TextView
+                        android:id="@+id/tv_card_gd"
+                        style="@style/Tv_CouponSetFont"
+                        android:layout_marginLeft="10dp"
+                        android:text="@string/cardvip_gd_1"
+                        android:textSize="@dimen/card_fontsize" />
+
+                    <LinearLayout style="@style/LyCradGradeFirst" >
+
+                        <TextView
+                            android:id="@+id/tv_cardname"
+                            style="@style/Tv_CouponSetFont"
+                            android:layout_marginRight="4dp"
+                            android:text="@string/cardvip_gdcard"
+                            android:textSize="@dimen/card_fontsize" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <TextView
+                    style="@style/VLine"
+                    android:layout_height="0.5dp" />
+
+                <LinearLayout
+                    style="@style/LyCradGradeSet"
+                    android:background="@color/white" >
+
+                    <!-- 每个等级对应的卡 -->
+
+                    <TextView
+                        style="@style/Tv_CouponSetFont"
+                        android:layout_marginLeft="10dp"
+                        android:text="@string/cardvip_gdpoint"
+                        android:textSize="@dimen/card_fontsize" />
+
+                    <LinearLayout
+                        style="@style/LyCradGradeFirst"
+                        android:layout_marginLeft="20dp" >
+
+                        <!-- 需要多少积分 -->
+
+                        <EditText
+                            android:id="@+id/edt_card_gdpoint"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@null"
+                            android:gravity="center_vertical|right"
+                            android:hint="@string/card_zemo"
+                            android:inputType="numberDecimal"
+                            android:maxLength="9"
+                            android:paddingRight="5dp"
+                            android:singleLine="true"
+                            android:textColor="@color/home_topsixfont"
+                            android:textSize="@dimen/card_fontsize" />
+                        <!-- 会员卡级别对应的会员卡 -->
+
+                        <TextView
+                            style="@style/LyWHFourth"
+                            android:layout_width="match_parent"
+                            android:layout_weight="9"
+                            android:text="@string/cardvip_igl_fen"
+                            android:textColor="@color/home_topsixfont"
+                            android:textSize="@dimen/card_fontsize" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/LyCradGradeSet"
+                    android:background="@color/white" >
+
+                    <!-- 每个等级对应的卡 -->
+
+                    <TextView
+                        style="@style/Tv_CouponSetFont"
+                        android:layout_marginLeft="10dp"
+                        android:text="@string/cardvip_gddc"
+                        android:textSize="@dimen/card_fontsize" />
+                    <!-- 享受折扣 -->
+
+                    <LinearLayout
+                        style="@style/LyCradGradeFirst"
+                        android:layout_marginLeft="20dp" >
+
+                        <EditText
+                            android:id="@+id/edt_card_gddc"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@null"
+                            android:gravity="center_vertical|right"
+                            android:hint="@string/card_zemo"
+                            android:inputType="numberDecimal"
+                            android:maxLength="9"
+                            android:paddingRight="5dp"
+                            android:singleLine="true"
+                            android:textColor="@color/home_topsixfont"
+                            android:textSize="@dimen/card_fontsize" />
+
+                        <TextView
+                            style="@style/Tv_CouponSetFont"
+                            android:layout_width="match_parent"
+                            android:layout_weight="9"
+                            android:text="@string/cardvip_gd_dc"
+                            android:textSize="@dimen/card_fontsize" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/LyCradGradeSet"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp" >
+
+                    <LinearLayout
+                        style="@style/LyCradGradeFirst"
+                        android:layout_weight="1" >
+
+                        <TextView
+                            style="@style/LyWHFourth"
+                            android:layout_weight="3"
+                            android:text="@string/tv_cardvip_igl_mei"
+                            android:textColor="@color/home_topsixfont"
+                            android:textSize="@dimen/card_fontsize" />
+                        <!-- 每多少钱积多少分 -->
+
+                        <EditText
+                            android:id="@+id/edt_card_gdmoney"
+                            style="@style/LyWHFourth"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/sel_edt_input"
+                            android:focusable="false"
+                            android:gravity="center_horizontal"
+                            android:inputType="numberDecimal"
+                            android:singleLine="true"
+                            android:text="1"
+                            android:textColor="@color/home_topsixfont"
+                            android:textSize="@dimen/card_fontsize" />
+
+                        <TextView
+                            style="@style/LyWHFourth"
+                            android:layout_marginLeft="2dp"
+                            android:layout_weight="3"
+                            android:text="@string/tv_coupon_ddt_money_yuan"
+                            android:textColor="@color/home_topsixfont"
+                            android:textSize="@dimen/card_fontsize" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        style="@style/LyCradGradeFirst"
+                        android:layout_weight="1" >
+
+                        <TextView
+                            style="@style/LyWHFourth"
+                            android:layout_weight="3"
+                            android:text="@string/tv_cardvip_igl_ji"
+                            android:textColor="@color/home_topsixfont"
+                            android:textSize="@dimen/card_fontsize" />
+
+                        <EditText
+                            android:id="@+id/edt_card_gdcount"
+                            style="@style/LyWHFourth"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/sel_edt_input"
+                            android:gravity="center_horizontal"
+                            android:inputType="numberDecimal"
+                            android:maxLength="9"
+                            android:singleLine="true"
+                            android:textColor="@color/home_topsixfont"
+                            android:textSize="@dimen/card_fontsize" />
+
+                        <TextView
+                            style="@style/LyWHFourth"
+                            android:layout_marginLeft="2dp"
+                            android:layout_weight="3"
+                            android:text="@string/cardvip_igl_fen"
+                            android:textColor="@color/home_topsixfont"
+                            android:textSize="@dimen/card_fontsize" />
+                    </LinearLayout>
+                </LinearLayout>
+                <!--
+           <LinearLayout 
+	             style="@style/LyCradGradeSet"
+	             android:layout_marginLeft="10dp"
+	             android:layout_marginBottom="10dp">
+	             <LinearLayout 
+	                 style="@style/LyCradGradeFirst"
+	                 android:layout_weight="1">
+	                <TextView
+	                    style="@style/LyWHFourth"
+	                    android:layout_weight="3"
+	                    android:textColor="@color/home_topsixfont"
+	                    android:text="@string/tv_cardvip_igl_mei" />
+	                每多少钱积多少分
+	                <EditText
+	                    android:id="@+id/edt_card_point"
+	                    style="@style/LyWHFourth"
+	                    android:layout_weight="1"
+	                    android:layout_height="wrap_content"
+	                    android:background="@drawable/sel_edt_input"
+	                    android:gravity="center_horizontal"
+	                    android:inputType="numberDecimal"
+	                    android:maxLength="9"
+	                    android:textColor="@color/home_topsixfont"
+	                    android:singleLine="true"/>
+	                 <TextView
+	                    style="@style/LyWHFourth"
+	                    android:layout_weight="3"
+	                    android:layout_marginLeft="2dp"
+	                    android:textColor="@color/home_topsixfont"
+	                    android:text="@string/cardvip_igl_fen" />
+	                </LinearLayout>
+	                <LinearLayout 
+	                    style="@style/LyCradGradeFirst"
+	                    android:layout_weight="1">
+	                <TextView
+	                    style="@style/LyWHFourth"
+	                    android:layout_weight="3"
+	                    android:textColor="@color/home_topsixfont"
+	                    android:text="@string/tv_cardvip_igl_ji" />
+	                <EditText
+	                    android:id="@+id/edt_card_money"
+	                    style="@style/LyWHFourth"
+	                    android:layout_weight="1"
+	                    android:textColor="@color/home_topsixfont"
+	                    android:layout_height="wrap_content"
+	                    android:background="@drawable/sel_edt_input"
+	                    android:gravity="center_horizontal"
+	                    android:inputType="numberDecimal"
+	                    android:text="1"
+	                    android:focusable="false"
+	                    android:singleLine="true"/>
+	                <TextView
+	                    style="@style/LyWHFourth"
+	                    android:layout_weight="3"
+	                    android:textColor="@color/home_topsixfont"
+	                    android:layout_marginLeft="2dp"
+	                    android:text="@string/tv_coupon_ddt_money_yuan" />
+	            </LinearLayout>
+	   	</LinearLayout>
+                -->
+
+                <LinearLayout
+                    style="@style/LyCradGradeSet"
+                    android:background="@color/white" >
+
+                    <TextView
+                        style="@style/LyWHSecond"
+                        android:layout_marginLeft="10dp"
+                        android:text="@string/tv_cardvip_igl_valid"
+                        android:textColor="@color/home_topsixfont"
+                        android:textSize="@dimen/card_fontsize" />
+
+                    <LinearLayout
+                        style="@style/LyCradGradeFirst"
+                        android:layout_marginLeft="10dp" >
+
+                        <!-- 积分有效期 -->
+
+                        <EditText
+                            android:id="@+id/edt_card_gdvalid"
+                            style="@style/LyWHFourth"
+                            android:layout_weight="1"
+                            android:background="@null"
+                            android:gravity="center_vertical|right"
+                            android:hint="@string/tv_cardvip_inputvalid"
+                            android:inputType="number"
+                            android:maxLength="9"
+                            android:singleLine="true"
+                            android:textColor="@color/home_topsixfont"
+                            android:textSize="@dimen/card_fontsize" />
+
+                        <TextView
+                            style="@style/LyWHFourth"
+                            android:layout_marginLeft="5dp"
+                            android:layout_weight="9"
+                            android:text="@string/tv_cardvip_igl_month"
+                            android:textColor="@color/home_topsixfont"
+                            android:textSize="@dimen/card_fontsize" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <TextView
+                    style="@style/VSpace"
+                    android:background="@color/bgall" />
+
+                <LinearLayout
+                    style="@style/LyCradGradeSet"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@color/bgall"
+                    android:gravity="center_horizontal" >
+
+                    <Button
+                        android:id="@+id/btn_card_laststep"
+                        style="@style/LyWHFourth"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/smallbtn"
+                        android:text="@string/coupon_last_step"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/card_fontsize" />
+
+                    <Button
+                        android:id="@+id/btn_card_save"
+                        style="@style/LyWHFourth"
+                        android:layout_weight="1"
+                        android:background="@drawable/smallbtn"
+                        android:text="@string/coupon_next"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/card_fontsize" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

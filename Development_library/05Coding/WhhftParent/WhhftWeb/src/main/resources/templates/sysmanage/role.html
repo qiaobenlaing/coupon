@@ -1,0 +1,191 @@
+<link th:replace="/include/header" />
+<style type="text/css" title="text/css">
+</style>
+<script th:inline="javascript">
+
+function Encrypt(word){
+	return CryptoJS.AES.encrypt(word,pwd).toString();
+}
+function Decrypt(word){
+	return CryptoJS.AES.decrypt(word,pwd).toString(CryptoJS.enc.Utf8);
+}
+// 用于标记当前正在编辑的记录行号，如果为undefined，说明没有处于编辑状态
+var editIndex;
+var NEW_NODE= {roleId: '-9999',	roleName: '新角色'};
+
+function add(){
+	if(editIndex != undefined){
+		return;
+	}
+	var data = $g.utils.deepCopy(NEW_NODE);
+	$('#dg').datagrid('appendRow', data);
+	editIndex = $('#dg').datagrid('getRowIndex', data);
+	$('#dg').datagrid('selectRow', editIndex);
+	$('#dg').datagrid('beginEdit', editIndex);
+	$(".datagrid-row-editing .textbox, .datagrid-row-editing .textbox-text").css({"height":"38px"});//设置编辑行样式
+	$('#p').panel('close');
+}
+
+function edit(){
+	if(editIndex != undefined){
+		$('#dg').datagrid('select', editIndex);
+		return;
+	}
+	var row = $('#dg').datagrid('getSelected');
+    if (row != null){
+    	editIndex = $('#dg').datagrid('getRowIndex', row);
+    	$('#dg').datagrid('selectRow', editIndex);
+    	$('#dg').datagrid('beginEdit', editIndex);
+    	$(".datagrid-row-editing .textbox, .datagrid-row-editing .textbox-text").css({"height":"38px"});//设置编辑行样式
+    }
+    $('#p').panel('close');
+}
+
+function save(){
+    if (editIndex != undefined){
+        $('#dg').datagrid('endEdit', editIndex);
+      //保存节点并刷新整个菜单树
+      	var node = $('#dg').datagrid('getSelected');
+    	$g.post([[@{/sysrole/save}]], node, function(){
+    		$g.showMsg('消息', '保存成功！');  
+    		editIndex = undefined;
+    		$('#dg').datagrid('reload');
+    	});
+    }
+}
+//取消编辑
+function cancel(){
+    if (editIndex != undefined){
+    	$('#dg').datagrid('cancelEdit', editIndex);
+    	$('#dg').datagrid('selectRow', editIndex);
+        if($('#dg').datagrid('getSelected').roleId == NEW_NODE.roleId){
+        	$('#dg').datagrid('deleteRow', editIndex);
+        }
+        editIndex = undefined;
+    }
+}
+
+function remove_role(){
+	if (editIndex != undefined){
+		$g.showMsg('消息', '请先取消编辑！');
+		return;
+	}
+	var node = $('#dg').datagrid('getSelected');
+	if(node != null ){
+		$.messager.confirm('提示', '该操作不可逆，请确认是否删除！', function(data){
+			if(data){
+				$g.post([[@{/sysrole/remove?roleId=}]] +node.roleId,null, function(){
+					{
+						$g.showMsg('消息', '删除成功！');  
+						$('#dg').datagrid('reload');
+					}
+				});
+			}
+			editIndex = undefined;
+		});
+	}
+}
+
+	//显示当前角色被绑定权限
+function onSelect(){
+	if(editIndex != undefined){
+		return;
+	}
+	// console.log($('#dg').datagrid('getEditor'));
+	$('#p').panel('open');
+	//用户重新选择了角色， 初始化权限树，取消权限树所有选项的勾选
+	var nodes = $('#authRs').tree('getChecked');
+	for(var i=0; i<nodes.length; i++){
+		$('#authRs').tree('uncheck', nodes[i].target);
+    }
+	//首先判断这个角色是否已经真的被创建到数据库,如果只是一个临时节点，则无需后续操作
+	var row = $('#dg').datagrid('getSelected');
+	if(row){
+		//首先判断这个角色是否已经真的被创建到数据库,如果只是一个临时节点，则无需后续操作
+		var roleId = row.roleId;
+		if(roleId > 0){
+			$g.post([[@{/sysrole/getRoleAuthIds?roleId=}]]+row.roleId,null, function(data){
+				var json = $.parseJSON(data);
+				$.each(json, function(index, vlaue){
+					var node = $('#authRs').tree('find', vlaue);
+		    		if(node && $('#authRs').tree('isLeaf', node.target)) {
+		    			$('#authRs').tree('check', node.target);
+		    		}
+				});
+			});
+		}
+	}
+}
+//保存当前角色绑定的权限
+function saveAuthRs(){
+	var row = $('#dg').datagrid('getSelected');
+	if(row){
+		var nodes = $('#authRs').tree('getChecked', ['checked','indeterminate']);
+        var s = '';
+        for(var i=0; i<nodes.length; i++){
+            if (s != '') s += ',';
+            s += nodes[i].id;
+        }
+        $g.post([[@{/sysrole/saveRoleAuthIds}]], {'roleId': row.roleId, 'authIds': s}, function(){
+        	$g.showMsg('消息', '保存成功！');
+    	});
+	}else{
+		$.messager.alert('提示', '请选择角色！');
+	}
+}
+
+$(document).ready(function() {
+	$('#dg').datagrid({  
+		url: [[@{/sysrole/findAll}]], 
+		method:"post"
+	}); 
+	
+	$('#authRs').tree({  
+		url: [[@{/sysauth/roleAuthTree}]], 
+		cascadeCheck: true,
+		onlyLeafCheck:false,
+	}); 
+	$('#p').panel('close');
+});
+
+</script>
+<div data-options="region:'center'" class="layout-have-right-border"
+	style="border-top: 0px; border-left: 0px; border-bottom: 0px;">
+	<div id="tb" style="padding: 2px 5px;">
+		<a href="javascript:void(0)" class="easyui-linkbutton"
+			data-options="iconCls:'icon-add',plain:true" onclick="add();">新增</a>
+		<a href="javascript:void(0)" class="easyui-linkbutton"
+			data-options="iconCls:'icon-edit',plain:true" onclick="edit();">修改</a>
+		<a href="javascript:void(0)" class="easyui-linkbutton"
+			data-options="iconCls:'icon-save',plain:true" onclick="save();">保存</a>
+		<a href="javascript:void(0)" class="easyui-linkbutton"
+			data-options="iconCls:'icon-cancel',plain:true" onclick="cancel();">取消</a>
+		<a href="javascript:void(0)" class="easyui-linkbutton"
+			data-options="iconCls:'icon-remove',plain:true" onclick="remove_role();">删除</a>
+	</div>
+	<table id="dg" class="easyui-datagrid"
+		data-options="toolbar:'#tb',title: '系统参数管理',fitColumns:true,nowrap:false,border:false,autoRowHeight:false,singleSelect:true,onSelect:onSelect"
+		style="height: 100%">
+		<thead>
+			<tr>
+				<th
+					data-options="field:'roleName',width:200,editor:{type:'textbox',options:{required:true,validType:'length[0,32]'}}">角色名称</th>
+			</tr>
+		</thead>
+	</table>
+</div>
+<div data-options="region:'east',border:false" style="width: 70%;"
+	class="layout-have-left-border">
+	<div id="p" class="easyui-panel" title="权限绑定"
+		data-options="border:false">
+		<div id="tb_authRs" class="datagrid-toolbar" style="padding: 2px 5px;">
+			<a href="javascript:void(0)" class="easyui-linkbutton"
+				data-options="iconCls:'icon-save',plain:true"
+				onclick="saveAuthRs();">保存</a>
+		</div>
+
+		<ul id="authRs" class="easyui-tree"
+			data-options="method:'post',animate:true,checkbox:true"></ul>
+	</div>
+</div>
+<link th:replace="/include/footer" />

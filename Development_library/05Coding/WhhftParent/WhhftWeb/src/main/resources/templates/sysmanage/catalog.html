@@ -1,0 +1,250 @@
+<link th:replace="/include/header" />
+<style>
+
+</style>
+
+<script th:inline="javascript">
+
+var tg=$('#tg');
+
+var editingId;//用于标记当前正在编辑的记录行号，如果为undefined，说明没有处于编辑状态
+
+var NEW_NODE= {id: '-9999', text: '新闻栏目'};//用于新增节点时，插入表格的模板数据，ID为负数，表示它是一个用于方便显示、非持久化的临时节点
+
+//启动行编辑功能，表格只允许单行编辑，启动前先判断用户是否已经在编辑其他行，如果是，则不再开启新的行编辑
+function edit(){
+    if (editingId != undefined){
+        tg.treegrid('select', editingId);
+        return;
+    }
+    var node = tg.treegrid('getSelected');
+    
+    if(node){
+    	editingId = node.id;
+    	beginEdit(editingId);
+    }  
+}
+
+//保存修改或新增的行，并将数据写入数据库后，重新刷新显示整个菜单树
+function save(node,changes){
+	
+    if (editingId != undefined){   
+    	
+    	$('#tg').treegrid("endEdit", editingId);     	
+    	
+    	node = tg.treegrid('getSelected');
+        var parentNode=tg.treegrid('getParent',node.id);//得到父级栏目id
+        
+        //如果父级为空则设置父级id=0
+        if(parentNode){
+        	node.parentCatalogId=parentNode.id;
+        }else{
+        	 node.parentCatalogId=0;
+        }
+        
+        node.catalogName=node.text;
+        
+        var catalogOldName= getCatalogNameById(node.id);
+        
+        
+        //当添加栏目或者栏目名称被修改时，判断栏目名称是否存在
+    	if((editingId == NEW_NODE.id || (node.text != catalogOldName))&& catalogNameExist(node.catalogName)){
+    		$.messager.alert("警示", "该栏目已存在！", "warning");
+    		beginEdit(editingId);
+    		return; 
+    	} else{
+    		 //异步提交保存到数据库         
+            $g.post([[@{/catalog/save}]], node, function(data){         
+                $g.showMsg('消息', '保存成功！');  
+                tg.treegrid('reload'); 
+                editingId = undefined;
+                catalogOldName=undefined;
+                return;             
+            }); 
+    	}
+    }
+}
+
+//开启编辑，同时修改编辑样式
+function beginEdit(editingId){
+	$('#tg').treegrid("beginEdit", editingId); 
+    $(".datagrid-row-editing .textbox, .datagrid-row-editing .textbox-text").css({"height":"38px"});//设置编辑行样式  
+}
+
+//通过栏目id得到栏目名称
+function getCatalogNameById(catalogId){
+	var catalogName="";
+	$.ajax({
+        async : false, 
+        url : [[@{/catalog/getCatalogName?catalogId=}]]+catalogId,
+        type : "post",    
+        dataType:"json",       
+        success : function(result) {
+        	catalogName=result;
+        }
+    });
+	return catalogName;
+}
+
+
+//判断栏目名称是否存在
+function catalogNameExist(catalogName){
+	
+	var flag=false;
+    $.ajax({
+        async : false, 
+        url : [[@{/catalog/catalogNameExist?catalogName=}]]+catalogName,
+        type : "post",    
+        dataType:"json",
+        success : function(data) {
+            if(data){
+            	flag=true;
+            }
+        },
+        error:function(error){
+        	
+        }
+    });
+    return flag;
+   
+}
+
+//取消对行记录的新增或修改，如果这一行是刚新增的，数据还没有保存到数据库，则把这一行删除掉
+function cancel(){
+	var node = tg.treegrid('getSelected');
+     if(node){
+		if (editingId != undefined){
+			//取消编辑
+	        tg.treegrid('cancelEdit', editingId);
+	        
+	        //如果是新增行，移除
+	        if(editingId == NEW_NODE.id){
+	            tg.treegrid('remove', editingId);
+	        }	
+	        
+	        editingId = undefined;
+	    }
+	} 	
+	$('#tg').treegrid("unselectAll");
+	tg.treegrid('reload'); 
+}
+
+//新增一个行记录，如果是type = append表示为当前节点增加一个子节点，如果为type = after表示为当前节点增加一个邻节点，新增后，立即选中该行记录自动进入编辑状态
+function addNode(type){
+    //如果有节点在编辑状态中，则不允许再添加节点
+    if(editingId != null){
+        return ;
+    }
+    //如果用户没有选中任何节点，直接点击新增，表示是要增加一个根节点
+    var node = tg.treegrid('getSelected');
+    var data = [];
+    /*这里的data[0]会被作为新增的节点数据对象，如果直接把NEW_NODE赋值给data[0]，在行编辑器中的编辑就会修改NEW_NODE对象,
+    *如果连续添加多个节点就会发现行编辑器里每一栏显示的是上一次提交的数据，所以这里必须对初始化数据进行克隆后产生一个新对象赋给data[0]
+    */
+    data[0] = $g.utils.deepCopy(NEW_NODE);
+    
+    if(type == 'append' && node != null){
+        var level=tg.treegrid('getLevel', node.id);
+        if(level<3){
+        	 tg.treegrid('append',{parent: node.id,data: data});
+        }else{
+        	$.messager.alert("警示", "只允许添加到三级栏目", "warning");
+        	return;
+        }
+    }else if(type == 'append'){
+    	$.messager.alert("警示", "请选择需要添加的父级栏目，再进行添加子栏目！", "warning");
+    	return ;
+    } else if(type == 'new'){
+        tg.treegrid('append',{parent: null, data: data});        
+    }else{
+        return ;
+    }
+    
+    editingId = NEW_NODE.id;
+    tg.treegrid('select', editingId);
+    
+    beginEdit(editingId);
+}
+
+//删除一个叶子节点，不允许直接删除非叶子节点，避免一次性删除过多
+function remove(){
+    var node = tg.treegrid('getSelected');
+    if(node != null){
+        if(tg.treegrid('getChildren', node.id).length == 0){
+            //删除成功的时候重新加载整个树
+            $.messager.confirm('提示', '该操作不可逆，请确认是否删除！', function(data){
+                if(data){                	
+                    $g.post([[@{/catalog/remove?catalogId=}]] +node.id,null,function(){
+                    	$g.showMsg('消息', '删除成功！');    
+                    	tg.treegrid('reload');
+                    });
+                    
+                }
+            });            
+        }else{
+            $.messager.alert("提示","为避免误删除，每次只能删除一个最末级的功能！");
+        }
+    }
+}
+
+$(document).ready(function() {
+    tg=$('#tg').treegrid({  
+        url: [[@{/catalog/catalogTree}]], 
+        rownumbers: true,
+        animate: true,
+        collapsible: true,
+        fitColumns: false,
+        method: 'post',
+        idField: 'id',
+        treeField: 'text',        
+        border: false,       
+        toolbar:[
+           { text: '编辑', iconCls: 'icon-edit', handler: function () {
+               edit();    
+           }}, '-',
+           { text: '添加栏目', iconCls: 'icon-add', handler: function () {
+               addNode('new');
+           }}, '-',
+           { text: '添加子栏目', iconCls: 'icon-add', handler: function () {
+               addNode('append');
+           }}, '-',
+           { text: '保存', iconCls: 'icon-save', handler: function () {
+        	   //保存时结束当前编辑的行，自动触发onAfterEdit事件如果要与后台交互可将数据通过Ajax提交后台
+               $('#tg').treegrid("endEdit", editingId); 
+        	  // save();
+           }}, '-',
+           { text: '取消', iconCls: 'icon-cancel', handler: function () {
+        	   cancel();
+           }}, '-',
+           { text: '删除', iconCls: 'icon-remove', handler: function () {
+               remove();
+           }}, '-'],
+       onAfterEdit:function(row,changes){
+    	   save(row,changes);
+       }
+       
+      
+    });  
+});
+
+</script>
+
+
+<div data-options="region:'center'" class="layout-have-right-border"
+	style="border-top: 0px; border-left: 0px; border-bottom: 0px;">
+	<table id="tg" class="easyui-treegrid"
+		style="height: 100%; width: 100%;" >
+		<thead>
+			<tr>
+				<th style="width: 250px;"
+					data-options="field:'text',editor:{type:'textbox',options:{required:true,validType:'length[0,32]'}}">标题</th>
+			   <th style="width: 100px;"
+                    data-options="field:'orderNo',editor:{type:'numberbox',options:{required:true,validType:'min:0, max:9999'}}">排序权重</th>
+			    <th style="width: 250px;"
+                    data-options="field:'remark',editor:{type:'textbox',options:{validType:'length[0,256]'}}">备注</th>
+			</tr>
+		</thead>
+	</table>
+</div>
+
+<link th:replace="/include/footer" />

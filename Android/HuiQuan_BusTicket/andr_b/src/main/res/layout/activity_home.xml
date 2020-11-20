@@ -1,0 +1,127 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="10"
+    tools:context=".activity.HomeActivity" >
+
+    <LinearLayout
+        android:id="@+id/fragmentRoot"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/bottomList"
+        android:orientation="vertical" >
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ly_home_settled"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/fragmentRoot"
+        android:background="@color/white"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone" >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/layout_height"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:gravity="center"
+            android:text="@string/shop_go_settled" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/bottomList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom"
+        android:background="@drawable/bottom"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            android:id="@+id/ly_main"
+            style="@style/linaer_bottom" >
+
+            <ImageView
+                android:id="@+id/mIvMain"
+                style="@style/LyWHSecond"
+                android:background="@drawable/main_btn_1"
+                android:scaleType="centerCrop" />
+
+            <TextView
+                android:id="@+id/tv_main"
+                style="@style/LyWHSecond"
+                android:text="@string/main"
+                android:textColor="@color/tab_fontnosel" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ly_card"
+            style="@style/linaer_bottom"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/mIvCard"
+                style="@style/LyWHSecond"
+                android:background="@drawable/main_btn_2"
+                android:scaleType="centerCrop" />
+
+            <TextView
+                android:id="@+id/tv_card"
+                style="@style/LyWHSecond"
+                android:text="@string/card_home"
+                android:textColor="@color/tab_fontnosel" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ly_coupon"
+            style="@style/linaer_bottom"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/mIvCoupon"
+                style="@style/LyWHSecond"
+                android:background="@drawable/main_btn_3"
+                android:scaleType="centerCrop" />
+
+            <TextView
+                android:id="@+id/tv_coupon"
+                style="@style/LyWHSecond"
+                android:text="@string/coupon_home"
+                android:textColor="@color/tab_fontnosel" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ly_my"
+            style="@style/linaer_bottom" >
+
+            <FrameLayout style="@style/LyWHSecond" >
+
+                <ImageView
+                    android:id="@+id/mIvMy"
+                    style="@style/LyWHSecond"
+                    android:background="@drawable/main_btn_4"
+                    android:scaleType="centerCrop" />
+
+                <ImageView
+                    android:id="@+id/my_msgpromt"
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:layout_gravity="top|right"
+                    android:src="@drawable/shape_red_round"
+                    android:visibility="gone" />
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/tv_my"
+                style="@style/LyWHSecond"
+                android:text="@string/my_home"
+                android:textColor="@color/tab_fontnosel" />
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

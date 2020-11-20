@@ -1,0 +1,222 @@
+<layout name="layout_api" />
+<!-- Views -->
+<div class="views">
+    <!-- Your main view, should have "view-main" class -->
+    <div class="view view-main">
+        <!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
+        <div class="pages">
+            <!-- Page, "data-page" contains page name -->
+            <div data-page="index" class="page">
+                <if condition="$userConsumeInfo.hqPayChanel eq 1">
+                    <div class="navbar">
+                        <div class="navbar-inner">
+                            <div class="left">
+                                <!--<a href="hs://backup" class="external"><img src="/Public/img/icon/backup.png" style="width: 36px;"/></a>-->
+                            </div>
+                            <div class="center">付款</div>
+                            <div class="right"><a href="hs://backup" class="external" style="color: #fff;">完成</a></div>
+                        </div>
+                    </div>
+                </if>
+                <!-- Scrollable page content -->
+                <div class="page-content" <if condition="$userConsumeInfo.hqPayChanel eq 1">style="padding-top: 46px;"</if>>
+                    <if condition="$userConsumeInfo.hqPayChanel eq 1">
+                        <div class="sweep-code-pay-success-wrap">
+                            <div class="scpsw-part1">支付成功</div>
+                            <a href="hs://getShopInfo?shopCode={$shopInfo.shopCode|urlencode}" class="external">
+                                <div class="scpsw-part2">
+                                    <img src="{$shopInfo.logoUrl}" alt="" class="img-shop-logo-url" />
+                                    <div class="span-shop-name">
+                                        {$shopInfo.shopName}
+                                    </div>
+                                    <!--<img src="/Public/img/icon/arrow_right.png" alt="" style="float: right;margin-top: 18px;"/>-->
+                                    <div class="clear"></div>
+                                </div>
+                            </a>
+                            <div class="scpsw-part3">订单号：{$userConsumeInfo.orderNbr}</div>
+                            <div class="scpsw-part4">
+                                <div style="border-bottom: 1px solid #E4E4E4;padding: 0 10px 10px 10px;">消费金额<span style="float: right;color: #7E7E7E;  font-size: 17px;">{$userConsumeInfo.orderAmount} 元</span></div>
+                                <div style="border-bottom: 1px solid #E4E4E4;padding: 10px;">优惠金额<span style="float: right;color: #7E7E7E;  font-size: 17px;">{$userConsumeInfo.deduction} 元</span></div>
+                                <div style="padding: 10px 10px 0 10px;">实际金额<span style="float: right;color: #7E7E7E;  font-size: 17px;">{$userConsumeInfo.realPay} 元</span></div>
+                            </div>
+                        </div>
+                        <else/>
+                        <div class="pay-ret-warp">
+                            <notempty name="orderCouponList">
+                                <div class="coupon-order-pay-succ">支付成功</div>
+                                <div>
+                                    <div class="order-coupon-title">您的兑换码：</div>
+                                    <div class="order-coupon-wrap">
+                                        <foreach name="orderCouponList" item="item">
+                                            <div class="coupon-wrap coupon-wrap-{$batchCouponInfo.couponType}">
+                                                <div class="coupon-code-wrap">
+                                                    <span class="coupon-code">{$item.couponCode}</span>
+                                                    <a href="hs://refund?params=Browser/cApplyRefund?orderCode={$item.orderCode}" class="external ln-refund-{$batchCouponInfo.couponType}">退款</a>
+                                                </div>
+                                                <div class="coupon-bar-arrow">
+                                                    <img class="img-coupon-bar-switch" src="/Public/img/couponDefault/couponBar/up.png" alt="" data-coupon-code="{$item.couponCode}"/>
+                                                </div>
+                                                <div class="coupon-barcode-wrap">
+                                                    <div class="coupon-barcode-shadow" id="coupon-barcode-shadow-{$item.couponCode}"></div>
+                                                    <div class="coupon-barcode-img-wrap">
+                                                        <img src="/barcodegen/html/image.php?filetype=PNG&dpi=72&scale=2&rotation=0&font_family=0&font_size=8&text={$item.couponCode}&thickness=30&checksum=&code=BCGcode39" alt=""/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </foreach>
+                                    </div>
+                                    <div>
+                                        在{$batchCouponInfo.expireTime|substr=0,4}年{$batchCouponInfo.expireTime|substr=5,2}月{$batchCouponInfo.expireTime|substr=8,2}日之前兑换，有效日期内，<br/>请在{$batchCouponInfo.dayStartUsingTime|substr=0,5}—{$batchCouponInfo.dayEndUsingTime|substr=0,5}使用
+                                    </div>
+                                </div>
+                                <else/>
+                                <div class="pay-ret">
+                                    <img src="/Public/img/icon/right_img.png" alt="" class="pay-succ-icon"/>
+                                    <div class="pay-ret-text">谢谢您的配合，支付成功。</div>
+                                </div>
+                            </notempty>
+                            <input type="hidden" name="userCode" value="{$userConsumeInfo.consumerCode}" id="user-code"/>
+                            <!--<if condition="$userInfo.freeValCodePay EQ 0 AND $userInfo.rejectFreeValTimes LT 3">-->
+                            <!--<elseif condition="$userInfo.freeValCodePay EQ 0 AND $userInfo.rejectFreeValTimes EGT 3"/>-->
+                            <!--<div><a href="hq://setFreeValPay" class="external">免验证码支付更加方便，赶紧设置！</a></div>-->
+                            <!--</if>-->
+                            <eq name="userConsumeInfo.isSendCoupon" value="1">
+                                <div class="send-coupon-title">恭喜您获得优惠券{$userConsumeInfo.sendCouponNbr}张</div>
+                                <foreach name="userCouponList" item="userCouponInfo">
+                                    <div class="send-coupon-wrap">
+                                        <div class="send-coupon-left">
+                                            <a href="hq://getUserCouponDetail?userCouponCode={$userCouponInfo.userCouponCode}" class="external" style="display: block;">
+                                                <div class="shop-logo"><img src="{$userCouponInfo.logoUrl|default='/Public/img/shopLogo.png'}" alt=""/></div>
+                                                <div class="coupon-content-wrap">
+                                                    <p class="shop-name">{$userCouponInfo.shopName}</p>
+                                                    <p class="coupon-content">
+                                                        <switch name="userCouponInfo.couponType">
+                                                            <case value="1">
+                                                                满{$userCouponInfo.availablePrice}元可用
+                                                            </case>
+                                                            <case value="3">
+                                                                满{$userCouponInfo.availablePrice}元立减
+                                                            </case>
+                                                            <case value="4">
+                                                                满{$userCouponInfo.availablePrice}元立折
+                                                            </case>
+                                                            <case value="5">
+                                                                {$userCouponInfo.function}
+                                                            </case>
+                                                            <case value="6">
+                                                                {$userCouponInfo.function}
+                                                            </case>
+                                                            <case value="7">
+                                                                {$userCouponInfo.function}
+                                                            </case>
+                                                            <case value="8">
+                                                                {$userCouponInfo.function}
+                                                            </case>
+                                                        </switch>
+                                                    </p>
+                                                    <p class="use-time">{$userCouponInfo.startUsingTime}-{$userCouponInfo.expireTime}</p>
+                                                </div>
+                                                <div class="send-coupon-extra send-coupon-extra-{$userCouponInfo.userCouponCode} display-none">
+                                                    <p>使用时间：{$userCouponInfo.dayStartUsingTime}-{$userCouponInfo.dayEndUsingTime}</p>
+                                                    <p>券号：{$userCouponInfo.userCouponNbr}</p>
+                                                    <p>优惠券说明：</p>
+                                                    <p>
+                                                        <empty name="userCouponInfo.remark">
+                                                            暂无说明
+                                                            <else/>
+                                                            {$userCouponInfo.remark|htmlspecialchars_decode}
+                                                        </empty>
+                                                    </p>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="send-coupon-right arrow-down" style="background-image: url('/Public/img/couponDefault/couponType/{$userCouponInfo.couponType}.png');">
+                                            <switch name="userCouponInfo.couponType">
+                                                <case value="1">
+                                                    <p class="coupon-value">￥{$userCouponInfo.insteadPrice}</p>
+                                                    <p class="coupon-type-{$userCouponInfo.userCouponCode}">N元购</p>
+                                                </case>
+                                                <case value="3">
+                                                    <p class="coupon-value">￥{$userCouponInfo.insteadPrice}</p>
+                                                    <p class="coupon-type-{$userCouponInfo.userCouponCode}">抵扣券</p>
+                                                </case>
+                                                <case value="4">
+                                                    <p class="coupon-value">{$userCouponInfo.discountPercent}折</p>
+                                                    <p class="coupon-type-{$userCouponInfo.userCouponCode}">折扣券</p>
+                                                </case>
+                                                <case value="5">
+                                                    <p class="coupon-value"></p>
+                                                    <p class="coupon-type-{$userCouponInfo.userCouponCode}">实物券</p>
+                                                </case>
+                                                <case value="6">
+                                                    <p class="coupon-type-{$userCouponInfo.userCouponCode}">体验券</p>
+                                                </case>
+                                                <case value="7">
+                                                    <p class="coupon-type-{$userCouponInfo.userCouponCode}">兑换券</p>
+                                                </case>
+                                                <case value="8">
+                                                    <p class="coupon-value">￥{$userCouponInfo.insteadPrice}</p>
+                                                    <p class="coupon-type-{$userCouponInfo.userCouponCode}">代金券</p>
+                                                </case>
+                                            </switch>
+                                            <div class="arrow-link" data-user-coupon-code="{$userCouponInfo.userCouponCode}"><img class="arrow-{$userCouponInfo.userCouponCode}" src="/Public/img/icon/arrow_down.png" alt=""/></div>
+                                        </div>
+                                        <div class="clear"></div>
+                                    </div>
+                                </foreach>
+                            </eq>
+                        </div>
+                    </if>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    ;(function(){
+        // 展开，收起优惠券
+        $('.arrow-link').on('click', function(){
+            var btn = $(this);
+            var userCouponCode = btn.data('userCouponCode');
+            var sendCouponExtra = $('.send-coupon-extra-' + userCouponCode);
+            var couponType = $('.coupon-type-' + userCouponCode);
+            sendCouponExtra.toggleClass('display-none');
+            couponType.toggleClass('coupon-type-extra');
+
+            var displayStyle = sendCouponExtra.css('display');
+            if(displayStyle == 'block') {
+                var height = sendCouponExtra.css('height');
+                var len = height.length;
+                var num = parseInt(height.substr(0, len - 2));
+                couponType.css('margin-bottom', num + 9 + 'px');
+            } else {
+                couponType.css('margin-bottom', '9px');
+            }
+
+            var arrowImg =  $('.arrow-' + userCouponCode);
+            if(sendCouponExtra.hasClass('display-none')) {
+                arrowImg.attr('src', '/Public/img/icon/arrow_down.png');
+            } else {
+                arrowImg.attr('src', '/Public/img/icon/arrow_up.png');
+            }
+        });
+        // 展开，收起条形码
+        $('.img-coupon-bar-switch').on('click', function(){
+            var src = $(this).attr('src');
+            var couponCode = $(this).data('couponCode');
+            if(src == '/Public/img/couponDefault/couponBar/down.png') {
+                // 收起条形码
+                $(this).attr('src', '/Public/img/couponDefault/couponBar/up.png');
+                $(this).parent().parent().css('background-color', '#D5D5D5');
+                $(this).parent().parent().css('height', '73px');
+                $('#coupon-barcode-shadow-' + couponCode).show();
+            } else {
+                // 展开条形码
+                $(this).attr('src', '/Public/img/couponDefault/couponBar/down.png');
+                $(this).parent().parent().css('background-color', '#FFFFFF');
+                $(this).parent().parent().css('height', '111px');
+                $('#coupon-barcode-shadow-' + couponCode).hide();
+            }
+        });
+    })();
+</script>

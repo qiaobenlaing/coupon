@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/LyOutSet" >
+
+    <!-- 短信验证 -->
+
+    <include layout="@layout/myhomebank_title" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/tv_addvalidate_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="20dp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@color/white"
+            android:orientation="horizontal" >
+
+            <EditText
+                android:id="@+id/tv_addvalitade_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="20dp"
+                android:layout_toLeftOf="@+id/tv_addvalitade_send"
+                android:background="@null"
+                android:hint="请输入短信验证码"
+                android:inputType="number" />
+
+            <TextView
+                android:id="@+id/tv_addvalitade_send"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:background="@drawable/bg_back"
+                android:layout_marginRight="5dp"
+                android:gravity="center"
+                android:text="@string/myhome_addbank_again" />
+        </RelativeLayout>
+
+        <TextView style="@style/VLine" />
+
+        <LinearLayout
+            android:id="@+id/ll_pay_procotol"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:orientation="horizontal" >
+
+            <CheckBox
+                android:id="@+id/ch_addvalitade_ok"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:button="@drawable/sel_poscheckbox"
+                android:checked="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/myhome_addbank_ok" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/navigation_bar"
+        android:layout_marginTop="20dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp" >
+
+        <Button
+            android:id="@+id/btn_addvalitade_next"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/login_btn"
+            android:text="@string/myhome_addbank_next"
+            android:textColor="@color/white" />
+    </LinearLayout>
+
+</LinearLayout>

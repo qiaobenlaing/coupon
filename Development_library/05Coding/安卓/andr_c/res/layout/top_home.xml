@@ -1,0 +1,405 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/layout_xxheight"
+        android:visibility="visible" >
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewPager"
+            style="@style/LyWHFirst"
+            android:background="@drawable/banner" />
+
+        <LinearLayout
+            android:id="@+id/ly_gropview"
+            style="@style/LyWHFirst"
+            android:layout_marginBottom="5dp"
+            android:gravity="center|bottom" >
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ly_hometips"
+            style="@style/LyWHFourth"
+            android:background="@drawable/home_tips"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:visibility="gone" >
+
+            <TextView
+                android:id="@+id/tv_hometips"
+                style="@style/LyWHSecond"
+                android:layout_marginLeft="10dp"
+                android:textColor="@color/home_tipsfont" />
+        </LinearLayout>
+    </FrameLayout>
+
+    <LinearLayout
+        style="@style/LyWHFourth"
+        android:background="@drawable/shape_border"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            style="@style/LyWHFourth"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <!--
+                 <RadioButton
+                android:id="@+id/rbtn_limitbuy"
+                style="@style/homerbt_bottom"
+                android:drawableTop="@drawable/limit_buy"
+                android:text="@string/limit_buy"
+                android:textColor="@color/home_font" />            -->
+
+            <ImageView
+                android:id="@+id/rbtn_limitbuy"
+                style="@style/IvImage"
+                android:layout_width="48dp"
+                android:layout_height="57dp"
+                android:background="@drawable/limit_buy"
+                android:scaleType="centerCrop" />
+
+            <TextView
+                android:id="@+id/tv_limitbuy"
+                style="@style/TvHomeImge"
+                android:text="@string/limit_buy"
+                android:textColor="@color/home_font" />
+        </LinearLayout>
+
+        <TextView style="@style/VLineV" />
+
+        <LinearLayout
+            android:id="@+id/ly_icbc"
+            style="@style/LyWHFourth"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <!--
+                 <RadioButton
+                android:id="@+id/rbtn_icbc"
+                style="@style/homerbt_bottom"
+                android:drawableTop="@drawable/icbc_pic"
+                android:text="@string/icbc_preferential"
+                android:textColor="@color/home_font" />            -->
+
+            <ImageView
+                android:id="@+id/rbtn_icbc"
+                style="@style/IvImage"
+                android:layout_width="48dp"
+                android:layout_height="57dp"
+                android:background="@drawable/icbc_logo"
+                android:scaleType="centerCrop" />
+
+            <TextView
+                android:id="@+id/tv_icbc"
+                style="@style/TvHomeImge"
+                android:text="@string/icbc_preferential"
+                android:textColor="@color/home_font" />
+        </LinearLayout>
+
+        <TextView style="@style/VLineV" />
+
+        <LinearLayout
+            style="@style/LyWHFourth"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:id="@+id/rbtn_theme"
+                style="@style/IvImage"
+                android:layout_width="48dp"
+                android:layout_height="57dp"
+                android:background="@drawable/theme_pic"
+                android:scaleType="centerCrop" />
+
+            <TextView
+                android:id="@+id/tv_theme"
+                style="@style/TvHomeImge"
+                android:text="@string/theme_home"
+                android:textColor="@color/home_font" />
+        </LinearLayout>
+
+        <TextView style="@style/VLineV" />
+
+        <LinearLayout
+            style="@style/LyWHFourth"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:id="@+id/rbtn_experices"
+                style="@style/IvImage"
+                android:layout_width="48dp"
+                android:layout_height="57dp"
+                android:background="@drawable/experience_pic"
+                android:scaleType="centerCrop" />
+
+            <TextView
+                android:id="@+id/tv_experices"
+                style="@style/TvHomeImge"
+                android:text="@string/experience_home"
+                android:textColor="@color/home_font" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/iv_actImage"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/layout_xxheight"
+        android:scaleType="centerCrop" />
+
+    <FrameLayout
+        android:id="@+id/fy_platormact"
+        style="@style/LyWHFourth"
+        android:visibility="gone" >
+
+        <ImageView
+            android:id="@+id/iv_actpic"
+            style="@style/LyWHFourth"
+            android:layout_height="@dimen/layout_xxheight"
+            android:background="@drawable/act_platformbefor"
+            android:scaleType="centerCrop" />
+
+        <LinearLayout
+            android:id="@+id/ly_actime"
+            style="@style/LyWHFourth"
+            android:layout_height="36dp"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:visibility="gone" >
+
+            <Button
+                android:id="@+id/btn_actime1"
+                style="@style/BtnActTime"
+                android:layout_marginRight="2dp"
+                android:text="1" />
+
+            <Button
+                android:id="@+id/btn_actime2"
+                style="@style/BtnActTime"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:text="0" />
+
+            <TextView
+                style="@style/LyWHSecond"
+                android:gravity="center_horizontal|center_vertical"
+                android:text=":"
+                android:textColor="@color/white"
+                android:textSize="30sp" />
+
+            <Button
+                android:id="@+id/btn_actime3"
+                style="@style/BtnActTime"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:text="0" />
+
+            <Button
+                android:id="@+id/btn_actime4"
+                style="@style/BtnActTime"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:text="0" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ly_time"
+            style="@style/LyWHFourth"
+            android:layout_height="36dp"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:visibility="gone" >
+
+            <Button
+                android:id="@+id/btn_time1"
+                style="@style/BtnActTime"
+                android:layout_marginRight="2dp"
+                android:text="1" />
+
+            <Button
+                android:id="@+id/btn_time2"
+                style="@style/BtnActTime"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:text="2" />
+
+            <TextView
+                style="@style/LyWHSecond"
+                android:gravity="center_horizontal|center_vertical"
+                android:text=":"
+                android:textColor="@color/white"
+                android:textSize="30sp" />
+
+            <Button
+                android:id="@+id/btn_time3"
+                style="@style/BtnActTime"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:text="3" />
+
+            <Button
+                android:id="@+id/btn_time4"
+                style="@style/BtnActTime"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:text="4" />
+
+            <TextView
+                style="@style/LyWHSecond"
+                android:gravity="center_horizontal|center_vertical"
+                android:text=":"
+                android:textColor="@color/white"
+                android:textSize="30sp" />
+
+            <Button
+                android:id="@+id/btn_time5"
+                style="@style/BtnActTime"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:text="5" />
+
+            <Button
+                android:id="@+id/btn_time6"
+                style="@style/BtnActTime"
+                android:layout_marginLeft="2dp"
+                android:text="6" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_actdate"
+            style="@style/LyWHFourth"
+            android:layout_marginTop="50dp"
+            android:gravity="center"
+            android:text="水电费水电费收费的收费"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:visibility="gone" />
+    </FrameLayout>
+
+    <LinearLayout
+        style="@style/LyWHFourth"
+        android:layout_marginTop="1dp"
+        android:background="@color/white"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            style="@style/LyWHFourth"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <!--
+                 <RadioButton
+                android:id="@+id/rbtn_food"
+                style="@style/homerbt_bottom"
+                android:drawableTop="@drawable/food"
+                android:text="@string/food_home" />            -->
+
+            <ImageView
+                android:id="@+id/rbtn_food"
+                style="@style/IvShopTypeImage"
+                android:background="@drawable/food"
+                android:scaleType="centerCrop" />
+
+            <TextView
+                android:id="@+id/tv_food"
+                style="@style/TvHomeImge"
+                android:text="@string/food_home"
+                android:textColor="@color/home_font" />
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/LyWHFourth"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:id="@+id/rbtn_coffee"
+                style="@style/IvShopTypeImage"
+                android:background="@drawable/beauty"
+                android:scaleType="centerCrop" />
+
+            <TextView
+                android:id="@+id/tv_coffee"
+                style="@style/TvHomeImge"
+                android:text="@string/coffee_home"
+                android:textColor="@color/home_font" />
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/LyWHFourth"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:id="@+id/rbtn_fitness"
+                style="@style/IvShopTypeImage"
+                android:background="@drawable/fitness"
+                android:scaleType="centerCrop" />
+
+            <TextView
+                android:id="@+id/tv_fitness"
+                style="@style/TvHomeImge"
+                android:text="@string/fit_home"
+                android:textColor="@color/home_font" />
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/LyWHFourth"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:id="@+id/rbtn_entertainment"
+                style="@style/IvShopTypeImage"
+                android:background="@drawable/entertainment"
+                android:scaleType="centerCrop" />
+
+            <TextView
+                android:id="@+id/tv_entertainment"
+                style="@style/TvHomeImge"
+                android:text="@string/entertain_home"
+                android:textColor="@color/home_font" />
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/LyWHFourth"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:id="@+id/rbtn_other"
+                style="@style/IvShopTypeImage"
+                android:background="@drawable/other"
+                android:scaleType="centerCrop" />
+
+            <TextView
+                android:id="@+id/tv_other"
+                style="@style/TvHomeImge"
+                android:text="@string/other_home"
+                android:textColor="@color/home_font" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView style="@style/VSpace" />
+
+</LinearLayout>

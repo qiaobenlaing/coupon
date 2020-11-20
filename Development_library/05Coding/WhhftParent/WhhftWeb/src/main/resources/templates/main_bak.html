@@ -1,0 +1,116 @@
+<link th:replace="/include/header" />
+
+<style type="text/css" title="text/css">
+/* <![CDATA[ */
+
+/* ]]> */
+</style>
+<script th:inline="javascript">
+function logout(){
+	$.messager.confirm("提示", "是否退出系统？", function(confirm){
+		if(confirm) location.href= [[@{/logout}]];
+	});
+}
+
+function changeUserPwd(){
+	$("#userForm").form("clear");
+	$("#form_userId").val([[${session.currentUser.userId}]]);
+	$("#userEditor").window("open");
+}
+
+function submitChangePwd(){
+	
+	var node = $('#userForm').serializeArray();
+	$g.post([[@{/sysuser/changePassword}]], node, function(data){
+		var json = $.parseJSON(data);
+		$g.showMsg('消息', json.message);
+		$("#userEditor").window("close");
+	});
+}
+
+function openTab(id, title, href){
+	var mainTab = $('#mainTab');
+	if(mainTab.tabs('exists', title)){
+		mainTab.tabs('select', title);
+	}else{
+		mainTab.tabs('add',{
+			id: id,
+		    title: title,  
+		    content : '<iframe data-src="' + href + '" id="PANEL_' + id + '" frameborder="0" style="border:0;width:100%;height:100%;"></iframe>',
+		    closable:true
+		});  
+	}
+}
+
+function tabSelect(title,index){
+	var mainTab = $('#mainTab');
+	var $iframe = $(mainTab.tabs('getSelected').panel('options').content);
+	document.getElementById($iframe.attr("id")).src = $iframe.attr('data-src');
+}
+
+/*<![CDATA[*/  
+$(document).ready(function() {
+	//初始化页面样式风格
+	var themeName = $.cookie('easyuiThemeName');
+	if(themeName != null) {
+		$g.changeTheme(themeName);
+	}
+	//绑定首页修改样式的按钮
+	$('#themeMenu').menu({onClick: function(item){$g.changeTheme(item.name)}});
+	//初始化主菜单
+	$('#mainMenu').tree({
+		url: [[@{/sysauth/userMainMenu}]],
+		onClick: function(menuItem){
+			var id = menuItem.id;
+			var text = menuItem.text;
+			var url = [[@{/}]] + menuItem.authUrl;
+			openTab(id, text, url);
+		}		
+	});
+});
+/*]]>*/  
+</script>
+<div data-options="region:'north',border:false" style="height:60px; position: relative;">
+	<div style="position: absolute; top:10px; right:20px;">  
+		欢迎【<span id="loginUserName" th:text="${session.currentUser.userName}">XXXX</span>】登录系统
+	</div>  
+	<div style="position: absolute; bottom:0px; right:20px;">  
+           <a href="#" class="easyui-menubutton" data-options="menu:'#themeMenu',plain:true,iconCls:'icon-edit'">样式风格</a>  
+           <a href="#" class="easyui-menubutton" data-options="menu:'#personalMenu',plain:true, iconCls:'icon-help'">个人信息</a>  
+           <a href="#" onclick="logout()" class="easyui-linkbutton" data-options="plain:true, iconCls:'icon-help'">注销</a>  
+       </div>  
+	<div id="themeMenu" style="width:130px;">  
+		<div data-options="name:'default'">默认</div>  
+		<div data-options="name:'black'">黑色</div>
+		<div data-options="name:'bootstrap'">bootstrap</div>
+		<div data-options="name:'gray'">灰狐</div>
+		<div data-options="name:'metro'">metro</div>
+		<div data-options="name:'material'">material</div>
+       </div>
+       <div id="personalMenu"  style="width:110px;">  
+           <div onclick="changeUserPwd();">修改登录密码</div>  
+       </div>
+      </div>
+</div>
+<div data-options="region:'west',split:true,title:'主菜单'" style="width:200px" class="layout-no-left-border layout-no-top-border layout-no-right-border">
+	<ul id="mainMenu"></ul> 
+</div>
+<div data-options="region:'south',border:false" style="height:20px; text-align: center; vertical-align: middle;">Copy Right by  Grayfox</div>
+<div data-options="region:'center'">
+	<div id="mainTab" class="easyui-tabs" data-options="fit:true,border:false,tools:'#tab-tools', onSelect:tabSelect" style="height:100%"></div>
+		<div id="tab-tools" data-options="border:false">  
+		<a href="#" class="easyui-linkbutton" plain="true" iconCls="icon-reload" onclick="$g.main.refreshTab()"></a>
+		<a href="#" class="easyui-linkbutton" plain="true" iconCls="icon-cancel" onclick="$g.main.removeTab()"></a>
+    </div>   
+</div>
+<!-- 修改用户密码 -->
+<div id="userEditor" class="easyui-dialog"  title="编辑" style="width:600px;height:400px;padding:10px;"
+        data-options="iconCls:'icon-save',modal:true, closed:true, draggable:false, buttons: [{text:'Ok',iconCls:'icon-ok',handler:submitChangePwd}]">
+   <form id="userForm" class="editForm" method="post">  
+   		<input type="hidden" id="form_userId" name="userId"></input>
+		<label>旧密码:</label><input class="easyui-textbox" name="userPwd" data-options="required:true,validType:'length[0,16]'"></input><br/>
+		<label>新密码:</label><input class="easyui-textbox" id="newPwd" name="newPwd" data-options="required:true,validType:'length[0,16]'"></input><br/>
+		<label>重复新密码:</label><input class="easyui-textbox" name="newPwd2" data-options="required:true,validType:{length:[0,16],eq:'newPwd'}"></input><br/>
+	</form>
+</div>
+<link th:replace="/include/footer" />

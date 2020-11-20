@@ -1,0 +1,289 @@
+<layout name="layout_api" />
+<!-- Views -->
+<div class="views">
+    <!-- Your main view, should have "view-main" class -->
+    <div class="view view-main">
+        <!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
+        <div class="pages toolbar-through">
+            <!-- Page, "data-page" contains page name -->
+            <div data-page="index" class="page">
+                <div class="navbar">
+                    <div class="navbar-inner">
+                        <div class="left"><a href="hg://backup" class="external"><img src="/Public/img/icon/backup.png" /></a></div>
+                        <div class="center">{$title}</div>
+                        <div class="right">&nbsp;</div>
+                    </div>
+                </div>
+
+
+                <!-- Scrollable page content -->
+                <div class="page-content pull-to-refresh-content">
+
+                    <div class="pull-to-refresh-layer" style="margin: 0;">
+                        <div class="preloader"></div>
+                        <div class="pull-to-refresh-arrow"></div>
+                    </div>
+
+                    <div class="page_view">
+                        <div style="padding: 46% 0 0 0;"></div>
+                        <div class="game_join_info">已有{$count}人正在疯抢免费大餐！</div>
+                        <div class="game_gift">
+                            <?php
+                            $canGame = 0;
+                            if(strtotime($activityInfo['startTime']) <= time() && strtotime($activityInfo['endTime']) >= time()){
+                            $canGame = 1;
+                            }
+                            ?>
+                            <a href="/Api/Browser/getOpenLog?userGiftId={$userGiftInfo.id}" data-id="{$userGiftInfo.id}" data-grab-nbr="{$userGiftInfo.grabNbr}" class="external open_log" data-user-code="{$userCode}" data-can-game="{$canGame}"><img src="/Public/img/game/game_gift.png" /><br /><span>查看礼盒</span></a>
+                        </div>
+                        <div class="game">
+                            <div id="time_down"></div>
+                            <a href="/Api/Browser/game?activityCode={$activityInfo.activityCode}&userCode={$userCode}" class="external game_start" data-user-code="{$userCode}" <?php if(strtotime($activityInfo['startTime']) > time() || strtotime($activityInfo['endTime']) < time()):?>style="display:none;"<?php endif;?>><img src="/Public/img/game/game_begin.png" /></a>
+                        </div>
+                        <!--<a href="javascript:void(0);" data-type="1" class="external game_rule" ><img src="/Public/img/game/game_rule.png" class="a_img" />-->
+                            <!--<img src="/Public/img/icon/double_arrow_up.png" class="b_img" /></a>-->
+                        <!--<a href="javascript:void(0);" data-type="1" class="external game_info"><img src="/Public/img/game/game_info.png" class="a_img" />-->
+                            <!--<img src="/Public/img/icon/double_arrow_up.png" class="b_img" /></a>-->
+                    </div>
+                    <!--<div id="rule">-->
+                        <!--<strong>游戏说明：</strong><br />-->
+                        <!--1. 登陆惠圈账号后，到达活动指定开始时间，即可开始游戏.<br />-->
+                        <!--2. 请按照顺序由下至上依次点击屏幕出现的盒子，间隔点击视为无效点击.<br />-->
+                        <!--3. 如果点击到没有盒子的空白处则视为游戏结束.<br />-->
+                        <!--4. 游戏规定时间为20s.<br />-->
+                        <!--5. 在规定时间内能够踩到60个盒子则会赢取一份奖品礼盒，将礼盒分享至朋友圈，有机会赢得心仪奖品.<br />-->
+                        <!--6. 每人每天至多只能获得一份礼盒.<br />-->
+                        <!--7. 游戏次数不限.-->
+                    <!--</div>-->
+                    <!--<div id="info">-->
+
+                        <!--<strong>兑奖规则：</strong>比手速拆礼盒<br />-->
+                        <!--大奖数量有限，谁先拆完谁先拿！<br />-->
+                        <!--<strong>活动时间：</strong><br />-->
+                        <!--<?php if(strtotime($activityInfo['startTime']) > time()):?>-->
+                        <!--{$activityInfo.startTime|substr=0,4}年{$activityInfo.startTime|substr=5,2}月{$activityInfo.startTime|substr=8,2}日<br />-->
+                        <!--<?php elseif(strtotime($activityInfo['endTime']) < time()):?>-->
+                        <!--{$activityInfo.endTime|substr=0,4}年{$activityInfo.endTime|substr=5,2}月{$activityInfo.endTime|substr=8,2}日<br />-->
+                        <!--<?php elseif(strtotime($activityInfo['startTime']) <= time() && strtotime($activityInfo['endTime']) >= time()):?>-->
+                        <!--<?php $currentDay = date('Y-m-d', time());?>-->
+                        <!--{$currentDay|substr=0,4}年{$currentDay|substr=5,2}月{$currentDay|substr=8,2}日<br />-->
+                        <!--<?php endif;?>-->
+                        <!--中午12：00-14:00、下午 18:00-20:00<br />-->
+                        <!--<strong>获奖规则：</strong><br />-->
+                        <!--游戏闯关拿到礼盒后，将礼盒分享至微信好友/微信朋友圈，活动期间内，邀请好友帮忙拆礼盒，即有机会赢得心仪奖品。-->
+                    <!--</div>-->
+                    <div id="rule">
+                        <strong>活动时间：</strong><br />
+                        {$activityInfo.startTime|substr=0,16} - {$activityInfo.endTime|substr=0,16}<br />
+                        <br />
+                        <strong>活动说明：</strong><br />
+                        1. 如何赢大餐：游戏过关获取礼盒后，分享给好友，邀请TA帮忙拆。48小时之内，帮您拆礼盒人数需达到69人，方可获得“悦四海自助海鲜”免费体验券一张。每日仅限两份，谁先拆完谁先得。<br />
+                        2. 发放形式：“悦四海自助海鲜”体验券会自动推送到您的惠圈“优惠券”列表中，请登录惠圈后查看。活动时间内，每位用户至多获取一张。<br />
+                        3. 优惠券使用：请在优惠券有效期间内，到指定商家使用，午餐或晚餐均可，需向收银员出示此优惠券。<br />
+                        4. 活动声明：活动过程中，如果出现作弊行为（如批量注册、恶意购买、虚假交易等），惠圈将自动取消您本次活动资格，并有权冻结账号、取消您后续参加惠圈任意活动的权利，必要时追究法律责任。<br />
+                        <br />
+                        <strong>游戏规则：</strong><br />
+                        1.游戏开始后，请按照顺序由下至上依次点击屏幕出现的盒子，间隔点击视为无效点击，没有盒子的空白处点击视为游戏结束.<br />
+                        2.游戏规定时间为20s.<br />
+                        3.规定时间内踩到60个盒子视为游戏过关.<br />
+                        4.每个账号至多只能获得一份礼盒.<br />
+                        5.游戏次数不限.
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .navbar{background-color: rgb(182, 0, 12);}
+    .navbar-inner .left img{width: 70%;height: auto;margin-left: -15%;}
+    .page-content{padding-bottom: 0!important;}
+    .page_view{background-image: url('/Public/img/game/game_bg.png');background-size: 100%;background-repeat: no-repeat;padding-bottom: 20px;}
+    .game_gift{margin-top: 6%;width: 20%;text-align: center;}
+    .game_gift img{width: 100%;height: auto;}
+    .game_gift span{padding: 2px;background-color: rgb(246,178,0);color: #fff;border-radius: 4px;}
+    .game_join_info{background-image: url('/Public/img/game/game_join_1.png');background-size: 65%;background-repeat: no-repeat;color: rgb(194,92,3);line-height: 2;padding: 0 8%;}
+    .game{margin:40% 25% 10px 25%;text-align: center;width: 50%;}
+    #time_down{text-align: center;color: rgb(194,92,3);font-size: 18px;padding: 4%;display: none;}
+    .game_start img{width: 85%;height: auto;}
+    .game_rule{margin-left:5%;display: block;width: 40%;float: left;position: relative;}
+    .game_info{margin-left:55%;display: block;width: 40%;position: relative;}
+    .game_rule .a_img, .game_info .a_img{width:100%;height: auto;}
+    .game_rule .b_img, .game_info .b_img{position: absolute;top: 65%;left: 43%;}
+    #info,#rule{background-color: rgb(255,233,109);padding: 3% 8%;color: #A04404;}
+</style>
+<script>
+    var interval = 1000;
+    function ShowCountDown(year,month,day,hour,minute,second,divname)
+    {
+        var now = new Date();
+        var endDate = new Date(year, month-1, day, hour, minute, second);
+        var leftTime=endDate.getTime()-now.getTime();
+        var leftsecond = parseInt(leftTime/1000);
+        var d=Math.floor(leftsecond/(60*60*24));
+        var h=Math.floor((leftsecond-d*24*60*60)/3600);
+        var m=Math.floor((leftsecond-d*24*60*60-h*3600)/60);
+        var s=Math.floor(leftsecond-d*24*60*60-h*3600-m*60);
+        var cc = document.getElementById(divname);
+        if(cc){
+            if((d == 0 && h == 0 && m == 0 && s== 0) || leftsecond < 0){
+                cc.innerText = '';
+            }else{
+                if(d == 0 ){
+                    if(h == 0){
+                        if(m == 0){
+                            cc.innerText = "只剩"+s+"秒啦~，赶紧准备！";
+                        }else if(m > 0){
+                            cc.innerText = "只剩"+m+"分"+s+"秒啦~，赶紧准备！";
+                        }
+                    }else if(h > 0){
+                        cc.innerText = "还有"+h+"小时"+m+"分"+s+"秒，请耐心等待！";
+                    }
+                }else if(d > 0 ){
+                    cc.innerText = "还有"+d+"天"+h+"小时"+m+"分"+s+"秒，尽请期待！";
+                }
+            }
+        }
+    }
+
+    var by = parseInt('{$activityInfo.bTime.y}');
+    var bm = parseInt('{$activityInfo.bTime.m}');
+    var bd = parseInt('{$activityInfo.bTime.d}');
+    var bh = parseInt('{$activityInfo.bTime.h}');
+    var bi = parseInt('{$activityInfo.bTime.i}');
+    var bs = parseInt('{$activityInfo.bTime.s}');
+    var int = window.setInterval(function(){
+        ShowCountDown(by,bm,bd,bh,bi,bs,'time_down');
+        var text = $('#time_down').text();
+        if(text == ''){
+            $('.game_start').show();
+            $('#time_down').hide();
+            window.clearInterval(int);
+        }else{
+            $('.game_start').hide();
+            $('#time_down').show();
+        }
+    }, interval);
+
+    $(function() {
+        var myApp = new Framework7();
+        var $$ = Dom7;
+        // 下拉刷新页面
+        var ptrContent = $$('.pull-to-refresh-content');
+
+        // 添加'refresh'监听器
+        ptrContent.on('refresh', function (e) {
+            // 模拟2s的加载过程
+            setTimeout(function () {
+                history.go(0);
+            }, 2000);
+        });
+
+
+        click_event($('.game_start'), 1);
+        click_event($('.open_log'), 0);
+        $('.game_rule').click(function(){
+            showDisplay($(this), $('#rule'), $('.game_info'), $('#info'));
+        });
+        $('.game_info').click(function(){
+            showDisplay($(this), $('#info'), $('.game_rule'), $('#rule'));
+        });
+    });
+    function click_event(obj, isPlayed){
+        obj.click(function(){
+            var userCode = $(this).data('userCode');
+            if(userCode == ''){
+                myApp.modal({
+                    title:  '提醒',
+                    text: '你还没有登录,请先登录！',
+                    afterText: '<div style="line-height: 2;margin-bottom: -15px;border-bottom: 1px solid darkgray;"><a href="hg://login" class="external" style="font-size: 17px;">确定</a></div>',
+                    buttons: [
+                        {
+                            text: '取消'
+                        }
+                    ]
+                });
+                return false;
+            }
+            if(isPlayed == 0){
+                var canGame = $(this).data('canGame');
+                var id = $(this).data('id');
+                var grabNbr = $(this).data('grabNbr');
+                var demandGiftNbr = '{$demandGiftNbr}';
+                if(canGame == 0){
+                    myApp.modal({
+                        title:  '提醒',
+                        text: '活动还没开始，请耐心等待！',
+                        buttons: [
+                            {
+                                text: '确定'
+                            }
+                        ]
+                    });
+                    return false;
+                }else{
+                    if(Number(id) <= 0){
+                        myApp.modal({
+                            title:  '提醒',
+                            text: '你今天还没有参与到抢礼盒活动中来，马上行动！(下拉刷新试一下)',
+                            buttons: [
+                                {
+                                    text: '确定',
+                                    onClick:function(){
+                                        location.href = '/Api/Browser/game?activityCode={$activityInfo.activityCode}&userCode={$userCode}'
+                                    }
+                                },
+                                {
+                                    text: '取消'
+                                }
+                            ]
+                        });
+                        return false;
+                    }else{
+                        if(Number(grabNbr) < Number(demandGiftNbr)){
+                            myApp.modal({
+                                title:  '提醒',
+                                text: '您还没有过关，请再玩一次！(下拉刷新试一下)',
+                                buttons: [
+                                    {
+                                        text: '确定',
+                                        onClick:function(){
+                                            location.href = '/Api/Browser/game?activityCode={$activityInfo.activityCode}&userCode={$userCode}'
+                                        }
+                                    },
+                                    {
+                                        text: '取消'
+                                    }
+                                ]
+                            });
+                            return false;
+                        }
+                    }
+                }
+            }
+        });
+    }
+    function showDisplay(aObj, showObj, ahObj, hideObj){
+        var sVal = aObj.attr("data-type");
+        var hVal = ahObj.attr("data-type");
+        hideObj.hide();
+        if(hVal != 1){
+            ahObj.attr("data-type","1");
+            ahObj.find('img:eq(1)').remove();
+            ahObj.append('<img src="/Public/img/icon/double_arrow_up.png" style="position: absolute;top: 65%;left: 43%;" />');
+        }
+        if(sVal==1){
+            showObj.show();
+            aObj.attr("data-type","0");
+            aObj.find('img:eq(1)').remove();
+            aObj.append('<img src="/Public/img/icon/double_arrow_down.png" style="position: absolute;top: 65%;left: 43%;" />');
+
+        }else{
+            showObj.hide();
+            aObj.attr("data-type","1");
+            aObj.find('img:eq(1)').remove();
+            aObj.append('<img src="/Public/img/icon/double_arrow_up.png" style="position: absolute;top: 65%;left: 43%;" />');
+        }
+    }
+</script>

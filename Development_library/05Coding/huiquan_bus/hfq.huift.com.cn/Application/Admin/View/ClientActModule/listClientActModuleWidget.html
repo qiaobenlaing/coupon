@@ -1,0 +1,26 @@
+<table class="fp-table table table-striped table-bordered table-condensed" id="data_table">
+    <thead>
+    <tr>
+        <th>模块名</th>
+        <th>对应的web页面地址</th>
+        <th>标志</th>
+        <th>排序号</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    <foreach name="dataList" item="item">
+        <tr>
+            <td>{$item.moduleName}</td>
+            <td>{$item.webAddress}</td>
+            <td>{$item.sign}</td>
+            <td>{$item.sortNbr}</td>
+            <td>
+                <a class="btn btn-xs btn-primary" href="/Admin/ClientActModule/editClientActModule?moduleCode={$item.moduleCode}&page={$pager:page}">编辑</a>
+                </eq>
+            </td>
+        </tr>
+    </foreach>
+    </tbody>
+</table>
+<include file="Application/Admin/View/Widget/pager.html" /> 

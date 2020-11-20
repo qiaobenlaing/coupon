@@ -1,0 +1,159 @@
+<layout name="layout_admin" />
+<form class="form-horizontal" id="edit-shop-type-frm" action="/Admin/ShopType/editShopType" method="post">
+    <input type="hidden" name="shopTypeId" value="{$shopTypeInfo.shopTypeId}" />
+    <div class="col-md-12">
+        <div class="form-group">
+            <label for="type-zh" class="col-sm-1 control-label"><span class='required-ele'>*</span>类型描述</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control" name="typeZh" value="{$shopTypeInfo.typeZh}" id="type-zh" placeholder="类型描述">
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="form-group">
+            <label for="type-value" class="col-sm-4 control-label"><span class='required-ele'>*</span>类型数值</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control" name="typeValue" value="{$shopTypeInfo.typeValue}" id="type-value" placeholder="类型数值">
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="form-group">
+            <label for="sign" class="col-sm-4 control-label">标志</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control" name="sign" value="{$shopTypeInfo.sign}" id="sign" placeholder="标志">
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="form-group">
+            <label for="sort-nbr" class="col-sm-4 control-label">排序号</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control" name="sortNbr" value="{$shopTypeInfo.sortNbr}" id="sort-nbr" placeholder="排序号">
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="form-group add-linked-city-wrap">
+            <label class="col-sm-1 control-label">所在城市</label>
+            <div class="col-sm-8">
+                <select class="js-data-add-city-ajax"  multiple="multiple" name="linkedCity[]" style="width: 100%">
+                    <foreach name="cityList" item="item">
+                        <option value="{$item.id}" <foreach name="linkedCityList" item="linkedCity"><eq name="linkedCity.cityId" value="$item.id">selected="selected"</eq></foreach>>{$item.name}</option>
+                    </foreach>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-sm-4 control-label">图标</label>
+            <div class="col-sm-8">
+                <input type="hidden" name="shopTypeImg" value="{$shopTypeInfo.shopTypeImg}" />
+                <div class="fileinput fileinput-new  col-xs-6" data-provides="fileinput">
+                    <div class="fileinput-new thumbnail"><img src="{$shopTypeInfo.shopTypeImg}" /></div>
+                    <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 400px; max-height: 100px;"></div>
+                    <div>
+                    <span class="btn btn-default btn-file">
+                        <span class="fileinput-new">选择图标</span>
+                        <span class="fileinput-exists">换一张</span>
+                        <input type="file" name="upfile" class="ajax-file-upload" data-imgname="shopTypeImg" data-url="/Admin/Util/imageUp" multiple>
+                    </span>
+                        <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">移除</a>
+                        <span id="state_shopTypeImg" class="ajax-file-state"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-sm-4 control-label">商家列表页分类图片（选中）</label>
+            <div class="col-sm-8">
+                <input type="hidden" name="focusedUrl" value="{$shopTypeInfo.focusedUrl}" />
+                <div class="fileinput fileinput-new" data-provides="fileinput">
+                    <div class="fileinput-new thumbnail"><img src="{$shopTypeInfo.focusedUrl}" style="max-width: 400px; max-height: 100px;" /></div>
+                    <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 400px; max-height: 100px;"></div>
+                    <div>
+                    <span class="btn btn-default btn-file">
+                        <span class="fileinput-new">选择背景图片</span>
+                        <span class="fileinput-exists">换一张</span>
+                        <input type="file" name="upfile" class="ajax-file-upload" data-imgname="focusedUrl" data-url="/Admin/Util/imageUp" multiple>
+                    </span>
+                        <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">移除</a>
+                        <span id="state_focusedUrl" class="ajax-file-state"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="form-group">
+            <label class="col-sm-4 control-label">商家列表页分类图片（未选中）</label>
+            <div class="col-sm-8">
+                <input type="hidden" name="notFocusedUrl" value="{$shopTypeInfo.notFocusedUrl}" />
+                <div class="fileinput fileinput-new" data-provides="fileinput">
+                    <div class="fileinput-new thumbnail"><img src="{$shopTypeInfo.notFocusedUrl}" style="max-width: 400px; max-height: 100px;" /></div>
+                    <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 400px; max-height: 100px;"></div>
+                    <div>
+                    <span class="btn btn-default btn-file">
+                        <span class="fileinput-new">选择背景图片</span>
+                        <span class="fileinput-exists">换一张</span>
+                        <input type="file" name="upfile" class="ajax-file-upload" data-imgname="notFocusedUrl" data-url="/Admin/Util/imageUp" multiple>
+                    </span>
+                        <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">移除</a>
+                        <span id="state_notFocusedUrl" class="ajax-file-state"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-1 col-sm-10">
+            <button type="submit" class="btn btn-primary" id="submit">保存</button>
+        </div>
+    </div>
+</form>
+<script src="__PUBLIC__/js/vendor/jquery.ui.widget.js"></script>
+<script src="__PUBLIC__/js/jquery.iframe-transport.js"></script>
+<script src="__PUBLIC__/js/jquery.fileupload.js"></script>
+<script type="text/javascript">
+    $(function(){
+        $('#edit-shop-type-frm').on('submit', function() {
+            var frm = $(this);
+            $.post(frm.attr('action'), frm.serialize(), function(resp) {
+                if (resp.status == sz.STATUS_SUCC) {
+                    location.href = '/Admin/ShopType/listShopType?page={$page}';
+                } else {
+                    sz.showErrMsg(resp.msg, 2.5);
+                }
+            });
+            return false;
+        });
+        $('.ajax-file-upload').fileupload({
+            dataType: 'json',
+            add: function (e, data) {
+                var imgname = $(this).data('imgname'); // imgname为 url
+                data.context = $('#state_' + imgname).text('正在上传...');
+                data.submit();
+            },
+            done: function (e, data) {
+                var resp = data.result;
+                if (resp.state == 'SUCCESS') {
+                    data.context.text('上传完成');
+                    var imgname = data.context.attr('id').substr('state_'.length);
+                    var imgUrl = resp.url.substr(0, 1) == '.' ? resp.url.substr(1) : resp.url; // 去掉"./"中的"."
+                    $('#edit-shop-type-frm input[name=' + imgname + ']').val('/'+ imgUrl);
+                } else {
+                    data.context.text('上传失败');
+                    $('#edit-shop-type-frm input[name=' + imgname + ']').val('');
+                }
+            }
+        });
+        ;(function(){
+            $(".js-data-add-city-ajax").select2({
+                allowClear: true
+            });
+        })();
+    });
+</script>

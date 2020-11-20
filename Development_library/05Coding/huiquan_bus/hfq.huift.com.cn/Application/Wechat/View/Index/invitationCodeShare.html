@@ -1,0 +1,173 @@
+<layout name="layout_normal" />
+<style>
+    .invite-code-wrap{
+        background-image: url('/Public/img/webchat/inviteCode/bg.png');
+        background-size: 100%;
+        background-repeat: no-repeat;
+        text-align: center;
+        padding-bottom: 38px;
+        background-color: #FCEAD2;
+    }
+    .invite-code-wrap .text{
+        text-align: center;
+        padding-top: 29%;
+    }
+    .invite-code-wrap .text .text-img{
+        width: 93%;
+    }
+    .invite-code-wrap .invite-code-text{
+        text-align: center;
+        margin-top: 30px;
+        color: #E22138;
+        font-weight: 600;
+    }
+    .invite-code-wrap .coupon-wrap{
+        padding: 0 55px;
+
+    }
+    .invite-code-wrap .coupon-wrap .coupon-bg{
+        background-image: url('/Public/img/webchat/inviteCode/coupon.png');
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        height: 75px;
+        padding-left: 50px;
+    }
+    .invite-code-wrap .coupon-wrap .coupon-bg .coupon-value{
+        padding-top: 12px;
+        font-size: 27px;
+        color: #FF562D;
+    }
+    .invite-code-wrap .coupon-wrap .coupon-bg .coupon-title{
+        font-size: 13px;
+        color: #303030;
+    }
+    .invite-code-wrap .huiquan-download-wrap{
+        padding: 0 59px;
+        margin-top: 26px;
+    }
+    .invite-code-wrap .huiquan-download-wrap a{
+        display: block;
+    }
+    .invite-code-wrap .huiquan-download-wrap .huiquan-download-bg{
+        background-image: url('/Public/img/webchat/inviteCode/download.png');
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        height: 44px;
+        line-height: 40px;
+        color: #F1CC13;
+        font-size: 15px;
+        font-weight: 600;
+    }
+    .invite-code-wrap .huiquan-divide-line-wrap{
+        padding: 0 10px;
+        margin-top: 20px;
+    }
+    .invite-code-wrap .huiquan-divide-line-wrap .huiquan-divide-line-bg{
+        background-image: url('/Public/img/webchat/inviteCode/divideLine.png');
+        background-size: 100%;
+        background-position: 1px;
+        background-repeat: no-repeat;
+        padding: 0 111px;
+    }
+    .invite-code-wrap .huiquan-divide-line-wrap .huiquan-divide-line-bg .huiquan-divide-line-text{
+        border: 1px solid #FCB99B;
+        background-color: #FCEAD2;
+        font-size: 15px;
+        border-radius: 6px;
+        color: #B80000;
+    }
+    .invite-code-wrap .huiquan-intro-wrap{
+        margin: 13px 10px 0 10px;
+        padding-bottom: 50px;
+        background-color: #F9D7AD;
+        border-radius: 6px;
+        color: #F94A20;
+        padding-top: 15px;
+        padding-left: 10px;
+        padding-right: 10px;
+        text-align: start;
+    }
+    .shadow{
+        display: none;
+        position: absolute;
+        width: 100%;
+        right: 2px;
+        top: 5px;
+        text-align: center;
+    }
+    .shadow img{
+        height: 88px;;
+    }
+    .ten_img{margin-top: 15px;}
+</style>
+<!-- Views -->
+<div class="views">
+    <!-- Your main view, should have "view-main" class -->
+    <div class="view view-main">
+        <!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
+        <div class="pages">
+            <!-- Page, "data-page" contains page name -->
+            <div data-page="index" class="page">
+                <!-- Scrollable page content -->
+                <div class="page-content">
+                    <div class="invite-code-wrap">
+                        <div class="text">
+                            <img class="text-img" src="/Public/img/webchat/inviteCode/text.png" alt=""/>
+                        </div>
+                        <div class="invite-code-text">
+                            <p style="margin-bottom: 2px;">使用我的邀请码<span style="font-size: 17px">{$code}</span>注册惠圈</p>
+                        </div>
+                        <!--<div class="coupon-wrap">-->
+                        <!--<div class="coupon-bg">-->
+                        <!--<div class="coupon-value">10元</div>-->
+                        <!--<div class="coupon-title">马上下载领取吧！</div>-->
+                        <!--</div>-->
+                        <!--</div>-->
+
+                        <div class="ten_img">
+                            <!--<img class="text-img" src="/Public/img/webchat/inviteCode/10_text.png" alt="" style="width: 30%;height: auto;" />-->
+                        </div>
+                        <div class="ten_img">
+                            <img class="text-img" src="/Public/img/webchat/inviteCode/10_more.png" alt="" style="width: 79%;height: auto;" />
+                        </div>
+
+                        <div class="huiquan-download-wrap">
+                            <a href="https://itunes.apple.com/cn/app/id1027791544?l=cn&mt=8" class="external download"><div class="huiquan-download-bg">iphone惠圈下载</div></a>
+                        </div>
+                        <div class="huiquan-download-wrap">
+                            <a href="{$cDownloadUrl}" class="external download"><div class="huiquan-download-bg">安卓惠圈下载</div></a>
+                        </div>
+                        <div class="huiquan-divide-line-wrap">
+                            <div class="huiquan-divide-line-bg">
+                                <div class="huiquan-divide-line-text">惠圈简介</div>
+                            </div>
+                        </div>
+                        <div class="huiquan-intro-wrap">
+                            惠圈，给老百姓提供一个便捷的本地化生活服务的商圈！随时，随地，简单，便捷地获取真实，可靠的本地化优惠活动信息与服务！
+                        </div>
+                    </div>
+                    <div class="shadow">
+                        <img src="/Public/img/webchat/jiantou.png" alt=""/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    ;(function(){
+        function isWeiXin(){
+            var navgator = window.navigator.userAgent.toLowerCase();
+            if(navgator.match(/MicroMessenger/i) == 'micromessenger'){
+                $('.shadow').show();
+                return false;
+            }else{
+                return true;
+            }
+        }
+        $('.download').on('click', isWeiXin);
+        $('.shadow').on('click', function(){
+            $(this).hide();
+        })
+    })();
+</script>

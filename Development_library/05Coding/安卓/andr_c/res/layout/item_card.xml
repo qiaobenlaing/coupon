@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/LyWHFourth"
+    android:orientation="horizontal" >
+
+    <LinearLayout
+        android:id="@+id/ly_shopdetail"
+        style="@style/LyWHFourth"
+        android:layout_margin="5dp"
+        android:background="@drawable/bonus_item_bg" >
+
+        <ImageView
+            android:id="@+id/shopImage"
+            android:layout_width="62dp"
+            android:layout_height="62dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_border" />
+
+        <LinearLayout
+            style="@style/LyWHFourth"
+            android:layout_height="fill_parent"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center_vertical"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/tv_isvip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:background="@drawable/vip"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/shopName"
+                    android:layout_width="135dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:text="外婆家"
+                    android:textColor="@color/shop_namefont"
+                    android:textSize="16sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:gravity="right" >
+
+                    <TextView
+                        android:id="@+id/distance"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="大于100KM"
+                        android:textColor="@color/dove_color" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/LyWHFourth"
+                android:layout_height="fill_parent"
+                android:gravity="bottom"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/street"
+                    android:layout_width="145dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:text="xxxxxxxxx"
+                    android:textColor="@color/shop_nameother"
+                    android:textSize="12sp" />
+
+                <LinearLayout
+                    style="@style/LyWHFourth"
+                    android:layout_marginRight="10dp"
+                    android:gravity="right" >
+
+                    <TextView
+                        android:id="@+id/tv_apply_card"
+                        style="@style/LyWHSecond"
+                        android:background="@drawable/shape_btn_red"
+                        android:text="申请会员卡"
+                        android:textColor="@color/red"
+                        android:visibility="gone" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

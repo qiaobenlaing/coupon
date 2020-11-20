@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/id_gray"
+    style="@style/LyOutSet"
+    android:background="@color/gray_transparent"
+    android:gravity="center" >
+
+    <LinearLayout
+        style="@style/LyWHSecond"
+        android:background="@color/app_bg"
+        android:orientation="vertical" >
+
+        <!--
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+            <TextView
+                style="@style/LyWHSecond"
+                android:layout_marginLeft="20dp"
+                android:text="@string/tv_phonenum" />
+
+            <EditText
+                android:id="@+id/et_phonenum"
+                android:layout_width="185dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="14dp"
+                android:background="@null"
+                android:gravity="center_vertical"
+                android:hint="@string/input_phonenum"
+                android:inputType="phone" />
+        </LinearLayout>
+        -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <TextView
+                style="@style/LyWHSecond"
+                android:layout_marginLeft="20dp"
+                android:text="@string/start_password" />
+
+            <EditText
+                android:id="@+id/et_pwd"
+                android:layout_width="185dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:background="@null"
+                android:gravity="center_vertical"
+                android:hint="@string/input_start_password"
+                android:inputType="textPassword" />
+        </LinearLayout>
+
+        <TextView style="@style/VLine" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <TextView
+                style="@style/LyWHSecond"
+                android:layout_marginLeft="20dp"
+                android:text="@string/new_password" />
+
+            <EditText
+                android:id="@+id/et_new_pwd"
+                android:layout_width="185dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:background="@null"
+                android:gravity="center_vertical"
+                android:hint="@string/input_new_password"
+                android:inputType="textPassword" />
+        </LinearLayout>
+
+        <TextView style="@style/VLine" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <TextView
+                style="@style/LyWHSecond"
+                android:layout_marginLeft="20dp"
+                android:text="@string/again_password" />
+
+            <EditText
+                android:id="@+id/et_again_pwd"
+                android:layout_width="185dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="14dp"
+                android:background="@null"
+                android:gravity="center_vertical"
+                android:hint="@string/input_again_password"
+                android:inputType="textPassword" />
+        </LinearLayout>
+
+        <TextView style="@style/VLine" />
+
+        <LinearLayout
+            style="@style/LyWHFourth"
+            android:layout_height="35dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="25dp"
+            android:background="@color/app_bg"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/btn_isok"
+                style="@style/LyWHSecond"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/shape_button_onclick"
+                android:clickable="true"
+                android:text="@string/tv_ok"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/btn_exit"
+                style="@style/LyWHSecond"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/shape_button_onclick"
+                android:text="取消"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

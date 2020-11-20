@@ -1,0 +1,130 @@
+<layout name="layout_admin" />
+<div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="tab_basic_info">
+        <form class="form-horizontal" role="form" id="frm_edit_system_param" action="/Admin/SystemParam/editSystemParam" method="post">
+            <input type="hidden" name="id" value="{$systemParamInfo.id}" />
+            <div class="form-group">
+                <label for="appType" class="col-sm-2 control-label">app类型</label>
+                <div class="col-sm-8">
+                    <select class="form-control frm-select" name="appType" id="appType">
+                        <option value="c" <eq name="systemParamInfo.appType" value="c">selected="selected"</eq>>顾客端</option>
+                        <option value="s" <eq name="systemParamInfo.appType" value="s">selected="selected"</eq>>商家端</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="param" class="col-sm-2 control-label">参数英文描述</label>
+                <div class="col-sm-8">
+                    <input type="text" name="param" class="form-control" id="param" placeholder="参数英文描述" value="{$systemParamInfo.param}">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="zhParam" class="col-sm-2 control-label">参数的中文描述</label>
+                <div class="col-sm-8">
+                    <input type="text" name="zhParam" class="form-control" id="zhParam" placeholder="参数的中文描述" value="{$systemParamInfo.zhParam}">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">参数类型</label>
+                <div class="col-sm-8">
+                    <label class="radio-inline">
+                        <input type="radio" name="paramType" value="1" <if condition="$systemParamInfo.paramType neq 2">checked="checked"</if>> 非图片类型
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="paramType" value="2" <eq name="systemParamInfo.paramType" value="2">checked="checked"</eq>> 图片类型
+                    </label>
+                </div>
+            </div>
+            <div class="form-group stringType" <eq name="systemParamInfo.paramType" value="2">style="display:none"</eq>>
+            <label for="value" class="col-sm-2 control-label">参数值</label>
+            <div class="col-sm-8">
+                <input type="text" name="value" class="form-control" id="value" placeholder="参数值" value="{$systemParamInfo.value}">
+            </div>
+    </div>
+    <div class="form-group photoType" <if condition="$systemParamInfo.paramType neq 2">style="display:none"</if>>
+    <label class="col-sm-2 control-label">图片</label>
+    <div class="col-sm-8">
+        <input type="hidden" name="imgUrl" value="{$systemParamInfo.value}" />
+        <div class="fileinput fileinput-new" data-provides="fileinput">
+            <div class="fileinput-new thumbnail"><img src="{$systemParamInfo.value}" style="max-width: 400px; max-height: 100px;" /></div>
+            <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 400px; max-height: 100px;"></div>
+            <div>
+                    <span class="btn btn-default btn-file">
+                        <span class="fileinput-new">选择背景图片</span>
+                        <span class="fileinput-exists">换一张</span>
+                        <input type="file" name="upfile" class="ajax-file-upload" data-imgname="imgUrl" data-url="/Admin/Util/imageUp" multiple>
+                    </span>
+                <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">移除</a>
+                <span id="state_imgUrl" class="ajax-file-state"></span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row row-top row-btn">
+    <div class="btn-group ">
+        <input type="submit" class="btn btn-primary" id="submit" value="保存" />
+    </div>
+</div>
+</form>
+</div>
+</div>
+<script src="__PUBLIC__/js/vendor/jquery.ui.widget.js"></script>
+<script src="__PUBLIC__/js/jquery.iframe-transport.js"></script>
+<script src="__PUBLIC__/js/jquery.fileupload.js"></script>
+<script type="text/javascript">
+    $(function($) {
+        $('input[name="paramType"]').change(function(){
+            var paramType = $('input[name="paramType"]:checked').val();
+            if(paramType == 1){
+                $('.stringType').show();
+                $('.photoType').hide();
+            }else{
+                $('.stringType').hide();
+                $('.photoType').show();
+            }
+        });
+
+        $('#frm_edit_system_param').on('submit', function() {
+            var frm = $(this);
+            $.post(frm.attr('action'), frm.serialize(), function(resp) {
+                console.log(resp);
+                if (resp.status == sz.STATUS_SUCC) {
+                    var appType = $('#appType').val();
+                    if(appType == 's') {
+                        location.href = '/Admin/SystemParam/listShopSystemParam'
+                    } else {
+                        location.href = '/Admin/SystemParam/listClientSystemParam'
+                    }
+                } else {
+                    sz.showErrMsg(resp.msg, 3);
+                }
+            });
+            return false;
+        });
+
+        $('.ajax-file-upload').fileupload({
+            dataType: 'json',
+            add: function (e, data) {
+                var imgname = $(this).data('imgname'); // imgname为 activityImg或者activityLogo
+                data.context = $('#state_' + imgname).text('正在上传...');
+                data.submit();
+            },
+            /* progressall: function (e, data) {
+             var progress = parseInt(data.loaded / data.total * 100, 10);
+             $('#progress_img_quare .bar').css('width', progress + '%');
+             }, */
+            done: function (e, data) {
+                var resp = data.result;
+                if (resp.state == 'SUCCESS') {
+                    data.context.text('上传完成');
+                    var imgname = data.context.attr('id').substr('state_'.length);
+                    var imgUrl = resp.url.substr(0, 1) == '.' ? resp.url.substr(1) : resp.url; // 去掉"./"中的"."
+                    $('#frm_edit_system_param input[name=' + imgname + ']').val('/'+ imgUrl);
+                } else {
+                    data.context.text('上传失败');
+                    $('#frm_edit_system_param input[name=' + imgname + ']').val('');
+                }
+            }
+        });
+    });
+</script>

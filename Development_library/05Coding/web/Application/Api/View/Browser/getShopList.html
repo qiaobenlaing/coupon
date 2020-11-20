@@ -1,0 +1,74 @@
+<layout name="layout_api" />
+<!-- Views -->
+<div class="views">
+    <!-- Your main view, should have "view-main" class -->
+    <div class="view view-main">
+        <!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
+        <div class="pages toolbar-through">
+            <!-- Page, "data-page" contains page name -->
+            <div data-page="index" class="page navbar-fixed toolbar-fixed">
+                <div class="navbar">
+                    <div class="navbar-inner">
+                        <div class="left">
+                            <!--<a href="javascript:history.go(-1);" class="external">-->
+                            <a href="hg://backup" class="external">
+                                <div class="backup">
+                                    <img src="/Public/img/icon/backup.png" />
+                                </div>
+                            </a>
+                        </div>
+                        <div class="center">
+                            <div class="head_col">{$title}</div>
+                        </div>
+                        <div class="right"></div>
+                    </div>
+                </div>
+                <div class="shop-product-wrap">
+                    <form id="frm_search" action="#" method="GET">
+                        <input type="hidden" name="brandId" value="{$get.brandId}"/>
+                        <input type="hidden" name="activityCode" value="{$get.activityCode}"/>
+                        <input type="hidden" name="page" value="1" id="frm_ele_page" />
+                    </form>
+                    <div class="page-content infinite-scroll" style="padding-bottom: 10px;">
+                        <div class="body" style="padding: 0;">
+                            <div class="banner">
+                                <img src="{$bannerImg}" />
+                            </div>
+                            <div class="list-block">
+                                <include file="./Application/Api/View/Browser/getShopListWidget.html" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .backup {
+        top: 1%;
+        left: 0;
+    }
+    .backup img {
+        width: 60%;
+        height: auto;
+    }
+    .banner img{
+        width: 100%;
+        height: auto;
+    }
+    .list-block {
+        margin: -4px 0;
+        font-size: 17px;
+    }
+    .shop-product-wrap{
+        background: #EFEFF4;
+        overflow: scroll;
+        height: 100%;
+    }
+</style>
+<script type="text/javascript">
+    $(function() {
+        var infScroll = new InfiniteScroll();
+    });
+</script>

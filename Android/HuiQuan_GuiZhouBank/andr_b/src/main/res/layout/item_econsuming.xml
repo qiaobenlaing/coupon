@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical|center_horizontal"
+    android:orientation="horizontal"
+    android:paddingBottom="10dp"
+    android:paddingTop="10dp" >
+
+      <ImageView
+          android:id="@+id/iv_ecsm_pic"
+          android:layout_width="72dp"
+          android:layout_height="72dp"
+          android:background="@drawable/bg_border" />
+
+    <LinearLayout
+        android:id="@+id/ly_ecsm_title"
+        style="@style/LyWHSecond"
+        android:orientation="vertical"
+        android:paddingLeft="8dp" >
+
+        <!-- 消费金额 -->
+
+        <TextView
+            android:id="@+id/tv_ecsm_money"
+            style="@style/Tv_Font"
+            android:text="消费 0元" />
+
+        <TextView
+            android:id="@+id/tv_bounsddt_money"
+            style="@style/LyECsm"
+            android:text="红包抵扣  0 元" />
+
+        <!-- 积分 -->
+
+        <TextView
+            android:id="@+id/tv_ecsm_point"
+            style="@style/LyECsm"
+            android:text="积分 0" />
+
+        <!-- 最后支付 -->
+
+        <TextView
+            android:id="@+id/tv_ecsm_pay"
+            style="@style/LyECsm"
+            android:text="支付 0元" />
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/LyWHFourth"
+        android:layout_marginLeft="10dp"
+        android:orientation="vertical" >
+
+        <!-- 标识码 -->
+
+        <TextView
+            android:id="@+id/tv_ecsm_code"
+            style="@style/Tv_Font"
+            android:text="100023211" />
+        <!-- 优惠券抵扣 -->
+
+        <TextView
+            android:id="@+id/tv_couponuse_nbr"
+            style="@style/LyECsm"
+            android:text="优惠券抵扣  0 张" />
+        <!-- 优惠券抵扣金额 -->
+
+        <TextView
+            android:id="@+id/tv_couponddt_money"
+            style="@style/LyECsm"
+            android:text="优惠券抵扣 0元" />
+        <!-- 消费时间 -->
+
+        <TextView
+            android:id="@+id/tv_ecsm_time"
+            style="@style/LyECsm"
+            android:text="2015.3.14" />
+    </LinearLayout>
+
+</LinearLayout>

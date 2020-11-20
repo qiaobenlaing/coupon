@@ -1,0 +1,304 @@
+<layout name="layout_api" />
+<style>
+    .body {
+        height: 100%;
+        background-color: #E2E0E0;
+    }
+
+    .head_col {
+        font-size: 18px;
+        font-weight: bold;
+        color: #fff;
+    }
+
+    .toolbar-through .page-content, .toolbar-fixed .page-content,
+    .tabbar-through .page-content, .tabbar-fixed .page-content {
+        padding-bottom: 0px;
+    }
+    .navbar-through .page-content, .navbar-fixed .page-content{
+        padding-top: 0;
+    }
+    .navbar{
+        position: absolute;
+    }
+    .backup img {
+        width: 60%;
+        height: auto;
+    }
+
+    .address_add {
+        background-color: #fff;
+        color:#000;
+        font-size: 18px;
+        line-height: 3;
+        margin: 40px 0 0 0;
+        border-top: 1px solid rgb(231, 231, 231);
+        padding: 0 4%;
+        position: relative;
+    }
+
+    .address_add img {
+        position: absolute;
+        right: 4%;
+        height: auto;
+        top: 35%;
+        width: 13px;
+    }
+
+    .address_select {
+        background-color: #fff;
+        color:#000;
+        font-size: 18px;
+        line-height: 3;
+        margin: 40px 0 0 0;
+        border-top: 1px solid rgb(231, 231, 231);
+        padding: 0 4%;
+        position: relative;
+    }
+
+    .address_select img {
+        position: absolute;
+        right: 4%;
+        top : 35%;
+        width: 13px;
+        height: auto;
+    }
+
+    .content-block-title {
+        margin: 5px 5px -5px;
+        line-height: 25px;
+    }
+
+    .list-block {
+        margin: 10px 0;
+        font-size: 15px;
+    }
+
+    html.retina.ios-gt-7 .list-block li:not (:last-child ) .item-inner {
+                                                               border-bottom-width: 1.5px;
+                                                           }
+
+    .total_consumption .food_price {
+        float: right;
+        color: rgb(186, 14, 14);
+    }
+
+    .total_consumption {
+        background-color: #fff;
+        font-size: 18px;
+        line-height: 3;
+        margin: 0 0 0 0;
+        border-bottom: 1px solid rgb(231, 231, 231);
+        border-top: 1px solid rgb(231, 231, 231);
+        padding: 0 4%;
+        position: relative;
+        font-weight: bold;
+    }
+
+    .button.active {
+        background: rgb(186, 14, 14);
+        margin: 15px;
+    }
+
+    .button {
+        border: 1px solid rgb(186, 14, 14);
+    }
+
+    .address_inner1 {
+        height: 30px;
+    }
+
+    .address_inner2 {
+        font-size: 15px;
+    }
+
+    .distribution {
+        color: red;
+        width: 100%
+    }
+
+    .distribution .item-title {
+        float: left;
+    }
+
+    .color {
+        line-height: 0px;
+        background-color: #fff;
+        width: 100%;
+    }
+
+    .color img {
+        width: 100%;
+    }
+    .navbar .left{
+        margin-right: 0px;
+    }
+    .remark_title{
+        border-bottom: 1px solid rgb(231, 231, 231);
+        border-top: 1px solid rgb(231, 231, 231);
+        line-height:2;
+        background-color: #FDF8DD;
+
+    }
+    .ban{
+        background-color:#D8D8D8;
+    }
+</style>
+<!-- Views -->
+<div class="views">
+    <!-- Your main view, should have "view-main" class -->
+    <div class="view view-main">
+        <!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
+        <div class="pages toolbar-through">
+            <!-- Page, "data-page" contains page name -->
+            <div data-page="index" class="page navbar-fixed toolbar-fixed">
+                <div class="navbar">
+                    <div class="navbar-inner">
+                        <div class="left">
+                            <a href="/Api/Browser/cTakeawayOrder?shopCode={$orderInfo.shopCode}&userCode={$orderInfo.clientCode}&orderCode={$orderInfo.orderCode}" class="external">
+                                <div class="backup">
+                                    <img src="/Public/img/icon/backup.png" />
+                                </div>
+                            </a></div>
+                        <div class="center"><div class="head_col">{$title}</div></div>
+                        <div class="right"></div>
+                    </div>
+                </div>
+                <!-- Scrollable page content -->
+                <div class="page-content">
+                    <div class="body" style="padding: 0;">
+                        <a href="/Api/Browser/getAddressList?userCode={$orderInfo.clientCode}&orderCode={$orderInfo.orderCode}&userAddressId={$userAddressInfo.userAddressId}" class="external">
+                            <notempty name="userAddressInfo">
+                                <div class="address_add">
+                                    <img src="/Public/img/icon/arrow_right.png" />
+                                    <div class="address_inner1">{$userAddressInfo.contactName} {$userAddressInfo.mobileNbr}</div>
+                                    <div class="address_inner2">{$userAddressInfo.province} {$userAddressInfo.city} {$userAddressInfo.district} {$userAddressInfo.street}{$userAddressInfo.position}</div>
+                                    <input type="hidden" value="{$userAddressInfo.longitude}" id="address_lng"/>
+                                    <input type="hidden" value="{$userAddressInfo.latitude}" id="address_lat"/>
+                                </div>
+                                <else/>
+                                <div class="address_select">
+                                    <img src="/Public/img/icon/arrow_right.png" />
+                                    添加配送地址
+                                </div>
+                            </notempty>
+                        </a>
+                        <div class="color">
+                            <img src="/Public/img/icon/color.png" />
+                        </div>
+
+                        <div class="list-block">
+                            <ul>
+                                <li>
+                                    <form id="my_form">
+                                        <div class="list-block" style="margin: 10px 0 0 0;background-color:#fff;">
+                                            <div class="remark_title"><span style="padding-left:15px;">备注信息</span></div>
+                                            <div class="remark">
+                                                <input type="text" name="remark" placeholder="请填写备注信息" style="padding-left:15px;"/>
+                                            </div>
+                                        </div>
+                                        <input type="hidden" name="orderAmount" value="{$orderInfo.orderAmount}"/>
+                                        <input type="hidden" name="shopCode" value="{$shopInfo.shopCode}"/>
+                                        <input type="hidden" name="shopName" value="{$shopInfo.shopName}"/>
+                                        <input type="hidden" name="logoUrl" value="{$shopInfo.logoUrl}"/>
+                                        <input type="hidden" name="orderCode" value="{$orderInfo.orderCode}"/>
+                                        <input type="hidden" name="orderNbr" value="{$orderInfo.orderNbr}"/>
+                                        <input type="hidden" name="userAddressId" value="{$userAddressInfo.userAddressId}">
+                                    </form>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="list-block">
+                            <ul>
+                                <foreach name="orderProductList" item="orderProduct">
+                                    <li class="item-content">
+                                        <div class="item-inner">
+                                            <div class="item-title" style="width:50%">{$orderProduct.productName}</div>
+                                            <div class="food_number" style="width:40%">X{$orderProduct.productNbr}</div>
+                                            <div class="food_price" style="width:10%">&#65509;{$orderProduct.productTotalPrice}</div>
+                                        </div>
+                                    </li>
+                                </foreach>
+                                <li class="item-content">
+                                    <div class="item-inner">
+                                        <div class="distribution">
+                                            <div class="item-title" style="width:90%">配送费</div>
+                                            <div class="food_price" >&#65509;{$shopInfo.deliveryFee}</div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="total_consumption">
+                            实际支付
+                            <div class="food_price">&#65509;{$orderInfo.orderAmount}</div>
+                        </div>
+                        <notempty name="userAddressInfo">
+                            <a href="javascript:void(0)" id="add_remark" class="button button-big active external">下一步</a>
+                            <else/>
+                            <a id="submit"  class="button button-big active external">提交订单</a>
+                        </notempty>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=itxrBVxoPo7SFUdnVQc2MwTM"></script>
+<script>
+    $(function() {
+        var map = new BMap.Map("allmap");
+        var address_lng = $("#address_lng").val();
+        var address_lat = $("#address_lat").val();
+        var shopLng = '{$shopInfo.longitude}';
+        var shopLat = '{$shopInfo.latitude}';
+        var distance = '{$shopInfo.deliveryDistance}';
+
+        var pointA = new BMap.Point(shopLng,shopLat);  // 创建点坐标A
+        var pointB = new BMap.Point(address_lng,address_lat);  // 创建点坐标B
+        var current_distance = (map.getDistance(pointA,pointB)).toFixed(2);  //获取两点距离,保留小数点后两位
+//            console.log(Number(current_distance));
+//            console.log(Number(distance));
+        if(Number(current_distance) > Number(distance)){
+            $(".address_add").addClass("ban");
+            $("#add_remark").on("click", function(){
+                myApp.modal({
+                    title:  '提醒',
+                    text: '该地址不在配送范围!',
+                    buttons: [
+                        {
+                            text: '仍然下单',
+                            onClick: function() {
+                                var formData = myApp.formToJSON('#my_form');
+                                params = JSON.stringify(formData);
+                                //console.log(params);
+                                var href = 'ho://icbcPay?params=';
+                                href = href + encodeURIComponent(params);
+                                $(this).attr('href', href);
+                            }
+                        },
+                        {
+                            text: '取消下单'
+                        }
+                    ]
+                });
+            });
+
+        }
+
+        $("#submit").on('click', function(){
+            myApp.alert('请输入地址!', '提醒');
+        });
+        $('#my_form').on('submit', function(){
+            return false;
+        });
+        $('#add_remark').click(function(){
+            var formData = myApp.formToJSON('#my_form');
+            params = JSON.stringify(formData);
+            //console.log(params);
+            var href = 'ho://icbcPay?params=';
+            href = href + encodeURIComponent(params);
+            $(this).attr('href', href);
+        });
+    });
+</script> 

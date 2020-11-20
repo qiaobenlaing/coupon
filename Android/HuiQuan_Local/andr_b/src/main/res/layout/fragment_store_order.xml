@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/LyOutSet"
+    android:background="@color/bgall" >
+
+    <include layout="@layout/common_title_commit" />
+
+    <EditText
+        android:id="@+id/et_ordernbr"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/sel_edt_input"
+        android:gravity="center"
+        android:hint="输入订单号后4位/手机号"
+        android:textSize="14sp" />
+
+    <TextView
+        style="@style/LyWHFourth"
+        android:layout_height="1dp"
+        android:background="@color/light_grey" />
+
+    <RelativeLayout style="@style/LyWHFourth" >
+
+        <TextView
+            android:id="@+id/tv_less"
+            style="@style/LyWHSecond"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_alignParentLeft="true"
+            android:background="@drawable/shop_arrow1" />
+
+        <TextView
+            android:id="@+id/tv_time_switch"
+            style="@style/LyWHSecond"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="10-16" />
+
+        <TextView
+            android:id="@+id/tv_add"
+            style="@style/LyWHSecond"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/shop_arrow" />
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/lv_store_order_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/app_bg"
+        android:divider="@color/transparent"
+        android:scrollbars="none" />
+
+</LinearLayout>

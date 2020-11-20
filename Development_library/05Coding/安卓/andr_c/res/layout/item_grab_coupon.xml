@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ly_coupon_item"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/bgall"
+    android:orientation="horizontal"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:paddingTop="8dp" >
+
+    <RelativeLayout
+        android:id="@+id/left_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_toLeftOf="@+id/right_content"
+        android:background="@drawable/couponlist_left" >
+
+        <RelativeLayout
+            android:id="@+id/rl_top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <ImageView
+                android:id="@+id/iv_couponpic"
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:layout_alignParentLeft="true"
+                android:layout_margin="10dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/food" />
+
+            <LinearLayout
+                android:id="@+id/ly_center"
+                style="@style/LyWHSecond"
+                android:layout_marginTop="8dp"
+                android:layout_toRightOf="@+id/iv_couponpic"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <LinearLayout
+                    android:id="@+id/ly_coupon"
+                    style="@style/LyWHSecond"
+                    android:orientation="vertical" >
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            android:id="@+id/tv_shop_name"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_toLeftOf="@+id/tv_distance"
+                            android:text="商家名称"
+                            android:textColor="@color/home_lstopfont"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/tv_distance"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginRight="5dp"
+                            android:text="0km"
+                            android:textColor="@color/home_lstopfont"
+                            android:textSize="12sp" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/ly_coupon"
+                        style="@style/LyWHSecond" >
+
+                        <LinearLayout
+                            android:id="@+id/ly_coupon_money"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_centerVertical="true"
+                            android:gravity="center"
+                            android:orientation="horizontal" >
+
+                            <TextView
+                                android:id="@+id/tv_money"
+                                style="@style/LyWHSecond"
+                                android:text="@string/home_money"
+                                android:textColor="@color/money_font"
+                                android:textSize="15sp" />
+
+                            <TextView
+                                android:id="@+id/tv_coupon_price"
+                                style="@style/LyWHSecond"
+                                android:text="100"
+                                android:textColor="@color/money_font"
+                                android:textSize="18sp" />
+
+                            <TextView
+                                android:id="@+id/tv_symbol"
+                                style="@style/LyWHSecond"
+                                android:text="@string/home_discount"
+                                android:textColor="@color/money_font"
+                                android:textSize="15sp"
+                                android:visibility="gone" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/tv_coupon_gd"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="5dp"
+                            android:layout_toLeftOf="@+id/iv_share"
+                            android:layout_toRightOf="@+id/ly_coupon_money"
+                            android:text="sssssss"
+                            android:textColor="@color/home_font"
+                            android:textSize="12sp" />
+
+                        <ImageView
+                            android:id="@+id/iv_share"
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:layout_alignParentRight="true"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/share" />
+                    </RelativeLayout>
+
+                    <TextView
+                        android:id="@+id/tv_coupon_effet2"
+                        style="@style/LyWHSecond"
+                        android:text="00:00 - 00:00"
+                        android:textColor="@color/home_font"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/iv_share"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="-50dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/share"
+                    android:visibility="gone" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/hideOrShow"
+            style="@style/LyWHSecond"
+            android:layout_below="@+id/rl_top"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="5dp"
+            android:orientation="vertical"
+            android:paddingBottom="5dp"
+            android:visibility="gone" >
+
+            <TextView
+                android:id="@+id/tv_coupon_effet"
+                style="@style/LyWHSecond"
+                android:layout_alignParentLeft="true"
+                android:layout_marginTop="5dp"
+                android:text="2015.7.5-2015.8.12"
+                android:textColor="@color/home_font"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tv_coupon_nbr"
+                style="@style/LyWHSecond"
+                android:layout_below="@+id/tv_coupon_effet"
+                android:layout_marginTop="5dp"
+                android:text="@string/tv_batch_nbr"
+                android:textColor="@color/home_font"
+                android:textSize="12sp"
+                android:visibility="visible" />
+
+            <TextView
+                android:id="@+id/tv_coupon_use"
+                style="@style/LyWHSecond"
+                android:layout_below="@+id/tv_coupon_nbr"
+                android:layout_marginTop="5dp"
+                android:text="@string/tv_coupon_use_file"
+                android:textColor="@color/home_font"
+                android:textSize="12sp" />
+            <TextView
+                android:id="@+id/tv_coupon_remark"
+                style="@style/LyWHSecond"
+                android:layout_below="@+id/tv_coupon_use"
+                android:layout_marginTop="5dp"
+                android:textColor="@color/home_font"
+                android:textSize="12sp" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/right_content"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/left_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/left_content"
+        android:background="@drawable/n_buy"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/tv_couponedraw"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/myhome_timelimitl_grab"
+            android:textColor="@color/white"
+            android:textSize="26sp" />
+
+        <TextView
+            android:id="@+id/tv_coupontype"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="实物券"
+            android:textColor="@color/white"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ly_arrow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/right_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/right_content"
+        android:layout_marginTop="-27dp"
+        android:gravity="center" >
+
+        <ImageView
+            android:id="@+id/iv_coupon_up"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:scaleType="centerInside" />
+    </LinearLayout>
+
+</RelativeLayout>

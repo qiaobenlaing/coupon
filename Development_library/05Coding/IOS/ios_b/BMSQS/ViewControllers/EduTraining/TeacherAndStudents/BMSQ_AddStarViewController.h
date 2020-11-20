@@ -1,0 +1,23 @@
+//
+//  BMSQ_AddStarViewController.h
+//  BMSQS
+//
+//  Created by 新利软件－冯 on 16/3/4.
+//  Copyright © 2016年 djx. All rights reserved.
+//
+
+#import "UIViewControllerEx.h"
+
+@interface BMSQ_AddStarViewController : UIViewControllerEx
+
+@property (nonatomic, strong)NSString * teacherName;//教师名字
+@property (nonatomic, strong)NSString * teacherTitle;//教师职称
+@property (nonatomic, strong)NSString * teachCourse;//所教课程
+@property (nonatomic, strong)NSString * teacherImgUrl;// 教师形象照
+@property (nonatomic, strong)NSString * teacherInfo;// 教师简介
+@property (nonatomic, strong)NSString * teacherCode; // 教师编码
+@property (nonatomic, strong)NSArray * teacherWork;// 教师作品或荣誉
+
+@property (nonatomic, assign)int        number;// 1:教师详情  2:学员之星
+
+@end

@@ -1,0 +1,88 @@
+<layout name="layout_admin" />
+<form class="form-horizontal" id="edit-client-act-module-frm" action="/Admin/ClientActModule/editClientActModule" method="post">
+    <input type="hidden" name="moduleCode" value="{$moduleInfo.moduleCode}" />
+    <div class="form-group">
+        <label for="module-name" class="col-sm-2 control-label"><span class='required-ele'>*</span>模块名</label>
+        <div class="col-sm-3">
+            <input type="text" class="form-control" name="moduleName" value="{$moduleInfo.moduleName}" id="module-name" placeholder="模块名">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="web-address" class="col-sm-2 control-label"><span class='required-ele'>*</span>web页面地址</label>
+        <div class="col-sm-9">
+            <input type="text" class="form-control" name="webAddress" value="{$moduleInfo.webAddress}" id="web-address" placeholder="web页面地址">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="sign" class="col-sm-2 control-label">标志</label>
+        <div class="col-sm-3">
+            <input type="text" class="form-control" name="sign" value="{$moduleInfo.sign}" id="sign" placeholder="标志">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="sort-nbr" class="col-sm-2 control-label">排序号</label>
+        <div class="col-sm-3">
+            <input type="text" class="form-control" name="sortNbr" value="{$moduleInfo.sortNbr}" id="sort-nbr" placeholder="排序号">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">图标</label>
+        <div class="col-sm-5">
+            <input type="hidden" name="imgUrl" value="{$moduleInfo.imgUrl}" />
+            <div class="fileinput fileinput-new  col-xs-6" data-provides="fileinput">
+                <div class="fileinput-new thumbnail"><img src="{$moduleInfo.imgUrl}" /></div>
+                <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 400px; max-height: 100px;"></div>
+                <div>
+                    <span class="btn btn-default btn-file">
+                        <span class="fileinput-new">选择图标</span>
+                        <span class="fileinput-exists">换一张</span>
+                        <input type="file" name="upfile" class="ajax-file-upload" data-imgname="imgUrl" data-url="/Admin/Util/imageUp" multiple>
+                    </span>
+                    <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">移除</a>
+                    <span id="state_imgUrl" class="ajax-file-state"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-primary" id="submit">保存</button>
+        </div>
+    </div>
+</form>
+<script src="__PUBLIC__/js/vendor/jquery.ui.widget.js"></script>
+<script src="__PUBLIC__/js/jquery.iframe-transport.js"></script>
+<script src="__PUBLIC__/js/jquery.fileupload.js"></script>
+<script type="text/javascript">
+	$('#edit-client-act-module-frm').on('submit', function() {
+        var frm = $(this);
+        $.post(frm.attr('action'), frm.serialize(), function(resp) {
+            if (resp.status == sz.STATUS_SUCC) {
+                    location.href = '/Admin/ClientActModule/listClientActModule?page={$page}';
+            } else {
+                sz.showErrMsg(resp.msg, 2);
+            }
+        });
+        return false;
+    });
+	$('.ajax-file-upload').fileupload({
+		dataType: 'json',
+		add: function (e, data) {
+		    var imgname = $(this).data('imgname'); // imgname为 url
+			data.context = $('#state_' + imgname).text('正在上传...');
+			data.submit();
+		},
+		done: function (e, data) {
+		    var resp = data.result;
+		    if (resp.state == 'SUCCESS') {
+			    data.context.text('上传完成');
+			    var imgname = data.context.attr('id').substr('state_'.length);
+			    var imgUrl = resp.url.substr(0, 1) == '.' ? resp.url.substr(1) : resp.url; // 去掉"./"中的"."
+			    $('#edit-client-act-module-frm input[name=' + imgname + ']').val('/'+ imgUrl);
+			} else {
+		        data.context.text('上传失败');
+		        $('#edit-client-act-module-frm input[name=' + imgname + ']').val('');
+		    }
+		}
+	});
+</script>

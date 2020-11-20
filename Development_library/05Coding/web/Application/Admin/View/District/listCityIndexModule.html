@@ -1,0 +1,164 @@
+<layout name="layout_admin" />
+<div id="data_table_wrapper">
+    <if condition="$canAddModule gt 0">
+        <a href="/Admin/District/addLinkedCity?cityId={$cityId}" class="btn btn-sm btn-info"><span class="glyphicon glyphicon-plus"></span> 添加模块</a>
+    </if>
+    <?php $count = count($dataList);?>
+    <table class="fp-table table table-striped table-bordered table-condensed" id="data_table">
+        <thead>
+        <tr>
+            <th>顺序</th>
+            <th>模块标题</th>
+            <th>子模块数量</th>
+            <if condition="$count gt 1">
+                <th>排序</th>
+            </if>
+            <th>状态</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <foreach name="dataList" item="item" key="key">
+            <tr>
+                <td><?php echo $key + 1;?></td>
+                <td>{$item.moduleTitle}</td>
+                <td>
+                    <if condition="$item.subModuleCount gt 0 AND ($item.moduleValue eq $activity OR $item.moduleValue eq $function OR $item.moduleValue eq $trading OR $item.moduleValue eq $tab)">
+                        <i class="icon-hand-right"></i>
+                        <button data-target="#node_{$item.relId}" class="btn btn-warning btn-xs" data-toggle="modal">{$item.subModuleCount}</button>
+                        <div id="node_{$item.relId}" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
+                            <div class="modal-dialog modal-lg" style="left: 0;width: 60%;">
+                                <div class="modal-content">
+                                    <div class="modal-header" style="text-align: left">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+                                        <span style="font-size: 20px;"><strong>{$item.moduleTitle}</strong> (子模块列表)</span>
+                                    </div>
+                                    <div class="modal-body" style="overflow-x: auto;overflow-y:auto;max-height:500px">
+                                        <table class="fp-table table table-striped table-bordered table-condensed">
+                                            <thead>
+                                            <tr>
+                                                <th>顺序</th>
+                                                <th>标题</th>
+                                                <th>子标题</th>
+                                                <if condition="$item.subModuleCount gt 1">
+                                                    <th>排序</th>
+                                                </if>
+                                                <th>状态</th>
+
+                                                <th>操作</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <foreach name="item.subModuleList" item="vo" key="k">
+                                                <tr>
+                                                    <td><?php echo $k + 1;?></td>
+                                                    <td>{$vo.title}</td>
+                                                    <td>{$vo.subTitle}</td>
+                                                    <if condition="$item.subModuleCount gt 1">
+                                                        <td>
+                                                            <a href="/Admin/Module/changeOrder?id={$vo.id}&type=sub" class="btn-xs btn-primary changeOrder" data-order="up"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                                                            &nbsp;&nbsp;&nbsp;&nbsp;
+                                                            <a href="/Admin/Module/changeOrder?id={$vo.id}&type=sub" class="btn-xs btn-primary changeOrder" data-order="down"><span class="glyphicon glyphicon-arrow-down"></span></a>
+                                                        </td>
+                                                    </if>
+                                                    <td><eq name="vo.hide" value="1">隐藏<else />显示</eq></td>
+                                                    <td>
+                                                        <a href="/Admin/Module/editSubModule?id={$vo.id}" class="btn btn-xs btn-primary">编辑</a>
+                                                        <eq name="vo.hide" value="1">
+                                                            <a href="/Admin/Module/changeStatus?id={$vo.id}&type=sub" class="btn btn-xs btn-success changeStatus" data-hide="0">显示</a>
+                                                            <else />
+                                                            <a href="/Admin/Module/changeStatus?id={$vo.id}&type=sub" class="btn btn-xs btn-danger changeStatus" data-hide="1">隐藏</a>
+                                                        </eq>
+                                                    </td>
+                                                </tr>
+                                            </foreach>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <else />
+                        {$item.subModuleCount}
+                    </if>
+                </td>
+                <if condition="$count gt 1">
+                    <td>
+                        <a href="/Admin/Module/changeOrder?relId={$item.relId}&type=index" class="btn-xs btn-primary changeOrder" data-order="up"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <a href="/Admin/Module/changeOrder?relId={$item.relId}&type=index" class="btn-xs btn-primary changeOrder" data-order="down"><span class="glyphicon glyphicon-arrow-down"></span></a>
+                    </td>
+                </if>
+                <td><eq name="item.hide" value="1">隐藏<else />显示</eq></td>
+                <td>
+                    <eq name="item.hide" value="1">
+                        <a href="/Admin/Module/changeStatus?relId={$item.relId}&type=index" class="btn btn-xs btn-success changeStatus" data-hide="0">显示</a>
+                        <else />
+                        <a href="/Admin/Module/changeStatus?relId={$item.relId}&type=index" class="btn btn-xs btn-danger changeStatus" data-hide="1">隐藏</a>
+                    </eq>
+                    <if condition="$item.moduleValue eq $scrolling">
+                        <a href="/Admin/Module/editScroll?parentModuleId={$item.indexModuleId}&cityId={$item.cityId}" class="btn btn-xs btn-info"><span class="glyphicon glyphicon-plus"></span> 添加滚屏</a>
+                        <elseif condition="$item.moduleValue eq $shopType" />
+                        <a href="/Admin/ShopType/listShopType" class="btn btn-xs btn-info"><span class="glyphicon glyphicon-plus"></span> 查看子模块</a>
+                        <elseif condition="$item.moduleValue eq $brand" />
+                        <a href="/Admin/District/editCityBrandRel?cityId={$item.cityId}" class="btn btn-xs btn-info"><span class="glyphicon glyphicon-plus"></span> 添加品牌</a>
+                        <elseif condition="$item.moduleValue eq $trading OR $item.moduleValue eq $activity OR $item.moduleValue eq $function OR $item.moduleValue eq $tab" />
+                        <a href="/Admin/Module/editSubModule?parentModuleId={$item.indexModuleId}&cityId={$item.cityId}" class="btn btn-xs btn-info"><span class="glyphicon glyphicon-plus"></span> 添加子模块</a>
+                    </if>
+                    <if condition="$item.subModuleCount gt 0 AND ($item.moduleValue eq $activity OR $item.moduleValue eq $function OR $item.moduleValue eq $brand)">
+                        <a href="/Admin/District/editCityModule?relId={$item.relId}" class="btn btn-xs btn-primary">显示模板</a>
+                    </if>
+                </td>
+            </tr>
+        </foreach>
+        </tbody>
+    </table>
+</div>
+<script>
+    $(function(){
+        $('.changeStatus').on('click', function(){
+            var open = 0;
+            var close= 1;
+            var btn = $(this);
+            // 按钮的状态属性
+            var hide = btn.attr('data-hide');
+            var url = btn.attr('href');
+
+            // 操作成功后的页面变化
+            var dataStatus = hide == open ? close : open;
+            var tdText = hide == open ? '显示' : '隐藏';
+            var btnText = hide == open ? '隐藏' : '显示';
+            var oldClass = hide == open ? 'btn-success' : 'btn-danger';
+            var newClass = hide == open ? 'btn-danger' : 'btn-success';
+            $.get(url, {hide: hide}, function(resp){
+                if(resp.status == sz.STATUS_SUCC) {
+                    btn.attr("data-hide", dataStatus);
+                    btn.text(btnText);
+                    btn.removeClass(oldClass);
+                    btn.addClass(newClass);
+                    btn.parent().prev().text(tdText);
+                    sz.showSuccMsg(resp.msg, 1);
+                } else {
+                    sz.showErrMsg(resp.msg, 2);
+                }
+            });
+            return false;
+        });
+
+        $('.changeOrder').on('click', function(){
+            var btn = $(this);
+            // 按钮的状态属性
+            var order = btn.attr('data-order');
+            var url = btn.attr('href');
+            $.get(url, {order: order}, function(resp){
+//                if(resp.status == sz.STATUS_SUCC) {
+//                    sz.showSuccMsg(resp.msg, 1);
+//                } else {
+//                    sz.showErrMsg(resp.msg, 2);
+//                }
+                location.href = '/Admin/District/listCityIndexModule?id={$cityId}';
+            });
+            return false;
+        });
+    });
+</script>

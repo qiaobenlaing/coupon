@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/LyCommSet"
+    android:layout_height="wrap_content" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="10dp" >
+
+        <ImageView
+            android:id="@+id/iv_return"
+            style="@style/LyWHSecond"
+            android:layout_gravity="left"
+            android:background="@drawable/all_return" />
+
+        <TextView
+            android:id="@+id/view_title"
+            style="@style/LyWHSecond"
+            android:layout_marginLeft="5dp"
+            android:gravity="center"
+            android:text="@string/tv_red_packet" />
+
+        <LinearLayout
+            style="@style/LyWHFourth"
+            android:gravity="right|bottom" >
+
+            <Button
+                android:id="@+id/signIn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="活动报名"
+                android:textSize="12sp"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/iv_wx_share"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/share" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#000" />
+
+</LinearLayout>

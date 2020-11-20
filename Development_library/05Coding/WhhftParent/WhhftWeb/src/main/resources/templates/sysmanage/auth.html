@@ -1,0 +1,173 @@
+<link th:replace="/include/header" />
+
+<style type="text/css" title="text/css">
+/* <![CDATA[ */
+
+/* ]]> */
+</style>
+<script th:inline="javascript">
+/*<![CDATA[*/ 
+//用于标记当前正在编辑的记录行号，如果为undefined，说明没有处于编辑状态
+var editingId;
+//用于新增节点时，插入表格的模板数据，ID为负数，表示它是一个用于方便显示、非持久化的临时节点
+var NEW_NODE= {id: '-9999',	text: '新功能',authUrl:'', remark:'', orderNo:'0', enabled:'1', iconCls:'',};
+//启动行编辑功能，表格只允许单行编辑，启动前先判断用户是否已经在编辑其他行，如果是，则不再开启新的行编辑
+function edit(){
+    if (editingId != undefined){
+        $('#tg').treegrid('select', editingId);
+        return;
+    }
+    var row = $('#tg').treegrid('getSelected');
+    if (row){
+        editingId = row.id;
+        $('#tg').treegrid('beginEdit', editingId);
+        $(".datagrid-row-editing .textbox, .datagrid-row-editing .textbox-text").css({"height":"38px"});//设置编辑行样式
+    }else{
+    	$.messager.alert("提示","请选中一条进行修改！");
+    }
+}
+//保存修改或新增的行，并将数据写入数据库后，重新刷新显示整个菜单树
+function save(){
+    if (editingId != undefined){
+        var t = $('#tg');
+        t.treegrid('endEdit', editingId);
+        editingId = undefined;
+      //保存节点并刷新整个菜单树
+      	var node = $('#tg').treegrid('getSelected');
+      	var parentNode = node.parentAuthId = $('#tg').treegrid('getParent', node.id);
+      	//权限树的主菜单根目录ID是1，只不过默认是不显示的，所以如果是新菜单，就自动赋予1
+      	if(parentNode != null){
+      		node.parentAuthId = parentNode.id;
+      	}else{
+      		node.parentAuthId = 1;
+      	}
+    	$g.post([[@{/sysauth/save}]], node, function(){
+    		$g.showMsg('消息', '保存成功！');  
+    		$('#tg').treegrid('reload');
+    		parent.refreshmenu();
+    	});
+    }
+}
+//取消对行记录的新增或修改，如果这一行是刚新增的，数据还没有保存到数据库，则把这一行删除掉
+function cancel(){
+    if (editingId != undefined){
+        $('#tg').treegrid('cancelEdit', editingId);
+        if(editingId == NEW_NODE.id){
+        	$('#tg').treegrid('remove', editingId);
+        }
+        editingId = undefined;
+    }
+}
+//新增一个行记录，如果是type = append表示为当前节点增加一个子节点，如果为type = after表示为当前节点增加一个邻节点，新增后，立即选中该行记录自动进入编辑状态
+function addNode(type){
+	//如果有节点在编辑状态中，则不允许再添加节点
+	if(editingId != null){
+		return ;
+	}
+	//如果用户没有选中任何节点，直接点击新增，表示是要增加一个根节点
+	var node = $('#tg').treegrid('getSelected');
+	var data = [];
+	/*这里的data[0]会被作为新增的节点数据对象，如果直接把NEW_NODE赋值给data[0]，在行编辑器中的编辑就会修改NEW_NODE对象,
+	*如果连续添加多个节点就会发现行编辑器里每一栏显示的是上一次提交的数据，所以这里必须对初始化数据进行克隆后产生一个新对象赋给data[0]
+	*/
+	data[0] = $g.utils.deepCopy(NEW_NODE);
+	if(type == 'append' && node != null){
+		$('#tg').treegrid('append',{parent: node.id,data: data});
+	}else if(type == 'append' && node == null){
+		$.messager.alert("提示", "请选择要添加的父级菜单", "info");
+		return;
+	}
+	else if(type == 'new'){
+		$('#tg').treegrid('append',{parent: null, data: data});
+	}else{
+		return ;
+	}
+	editingId = NEW_NODE.id;
+	$('#tg').treegrid('select', editingId);
+	$('#tg').treegrid('beginEdit', editingId);
+	$(".datagrid-row-editing .textbox, .datagrid-row-editing .textbox-text").css({"height":"38px"});//设置编辑行样式
+}
+//删除一个叶子节点，不允许直接删除非叶子节点，避免一次性删除过多
+function remove_auth(){
+	var node = $('#tg').treegrid('getSelected');
+	if(node != null ){
+		if($('#tg').treegrid('getChildren', node.id).length == 0){	//删除成功的时候重新加载整个树
+			$.messager.confirm('提示', '该操作不可逆，请确认是否删除！', function(data){
+				if(data){
+					$g.post([[@{/sysauth/remove?authId=}]] +node.id,null, function(){
+						$g.showMsg('消息', '删除成功！');  
+						$('#tg').treegrid('reload');
+						//刷新菜单
+						parent.refreshmenu();
+					});
+				}
+			});
+			
+		}else{
+			$.messager.alert("提示","为避免误删除，每次只能删除一个最末级的功能！");
+		}
+		
+	}else{
+		 $.messager.alert("提示", "请选择要删除的行", "info");
+	}
+}
+
+//在TreeGrid列表中显示该节点是否启用
+function formatEnabled(id,row,index){
+	return $g.form.formatType($g.comboData.BOOLEAN_TYPE, id);
+}
+//在TreeGrid列表中显示图标，为改善显示效率，如果没有预设图标，则不做转换
+function showIconInGrid(value,row, index) {
+	if(value != null){
+		return '<span class="'+value+'" style="display:inline-block;vertical-align:middle;width:16px;height:16px;"></span>'+value;
+	}else{
+		return "";
+	}
+}
+//在TreeGrid行编辑器中显示图标
+function showIconInEditor(data) {
+	return '<span class="'+data.value+'" style="display:inline-block;vertical-align:middle;width:16px;height:16px;"></span>'+data.text;
+}
+           
+$(document).ready(function() {
+	$('#tg').treegrid({  
+		url: [[@{/sysauth/authEditorTree}]],
+		method:"post"
+	});  
+});
+/*]]>*/  
+</script>
+<div id="tb" style="padding:2px 5px;">
+    <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true" onclick="edit();">编辑</a>
+	<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-save',plain:true" onclick="save();">保存</a>
+	<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-cancel',plain:true" onclick="cancel();">取消</a>
+	<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true" onclick="remove_auth();">删除</a>
+	<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true" onclick="addNode('new');">创建新菜单</a>
+	<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true" onclick="addNode('append');">新增下级菜单</a>
+
+</div>
+<table id="tg" class="easyui-treegrid" style="width:100%;height:100%"
+            data-options="
+            	toolbar:'#tb',
+                rownumbers: true,
+                animate: true,
+                collapsible: true,
+                fitColumns: true,
+                method: 'get',
+                idField: 'id',
+                treeField: 'text',
+                border: false,
+            ">
+    <thead>
+        <tr>
+            <th data-options="field:'text',width:180,editor:{type:'textbox',options:{required:true,validType:'length[0,32]'}}">菜单名称</th>
+            <th data-options="field:'authUrl',width:160,align:'left',editor:{type:'textbox',options:{validType:'length[0,64]'}}">功能链接</th>
+            <th data-options="field:'resources',width:180,editor:{type:'textbox',options:{validType:'length[0,256]'}}">权限配置</th>
+            <th data-options="field:'remark',width:180,editor:{type:'textbox',options:{validType:'length[0,256]'}}">备注</th>
+            <th data-options="field:'orderNo',width:100,editor:{type:'numberbox',options:{min:0, max:9999,required:true}}">排序权重</th>
+            <th data-options="field:'enabled',width:100,formatter:formatEnabled,editor:{type:'combobox',options:{data:$g.comboData.BOOLEAN_TYPE,required:true,panelHeight:'auto',editable:false}}">是否启用</th>
+            <th data-options="field:'iconCls',width:100,formatter:showIconInGrid,editor:{type:'combobox',options:{data:$g.comboData.ICON_CLS, editable:false,formatter : showIconInEditor}}">菜单图标</th>
+        </tr>
+    </thead>
+</table>
+<link th:replace="/include/footer" />

@@ -1,0 +1,32 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:aop="http://www.springframework.org/schema/aop" xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:task="http://www.springframework.org/schema/task"
+       xsi:schemaLocation="
+          http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+          http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+          http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+          http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd
+          http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.3.xsd">
+
+	<!-- RMI加载见com.whhft.sysmanage.service.base.RmiServiceEndPoint -->
+    <bean id="rmiEndpointConfig" class="java.util.ArrayList">
+		  <constructor-arg>
+		   <list>
+				<value>remotingDictDefineService, com.whhft.sysmanage.common.rmi.DictDefineService, dictDefineServiceImpl</value>
+				<value>remotingDictDetailService, com.whhft.sysmanage.common.rmi.DictDetailService, dictDetailServiceImpl</value>
+				<value>remotingSysAuthService, com.whhft.sysmanage.common.rmi.SysAuthService, sysAuthServiceImpl</value>
+				<value>remotingSysRoleService, com.whhft.sysmanage.common.rmi.SysRoleService, sysRoleServiceImpl</value>
+				<value>remotingSysUserService, com.whhft.sysmanage.common.rmi.SysUserService, sysUserServiceImpl</value>
+				<value>remotingSysLogService, com.whhft.sysmanage.common.rmi.SysLogService, sysLogServiceImpl</value>
+				<value>remotingActionInfoService, com.whhft.sysmanage.common.rmi.ActionInfoService, actionInfoServiceImpl</value>
+				<value>remotingNewsService, com.whhft.sysmanage.common.rmi.NewsService, newsServiceImpl</value>
+                <value>remotingNewsCatalogService, com.whhft.sysmanage.common.rmi.NewsCatalogService, catalogServiceImpl</value>
+                
+				
+				<value>remotingServerInfoService, com.whhft.sysmanage.common.rmi.ServerInfoService, serverInfoServiceImpl</value>
+				
+		   </list>
+		  </constructor-arg>
+	 </bean>
+</beans>

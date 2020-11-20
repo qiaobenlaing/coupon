@@ -1,0 +1,1442 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Common -->
+    <string name="app_name">中旅巴士惠圈</string>
+    <!-- java代码中引用的独立字符串资源 -->
+    <string name="app_short_version">1</string>
+    <!--<string name="app_full_version">APP_VERSION_FULL</string>-->
+    <string name="app_full_version">1.0.0018</string>
+    <string name="func_desc_reset">重置密码</string>
+    <string name="func_desc_register">账号激活</string>
+    <!-- 发布版百度地图的key -->
+    <string name="baidu_map_key">hWmjb239Btfi6ksj4pZFSqZTCfUMpLE6</string>
+    <!-- 友盟的key -->
+    <string name="umeng_key">5a5eabfba40fa344800000a4</string>
+
+    <string name="phonenum">+86</string>
+    <string name="hint_input_phonenum">请输入手机号</string>
+    <string name="identify_code">输码验票</string>
+    <string name="identify_phone">手机号</string>
+    <string name="hint_input_indentify_code">请输入验证码</string>
+    <string name="send_identify_code">发送验证码</string>
+    <string name="pwd_reset">"密码    "</string>
+    <string name="hint_input_pwd">请输入密码</string>
+    <string name="confirm">确认</string>
+    <string name="reset">重置</string>
+    <string name="scan_text">将二维码放入框内，即可自动扫描</string>
+    <string name="myhome_abouthui">关于惠圈</string>
+    <string name="jaoyi_succ">交易成功</string>
+    <string name="mobilenbr_error">手机号码格式不正确</string>
+    <string name="min_isfirst">首单立减  ：</string>
+    <string name="scaninput_error">请输入金额</string>
+
+    <!-- LoginActivity -->
+    <string name="tv_username">账号</string>
+    <string name="tv_password">密码</string>
+    <string name="edt_hint_input_username">手机号码</string>
+    <string name="edt_hint_input_password">密码</string>
+    <string name="forget_pwd">忘记密码？</string>
+    <string name="remember_pwd">自动登录</string>
+    <string name="btn_login">确定</string>
+    <string name="btn_register">注册</string>
+    <string name="describtion_of_shopcard">商家会员卡图片</string>
+    <string name="login_title">账号激活</string>
+    <string name="login_settled">我要入驻</string>
+    <string name="shop_act_num">(活动</string>
+    <string name="shop_act_num_end">)</string>
+    <string name="shop_no_settled">该商户还未入驻</string>
+    <string name="shop_go_settled">去入驻</string>
+    <string name="tel_null">电话号码为空</string>
+
+    <!-- 设置 -->
+    <string name="message_sound">消息提醒声音</string>
+    <string name="coupon_message">接受惠圈推送消息</string>
+    <string name="clear_cache">清除缓存</string>
+    <string name="exit_sign">退出登录</string>
+    <string name="cue">温馨提示</string>
+    <string name="voucher_content">设置0元需谨慎，代金券在消费时当现金使用!</string>
+    <string name="continue_modify">现在修改</string>
+    <string name="continue_setting">继续设置</string>
+    <string name="quit_ok">您确定要退出吗?</string>
+    <string name="quit_delete">您确定要删除?</string>
+    <string name="clear_ok">您确定要清除所有的缓存数据吗?</string>
+    <string name="ok">确定</string>
+    <string name="clear">清除</string>
+    <string name="no">取消</string>
+    <string name="set">设置</string>
+    <string name="accept_pay_msg">接收支付短信</string>
+    <string name="dialog_tel">您确定拨打电话？</string>
+    <string name="accept_icbc_bank">您当前还没受理建行卡，暂时不能发行此种优惠券</string>
+
+    <!-- SettledActivity -->
+    <string name="settled_shop">去开店</string>
+    <string name="settled_phone">联系惠圈：400-04-95588</string>
+    <string name="settled_mobile_nbr">tel:400-04-95588</string>
+
+    <!-- ShopInfoActivity -->
+    <string name="shopinfo_shop">店铺名称</string>
+    <string name="shopinfo_tel">联系电话</string>
+    <string name="shopinfo_starttiem">营业开始时间</string>
+    <string name="shopinfo_endtiem">营业结束时间</string>
+    <string name="shopinfo_address">店铺地址</string>
+    <string name="shopinfo_phone">手机号码</string>
+    <string name="shopinfo_zone">商圈地址</string>
+    <string name="shopinfo_apply">提交申请</string>
+    <string name="shopinfo_detail">开店申请成功后，将会有惠圈的工作人员上门注册签约</string>
+    <string name="shopinfo_back">返回登录页</string>
+    <string name="shopinfo_home">返回首页</string>
+    <string name="shopinfo_data">填写内容不能为空</string>
+
+    <!-- ResetActivity -->
+    <string name="reset_pwd">密码重置</string>
+
+    <!-- SysWechatActivity -->
+    <string name="syswechat_weixin">微信公众号</string>
+    <string name="huiquan_message">给惠圈留言</string>
+    <!-- HomeActivity -->
+    <string name="main">首页</string>
+    <string name="card_home">惠员卡</string>
+    <string name="receivables">收款</string>
+    <string name="card_home_">会员卡</string>
+    <string name="coupon_home">优惠券</string>
+    <string name="my_home">我的</string>
+    <string name="mainact_shopname">店铺名称</string>
+    <string name="marker_act">营销活动</string>
+    <string name="post_accntstat">中旅核销账本</string>
+    <string name="my_order">我的订单</string>
+    <string name="my_cashier">收银台</string>
+    <string name="many_shop">周边商家</string>
+    <string name="activies_shop">活动商家:</string>
+    <string name="cooperate_shop">合作商家:</string>
+    <string name="among_shop">其中商家:</string>
+    <string name="home">家,</string>
+    <string name="home_among">家</string>
+    <string name="myhome_tel">tel:400-04-95588</string>
+    <string name="user_tel">tel:</string>
+    <string name="tv_home_class">开班</string>
+    <string name="tv_home_recruitstudents">招生启示</string>
+    <string name="tv_home_course">课程表</string>
+    <string name="tv_home_honorwall">荣誉墙</string>
+    <string name="tv_home_mingshitang">名师堂</string>
+    <string name="tv_home_principal">校长之语</string>
+    <string name="tv_home_studentstart">学员之星</string>
+    <string name="tv_home_parentcomment">家长点评</string>
+    <string name="tv_home_studentsignup">学员报名</string>
+
+    <!-- RegisterAactivity -->
+    <string name="register_title">商户注册</string>
+    <string name="tv_business_licence">营业执照</string>
+    <string name="edt_hint_input_business_licence">请输入营业执照</string>
+    <string name="chb_obey">遵守</string>
+    <string name="tv_baomi_terms">《惠圈商户注册协议》</string>
+    <string name="tv_register_icbc">中国建设银行股份有限公司浙江省分行</string>
+    <string name="tv_register_xinli">艾体威尔电子技术（北京）有限公司</string>
+    <string name="tv_register_huiquan">联合打造一流互惠互利圈子平台</string>
+
+    <!-- SysTermsActivity -->
+    <string name="business_terms_title">惠圈商圈协议</string>
+
+    <!-- MyHomeFragment -->
+    <string name="myhome_cue">温馨提示</string>
+    <string name="myhome_quit_ok">退出当前账号</string>
+    <string name="myhome_ok">确定</string>
+    <string name="myhome_no">取消</string>
+    <string name="myhome_set">设置</string>
+
+    <!-- MyShopInfoActivity -->
+    <string name="shop_message">商铺信息</string>
+    <string name="shop_editorial">装修</string>
+    <string name="head_message">头像信息</string>
+    <string name="shop_shortname">店铺简称</string>
+    <string name="shop_logo">商家头像</string>
+    <string name="shop_name">店铺名称</string>
+    <string name="delivery">外卖点餐</string>
+    <string name="tablenum_manager">桌号管理</string>
+    <string name="restaurant_set">餐厅设置</string>
+    <string name="can_reserve">堂食点餐</string>
+    <string name="contact_number">联系电话</string>
+    <string name="manager_number">店长号码</string>
+    <string name="set_phoneortime">设置</string>
+    <string name="business_hours">营业时间</string>
+    <string name="delivery_program">配送方案</string>
+    <string name="shop_address">店铺地址</string>
+    <string name="reach">至</string>
+    <string name="raise">提出</string>
+    <string name="image_shop">店铺形象</string>
+    <string name="my_twocode">我的二维码</string>
+    <string name="code_fail">查询失败!!</string>
+    <string name="dialog_noDine">您的商铺还没有上架的商品,请在电脑端的惠圈管家里完成产品上传</string>
+    <string name="diaolog_title">取消</string>
+
+    <!-- UpdatePwdActivity -->
+    <string name="update_succ">修改成功，请重新登录</string>
+    <string name="update_fail">修改失败</string>
+    
+    <!-- ActivityManager -->
+	<string name="predetermined_list">预定名单</string>
+	<string name="share_friend">分享给好友</string>
+	<string name="activity_verification">活动验证</string>
+	<string name="activity_edit">编辑活动</string>
+	<string name="activity_del">删除活动</string>
+	<string name="activity_not_exist">活动不存在</string>
+	<string name="activity_events_unalterable">活动现在状态不可变更</string>
+	<string name="activity_no_change">活动状态没有变化</string>
+	<string name="new_activity">新建活动</string>
+	
+	<!-- 活动验证 -->
+	<string name="input_act_phonenumorvervode">请输入验证码/手机号</string>
+	
+    <!-- MyStaffActivity -->
+    <string name="my_account_number">员工账号:</string>
+    <string name="my_part">角色:</string>
+    <string name="my_part_type">老板店长类</string>
+    <string name="assistant_account_number">员工账号</string>
+    <string name="assistant_name">员工姓名</string>
+    <string name="staff_name">员工姓名:</string>
+    <string name="assistant_update">店长编辑</string>
+    <string name="assistant_del">删除</string>
+    <string name="assistant_type">员工类</string>
+    <string name="mystaff_add">添加店长</string>
+    <string name="mystaff_update">修改</string>
+    <string name="del_ok">亲，确定要删除吗</string>
+    <string name="del_number">的账号</string>
+    <string name="num_inputtype">请输入手机号码</string>
+    <string name="num_one">1</string>
+    <string name="name_inputtype">请输入姓名</string>
+    <string name="del_success">删除数据成功！！！</string>
+    <string name="del_file">删除数据失败！！！</string>
+    <string name="upp_success">修改数据成功！！！</string>
+    <string name="upp_file">修改数据失败！！！</string>
+    <string name="add_success">添加数据成功！！！</string>
+    <string name="num_type">账号角色</string>
+    <string name="add_file">添加数据失败！！！</string>
+    <string name="format_problem">输入的账号格式不正确</string>
+    <string name="select_type">请选择类别</string>
+    <string name="num_nocontent">请输入账号</string>
+    <string name="name_nocontent">请输入姓名</string>
+    <string name="mobilenbr_used">手机号已经被使用!</string>
+    <string name="add_fail">添加失败了!!</string>
+    <string name="kindly_reminder">温馨提示</string>
+    <string name="set_fail">设置失败</string>
+
+    <!-- UppActivity -->
+    <string name="upp_pwd">为了您的账号安全,修改密码前请填写原密码</string>
+    <string name="input_pwd">密码:</string>
+    <string name="tv_forget_pwd">已将验证短信发到该账号手机</string>
+    <string name="tv_validate_pwd">将验证短信发到该账号手机</string>
+    <string name="input_msg_pwd">请输入短信验证码</string>
+    <string name="new_pwd">新密码:</string>
+    <string name="input_newpwd">请输入新密码</string>
+    <string name="pwd_fit">新密码与原密码一致</string>
+    <string name="input_originalpwd">请输入原密码</string>
+    <string name="validate_originalpwd">验证原密码</string>
+    <string name="input_originalpwd_error">原密码输入错误,请点击忘记密码找回密码</string>
+    <string name="input_validate_error">验证码输入错误</string>
+    <string name="title_forget_pwd">忘记密码</string>
+    <string name="title_update_pwd">修改密码</string>
+    <string name="original_pwd">原密码：</string>
+    <string name="update_business_time">营业时间</string>
+
+    <!-- MyShopDecActivity -->
+    <string name="shop_dec">店铺装修</string>
+    <string name="shop_intro">店铺简介</string>
+    <string name="shop_introduction">店铺介绍</string>
+    <string name="person_submit">编辑</string>
+    <string name="submit">提交</string>
+    <string name="edit_picture">点击编辑店面形象图片</string>
+    <string name="publicity_pictures">店铺宣传图片(最多6张)</string>
+    <string name="tv_addall">提交</string>
+    <string name="tv_add">添加</string>
+
+    <!-- AddPhotoActivity -->
+    <string name="tv_album_photo">新建相册</string>
+    <string name="tv_upp_albumphoto">修改相册名称</string>
+    <string name="finish">完成</string>
+    <string name="no_photoname">请输入相册名称</string>
+    <string name="photoname_biglength">您输入的相册名称过长</string>
+    <string name="no_product_name">请输入产品名称</string>
+    <string name="product_title_long">您输入的产品名字过长</string>
+    <string name="no_environment_title">请输入环境图片的标题</string>
+    <string name="environment_title_long">您输入的环境标题过长</string>
+    <string name="upload_photo">传照片</string>
+    <string name="edit_photo">编辑照片</string>
+    <string name="no_productprice">请输入产品价格</string>
+    <string name="product_price_length">您输入的产品价格太大</string>
+    <string name="check_type">选择类别</string>
+    <string name="upp_fail">修改不成功</string>
+
+    <!-- ImageUploadActivity -->
+    <string name="url_nothing">图片路径不能为空</string>
+
+    <!-- MyImageShopFragemnt -->
+    <string name="tv_imageshop">店铺形象</string>
+    <string name="tv_shopdetail_tel">联 系 电 话：</string>
+    <string name="tv_shopdetail_time">营 业 时 间：</string>
+    <string name="tv_shopdetail_address">本商家位于：</string>
+    <string name="tv_shopdetail_coupon">优惠券</string>
+    <string name="tv_shopdetail_card">会员卡</string>
+
+    <!-- MyShopPicsActivity -->
+    <string name="pic_list">图片列表</string>
+    <string name="gray">#FFFFFF</string>
+
+    <!-- MyPosFaqActivity -->
+    <string name="pos_problem">刷卡问题解答</string>
+
+    <!-- SysAboutActivity -->
+
+
+    <!-- SysSuggestActivity -->
+    <string name="submit_success">您的建议已提交成功！！！</string>
+    <string name="submit_fail">数据提交失败了</string>
+    <string name="msg_send">发送</string>
+    <string name="input_suggest">请输入反馈意见...</string>
+
+    <!-- MyPosServActivity -->
+    <string name="material_distribution">耗材配送</string>
+    <string name="repair_service">故障报修</string>
+    <string name="pos_service">故障报修</string>
+    <string name="ser_type">门店设置</string>
+    <string name="other">其他</string>
+    <string name="service_description">服务说明</string>
+    <string name="card">申请建行POS机刷银行卡</string>
+    <string name="card_problem">刷卡问题解答</string>
+    <string name="service_phone">商户服务热线:400-04-95588</string>
+    <string name="tel">tel:400-04-95588</string>
+    <string name="submit_message">保存</string>
+    <string name="service_type">服务类型</string>
+    <string name="service_pos">你申请了建行POS机服务</string>
+    <string name="shopcode_error">商家编码不正确</string>
+    <string name="shop_noexit">商家不存在</string>
+    <string name="servicetype_error">服务类型不正确</string>
+    <string name="apply_success">申请pos服务成功！！！</string>
+    <string name="apply_fail">提交数据失败了!</string>
+    <string name="service_description_null">请填写服务说明</string>
+    <string name="check_sertype">请选择服务类型</string>
+
+    <!-- CardListActitivity 会员卡列表 -->
+    <string name="cardvip_list">会员列表</string>
+    <string name="cardvip_nnk">昵称：</string>
+    <string name="cardvip_csm_number">消费：</string>
+    <string name="cardvip_use_coupon">优惠券：</string>
+    <string name="tv_card_ls_id_title">卡号：</string>
+    <string name="tv_card_ls_csm_sum_title">消费：</string>
+    <string name="tv_card_ls_ddc_sum_title">抵扣：</string>
+    <string name="tv_couponuse_handle">按办卡时间排序</string>
+    <string name="tv_couponusr_date">按消费时间排序</string>
+    <string name="tv_couponusr_money">按消费金额排序</string>
+    <string name="tv_couponusr_time">按消费次数排序</string>
+    <string name="tv_couponuse">使用优惠券：</string>
+    <string name="tv_couponddt">抵扣总额：</string>
+
+    <!-- 订单详情里面的各种券 -->
+    <string name="order_n_buy">N元购:</string>
+    <string name="order_real_coupon">实物券:</string>
+    <string name="order_coupon_deduct">抵扣券:</string>
+    <string name="order_coupon_discount">折扣券:</string>
+    <string name="order_experience">体验券:</string>
+
+    <!-- CardHomeFragment 会员卡主页设计 -->
+    <string name="tv_cardvip_p">总会员人数</string>
+    <string name="cardvip_p">人</string>
+    <string name="tv_cardvip_add_p">近一个月新增人数</string>
+    <string name="tv_cardvip_csp">总消费金额</string>
+    <string name="cardvip_money">元：</string>
+    <string name="cardvip_money_">元</string>
+    <string name="tv_cardvip_igl">总积分</string>
+    <string name="cardvip_igl">分</string>
+    <string name="tv_cardvip_igl_od">三个月到期的积分</string>
+    <string name="tv_cardvip_growthchart">会员增长走势图</string>
+    <string name="tv_cardvip_csp_chart">金额消费走势图</string>
+    <string name="tv_card_person">人</string>
+
+    <!-- CardSettingsActitivity 会员卡规定设置 -->
+    <string name="cardvip_set">会员规定设置</string>
+    <string name="cardvip_set_btn_grade">等级设置</string>
+    <string name="cardvip_set_btn_integeral">积分设置</string>
+
+    <!-- CardGradeFirstFragment 会员卡等级设定 -->
+    <string name="cardvip_set_discount">折扣规则设定</string>
+    <string name="cardvip_gd_sum">会员等级数</string>
+    <string name="cardvip_gd_such">每级对应设置如下：</string>
+    <string name="cardvip_gd_">三级</string>
+    <string name="cardvip_gd">级：</string>
+    <string name="cardvip_card_">卡</string>
+    <string name="cardvip_need">卡，需要</string>
+    <string name="edt_cardvip_gd_dc">积分，享受</string>
+    <string name="cardvip_gd_dc">折</string>
+    <string name="cardvip_gd_1">第一级</string>
+    <string name="cardvip_gdcard">银卡</string>
+    <string name="cardvip_gdpoint">需要积分</string>
+    <string name="cardvip_gddc">享受折扣</string>
+    <string name="card_gddc">请输入0-10之间的两位小数的折扣</string>
+    <string name="draw_coupon_num">温馨提示：您当前领用张数大于发行总张数</string>
+    <string name="issue_coupon_num">温馨提示：您当前使用张数大于发行总张数</string>
+    <string name="draw_num">温馨提示：你设置领用的张数要大于0</string>
+    <string name="volume_total_num">温馨提示：你发行的优惠券张数要大于0</string>
+    <string name="use_num">温馨提示：你设置使用的张数要大于0</string>
+    <string name="use_coupon_num">温馨提示：您当前可使用张数大于领用张数</string>
+
+    <!-- CardIntegeralSetFragment 会员积分设置 -->
+    <string name="cardvip_set_igl">积分规则设定</string>
+    <string name="tv_cardvip_igl_trueName">实名制</string>
+    <string name="tv_cardvip_igl_borrow">允许卡转借</string>
+    <string name="tv_cardvip_igl_mei">每</string>
+    <string name="tv_cardvip_igl_ji">积</string>
+    <string name="tv_cardvip_igl_month">月</string>
+    <string name="cardvip_igl_fen">分</string>
+    <string name="tv_cardvip_igl_valid">积分有效期</string>
+    <string name="tv_cardvip_inputvalid">请输入积分有效期</string>
+    <string name="tv_cardvip_igl_style">设置卡样</string>
+    <string name="tv_cardvip_igl_dtl">(0表示长期有效)</string>
+    <string name="btn_cancel">取消</string>
+    <string name="btn_pick_photo">从相册选择</string>
+    <string name="btn_take_photo">拍照</string>
+    <string name="btn_take_photo_delete">删除</string>
+    <string name="btn_main_pic">设置成形象图片</string>
+    <string name="btn_edit">编辑</string>
+    <string name="btn_save">保存</string>
+    <string name="btn_card_style">卡样(点击可以导入卡的样式)</string>
+
+    <!-- CardDetailActivity 会员卡详细信息 -->
+    <string name="cardvip_set_dtl">会员信息</string>
+    <string name="cardvip_name">会员</string>
+    <string name="shop_vip_name">商家</string>
+    <string name="integral">分</string>
+    <string name="money">元</string>
+    <string name="cardvip_set_nkn">昵称：</string>
+    <string name="tv_cardvip_dtl_integral">积分：</string>
+    <string name="tv_cardvip_dtl_id">卡号：</string>
+    <string name="tv_cardvip_dtl_overdue">即将过期：</string>
+    <string name="tv_cardvip_dtl_handle">办卡时间：</string>
+
+    <!-- CardVipCommunionActivity 与遇见交流 -->
+    <string name="cardvip_communion">与会员交流</string>
+    
+    <!-- CouponVerificationFragment（兑换券和代金券的验证） -->
+    <string name="coupon_verification">兑换券/代金券验证</string>
+    <string name="verified">已验证</string>
+    <string name="unverified">未验证</string>
+    <string name="available">可用</string>
+    <string name="unavailable">不可用</string>
+    <string name="expired">过期</string>
+    <string name="request_refund">申请退款</string>
+    <string name="applied_refund">已申请退款</string>
+    <string name="refund">已退款</string>
+
+    <!-- CouponListActitivity 优惠券列表 -->
+    <string name="coupon_list">优惠券列表</string>
+    <string name="coupon_batch_usedetail">优惠券使用详情</string>
+    <string name="order_month">最近一月</string>
+    <string name="order_season">最近一季</string>
+    <string name="order_year">最近一年</string>
+    <string name="draw_person">领取张数</string>
+    <string name="use_person">使用张数</string>
+    <string name="coupon_detail">优惠券详情</string>
+    <string name="coupon_draw_detail">优惠券领取详情</string>
+    <string name="order_success">已完成</string>
+    <string name="order_fail">未完成</string>
+
+    <!-- CardInfoActivity -->
+    <string name="card_list">会员卡列表</string>
+    <string name="card_code">卡编码：</string>
+    <string name="card_type">卡的类型：</string>
+    <string name="card_create_time">创建时间：</string>
+    <string name="card_status">卡状态：</string>
+    <string name="card_remark">备注</string>
+
+    <!-- CouponListFragment 优惠券列表适配器的格式 -->
+    <string name="tv_coupon_batch">批次：</string>
+    <string name="tv_coupon_costs">面值：</string>
+    <string name="tv_coupon_csm_moneys">消费：</string>
+    <string name="tv_coupon_ls_sum_title">张数：</string>
+    <string name="tv_coupon_ls_csm_sum_title">消费：</string>
+    <string name="tv_coupon_ls_ddt_sum_title">抵扣：</string>
+    <string name="tv_coupon_csm_id">券号：</string>
+    <string name="tv_coupon_csm_pid">使用人：</string>
+    <string name="tv_coupon_limitcsm_time">适用时间：</string>
+    <string name="tv_coupon_bank_pay">银行支付：</string>
+    <string name="tv_home_list_code">标识码：</string>
+    <string name="tv_home_list_score">积分：</string>
+    <string name="tv_home_list_score_ok">积分确认</string>
+
+    <!-- CouponSettingActitivity 优惠券设置 -->
+    <string name="coupon_set">优惠券设置</string>
+    <string name="tv_coupon_csm_dtl">优惠券消费详情</string>
+    <string name="hint_money">请输入金额</string>
+    <string name="hint_coupon_num">请输入张数</string>
+    <string name="hint_discount">请输入折扣</string>
+    <string name="hint_nbr">请输入张数</string>
+
+    <!-- CouponHomeFragment 优惠券首页设置 -->
+    <string name="tv_coupon_batch_title">发放优惠券批次</string>
+    <string name="add_coupon">我发布的优惠券</string>
+    <string name="coupon_batch_ci">次</string>
+    <string name="tv_coupon_ddt_money_title">共抵扣金额</string>
+    <string name="tv_coupon_ddt_money_yuan">元</string>
+    <string name="tv_coupon_csm_money_title">带来消费金额</string>
+    <string name="tv_coupon_csm_p_title">带来消费人次</string>
+    <string name="tv_coupon_uncsm_title">当前未使用优惠券</string>
+    <string name="tv_coupon_uncsm_zhang">张</string>
+    <string name="tv_coupon_nbuy">注:以上两种二选一</string>
+    <string name="tv_coupon_growthchart">每批次消费走势图</string>
+    <string name="tv_coupon_igt_chart">每批次消费人次走势图</string>
+    <string name="tv_coupon_gong">共</string>
+    <string name="tv_coupon_rest">剩余</string>
+    <string name="tv_coupon_limit_use_time">截止使用日期</string>
+    <string name="tv_cong">从</string>
+    <string name="tv_month">月</string>
+    <string name="tv_date">日</string>
+    <string name="tv_dao">到</string>
+    <string name="tv_coupon_limit_draw_time">领取日期</string>
+    <string name="coupon_deduct">抵扣券</string>
+    <string name="coupon_discount">折扣券</string>
+    <string name="coupon_fullsendbatch">满就送批次</string>
+    <string name="coupon_nbuy">N元购</string>
+    <string name="exchange_voucher">兑换券</string>
+    <string name="voucher">代金券</string>
+    <string name="coupon_nbuybatch">N元购批次</string>
+    <string name="coupon_limitbuy">限时购</string>
+    <string name="coupon_limitbuybatch">限时购批次</string>
+    <string name="coupon_real">实物券</string>
+    <string name="coupon_realbatch">实物券批次</string>
+    <string name="coupon_exp">体验券</string>
+    <string name="coupon_expbatch">体验券批次</string>
+    <string name="use_rule">使用说明:</string>
+    <string name="coupon_perview">优惠券预览</string>
+    <string name="coupon_tips">温馨提示: 一经提交，自动生效，顾客即可领取</string>
+    <string name="no_coupon">老板，你还没有发布优惠券</string>
+    <string name="volume">发行</string>
+    <string name="volume_num">(最大发行数量999999)</string>
+    <string name="draw_num_limit">(默认单人领取/购买数量不限制)</string>
+
+    <!-- CouponSetDetailActivity 优惠券详细设置 -->
+    <string name="tv_coupon_cost">每张面值</string>
+    <string name="tv_coupon_buy">每张购买</string>
+    <string name="percoupon_reduce">每张减免</string>
+    <string name="percoupon_discount">每张享受</string>
+    <string name="tv_coupon_name">优惠券名称</string>
+    <string name="tv_coupon_cost_yuan">元,共发</string>
+    <string name="tv_voucher">元,代替</string>
+    <string name="tv_coupon_discount">折</string>
+    <string name="tv_coupon_csm_money">元可以使用一张优惠券</string>
+    <string name="tv_coupon_limit_csm">一次限用</string>
+    <string name="tv_coupon_can">每张可以</string>
+    <string name="tv_coupon_issuenum">共发</string>
+    <string name="tv_coupon_cando">描述本张优惠券可以做什么</string>
+    <string name="tv_coupon_exchange">兑换什么</string>
+    <string name="tv_coupon_limit_dtl">张(0表示无限制)</string>
+    <string name="tv_coupon_set_style">选择图片设置券样</string>
+    <string name="edt_coupon_use_epl">请对优惠券详细说明</string>
+    <string name="tv_coupon_draw_csm_money">元可以领用本优惠券一张</string>
+    <string name="tv_coupon_money_full">满</string>
+    <string name="single_people_draw">单人最多领取/购买</string>
+    <string name="single_people_use">单笔消费最多使用</string>
+    <string name="single_people_use_send">单笔消费最多送</string>
+    <string name="single_people_draw_num">张优惠券</string>
+    <string name="tv_coupon_limit_draw">一次限领</string>
+    <string name="tv_coupon_dtl">张优惠券(0表示无限制)</string>
+    <string name="tv_coupon_limit_all">每次限领</string>
+    <string name="tv_coupon_s">ssssssss</string>
+    <string name="tv_cmsdraw_coupon">每消费</string>
+    <string name="tv_cmsmoney_draw">送一张优惠券</string>
+    <string name="tv_coupon_enjoy">每张享受</string>
+    <string name="tv_couponlimitnber">不限使用张数 </string>
+    <string name="tv_couponshare">张 不与其他优惠券共享</string>
+    <string name="tv_csmuse">消费即可用</string>
+    <string name="csmuse_deduct">消费立减</string>
+    <string name="tv_couponscope">使用范围:本店通用</string>
+
+    <!-- CouponSettingsActitivity——>fragment 优惠券规则设定 -->
+    <string name="coupon_rule_set">优惠券规则设定</string>
+    <string name="coupon_rule_explain">优惠券说明</string>
+    <string name="coupon_usedate">使用日期</string>
+    <string name="coupon_usetime">每天使用时间 </string>
+    <string name="suggeste_time">(建议填写店铺的冷淡期) </string>
+    <string name="coupon_fullsend">满就送</string>
+    <string name="coupon_next">下一步</string>
+    <string name="coupon_over">完成</string>
+    <string name="coupon_last_step">上一步</string>
+    <string name="coupon_money_symbol">￥</string>
+    <string name="coupon_limit_use_coupon">每次限用</string>
+    <string name="coupon_limit_use_coupon_">张优惠券</string>
+    <string name="coupon_limit_date">有效期：</string>
+    <string name="coupon_money_use">可使用</string>
+    <string name="coupon_preview">预览</string>
+    <string name="coupon_commit">提交</string>
+    <string name="tv_coupone_directional_draw">定向领用</string>
+    <string name="tv_coupone_public_draw">大众可领用</string>
+    <string name="day_end_time">23:59</string>
+    <string name="day_start_time">00:00</string>
+    <string name="year_day">0000-00-00</string>
+
+    <!-- SysSuggestActivity 投诉建议 -->
+    <string name="complaint_advice_content">谢谢亲对惠圈的支持，你们的建议是我们的动力。</string>
+    <string name="complaint_advice">对惠圈的建议</string>
+    <string name="input_advice">请输入您的意见和建议</string>
+    <string name="feedback_content">反馈内容为空</string>
+
+    <!-- MyHomeFragment -->
+    <string name="myshop">我的商铺</string>
+    <string name="address">地址:</string>
+    <string name="shopname">商店名称</string>
+    <string name="xxaddress">*****街道**号</string>
+    <string name="assistant_manager">店员管理</string>
+    <string name="pos_ser">POS服务</string>
+    <string name="my_shop">我的店铺</string>
+    <string name="my_remommoned">推荐用户得壕礼</string>
+    <string name="my_act">我的活动</string>
+    <string name="your_advice">对惠圈的建议</string>
+    <string name="ser_phone">服务电话:</string>
+    <string name="ser_number">400-04-95588</string>
+    <string name="weixin">微信公众号:</string>
+    <string name="public_weixin">微信公众号</string>
+    <string name="update_pwd">修改密码</string>
+    <string name="version">关于</string>
+    <string name="weixi_number">huiquanvip</string>
+    <string name="about_baomi">关于惠圈商圈</string>
+    <string name="exit">退出登录</string>
+    <string name="order_manager">我的订单</string>
+    <string name="shop_photo">商家相册</string>
+    <string name="share_draw">限量优惠券,点击领取</string>
+    <string name="set_error">设置失败</string>
+    <string name="business_time_out">营业的结束时间比开始时间早</string>
+    <string name="add_shoptime_out">添加营业时间已达上限</string>
+    <string name="add_shopdelivery_out">添加商家配送方案已达上限</string>
+
+    <!-- PosPayFragment 手机连接POS机的支付界面 -->
+    <string name="tv_IPOS">MPOS</string>
+    <string name="btn_pos_sale">消费</string>
+    <string name="btn_pos_again_sure">再确认指令</string>
+    <string name="btn_pos_search_dtl">查明细</string>
+    <string name="btn_pos_set_logo">设置logo</string>
+    <string name="tv_pos_pay_menoy">金额:</string>
+    <string name="edt_pos_pay_menoy">0.0</string>
+    <string name="tv_pos_old_trace">原流水:</string>
+    <string name="edt_pos_old_trace">输入原交易流水号</string>
+    <string name="tv_pos_terminal">终端号:</string>
+    <string name="edt_pos_terminal">输入原交易终端号</string>
+    <string name="tv_pos_old_ref">参考号:</string>
+    <string name="edt_pos_old_ref">输入原交易参考号</string>
+    <string name="tv_pos_date">交易日期:</string>
+    <string name="updated_at">更新</string>
+    <string name="set_mpos">请设置Mpos的交易模式</string>
+    <string name="mpos_error">Mpos有误</string>
+
+    <!-- PullToRefreshView ListView 的刷新 -->
+    <string name="pull_to_refresh_pull_label">下拉刷新</string>
+    <string name="pull_to_refresh_release_label">松开后刷新</string>
+    <string name="pull_to_refresh_refreshing_label">刷新\u2026</string>
+    <string name="pull_to_refresh_footer_release_label">松开后加载</string>
+    <string name="pull_to_refresh_footer_pull_label">上拉加载更多</string>
+    <string name="pull_to_refresh_footer_refreshing_label">加载中\u2026</string>
+    <string name="pull_to_refresh">下拉可以刷新</string>
+    <string name="release_to_refresh">释放立即刷新</string>
+    <string name="refreshing">正在刷新…</string>
+    <string name="not_updated_yet">暂未更新过</string>
+    <string name="updated_just_now">刚刚更新</string>
+    <string name="time_error">时间有问题</string>
+    <string name="latest_version">已经是最新版</string>
+    <string name="downloading">正在下载</string>
+    <string name="toast_actmoney_totalvolume">请输入红包数量</string>
+    <!-- HomeFragListAdapter 首页E支付和优惠券消费统计 -->
+    <string name="tv_ecsm_money">消费：</string>
+    <string name="tv_ddt_money">抵扣：</string>
+    <string name="tv_ecsm_pay">支付：</string>
+    <string name="tv_ecsm_code_title">标识码：</string>
+    <string name="tv_ecsm_score">积分：</string>
+    <string name="tv_use_coupon">使用：</string>
+
+    <!-- CouponCsmDetailFragment 优惠券使用详情的里面的条件查询 -->
+    <string name="tv_order_month">最近一月</string>
+    <string name="tv_order_season">最近一月</string>
+    <string name="tv_order_year">最近一年</string>
+
+    <!-- ActAddFragment  营销活动中的活动列表 -->
+    <string name="tv_actlist_activity">活动</string>
+    <string name="tv_actlist_activitymoney">红包</string>
+    <string name="tv_actlist_name">主题</string>
+    <string name="tv_actlist_people">活动人数</string>
+    <string name="tv_actlist_time">活动时间</string>
+    <string name="tv_actlist_yuan">元</string>
+    <string name="tv_actlist_to">-</string>
+    <string name="tv_actlist_enterperson">报名人员</string>
+    <string name="tv_actlist_money">领取人员</string>
+    <string name="del_activity">您确定要删除这个活动吗？</string>
+    <string name="cancel_activity">您确定要取消这个活动吗？</string>
+    <string name="stop_sign_up">您确定要暂停报名？</string>
+    <string name="start_activity">您确定要发布这个活动？</string>
+    <string name="begin_activity">您确定要开始报名？</string>
+    
+    <!-- 活动管理(ActivityManagerFragment) -->
+    <string name="act_manager">活动管理</string>
+    <string name="act_release">发布活动</string>
+    <string name="act_read">阅读</string>
+    <string name="act_collect">收藏</string>
+    <string name="act_published">活动已发布</string>
+    <string name="act_unpublished">活动未发布</string>
+    <string name="suspend_registration">暂停报名</string>
+    <string name="begin_registration">活动开始报名</string>
+    <string name="events_canceled">活动取消</string>
+    <string name="edit_act">编辑活动</string>
+    <string name="relaunching_activities">重新发起活动</string>
+    
+    <!-- 扫码支付的确认订单(ConfirmOrderFragment) -->
+    <string name="order_not_price">不参与优惠金额</string>
+    <string name="order_huiquan_red">惠圈红包</string>
+    <string name="order_icbccard_discount">建行卡折扣</string>
+    <string name="order_discount">折</string>
+    <string name="actual_paymoney">实际支付</string>
+    <string name="clearing">结算</string>
+    <string name="confirm_order">确认订单</string>
+    <string name="card_deduction">会员卡折扣</string>
+    <string name="shop_platbouns">商家红包</string>
+    <string name="first_deduction">首单立减</string>
+    
+    <!-- 扫码支付确认订单的支付完成界面(paymentCompletionFragment) -->
+    <string name="payment_ordernbr">订单号：</string>
+    <string name="payment_actual_money">实际金额</string>
+    <string name="payment_isclearing">您确定要结算吗？</string>
+    <string name="payment_iscancel">您确定要取消吗？</string>
+
+    <!-- 验证码 (SecurityCodeFragment)-->
+    <string name="couponorvoucher">兑换券/代金券</string>
+    <string name="scan_code">扫码</string>
+    <string name="security_code">验证码  ：</string>
+    <string name="activity_status">状态  ：</string>
+    <string name="verification">验证</string>
+    <string name="verification_success">验证成功</string>
+    <string name="verification_fail">验证失败，请重试</string>
+    <string name="isverification">您确定要验证码？</string>
+    <string name="tel_person">联系人:</string>
+    <string name="activity_not_start">敬请期待</string>
+    <string name="vailid_nothing">请输入验证码</string>
+    <string name="scan_not_start">扫码还未开始，敬请期待</string>
+    <string name="coupon_not_use">优惠券不可用</string>
+    <string name="coupon_is_expired">优惠券已过期</string>
+    
+    <!-- EditActivityFragment -->
+    <string name="edit_get_together">聚会</string>
+    <string name="edit_movement">运动</string>
+    <string name="edit_outdoor">户外</string>
+    <string name="edit_paternity">亲子</string>
+    <string name="edit_experience_class">体验课</string>
+    <string name="edit_music">音乐</string>
+    <string name="edit_othter">其他</string>
+    
+    <!-- MyOrderDetailActivity -->
+    <string name="ordernbr">订单号</string>
+    <string name="exchangecode">兑换码</string>
+    <string name="batchnbr">批次</string>
+    <string name="orderpaytype">支付类型</string>
+    <string name="order_time">时间</string>
+    <string name="order_detail">订单详情</string>
+    <string name="order_status">订单状态</string>
+    <string name="csm_money">消费金额</string>
+    <string name="csm_part">不参与优惠金额</string>
+    <string name="csm_time">下单时间</string>
+    <string name="csm_tel">手机号码</string>
+    <string name="money_unit">元</string>
+    <string name="total_ddtmoney">优惠金额</string>
+    <string name="coupon_dcmoney">优惠券  :</string>
+    <string name="bank_dcmoney">建银优惠  :</string>
+    <string name="card_ddtmoney">会员卡  :</string>
+    <string name="pay_totalmoney">实际支付</string>
+    <string name="bouns_shop">商家红包</string>
+    <string name="huiquan_bouns">惠圈红包 </string>
+    <string name="cancel_order">撤销订单失败</string>
+
+    <!-- ActAddFragment  添加营销活动 -->
+    <string name="tv_actadd_contentset">营销活动设置</string>
+    <string name="tv_actadd_theam">活动主题</string>
+    <string name="tv_actadd_starttime">开始时间</string>
+    <string name="tv_actadd_endtime">结束时间</string>
+    <string name="tv_actadd_location">活动地点</string>
+    <string name="tv_actadd_last">上一步</string>
+    <string name="tv_actadd_next">下一步</string>
+    <string name="tv_actadd_explain">请输入活动说明</string>
+    <string name="tv_actadd_people">请输入活动人数限制</string>
+    <string name="tv_actadd_pay">金额</string>
+    <string name="tv_actadd_face">需要预付费</string>
+    <string name="tv_actadd_money">预付金额</string>
+    <string name="tv_actadd_baoming">需要报名</string>
+    <string name="tv_actadd_look">预览</string>
+    <string name="tv_actadd_camera">照相</string>
+    <string name="tv_actadd_photo">从相册中获取</string>
+    <string name="tv_actadd_cancel">取消</string>
+    <string name="tv_actlist_detail">活动详情</string>
+    <string name="tv_actlist_commit">提交</string>
+    <string name="tv_actlist_loc">活动地点</string>
+    <string name="tv_actlist_peopleup">人数上限</string>
+    <string name="tv_actlist_peopleover">不能超过</string>
+    <string name="tv_actlist_other">其他限制</string>
+    <string name="tv_actlist_othercontent">活动说明</string>
+    <string name="tv_actlist_person">人</string>
+    <string name="tv_actlist_title">营销活动设置</string>
+    <string name="tv_actlist_isPrepayRequired">需要预付费</string>
+    <string name="tv_actlist_isRegisterRequired">需要报名</string>
+    <string name="tv_actlist_select">预览</string>
+    <string name="tv_actlistpeople_title">报名人数</string>
+
+    <!-- 红包列表 -->
+    <string name="tv_actlistmoney_getcount">获取人数</string>
+    <string name="tv_actlistmoney_setcount">使用人数</string>
+    <string name="tv_actlistmoney_sum">消费总额</string>
+    <string name="tv_actlistmoney_people">消费人流</string>
+
+    <!-- ActAddFragment  红包添加 -->
+    <string name="tv_actadd_moneynumber">红包数量</string>
+    <string name="tv_actadd_moneynumberscope">金额区间</string>
+    <string name="tv_actadd_moneystart">从</string>
+    <string name="tv_actadd_moneyecnter">至</string>
+    <string name="tv_actadd_moneycontent">请输入红包数量</string>
+    <string name="tv_actadd_moneyamout">红包总额</string>
+    <string name="tv_actadd_moneycount">每天限制发送红包数量</string>
+    <string name="tv_actadd_moneyterm">领取红包使用有效期</string>
+    <string name="tv_actadd_moneyday">天</string>
+    <string name="tv_actadd_start">开始时间</string>
+    <string name="tv_actadd_end">结束时间</string>
+
+    <!-- ActMoneyDetailFragment  红包详情 -->
+    <string name="tv_actmoney_detail">红包详情</string>
+    <string name="tv_actmoney_user">停发</string>
+    <string name="tv_actmoney_enable">启用</string>
+    <string name="tv_actmoney_usermoney">停发成功</string>
+    <string name="tv_actmoney_enablemoney">启用成功</string>
+    <string name="tv_actmoney_errore">操作失败</string>
+
+    <!-- MoneyReceiverFragment 红包领取人数 -->
+    <string name="tv_actmoney_title">领取人数</string>
+
+    <!-- ActListDetailFragment 银行卡刷卡对账title -->
+    <string name="tv_accntstat_title">对账详情</string>
+    <string name="tv_accntlist_listtitle">对银行卡刷卡对账</string>
+    
+    <!-- AccntStatListFragment 银行卡对账列表 -->
+    <string name="tv_accntlist_date">对账日期</string>
+    <string name="tv_accntlist_consumeCount">刷卡笔数</string>
+    <string name="tv_accntlist_money">刷卡金额</string>
+    <string name="tv_accntlist_rebateAmount">回佣金额</string>
+    <string name="tv_accntlist_theAmountCredited">入账金额</string>
+    <string name="tv_accntlist_saving">分期付款手续费</string>
+    <string name="tv_accntlist_title">对账清单</string>
+    <string name="tv_accntlist_yuan">元</string>
+    <string name="tv_accntlist_pen">笔</string>
+
+    <!-- ActListDetailFragment 银行卡刷卡对账详情 -->
+    <string name="tv_accntstat_detail">对账详情</string>
+    <string name="tv_accntstat_time">交易时间</string>
+    <string name="tv_accntstat_number">交易卡号</string>
+    <string name="tv_accntstat_money">交易金额</string>
+    <string name="tv_accntstat_fakabank">发卡银行</string>
+    <string name="tv_accntstat_type">交易类型</string>
+    <string name="tv_accntstat_channel">交易渠道</string>
+    <string name="tv_accntstat_serialNbr">流水号</string>
+    <string name="tv_accntstat_coderieval">检索号</string>
+    <string name="tv_accntstat_rebate">交易回佣</string>
+    <string name="tv_accntstat_situation">对账情况</string>
+    <string name="tv_accntstat_installmentFee">分期手续费</string>
+    <string name="tv_accntstat_installmentNbr">分期期数</string>
+    <string name="tv_accntstat_rate">持卡人费率</string>
+    <string name="tv_accntstat_fee">持卡人手续费</string>
+
+    <!-- 优惠券对账 -->
+    <string name="tv_accntcoupon_paper">张</string>
+    <string name="tv_accntcoupon_all">共计</string>
+    <string name="tv_accntcoupon_our">其中惠圈出</string>
+    <string name="tv_accntcoupon_yuan">元</string>
+    <string name="tv_fullreduce">满就减消费</string>
+    <string name="tv_time">限时购消费</string>
+    <string name="tv_n">N元购消费</string>
+    <string name="tv_send">满就送消费</string>
+    <string name="tv_matter">实物劵消费</string>
+    <string name="tv_experience">体验券消费</string>
+
+    <!-- 营销活动对账 -->
+    <string name="tv_accntremarket_all">营销活动消费</string>
+    <string name="tv_accntremarket_space">场</string>
+    <string name="tv_accntremarket_money">红包消费</string>
+    <string name="tv_accntremarket_slap">批</string>
+
+    <!-- popuwindow -->
+    <string name="tv_accntstat_acctmonth">最近一周</string>
+    <string name="tv_accntstat_acctweek">最近一月</string>
+    <string name="tv_accntstat_acctseason">最近一季</string>
+    <string name="title_activity_card_info_list">CardInfoListActivity</string>
+
+    <!-- CheckStandFragment 收银台主页 -->
+    <string name="tv_check_money">消费金额</string>
+    <string name="tv_check_ok">确认</string>
+    <string name="tv_check_stages">分期付款</string>
+    <string name="tv_check_detail">查明细</string>
+    <string name="tv_check_back">撤销</string>
+    <string name="tv_check_return">隔日退货</string>
+    <string name="tv_check_stamp">打印</string>
+
+    <!-- CheckSandStagesFragment -->
+    <string name="tv_check_comsume">消费金额</string>
+    <string name="tv_check_periods">分期期数</string>
+
+    <!-- MassageFragment -->
+    <string name="mymsg">我的消息</string>
+    <string name="my_communication">会员沟通</string>
+    <string name="my_bordcast">异业广播</string>
+
+    <!-- CardGradeListFragment -->
+    <string name="card_gradefirst">第一级:银卡</string>
+    <string name="card_commoncard">普卡</string>
+    <string name="card_gradepoint">需要积分</string>
+    <string name="card_gradediscount">享受折扣</string>
+    <string name="card_discount">折扣</string>
+    <string name="card_zemo">0</string>
+    <string name="card_grademoney">每1元积</string>
+    <string name="card_jimoney">每积1元需</string>
+    <string name="card_gradepointvalid">积分有效期</string>
+    <string name="card_gradesecond">第二级:金卡</string>
+    <string name="card_second">第二级</string>
+    <string name="card_gradethird">第三级:白金卡</string>
+    <string name="card_third">第三级</string>
+    <string name="card_goldcard">金卡</string>
+    <string name="card_silvercard">银卡</string>
+    <string name="card_platinumcard">白金卡</string>
+
+    <!-- 微信分享 -->
+    <string name="tv_weixin_good_f">微信好友</string>
+    <string name="tv_weixin_circle_f">朋友圈</string>
+
+    <!-- TOAST用到的说明文字 -->
+    <string name="no_more">数据已经加载完</string>
+    <string name="toast_moredata">数据加载完成</string>
+    <string name="toast_todaydata">今天没有刷卡信息</string>
+    <string name="toast_nulldata">暂无数据加载</string>
+    <string name="toast_data_error">输入验证码有误</string>
+    <string name="toast_add_succ">添加成功</string>
+    <string name="toast_upp_succ">修改成功</string>
+    <string name="toast_add_fail">添加失败</string>
+    <string name="toast_card_set">新来的吧，赶快去设置商店会员卡</string>
+    <string name="toast_actaddimage_upload">图片路径不能为空</string>
+    <string name="toast_coupon_upload">图片正在上传，请稍等</string>
+    <string name="toast_coupon_errorform">图片格式有问题，请重新上传</string>
+    <string name="toast_coupon_errorsize">图片尺寸有问题，请重新上传</string>
+    <string name="toast_no_default">以下输入框不输入值，将自动填入默认值</string>
+    <string name="toast_coupon_style">请上传一张优惠券的样式</string>
+    <string name="toast_no_detail">无任何说明……</string>
+    <string name="toast_timeuse_small">截止使用时间必须大于开始使用时间</string>
+    <string name="toast_time_small">截止使用时间必须比领取时间晚</string>
+    <string name="toast_fullsend">满就送的金额要大于0</string>
+    <string name="single_fullsend">单笔消费可送的优惠券数量必须大于0</string>
+    <string name="single_draw">满就送的张数要小于单人可领取的张数</string>
+    <string name="toast_time_late">优惠券每天使用结束的时间要比开始时间晚</string>
+    <string name="toast_time_now">你选择时间不能晚于今天</string>
+    <string name="toast_time_start_now">你选择的开始时间不能晚于今天</string>
+    <string name="toast_time_end_now">你选择的开始时间不能晚于今天</string>
+    <string name="toast_money_num">请输入正确的金额</string>
+    <string name="toast_coupon_draw">每人限领数量要少于发行数量</string>
+    <string name="toast_coupon_use">使用数量要小于发行张数</string>
+    <string name="toast_actlist_noimageurl">图片无法显示</string>
+    <string name="toast_actlist_starttime">选择时间不能晚于今天</string>
+    <string name="toast_actlist_startcamtime">开始时间不正确</string>
+    <string name="toast_actlist_endtime">结束时间不正确</string>
+    <string name="toast_actlist_context">活动说明不正确</string>
+    <string name="toast_actlist_time">结束时间必须大于开始时间</string>
+    <string name="toast_shopinfo_time">营业结束时间必须大于开始时间</string>
+    <string name="home_money">￥</string>
+    <string name="home_discount">折</string>
+    <string name="toast_login_nouser">用户不存在</string>
+    <string name="toast_login_pwd">密码格式不正确</string>
+    <string name="toast_register_phone">请输入手机号码</string>
+    <string name="toast_register_format">手机号码格式不正确</string>
+    <string name="toast_register_incode">验证码不正确，请重新发送</string>
+    <string name="toast_register_nouser">员工不存在</string>
+    <string name="toast_register_indencode">请输入验证码</string>
+    <string name="toast_register_indencodeerror">验证码请求失败</string>
+    <string name="toast_register_indencoderegister">手机号码已经激活，请登录</string>
+    <string name="toast_register_pwd">请输入密码</string>
+    <string name="toast_register_between">密码需由为6-20的字符组成</string>
+    <string name="toast_register_businessnum">请输入营业执</string>
+    <string name="toast_register_protocol">请遵守苞米商圈协议</string>
+    <string name="toast_register_phoneuser">手机号码已经被使用,请重新输入</string>
+    <string name="toast_register_indencodeerroe">验证码错误</string>
+    <string name="toast_register_pwdformaterroe">密码格式不正确</string>
+    <string name="toast_register_ok">激活成功</string>
+    <string name="toast_resetpwd_fail">修改密码失败</string>
+    <string name="toast_inspect_no">手机号码未提交审核</string>
+    <string name="toast_inspect_wait">手机号码审核还未通过，请耐心等待</string>
+    <string name="toast_inspect_ok">手机号码审核通过，请登录</string>
+    <string name="toast_inspect_again">商家已经审核过，不能重复审核</string>
+    <string name="indencode_code_error">请求失败</string>
+    <string name="indencode_register_error">手机号码已经使用</string>
+    <string name="toast_actadd_theam">请输入活动标题</string>
+    <string name="toast_actadd_pic">请上传封面图片</string>
+    <string name="toast_actadd_preson">请输入联系人</string>
+    <string name="toast_actadd_type">请选择活动类型</string>
+    <string name="toast_actadd_singlepreson">请输入单人报名人数</string>
+    <string name="toast_actadd_starttime">请输入活动开始时间</string>
+    <string name="toast_actadd_endtime">请输入活动结束时间</string>
+    <string name="toast_actadd_address">请输入活动地址</string>
+    <string name="toast_actadd_phone">请输入联系电话</string>
+    <string name="toast_actadd_max">请输入活动最大参与人数</string>
+    <string name="toast_actadd_content">请输入活动活动内容</string>
+    <string name="toast_actadd_limitedparticipators">请输入人数上限</string>
+    <string name="toast_actadd_or">请选择预付费或报名</string>
+    <string name="toast_actadd_money">请输入付费金额</string>
+    <string name="toast_actadd_minmoney">预付金额不能少于5元</string>
+    <string name="toast_actadd_maxmoney">预付金额不能多于10000</string>
+    <string name="toast_actadd_number">请输入红包数量</string>
+    <string name="toast_actmoney_totalvolumezero">不可输入0，请重新输入</string>
+    <string name="toast_actmoney_moneytype">红包数量类型不正确</string>
+    <string name="toast_actmoney_upperprice">请输入金额区间上限</string>
+    <string name="toast_actadd_no">选择报名，预付金额不可写</string>
+    <string name="toast_actmoney_upperpricetype">金额区间上限类型不正确</string>
+    <string name="toast_actmoney_lowerprice">请输入金额区间下限</string>
+    <string name="toast_actmoney_lowerpricemoney">红包金额最少5元</string>
+    <string name="toast_actmoney_or">红包金额的区间下限不能大于上限</string>
+    <string name="toast_actmoney_lowerpricetpye">金额区间下限类型不正确</string>
+    <string name="toast_actmoney_totalvalue">请输入发行红包总额</string>
+    <string name="toast_actmoney_totalvaluetype">发行红包总额类型不正确</string>
+    <string name="toast_actmoney_totalvaluemin">红包金额最少100元</string>
+    <string name="toast_actmoney_totamin">红包金额不能少于0元</string>
+    <string name="toast_actmoney_nbrperday">请输入每天限制发行红包的数量</string>
+    <string name="toast_actmoney_nbrpertype">发送红包数量类型不正确</string>
+    <string name="toast_actmoney_totalValue">红包发行总额不得低于最大金额</string>
+    <string name="toast_actmoney_validityperiod">请输入红包使用有效期限</string>
+    <string name="toast_actmoney_validityperiodtype">有效期限类型不正确</string>
+    <string name="toast_coupondraw">优惠券类型为满就减时，必须消费后才可以领取优惠券</string>
+    <string name="toast_coupondraw_way">请选择优惠券领用的方式</string>
+    <string name="toast_inputdefault">输入内容不能为空，否则系统将输入默认值</string>
+    <string name="toast_inputdenull">输入内容不能为空</string>
+    <string name="toast_actmoney_erroe">添加失败</string>
+    <string name="toast_actmoney_min">红包发行总额过低</string>
+    <string name="toast_actmoney_max">红包发行总额过高</string>
+    <string name="toast_actmoney_success">添加成功</string>
+    <string name="toast_actcontent_success">提交成功</string>
+    <string name="toast_setover">完成</string>
+    <string name="toast_login_internet">请检查网络是否连接</string>
+    <string name="toast_resetpwd_ok">密码修改成功</string>
+    <string name="toast_actadd_prepayment">正在提交</string>
+    <string name="toast_actadd_image">点击更换图片</string>
+    <string name="toast_actadd_jiazai">数据正在加载</string>
+    <string name="toast_scan">扫描内容并非惠圈提供，请慎用</string>
+    <string name="toast_scan_ok">扫描成功</string>
+    <string name="toast_scan_error">扫描失败</string>
+    <string name="toast_scan_nothing">扫描内容不能为空</string>
+    <string name="toast_coupon_error">统计失败</string>
+    <string name="toast_pay_error">商家不匹配</string>
+    <string name="toast_scanagain">扫描失败，请重新扫描</string>
+    <string name="toast_internet_error">请连接网络!!</string>
+    <string name="toast_staffmanamer_add">添加成功</string>
+    <string name="toast_staffmanamer_update">修改成功</string>
+    <string name="toast_commitsucc_fail">提交失败</string>
+    <string name="toast_commitsucc_succ">提交成功</string>
+    <string name="toast_internet">请连接网络</string>
+    <string name="toast_select_fail">查询失败</string>
+    <string name="toast_app_fail">退出不成功</string>
+    <string name="time_out">亲，超出时间范围了</string>
+    <string name="toast_campaign_imageerror">读取图片失败</string>
+    <string name="toast_scanprinter_paper">缺纸！！！</string>
+    <string name="scanPrint_input">请输入需打印信息</string>
+    <string name="toast_scaninput_error">扫码收款失败</string>
+    <string name="toast_consumptionamount_nothing">请输入消费金额</string>
+    <string name="toast_consumptionamount_no">请输入消费金额</string>
+    <string name="toast_consumptionamount_scan">请按扫描键</string>
+    <string name="toast_nodiscount_nothing">请输入不参与消费金额</string>
+    <string name="toast_scanactivity_error">扫码失败</string>
+    <string name="toast_consumptionamount_max">支付金额不能超过300元</string>
+    <string name="toast_consumptionamount_diff">不参与优惠金额不能大于消费金额</string>
+    <string name="toast_scan_code_error">扫描失败</string>
+    <string name="toast_scan_code_nosafe">请重新扫描</string>
+    <string name="toast_scan_code_overdue">二维码过期</string>
+    <string name="toast_scan_code_noexis">用户不存在</string>
+    <string name="toast_scan_code_noblind">用户未绑定该银行卡</string>
+    <string name="toast_scan_code_blinderror">该银行卡解绑或未成功绑定</string>
+    <string name="toast_print_error">结算失败</string>
+    <string name="toast_bank_nothing">银行账户为空</string>
+    <string name="toast_bank_code_error">银行账户编码错误</string>
+    <string name="toast_bank_noexis">消费订单不存在</string>
+    <string name="toast_scan_illegal">非法二维码</string>
+    <string name="toast_order_cancel">支付已经取消</string>
+    <string name="toast_upload_nothing">活动内容不能为空</string>
+
+    <!-- MyTwocodeFragment -->
+    <string name="two_code">扫一扫二维码，进入店铺</string>
+    <string name="pay_succ">SUCCES</string>
+    <string name="pay_fail">FAIL</string>
+    <string name="consume_succ">消费成功</string>
+
+    <!-- 日历 -->
+    <string name="monday">一</string>
+    <string name="thuesday">二</string>
+    <string name="wednesday">三</string>
+    <string name="thursday">四</string>
+    <string name="friday">五</string>
+    <string name="saturday">六</string>
+    <string name="sunday">日</string>
+
+    <!-- app底部文字 -->
+    <string name="card_grade">会员卡规则</string>
+    <string name="card_gradeset">会员卡规则设定</string>
+    <string name="card_edit">编辑</string>
+    <string name="app_set">设置</string>
+    <!-- VipChatFragment 留言 -->
+    <string name="leave_message">留言</string>
+    <string name="msg_read">已读</string>
+    <string name="msg_noread">未读</string>
+    <!-- 软件更新 -->
+    <string name="soft_update_title">软件更新</string>
+    <string name="soft_update_info">检测到新版本了，立即更新吗</string>
+    <string name="soft_needupdate_info">此版本不更新，可能导致程序部分功能无法使用</string>
+    <string name="soft_update_updatebtn">更新</string>
+    <string name="soft_update_later">稍后更新</string>
+    <string name="soft_updating">正在更新</string>
+    <string name="soft_update_cancel">取消</string>
+    <!-- 优惠券设置 -->
+    <string name="coupon_value">优惠券面值要大于0</string>
+    <string name="coupon_nbr">优惠券发行总量要大于0</string>
+    <string name="coupon_limitvalue">优惠券享受金额要大于0</string>
+    <string name="coupon_ddc">请填写正确的折扣数额</string>
+    <string name="add_batchcoupon">正在添加优惠券,请稍等……</string>
+    <string name="input_money">输入的金额要大于减免金额</string>
+    <string name="vouche_money">购买金额大于代金券的面额</string>
+    <string name="no_boring">您设置的优惠券没有意义</string>
+
+    <!-- 报名 -->
+    <string name="enroll_name">昵称</string>
+    <string name="enroll_peopel">人数：</string>
+    <string name="enroll_adult">大人：</string>
+    <string name="enroll_adultman">男</string>
+    <string name="enroll_adultwoman">女</string>
+    <string name="enroll_child">小孩：</string>
+    <!-- ActIcBcListFragment -->
+    <string name="enroll">报名</string>
+    <string name="upload_image">上传图片</string>
+
+    <!-- 图片浏览 -->
+    <string name="only_choose_num">超出可选图片张数</string>
+    <string name="invalidSD">sdcard无效或没有插入！</string>
+    <string name="photo">选择相册</string>
+    <string name="album">相册</string>
+    <string name="preview">预览</string>
+    <string name="unfinished">完成</string>
+    <string name="camera_cancel">取消</string>
+    <string name="no_photo">相册没有图片</string>
+
+    <!-- 多方登陆 -->
+    <string name="login_titleMsg">下线通知</string>
+    <string name="login_cont0ent">你的账号在另一台android手机登陆。如非本人操作，则密码可能泄露，建议修改密码或紧急冻结账号。</string>
+    <string name="login_exit">退出</string>
+    <string name="login_ok">重新登陆</string>
+
+    <!-- 产品相册 -->
+    <string name="no_album">您的产品还没有相册哦</string>
+    <string name="new_add_album">新建相册</string>
+    <string name="no_picture">您的相册还没有照片哦</string>
+    <string name="upload_picture">上传照片</string>
+    <string name="album_name">相册名称</string>
+    <string name="upload_here">上传到</string>
+    <string name="product_name">产品名字:</string>
+    <string name="input_proname">请输入产品的名字</string>
+    <string name="product_price">价格:</string>
+    <string name="que_del_ok">您确定要删除吗</string>
+    <string name="no_data">没有更多数据加载 </string>
+
+    <!-- 我的推荐 码 -->
+    <string name="my_recommoned">我的推荐码</string>
+    <string name="my_recommoned_person">注册人数/人</string>
+    <string name="my_recommoned_bonus">消费人数/人</string>
+    <string name="my_recommoned_image">红包图</string>
+    <string name="my_recommoned_invite">邀请好友得到更多福利</string>
+    <string name="my_recommoned_detail">每向一位好友成功发出惠圈邀请，您将</string>
+    <string name="my_left_detail">收获</string>
+    <string name="my_recommoned_details">元平台奖励</string>
+    <string name="my_recommoned_mysend">发送您的推荐码</string>
+    <string name="my_recommoned_share">分享到社交网络</string>
+    <string name="my_recommoned_user">邀请用户,互利共赢</string>
+    <string name="get_recommoned">请获取推荐码后再分享</string>
+    <string name="my_recommoned_rule">推荐规则</string>
+    <string name="my_recommoned_rule_one">1.被邀请人必须是惠圈新用户，未注册过惠圈</string>
+    <string name="my_recommoned_rule_two">2.被邀请人点击注册页面，输入您的邀请码，您将获得惠圈1元红包，红包可抵现金累计使用。</string>
+    <string name="my_recommoned_rule_three">3.被邀请人首次成功消费后，您还将获得4元优惠券作为奖励。</string>
+    <string name="my_recommoned_rule_four">4.被邀请人完成一次下单支付操作视为一次成功消费。</string>
+    <string name="my_recommoned_rule_five">5.使用非正常途径或手段获得的优惠券无效，惠圈保留最终解释权。</string>
+    <string name="my_recommoned_rule_detail">通过推荐码邀请顾客下载注册成为会圈的用户，平台会根据实际邀请的人数对商户进行一定的奖励。</string>
+
+    <!-- 优惠券详情 -->
+    <string name="use_coupon_time">使用日期：</string>
+    <string name="use_day_date">每天使用时间：</string>
+    <string name="use_day_time">使用时间：</string>
+    <string name="no_limit_time">不限使用时间</string>
+    <string name="day_use">全天可用</string>
+
+    <!-- 对话框 -->
+    <string name="dialog_title">温馨提示</string>
+    <string name="dialog_follow_conent">您确定要取消关注?</string>
+    <string name="dialog_csm_conent">您确定要消费?</string>
+    <string name="dialog_coupon_draw">您确定要停用优惠券领取吗？</string>
+    <string name="dialog_ok">确定</string>
+    <string name="dialog_cancel">取消</string>
+    <string name="dialog_think">我再想想</string>
+
+    <!-- 门店订单的内容 -->
+    <string name="order_number">餐号</string>
+    <string name="store_order">门店订单</string>
+    <string name="outside_order">外卖订单</string>
+    <string name="selection">筛选</string>
+    <string name="date">日</string>
+    <string name="week">周</string>
+    <string name="month">月</string>
+    <string name="untreated">已下单</string>
+    <string name="obligation">已接单</string>
+    <string name="distribution">已派送</string>
+    <string name="trading_success">已送达</string>
+    <string name="refund_application_payed">已退款</string>
+    <string name="trade_cancellation">已撤销</string>
+    <string name="refund_application_success">退款成功</string>
+    <string name="user">用户：</string>
+    <string name="mycontact_number">电话：</string>
+    <string name="myorder_time">下单时间：</string>
+    <string name="today">请在今天</string>
+    <string name="confirm_orders">前确认接单</string>
+    <string name="remark_message">备注信息：</string>
+    <string name="fasting_order_type">订单类型：</string>
+    <string name="pay_status">支付状态：</string>
+    <string name="unpaid">未支付</string>
+    <string name="payment">支付中</string>
+    <string name="order_cancel">已取消订单</string>
+    <string name="cancel">取消</string>
+    <string name="paid">已支付</string>
+    <string name="fail_pay">支付失败</string>
+    <string name="refund_application">退款申请中</string>
+    <string name="refunded">已退款</string>
+    <string name="pend_order">待下单</string>
+    <string name="ordered">已下单</string>
+    <string name="has_order">已接单</string>
+    <string name="have_delivered">已派送</string>
+    <string name="been_served">已送达</string>
+    <string name="revoked">已撤销</string>
+    <string name="agree_refund">同意退款</string>
+    <string name="noagree_refund">拒绝退款</string>
+    <string name="pend_store">待商家结算</string>
+    <string name="pay_order_fail">支付失败，请重新提交</string>
+    
+    <!-- 订单详情 （餐后支付 ） -->
+    <string name="myafter_order_tel">tel:18627885265</string>
+    <string name="myafter_order_back">确定要撤销订单吗？</string>
+    <string name="myafter_order_phone">电话号码为空</string>
+    <string name="myafter_order_commit_fail">提交失败</string>
+    <string name="myafter_order_commit_ok">等待用户支付</string>
+    <string name="myafter_order_phone_ok">确定要拨打电话吗</string>
+    <string name="myafter_confirm_orders">确认接单</string>
+    <string name="myafter_order_pay">去结算</string>
+    <string name="myafter_order_pay_cancel">支付取消</string>
+    <string name="myafter_order_pay_error">支付失败</string>
+    <string name="myafter_order_pay_back">退款申请</string>
+    <string name="myafter_order_pay_order">请选择菜品</string>
+    <string name="myafter_order__table_title">温馨提示</string>
+    <string name="not_commit">订单不能提交结算</string>
+    <string name="waitinglist">待接单</string>
+    <string name="distributionlist">配送中</string>
+    <string name="transactioncancellation">交易取消</string>
+    <string name="tradingsuccess">交易成功</string>
+    <string name="orderobligation">待付款</string>
+    <string name="toask_no_cancel">当前订单已经接单，用户不可以取消订单</string>
+    
+    <!-- 餐前 -->
+    <string name="myflat_content">确定要拒绝退款吗？</string>
+
+    <!-- MyStaffShopManagementFragment 店员管理 -->
+    <string name="staff_shop_store">店长</string>
+    <string name="staff_shop_manmager">店员管理</string>
+    <string name="staff_shop_add">添加店员</string>
+    <string name="staff_shop_title">添加店员</string>
+    <string name="myafter_order_staff_detail">确定要删除这个用户吗</string>
+    <string name="myafter_order_detail_ok">删除成功</string>
+    <string name="myafter_order_detail_error">删除失败</string>
+
+    <!-- UserAccessFragment -->
+    <string name="user_access">用户统计</string>
+    <string name="app_exit_fail">退出不成功</string>
+    
+    <!-- MyBalanceDetailActivity -->
+    <string name="order_paytype_one">建银在线支付</string>
+    <string name="order_paytype_two">POS机支付</string>
+    <string name="order_paytype_three">现金支付</string>
+    <string name="order_paytype_four">未选择支付方式</string>
+    <string name="order_paytype_five">实物券和体验券的支付</string>
+    
+    <!-- DeliveryProgramFragment -->
+    <string name="delivery_range">配送范围  ：</string>
+    <string name="delivery_money">起送价 ： </string>
+    <string name="shipmet">配送费 ：</string>
+    <string name="km">km</string>
+    <string name="delivery_price">元</string>
+    
+    <!-- CampaignListFragment -->
+    <string name="campaign_list_status_zero">未发布</string>
+    <string name="campaign_list_status_one">已报名</string>
+    <string name="campaign_list_status_two">停止报名</string>
+    <string name="campaign_list_status_three">活动已取消</string>
+    <string name="campaign_list_status_four">活动已结束</string>
+    <string name="campaign_list_status_five">活动已满员</string>
+    
+    <!-- CampaignAddFragment -->
+    <string name="campaign_upload">上传封面图片</string>
+    <string name="campaignadd_title">活动标题(30个字内容)</string>
+    <string name="campaignadd_address">活动详细地址</string>
+    <string name="campaignadd_time_start">活动开始时间</string>
+    <string name="campaignadd_time_end">活动结束时间(选填)</string>
+    <string name="campaignadd_type">活动类型</string>
+    <string name="campaignadd_person">联系人</string>
+    <string name="campaignadd_phone">联系电话</string>
+    <string name="campaignadd_set">高级设置(可选)</string>
+    <string name="campaignadd_specifications">多种收费规格</string>
+    <string name="campaignadd_price">价格</string>
+    <string name="campaignadd_refund">退款</string>
+    <string name="campaignadd_advance">提前</string>
+    <string name="campaignadd_booking">天预约</string>
+    <string name="campaignadd_people">人</string>
+    <string name="campaignadd_yuan">元</string>
+    <string name="campaignadd_singelperson">单人报名人数</string>
+    <string name="campaignadd_maxperson">活动最大参与人数</string>
+    <string name="campaignadd_introduces">活动介绍</string>
+    <string name="campaignadd_save">保存活动</string>
+    <string name="campaignadd_inputperson">请输入联系人</string>
+    <string name="campaignadd_inputphone">请输入联系电话</string>
+    <string name="campaignadd_inputintroduces">请输入活动详情介绍</string>
+    <string name="campaignadd_refund_name">退款内容</string>
+    <string name="campaignadd_upload">上传封面照片</string>
+    <string name="campaignadd_advice">建议使用横向照片</string>
+    
+    <!-- CampaignFreeFragment -->
+    <string name="campaign_free_hini">输入规格：如成人票</string>
+    <string name="campaign_free_money">输入金额</string>
+    <string name="campaign_isdelete">您确定要删除吗？</string>
+    
+    <!-- ScanInputAmountFragment -->
+    <string name="consumptionamount">消费金额</string>
+    <string name="nodiscountfunction">输入不参与优惠金额(如酒水、海鲜等)</string>
+    <string name="nodiscount">不参与优惠金额</string>
+    <string name="scanreceivables">确定</string>
+    <string name="alternative">相机扫码</string>
+    <string name="maxamount">*扫码支付的金额不超过300元</string>
+    
+    <!-- ScanBarCodeFragment -->
+    <string name="scanner">扫描</string>
+    <string name="scanner_hint">对准条码，按设备上扫码键获取信息</string>
+    <string name="start">开始扫描</string>
+    <string name="close">停止扫描</string>
+    <string name="set_scanner_manager">连续模式</string>
+    <string name="set_scanner_intent">跳转</string>
+    
+   <!-- ScanSweepActivity -->
+   <string name="btn_scansweep_pos">一键扫描</string>
+   <string name="btn_scansweep_phone">手机扫描</string>
+   
+   <!-- ScanPrinterFragment -->
+   <string name="btn_scan_print">打印</string>
+   <string name="et_printer_def_black">0~4, Def: 2</string>
+   <string name="bt_printer_set_black">Set Black</string>
+   <string name="bt_BACK">后退</string>
+   <string name="bt_FORWARD">前进</string>
+   <string-array name="barcode_type">
+        <item>C25INTER</item>
+        <item>CODE128</item>
+        <item>CODE93</item>
+        <item>RSS14</item>
+        <item>UPCA</item>
+        <item>PDF417</item>
+        <item>QRCODE</item>
+        <item>DATAMATRIX</item>
+        <item>MICROPDF</item>
+        <item>AZTEC</item>
+   </string-array>
+   
+   
+   <!-- BillHomeFragment -->
+   <string name="tv_bill_monetary">支付金额：</string>
+   <string name="tv_bill_customerpayment">核销金额：</string>
+   <string name="tv_bill_platformsubsidy">已消费笔数：</string>
+   <string name="tv_bill_headoffice">已消费金额：</string>
+   <string name="tv_bill_consumperson">消费人次：</string>
+   <string name="tv_bill_nosettle">其中未结算：</string>
+   <string name="tv_bill_nosettle1">其中未结算：</string>
+   <string name="tv_bill_customrefund">顾客退款：</string>
+   <string name="tv_bill_notconsume">已支付未消费：</string>
+   <string name="tv_bill_allincome">总计收入：</string>
+   <string name="tv_bill_cust">顾客清单</string>
+   <string name="tv_bill_ref">退款清单</string>
+   <string name="tv_bill_consumernosettled">消费未结算账单</string>
+   <string name="tv_bill_subsidynosettled">补贴未结算账单</string>
+   <string name="tv_bill_pay">支付结算对账</string>
+   <string name="tv_bill_subsidy">补贴结算对账</string>
+   <string name="tv_bill_allselect">账单查询</string>
+	
+   <!-- BillListFragment -->
+   <string name="tv_billclass_today">今天</string>
+   <string name="tv_billclass_weekday">最近一周</string>
+   <string name="tv_billclass_month">最近一月</string>
+   <string name="tv_billclass_all">全部</string>
+   <string name="tv_billclass_one">顾客清单</string>
+   <string name="tv_billclass_two">退款清单</string>
+   <string name="tv_billclass_three">消费未结算清单</string>
+   <string name="tv_billclass_four">补贴未结算清单</string>
+   <string name="tv_billclass_five">支付结算对账</string>
+   <string name="tv_billclass_six">补贴结算对账</string>
+   <string name="tv_billclass_select">账单查询</string>
+   <string name="tv_billclass_consumnumber">消费次数：</string>
+   <string name="tv_billclass_consummoney">消费：</string>
+   <string name="tv_billclass_paymoney">支付：</string>
+   <string name="tv_billclass_discountmoney">优惠：</string>
+   <string name="tv_billclass_refund">退款：</string>
+   <string name="tv_billclass_total">合计笔数：</string>
+   <string name="tv_billclass_liquidationdate">清算日期：</string>
+   <string name="tv_billclass_platform">平台发起的清算资金：</string>
+   <string name="tv_billtoday_customer">昵称：</string>
+   <string name="tv_billtoday_phone">手机号后四位：</string>
+   <string name="tv_billtoday_date">最后消费时间：</string>
+   <string name="tv_billtoday_dateone">消费时间：</string>
+   <string name="tv_billtoday_refunddate">退款时间：</string>
+   <string name="tv_billtoday_order">订单号：</string>
+   <string name="tv_billtoday_subsidy">补贴：</string>
+   <string name="tv_billtoday_subsidydata">补贴日期：</string>
+   <string name="tv_billtoday_subsidymoney">平台发起的补贴资金：</string>
+   <string name="tv_bill_input">输入订单号</string>
+   <string name="tv_bill_select">查询</string>
+   <string name="tv_bill_title">账单详情</string>
+   
+   <!-- TextMessageFragment -->
+   <string name="tv_name">姓&#160;&#160;&#160;名</string>
+   <string name="tv_name_hint">请输入员工姓名</string>
+   <string name="tv_tel_no">手机号</string>
+   <string name="tv_tel_hint">请输入员工的手机号</string>
+   <string name="tv_codes">验证码</string>
+   <string name="tv_codes_hint">请输入收到的验证码</string>
+   <string name="message_code">获取验证码</string>
+   <string name="set_msg">短信设置</string>
+   <string name="set_add">增加</string>
+   <string name="txt_dialog_title">您确定不让</string>
+   <string name="txt_dialog_ok">确定</string>
+   <string name="txt_dialog_cancel">取消</string>
+   <string name="null_tel">手机号码不能空</string>
+   <string name="txt_add_fail">添加失败</string>
+   <string name="input_tel">请输入手机号码</string>
+   <string name="input_name">请输入接收者的姓名</string>
+   <string name="tel_error">您输入的手机号有误</string>
+   <string name="tel_repeat">您已添加过该手机号码</string>
+   <string name="null_code">验证码不能为空</string>
+   <string name="code_error">您输入的验证码有误</string>
+   <string name="input_code">请输入验证码</string>
+   <string name="too_much">每个商店接收短信的手机号最多为5个</string>
+   <string name="tel_format_error">您输入的手机号码位数不正确</string>
+   <string name="text_message">接收短信设置</string>
+   <!-- 我的订单 -->
+   <string name="nickName">昵称：</string>
+   <string name="mobileNbr">手机号后四位：</string>
+   <string name="orderAmount">消费：</string>
+   <string name="realPay">支付：</string>
+   <string name="deduction">优惠：</string>
+   <string name="payedTime">消费时间：</string>
+   <string name="amout_orderNbr">订单号：</string>
+   <string name="hint_input">输入订单号/手机号</string>
+   
+</resources>

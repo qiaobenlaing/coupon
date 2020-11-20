@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/LyOutSet"
+    android:background="@color/white" >
+
+    <LinearLayout
+        style="@style/LyWHFourth"
+        android:layout_height="48dp" >
+
+        <TextView
+            android:id="@+id/tv_manager_shop"
+            style="@style/LyWHSecond"
+            android:layout_gravity="left|center"
+            android:layout_marginLeft="15dp"
+            android:text="新白鹿餐厅(西湖店)"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+</LinearLayout>

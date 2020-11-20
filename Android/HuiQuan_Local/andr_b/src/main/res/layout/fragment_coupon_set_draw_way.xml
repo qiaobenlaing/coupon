@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ly_coupon_set"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical" >
+
+    <include layout="@layout/coupon_rule_set_top" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#000" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="5dp" >
+
+        <!-- 定向领用 优惠券 -->
+
+        <CheckBox
+            android:id="@+id/ckb_coupon_draw_direct"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tv_coupone_directional_draw" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="35dp"
+        android:orientation="horizontal"
+        android:weightSum="6" >
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.8"
+            android:text="@string/tv_coupon_money_full" />
+        <!-- 每消费多少元可以使用优惠券 -->
+
+        <EditText
+            android:id="@+id/edt_coupon_draw_csm_money"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_weight="1.5"
+            android:background="@drawable/sel_edt_input"
+            android:inputType="numberDecimal"
+            android:textSize="12sp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="4.2"
+            android:text="@string/tv_coupon_draw_csm_money" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal"
+        android:weightSum="7" >
+
+        <!-- 一次限限领多少张优惠券 -->
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.5"
+            android:text="@string/tv_coupon_limit_draw" />
+        <!-- 限制一次限领多少张优惠券 -->
+
+        <EditText
+            android:id="@+id/edt_coupon_limit_draw"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_weight="1.5"
+            android:background="@drawable/sel_edt_input"
+            android:inputType="numberDecimal"
+            android:textSize="12sp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="4"
+            android:text="@string/tv_coupon_dtl" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="5dp" >
+
+        <!-- 大众领用 优惠券 -->
+
+        <CheckBox
+            android:id="@+id/ckb_coupon_draw_all"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tv_coupone_public_draw" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="35dp"
+        android:orientation="horizontal"
+        android:weightSum="7" >
+
+        <!-- 一次限限领多少张优惠券 -->
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.5"
+            android:text="@string/tv_coupon_limit_draw" />
+        <!-- 限制一次限领多少张优惠券 -->
+
+        <EditText
+            android:id="@+id/edt_coupon_limit_all"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_weight="1.5"
+            android:background="@drawable/sel_edt_input"
+            android:inputType="numberDecimal"
+            android:textSize="12sp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="4"
+            android:text="@string/tv_coupon_dtl" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="40dp"
+        android:background="#000" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:orientation="horizontal"
+        android:paddingTop="5dp" >
+
+        <!-- 优惠券  第二个“上一步” -->
+
+        <Button
+            android:id="@+id/btn_coupon_second_last_step"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_margin="5dp"
+            android:background="@drawable/card_set_btn"
+            android:text="@string/coupon_last_step" />
+        <!-- 优惠券  预览 -->
+
+        <Button
+            android:id="@+id/btn_coupon_draw_preview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/card_set_btn"
+            android:text="@string/coupon_preview" />
+    </LinearLayout>
+
+</LinearLayout>

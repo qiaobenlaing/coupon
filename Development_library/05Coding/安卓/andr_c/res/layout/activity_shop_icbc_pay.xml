@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/LyWHFirst"
+    android:orientation="vertical" >
+
+    <include layout="@layout/common_title_commit" />
+
+    <ImageView
+        android:id="@+id/iv_pay_twocode"
+        style="@style/LyWHSecond"
+        android:layout_width="350dp"
+        android:layout_height="250dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp" />
+
+    <LinearLayout
+        style="@style/LyWHFourth"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <TextView
+            style="@style/LyWHSecond"
+            android:text="@string/scan_twocode" />
+
+        <Button
+            android:id="@+id/pay_cancel"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/login_btn"
+            android:text="@string/pay_cancel"
+            android:textColor="@color/white" />
+    </LinearLayout>
+
+</LinearLayout>

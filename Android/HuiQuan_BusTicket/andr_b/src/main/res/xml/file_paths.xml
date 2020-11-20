@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?><!--安卓7.0以上获取URI适配-->
+<paths xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--代表的根目录：Environment.getExternalStorageDirectory(),/storage/emulated/0/-->
+    <external-path
+        name="external_storage_root"
+        path="." />
+
+    <!--代表的根目录：Context.getFilesDir(),路径是:/data/data/<包名>/files/-->
+    <files-path
+        name="files_path"
+        path="." />
+
+    <!--代表的根目录：Context.getCacheDir(),路径是:/data/data/<包名>/cache/ -->
+    <cache-path
+        name="cache_path"
+        path="." />
+
+    <!--代表的根目录：/,路径是根目录 -->
+    <root-path
+        name="root_path"
+        path="." />
+</paths>

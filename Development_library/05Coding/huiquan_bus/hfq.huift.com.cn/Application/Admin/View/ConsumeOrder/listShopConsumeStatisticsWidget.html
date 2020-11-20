@@ -1,0 +1,44 @@
+<table class="fp-table table table-striped table-bordered table-condensed" id="data_table">
+    <thead>
+    <tr>
+        <th>商户号</th>
+        <th>商户</th>
+        <th>成交金额（元）</th>
+        <th>实际支付（元）</th>
+        <th>用券金额（元）</th>
+        <th>会员卡抵扣金额（元）</th>
+        <th>平台红包抵扣金额（元）</th>
+        <th>商家红包抵扣金额（元）</th>
+        <th>工行卡专享抵扣金额（元）</th>
+        <th>首单立减（元）</th>
+        <th>成交笔数</th>
+        <th>优惠券使用张数</th>
+        <th>人气</th>
+        <th>回头客</th>
+        <th>客单价</th>
+    </tr>
+    </thead>
+    <tbody>
+    <foreach name="dataList" item="item">
+        <tr>
+            <td>{$item.shopId}</td>
+            <td>{$item.shopName}</td>
+            <td>{$item.orderAmount}</td>
+            <td>{$item.realPay}</td>
+            <td>{$item.couponDeduction}</td>
+            <td>{$item.cardDeduction}</td>
+            <td>{$item.platBonus}</td>
+            <td>{$item.shopBonus}</td>
+            <td>{$item.bankCardDeduction}</td>
+            <td>{$item.firstDeduction}</td>
+            <td>{$item.consumeCount}</td>
+            <td>{$item.couponUsed}</td>
+            <td>{$item.popularity}</td>
+            <td>{$item.repeatCustomers}</td>
+            <td>{$item.perCustomerTransaction}</td>
+        </tr>
+    </foreach>
+    </tbody>
+</table>
+<include file="Application/Admin/View/Widget/pager.html" />
+

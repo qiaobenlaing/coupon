@@ -1,0 +1,47 @@
+<layout name="layout_admin" />
+<div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="tab_basic_info">
+        <form class="form-horizontal" role="form" id="frm_edit_user"
+              action="/Admin/ShopLink/insertShopLink" method="post">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">商户名称</label>
+                <div class="col-sm-8">
+                    <select class="form-control" name="shopCode" style="width: 100%">
+                        <foreach name="dataList" item="item">
+                            <option value="{$item.shopCode}">{$item.shopName}</option>
+                        </foreach>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">第三方商户编号</label>
+                <div class="col-sm-8">
+                    <input type="text" name="thirdShopCode" class="form-control"
+                           id="thirdShopCode" placeholder="第三方商户" value="{$shopLink.thirdShopCode}">
+                </div>
+            </div>
+            <div class="row row-top row-btn">
+                <div class="btn-group ">
+                    <input type="submit" class="btn btn-primary" id="submit" value="保存" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function($) {
+        $('#frm_edit_user').on('submit', function() {
+            var frm = $(this);
+            $.post(frm.attr('action'), frm.serialize(), function(resp) {
+                console.log(resp);
+                if (resp.status == sz.STATUS_SUCC) {
+                    location.href = '/Admin/ShopLink/linkShopList';
+                } else {
+                    sz.showErrMsg(resp.msg, 3);
+                }
+            });
+            return false;
+        });
+    });
+</script>
+

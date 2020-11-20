@@ -1,0 +1,28 @@
+<layout name="layout_admin" />
+<form class="row" role="form" id="data_search_form" action="#" method="get">
+  <input type="hidden" id="frm_ele_page" name="page" value="1" />
+</form>
+<div class="row" style="display: none">
+    <div class="col-md-12">
+        <audio src="/Public/audio/msgPrompt.wav" controls="controls" id="audio-msg-prompt"></audio>
+    </div>
+</div>
+<script>
+    ;(function(){
+        function checkNewMsg() {
+            $.post('/Admin/Feedback/checkNewMsg', {}, function(resp){
+                console.log(resp);
+                if(resp.status == sz.STATUS_SUCC) {
+                    var msgPrompt = document.getElementById("audio-msg-prompt");
+                    msgPrompt.play();
+                }
+            });
+        }
+        var msgInterval = self.setInterval(function(){
+            checkNewMsg();
+        }, 2500);
+    })();
+</script>
+<div id="data_table_wrapper">
+  <include file="./Application/Admin/View/Feedback/listFeedbackWidget.html" />
+</div>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/NavigationTopBar" >
+
+    <ImageView
+        android:id="@+id/iv_turn_in"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerInParent="true"
+        android:background="@drawable/backup"
+        android:paddingLeft="@dimen/navigation_left_r" />
+
+    <TextView
+        android:id="@+id/tv_mid_content"
+        style="@style/LyWHSecond"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="@string/mainact_shopname"
+        android:textColor="@color/white"
+        android:textSize="@dimen/app_item_title_font" />
+    <LinearLayout
+        android:id="@+id/layout_msg"
+        android:layout_width="50dp"
+        android:layout_height="fill_parent"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true" >
+	    <ImageView
+	        android:id="@+id/iv_add"
+	        android:layout_width="30dp"
+	        android:layout_height="30dp"
+	        android:visibility="gone"
+	        android:layout_gravity="center_vertical"
+	        android:layout_margin="@dimen/navigation_right"
+	        android:background="@drawable/saomiao_light_1" />
+    </LinearLayout>
+
+</RelativeLayout>

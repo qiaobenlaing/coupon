@@ -1,0 +1,98 @@
+<layout name="layout_admin" />
+<div class="row">
+    <div class="col-sm-12">
+        <form class="form-inline" role="form" id="data_search_form" action="/Admin/Liquidation/getLiquidationRecord" method="get">
+            <div class="form-group">
+                <label for="date">交易日期</label>
+                <div class="input-group date">
+                    <input type="text" class="form-control ipt-date-time-picker" id="date" name="date" value="{$get.date}" readonly placeholder="日期" />
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>地区</label>
+                <select class="form-control input-sm" name="areaNbr" id="areaNbr">
+                    <option value="">所有地区</option>
+                    <foreach name="districtList" item="vo">
+                        <option value="{$vo.areaNbr}" <eq name="get.areaNbr" value="$vo.areaNbr">selected="selected"</eq>>{$vo.name}</option>
+                    </foreach>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-sm btn-primary">查询</button>
+            <?php if(!empty($dataList)):?>
+            <button type="button" class="btn btn-sm btn-primary" id="generate_btn">生成文件</button>
+            <?php endif;?>
+        </form>
+    </div>
+</div>
+<div id="data_table_wrapper">
+    <table class="fp-table table table-striped table-bordered" id="data_table">
+        <thead>
+        <tr>
+            <th>商户名称</th>
+            <th>清算流水号</th>
+            <th>入账账户</th>
+            <th>入账账户户名</th>
+            <th>划款金额</th>
+            <th>支付时间/申请退款时间</th>
+            <th>类型</th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php if(!empty($dataList)):?>
+        <foreach name="dataList" item="vo">
+            <tr>
+                <td>{$vo.shopName}</td>
+                <td>{$vo.cmpyTransferId}</td>
+                <td>{$vo.acctNo}</td>
+                <td>{$vo.acctName}</td>
+                <td>{$vo['dueAmt']/$HUNDRED}</td>
+                <td>{$vo.payedTime}</td>
+                <td>{$vo.varInfo}</td>
+            </tr>
+        </foreach>
+        <?php else:?>
+        <tr>
+            <td colspan="7"><strong style="color:#d9534f;">没有需要清算的数据！</strong></td>
+        </tr>
+        <?php endif;?>
+        </tbody>
+    </table>
+</div>
+<script>
+    $(function(){
+        var currentDay = new Date(); //今天
+        var preDate = new Date(currentDay.getTime() - 24*60*60*1000); //昨天
+        // 初始化选择日期
+        $('.date').datetimepicker({
+            format: 'yyyy-mm-dd',
+            autoclose: true,
+            todayBtn: false,
+            minView: 'month',
+            pickerPosition: "bottom-left",
+            endDate: preDate,
+            initialDate:preDate
+        });
+
+        $('#generate_btn').click(function(){
+            $(this).attr('disabled', true);
+            var date = $('#date').val();
+            var areaNbr = $('#areaNbr').val();
+
+            $.post('/Admin/Liquidation/getLiquidationRecord',
+                    {   date:date,
+                        areaNbr:areaNbr,
+                        isAjax:true },
+                    function(result){
+                        if(result.status == sz.STATUS_SUCC){
+                            alert('清算文件生成成功！');
+                            location.href = '/Admin/Liquidation/getLiquidationFileList?areaNbr=&isLiquidated=2&page=1&date='+result.data.date;
+                        }else{
+                            alert(result.msg);
+                            location.href = '/Admin/Liquidation/getLiquidationFileList';
+                        }
+                    });
+        });
+    });
+</script>

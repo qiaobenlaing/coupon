@@ -1,0 +1,196 @@
+<layout name="layout_api" />
+<!-- Views -->
+<div class="views">
+    <!-- Your main view, should have "view-main" class -->
+    <div class="view view-main">
+        <!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
+        <div class="pages toolbar-through">
+            <!-- Page, "data-page" contains page name -->
+            <div data-page="index" class="page">
+                <!-- Scrollable page content -->
+                <div class="page-content">
+                    <input type="hidden" value="{$orderInfo.orderAmount}" id="orderAmount">
+                    <div class="navbar">
+                        <div class="navbar-inner">
+                            <div class="center">{$shopInfo.shopName}</div>
+                        </div>
+                    </div>
+
+                    <div class="order">
+                        <span>订单号</span>
+                        <span class="float_right"><strong>{$orderInfo.orderNbr}</strong></span>
+                    </div>
+
+                    <div class="order">
+                        <span>消费金额</span>
+                        <span class="float_right"><strong>{$orderInfo.orderAmount}</strong> 元</span>
+                    </div>
+
+                    <div class="order">
+                        <foreach name="userCouponList" item="userCoupon">
+                            <label data-instead-price="{$userCoupon.insteadPrice}">
+                                <div class="info">
+                                    <input type="radio" name="userCouponCode" value="{$userCoupon.userCouponCode}" />
+                                    <span>
+                                        满{$userCoupon.availablePrice}元
+                                        <if condition="$userCoupon.couponType EQ 3">
+                                            立减{$userCoupon.insteadPrice}元
+                                            <else/>
+                                            打{$userCoupon.discountPercent}折
+                                        </if>
+                                    </span>
+                                    <span class="float_right">
+                                        <strong>-{$userCoupon.couponDeduction}</strong> 元
+                                    </span>
+                                </div>
+                            </label>
+                        </foreach>
+                    </div>
+
+                    <div class="order">
+                        <div class="info">
+                            <span>商家红包</span>
+                            <div class="input">
+                                <input type="number" name="shopBonus" id="shopBonus" placeholder="0" bonus="{$shopBonus}" />
+                            </div>元
+                            <span class="float_right" style="color: rgb(142, 141, 141);">商家红包可用{$shopBonus}元</span>
+                        </div>
+                        <div class="info">
+                            <span>惠圈红包</span>
+                            <div class="input">
+                                <input type="number" name="platBonus" id="platBonus" placeholder="0" bonus="{$platBonus}" />
+                            </div>元
+                            <span class="float_right" style="color: rgb(142, 141, 141);">惠圈红包可用{$platBonus}元</span>
+                        </div>
+                        <div>
+                            <span>实际支付</span><span class="float_right">&nbsp;元</span>
+                            <span class="float_right total_price" style="font-weight: bold;">{$orderInfo.orderAmount}</span>
+
+                        </div>
+                    </div>
+
+                    <div class="content-block">
+                        <a href="#" class="button">下一步</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(function() {
+        $('label').click(function(){
+            var instead = $(this).data('insteadPrice');
+            instead = initialize(instead);
+            var amount = $('#orderAmount').val();
+            amount = initialize(amount);
+            var shop_bonus = $('#shopBonus').val();
+            shop_bonus = initialize(shop_bonus);
+            var plat_bonus = $('#platBonus').val();
+            plat_bonus = initialize(plat_bonus);
+            var total_price = Number(amount) - Number(instead) - Number(shop_bonus) - Number(plat_bonus);
+            if(total_price < 0){
+                myApp.modal({
+                    title:  '提醒',
+                    text: '实际付款金额小于0，默认支付0元。为了您的利益最大化，可适当减少红包和优惠券的使用。',
+                    buttons: [
+                        {
+                            text: '确定'
+                        }
+                    ]
+                })
+                total_price = 0;
+            }
+            $('.total_price').text(total_price);
+
+        });
+
+        $('#platBonus').keyup(function(){
+            var plat_bonus = $(this).val();
+            var total_bonus = $(this).attr('bonus');
+            if(Number(plat_bonus) > Number(total_bonus)){
+                bonus_modal();
+            }else{
+                var instead = $('input[name="userCouponCode"]:checked').parent().parent().data('insteadPrice');
+                console.log(instead);
+                instead = initialize(instead);
+                var amount = $('#orderAmount').val();
+                amount = initialize(amount);
+                var shop_bonus = $('#shopBonus').val();
+                shop_bonus = initialize(shop_bonus);
+                var total_price = Number(amount) - Number(instead) - Number(shop_bonus) - Number(plat_bonus);
+                if(total_price < 0){
+                    myApp.modal({
+                        title:  '提醒',
+                        text: '实际付款金额小于0，默认支付0元。为了您的利益最大化，可适当减少红包和优惠券的使用。',
+                        buttons: [
+                            {
+                                text: '确定'
+                            }
+                        ]
+                    })
+                    total_price = 0;
+                }
+                $('.total_price').text(total_price);
+            }
+        });
+
+        $('#shopBonus').keyup(function(){
+            var shop_bonus = $(this).val();
+            var total_bonus = $(this).attr('bonus');
+            if(Number(shop_bonus) > Number(total_bonus)){
+                bonus_modal();
+            }else{
+                var instead = $('input[name="userCouponCode"]:checked').parent().parent().data('insteadPrice');
+                instead = initialize(instead);
+                var amount = $('#orderAmount').val();
+                amount = initialize(amount);
+                var plat_bonus = $('#platBonus').val();
+                plat_bonus = initialize(plat_bonus);
+                var total_price = Number(amount) - Number(instead) - Number(shop_bonus) - Number(plat_bonus);
+                if(total_price < 0){
+                    myApp.modal({
+                        title:  '提醒',
+                        text: '实际付款金额小于0，默认支付0元。为了您的利益最大化，可适当减少红包和优惠券的使用。',
+                        buttons: [
+                            {
+                                text: '确定'
+                            }
+                        ]
+                    })
+                    total_price = 0;
+                }
+                $('.total_price').text(total_price);
+            }
+        });
+    });
+
+    function bonus_modal() {
+        myApp.modal({
+            title:  '提醒',
+            text: '红包使用金额不够，请重新输入！',
+            buttons: [
+                {
+                    text: '确定'
+                }
+            ]
+        })
+    }
+
+    function initialize(num){
+        if(isNaN(num) || typeof(num) == 'undefined' || (!num && typeof(num) != 'undefined') && num != 0){
+            num = 0;
+        }
+        return num;
+    }
+</script>
+<style>
+    .button_nothing{background: none;border: none;padding: 0;}
+    .float_left{float: left;}
+    .float_right{float: right;}
+    .order{background-color: #fff;line-height: 3;margin-top: 3%;padding: 0 3%;}
+    .order .info{border-bottom: 1px solid rgb(231,231,231);}
+    .order .info .input{width: 30%;display: inline-table;}
+    .order .info .input input{width: 100%;text-align: center; border: none;font-size: 17px;}
+    .content-block a{background-color: rgb(197,0,11);border-color: rgb(197,0,11);color: #fff;}
+</style>

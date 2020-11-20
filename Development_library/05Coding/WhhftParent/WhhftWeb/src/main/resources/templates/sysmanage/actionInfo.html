@@ -1,0 +1,261 @@
+<link th:replace="/include/header" />
+<style>
+
+
+.datagrid-view input.datagrid-editable-input {
+	padding: 0;
+	margin: 0;
+	/*由于height是行内样式所以需要通过js修改*/
+	line-height: 40px;
+	vertical-align: middle;
+}
+
+
+#searchForm p{
+display: inline-block;
+float:left;
+position: relative;  
+right: 35px;  
+}
+
+
+
+#searchForm div,#searchForm p{
+    display: inline-block;
+    vertical-align: middle;
+}
+
+</style>
+<script th:src="@{/easyui/datagrid-detailview.js}"></script>
+<script th:inline="javascript">
+
+	var editRow = undefined; //定义全局变量：当前编辑的行
+	var datagrid=$('#actionGrid');//获取表格
+	
+	$(function () {
+		
+		datagrid = $("#actionGrid").datagrid({
+			url: [[@{/actionInfo/page}]], //请求的数据源
+			method:"post",
+			//iconCls: 'icon-save', //图标
+			pagination: true, //显示分页
+			pageList : $g.page.DEFAULT_ROW_OPTIONS,//页大小下拉选项此项各value是pageSize的倍数
+			pageSize: $g.page.DEFAULT_PAGE_SIZE,//页大小        	   
+			onBeforeLoad: onBeforeLoad, //用于提交查询条件       
+			fit: false, //datagrid自适应宽度
+			fitColumns: false, //列自适应宽度
+			//striped: true, //行背景交换
+			nowrap: true, //列内容多时自动折至第二行
+			border: false,
+			idField: 'actionId', //主键
+			singleSelect:false,
+			autoRowHeight:false,
+			columns: [[//显示的列
+				{field: 'actionId', title: '编号', width: 40, sortable: true, checkbox:true 
+			    },
+				{ field: 'actionName', title: '页面请求名称', width: 200, 
+						 editor: { type:'textbox', options: { required: true,validType:'length[0,64]'} }
+				},
+				{ field: 'actionUrl', title: '页面请求URL', width: 400,
+						 editor: { type:'textbox', options: { required: true,validType:'length[0,64]'} }
+				},
+				{ field: 'actionRemark', title: '备注', width: 250,
+						 editor: { type:'textbox', options: { required: false,validType:'length[0,256]'} }
+				}
+			]],
+			//queryParams: { action: 'query' }, //查询参数
+			toolbar: [
+               { text: '添加', iconCls: 'icon-add', handler: function () {//添加列表的操作按钮添加，修改，删除等
+               	add();
+               }}, '-',
+               
+               { text: '修改', iconCls: 'icon-edit', handler: function () {
+               	edit();
+               }}, '-',
+               { text: '保存', iconCls: 'icon-save', handler: function () {
+                    //保存时结束当前编辑的行，自动触发onAfterEdit事件如果要与后台交互可将数据通过Ajax提交后台
+                   datagrid.datagrid("endEdit", editRow); 
+               }}, '-',
+               { text: '删除', iconCls: 'icon-remove', handler: function () {
+                         remove();
+                     }}, '-',
+               { text: '取消编辑', iconCls: 'icon-cancel', handler: function () {
+                    cancel();
+                }}, '-'],
+		    onAfterEdit: function (rowIndex, rowData, changes) {		                      		
+               save(rowIndex, rowData, changes);
+            },
+               
+		    onDblClickRow: function (rowIndex, rowData) {
+		    	
+		    	operationInfo();//判断是否需要给出保存提示
+		    	
+		        if (editRow == undefined) {
+		            startEdit(rowIndex);//开启编辑,并将当前行赋给editRow
+		        }
+		    }
+        });
+	});
+
+	//添加或者修改时进行保存
+	function save(rowIndex, rowData, changes){
+		
+		// var updated = datagrid.datagrid('getChanges', "updated");//获取更新
+        //var inserted = datagrid.datagrid('getChanges', "inserted");//获取添加
+         
+        /*  if(updated.length==0 && inserted.length==0){
+             $g.showMsg('消息', '没有修改！');
+         }else{ */
+             $g.post([[@{/actionInfo/save}]],rowData,function(data){
+                 $g.showMsg('消息', '保存成功！');      
+                 $('#actionGrid').datagrid('reload');
+                // datagrid.datagrid("rejectChanges");//对changes内容清空
+             });
+             
+        // }
+         
+         datagrid.datagrid("unselectAll");
+         editRow = undefined; 
+	}
+	
+	//取消编辑
+	function cancel(){
+		//取消当前编辑行把当前编辑行改为undefined回滚改变的数据,取消选择的行
+        editRow = undefined;
+        datagrid.datagrid("rejectChanges");
+        datagrid.datagrid("unselectAll");
+	}
+	
+	//修改某行数据
+	function edit(){		
+        var rows = datagrid.datagrid("getSelections");//修改时要获取选择到的行
+        
+        //如果只选择了一行则可以进行修改，否则不操作
+        if (rows.length == 1) {
+            operationInfo();//判断是否需要给出保存提示
+            //当无编辑行时
+            if (editRow == undefined) {               
+                var index = datagrid.datagrid("getRowIndex", rows[0]); //获取到当前选择行的下标
+                editRow = index;//把当前开启编辑的行赋值给全局变量editRow
+                startEdit(editRow);//开启编辑状态，修改编辑样式
+            }
+        }
+	}
+	
+	//添加一行数据
+	function add(){
+		operationInfo();//判断是否需要给出保存提示
+        //添加时如果没有正在编辑的行，则在datagrid的第一行插入一行                          
+        if (editRow == undefined) {
+            datagrid.datagrid("insertRow", {
+                index: 0, // index start with 0
+                row: {
+                }
+            });
+            
+            //给当前编辑的行赋值,并设置样式
+            editRow = 0;
+            startEdit(editRow);
+        }
+	}
+	
+	function remove(){		 
+        var rows = datagrid.datagrid("getSelections");//删除时先获取选择行
+        //选择要删除的行
+        if (rows.length > 0) {
+             $.messager.confirm("提示", "你确定要删除吗?", function (r){
+                 if (r) {
+                    var ids = "";
+                    //该段程序为了适用删除多行数据
+                    for (var i = 0; i < rows.length; i++) {
+                         if(ids.length>0){
+                             ids += ",";
+                         }
+                        ids+=rows[i].actionId;                                   
+                    }  
+                    
+                    //异步请求删除选中内容
+                    $g.post([[@{/actionInfo/remove?actionIds=}]]+ids,null,function(data){
+                        $g.showMsg('消息', '删除成功！');
+                        editRow = undefined;
+                        datagrid.datagrid("unselectAll");
+                        $('#actionGrid').datagrid('reload');                                         
+                    });
+                }
+            });
+        } else {
+             $.messager.alert("提示", "请选择要删除的行", "error");
+        }
+	}
+	
+	//判断是否已有操作行，并给出操作提示
+	function operationInfo(){
+		if (editRow != undefined) {
+            $.messager.alert('提示','请完成当前操作，可点击保存或取消！','info'); 
+        }
+	}
+	
+    //参数处理
+    function onBeforeLoad(param){
+        $.each( $("#searchForm").serializeArray(), function(index, item){
+            param[item.name]=item.value;
+        });
+    } 
+
+    //按条件查询
+    function searchGrid(){
+        var options = $('#actionGrid').datagrid('options');//返回属性对象，用于重新设定属性值
+        var pager=$("#actionGrid").datagrid("getPager");//返回页面对象，用于设置分页代码
+        options.pageNumber = 1;
+        //这里需要修改分页插件中的当前页的值    
+        pager.pagination("refresh",{
+            pageNumber:1,
+        });
+        $('#actionGrid').datagrid('reload'); 
+        editRow = undefined; 
+    }
+    
+    //清除查询条件
+    function clearSearch(){
+        $('#searchForm').form('clear');
+    }
+
+    //开启编辑并设置编辑行样式
+	function startEdit(index){
+		editRow = index;
+		$("#actionGrid").datagrid("beginEdit", index);//开启编辑		
+		$(".datagrid-row-editing .textbox, .datagrid-row-editing .textbox-text").css({"height":"38px"});//设置编辑行样式
+	}
+	
+</script>
+<div data-options="region:'north',border:false,title:'查询条件'"
+	style="height: 90px; padding: 10px;">
+
+	<form id="searchForm" class="editForm">
+		<p id="p1">
+			<label>用户请求名称:</label> <input type="text" class="easyui-textbox"
+				name="actionName" style="width: 150px; height: 30px;"></input>
+		</p>
+		&nbsp;&nbsp;
+		<p id="p2">
+			<label>用户请求URL:</label> <input type="text" class="easyui-textbox"
+				name="actionUrl" style="width: 150px; height: 30px;"></input>
+		</p>
+		<div><a href="javascript:void(0)" data-options=" iconCls:'icon-search'"
+			class="easyui-linkbutton" onclick="searchGrid();">查询</a> <a
+			href="javascript:void(0)" data-options=" iconCls:'icon-reload'"
+			class="easyui-linkbutton" onclick="clearSearch();">清空</a></div>
+	</form>
+</div>
+<!-- 表格 -->
+<div data-options="region:'center',border:false"
+	class="layout-have-top-border">
+	<table id="actionGrid" class="easyui-datagrid"
+		data-options=" border:false, title:'页面请求管理'" style="height: 100%">		
+	</table>
+</div>
+
+<link th:replace="/include/footer" />
+
+
+

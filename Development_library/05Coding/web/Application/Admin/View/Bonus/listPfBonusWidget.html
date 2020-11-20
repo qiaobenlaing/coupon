@@ -1,0 +1,47 @@
+<table class="fp-table table table-striped table-bordered table-condensed" id="data_table">
+    <thead>
+    <tr>
+        <th>红包期数</th>
+        <th>红包名</th>
+        <th>最小金额(元)</th>
+        <th>最大金额(元)</th>
+        <th>发放数量</th>
+        <th>剩余数量</th>
+        <th>发放总额(元)</th>
+        <th>剩余金额(元)</th>
+        <th>抢红包时间</th>
+        <th>状态</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    <foreach name="dataList" item="item">
+        <tr>
+            <td>{$item.batchNbr}</td>
+            <td>{$item.bonusName}</td>
+            <td>{$item.lowerPrice}</td>
+            <td>{$item.upperPrice}</td>
+            <td>{$item.totalVolume}</td>
+            <td>{$item.remaining}</td>
+            <td>{$item.totalValue}</td>
+            <td>{$item.restValue}</td>
+            <td>
+                {$item.startTime|substr=0,16}至{$item.endTime|substr=0,16}<if condition='$nowTime gt strtotime($item["endTime"])'><span class="label label-danger">已失效</span>
+                <elseif condition='$nowTime lt strtotime($item["startTime"])'/><span class="label label-default">未生效</span>
+                <else /><span class="label label-success">有效中</span></if>
+            </td>
+            <td><if condition="$item.status eq 1"><span class="label label-success">启用</span><else /><span class="label label-danger">禁用</span></if></td>
+            <td>
+                <a href="/Admin/Bonus/editBonus?bonusCode={$item.bonusCode}&page={$pager:page}&back=listPfBonus" class
+                        ="btn btn-xs btn-primary">编辑</a>
+                <eq name="item.status" value="1">
+                    <a href="/Admin/Bonus/changeStatus?bonusCode={$item.bonusCode}"  class="td-distant btn btn-xs btn-info" data-status="0">禁用</a>
+                    <else />
+                    <a href="/Admin/Bonus/changeStatus?bonusCode={$item.bonusCode}"  class="td-distant btn btn-xs btn-info" data-status="1">启用</a>
+                </eq>
+            </td>
+        </tr>
+    </foreach>
+    </tbody>
+</table>
+<include file="Application/Admin/View/Widget/pager.html" />

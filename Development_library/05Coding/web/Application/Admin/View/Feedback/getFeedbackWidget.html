@@ -1,0 +1,73 @@
+<div class="row" id="feedback">
+    <foreach name="feedback" item="vo">
+        <div class="col-xs-12">
+            <div class="feedback-time"><span>{$vo.createTime}</span></div>
+            <if condition='($type eq "SHOP")'>
+                <if condition="($vo.from_where eq 1)">
+                    <div class="feedback-creator" style="float: right;"><img src="{$vo.userAvatar}" /></div>
+                    <div class="feedback-content" style="float: right;background-color: rgb(98, 218, 98);">{$vo.message}</div>
+                    <else />
+                    <div class="feedback-creator" style="float: left;"><img src="{$vo.logoUrl}" /></div>
+                    <div class="feedback-content" style="float: left;">{$vo.message}</div>
+                </if>
+                <else />
+                <if condition="($vo.from_where eq 0)">
+                    <div class="feedback-creator" style="float: right;"><img src="{$vo.logoUrl}" /></div>
+                    <div class="feedback-content" style="float: right;background-color: rgb(98, 218, 98);">{$vo.message}</div>
+                    <else />
+                    <div class="feedback-creator" style="float: left;"><img src="{$vo.userAvatar}" /></div>
+                    <div class="feedback-content" style="float: left;">
+                    <notempty name="vo.message">
+                    {$vo.message}
+                    <else/>
+                    	错误位置：<switch name="vo.errorInfo" >
+							<case value="1">商家店名</case>
+							<case value="2">商家地址</case>
+							<case value="3">地址经纬度</case>
+							<case value="4">商家联系方式</case>
+							<case value="5">商家图片</case>
+							<case value="6">商品/服务图片</case>
+						</switch>
+						&nbsp;错误图片：<foreach name="vo.errorImg" item="item"><img src="{$item}"/></foreach>
+						&nbsp;错误商家：{$vo.errorShopName}
+                    </notempty>
+                    </div>
+                </if>
+            </if>
+        </div>
+    </foreach>
+</div>
+<include file="Application/Admin/View/Widget/pager.html" />
+<style>
+    .feedback-time{
+        text-align: center;
+        margin-top: 10px;
+    }
+    .feedback-time span{
+        padding: 5px;
+        background-color: rgb(218, 218, 218);
+        border-radius: 3px;
+        box-shadow: 1px 2px 4px #C2C2C2;
+    }
+    .feedback-creator img{
+        margin: 10px 0;
+        width: 30px;
+        height: 30px;
+    }
+    .feedback-content{
+        max-width: 80%;
+        border: 1px solid #dcdcdc;
+        margin: 10px;
+        border-radius: 4px;
+        padding: 5px;
+    }
+	.feedback-content img{
+        width: 200px;
+		height:300px;
+    }
+    #feedback{
+        border: 1px solid #dcdcdc;
+        border-radius: 4px;
+        margin: 0;
+    }
+</style>

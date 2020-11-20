@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bgall"
+    android:orientation="vertical" >
+
+    <!-- 银行卡详情 -->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/navigation_bar"
+        android:background="@color/red"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:id="@+id/backup"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:src="@drawable/backup" />
+
+        <TextView
+            style="@style/TvSet"
+            android:layout_centerInParent="true"
+            android:text="银行卡详情"
+            android:textColor="@color/white"
+            android:textSize="@dimen/app_title_bar_font" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:id="@+id/sv_bankdetail"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:fadingEdge="vertical"
+        android:scrollbars="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                style="@style/LyContentBank"
+                android:background="@color/white" >
+
+                <ImageView
+                    android:id="@+id/iv_bankdetail_bankcardimage"
+                    style="@style/IvBankImage"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/card_four" />
+
+                <TextView
+                    style="@style/TvContent"
+                    android:layout_marginLeft="10dp"
+                    android:text="@string/myhome_bankdetail_four" />
+
+                <TextView
+                    android:id="@+id/et_bankdetail_bankcard"
+                    style="@style/EtBank"
+                    android:layout_weight="1"
+                    android:gravity="right" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginLeft="50dp"
+                android:background="@color/shallow_gray" />
+
+            <LinearLayout
+                style="@style/LyContentBank"
+                android:background="@color/white" >
+
+                <ImageView
+                    android:id="@+id/iv_bankdetail_pointsimage"
+                    style="@style/IvBankImage"
+                    android:src="@drawable/integral" />
+
+                <TextView
+                    style="@style/TvContent"
+                    android:layout_marginLeft="10dp"
+                    android:text="@string/myhome_bankdetail_integration" />
+
+                <TextView
+                    android:id="@+id/et_bankdetail_points"
+                    style="@style/EtBank"
+                    android:layout_weight="1"
+                    android:gravity="right" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginLeft="50dp"
+                android:background="@color/shallow_gray" />
+
+            <LinearLayout
+                style="@style/LyContentBank"
+                android:background="@color/white" >
+
+                <ImageView
+                    android:id="@+id/iv_bankdetail_imitimage"
+                    style="@style/IvBankImage"
+                    android:src="@drawable/quota" />
+
+                <TextView
+                    style="@style/TvContent"
+                    android:layout_marginLeft="10dp"
+                    android:text="@string/myhome_bankdetail_imit" />
+
+                <TextView
+                    android:id="@+id/et_bankdetail_imit"
+                    style="@style/EtBank"
+                    android:layout_weight="1"
+                    android:gravity="right" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="30px"
+                android:background="@color/shallow_gray"
+                android:visibility="gone" />
+
+            <LinearLayout
+                style="@style/LyContentBank"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:visibility="gone" >
+
+                <ImageView
+                    android:id="@+id/iv_bankdetail_repaymentimage"
+                    style="@style/IvBankImage"
+                    android:src="@drawable/payment" />
+
+                <TextView
+                    style="@style/TvContent"
+                    android:layout_marginLeft="10dp"
+                    android:text="@string/myhome_bankdetail_repayment" />
+
+                <TextView
+                    android:id="@+id/et_bankdetail_repayment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:text="0000" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginLeft="50dp"
+                android:background="@color/shallow_gray"
+                android:visibility="gone" />
+
+            <LinearLayout
+                style="@style/LyContentBank"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:visibility="gone" >
+
+                <ImageView
+                    android:id="@+id/iv_bankdetail_repaymentimage2"
+                    style="@style/IvBankImage" />
+
+                <TextView
+                    style="@style/TvContent"
+                    android:layout_marginLeft="10dp"
+                    android:text="最低还款额" />
+
+                <TextView
+                    android:id="@+id/et_bankdetail_repayment2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:text="0000" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginLeft="50dp"
+                android:background="@color/shallow_gray"
+                android:visibility="gone" />
+
+            <LinearLayout
+                style="@style/LyContentBank"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:visibility="gone" >
+
+                <ImageView
+                    android:id="@+id/iv_bankdetail_repaymentimage3"
+                    style="@style/IvBankImage" />
+
+                <TextView
+                    style="@style/TvContent"
+                    android:layout_marginLeft="10dp"
+                    android:text="还款日期" />
+
+                <TextView
+                    android:id="@+id/et_bankdetail_repayment3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:text="0000" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/shallow_gray"
+                android:visibility="gone" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

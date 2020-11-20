@@ -1,0 +1,21 @@
+<table class="fp-table table table-striped table-bordered brand-tbl-wrap" id="data_table">
+    <thead>
+    <tr>
+        <th>图标</th>
+        <th>名称</th>
+        <th>录入时间</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    <foreach name="dataList" item="item">
+        <tr>
+            <td><img src="{$item.brandLogo}" alt="{$item.brandName}" class="brand-logo"/></td>
+            <td>{$item.brandName}</td>
+            <td>{$item.inputTime}</td>
+            <td><a href="/Admin/Brand/editBrand?brandId={$item.brandId}" class="btn btn-xs btn-primary">修改</a></td>
+        </tr>
+    </foreach>
+    </tbody>
+</table>
+<include file="Application/Admin/View/Widget/pager.html" />

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" 
+    android:background="@color/app_bg">
+    <include layout="@layout/common_title_commit" />
+	<RelativeLayout 
+	    android:layout_width="match_parent"
+	    android:layout_height="48dp"
+	    android:padding="5dp"
+	    android:background="@color/white">
+	    <TextView 
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="@string/under_300_no_inden"
+	        android:layout_centerVertical="true"/>
+	     <ImageView 
+	        android:id="@+id/iv_setting_no_inden_swtich"
+	        android:layout_width="55dp"
+	        android:layout_height="35dp"
+	        android:layout_alignParentRight="true"
+	        android:background="@drawable/checkbox_empty"/>
+	</RelativeLayout>
+</LinearLayout>

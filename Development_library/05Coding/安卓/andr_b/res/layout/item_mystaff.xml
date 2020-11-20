@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ly_staff_show"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/ly_type"
+        style="@style/LyWHFourth"
+        android:layout_height="48dp"
+        android:background="@color/bgall"
+        android:orientation="horizontal"
+        android:visibility="gone" >
+
+        <TextView
+            android:id="@+id/tv_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="13dp"
+            android:gravity="center_horizontal|left"
+            android:textColor="@color/ivcolor"
+            android:textSize="18sp"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ly_left"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/layout_sheight"
+        android:layout_marginLeft="10dp"
+        android:orientation="horizontal" >
+
+        <!--
+   <LinearLayout 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="left">
+  
+  	<LinearLayout 
+  	    android:id="@+id/ly_deltype"
+  	    android:layout_width="60dp"
+  	    android:layout_height="wrap_content"
+  	    android:gravity="left">
+    	  <CheckBox
+    	      android:gravity="center" 
+             android:id="@+id/ck_manager_orstaff"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:button="@null"
+             android:background="@drawable/sel_poscheckbox"/>
+   </LinearLayout>
+        -->
+
+        <ImageView
+            android:id="@+id/iv_stafflogo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical" />
+
+        <LinearLayout
+            android:id="@+id/ly_txnum"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_marginLeft="15dp"
+            android:gravity="center_vertical"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/my_account_number"
+                android:textSize="16sp" />
+
+            <LinearLayout
+                android:id="@+id/ly_txname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:text="@string/staff_name"
+                    android:textSize="16sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ly_tvnumber"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:gravity="center_vertical"
+            android:orientation="vertical" >
+
+            <!-- 员工账号 -->
+
+            <TextView
+                android:id="@+id/tv_mystaff_assistant_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="xxxx"
+                android:textSize="16sp" />
+            <!-- 员工姓名 -->
+
+            <LinearLayout
+                android:id="@+id/ly_tvname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:id="@+id/tv_mystaff_assistant_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:text="xxxx"
+                    android:textSize="16sp" />
+            </LinearLayout>
+        </LinearLayout>
+        <!-- </LinearLayout> -->
+
+        <LinearLayout
+            android:id="@+id/ly_del"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:gravity="right" >
+
+            <TextView
+                android:id="@+id/tv_del"
+                android:layout_width="65dp"
+                android:layout_height="@dimen/layout_sheight"
+                android:background="@color/red"
+                android:gravity="center"
+                android:text="@string/assistant_del"
+                android:textColor="@color/white" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

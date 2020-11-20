@@ -1,0 +1,53 @@
+<layout name="layout_admin" />
+<script src="__PUBLIC__/js/webuploader.js" charset="UTF-8"></script>
+<script src="__PUBLIC__/js/upload.js" charset="UTF-8"></script>
+<div>
+    <form class="form-inline" role="form" id="data_search_form" action="#" method="get">
+        <div class="form-group">
+            <label for="date">清算日期</label>
+            <div class="input-group date">
+                <input type="text" class="form-control ipt-date-time-picker" id="date" name="date" value="{$get.date}" readonly placeholder="日期" />
+                <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="areaNbr">地区</label>
+            <select class="form-control" name="areaNbr" id="areaNbr">
+                <option value="">所有</option>
+                <foreach name="districtList" item="vo">
+                    <option value="{$vo.areaNbr}" <eq name="get.areaNbr" value="$vo.areaNbr">selected="selected"</eq>>{$vo.name}</option>
+                </foreach>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="isLiquidated">是否处理</label>
+            <select class="form-control" name="isLiquidated" id="isLiquidated">
+                <option value="">全部</option>
+                <option value="1" <eq name="get.isLiquidated" value="1">selected="selected"</eq>>已处理</option>
+                <option value="2" <eq name="get.isLiquidated" value="2">selected="selected"</eq>>未处理</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary" id="search_form_submit_btn">查询</button>
+        <input type="hidden" id="frm_ele_page" name="page" value="1" />
+    </form>
+</div>
+<div id="data_table_wrapper">
+    <include file="./Application/Admin/View/Liquidation/listLiquidationWidget.html" />
+</div>
+<script>
+    $(function(){
+        var currentDay = new Date(); //今天
+        var preDate = new Date(currentDay.getTime() - 24*60*60*1000); //昨天
+        // 初始化选择日期
+        $('.date').datetimepicker({
+            format: 'yyyy-mm-dd',
+            autoclose: true,
+            todayBtn: false,
+            minView: 'month',
+            pickerPosition: "bottom-left",
+            endDate: currentDay,
+            initialDate:preDate
+        });
+    });
+</script>

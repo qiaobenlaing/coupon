@@ -1,0 +1,22 @@
+<layout name="layout_api" />
+<style>
+    .page-content img{width: 100%;height: auto;}
+    .download{background-color: red;color: #fff;width: 100%;padding: 3% 0 3% 0;text-align: center;font-size: 20px;margin-top: -4px;}
+</style>
+<!-- Views -->
+<div class="views">
+    <!-- Your main view, should have "view-main" class -->
+    <div class="view view-main">
+        <!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
+        <div class="pages">
+            <!-- Page, "data-page" contains page name -->
+            <div data-page="index" class="page">
+                <!-- Scrollable page content -->
+                <div class="page-content">
+                    <img src="{$data.recruitUrl}" class="gradient" />
+                    <a href="/Wechat/Index/cdownload" class="external"><div class="download">报名</div></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

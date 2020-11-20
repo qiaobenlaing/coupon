@@ -1,0 +1,81 @@
+<layout name="layout_admin" />
+<form class="form-inline" id="data_search_form" action="#" method="get">
+    <div class="form-group">
+        <label for="consume-date-start">支付时间</label>
+        <div class="input-group date frm-date">
+            <input type="text" class="form-control ipt-date-time-picker" id="consume-date-start" name="consumeDateStart" value="{$get.consumeDateStart}" readonly placeholder="开始时间"/>
+            <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+            <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="consume-date-end">至</label>
+        <div class="input-group date frm-date">
+            <input type="text" class="form-control ipt-date-time-picker" name="consumeDateEnd" value="{$get.consumeDateEnd}" readonly placeholder="结束时间" id="consume-date-end"/>
+            <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+            <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="slt-province">区域</label>
+        <select class="form-control" name="province" id="slt-province"></select>
+        <select class="form-control" name="city" id="slt-city"></select>
+        <select class="form-control" name="district" id="slt-district"></select>
+    </div>
+    <div class="form-group">
+        <label for="type">类型</label>
+        <select class="form-control" name="type" id="type">
+            <option value="" <eq name="get.type" value="">selected="selected"</eq>>所有</option>
+            <option value="0" <eq name="get.type" value="0">selected="selected"</eq>>未知</option>
+            <option value="1" <eq name="get.type" value="1">selected="selected"</eq>>美食</option>
+            <option value="2" <eq name="get.type" value="2">selected="selected"</eq>>咖啡</option>
+            <option value="3" <eq name="get.type" value="3">selected="selected"</eq>>健身</option>
+            <option value="4" <eq name="get.type" value="4">selected="selected"</eq>>娱乐</option>
+            <option value="5" <eq name="get.type" value="5">selected="selected"</eq>>服装</option>
+            <option value="6" <eq name="get.type" value="6">selected="selected"</eq>>其他</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="shop-name">商家名称</label>
+        <input type="text" class="form-control" name="shopName" value="{$get.shopName}" placeholder="商家名" id="shop-name">
+    </div>
+    <button type="submit" class="btn btn-sm btn-primary" id="search_form_submit_btn">查询</button>
+    <button type="button" class="btn btn-primary btn-sm" id="btn-export-shop-consume-statistics">导出EXCEL</button>
+    <input type="hidden" id="frm_ele_page" name="page" value="1" />
+</form>
+<div class="container-fluid order-statistics-wrap">
+    <div class="row">
+        <div class="col-md-2">成交金额: {$consumeStatisticsSum.orderAmount}</div>
+        <div class="col-md-2">实际支付: {$consumeStatisticsSum.realPay}</div>
+        <div class="col-md-2">用券金额: {$consumeStatisticsSum.couponDeduction}</div>
+        <div class="col-md-2">成交笔数: {$consumeStatisticsSum.consumeCount}</div>
+        <div class="col-md-2">会员卡抵扣金额: {$consumeStatisticsSum.cardDeduction}</div>
+        <div class="col-md-2">平台红包: {$consumeStatisticsSum.platBonus}</div>
+        <div class="col-md-2">商家红包: {$consumeStatisticsSum.shopBonus}</div>
+        <div class="col-md-2">工行卡优惠: {$consumeStatisticsSum.bankCardDeduction}</div>
+        <div class="col-md-2">首单优惠: {$consumeStatisticsSum.firstDeduction}</div>
+        <div class="col-md-2">优惠券使用数量: {$consumeStatisticsSum.couponUsed|default=0}</div>
+    </div>
+</div>
+<div id="data_table_wrapper">
+    <include file="./Application/Admin/View/ConsumeOrder/listShopConsumeStatisticsWidget.html" />
+</div>
+<script>
+    ;(function(){
+        // 地区初始化
+        sz.initDistrict('{$get.province}', '{$get.city}', '{$get.district}', '#slt-province', '#slt-city', '#slt-district');
+        $('.frm-date').datetimepicker({
+            format: 'yyyy-mm-dd',
+            autoclose: true,
+            todayBtn: true,
+            minView: 'month',
+            pickerPosition: "bottom-left"
+        });
+        // 导出符合条件的商户excel
+        $('#btn-export-shop-consume-statistics').on('click', function(){
+            var frm = $('#data_search_form');
+            var url = '/Admin/ConsumeOrder/exportShopConsumeStatistics?' + frm.serialize() + '&page=0';
+            location.href = url;
+        });
+    })();
+</script>

@@ -1,0 +1,147 @@
+<link th:replace="/include/header" />
+
+<style>
+
+/*行高在super.css文件中已设置
+ .datagrid-row {
+	height: 42px;
+} */
+#searchForm p {
+	display: inline-block;
+	position: relative;
+	float: left;
+	right: 15px;
+}
+
+/*设置查询输入框大大小*/
+#searchForm input {
+    width: 155px;
+    height: 28px;
+}
+
+#searchForm div {
+	display: inline-block;
+ 	position: relative;
+	left: 15px; 
+}
+</style>
+<script th:src="@{/easyui/datagrid-detailview.js}"></script>
+<script th:inline="javascript">
+function onBeforeLoad(param){
+	$.each( $("#searchForm").serializeArray(), function(index, item){
+		param[item.name]=item.value;
+	});
+}
+
+function searchGrid(){	
+	var options = $('#logGrid').datagrid('options');//返回属性对象，用于重新设定属性值
+	var pager=$("#logGrid").datagrid("getPager");//返回页面对象，用于设置分页代码
+	options.pageNumber = 1;
+	//这里需要修改分页插件中的当前页的值	   
+    pager.pagination("refresh",{
+   		pageNumber:1,
+    });
+    $('#logGrid').datagrid('reload');  
+	
+}
+
+function clearSearch(){
+	$('#searchForm').form('clear');
+}
+
+$(document).ready(function() {
+	
+	$(".editForm label").css("min-width","50px");
+	
+	$('#logGrid').datagrid({  
+		url:[[@{/syslog/page}]],  
+	    pagination :true,  
+		pageList : $g.page.DEFAULT_ROW_OPTIONS,
+		pageSize: $g.page.DEFAULT_PAGE_SIZE,
+		fitColumns: false, //列自适应宽度      
+        nowrap: true, //不换行
+        //striped: true, //行背景交换
+	    //用于提交查询条件
+		onBeforeLoad: onBeforeLoad,
+		//双击当前行		
+		onDblClickRow:function(rowIndex){
+            $('#logGrid').datagrid('selectRow',rowIndex);  //指定行选中
+            var currentRow =$("#logGrid").datagrid("getSelected"); 
+                        
+            $("#paramsDetail").text(currentRow.actionParams);
+            $('#show').window('open'); 
+           
+        }
+		
+	   //双击单元格
+		/* onDblClickCell:function(rowIndex, field, value){  
+	         if("actionParams"==field){
+	        	$("#paramsDetail").text(value);
+	            $('#show').window('open');        	   
+	        }
+	    }*/
+	});  
+	
+});
+
+function closeShow(){
+	 $('#show').window('close');
+}
+</script>
+<div data-options="region:'north',border:false,title:'查询条件'"
+	style="height: 90px; padding: 10px 5px;">
+	<form id="searchForm" class="editForm" style="text-align: left;">
+		<p id="p1">
+			<label>用户账号:</label><input type="text" class="easyui-textbox"
+				name="loginName" />
+		</p>
+		<p id="p2">
+            <label>访问资源:</label><input type="text" class="easyui-textbox"
+                name="actionUrl" />
+        </p>
+        
+		<p id="p3">
+            <label>起始时间:</label><input type="text" class="easyui-datetimebox"
+                name="startTime" data-options="editable:false" />
+        </p>
+		<p id="p4">
+			<label>结束时间:</label><input type="text" class="easyui-datetimebox"
+				name="endTime" data-options="editable:false" />
+		</p>
+        
+		<div>
+			<a href="javascript:void(0)" data-options=" iconCls:'icon-search'"
+				class="easyui-linkbutton" onclick="searchGrid();">查询</a> <a
+				href="javascript:void(0)" data-options=" iconCls:'icon-reload'"
+				class="easyui-linkbutton" onclick="clearSearch();">清空</a>
+		</div>
+	</form>
+</div>
+<div data-options="region:'center',border:false"
+	class="layout-have-top-border">
+	<table id="logGrid" class="easyui-datagrid"
+		data-options="border:false, title:'系统操作日志', nowrap:false, singleSelect:'true', fitColumns:'true', autoRowHeight:'true'"
+		style="height: 100%">
+		<thead>
+			<tr>
+
+				<th data-options="field:'loginName',width:60">用户账号</th>
+				<th data-options="field:'actionName',width:100">资源名称</th>
+				<th data-options="field:'actionUrl',width:100">资源路径</th>
+				<th data-options="field:'actionParams',width:300">值域</th>
+				<th data-options="field:'logTime',width:120">操作时间</th>
+				<th data-options="field:'userIp',width:100" >IP地址</th>
+			</tr>
+		</thead>
+	</table>
+</div>
+<div id="show" class="easyui-window" title="参数值"
+	style="width: 420px; height: 280px; padding: 5px;" closed="true">
+	<p align="left" id="paramsDetail"
+		style="margin: 10px; font-size: 16px;"></p>
+	<p style="position: absolute; bottom: 20px; left: 165px;">
+		<a href="#" class="easyui-linkbutton" icon="icon-ok"
+			onclick="closeShow()">确定</a>
+	</p>
+</div>
+<link th:replace="/include/footer" />

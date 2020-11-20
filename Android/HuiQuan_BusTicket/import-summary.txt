@@ -1,0 +1,145 @@
+ECLIPSE ANDROID PROJECT IMPORT SUMMARY
+======================================
+
+Manifest Merging:
+-----------------
+Your project uses libraries that provide manifests, and your Eclipse
+project did not explicitly turn on manifest merging. In Android Gradle
+projects, manifests are always merged (meaning that contents from your
+libraries' manifests will be merged into the app manifest. If you had
+manually copied contents from library manifests into your app manifest
+you may need to remove these for the app to build correctly.
+
+Ignored Files:
+--------------
+The following files were *not* copied into the new Gradle project; you
+should evaluate whether these are still needed in your project and if
+so manually move them:
+
+From andr_b:
+* .gitignore
+* .idea\
+* .idea\andr_b.iml
+* .idea\encodings.xml
+* .idea\misc.xml
+* .idea\modules.xml
+* .idea\workspace.xml
+* AndroidManifest-360.xml
+* AndroidManifest-baidu.xml
+* build.xml
+* proguard-project.txt
+From andr_base:
+* .gitignore
+* build.xml
+* proguard-project.txt
+From baiduintsdk:
+* .gitignore
+* build.xml
+* proguard-project.txt
+
+Replaced Jars with Dependencies:
+--------------------------------
+The importer recognized the following .jar files as third party
+libraries and replaced them with Gradle dependencies instead. This has
+the advantage that more explicit version information is known, and the
+libraries can be updated automatically. However, it is possible that
+the .jar file in your project was of an older version than the
+dependency we picked, which could render the project not compileable.
+You can disable the jar replacement in the import wizard and try again:
+
+android-support-v4.jar => com.android.support:support-v4:21.+
+gson-2.3.1.jar => com.google.code.gson:gson:2.3.1
+
+Moved Files:
+------------
+Android Gradle projects use a different directory structure than ADT
+Eclipse projects. Here's how the projects were restructured:
+
+In baiduintsdk:
+* AndroidManifest.xml => baiduintsdk\src\main\AndroidManifest.xml
+* assets\ => baiduintsdk\src\main\assets
+* libs\android_api_3.6.9.3.jar => baiduintsdk\libs\android_api_3.6.9.3.jar
+* res\ => baiduintsdk\src\main\res\
+* src\ => baiduintsdk\src\main\java\
+In andr_base:
+* AndroidManifest.xml => andr_base\src\main\AndroidManifest.xml
+* assets\ => andr_base\src\main\assets\
+* libs\arm64-v8a\liblocSDK6a.so => andr_base\src\main\jniLibs\arm64-v8a\liblocSDK6a.so
+* libs\armeabi-v7a\liblocSDK6a.so => andr_base\src\main\jniLibs\armeabi-v7a\liblocSDK6a.so
+* libs\armeabi\liblocSDK6a.so => andr_base\src\main\jniLibs\armeabi\liblocSDK6a.so
+* libs\badgeview.jar => andr_base\libs\badgeview.jar
+* libs\BaiduLBS_Android.jar => andr_base\libs\BaiduLBS_Android.jar
+* libs\commons-codec-1.4.jar => andr_base\libs\commons-codec-1.4.jar
+* libs\commons-lang3-3.1.jar => andr_base\libs\commons-lang3-3.1.jar
+* libs\glide-3.6.1.jar => andr_base\libs\glide-3.6.1.jar
+* libs\jpush-sdk-release1.7.5.jar => andr_base\libs\jpush-sdk-release1.7.5.jar
+* libs\json-smart-1.2.jar => andr_base\libs\json-smart-1.2.jar
+* libs\libammsdk.jar => andr_base\libs\libammsdk.jar
+* libs\MobTools.jar => andr_base\libs\MobTools.jar
+* libs\need_lib.jar => andr_base\libs\need_lib.jar
+* libs\ShareSDK-Core-2.6.0.jar => andr_base\libs\ShareSDK-Core-2.6.0.jar
+* libs\ShareSDK-QQ-2.6.0.jar => andr_base\libs\ShareSDK-QQ-2.6.0.jar
+* libs\ShareSDK-QZone-2.6.0.jar => andr_base\libs\ShareSDK-QZone-2.6.0.jar
+* libs\ShareSDK-Wechat-2.6.0.jar => andr_base\libs\ShareSDK-Wechat-2.6.0.jar
+* libs\ShareSDK-Wechat-Core-2.6.0.jar => andr_base\libs\ShareSDK-Wechat-Core-2.6.0.jar
+* libs\ShareSDK-Wechat-Moments-2.6.0.jar => andr_base\libs\ShareSDK-Wechat-Moments-2.6.0.jar
+* libs\sun.misc.BASE64Decoder.jar => andr_base\libs\sun.misc.BASE64Decoder.jar
+* libs\SwitchLayout1.0.jar => andr_base\libs\SwitchLayout1.0.jar
+* libs\umeng-analytics-v5.5.3.jar => andr_base\libs\umeng-analytics-v5.5.3.jar
+* libs\universal-image-loader-1.9.2-with-sources.jar => andr_base\libs\universal-image-loader-1.9.2-with-sources.jar
+* libs\xUtils-2.6.14.jar => andr_base\libs\xUtils-2.6.14.jar
+* libs\zxing.jar => andr_base\libs\zxing.jar
+* lint.xml => andr_base\lint.xml
+* res\ => andr_base\src\main\res\
+* src\ => andr_base\src\main\java\
+* src\com\huift\hfq\base\model\blank => andr_base\src\main\resources\com\huift\hfq\base\model\blank
+In andr_b:
+* AndroidManifest.xml => andr_b\src\main\AndroidManifest.xml
+* assets\ => andr_b\src\main\assets\
+* libs\achartengine-1.1.0.jar => andr_b\libs\achartengine-1.1.0.jar
+* libs\android-support-v7-recyclerview.jar => andr_b\libs\android-support-v7-recyclerview.jar
+* libs\arm64-v8a\libjpush175.so => andr_b\src\main\jniLibs\arm64-v8a\libjpush175.so
+* libs\armeabi-v7a\libjpush175.so => andr_b\src\main\jniLibs\armeabi-v7a\libjpush175.so
+* libs\armeabi\libjpush175.so => andr_b\src\main\jniLibs\armeabi\libjpush175.so
+* libs\jpush-sdk-release1.7.5.jar => andr_b\libs\jpush-sdk-release1.7.5.jar
+* libs\MobTools.jar => andr_b\libs\MobTools.jar
+* libs\platform_sdk_v2.2.3.jar => andr_b\libs\platform_sdk_v2.2.3.jar
+* libs\umeng-analytics-v5.5.3.jar => andr_b\libs\umeng-analytics-v5.5.3.jar
+* libs\zxing.jar => andr_b\libs\zxing.jar
+* lint.xml => andr_b\lint.xml
+* res\ => andr_b\src\main\res\
+* src\ => andr_b\src\main\java\
+* src\com\huift\hfq\shop\activity\.gitignore => andr_b\src\main\resources\com\huift\hfq\shop\activity\.gitignore
+* src\com\huift\hfq\shop\pojo\.gitignore => andr_b\src\main\resources\com\huift\hfq\shop\pojo\.gitignore
+* src\com\huift\hfq\shop\pojo\blank => andr_b\src\main\resources\com\huift\hfq\shop\pojo\blank
+* src\com\huift\hfq\shop\service\.gitignore => andr_b\src\main\resources\com\huift\hfq\shop\service\.gitignore
+* src\com\huift\hfq\shop\service\blank => andr_b\src\main\resources\com\huift\hfq\shop\service\blank
+
+Missing Android Support Repository:
+-----------------------------------
+Some useful libraries, such as the Android Support Library, are
+installed from a special Maven repository, which should be installed
+via the SDK manager.
+
+It looks like this library is missing from your SDK installation at:
+null
+
+To install it, open the SDK manager, and in the Extras category,
+select "Android Support Repository". You may also want to install the
+"Google Repository" if you want to use libraries like Google Play
+Services.
+
+Next Steps:
+-----------
+You can now build the project. The Gradle project needs network
+connectivity to download dependencies.
+
+Bugs:
+-----
+If for some reason your project does not build, and you determine that
+it is due to a bug or limitation of the Eclipse to Gradle importer,
+please file a bug at http://b.android.com with category
+Component-Tools.
+
+(This import summary is for your information only, and can be deleted
+after import once you are satisfied with the results.)

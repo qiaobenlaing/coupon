@@ -1,0 +1,180 @@
+<layout name="layout_api" />
+<link rel="stylesheet" href="__PUBLIC__/css/actModule.css">
+<!-- Views -->
+<div class="views">
+    <!-- Your main view, should have "view-main" class -->
+    <div class="view view-main">
+        <neq name="isShared" value="1">
+            <div class="navbar shop-info-nav">
+                <div class="navbar-inner">
+                    <div class="left">
+                        <a href="hg://backup" class="external"><img src="/Public/img/icon/backup.png" style="width: 48px;height: auto;margin-left: -7px;" /></a>
+                    </div>
+                    <div class="center"></div>
+                    <div class="right">
+                        <?php
+                    $string = array(
+                        'title'=> $subModuleInfo['title'],
+                        'icon'=> 'http://api.huiquan.suanzi.cn'.$subModuleInfo['imgUrl'],
+                        'content'=> $subModuleInfo['subTitle'],
+                        'link'=> 'http://api.huiquan.suanzi.cn/Api/ActModule/huzhou?actId='.$subModuleInfo['id'].'&isShared=1',
+                        );
+                        $string = json_encode($string);
+                        ?>
+                        <a href="hg://share?params={$string|urlencode}" class="external"><img src="/Public/img/icon/share_white.png" style="width: 30px;height: auto;margin-right: 4px;" /></a>
+                    </div>
+                </div>
+            </div>
+        </neq>
+        <!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
+        <div class="pages">
+            <!-- Page, "data-page" contains page name -->
+            <div data-page="index" class="page">
+                <!-- Scrollable page content -->
+                <div class="page-content">
+                    <div class="city-act-wrap">
+                        <?php if(empty($subModuleInfo['exButtonList'])):?>
+                        <img src="/Public/img/actModule/huzhou/huzhou.jpg" class="bg-img" />
+                        <neq name="isShared" value="1">
+                            <?php $shopCode = 'c8aca418-e47d-3b5f-3023-df70e8afbdb6';?>
+                            <a href="hs://getShopInfo?shopCode={$shopCode|urlencode}" class="external">
+                                <img src="/Public/img/scroll/transparent.png" alt="" style="position: absolute;top: 13.3%;width: 92%;left: 4%;height: 8.2%;" />
+                            </a>
+                            <?php $shopCode = '7576f188-82e9-b925-9bc9-f4986ca01446';?>
+                            <a href="hs://getShopInfo?shopCode={$shopCode|urlencode}" class="external">
+                                <img src="/Public/img/scroll/transparent.png" alt="" style="position: absolute;top: 21.8%;width: 92%;left: 4%;height: 8.2%;" />
+                            </a>
+                            <?php $shopCode = 'b62b35ae-18cb-d60b-1b06-68fcbcdf4d2b';?>
+                            <a href="hs://getShopInfo?shopCode={$shopCode|urlencode}" class="external">
+                                <img src="/Public/img/scroll/transparent.png" alt="" style="position: absolute;top: 30.6%;width: 92%;left: 4%;height: 8.2%;" />
+                            </a>
+                            <?php $shopCode = 'efa1364a-82c1-b940-9c0d-8d3801cd378a';?>
+                            <a href="hs://getShopInfo?shopCode={$shopCode|urlencode}" class="external">
+                                <img src="/Public/img/scroll/transparent.png" alt="" style="position: absolute;top: 39.1%;width: 92%;left: 4%;height: 8.2%;" />
+                            </a>
+                            <?php $shopCode = '1b4b9351-ef3f-ed84-3334-59583e5e9b33';?>
+                            <a href="hs://getShopInfo?shopCode={$shopCode|urlencode}" class="external">
+                                <img src="/Public/img/scroll/transparent.png" alt="" style="position: absolute;top: 47.65%;width: 92%;left: 4%;height: 8.2%;" />
+                            </a>
+                            <?php $shopCode = '58388ec2-ca71-221f-0ed9-f4ea75f43682';?>
+                            <a href="hs://getShopInfo?shopCode={$shopCode|urlencode}" class="external">
+                                <img src="/Public/img/scroll/transparent.png" alt="" style="position: absolute;top: 56.1%;width: 92%;left: 4%;height: 8.2%;" />
+                            </a>
+                            <?php $shopCode = 'a47cb2c5-1387-dcd1-5716-03c0e807e436';?>
+                            <a href="hs://getShopInfo?shopCode={$shopCode|urlencode}" class="external">
+                                <img src="/Public/img/scroll/transparent.png" alt="" style="position: absolute;top: 64.65%;width: 92%;left: 4%;height: 8.2%;" />
+                            </a>
+                            <?php $shopCode = 'f22e030a-695d-ba7c-e5de-a7f26a02ba6f';?>
+                            <a href="hs://getShopInfo?shopCode={$shopCode|urlencode}" class="external">
+                                <img src="/Public/img/scroll/transparent.png" alt="" style="position: absolute;top: 73.17%;width: 92%;left: 4%;height: 8.2%;" />
+                            </a>
+                            <?php $shopCode = 'b997c0ea-7afa-15fa-aa8f-2bedb4bfe94e';?>
+                            <a href="hs://getShopInfo?shopCode={$shopCode|urlencode}" class="external">
+                                <img src="/Public/img/scroll/transparent.png" alt="" style="position: absolute;top: 81.7%;width: 92%;left: 4%;height: 8.2%;" />
+                            </a>
+                            <else />
+                            <a href="/Wechat/Index/cdownload" class="external">
+                                <img src="/Public/img/scroll/transparent.png" alt="" style="position: absolute;top: 13.3%;width: 92%;left: 4%;height: 8.2%;" />
+                            </a>
+                            <a href="/Wechat/Index/cdownload" class="external">
+                                <img src="/Public/img/scroll/transparent.png" alt="" style="position: absolute;top: 21.8%;width: 92%;left: 4%;height: 8.2%;" />
+                            </a>
+                            <a href="/Wechat/Index/cdownload" class="external">
+                                <img src="/Public/img/scroll/transparent.png" alt="" style="position: absolute;top: 30.6%;width: 92%;left: 4%;height: 8.2%;" />
+                            </a>
+                            <a href="/Wechat/Index/cdownload" class="external">
+                                <img src="/Public/img/scroll/transparent.png" alt="" style="position: absolute;top: 39.1%;width: 92%;left: 4%;height: 8.2%;" />
+                            </a>
+                            <a href="/Wechat/Index/cdownload" class="external">
+                                <img src="/Public/img/scroll/transparent.png" alt="" style="position: absolute;top: 47.65%;width: 92%;left: 4%;height: 8.2%;" />
+                            </a>
+                            <a href="/Wechat/Index/cdownload" class="external">
+                                <img src="/Public/img/scroll/transparent.png" alt="" style="position: absolute;top: 56.1%;width: 92%;left: 4%;height: 8.2%;" />
+                            </a>
+                            <a href="/Wechat/Index/cdownload" class="external">
+                                <img src="/Public/img/scroll/transparent.png" alt="" style="position: absolute;top: 64.65%;width: 92%;left: 4%;height: 8.2%;" />
+                            </a>
+                            <a href="/Wechat/Index/cdownload" class="external">
+                                <img src="/Public/img/scroll/transparent.png" alt="" style="position: absolute;top: 73.17%;width: 92%;left: 4%;height: 8.2%;" />
+                            </a>
+                            <a href="/Wechat/Index/cdownload" class="external">
+                                <img src="/Public/img/scroll/transparent.png" alt="" style="position: absolute;top: 81.7%;width: 92%;left: 4%;height: 8.2%;" />
+                            </a>
+                        </neq>
+                        <?php else:?>
+                        <img src="{$subModuleInfo.bgUrl}" class="bg-img" />
+                        <foreach name="subModuleInfo.exButtonList" item="vo">
+                            <neq name="isShared" value="1">
+                                <a href="{$vo.ebLink}" class="external">
+                                    <img src="/Public/img/scroll/transparent.png" style="position: absolute;top: {$vo.ebTop};width: {$vo.ebWidth};left: {$vo.ebLeft};height: {$vo.ebHeight};" />
+                                </a>
+                                <else />
+                                <a href="/Wechat/Index/cdownload" class="external">
+                                    <img src="/Public/img/scroll/transparent.png" style="position: absolute;top: {$vo.ebTop};width: {$vo.ebWidth};left: {$vo.ebLeft};height: {$vo.ebHeight};" />
+                                </a>
+                            </neq>
+                        </foreach>
+                        <?php endif;?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="__PUBLIC__/js/jweixin-1.0.0.js"></script>
+<script>
+    $(function() {
+        var title = '{$subModuleInfo.title}';
+        var icon = 'http://api.huiquan.suanzi.cn{$subModuleInfo.imgUrl}';
+        var content = '{$subModuleInfo.subTitle}';
+        var link = 'http://api.huiquan.suanzi.cn/Api/ActModule/huzhou?actId={$subModuleInfo.id}&isShared=1';
+        wx.config({
+            debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+            appId: '{$appId}', // 必填，公众号的唯一标识
+            timestamp: '{$timestamp}', // 必填，生成签名的时间戳
+            nonceStr: '{$nonceStr}', // 必填，生成签名的随机串
+            signature: '{$signature}',// 必填，签名，见附录1
+            jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage', 'onMenuShareQQ'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+        });
+
+        /**
+         * 微信分享
+         */
+        wx.ready(function() {
+            //分享到朋友圈
+            wx.onMenuShareTimeline({
+                title: title, // 分享标题
+                link: link, // 分享链接
+                imgUrl: icon, // 分享图标
+                success: function () {
+                    // 用户确认分享后执行的回调函数
+//                    alert("分享成功！");
+                }
+            });
+            //分享给朋友
+            wx.onMenuShareAppMessage({
+                title: title, // 分享标题
+                desc: content, // 分享描述
+                link: link, // 分享链接
+                imgUrl: icon, // 分享图标
+//                type: '', // 分享类型,music、video或link，不填默认为link
+//                dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+                success: function () {
+                    // 用户确认分享后执行的回调函数
+//                    alert("分享成功！");
+                }
+            });
+            //分享到qq
+            wx.onMenuShareQQ({
+                title: title, // 分享标题
+                desc: content, // 分享描述
+                link: link, // 分享链接
+                imgUrl: icon, // 分享图标
+                success: function () {
+                    // 用户确认分享后执行的回调函数
+//                    alert("分享成功！");
+                }
+            });
+        });
+    });
+</script>

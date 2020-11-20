@@ -1,0 +1,48 @@
+﻿SUPPORTED_64_BIT_ABIS=[Ljava.lang.String;@81dc521
+versionCode=29
+BOARD=msm8952
+BOOTLOADER=unknown
+TYPE=user
+ID=LMY47V
+TIME=1469285380000
+BRAND=vivo
+TAG=Build
+SERIAL=9e46faf3
+HARDWARE=qcom
+SUPPORTED_ABIS=[Ljava.lang.String;@1f432d46
+CPU_ABI=armeabi-v7a
+RADIO=M8939.1020.3
+IS_DEBUGGABLE=false
+MANUFACTURER=vivo
+SUPPORTED_32_BIT_ABIS=[Ljava.lang.String;@2704b788
+TAGS=release-keys
+CPU_ABI2=armeabi
+UNKNOWN=unknown
+USER=compiler
+FINGERPRINT=vivo/PD1602/PD1602:5.1.1/LMY47V/compiler07232248:user/release-keys
+HOST=compiler01103
+PRODUCT=PD1602
+versionName=1.0.0350
+DISPLAY=LMY47V release-keys
+MODEL=vivo X7
+DEVICE=PD1602
+java.lang.IllegalArgumentException: View=android.widget.LinearLayout{5c4f64e V.E..... ......I. 0,0-1080,1851} not attached to window manager
+	at android.view.WindowManagerGlobal.findViewLocked(WindowManagerGlobal.java:396)
+	at android.view.WindowManagerGlobal.removeView(WindowManagerGlobal.java:322)
+	at android.view.WindowManagerImpl.removeViewImmediate(WindowManagerImpl.java:121)
+	at android.widget.PopupWindow.dismiss(PopupWindow.java:1525)
+	at cn.suanzi.baomi.cust.util.DialogUtils.close(DialogUtils.java:107)
+	at cn.suanzi.baomi.cust.activity.HomeActivity.onUserLeaveHint(HomeActivity.java:489)
+	at android.app.Activity.performUserLeaving(Activity.java:6207)
+	at android.app.Instrumentation.callActivityOnUserLeaving(Instrumentation.java:1329)
+	at android.app.ActivityThread.performUserLeavingActivity(ActivityThread.java:3313)
+	at android.app.ActivityThread.handlePauseActivity(ActivityThread.java:3290)
+	at android.app.ActivityThread.access$1100(ActivityThread.java:175)
+	at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1377)
+	at android.os.Handler.dispatchMessage(Handler.java:102)
+	at android.os.Looper.loop(Looper.java:135)
+	at android.app.ActivityThread.main(ActivityThread.java:5400)
+	at java.lang.reflect.Method.invoke(Native Method)
+	at java.lang.reflect.Method.invoke(Method.java:372)
+	at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:1037)
+	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:832)

@@ -1,0 +1,167 @@
+<layout name="layout_admin" />
+<form class="form-horizontal" id="card_add_form" action="/Admin/QNotice/editAdv" method="post">
+    <input type="hidden" name="id" value="{$advListInfo.id}" />
+    <div class="form-group">
+        <label for="title" class="col-sm-2 control-label"><span class='required-ele'>*</span>广告主标题</label>
+        <div class="col-sm-5">
+            <input type="text" class="form-control" name="title" value="{$advListInfo.title}" id="title" placeholder="主标题">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="sub_title" class="col-sm-2 control-label"><span class='required-ele'>*</span>副标题</label>
+        <div class="col-sm-5">
+            <input type="text" class="form-control" name="sub_title" value="{$advListInfo.sub_title}" id="sub_title" placeholder="副标题">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="shop-code" class="col-sm-2 control-label"><span class='required-ele'>*</span>分类名称</label>
+        <div class="col-sm-5">
+            <select class="form-control frm-select" name="usedid" id="shop-code">
+                <option value="">请选择分类</option>
+                <foreach name="sortList" item="item">
+                    <option value="{$item.id}" <eq name="advListInfo.usedid" value="$item.id">selected="selected"</eq>>{$item.title}</option>
+                </foreach>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label"><span class='required-ele'>*</span>广告状态</label>
+        <div class="col-sm-6">
+            <label class="radio-inline">
+                <input type="radio" name="state" value="1" <eq name="advListInfo.state" value="1">checked="checked"</eq> checked="checked"> 启用
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="state" value="2" <eq name="advListInfo.state" value="2">checked="checked"</eq>> 禁用
+            </label>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="title" class="col-sm-2 control-label"><span class='required-ele'>*</span>跳转链接</label>
+        <div class="col-sm-5">
+            <input type="text" class="form-control" name="link" value="{$advListInfo.link}" id="link" placeholder="链接url">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="" class="col-sm-2 control-label"><span class='required-ele'>*</span>广告图片</label>
+        <div class="col-sm-5">
+            <input type="hidden" name="pic" value="{$advListInfo.pic|default='__PUBLIC__/img/upload.png'}" />
+            <div class="fileinput fileinput-new  col-xs-6" data-provides="fileinput">
+                <div class="fileinput-new thumbnail"><img src="{$advListInfo.pic}" /></div>
+                <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 400px; max-height: 100px;"></div>
+                <div>
+                    <span class="btn btn-default btn-file">
+                        <span class="fileinput-new">选择广告图片</span>
+                        <span class="fileinput-exists">换一张</span>
+                        <input type="file" name="upfile" class="ajax-file-upload" data-imgname="url" data-url="/Admin/Util/imageUp" multiple>
+                    </span>
+                    <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">移除</a>
+                    <span id="state_url" class="ajax-file-state"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label  class="col-sm-2 control-label"><span class='required-ele'>*</span>背景图片</label>
+        <div class="col-sm-5">
+            <input type="hidden" name="back_pic" value="{$advListInfo.back_pic|default='__PUBLIC__/img/upload.png'}" />
+            <div class="fileinput fileinput-new  col-xs-6" data-provides="fileinput">
+                <div class="fileinput-new thumbnail"><img src="{$advListInfo.back_pic}" /></div>
+                <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 400px; max-height: 100px;"></div>
+                <div>
+                    <span class="btn btn-default btn-file">
+                        <span class="fileinput-new">选择背景图片</span>
+                        <span class="fileinput-exists">换一张</span>
+                        <input type="file" name="upfile" class="ajax-file-upload2" data-imgname="url" data-url="/Admin/Util/imageUp" multiple>
+                    </span>
+                    <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">移除</a>
+                    <span id="back_url" class="ajax-file-state"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="discount-require" class="col-sm-2 control-label"><span class='required-ele'>*</span>排序号</label>
+        <div class="col-sm-5">
+            <input type="number" class="form-control" name="sort" value="{$advListInfo.sort}" id="discount-require" placeholder="序号(纯数字)">
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <label for="txtContent" class="col-sm-2 control-label">备注</label>
+        <div class="col-sm-5">
+            <textarea class="form-control" name="remark" rows="6" id="txtContent">{$advListInfo.remark}</textarea>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-primary" id="submit">保存</button>
+        </div>
+    </div>
+</form>
+<script src="__PUBLIC__/js/vendor/jquery.ui.widget.js"></script>
+<script src="__PUBLIC__/js/jquery.iframe-transport.js"></script>
+<script src="__PUBLIC__/js/jquery.fileupload.js"></script>
+<script type="text/javascript">
+    $('#shop-code').select2();
+    $('#card_add_form').on('submit', function() {
+        var frm = $(this);
+        $.post(frm.attr('action'), frm.serialize(), function(resp) {
+            console.log(resp);
+            if (resp.status == sz.STATUS_SUCC) {
+                location.href = '/Admin/QNotice/listAdv/page/{$page}';
+            } else {
+                sz.showErrMsg(resp.msg, 3);
+            }
+        });
+        return false;
+    });
+    $('.ajax-file-upload').fileupload({
+        dataType: 'json',
+        add: function (e, data) {
+            var imgname = $(this).data('imgname'); // imgname为 url
+            data.context = $('#state_' + imgname).text('正在上传...');
+            data.submit();
+        },
+        done: function (e, data) {
+            var resp = data.result;
+            if (resp.state == 'SUCCESS') {
+                data.context.text('上传完成');
+                var imgname = data.context.attr('id').substr('state_'.length);
+                var imgUrl = resp.url.substr(0, 1) == '.' ? resp.url.substr(1) : resp.url; // 去掉"./"中的"."
+                $('#card_add_form input[name=\'pic\']').val('/'+ imgUrl);
+            } else {
+                data.context.text('上传失败');
+                $('#card_add_form input[name=\'pic\']').val('');
+            }
+        }
+    });
+
+
+    $('.ajax-file-upload2').fileupload({
+        dataType: 'json',
+        add: function (e, data) {
+            var imgname = $(this).data('imgname'); // imgname为 url
+            data.context = $('#back_' + imgname).text('正在上传...');
+            data.submit();
+        },
+        done: function (e, data) {
+            var resp = data.result;
+            console.log(resp);
+            if (resp.state == 'SUCCESS') {
+                data.context.text('上传完成');
+                var imgname = data.context.attr('id').substr('back_'.length);
+                var imgUrl = resp.url.substr(0, 1) == '.' ? resp.url.substr(1) : resp.url; // 去掉"./"中的"."
+                $('#card_add_form input[name=\'back_pic\']').val('/'+ imgUrl);
+            } else {
+                data.context.text('上传失败');
+                $('#card_add_form input[name=\'back_pic\']').val('');
+            }
+        }
+    });
+</script>

@@ -1,0 +1,69 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/LyOutSet"
+    android:background="@color/white" >
+
+    <LinearLayout
+        style="@style/LyWHFourth"
+        android:layout_height="48dp"
+        android:background="@color/app_bg"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/tv_manager_name"
+            style="@style/LyWHSecond"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:text="店长姓名:"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/tv_manager_phone"
+            style="@style/LyWHSecond"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5dp"
+            android:text="15868179748"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <TextView style="@style/VLine" />
+
+    <ListView
+        android:id="@+id/lv_staff_manager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:cacheColorHint="#00000000"
+        android:divider="@color/light_grey"
+        android:dividerHeight="0.5dp"
+        android:scrollbars="none"
+        android:visibility="visible" />
+
+    <TextView style="@style/VLine" />
+
+    <RelativeLayout
+        android:id="@+id/ry_set_manager"
+        style="@style/LyWHFourth"
+        android:layout_height="48dp"
+        android:background="@color/white"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/tv_edit_manager"
+            style="@style/LyWHSecond"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/tv_set_shop"
+            android:background="@drawable/bg_border_isred"
+            android:text="编辑店长" />
+
+        <TextView
+            android:id="@+id/tv_set_shop"
+            style="@style/LyWHSecond"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/bg_border_isred"
+            android:text="设置门店" />
+    </RelativeLayout>
+
+</LinearLayout>

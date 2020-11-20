@@ -1,0 +1,80 @@
+<layout name="layout_api" />
+<!-- Views -->
+<div class="views">
+    <!-- Your main view, should have "view-main" class -->
+    <div class="view view-main">
+        <!-- Navbar on index page -->
+        <div class="navbar">
+            <div class="navbar-inner">
+                <div class="left">
+                    <a href="hs://backup" class="link external">
+                        <img src="/Public/img/icon/backup.png" alt="" style="width: 50%;"/>
+                    </a>
+                </div>
+                <div class="center">{$title}</div>
+                <div class="right">
+                    <a href="hs://backup" class="link external" style="color: #fff">完成</a>
+                </div>
+            </div>
+        </div>
+        <!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
+        <div class="pages navbar-through">
+            <!-- Page, "data-page" contains page name -->
+            <div data-page="index" class="page">
+                <!-- Scrollable page content -->
+                <div class="page-content">
+                    <div class="exchange-coupon-wrap">
+                        <div class="duihuan-wrap">
+                            <div class="success-text">兑换成功<img src="/Public/img/icon/right_img.png" width="15px;"/></div>
+                            <div class="shop-info">商家：{$shopInfo.shopName}</div>
+                            <div class="used-coupon-info">兑换码：{$usedCouponInfo.couponCode}</div>
+                            <div class="can-use-coupon-wrap">
+                                <a href="#">您在{$shopInfo.shopName}还有的<span>{$notUsedCouponCount}</span>个兑换码</a>
+                            </div>
+                        </div>
+                        <div class="shop-list-title">这些商家也有优惠</div>
+                        <div class="list-block shop-product-wrap">
+                            <ul>
+                                <foreach name="shopList" item="item">
+                                    <div class="product-wrap">
+                                        <div class="div-product-img-wrap">
+                                            <img src="{$item.logoUrl}" class="shop-img" />
+                                        </div>
+                                        <a class="shop-info-wrap external" href="hs://getShopInfo?shopCode={$item.shopCode|urlencode}">
+                                            <div class="product-name">
+                                                {$item.shopName}
+                                                <if condition="$item.onlinePaymentDiscount lt 100">
+                                                    <img src="/Public/img/android/icbc_icon.png" class="icon-img" />
+                                                </if>
+                                            <span class="shop-distance" id="distance_{$item.shopCode}">{$item.distance}{$item.unitOfLength}</span>
+                                            </div>
+                                            <div class="product-discount"><if condition="$item.hasBatchCoupon eq 1"><img src="/Public/img/android/conpon_icon.png" class="icon-img" /></if>&nbsp;<if condition="$item.hasActivity eq 1"><img src="/Public/img/android/act_icon.png" class="icon-img" /></if>&nbsp;</div>
+                                            <div class="product-address">{$item.street}</div>
+                                            <div class="product-address">
+                                                <span class="final-type">
+                                                <switch name="item.type">
+                                                    <case value="1">美食</case>
+                                                    <case value="2">咖啡</case>
+                                                    <case value="3">健身</case>
+                                                    <case value="4">娱乐</case>
+                                                    <case value="5">服饰</case>
+                                                    <case value="6">其他</case>
+                                                </switch>
+                                                </span>
+                                                <span class="shop-popularity">
+                                                    人气：{$item.popularity}
+                                                </span>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </foreach>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+</script>

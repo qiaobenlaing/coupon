@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/bgall"
+    android:orientation="horizontal" >
+
+    <LinearLayout
+        style="@style/LyWHFourth"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/cardbg"
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/bg_border"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:id="@+id/iv_userhead"
+                android:layout_width="62dp"
+                android:layout_height="62dp"
+                android:layout_gravity="center_vertical"
+                android:scaleType="centerCrop" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:gravity="center_vertical"
+            android:orientation="vertical" >
+
+            <RelativeLayout style="@style/LyWHSecond" >
+
+                <TextView
+                    android:id="@+id/tv_username"
+                    style="@style/Tv_CouponSetFont"
+                    android:layout_alignParentLeft="true"
+                    android:singleLine="true"
+                    android:text="aasdf"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/tv_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="5dp"
+                    android:singleLine="true"
+                    android:text="2015"
+                    android:textColor="@color/msg_font" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                style="@style/LyWHSecond"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/tv_drawcontent"
+                    style="@style/Tv_FontSize"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginTop="10dp"
+                    android:maxWidth="200dp"
+                    android:singleLine="true"
+                    android:text="aasdsdfasdf"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_msgprompt"
+                    style="@style/LyWHSecond"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/msgprompt"
+                    android:gravity="center"
+                    android:text="1"
+                    android:textColor="@color/white"
+                    android:visibility="gone" />
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

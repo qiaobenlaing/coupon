@@ -1,0 +1,187 @@
+.open{
+	position: fixed;
+	width: 200px;
+}
+.hover{
+	background-color: rgba(84, 84, 84, 0.71);
+}
+.menu-show{
+	position: absolute;
+	width: 200px;
+	height:50px;
+	font-size:18px;
+	color:#0871CA;
+	line-height:40px;
+	background:#E7ECF0;
+}
+.show-title{
+	margin-left:20px;
+}
+.show-tool{
+	margin-left:75px;
+	cursor:pointer;
+	color:#0871CA;
+	font-size:20px;
+}
+.menu-contents
+{
+	width: 200px;
+	height:100%;
+	overflow:auto;
+	margin-top:50px;
+	position: absolute;
+	background:#414141;
+}
+/*宽菜单--start*/
+.out-one-ul{
+	position: absolute;
+	top:0px;
+	width:200px;
+}
+.out-one-div{
+	height: 50px;
+	background-color: #414141;
+	font-size: 18px;
+	color: #E8E8E8;
+	cursor:pointer;
+	border-bottom: 1px solid #4E4E4E;
+}
+.out-one-div:hover{
+	background-color:#333;
+}
+
+#out-one-left-icon{
+	position: relative;
+	top: 5px;
+	left: 0px; 
+	display:block;
+	height: 45px;
+	width: 45px;
+	float: left;
+}
+.out-one-title{
+	position: relative;
+	top: 12px;
+	/* left: 45px; */
+}
+#out-one-right-icon{
+	position: relative;
+	top: 12px;
+	/* left: 65px; */
+	left:20px;
+	font-size:25px;
+}
+.out-two-ul{
+	font-size: 15px;
+	color: #E8E8E8;
+	background:#626262;
+}
+.out-two-li{
+	height: 45px;
+	line-height: 45px;
+	cursor:pointer;
+}
+.selected{
+	background-color: #0870C9;
+}
+.out-two-title{
+	/* margin-left: 55px; */
+	/* position:absolute; */
+	left:55px;
+}
+/*宽菜单--end*/
+
+/*窄菜单---start*/
+
+.narrow-one-div{
+	height: 50px;
+	background-color: #414141;
+	font-size: 18px;
+	color: #E8E8E8;
+	cursor:pointer;
+	border-bottom: 1px solid #4E4E4E;
+}
+.narrow-one-div:hover{
+	background-color:#333;
+}
+
+#narrow-one-left-icon{
+	position: relative;
+	top: 12px;
+	left: 5px;
+}
+.narrow-one-title{
+	position: relative;
+	top: 12px;
+	left: 45px;
+}
+#narrow-one-right-icon{
+	position: relative;
+	top: 12px;
+	left: 65px;
+	font-size:25px;
+}
+.narrow-two-ul{
+	font-size: 15px;
+	color: #E8E8E8;
+	background:#626262;
+	margin-left: 45px;
+	
+}
+.narrow-two-title{
+	margin-left: 10px;
+}
+/*窄菜单---end*/
+.narrowActive{
+	animation:narrow 0.15s forwards;
+	-webkit-animation:narrow 0.15s forwards;
+}
+@keyframes narrow
+{
+	100%{width:45px;}
+}
+
+@-webkit-keyframes narrow 
+{
+	100% {width:45px;}
+}
+.outerActive{
+	animation:outer 0.15s forwards;
+	-webkit-animation:outer 0.15s forwards;
+}
+@keyframes outer
+{
+	100%{width:200px;}
+}
+
+@-webkit-keyframes outer 
+{
+	100% {width:200px;}
+}
+#out-two-left-icon{
+	display: inline-block;
+	height: 45px;
+	width: 55px;
+	float:left;
+	/* margin-left:10px; */
+}
+/* 自定义图标文件@{css/super.css}     */
+.icon-tCut{
+	background: url('../images/icons/tree_icon2.png') no-repeat center center;
+	display: inline-block;
+	width: 16px;
+	height: 18px;
+	vertical-align: top;
+	overflow: hidden;
+}
+
+.icon-tOpen{
+	background: url('../images/icons/tree_icon1.png') no-repeat center center;
+	display: inline-block;
+	width: 16px;
+	height: 18px;
+	vertical-align: top;
+	overflow: hidden;
+}
+
+

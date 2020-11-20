@@ -1,0 +1,41 @@
+<layout name="layout_admin" />
+<form class="form-inline" id="data_search_form" action="#" method="get">
+    <div class="form-group">
+        <label for="shop-name">商家名称</label>
+        <input type="text" class="form-control" name="shopName" value="{$get.shopName}" placeholder="商家名" id="shop-name">
+    </div>
+    <div class="form-group">
+        <label>所属商圈</label>
+        <select class="form-control" name="bank_id" id="bank_id">
+            <foreach name="bankList" item="vo">
+                <option value="{$vo.id}" <eq name="get.bank_id" value="$vo.id">selected="selected"</eq>>{$vo.name}</option>
+            </foreach>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-sm btn-primary" id="search_form_submit_btn">查询</button>
+    <button type="button" class="btn btn-primary btn-sm" id="btn-export-shop-consume-statistics">导出</button>
+    <input type="hidden" id="frm_ele_page" name="page" value="1" />
+</form>
+<br/>
+<div class="container-fluid order-statistics-wrap">
+    <div class="row">
+        <div class="col-md-2">成交金额: {$consumeStatisticsSum.orderAmount}</div>
+        <div class="col-md-2">实际支付: {$consumeStatisticsSum.realPay}</div>
+        <div class="col-md-2">用券金额: {$consumeStatisticsSum.couponDeduction}</div>
+        <div class="col-md-2">成交笔数: {$consumeStatisticsSum.consumeCount}</div>
+        <div class="col-md-2">优惠券使用数量: {$consumeStatisticsSum.couponUsed|default=0}</div>
+    </div>
+</div>
+<div id="data_table_wrapper">
+    <include file="./Application/Admin/View/Total/listConsumeWidget.html" />
+</div>
+<script>
+    ;(function(){
+        // 导出符合条件的商户excel
+        $('#btn-export-shop-consume-statistics').on('click', function(){
+            var frm = $('#data_search_form');
+            var url = '/Admin/Total/exportShopConsumeStatistics?' + frm.serialize() + '&page=0';
+            location.href = url;
+        });
+    })();
+</script>

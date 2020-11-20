@@ -1,0 +1,20 @@
+<table class="fp-table table table-striped table-bordered brand-tbl-wrap" id="data_table">
+    <thead>
+    <tr>
+        <th>ID编号</th>
+        <th>名称</th>
+        <th>录入时间</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    <foreach name="dataList" item="item">
+        <tr> <td>{$item.id}</td>
+            <td>{$item.name}</td>
+            <td>{$item.read_time}</td>
+            <td><a href="/Admin/Bank/editBank?id={$item.id}" class="btn btn-xs btn-primary">修改</a></td>
+        </tr>
+    </foreach>
+    </tbody>
+</table>
+<include file="Application/Admin/View/Widget/pager.html" />

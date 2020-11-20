@@ -1,0 +1,87 @@
+
+<foreach name="userProductOrderList" item="order">
+<a href="/Api/Browser/unReceiveOrder?orderCode={$order.orderCode}&openId={$openId}" class="external">
+<li class="item-content">
+	<div class="item-inner">
+		<div class="item-title">订单&nbsp;{$order.orderNbr|substr=17}</div>
+		<div class="float_right">
+            <switch name="order.orderStatus">
+                <case value="20">
+                    <switch name="order.status">
+                        <case value="0">待接单</case>
+                        <case value="1">待支付</case>
+                        <case value="2">待支付</case>
+                        <case value="3">待接单</case>
+                        <case value="4">待支付</case>
+                        <case value="5">待支付</case>
+                        <case value="6">退款中</case>
+                        <case value="7">已退款</case>
+                    </switch>
+                </case>
+                <case value="21">
+                    <switch name="order.status">
+                        <case value="0">待商家结算</case>
+                        <case value="1">待支付</case>
+                        <case value="2">待支付</case>
+                        <case value="3">派送中</case>
+                        <case value="4">待支付</case>
+                        <case value="5">待支付</case>
+                        <case value="6">退款中</case>
+                        <case value="7">已退款</case>
+                    </switch>
+                </case>
+                <case value="22">
+                    <switch name="order.status">
+                        <case value="0">待商家结算</case>
+                        <case value="1">待支付</case>
+                        <case value="2">待支付</case>
+                        <case value="3">派送中</case>
+                        <case value="4">待支付</case>
+                        <case value="5">待支付</case>
+                        <case value="6">退款中</case>
+                        <case value="7">已退款</case>
+                    </switch>
+                </case>
+                <case value="23">
+                    <switch name="order.status">
+                        <case value="0">待商家结算</case>
+                        <case value="1">待支付</case>
+                        <case value="2">待支付</case>
+                        <case value="3">交易完成</case>
+                        <case value="4">待支付</case>
+                        <case value="5">待支付</case>
+                        <case value="6">退款中</case>
+                        <case value="7">已退款</case>
+                    </switch>
+                </case>
+                <case value="24">
+                    已撤销
+                </case>
+                <case value="25">
+                    待下单
+                </case>
+            </switch>
+		</div>
+	</div>
+	<div class="shop_info">
+		<div class="shop_img">
+			<img src="{$order.logoUrl}" />
+		</div>
+		<div class="shop_inner1">
+			<div class="shop_name">{$order.shopName}</div>
+		</div>
+		<div class="shop_inner2">
+			<div class="shop_univalent">
+				<span class="price_symbol">下单时间：{$order.orderTime}</span>
+			</div>
+		</div>
+	</div>
+	<div class="item-inner" style="border-bottom: 0px solid #c8c7cc;">
+		<div class="item-title" style="color:#FF6844;">
+			&#65509;<span class="order_price">{$order.orderAmount}元</span>
+		</div>
+	</div>
+</li>
+</a>
+<div class="div_bottom"></div>
+</foreach>

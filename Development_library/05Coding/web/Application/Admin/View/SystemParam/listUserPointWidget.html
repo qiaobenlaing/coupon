@@ -1,0 +1,54 @@
+<table class="fp-table table table-striped table-bordered table-condensed" id="data_table">
+    <thead>
+    <tr>
+        <th>手机号码</th>
+        <th>用户名</th>
+        <th>昵称</th>
+        <th>性别</th>
+        <th>历史圈值</th>
+        <th>用户等级</th>
+        <th>注册时间</th>
+        <th>最后一次登陆时间</th>
+        <th>邀请码</th>
+        <th>注册使用邀请码</th>
+        <th>注册验证码</th>
+        <th>找回密码验证码</th>
+        <th>用户状态</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    <foreach name="dataList" item="item">
+        <tr>
+            <td><a href="/Admin/User/getUserInfo/userCode/{$item.userCode}" title="{$item.realName}-详情">{$item.mobileNbr}</a></td>
+            <td>{$item.realName}</td>
+            <td>{$item.nickName}</td>
+            <td><if condition="$item.sex eq F">女<elseif condition="$item.sex eq M"/>男<else />未知</if></td>
+            <td>{$item.histPoint}</td>
+            <td>{$item.userLvl}</td>
+            <td>{$item.registerTime|substr=0,16}</td>
+            <td>{$item.lastLoginTime}</td>
+            <td>{$item.inviteCode}</td>
+            <td>{$item.recomNbr}</td>
+            <td>{$item.rValidateCode}</td>
+            <td>{$item.fValidateCode}</td>
+            <td class="status">
+                <if condition="$item.status eq 1"><span class="label label-success">启用</span>
+                    <elseif condition="$item.status eq 2"/><span class="label label-warning">未注册</span>
+                    <else/><span class="label label-danger">禁用</span>
+                </if>
+            </td>
+            <td>
+                <a href="/Admin/User/editUser?mobileNbr={$item.mobileNbr}&page={$pager:page}" class="btn btn-xs btn-primary">编辑</a>
+                <eq name="item.status" value="1">
+                    <a href="/Admin/User/changeStatus/userCode/{$item.userCode}" class="td-distant btn btn-xs btn-info" data-status="0">禁用</a>
+                    <else />
+                    <a href="/Admin/User/changeStatus/userCode/{$item.userCode}" class="td-distant btn btn-xs btn-info" data-status="1">启用</a>
+                </eq>
+                <!--<a href="/Admin/User/deleteUser" class="btn btn-xs btn-danger">删除</a>-->
+            </td>
+        </tr>
+    </foreach>
+    </tbody>
+</table>
+<include file="Application/Admin/View/Widget/pager.html" />

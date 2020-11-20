@@ -1,0 +1,100 @@
+.order-good-apply-refund-wrap {
+    height: 100%;
+    background-color: #E2E0E0;
+    color: #000;
+    font-family: '微软雅黑';
+}
+.head_col {
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.toolbar-through .page-content, .toolbar-fixed .page-content,
+.tabbar-through .page-content, .tabbar-fixed .page-content {
+    padding-bottom: 0px;
+}
+.navbar{
+    position: absolute;
+}
+.backup {
+    top: 1%;
+    left: 0;
+}
+
+.backup img {
+    width: 60%;
+    height: auto;
+}
+
+.list-block {
+    margin: 0 0 5px;
+}
+
+.refund_price {
+    color: rgb(255, 89, 89);
+}
+
+.item-content span img {
+    margin-left: 5px;
+}
+
+.list-block ul ul {
+    padding-left: 5px;
+}
+
+.list-block .list-block .item-inner {
+    border-bottom: 1px solid #fff;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    color: #A3A3A3;
+    min-height: 35px;
+}
+
+.list-block .list-block .item-content{
+    min-height: 0px;
+}
+
+
+.button_nothing {
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+.refund_reason {
+    padding-left: 15px;
+}
+
+.major {
+    color: rgb(186, 14, 14);
+    font-weight: bold;
+    font-size: 15px;
+    margin-right: 3px;
+}
+
+.important {
+    color: rgb(186, 14, 14);
+}
+
+.button.active {
+    background: rgb(186, 14, 14);
+    margin: 15px;
+}
+
+.button {
+    border: 1px solid rgb(186, 14, 14);
+}
+.align-top{
+    padding-bottom:10px;
+}
+.discount_list{
+    display: none;
+}
+.order-coupon-apply-refund-wrap, .order-coupon-refunded-wrap, .order-coupon-refunding-wrap{
+    font-size:15px;
+    background:#fff;
+    color: #000;
+    font-family: '微软雅黑';
+    padding-bottom: 1px;
+}

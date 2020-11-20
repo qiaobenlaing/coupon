@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/LyOutSet" >
+
+    <include layout="@layout/common_title_commit" />
+
+    <ScrollView
+        android:id="@+id/sv_actdetail"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:fadingEdge="vertical"
+        android:scrollbars="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/layout_height"
+                android:background="@color/white"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/tv_moneydetail_batch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="15dp"
+                    android:text="红包批次"
+                    android:textColor="@color/coupon_hometopfont" />
+
+                <TextView
+                    android:id="@+id/tv_actmoneydetail_batch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="15dp"
+                    android:text="aa"
+                    android:textColor="@color/coupon_hometopfont" />
+            </RelativeLayout>
+
+            <TextView style="@style/VLine" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/layout_height"
+                android:background="@color/white"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/tv_moneydetail_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="15dp"
+                    android:text="红包数量"
+                    android:textColor="@color/coupon_hometopfont" />
+
+                <TextView
+                    android:id="@+id/tv_actmoneydetail_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="15dp"
+                    android:text="aa"
+                    android:textColor="@color/coupon_hometopfont" />
+            </RelativeLayout>
+
+            <TextView style="@style/VLine" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/layout_height"
+                android:background="@color/white"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/tv_moneydetail_region"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="15dp"
+                    android:text="金额区间"
+                    android:textColor="@color/coupon_hometopfont" />
+
+                <TextView
+                    android:id="@+id/tv_actmoneydetail_region"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="15dp"
+                    android:text="aa"
+                    android:textColor="@color/coupon_hometopfont" />
+            </RelativeLayout>
+
+            <TextView style="@style/VLine" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/layout_height"
+                android:background="@color/white"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/tv_moneydetail_amount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="15dp"
+                    android:text="红包总额"
+                    android:textColor="@color/coupon_hometopfont" />
+
+                <TextView
+                    android:id="@+id/tv_actmoneydetail_amount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="15dp"
+                    android:text="aa"
+                    android:textColor="@color/coupon_hometopfont" />
+            </RelativeLayout>
+
+            <TextView style="@style/VLine" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/layout_height"
+                android:background="@color/white"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/tv_moneydetail_start"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="15dp"
+                    android:text="开始时间"
+                    android:textColor="@color/coupon_hometopfont" />
+
+                <TextView
+                    android:id="@+id/tv_actmoneydetail_start"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="15dp"
+                    android:text="aa"
+                    android:textColor="@color/coupon_hometopfont" />
+            </RelativeLayout>
+
+            <TextView style="@style/VLine" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/layout_height"
+                android:background="@color/white"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/tv_moneydetail_end"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="15dp"
+                    android:text="结束时间"
+                    android:textColor="@color/coupon_hometopfont" />
+
+                <TextView
+                    android:id="@+id/tv_actmoneydetail_end"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="15dp"
+                    android:text="aa"
+                    android:textColor="@color/coupon_hometopfont" />
+            </RelativeLayout>
+
+            <TextView style="@style/VLine" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@color/white"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="10dp"
+                    android:text="领取人数"
+                    android:textColor="@color/coupon_hometopfont" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="visible" >
+
+                    <com.huift.hfq.base.utils.MyProgress
+                        android:id="@+id/progress_horizontal_receivenumber"
+                        style="@style/StyleProgressBarMini"
+                        android:layout_width="wrap_content"
+                        android:layout_height="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="15dp"
+                        android:background="@drawable/shape_progressbar_bg"
+                        android:minWidth="200dp" />
+
+                    <TextView
+                        android:id="@+id/tv_actmoneydetail_receiver"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginLeft="15dp"
+                        android:text="已领取0%"
+                        android:textColor="@color/coupon_hometopfont" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView style="@style/VLine" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="10dp"
+                    android:text="领用金额"
+                    android:textColor="@color/coupon_hometopfont" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
+
+                    <com.huift.hfq.base.utils.MyProgress
+                        android:id="@+id/pg_drawbouns"
+                        style="@style/StyleProgressBarMini"
+                        android:layout_width="wrap_content"
+                        android:layout_height="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="15dp"
+                        android:background="@drawable/shape_progressbar_bg"
+                        android:minWidth="200dp" />
+
+                    <TextView
+                        android:id="@+id/tv_drawbouns"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginLeft="15dp"
+                        android:text="已领取0%"
+                        android:textColor="@color/coupon_hometopfont" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

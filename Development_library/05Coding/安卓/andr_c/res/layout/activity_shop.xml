@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:id="@+id/ly_shopdetail"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/layout_height"
+        android:layout_gravity="top"
+        android:background="@color/shop_photo_bg" >
+
+        <ImageView
+            android:id="@+id/iv_turn_in"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/backup"
+            android:paddingLeft="@dimen/navigation_right"
+            android:scaleType="centerInside" />
+
+        <Button
+            android:id="@+id/btn_follow"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/shape_btn_red"
+            android:gravity="center"
+            android:text="取消关注"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            android:visibility="visible" />
+    </RelativeLayout>
+
+</FrameLayout>

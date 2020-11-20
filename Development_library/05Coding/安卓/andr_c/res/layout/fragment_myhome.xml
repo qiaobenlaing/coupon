@@ -1,0 +1,603 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <include layout="@layout/common_title_theme" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none" >
+
+        <LinearLayout
+            style="@style/LyWHFourth"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:id="@+id/ly_all_data"
+                style="@style/LyWHFourth"
+                android:orientation="vertical" >
+
+                <RelativeLayout
+                    style="@style/LyWHFourth"
+                    android:background="@drawable/my_background"
+                    android:visibility="visible"
+                    android:orientation="vertical" >
+
+                    <LinearLayout
+                        style="@style/LyWHSecond"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:gravity="center"
+                        android:orientation="vertical" >
+
+                        <FrameLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" >
+
+                            <ImageView
+                                android:id="@+id/iv_mylogo"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/no_portrait"
+                                android:scaleType="centerCrop"
+                                android:layout_gravity="center" />
+
+                            <ProgressBar
+                                android:id="@+id/prog_nodata"
+                                android:layout_width="48dp"
+                                android:layout_height="48dp"
+                                android:layout_gravity="center"
+                                android:visibility="visible" />
+                        </FrameLayout>
+
+                        <TextView
+                            android:id="@+id/tv_nickname"
+                            style="@style/LyWHSecond"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="10dp"
+                            android:textColor="@color/white"/>
+                        <TextView
+                            android:id="@+id/tv_phonenum"
+                            style="@style/LyWHSecond"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="10dp"
+                            android:textColor="@color/white" />
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <TextView
+                    style="@style/VLine"
+                    android:layout_height="0.5dp"
+                    android:background="@color/shallow_gray" />
+
+                <LinearLayout
+                    android:id="@+id/ly_huibi"
+                    style="@style/LyWHFourth"
+                    android:layout_height="48dp"
+                    android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" 
+                    android:visibility="gone">
+
+                    <LinearLayout
+                        style="@style/LyWHFourth"
+                        android:gravity="center" >
+
+                        <TextView
+                            style="@style/LyWHSecond"
+                            android:layout_marginLeft="10dp"
+                            android:text="惠币"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+
+                   
+                </LinearLayout>
+
+                <TextView
+                    style="@style/VLine"
+                    android:layout_height="0.5dp"
+                    android:background="@color/shallow_gray" />
+
+                <TextView
+                    style="@style/VSpace"
+                    android:background="@color/app_bg"
+                    android:visibility="gone" />
+				<LinearLayout
+                    android:id="@+id/ly_payTwoCode"
+                    style="@style/LyWHFourth"
+                    android:layout_height="48dp"
+                    android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" >
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="10dp"
+                        android:src="@drawable/pay_twocode" />
+
+                    <TextView
+                        style="@style/LyWHSecond"
+                        android:layout_marginLeft="10dp"
+                        android:text="@string/myhome_pay_twocode"
+                        android:textSize="16sp" />
+
+                    <LinearLayout
+                        style="@style/LyWHFourth"
+                        android:gravity="right" >
+
+                        <ImageView
+                            style="@style/LyWHSecond"
+                            android:src="@drawable/shop_arrow" />
+                    </LinearLayout>
+                </LinearLayout>
+                <TextView
+                    style="@style/VLine"
+                    android:layout_height="0.5dp"
+                    android:background="@color/shallow_gray" />
+
+                <LinearLayout
+                    android:id="@+id/layout_card"
+                    style="@style/LyWHFourth"
+                    android:layout_height="48dp"
+                    android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" >
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="10dp"
+                        android:src="@drawable/my_card" />
+
+                    <TextView
+                        style="@style/LyWHSecond"
+                        android:layout_marginLeft="10dp"
+                        android:text="@string/myhome_bank"
+                        android:textSize="16sp" />
+
+                    <LinearLayout
+                        style="@style/LyWHFourth"
+                        android:gravity="right" >
+
+                        <ImageView
+                            style="@style/LyWHSecond"
+                            android:src="@drawable/shop_arrow" />
+                    </LinearLayout>
+                </LinearLayout>
+                <TextView
+                   style="@style/VLine"
+                   android:layout_height="0.5dp"
+                   android:background="@color/shallow_gray" />
+                
+                <!-- 免验证码支付 -->
+                <LinearLayout
+                    android:id="@+id/layout_noIndenCode_pay"
+                    style="@style/LyWHFourth"
+                    android:layout_height="48dp"
+                    android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" >
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="10dp"
+                        android:src="@drawable/no_iden_pay" />
+
+                    <TextView
+                        style="@style/LyWHSecond"
+                        android:layout_marginLeft="10dp"
+                        android:text="@string/myhome_manmager_pay"
+                        android:textSize="16sp" />
+
+                    <LinearLayout
+                        style="@style/LyWHFourth"
+                        android:gravity="right" >
+                        <TextView 
+                           android:id="@+id/tv_set_paypwd"
+                           style="@style/LyWHSecond"
+                           android:layout_gravity="center_vertical"
+                           android:text="@string/set_pay_password"
+                           android:textColor="@color/gray"
+                           android:textSize="12sp"
+                           android:visibility="gone"/>
+                        <ImageView
+                            style="@style/LyWHSecond"
+                            android:src="@drawable/shop_arrow" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <TextView
+                    style="@style/VLine"
+                    android:layout_height="0.5dp"
+                    android:background="@color/shallow_gray" />
+
+                <LinearLayout
+                    android:id="@+id/layout_myorder"
+                    style="@style/LyWHFourth"
+                    android:layout_height="48dp"
+                    android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" >
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:src="@drawable/order_manager" />
+
+                    <TextView
+                        style="@style/LyWHSecond"
+                        android:layout_marginLeft="10dp"
+                        android:text="@string/order_manager"
+                        android:textSize="16sp" />
+
+                    <LinearLayout
+                        style="@style/LyWHFourth"
+                        android:gravity="right" >
+
+                        <ImageView
+                            style="@style/LyWHSecond"
+                            android:src="@drawable/shop_arrow" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <TextView
+                    style="@style/VLine"
+                    android:layout_height="0.5dp"
+                    android:background="@color/shallow_gray"
+                    android:visibility="visible" />
+
+                <LinearLayout
+                    android:id="@+id/layout_myRecommend"
+                    style="@style/LyWHFourth"
+                    android:layout_height="48dp"
+                    android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:visibility="gone" >
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:src="@drawable/my_recommoned" />
+
+                    <TextView
+                        style="@style/LyWHSecond"
+                        android:layout_marginLeft="10dp"
+                        android:text="@string/order_recommmend"
+                        android:textSize="16sp" />
+
+                    <LinearLayout
+                        style="@style/LyWHFourth"
+                        android:gravity="right" >
+
+                        <ImageView
+                            style="@style/LyWHSecond"
+                            android:src="@drawable/shop_arrow" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <TextView
+                    style="@style/VLine"
+                    android:layout_height="0.5dp"
+                    android:background="@color/shallow_gray" />
+
+                <TextView
+                    style="@style/VSpace"
+                    android:background="@color/app_bg" />
+
+                <TextView
+                    style="@style/VLine"
+                    android:layout_height="0.5dp"
+                    android:background="@color/shallow_gray" />
+
+                <LinearLayout
+                    android:id="@+id/layout_regbag"
+                    style="@style/LyWHFourth"
+                    android:layout_height="48dp"
+                    android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" >
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:src="@drawable/my_red_bag" />
+
+                    <TextView
+                        style="@style/LyWHSecond"
+                        android:layout_marginLeft="10dp"
+                        android:text="@string/myhome_redbag"
+                        android:textSize="16sp" />
+
+                    <LinearLayout
+                        style="@style/LyWHFourth"
+                        android:gravity="right" >
+
+                        <ImageView
+                            style="@style/LyWHSecond"
+                            android:src="@drawable/shop_arrow" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <TextView
+                    style="@style/VLine"
+                    android:layout_height="0.5dp"
+                    android:background="@color/shallow_gray" />
+
+                <LinearLayout
+                    android:id="@+id/layout_regact"
+                    style="@style/LyWHFourth"
+                    android:layout_height="48dp"
+                    android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" >
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:src="@drawable/myact" />
+
+                    <TextView
+                        style="@style/LyWHSecond"
+                        android:layout_marginLeft="10dp"
+                        android:text="@string/myhome_redact"
+                        android:textSize="16sp" />
+
+                    <LinearLayout
+                        style="@style/LyWHFourth"
+                        android:gravity="right" >
+
+                        <ImageView
+                            style="@style/LyWHSecond"
+                            android:src="@drawable/shop_arrow" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <TextView
+                    style="@style/VLine"
+                    android:layout_height="0.5dp"
+                    android:background="@color/shallow_gray" />
+
+                <RelativeLayout
+                    android:id="@+id/layout_message"
+                    style="@style/LyWHFourth"
+                    android:layout_height="48dp"
+                    android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" >
+
+                    <ImageView
+                        android:id="@+id/iv_msg"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="10dp"
+                        android:src="@drawable/person_message" />
+
+                    <TextView
+                        style="@style/LyWHSecond"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="10dp"
+                        android:layout_toRightOf="@+id/iv_msg"
+                        android:text="@string/myhome_message"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/tv_allprompt"
+                        style="@style/LyWHSecond"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_centerVertical="true"
+                        android:layout_gravity="right"
+                        android:layout_toLeftOf="@+id/ly_msg"
+                        android:background="@drawable/shape_red_round"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:textColor="@color/white"
+                        android:textSize="12sp"
+                        android:visibility="gone" />
+
+                    <LinearLayout
+                        android:id="@+id/ly_msg"
+                        style="@style/LyWHSecond"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true" >
+
+                        <ImageView
+                            style="@style/LyWHSecond"
+                            android:src="@drawable/shop_arrow" />
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <TextView
+                    style="@style/VLine"
+                    android:layout_height="0.5dp"
+                    android:background="@color/shallow_gray" />
+
+                <LinearLayout
+                    android:id="@+id/layout_suggest"
+                    style="@style/LyWHFourth"
+                    android:layout_height="48dp"
+                    android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" >
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:src="@drawable/person_suggest" />
+
+                    <TextView
+                        style="@style/LyWHSecond"
+                        android:layout_marginLeft="10dp"
+                        android:text="@string/myhome_suggest"
+                        android:textSize="16sp" />
+
+                    <LinearLayout
+                        style="@style/LyWHFourth"
+                        android:gravity="right" >
+
+                        <TextView
+                            android:id="@+id/tv_suggest"
+                            style="@style/LyWHSecond"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_gravity="right|center_vertical"
+                            android:background="@drawable/shape_red_round"
+                            android:gravity="center_vertical|center_horizontal"
+                            android:textColor="@color/white"
+                            android:textSize="12sp"
+                            android:visibility="gone" />
+
+                        <ImageView
+                            style="@style/LyWHSecond"
+                            android:src="@drawable/shop_arrow" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <TextView
+                    style="@style/VLine"
+                    android:layout_height="0.5dp"
+                    android:background="@color/shallow_gray" />
+
+                <TextView
+                    style="@style/VSpace"
+                    android:background="@color/app_bg" />
+
+                <TextView
+                    style="@style/VLine"
+                    android:layout_height="0.5dp"
+                    android:background="@color/shallow_gray" />
+
+                <LinearLayout
+                    android:id="@+id/layout_update_pwd"
+                    style="@style/LyWHFourth"
+                    android:layout_height="48dp"
+                    android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" >
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:src="@drawable/update_pwd" />
+
+                    <TextView
+                        style="@style/LyWHSecond"
+                        android:layout_marginLeft="10dp"
+                        android:text="@string/update_pwd"
+                        android:textSize="16sp" />
+
+                    <LinearLayout
+                        style="@style/LyWHFourth"
+                        android:gravity="right" >
+
+                        <ImageView
+                            style="@style/LyWHSecond"
+                            android:src="@drawable/shop_arrow" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <TextView
+                    style="@style/VLine"
+                    android:layout_height="0.5dp"
+                    android:background="@color/shallow_gray" />
+
+                <TextView
+                    style="@style/VSpace"
+                    android:background="@color/app_bg" />
+
+                <TextView
+                    style="@style/VLine"
+                    android:layout_height="0.5dp"
+                    android:background="@color/shallow_gray" />
+
+                <LinearLayout
+                    android:id="@+id/layout_set"
+                    style="@style/LyWHFourth"
+                    android:layout_height="48dp"
+                    android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" >
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:src="@drawable/person_set" />
+
+                    <TextView
+                        style="@style/LyWHSecond"
+                        android:layout_marginLeft="10dp"
+                        android:text="@string/myhome_set"
+                        android:textSize="16sp" />
+
+                    <LinearLayout
+                        style="@style/LyWHFourth"
+                        android:gravity="right" >
+
+                        <ImageView
+                            style="@style/LyWHSecond"
+                            android:src="@drawable/shop_arrow" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <TextView
+                    style="@style/VLine"
+                    android:layout_height="0.5dp"
+                    android:background="@color/shallow_gray" />
+
+                <LinearLayout
+                    android:id="@+id/layout_about"
+                    style="@style/LyWHFourth"
+                    android:layout_height="48dp"
+                    android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" >
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:src="@drawable/person_about" />
+
+                    <TextView
+                        style="@style/LyWHSecond"
+                        android:layout_marginLeft="10dp"
+                        android:text="@string/myhome_about"
+                        android:textSize="16sp" />
+
+                    <LinearLayout
+                        style="@style/LyWHFourth"
+                        android:gravity="right" >
+
+                        <ImageView
+                            style="@style/LyWHSecond"
+                            android:src="@drawable/shop_arrow" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <TextView
+                    style="@style/VLine"
+                    android:layout_height="0.5dp"
+                    android:background="@color/shallow_gray" />
+
+                <TextView
+                    style="@style/VSpace"
+                    android:background="@color/app_bg" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

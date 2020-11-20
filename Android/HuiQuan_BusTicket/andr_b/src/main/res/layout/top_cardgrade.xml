@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/LyOutSet"
+    android:layout_height="wrap_content" >
+
+    <TextView
+        style="@style/VSpace"
+        android:layout_height="16dp"
+        android:background="@color/bgall" />
+
+    <TextView
+        style="@style/VLine"
+        android:layout_height="1px" />
+
+    <LinearLayout
+        style="@style/LyCradGradeSet"
+        android:background="@color/white" >
+
+        <TextView
+            style="@style/LyWHSecond"
+            android:layout_marginLeft="10dp"
+            android:text="@string/cardvip_gd_sum"
+            android:textColor="@color/dark_gray"
+            android:textSize="16sp" />
+        <!-- 会员卡等级 -->
+
+        <LinearLayout style="@style/LyCradGradeSetRow" >
+
+            <TextView
+                android:id="@+id/tv_card_gd_sum"
+                style="@style/LyWHSecond"
+                android:layout_marginRight="13dp"
+                android:text="@string/cardvip_gd_"
+                android:textColor="@color/dark_gray"
+                android:textSize="16sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        style="@style/VLine"
+        android:layout_height="1px" />
+
+</LinearLayout>

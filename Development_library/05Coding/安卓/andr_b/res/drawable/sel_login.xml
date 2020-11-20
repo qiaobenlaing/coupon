@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:drawable="@drawable/shape_btnlogin_no" android:state_pressed="false"></item>
+    <item android:drawable="@drawable/shape_btnlogin" android:state_pressed="true"></item>
+    <item android:drawable="@drawable/shape_btnlogin" android:state_focused="true"></item>
+    <item android:drawable="@drawable/shape_btnlogin_no" android:state_focused="false"></item>
+    <item android:drawable="@drawable/shape_btnlogin_no"></item>
+
+</selector>

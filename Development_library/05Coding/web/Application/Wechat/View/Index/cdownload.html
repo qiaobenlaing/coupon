@@ -1,0 +1,96 @@
+<layout name="layout_normal" />
+<!-- Views -->
+<div class="views">
+    <!-- Your main view, should have "view-main" class -->
+    <div class="view view-main">
+        <!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
+        <div class="pages">
+            <!-- Page, "data-page" contains page name -->
+            <div data-page="index" class="page">
+                <!-- Scrollable page content -->
+                <div class="page-content download-wrap">
+                    <div class="invite-code-wrap">
+                        <div class="text">
+                            <img class="text-img" src="/Public/img/webchat/inviteCode/text.png" alt=""/>
+                        </div>
+                        <div class="huiquan-download-wrap">
+                            <a href="https://itunes.apple.com/cn/app/id1027791544?l=cn&mt=8" onclick="_hmt.push(['_trackEvent', 'software', 'download', 'IOS_huiquan']);"  class="external download" data-city-id="{$cityId}" data-shop-code="{$shopCode}" data-activity-nbr="{$activityNbr}" data-operation="2">
+                                <div class="huiquan-download-bg">iphone惠圈下载</div>
+                            </a>
+                        </div>
+                        <div class="huiquan-download-wrap">
+                            <a href="{$cDownloadUrl}" onclick="_hmt.push(['_trackEvent', 'software', 'download', 'huiquan']);"  class="external download" data-city-id="{$cityId}" data-shop-code="{$shopCode}" data-activity-nbr="{$activityNbr}" data-operation="1">
+                                <div class="huiquan-download-bg">安卓惠圈下载</div>
+                            </a>
+                        </div>
+                        <div class="huiquan-divide-line-wrap">
+                            <div class="huiquan-divide-line-bg">
+                                <div class="huiquan-divide-line-text">惠圈简介</div>
+                            </div>
+                        </div>
+                        <div class="huiquan-intro-wrap">
+                            惠圈，一个便捷的本地化生活服务的商圈！随时，随地，简单，便捷地获取真实，可靠的本地化优惠活动信息与服务！
+                        </div>
+                    </div>
+                    <div class="shadow">
+                        <img src="/Public/img/webchat/jiantou.png" alt=""/>
+                        <div class="tip"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    ;(function(){
+        /**
+         * 增加下载次数
+         * @param cityId 城市ID
+         * @param shopCode 商家编码
+         * @param activityNbr 活动报名
+         * @param operation 操作系统，区分android和IOS
+         */
+        function addDownloadTimes(cityId, shopCode, activityNbr, operation) {
+            $.get(
+                    '/Api/Browser/addCDownloadTimes',
+                    {
+                        'cityId' : cityId,
+                        'shopCode' : shopCode,
+                        'activityNbr' : activityNbr,
+                        'operation' : operation
+                    },
+                    function(resp) {
+                        console.log(resp);
+                    }
+            )
+        }
+
+        // 判断是不是微信浏览器
+        function isWeiXin(){
+            var navgator = window.navigator.userAgent.toLowerCase();
+            if(navgator.match(/MicroMessenger/i) == 'micromessenger'){
+                $('.shadow').show();
+                return false;
+            }else{
+                return true;
+            }
+        }
+        $('.download').on('click', function(){
+            var isWX = isWeiXin();
+            if(isWX == true) {
+                var cityId = $(this).data('cityId');
+                var shopCode = $(this).data('shopCode');
+                var activityNbr = $(this).data('activityNbr');
+                var operation = $(this).data('operation');
+                // 下载数量加1
+                var ret = addDownloadTimes(cityId, shopCode, activityNbr, operation);
+            } else {
+                return false;
+            }
+        });
+        // 隐藏提示
+        $('.shadow').on('click', function() {
+            $(this).hide();
+        });
+    })();
+</script>

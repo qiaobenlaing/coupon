@@ -1,0 +1,147 @@
+<link th:replace="/include/header" />
+<script th:src="@{/js/echarts.js}"></script>
+<style>
+div{
+  margin: 0;
+  padding: 0;
+}
+.chart{
+  width:46vw;
+  height:50vh;
+  background-color: white;
+  float:left;
+  padding: 0;
+  margin: 0 1vw;
+}
+</style>
+
+<script th:inline="javascript">  
+  $(document).ready(function(){
+//加载数据
+var data = [], cpuUseRatedata = [],memSizedata = [],memUseRatedata = [];
+var date = [];
+function loadData() {
+  $.ajax({
+   type : 'post',
+   async : true,
+   url : [[@{/sysmonitor/chart}]],
+   data : {},
+   dataType : 'json',
+   success : function(result) {
+    if (result) {
+      rows = result.rows;
+      console.log(rows);
+      for(var i = 0;i<rows.length;i++){
+        cpuUseRatedata[i] = rows[i].cpuUseRate;
+        memSizedata[i] = rows[i].memSize;
+        memUseRatedata[i] = rows[i].memUseRate;
+        date[i] = rows[i].serverTime;
+      }
+      loadchart('cpuUseRatedata','CPU使用率',cpuUseRatedata);
+      loadchart('memSizedata','内存大小',memSizedata);
+      loadchart('memUseRatedata','内存使用率',memUseRatedata);
+    }
+  },
+  error : function(errorMsg) {
+    alert("数据请求错误，请联系管理员或稍后尝试！");
+  }
+});
+}
+loadData();
+function loadoption(){
+
+}
+
+    //绘制图表
+    function loadchart(id,title,data){
+      var myChart = echarts.init(document.getElementById(id));
+      if (true) {}
+      option = {
+        tooltip: {
+          trigger: 'axis',
+          position: function (pt) {
+            return [pt[0], '10%'];
+          }
+        },
+        title: {
+          left: 'center',
+          text: title,
+        },
+        toolbox: {
+          feature: {
+            dataZoom: {
+              yAxisIndex: 'none'
+            },
+            restore: {},
+            saveAsImage: {}
+          }
+        },
+        xAxis: {
+          type: 'category',
+          boundaryGap: false,
+          data: date
+        },
+        yAxis: {
+          type: 'value',
+          boundaryGap: [0, '10%']
+        },
+        dataZoom: [{
+          type: 'inside',
+          start: 0,
+          end: 10
+        }, {
+          start: 0,
+          end: 10,
+          handleIcon: 'M10.7,11.9v-1.3H9.3v1.3c-4.9,0.3-8.8,4.4-8.8,9.4c0,5,3.9,9.1,8.8,9.4v1.3h1.3v-1.3c4.9-0.3,8.8-4.4,8.8-9.4C19.5,16.3,15.6,12.2,10.7,11.9z M13.3,24.4H6.7V23h6.6V24.4z M13.3,19.6H6.7v-1.4h6.6V19.6z',
+          handleSize: '80%',
+          handleStyle: {
+            color: '#fff',
+            shadowBlur: 3,
+            shadowColor: 'rgba(0, 0, 0, 0.6)',
+            shadowOffsetX: 2,
+            shadowOffsetY: 2
+          }
+        }],
+        series: [
+        {
+          name:title,
+          type:'line',
+          smooth:true,
+          symbol: 'none',
+          sampling: 'average',
+          itemStyle: {
+            normal: {
+              color: 'rgb(255, 70, 131)'
+            }
+          },
+          areaStyle: {
+            normal: {
+              color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                offset: 0,
+                color: 'rgb(255, 158, 68)'
+              }, {
+                offset: 1,
+                color: 'rgb(255, 70, 131)'
+              }])
+            }
+          },
+          data: data
+        }
+        ]
+      };
+      myChart.setOption(option);
+    }
+
+  });
+</script>
+
+
+<div data-options="border:false"
+    class="layout-have-top-border" style="width:100%;height: 100%;overflow: scroll">
+
+<div id="cpuUseRatedata" class="chart" ></div>
+<div id="memSizedata" class="chart" ></div>
+<div id="memUseRatedata" class="chart" ></div>
+  </div>
+  
+<link th:replace="/include/footer" />

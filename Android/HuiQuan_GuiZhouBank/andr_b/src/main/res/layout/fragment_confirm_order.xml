@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/LyOutSet"
+    android:background="@color/bgall">
+
+    <include layout="@layout/common_title_commit" />
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:fadingEdge="vertical"
+        android:scrollbars="none">
+
+        <LinearLayout
+            style="@style/LyWHFirst"
+            android:orientation="vertical">
+
+            <LinearLayout
+                style="@style/LyWHFourth"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <ImageView
+                    android:id="@+id/iv_shoplogo"
+                    android:layout_width="76dp"
+                    android:layout_height="76dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/bg_border"
+                    android:src="@drawable/no_shoplogo" />
+
+                <TextView
+                    android:id="@+id/tv_orderNo"
+                    style="@style/LyWHSecond"
+                    android:layout_marginTop="5dp"
+                    android:singleLine="true"
+                    android:text="订单号" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical"
+                android:divider="@drawable/shape_divider"
+                android:showDividers="middle">
+
+                <RelativeLayout
+                    style="@style/LyWHFourth"
+                    android:layout_height="@dimen/layout_height"
+                    android:background="@color/white"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp">
+
+                    <TextView
+                        style="@style/textview"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:textSize="16sp"
+                        android:text="@string/csm_money" />
+
+                    <TextView
+                        android:id="@+id/tv_totalPrice"
+                        style="@style/LyWHSecond"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="5dp"
+                        android:layout_toLeftOf="@+id/tv_money"
+                        android:singleLine="true"
+                        android:text="-"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/tv_money"
+                        style="@style/LyWHSecond"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:text="@string/tv_actlist_yuan" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    style="@style/LyWHFourth"
+                    android:layout_height="@dimen/layout_height"
+                    android:background="@color/white"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp">
+
+                    <TextView
+                        style="@style/textview"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:text="@string/order_not_price" />
+
+                    <TextView
+                        android:id="@+id/tv_noDiscountPrice"
+                        style="@style/LyWHSecond"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="5dp"
+                        android:layout_toLeftOf="@+id/tv_shoppalt_money"
+                        android:singleLine="true"
+                        android:textSize="16sp"
+                        android:text="-" />
+
+                    <TextView
+                        android:id="@+id/tv_shoppalt_money"
+                        style="@style/LyWHSecond"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:text="@string/tv_actlist_yuan" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    style="@style/LyWHFourth"
+                    android:layout_height="@dimen/layout_height"
+                    android:background="@color/white"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp">
+
+                    <TextView
+                        style="@style/textview"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:text="下单时间" />
+
+                    <TextView
+                        android:id="@+id/tv_orderTime"
+                        style="@style/LyWHSecond"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:textSize="16sp"
+                        android:text="-" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_coupon"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="10dp"
+                android:divider="@drawable/shape_divider"
+                android:showDividers="middle"
+                android:visibility="gone">
+
+                <RelativeLayout
+                    style="@style/LyWHFourth"
+                    android:layout_height="@dimen/layout_height"
+                    android:background="@color/white"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp">
+
+                    <TextView
+                        style="@style/textview"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:textSize="16sp"
+                        android:text="优惠金额" />
+
+                    <TextView
+                        android:id="@+id/tv_discountPrice"
+                        style="@style/LyWHSecond"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="5dp"
+                        android:layout_toLeftOf="@+id/tv_notprice_money"
+                        android:singleLine="true"
+                        android:text="-"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/tv_notprice_money"
+                        style="@style/LyWHSecond"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:text="@string/tv_actlist_yuan" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    style="@style/LyWHFourth"
+                    android:layout_height="@dimen/layout_height"
+                    android:background="@color/white"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp">
+
+                    <TextView
+                        style="@style/textview"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:text="优惠券号" />
+
+                    <TextView
+                        android:id="@+id/tv_couponNo"
+                        style="@style/LyWHSecond"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:singleLine="true"
+                        android:textSize="16sp"
+                        android:text="-" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:id="@+id/tv_couponType"
+                        style="@style/textview"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:text="-" />
+
+                    <TextView
+                        android:id="@+id/tv_couponInfo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@id/tv_couponType"
+                        android:layout_marginLeft="10dp"
+                        android:layout_alignParentRight="true"
+                        android:gravity="right"
+                        android:text="-" />
+
+                </RelativeLayout>
+            </LinearLayout>
+
+            <RelativeLayout
+                style="@style/LyWHFourth"
+                android:layout_height="@dimen/layout_height"
+                android:background="@color/white"
+                android:layout_marginTop="10dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
+
+                <TextView
+                    style="@style/textview"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:textSize="16sp"
+                    android:text="@string/actual_paymoney" />
+
+                <TextView
+                    android:id="@+id/tv_payPrice"
+                    style="@style/LyWHSecond"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="5dp"
+                    android:layout_toLeftOf="@+id/tv_actual_money"
+                    android:text="-"
+                    android:textColor="@color/red"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/tv_actual_money"
+                    style="@style/LyWHSecond"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:text="@string/tv_actlist_yuan" />
+            </RelativeLayout>
+
+            <Button
+                android:id="@+id/b_pay"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/navigation_bar"
+                android:layout_margin="10dp"
+                android:background="@drawable/login_btn"
+                android:text="@string/clearing"
+                android:textColor="@color/white" />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

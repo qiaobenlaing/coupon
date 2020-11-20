@@ -1,0 +1,137 @@
+<link th:replace="/include/header" />
+<script th:src="@{/ckeditor/ckeditor.js}" ></script>
+<script th:src="@{/js/Map.js}" ></script>
+<style>
+
+
+</style>
+<script th:inline="javascript">
+var ckeditor;
+var isAdd;//标志是否已经添加，第一次为添加，添加后再保存即为修改
+var jq=top.jQuery;
+$(function(){  
+	
+	isAdd=false;
+	
+	var currentURL_p=window.location.search;//获取当前URL?号之后字符串		
+			
+	var newsId=currentURL_p.substring(8,26);//通过URL参数获取newsId
+	
+	var type=currentURL_p.substring(32);//通过URL参数获取编辑类型，update和add
+	
+    var tab = jq('#tt').tabs('getSelected');//获取当前tab页
+    var index=jq('#tt').tabs('getTabIndex',tab);
+    /* var tabPage = tab.panel('options').tab;
+    var title = tabPage.text();   */
+    
+    top.tabMap.put(newsId,index);//将该tab页的新闻id加入数组  
+    
+    if(type=='update'){
+    	isAdd=true;//已添加状态
+    	update(newsId);//修改
+    } else{
+    	 $('#btn_save').linkbutton('disable');
+    	
+    	 //当选择新闻栏目后，才可展示新闻编辑窗口，防止没有选择新闻栏目，直接上传文件，目录将会出错
+    	 $("#catalogId").combotree({onChange : function(n, o) {
+    	     if (n) {      
+    	         $('#btn_save').linkbutton('enable');
+    	         catalogId = getCatalogId();//获取栏目id    
+    	         ckeditorConfig(catalogId,newsId); //执行前保证catalogId和newsId已赋值    
+    	     }
+    	 }});
+    }
+	
+    //保存按键保存新闻内容
+    $('#btn_save').bind('click', function(){
+        save(newsId);
+    });
+ 
+});
+
+
+//从combotree中获取栏目id
+function getCatalogId(){
+	ct = $('#catalogId').combotree('tree')
+    var n = ct.tree('getSelected'); // get selected node
+    return n.id;
+}
+
+//根据newsId查询信息并回显到页面
+function update(newsId){		
+	 //通过ajax根据newsId获取新闻参数
+	$g.post([[@{/news/findone?newsId=}]]+newsId,null,function(data){	
+		
+        ckeditorConfig(data.catalogId,newsId); //设置CKeditor          
+        //回显数据
+        $("#newsTitle").textbox('setValue',data.newsTitle); 
+        $('#catalogId').combotree('setValue', data.catalogId);
+        $('#content').val(data.content); //ckeditor.setData(content);  
+    },"json");
+}
+    
+
+function ckeditorConfig(catalogId,newsId){
+	//配置CKeditor
+	ckeditor = CKEDITOR.replace('content', {
+        customConfig : '../custom/ckeditor_config.js',
+        language : 'zh-cn',
+        uiColor : '#0870C9',
+        height : 380,//370
+        //width : 1150,//1150
+        filebrowserImageUploadUrl:[[@{/files/upload/image?catalogId=}]]+catalogId+'&newsId='+newsId+'&type=image',
+        filebrowserFlashUploadUrl:[[@{/files/upload/image?catalogId=}]]+catalogId+'&newsId='+newsId+'&type=flash'
+	});
+	
+	//重写CKeditor的save按钮的方法
+	ckeditor.on("instanceReady", function (evt) {       
+        ckeditor.addCommand("save", { modes: { wysiwyg: 1, source: 1 }, exec: function (ckeditor) {  
+            save(newsId);            
+        }});
+    });
+}
+
+
+//保存新闻编辑内容到数据库
+function save(newsId){
+	
+    var newsTitle = $("#newsTitle").val(); //新闻标题   
+    var catalogId = getCatalogId();//获取表单中新闻栏目Id   	
+    ckeditor.updateElement();//只有执行该操作，才可以正常获取到表单内容
+    var content = $("#content").val();//获取新闻内容
+   
+    var url= isAdd?[[@{/news/update}]]:[[@{/news/save}]];//得到请求URL，确定是修改还是添加   
+    data={"newsId":newsId,"newsTitle":newsTitle,"catalogId":catalogId,"content":content};//请求时的数据
+
+    //异步提交保存到数据库
+    $g.post(url,data,function(data) { 
+        if(data){
+            $g.showMsg('消息', '保存成功！'); 
+            
+            isAdd=true; //  表示添加，下次操作为修改                
+        }            
+    });
+}
+
+
+</script>
+<div>
+	<form method="post" id="newsForm">
+		<p style="height: 38px;line-height: 38px;margin: 10px 20px;display: inline-block;">
+			<label>新闻栏目:</label> <select class="easyui-combotree"
+				url="/whhft/catalog/catalogTree" id="catalogId" name="catalogId"
+				style="width: 200px; height: 30px;"></select>		
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		
+			<label>新闻标题:</label> <input type="text" class="easyui-textbox"
+				style="height: 30px; width: 300px;" name="newsTitle" id="newsTitle" required="required" data-options="validType:'length[0,50]'" /></span>
+		</p>
+
+        <div style="display: inline-block;"><a href="javascript:void(0)" data-options=" iconCls:'icon-save'"
+            class="easyui-linkbutton"  id="btn_save">保存</a></div>
+		<textarea id="content" name="content" style="display: none;">
+                
+        </textarea>
+	</form>
+</div>
+<link th:replace="/include/footer" />

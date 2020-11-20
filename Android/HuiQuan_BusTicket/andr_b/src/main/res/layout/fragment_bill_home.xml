@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <include layout="@layout/common_title_commit" />
+
+    <!-- 详细 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:paddingHorizontal="15dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="已核销笔数："
+                android:textColor="@color/coupon_hometopfont"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/tv_usedCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="x"
+                android:textColor="@color/coupon_hometopfont"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="已核销金额："
+                android:textColor="@color/coupon_hometopfont"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/tv_usedMoney"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="x"
+                android:textColor="@color/coupon_hometopfont"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="待核销笔数："
+                android:textColor="@color/coupon_hometopfont"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/tv_unusedCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="x"
+                android:textColor="@color/coupon_hometopfont"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="待核销金额："
+                android:textColor="@color/coupon_hometopfont"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/tv_unusedMoney"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="x"
+                android:textColor="@color/coupon_hometopfont"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/layout_height" >
+
+            <TextView
+                android:id="@+id/tv_allincome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@id/tv_bill_allincome"
+                android:layout_centerVertical="true"
+                android:textSize="18sp"
+                android:text="应得金额:" />
+
+            <TextView
+                android:id="@+id/tv_bill_allincome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:textSize="18sp"
+                android:text="x"/>
+        </RelativeLayout>
+    </LinearLayout>
+    
+    <TextView style="@style/VLine" />
+    
+   	<TextView
+          style="@style/VSpaceSmall"
+          android:background="@color/bgall" />
+   	
+   	<TextView style="@style/VLine" />
+    
+    <!-- 6个点击 -->
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+        
+        <LinearLayout 
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:visibility="gone">
+            
+            <LinearLayout 
+                android:id="@+id/ly_bill_one"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/layout_sheight"
+                android:layout_gravity="center"
+                android:layout_weight="1">
+                
+                <ImageView 
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_marginLeft="10dp"
+                      android:layout_gravity="center"
+                      android:background="@drawable/bill_one"/>
+                
+                <TextView 
+	                android:id="@+id/tv_bill_one"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_gravity="center"
+	                android:layout_marginLeft="10dp"
+	                android:text="@string/tv_bill_cust"/>
+            </LinearLayout>
+            
+            <TextView style="@style/VLineV" />
+            
+            <LinearLayout 
+                android:id="@+id/ly_bill_two" 
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/layout_sheight"
+                android:layout_weight="1"
+                android:layout_gravity="center">
+                <ImageView 
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_marginLeft="10dp"
+                      android:layout_gravity="center"
+                      android:background="@drawable/bill_two"/>
+                <TextView 
+	                android:id="@+id/tv_bill_two"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_gravity="center"
+	                android:layout_marginLeft="10dp"
+	                android:text="@string/tv_bill_ref"/>
+            </LinearLayout>
+            
+        </LinearLayout>
+        
+        <TextView style="@style/VLine" />
+        
+        <LinearLayout 
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:visibility="gone">
+            
+            <LinearLayout 
+                android:id="@+id/ly_bill_three"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/layout_sheight"
+                android:layout_weight="1"
+                android:layout_gravity="center">
+                <ImageView 
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_marginLeft="10dp"
+                      android:layout_gravity="center"
+                      android:background="@drawable/bill_three"/>
+                <TextView 
+	                android:id="@+id/tv_bill_three"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_gravity="center"
+	                android:layout_marginLeft="10dp"
+	                android:text="@string/tv_bill_consumernosettled"/>
+            </LinearLayout>
+            
+            <TextView style="@style/VLineV" />
+            
+            <LinearLayout 
+                android:id="@+id/ly_bill_four"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/layout_sheight"
+                android:layout_weight="1"
+                android:layout_gravity="center">
+                <ImageView 
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_marginLeft="10dp"
+                      android:layout_gravity="center"
+                      android:background="@drawable/bill_four"/>
+                <TextView 
+	                android:id="@+id/tv_bill_four"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_gravity="center"
+	                android:layout_marginLeft="10dp"
+	                android:text="@string/tv_bill_subsidynosettled"/>
+            </LinearLayout>
+            
+        </LinearLayout>
+        
+        <TextView style="@style/VLine" />
+        
+        <LinearLayout 
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:visibility="gone">
+            
+            <LinearLayout 
+                android:id="@+id/ly_bill_five"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/layout_sheight"
+                android:layout_weight="1"
+                android:layout_gravity="center">
+                <ImageView 
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_marginLeft="10dp"
+                      android:layout_gravity="center"
+                      android:background="@drawable/bill_five"/>
+                <TextView 
+	                android:id="@+id/tv_bill_five"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_gravity="center"
+	                android:layout_marginLeft="10dp"
+	                android:text="@string/tv_bill_pay"/>
+            </LinearLayout>
+            
+            <TextView style="@style/VLineV" />
+            
+            <LinearLayout 
+                android:id="@+id/ly_bill_six"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/layout_sheight"
+                android:layout_weight="1"
+                android:layout_gravity="center">
+                <ImageView 
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_marginLeft="10dp"
+                      android:layout_gravity="center"
+                      android:background="@drawable/bill_six"/>
+                <TextView 
+	                android:id="@+id/tv_bill_six"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_gravity="center"
+	                android:layout_marginLeft="10dp"
+	                android:text="@string/tv_bill_subsidy"/>
+            </LinearLayout>
+            
+        </LinearLayout>
+        
+        <TextView style="@style/VLine" />
+        
+        <LinearLayout 
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            
+            <LinearLayout 
+                android:id="@+id/ly_bill_seven"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/layout_sheight"
+                android:layout_weight="1"
+                android:gravity="center">
+                <ImageView 
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_marginLeft="10dp"
+                      android:layout_gravity="center"
+                      android:background="@drawable/bill_seven"/>
+                <TextView 
+	                android:id="@+id/tv_bill_seven"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_gravity="center"
+	                android:layout_marginLeft="10dp"
+	                android:text="@string/tv_bill_allselect"/>
+            </LinearLayout>
+            
+            <TextView style="@style/VLineV" />
+            
+            <LinearLayout 
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/layout_sheight"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:visibility="gone">
+                <ImageView 
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_marginLeft="10dp"
+                      android:layout_gravity="center"
+                      android:background="@drawable/bill_six"/>
+                <TextView 
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_gravity="center"
+	                android:layout_marginLeft="10dp"
+	                android:text="@string/tv_bill_subsidy"/>
+            </LinearLayout>
+            
+        </LinearLayout>
+        
+        <TextView style="@style/VLine" />
+            
+    </LinearLayout>
+        
+</LinearLayout>

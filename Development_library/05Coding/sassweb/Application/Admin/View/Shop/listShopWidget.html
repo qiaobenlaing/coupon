@@ -1,0 +1,202 @@
+<table class="fp-table table table-striped table-bordered table-condensed" id="data_table">
+    <thead>
+    <tr>
+        <!--<th style="width: 112px;">商家编码</th>-->
+        <th>商家号</th>
+        <th>商家名</th>
+        <th>类型</th>
+        <th>预留手机</th>
+        <th>营业执照</th>
+        <!--<th>内部商户号</th>-->
+        <th>注册时间</th>
+        <th style="width: 53px;">地址（商圈)</th>
+        <th>大店长</th>
+        <!--<th>红包</th>-->
+        <th style="width: 80px;">优惠券</th>
+        <th>入驻状态</th>
+        <th style="width: 47px;">状态</th>
+        <th style="width: 95px;">操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    <foreach name="dataList" item="item">
+        <tr>
+            <!--<td>{$item.shopCode}</td>-->
+            <td>{$item.shopId}</td>
+            <td>
+                <a href="/Admin/Shop/shopInfo?shopCode={$item.shopCode}">{$item.shopName}</a><br/>
+            </td>
+            <td>
+                <foreach name="item.shopType" item="typeValue">
+                    <foreach name="shopTypeList" item="shopType">
+                        <eq name="typeValue" value="$shopType.typeValue">
+                            <lable class="label label-1">{$shopType.typeZh}</lable><br/>
+                        </eq>
+                    </foreach>
+                </foreach>
+            </td>
+            <td>{$item.mobileNbr}</td>
+            <td>{$item.licenseNbr}</td>
+            <!--<td>{$item.hqIcbcShopNbr}</td>-->
+            <td>{$item.createDate}</td>
+            <td width="10%">{$item.province}{$item.city}({$item.bank_name})</td>
+            <td>
+                姓名：{$item.bigMngRealName|default=暂无}<br/>
+                手机号：{$item.bigMngMobileNbr|default=暂无}
+                <a href="/Admin/Shop/editShopStaffRel?shopCode={$item.shopCode}" class="btn btn-xs btn-default">
+                    <empty name="item.bigMngMobileNbr">添加<else/>编辑</empty>大店长
+                </a>
+            </td>
+            <!--<td>-->
+                <!--<a href="/Admin/Bonus/shopBonusAnalysis?shopCode={$item.shopCode}" class="btn btn-xs btn-default">红包分析</a>-->
+            <!--</td>-->
+            <td class="data-list-operation-wrap">
+                <a href="/Admin/BatchCoupon/editCoupon/shopCode/{$item.shopCode}" class="btn btn-xs btn-default">添加优惠券</a>
+                <a href="/Admin/BatchCoupon/shopCouponAnalysis?shopCode={$item.shopCode}" class="btn btn-xs btn-default">优惠券分析</a>
+            </td>
+            <td>
+                <div class="dropdown">
+                    <switch name="item.shopStatus">
+                        <case value="1">
+                            <button type="button" class="btn btn-xs btn-danger dropdown-toggle btn-shop-enter-status-{$item.shopCode}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="status-text">未入驻</span><span class="caret"></span>
+                            </button>
+                        </case>
+                        <case value="2">
+                            <button type="button" class="btn btn-xs btn-success dropdown-toggle btn-shop-enter-status-{$item.shopCode}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="status-text">已入驻</span><span class="caret"></span>
+                            </button>
+                        </case>
+                    </switch>
+                    <ul class="dropdown-menu" style="min-width: 0">
+                        <li><a href="#" data-shop-code="{$item.shopCode}" data-enter-status="1" class="change-shop-enter-status">未入驻</a></li>
+                        <li><a href="#" data-shop-code="{$item.shopCode}" data-enter-status="2" class="change-shop-enter-status">已入驻</a></li>
+                    </ul>
+                </div>
+                <neq name="item.applyCount" value="0">
+                    <a href="/Admin/Shop/listApply?shopCode={$item.shopCode}" title="{$item.applyCount}次申请入住">
+                        <span class="badge badge-msg">{$item.applyCount}次申请</span>
+                    </a>
+                </neq>
+            </td>
+            <td class="status">
+                <div class="dropdown">
+                    <switch name="item.status">
+                        <case value="1">
+                            <button type="button" class="btn btn-xs btn-success dropdown-toggle btn-shop-status-{$item.shopCode}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="status-text">启用</span><span class="caret"></span>
+                            </button>
+                        </case>
+                        <case value="0">
+                            <button type="button" class="btn btn-xs btn-danger dropdown-toggle btn-shop-status-{$item.shopCode}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="status-text">禁用</span><span class="caret"></span>
+                            </button>
+                        </case>
+                        <default />
+                        <button type="button" class="btn btn-xs btn-default dropdown-toggle btn-shop-status-{$item.shopCode}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            未知<span class="caret"></span>
+                        </button>
+                    </switch>
+                    <ul class="dropdown-menu" style="min-width: 0">
+                        <li><a href="#" data-shop-code="{$item.shopCode}" data-status="0" class="change-shop-status">禁用</a></li>
+                        <li><a href="#" data-shop-code="{$item.shopCode}" data-status="1" class="change-shop-status">启用</a></li>
+                    </ul>
+                </div>
+            </td>
+            <td class="data-list-operation-wrap">
+                <a href="/Admin/Shop/editShop?shopCode={$item.shopCode}&page={$pager:page}" class="btn btn-xs btn-primary">编辑</a>
+                <a href="/Admin/Shop/deleteShop?shopCode={$item.shopCode}" class="btn btn-xs btn-danger" onclick="return confirm('删除后，商店优惠券和红包数据也会消失。确认删除吗？')">删除</a><br/>
+            </td>
+        </tr>
+    </foreach>
+    </tbody>
+</table>
+<script>
+    ;(function(){
+        // 修改是否支持工行卡支付
+        $('.update-accept-ghpay').on('click', function(){
+            var btn = $(this);
+            var href = btn.attr('href');
+            var isAcceptBankCard = btn.data('isAcceptBankCard');
+            var shopCode = btn.data('shopCode');
+            $.get(href, {'shopCode' : shopCode, 'isAcceptBankCard' : isAcceptBankCard}, function(resp){
+                if(resp.status == sz.STATUS_SUCC) {
+                    btn.addClass(resp.data.newClass).removeClass(resp.data.oldClass).data('isAcceptBankCard', resp.data.isAcceptBankCard).text(resp.data.text);
+                    sz.showSuccMsg(resp.msg, 3);
+                } else {
+                    sz.showErrMsg(resp.msg, 3);
+                }
+            });
+            return false;
+        })
+    })();
+    // 修改商家的状态
+    ;(function(){
+        $('.change-shop-status').on('click', function(){
+            var shopCode = $(this).data('shopCode');
+            var status = $(this).data('status');
+
+            var btnShopStatus = $('.btn-shop-status-' + shopCode);
+            btnShopStatus.removeClass('btn-default').removeClass('btn-success').removeClass('btn-danger');
+            $.get(
+                    '/Admin/Shop/changeStatus',
+                    {'shopCode': shopCode, 'status': status},
+                    function(resp){
+                        if(resp.status == sz.STATUS_SUCC) {
+                            switch(status){
+                                case 1:
+                                    btnShopStatus.children().filter('.status-text').html('启用');
+                                    btnShopStatus.addClass('btn-success');
+                                    break;
+                                case 0:
+                                    btnShopStatus.children().filter('.status-text').html('禁用');
+                                    btnShopStatus.addClass('btn-danger');
+                                    break;
+                            }
+                            // 隐藏下拉框
+                            btnShopStatus.dropdown('toggle');
+                        } else {
+                            sz.showErrMsg(resp.msg)
+                        }
+                    }
+            );
+            return false;
+        });
+    })();
+    // 修改商家入驻的状态
+    ;(function(){
+        $('.change-shop-enter-status').on('click', function(){
+            var shopCode = $(this).data('shopCode');
+            var enterStatus = $(this).data('enterStatus');
+
+            var btnShopStatus = $('.btn-shop-enter-status-' + shopCode);
+            btnShopStatus.removeClass('btn-default').removeClass('btn-success').removeClass('btn-danger');
+            $.get(
+                    '/Admin/Shop/changeShopEnterStatus',
+                    {'shopCode': shopCode, 'shopStatus': enterStatus},
+                    function(resp){
+                        if(resp.status == sz.STATUS_SUCC) {
+                            switch(enterStatus){
+                                case 1:
+                                    btnShopStatus.children().filter('.status-text').html('未入驻');
+                                    btnShopStatus.addClass('btn-danger');
+                                    break;
+                                case 2:
+                                    btnShopStatus.children().filter('.status-text').html('已入驻');
+                                    btnShopStatus.addClass('btn-success');
+                                    break;
+                            }
+                            // 隐藏下拉框
+                            btnShopStatus.dropdown('toggle');
+                        } else {
+                            sz.showErrMsg(resp.msg)
+                        }
+                    }
+            );
+            return false;
+        });
+
+    })();
+</script>
+<include file="Application/Admin/View/Widget/pager.html" />
+

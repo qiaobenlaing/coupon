@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/LyCommSet"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/navigation_bar"
+        android:background="@color/red"
+        android:gravity="center_vertical" >
+
+        <TextView
+            android:id="@+id/tv_area"
+            style="@style/LyWHSecond"
+            android:layout_alignParentLeft="true"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="@dimen/navigation_left"
+            android:drawableEnd="@drawable/sel_city"
+            android:drawablePadding="5dp"
+            android:drawableRight="@drawable/sel_city"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="杭州"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/tv_search_left"
+            style="@style/LyWHSecond"
+            android:layout_width="40dp"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@+id/tv_area"
+            android:background="@drawable/search_left"
+            android:gravity="center_vertical|center_horizontal"
+            android:textColor="@color/white" />
+
+        <EditText
+            android:id="@+id/edt_search"
+            style="@style/LyWHSecond"
+            android:layout_width="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginRight="5dp"
+            android:layout_toLeftOf="@+id/iv_scan"
+            android:layout_toRightOf="@+id/tv_search_left"
+            android:background="@drawable/search_right"
+            android:gravity="center_vertical|center_horizontal"
+            android:imeOptions="actionSearch"
+            android:inputType="text"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:text="@string/search_shop"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/tv_ok"
+            style="@style/LyWHSecond"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:layout_marginRight="@dimen/navigation_right"
+            android:text="@string/btn_login"
+            android:textColor="@color/white" />
+    </RelativeLayout>
+
+    <LinearLayout style="@style/LyWHFirst" >
+    </LinearLayout>
+
+</LinearLayout>

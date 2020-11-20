@@ -1,0 +1,209 @@
+<table class="fp-table table table-striped table-bordered table-condensed" id="data_table">
+    <thead>
+    <tr>
+        <th>商家名</th>
+        <th>大店长</th>
+        <th>大店长手机号</th>
+        <th>营业执照</th>
+        <th>录入时间</th>
+        <th>类型</th>
+        <th>地址</th>
+        <th>录入人</th>
+        <th>状态</th>
+        <th style="width: 100px">操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    <foreach name="dataList" item="item">
+        <tr id="pre-shop-{$item.shopCode}">
+            <td>
+            <if condition="$user.mobileNbr eq '13588305490'">
+            	<button type="button" class="btn btn-default btn-sm preShopInfo" data-shop-code="{$item.shopCode}" data-toggle="modal" data-target=".bs-example-modal-lg">{$item.shopName}</button>
+            <else/>
+            	{$item.shopName}
+            </if>
+            </td>
+            <td>{$item.bigManager}</td>
+            <td>{$item.bMaMobileNbr}</td>
+            <td>{$item.licenseNbr}</td>
+            <td>{$item.createDate}</td>
+            <td>
+                <foreach name="shopTypeList" item="shopType">
+                    <eq name="item.type" value="$shopType.typeValue">{$shopType.typeZh}</eq>
+                </foreach>
+            </td>
+            <td>{$item.province}{$item.city}{$item.district}{$item.street}</td>
+            <td>{$item.developerName}</td>
+            <td class="status">
+                <eq name="item.status" value="2">已采纳，时间：{$item.useTime}
+                    <else/>
+                    未采纳。
+                    <a href="#reason-list-modal" data-toggle="modal" class="btn btn-xs btn-warning a-no-adopt-reason" data-pre-shop-code="{$item.shopCode}">
+                        <span class="reason-count-{$item.shopCode}">{$item.nAReasonCount}</span>
+                    </a>
+                </eq>
+            </td>
+            <td class="operation data-list-operation-wrap">
+                <if condition="$Think.session.USER.userLvl EQ 1 AND $item.status NEQ 2">
+                    <button class="btn btn-xs btn-success use-the-shop" data-url="/Admin/PreShop/useTheShop" data-shop-code="{$item.shopCode}">采纳</button>
+                    <button class="btn btn-xs btn-warning" data-pre-shop-code="{$item.shopCode}"  type="button" data-toggle="modal" data-target="#not-adopt-pre-shop-modal">不采纳</button><br/>
+                </if>
+                <eq name="item.status" value="2">
+                    <else/>
+                    <a href="/Admin/PreShop/editPreShop?shopCode={$item.shopCode}&page={$pager:page}" class="btn btn-xs btn-primary">编辑</a>
+                    <a href="/Admin/PreShop/deletePreShop?shopCode={$item.shopCode}" class="btn btn-xs btn-danger" onclick="return confirm('确认删除该商家吗？')">删除</a><br/>
+                </eq>
+            </td>
+        </tr>
+    </foreach>
+    </tbody>
+</table>
+<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      营业执照:<img class="license" width="500px"><br/>
+      银行卡:<img class="bankCard" width="500px"><br/>
+      身份证:<div class="idCard"></div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="notUseShopModal" id="not-adopt-pre-shop-modal">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <form action="/Admin/PreShop/editNotAdoptLog" method="post" id="frm-not-adopt-pre-shop">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="gridSystemModalLabel">你给我一个不采用的理由！</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <input type="hidden" name="preShopCode" id="pre-shop-code"/>
+                            <div class="form-group">
+                                <label for="reason" class="control-label">理由就写下面:</label>
+                                <textarea class="form-control" id="reason" name="reason" rows="6"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">开个玩笑嘛...</button>
+                    <button type="submit" class="btn btn-primary">甩给你！</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="notUseShopModal" id="reason-list-modal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="">不采用的理由:</h4>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="row">
+                        <table class="table table-condensed">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>理由</th>
+                            </tr>
+                            </thead>
+                            <tbody id="tbody-reason-data-list">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    ;(function(){
+        // 采纳商店
+        $('.use-the-shop').on('click', function(){
+            var btn = $(this);
+            var url = btn.data('url');
+            var shopCode = btn.data('shopCode');
+            $.post(url, {'shopCode' : shopCode}, function(resp){
+                if(resp.status == sz.STATUS_SUCC) {
+                    sz.showSuccMsg(resp.msg, 2);
+                    $('#pre-shop-' + shopCode + ' .status').text('已采用，时间：'  + resp.data.useTime);
+                    $('#pre-shop-' + shopCode + ' .operation').empty();
+                } else {
+                    sz.showErrMsg(resp.msg);
+                }
+            });
+        });
+
+        // 填写不采用理由的Modal框显示时的一些动作
+        $('#not-adopt-pre-shop-modal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget); // Button that triggered the modal
+            var preShopCode = button.data('preShopCode'); // Extract info from data-* attributes
+            // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+            // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+            var modal = $(this);
+            modal.find('#pre-shop-code').val(preShopCode);
+        });
+
+        // 提交不采纳理由
+        $('#frm-not-adopt-pre-shop').on('submit', function(){
+            var frm = $(this);
+            var preShopCode = frm.find('#pre-shop-code').val();
+            $.post(frm.attr('action'), frm.serialize(), function(resp){
+                if(resp.status == sz.STATUS_SUCC) {
+                    sz.showSuccMsg('提交成功', 2);
+                    // 清空之前的理由
+                    $('#reason').val('');
+                    // 隐藏Modal框
+                    $('#not-adopt-pre-shop-modal').modal('hide');
+                    // 更新理由数量
+                    var reasonCount = $('.reason-count-' + preShopCode);
+                    var val = parseInt(reasonCount.text());
+                    reasonCount.text(val + 1);
+                } else {
+                    sz.showErrMsg(resp.msg, 2);
+                }
+            });
+            return false;
+        });
+
+        // 获得不采用理由的列表
+        $('#reason-list-modal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget); // Button that triggered the modal
+            var preShopCode = button.data('preShopCode'); // Extract info from data-* attributes
+            var modal = $(this);
+            $.post('/Admin/PreShop/listNALog', {'preShopCode': preShopCode}, function(resp){
+                modal.find('#tbody-reason-data-list').empty();
+                var dataList = resp.data;
+                for(var i = 0; i < dataList.length; i++ ) {
+                    var serialId = i + 1;
+                    var html = '<tr><td>' + serialId + '</td><td>' + dataList[i]['reason'] + '</td></tr>';
+                    modal.find('#tbody-reason-data-list').append(html);
+                }
+            });
+        });
+    })();
+    // 显示相应图片
+    ;(function(){
+        $('.preShopInfo').on('click', function(){
+            var shopCode = $(this).data('shopCode');
+            $.get('/Admin/PreShop/getPreShopInfo', {shopCode:shopCode}, function(resp){
+				$(".license").attr("src", resp.data.licenseUrl);
+				$(".bankCard").attr("src", resp.data.bankCardUrl);
+	        	$(".idCard").empty();
+				if(resp.data.IDcardUrl != null){
+					$.each(resp.data.IDcardUrl, function(i, n){
+						$(".idCard").append("<img src='"+n.url+"' width='500px'/>");
+					});
+				}
+            });
+        })
+    })();
+</script>
+<include file="Application/Admin/View/Widget/pager.html" />

@@ -1,0 +1,23 @@
+<table class="fp-table table table-striped table-bordered table-condensed" id="data_table">
+    <thead>
+    <tr>
+        <th>昵称</th>
+        <th>手机号码</th>
+        <th>圈值</th>
+        <th>事由</th>
+        <th>时间</th>
+    </tr>
+    </thead>
+    <tbody>
+    <foreach name="dataList" item="item">
+        <tr>
+            <td>{$item.nickName}</td>
+            <td>{$item.mobileNbr}</td>
+            <td>{$item.point}</td>
+            <td>{$item.reason}</td>
+            <td>{$item.earningTime}</td>
+        </tr>
+    </foreach>
+    </tbody>
+</table>
+<include file="Application/Admin/View/Widget/pager.html" />

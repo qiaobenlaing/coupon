@@ -1,0 +1,448 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/LyOutSet"
+    android:background="@color/bgall">
+
+    <include layout="@layout/common_title_home" />
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:fadingEdge="vertical"
+        android:scrollbars="none">
+
+        <LinearLayout
+            style="@style/LyWHFirst"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/layout_shop_info"
+                style="@style/LyWHFourth"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:visibility="visible">
+
+                <ImageView
+                    android:id="@+id/iv_showlogo"
+                    android:layout_width="76dp"
+                    android:layout_height="76dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/bg_border"
+                    android:scaleType="fitXY" />
+
+                <LinearLayout
+                    android:layout_height="match_parent"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_shopname"
+                        style="@style/textview"
+                        android:text="@string/shopname"
+                        android:textColor="@color/light_black"
+                        android:textSize="16sp" />
+
+                    <LinearLayout
+                        style="@style/LyWHSecond"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            style="@style/textview"
+                            android:text="@string/address"
+                            android:textColor="@color/deep_grey"
+                            android:textSize="15sp" />
+
+                        <TextView
+                            android:id="@+id/tv_myaddress"
+                            style="@style/textview"
+                            android:textColor="@color/deep_grey"
+                            android:textSize="15sp"
+                            android:maxLines="3"
+                            android:ellipsize="end"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_height="30dp"
+                    android:layout_width="30dp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/oriented" />
+            </LinearLayout>
+
+            <TextView
+                style="@style/VLine"
+                android:layout_height="0.5dp"
+                android:background="@color/shallow_gray" />
+
+            <TextView
+                style="@style/VSpaceSmall"
+                android:background="@color/bgall" />
+
+            <TextView
+                style="@style/VLine"
+                android:layout_height="0.5dp"
+                android:background="@color/shallow_gray" />
+
+            <LinearLayout
+                android:id="@+id/layout_my_order"
+                style="@style/LyWHFourth"
+                android:layout_height="48dp"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:src="@drawable/order_manager" />
+
+                <TextView
+                    style="@style/textview"
+                    android:layout_marginLeft="10dp"
+                    android:text="@string/order_manager"
+                    android:textSize="16sp" />
+
+                <LinearLayout
+                    style="@style/LyWHFourth"
+                    android:gravity="right">
+
+                    <ImageView
+                        android:layout_height="20dp"
+                        android:layout_width="20dp"
+                        android:layout_marginRight="10dp"
+                        android:src="@drawable/oriented" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                style="@style/VLine"
+                android:layout_height="0.5dp"
+                android:background="@color/shallow_gray" />
+
+            <LinearLayout
+                android:id="@+id/layout_staff_manager"
+                style="@style/LyWHFourth"
+                android:layout_height="48dp"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:src="@drawable/staff_manage" />
+
+                <TextView
+                    style="@style/textview"
+                    android:layout_marginLeft="10dp"
+                    android:text="@string/assistant_manager"
+                    android:textSize="16sp" />
+
+                <LinearLayout
+                    style="@style/LyWHFourth"
+                    android:gravity="right">
+
+                    <ImageView
+                        android:layout_height="20dp"
+                        android:layout_width="20dp"
+                        android:layout_marginRight="10dp"
+                        android:src="@drawable/oriented" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                style="@style/VLine"
+                android:layout_height="0.5dp"
+                android:background="@color/shallow_gray" />
+
+            <TextView
+                style="@style/VSpaceSmall"
+                android:background="@color/bgall" />
+
+            <TextView
+                style="@style/VLine"
+                android:layout_height="0.5dp"
+                android:background="@color/shallow_gray" />
+
+            <LinearLayout
+                android:id="@+id/layout_my_shop"
+                style="@style/LyWHFourth"
+                android:layout_height="48dp"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:src="@drawable/my_shop" />
+
+                <TextView
+                    style="@style/textview"
+                    android:layout_marginLeft="10dp"
+                    android:text="@string/my_shop"
+                    android:textSize="16sp" />
+
+                <LinearLayout
+                    style="@style/LyWHFourth"
+                    android:gravity="right">
+
+                    <ImageView
+                        android:layout_height="20dp"
+                        android:layout_width="20dp"
+                        android:layout_marginRight="10dp"
+                        android:src="@drawable/oriented" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                style="@style/VLine"
+                android:layout_height="0.5dp"
+                android:background="@color/shallow_gray" />
+
+            <LinearLayout
+                android:id="@+id/layout_myhome_advice"
+                style="@style/LyWHFourth"
+                android:layout_height="48dp"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:src="@drawable/huiquan_suggest" />
+
+                <TextView
+                    style="@style/textview"
+                    android:layout_marginLeft="10dp"
+                    android:text="@string/your_advice"
+                    android:textSize="16sp" />
+
+                <LinearLayout
+                    style="@style/LyWHFourth"
+                    android:gravity="right|center_vertical">
+
+                    <TextView
+                        android:id="@+id/tv_msuggest_coun"
+                        style="@style/LyWHSecond"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_gravity="right|center_vertical"
+                        android:background="@drawable/shape_red_round"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:textColor="@color/white"
+                        android:textSize="12sp"
+                        android:visibility="visible" />
+
+                    <ImageView
+                        android:layout_height="20dp"
+                        android:layout_width="20dp"
+                        android:layout_marginRight="10dp"
+                        android:src="@drawable/oriented" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                style="@style/VLine"
+                android:layout_height="0.5dp"
+                android:background="@color/shallow_gray" />
+
+            <TextView
+                style="@style/VSpaceSmall"
+                android:background="@color/bgall" />
+
+            <TextView
+                style="@style/VLine"
+                android:layout_height="0.5dp"
+                android:background="@color/shallow_gray" />
+
+            <LinearLayout
+                android:id="@+id/layout_update_pwd"
+                style="@style/LyWHFourth"
+                android:layout_height="48dp"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/iv_forgetpwd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:src="@drawable/update_pwd" />
+
+                <TextView
+                    style="@style/textview"
+                    android:layout_marginLeft="10dp"
+                    android:text="@string/update_pwd"
+                    android:textSize="16sp" />
+
+                <LinearLayout
+                    style="@style/LyWHFourth"
+                    android:gravity="right">
+
+                    <ImageView
+                        android:layout_height="20dp"
+                        android:layout_width="20dp"
+                        android:layout_marginRight="10dp"
+                        android:src="@drawable/oriented" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                style="@style/VLine"
+                android:layout_height="0.5dp"
+                android:background="@color/shallow_gray" />
+
+            <LinearLayout
+                android:id="@+id/ly_set_message"
+                style="@style/LyWHFourth"
+                android:layout_height="48dp"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/iv_message"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:src="@drawable/set_text_message" />
+
+                <TextView
+                    style="@style/textview"
+                    android:layout_marginLeft="10dp"
+                    android:text="@string/text_message"
+                    android:textSize="16sp" />
+
+                <LinearLayout
+                    style="@style/LyWHFourth"
+                    android:gravity="right">
+
+                    <ImageView
+                        android:layout_height="20dp"
+                        android:layout_width="20dp"
+                        android:layout_marginRight="10dp"
+                        android:src="@drawable/oriented" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                style="@style/VLine"
+                android:layout_height="0.5dp"
+                android:background="@color/shallow_gray" />
+
+            <TextView
+                style="@style/VSpaceSmall"
+                android:background="@color/bgall" />
+
+            <TextView
+                style="@style/VLine"
+                android:layout_height="0.5dp"
+                android:background="@color/shallow_gray" />
+
+            <LinearLayout
+                android:id="@+id/layout_myhome_about"
+                style="@style/LyWHFourth"
+                android:layout_height="48dp"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/iv_version"
+                    android:layout_width="37dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:src="@drawable/person_about" />
+
+                <TextView
+                    style="@style/textview"
+                    android:layout_marginLeft="10dp"
+                    android:text="@string/version"
+                    android:textSize="16sp" />
+
+                <LinearLayout
+                    style="@style/LyWHFourth"
+                    android:gravity="right">
+
+                    <ImageView
+                        android:layout_height="20dp"
+                        android:layout_width="20dp"
+                        android:layout_marginRight="10dp"
+                        android:src="@drawable/oriented" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                style="@style/VLine"
+                android:layout_height="0.5dp"
+                android:background="@color/shallow_gray" />
+
+            <LinearLayout
+                android:id="@+id/layout_myhome_set"
+                style="@style/LyWHFourth"
+                android:layout_height="48dp"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:src="@drawable/my_set" />
+
+                <TextView
+                    style="@style/textview"
+                    android:layout_marginLeft="10dp"
+                    android:text="设置"
+                    android:textSize="16sp" />
+
+                <LinearLayout
+                    style="@style/LyWHFourth"
+                    android:gravity="right">
+
+                    <ImageView
+                        android:layout_height="20dp"
+                        android:layout_width="20dp"
+                        android:layout_marginRight="10dp"
+                        android:src="@drawable/oriented" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_logout"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/navigation_bar"
+                android:layout_marginHorizontal="15dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/login_btn"
+                android:text="@string/exit_sign"
+                android:textColor="@color/white" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

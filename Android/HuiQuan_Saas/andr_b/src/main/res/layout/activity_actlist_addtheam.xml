@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/LyOutSet" >
+
+    <include layout="@layout/common_title_home" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/navigation_bar"
+            android:layout_marginTop="20dp"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <EditText
+                android:id="@+id/et_actadd_theam"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/navigation_bar"
+                android:layout_marginLeft="10dp"
+                android:background="@null"
+                android:hint="@string/tv_actadd_theam"
+                android:singleLine="true"
+                android:textColorHint="@color/actadd_gray"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <TextView style="@style/VLine" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/navigation_bar"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <EditText
+                android:id="@+id/et_actadd_startTime"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/navigation_bar"
+                android:layout_marginLeft="10dp"
+                android:background="@null"
+                android:editable="false"
+                android:focusable="true"
+                android:focusableInTouchMode="false"
+                android:hint="@string/tv_actadd_starttime"
+                android:textColorHint="@color/actadd_gray"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <TextView style="@style/VLine" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/navigation_bar"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <EditText
+                android:id="@+id/et_actadd_endTime"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/navigation_bar"
+                android:layout_marginLeft="10dp"
+                android:background="@null"
+                android:editable="false"
+                android:focusable="true"
+                android:focusableInTouchMode="false"
+                android:hint="@string/tv_actadd_endtime"
+                android:singleLine="true"
+                android:textColorHint="@color/actadd_gray"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <TextView style="@style/VLine" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/navigation_bar"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <EditText
+                android:id="@+id/et_actadd_place"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/navigation_bar"
+                android:layout_marginLeft="10dp"
+                android:background="@null"
+                android:hint="@string/tv_actadd_location"
+                android:singleLine="true"
+                android:textColorHint="@color/actadd_gray"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <TextView style="@style/VLine" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/navigation_bar"
+        android:layout_marginTop="20dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp" >
+
+        <Button
+            android:id="@+id/btn_actadd_nextone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/login_btn"
+            android:text="@string/tv_actadd_next"
+            android:textColor="@color/white" />
+    </LinearLayout>
+
+</LinearLayout>

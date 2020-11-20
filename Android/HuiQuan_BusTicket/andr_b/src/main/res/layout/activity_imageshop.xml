@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/LyOutSet"
+    android:background="@color/bgall" >
+
+    <ScrollView
+        style="@style/LyWHFirst"
+        android:fadingEdge="vertical"
+        android:scrollbars="none" >
+
+        <LinearLayout
+            style="@style/LyWHFirst"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:id="@+id/ly_nodate"
+                style="@style/LyWHFirst"
+                android:layout_marginTop="48dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:visibility="visible" >
+
+                <ProgressBar
+                    android:id="@+id/prog_nodata"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="正在加载数据" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ly_content"
+                style="@style/LyWHFourth"
+                android:orientation="vertical"
+                android:visibility="gone" >
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:background="@color/light_grey" >
+
+                    <android.support.v4.view.ViewPager
+                        android:id="@+id/vp_viewPager"
+                        style="@style/LyWHFirst"
+                        android:layout_height="200dp"
+                        android:background="@color/gray_transparent"
+                        android:src="@drawable/no_data" />
+
+                    <LinearLayout
+                        style="@style/LyWHFourth"
+                        android:layout_gravity="center_vertical|bottom"
+                        android:background="@color/white"
+                        android:orientation="vertical" >
+
+                        <TextView
+                            android:id="@+id/shop_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal|left"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="5dp"
+                            android:text="店铺名称"
+                            android:textColor="@color/shopdetail_title"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <LinearLayout
+                            style="@style/LyWHFourth"
+                            android:layout_marginTop="5dp"
+                            android:background="@color/white"
+                            android:gravity="left"
+                            android:orientation="horizontal" >
+
+                            <TextView
+                                android:id="@+id/tv_popularity"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="5dp"
+                                android:layout_marginLeft="10dp"
+                                android:gravity="left"
+                                android:textColor="@color/deep_grey" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/shop_logo"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_gravity="right|bottom"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@drawable/bg_border"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/no_shoplogo" />
+                </FrameLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp"
+                    android:background="@color/bgall" />
+
+                <TextView
+                    style="@style/VLine"
+                    android:layout_height="0.5dp"
+                    android:background="@color/shallow_gray" />
+
+                 <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/navigation_bar"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                     android:gravity="center_vertical">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:src="@drawable/address" />
+
+                    <TextView
+                        android:id="@+id/address"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="xxxxxxxxxxxxx"
+                        android:textColor="@color/deep_grey"/>
+                </LinearLayout>
+
+                <TextView
+                    style="@style/VLine"
+                    android:layout_height="0.5dp"
+                    android:background="@color/shallow_gray"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/navigation_bar"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:src="@drawable/telphone" />
+
+                    <TextView
+                        android:id="@+id/phone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="xxxxxxxxxxxxx"
+                        android:textColor="@color/deep_grey" />
+                </LinearLayout>
+
+                <TextView
+                    style="@style/VLine"
+                    android:layout_height="0.5dp"
+                    android:background="@color/shallow_gray" />
+
+                <TextView
+                    style="@style/VSpace"
+                    android:layout_height="10dp"
+                    android:background="@color/bgall" />
+
+                <RelativeLayout
+                    android:id="@+id/ry_shop_decoration"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:background="@color/white" >
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/recycler_photo_view"
+                        android:layout_width="330dp"
+                        android:layout_height="100dp"
+                        android:scrollbars="none"/>
+
+                    <ImageView
+                        style="@style/LyWHSecond"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="10dp"
+                        android:layout_toRightOf="@+id/recycler_photo_view"
+                        android:background="@drawable/back_decoration" />
+                </RelativeLayout>
+
+                <TextView
+                    style="@style/VLine"
+                    android:layout_height="0.5dp"
+                    android:background="@color/shallow_gray" />
+
+                <RelativeLayout
+                    android:id="@+id/ry_arrow_coupon"
+                    style="@style/LyWHFourth"
+                    android:layout_height="@dimen/navigation_bar"
+                    android:background="@color/white"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        style="@style/LyWHSecond"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerInParent="true"
+                        android:layout_marginLeft="10dp"
+                        android:text="我发布的优惠劵"
+                        android:textSize="16sp" />
+
+                    <ImageView
+                        android:id="@+id/iv_guide_arrow"
+                        style="@style/LyWHSecond"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerInParent="true"
+                        android:layout_marginRight="10dp" />
+                </RelativeLayout>
+
+                <com.huift.hfq.base.view.MyListView
+                    android:id="@+id/lv_coupon"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@color/white"
+                    android:divider="@color/bgall"
+                    android:scrollbars="none" />
+
+                <RelativeLayout
+                    android:id="@+id/ry_activity"
+                    style="@style/LyWHFourth"
+                    android:layout_height="@dimen/navigation_bar"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/white"
+                    android:visibility="gone"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        style="@style/LyWHSecond"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerInParent="true"
+                        android:layout_marginLeft="10dp"
+                        android:visibility="gone"
+                        android:text="店铺活动"
+                        android:textSize="16sp" />
+                </RelativeLayout>
+
+                <com.huift.hfq.base.view.MyListView
+                    android:id="@+id/lv_activity"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="10dp"
+                    android:divider="@color/bgall"
+                    android:visibility="gone"
+                    android:scrollbars="none" />
+                <LinearLayout
+                    android:id="@+id/ly_shopdec"
+                    style="@style/LyWHFourth"
+                    android:layout_below="@+id/lv_activity"
+                    android:background="@color/white"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="10dp"
+                        android:text="店铺简介"
+                        android:textSize="16sp" 
+                        android:layout_marginTop="5dp"/>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/radio_colors"
+                        android:paddingLeft="10dp" >
+
+                        <TextView
+                            android:id="@+id/tv_shop_des"
+                            style="@style/LyWHSecond"
+                            android:layout_width="match_parent"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginRight="20dp"
+                            android:paddingBottom="10dp"
+                            android:text="" />
+                    </RelativeLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

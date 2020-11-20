@@ -1,0 +1,378 @@
+<layout name="layout_api" />
+<!-- Views -->
+<div class="views">
+    <!-- Your main view, should have "view-main" class -->
+    <div class="view view-main">
+        <!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
+        <div class="pages">
+            <!-- Page, "data-page" contains page name -->
+            <div data-page="index" class="page">
+                <!-- Scrollable page content -->
+                <div class="page-content pos-faq">
+                    <div class="body">
+                        <p class="protocol-title">刷卡问题解答</p>
+                        <div class="line"></div>
+                        <p class="one-stage-title">一、无法连接银行服务器或连接服务器很慢（包括提示“连接超时”、“连接失败”、“无法连接服务器”、“无拨号音”、“注册网络失败”等，连接一段时间后自动返回原界面等情况）：</p>
+                        <p class="content">
+                            <span class="one-stage-title">原因：</span>
+                        </p>
+                        <p class="content">
+                            <span>1.</span>
+                            连接POS的电话是公用电话、充卡电话或不能打外线的电话。
+                        </p>
+                        <p class="content">
+                            <span>2.</span>
+                            通讯线路故障或未连接好，比如电话线老化、电话线局部断掉、水晶头故障、电话线未插、电话线插入方式错误、电话线插错插口、无线POS数据卡装反、装错或故障、无线POS信号不好、内网无法连接等。
+                        </p>
+                        <p class="content">
+                            <span>3.</span>
+                            连接POS的电话因欠费、停机保号等原因无法正常拨打电话。
+                        </p>
+                        <p class="content">
+                            <span>4.</span>
+                            POS使用的电话有分机同时在用（包括小灵通），比如POS使用时分机同时传真、通话、分机话柄未放好等。
+                        </p>
+                        <p class="content">
+                            <span>5.</span>
+                            预拨号（拨打本地号码需要在电话前加拨的数字）未设置正确。
+                        </p>
+                        <p class="content">
+                            <span>6.</span>
+                            其他原因。
+                        </p>
+                        <p class="content">
+                            <span class="one-stage-title">解决方法：</span>
+                        </p>
+                        <p class="content">
+                            <span>1.</span>
+                            确定连接POS的电话是能够打外线的普通家用电话，不是公用电话、充卡电话、打内网电话（如宾馆电话）。
+                        </p>
+                        <p class="content">
+                            <span>2.</span>
+                            将连接POS的电话线插到普通电话机上，用电话机打外网电话（比如自己的手机）看看是否能够拨通；无线POS可以将SIM卡装到手机上拨打外线测试或咨询运营商话费余额等；网络用户可检查当前网络是否能够正常连接，内网是否能够正常登入。
+                        </p>
+                        <p class="content">
+                            <span>3.</span>
+                            检查电话线、网线、SIM卡是否正确连接或安装。
+                        </p>
+                        <p class="content">
+                            <span>4.</span>
+                            刷卡时，拔掉分机线，最好总线直接插POS测试，同时停用小灵通等隐形分机。
+                        </p>
+                        <p class="content">
+                            <span>5.</span>
+                            检查无线POS信号是否满格，如果信号不好可以拿到屋外空旷的地方测试。
+                        </p>
+                        <p class="content">
+                            <span>6.</span>
+                            勤用替换法测试，比如换一个电话号码、换一根正常的电话线、换一个插口等。
+                        </p>
+                        <p class="one-stage-title">二、连接时提示“没有线路”、“请检查电话线”等：</p>
+                        <p class="content">
+                            <span class="one-stage-title">原因：</span>
+                        </p>
+                        <p class="content">
+                            <span>1.</span>
+                            通讯线路故障，比如电话线老化、电话线局部断掉、水晶头故障等。
+                        </p>
+                        <p class="content">
+                            <span>2.</span>
+                            通讯线路未连接好，比如电话线未插、电话线插入方式错误，电话线插错插口等。
+                        </p>
+                        <p class="content">
+                            <span>3.</span>
+                            POS插口故障。
+                        </p>
+                        <p class="content">
+                            <span class="one-stage-title">解决方法：</span>
+                        </p>
+                        <p class="content">
+                            <span>1.</span>
+                            检查通讯线路两端是否已连接上，是否连接正确。
+                        </p>
+                        <p class="content">
+                            <span>2.</span>
+                            检查通讯线路是否有故障、老化等情况。
+                        </p>
+                        <p class="content">
+                            <span>3.</span>
+                            勤用替换法测试，比如换一根正常的电话线、换一个插口等。
+                        </p>
+                        <p class="one-stage-title">三、POS屏幕不亮：</p>
+                        <p class="content"><span class="one-stage-title">原因：</span></p>
+                        <p class="content">
+                            <span>1.</span>
+                            POS未通电，比如电源适配器两端及中间连接部分未接好、插座无电、无线POS电池没电等。
+                        </p>
+                        <p class="content"><span>2.</span>电源适配器坏，如指示灯不亮。</p>
+                        <p class="content"><span>3.</span>POS未开机。</p>
+                        <p class="content"><span>4.</span>POS机上的电源接口故障。</p>
+                        <p class="content"><span class="one-stage-title">解决方法：</span></p>
+                        <p class="content">
+                            <span>1.</span>
+                            检查电源适配器是否已经连接好并已经通电，包括查看电源适配器指示灯是否亮起、电源中间连接部分是否已插紧、插座板开关是否已打开等。
+                        </p>
+                        <p class="content">
+                            <span>2.</span>
+                            检查POS是否已经开机，比如尝试寻找使用POS开关、长按或短按POS开机按钮（常见按钮为有电源符号按钮及红色取消键）等。
+                        </p>
+                        <p class="one-stage-title">四、交易成功，无法打印小票：</p>
+                        <p class="content"><span class="one-stage-title">原因：</span></p>
+                        <p class="content"><span>1.</span>打印纸没有了。</p>
+                        <p class="content">
+                            <span>2.</span>
+                            打印纸装错，比如装反、穿过压纸滚轴、卡纸等。
+                        </p>
+                        <p class="content">
+                            <span>3.</span>
+                            装纸盖子没盖正确，比如没盖紧、与纸张不够端正整齐等。
+                        </p>
+                        <p class="content">
+                            <span>4.</span>
+                            压纸滚轴故障，比如齿轮坏了。
+                        </p>
+                        <p class="content">
+                            <span>5.</span>
+                            电压有问题或用的电源不是原配电源。
+                        </p>
+                        <p class="content"><span class="one-stage-title">解决方法：</span></p>
+                        <p class="content">
+                            <span>1.</span>
+                            打开纸盖检查打印纸是否用完，如果用完及时补充后，重打上一笔。
+                        </p>
+                        <p class="content">
+                            <span>2.</span>
+                            检查打印纸是否装错，正确的打印纸安装方式是卷纸不能穿过压纸滚轴、打印纸平躺从下方向人的方向抽出的方式放入、抽出的打印纸与切纸刀口及压纸滚轴对齐、压纸滚轴将纸压紧等；套打纸要与纸盒对齐且能灵活走动、打印纸正面对准人的方向，如有装错，从新正确安装并重打印上一笔。
+                        </p>
+                        <p class="content">
+                            <span>3.</span>
+                            检查电源适配器是否是原配的。
+                        </p>
+                        <p class="one-stage-title">五、刷卡插卡无反应、刷卡后提示"刷卡错"：</p>
+                        <p class="content">
+                            <span class="one-stage-title">原因：</span>
+                        </p>
+                        <p class="content">
+                            <span>1.</span>
+                            刷卡、插卡方式错误，比如刷卡速度过快或过慢、磁条方向错误、插卡插反、插卡未插到卡槽底部等。
+                        </p>
+                        <p class="content">
+                            <span>2.</span>
+                            银行卡磁条或芯片有问题。
+                        </p>
+                        <p class="content">
+                            <span>3.</span>
+                            刷卡机磁头或读卡器故障。
+                        </p>
+                        <p class="content">
+                            <span>4.</span>
+                            刷卡槽里面有异物。
+                        </p>
+                        <p class="content">
+                            <span class="one-stage-title">解决方法：</span>
+                        </p>
+                        <p class="content">
+                            <span>1.</span>
+                            用正确的刷卡或插卡方式多试几次。正确的刷卡方式是银行卡磁条向下，面对磁头以正确的速度刷（不要太快也不要太慢）；正确的插卡方式是将银行卡芯片端插入POS卡槽底部（大部分POS芯片朝上）。
+                        </p>
+                        <p class="content">
+                            <span>2.</span>
+                            清除卡槽异物。
+                        </p>
+                        <p class="content">
+                            <span>3.</span>
+                            勤用排除法尝试，比如换一张卡、换一个方向刷或插，以判断故障源头。
+                        </p>
+                        <p class="one-stage-title">六、通话异常（包括不能接挂、听不到对方声音或对方听不到自己声音、电话有杂音或异声）：</p>
+                        <p class="content">
+                            <span class="one-stage-title">原因：</span>
+                        </p>
+                        <p class="content">
+                            <span>1.</span>
+                            话柄或话柄线故障。
+                        </p>
+                        <p class="content">
+                            <span>2.</span>
+                            电话线未插、插错或故障，电话线路故障。
+                        </p>
+                        <p class="content">
+                            <span>3.</span>
+                            POS接口故障。
+                        </p>
+                        <p class="content">
+                            <span class="one-stage-title">解决方法：</span>
+                        </p>
+                        <p class="content">
+                            <span>1.</span>
+                            检查电话线是否连接正常、是否故障，如连接错误及时更正，如有故障及时更换。
+                        </p>
+                        <p class="content">
+                            <span>2.</span>
+                            勤用替换法测试，比如接上普通电话机话柄试试、换个电话号码试试。
+                        </p>
+                        <p class="content">
+                            <span>3.</span>
+                            将电话线插入普通电话机拨打外线测试线路是否正常，如果线路故障，需联系运营商。
+                        </p>
+                        <p class="one-stage-title">七、按键故障，比如不灵、结果重复显示等：</p>
+                        <p class="content">
+                            <span class="one-stage-title">原因：</span>
+                        </p>
+                        <p class="content">
+                            <span>1.</span>
+                            POS按键故障。
+                        </p>
+                        <p class="content">
+                            <span class="one-stage-title">解决方法：</span>
+                        </p>
+                        <p class="content">
+                            <span>1.</span>
+                            详细记录情况并拨打客服热线。
+                        </p>
+                        <p class="one-stage-title">八、签到时提示“操作员密码过期”：</p>
+                        <p class="content">
+                            <span class="one-stage-title">原因：</span>
+                        </p>
+                        <p class="content">
+                            <span>1.</span>
+                            操作员密码长期未更改。
+                        </p>
+                        <p class="content">
+                            <span class="one-stage-title">解决方法：</span>
+                        </p>
+                        <p class="content">
+                            <span>1.</span>
+                            详细记录情况并拨打客服热线。
+                        </p>
+                        <p class="one-stage-title">九、POS提示“检测不到密码键盘”、“主密钥不存在”、“密钥初始化失败”等：</p>
+                        <p class="content">
+                            <span class="one-stage-title">原因：</span>
+                        </p>
+                        <p class="content">
+                            <span>1.</span>
+                            密码键盘插口插错。
+                        </p>
+                        <p class="content">
+                            <span>2.</span>
+                            主密钥丢失。
+                        </p>
+                        <p class="content">
+                            <span>3.</span>
+                            密钥未初始化。
+                        </p>
+                        <p class="content">
+                            <span>4.</span>
+                            密码键盘故障。
+                        </p>
+                        <p class="content">
+                            <span class="one-stage-title">解决方法：</span>
+                        </p>
+                        <p class="content">
+                            <span>1.</span>
+                            检查密码键盘是否插错，如果插错重新正确插入密码键盘。
+                        </p>
+                        <p class="content">
+                            <span>2.</span>
+                            重启POS试一试。
+                        </p>
+                        <p class="content">
+                            <span>3.</span>
+                            检查密码键盘是否有明显故障，详细记录情况并及时拨打客服热线。
+                        </p>
+                        <p class="one-stage-title">十、签到时提示“原始密钥不存在”：</p>
+                        <p class="content">
+                            <span class="one-stage-title">原因：</span>
+                        </p>
+                        <p class="content">
+                            <span>1.</span>
+                            密钥未灌装。
+                        </p>
+                        <p class="content">
+                            <span>2.</span>
+                            密码键盘故障。
+                        </p>
+                        <p class="content">
+                            <span>3.</span>
+                            POS插口故障。
+                        </p>
+                        <p class="content">
+                            <span class="one-stage-title">解决方法：</span>
+                        </p>
+                        <p class="content">
+                            <span>1.</span>
+                            详细记录情况并拨打客服热线。
+                        </p>
+                        <p class="one-stage-title">十一、开机后出现"Aplicationg dosn't exisit"、"load needed"或其他英文而无法进入系统：</p>
+                        <p class="content">
+                            <span class="one-stage-title">原因：</span>
+                        </p>
+                        <p class="content">
+                            <span>1.</span>
+                            POS程序丢失。
+                        </p>
+                        <p class="content">
+                            <span class="one-stage-title">解决方法：</span>
+                        </p>
+                        <p class="content">
+                            <span>1.</span>
+                            详细记录情况并拨打客服热线。
+                        </p>
+                        <p class="one-stage-title">十二、签到提示“通讯校验错”：</p>
+                        <p class="content">
+                            <span class="one-stage-title">原因：</span>
+                        </p>
+                        <p class="content">
+                            <span>1.</span>
+                            密钥未初始化。
+                        </p>
+                        <p class="content">
+                            <span class="one-stage-title">解决方法：</span>
+                        </p>
+                        <p class="content">
+                            <span>1.</span>
+                            详细记录情况并拨打客服热线。
+                        </p>
+                        <p class="one-stage-title">十三、签到时提示“新增终端无资源码”：</p>
+                        <p class="content">
+                            <span class="one-stage-title">原因：</span>
+                        </p>
+                        <p class="content">
+                            <span>1.</span>
+                            银行后台未绑定POS资源码。
+                        </p>
+                        <p class="content">
+                            <span class="one-stage-title">解决方法：</span>
+                        </p>
+                        <p class="content">
+                            <span>1.</span>
+                            详细记录情况并拨打客服热线。
+                        </p>
+                        <p class="one-stage-title">十四、消费无法撤销：</p>
+                        <p class="content">
+                            <span class="one-stage-title">原因：</span>
+                        </p>
+                        <p class="content">
+                            <span>1.</span>
+                            撤销功能未开启。
+                        </p>
+                        <p class="content">
+                            <span>2.</span>
+                            已结算，机器里已没有该笔交易。
+                        </p>
+                        <p class="content">
+                            <span>3.</span>
+                            撤销时效已过，隔天无法撤销前一天的交易。
+                        </p>
+                        <p class="content">
+                            <span class="one-stage-title">解决方法：</span>
+                        </p>
+                        <p class="content">
+                            <span>1.</span>
+                            详细记录情况并拨打客服热线。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

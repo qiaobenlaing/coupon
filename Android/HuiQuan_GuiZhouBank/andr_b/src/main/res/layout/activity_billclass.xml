@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/LyOutSet" >
+
+    <LinearLayout
+        android:id="@+id/ly_billclass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/ly_total"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical" >
+    </LinearLayout>
+    
+     <TextView style="@style/VLine" />
+
+    <RelativeLayout
+        android:id="@+id/ly_total"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="center_vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical" >
+
+            <!-- 消费次数  消费金额 -->
+
+            <LinearLayout
+                android:id="@+id/rlBill_cust"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:visibility="gone" >
+                
+                <LinearLayout 
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+                    <TextView
+	                    android:id="@+id/tv_billclass_consumnumber"
+	                    android:layout_width="wrap_content"
+	                    android:layout_height="wrap_content"
+	                    android:layout_marginLeft="10dp"
+	                    android:text="@string/tv_billclass_consumnumber" />
+
+                	<TextView
+	                    android:id="@+id/tv_consumnumber"
+	                    android:layout_width="wrap_content"
+	                    android:layout_height="wrap_content"
+	                    android:text="" />
+                </LinearLayout>
+
+                <LinearLayout 
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+                    
+                    <TextView
+	                    android:id="@+id/tv_billclass_consummoney"
+	                    android:layout_width="wrap_content"
+	                    android:layout_height="wrap_content"
+	                    android:layout_marginLeft="20dp"
+	                    android:text="@string/tv_billclass_consummoney" />
+
+                	<TextView
+	                    android:id="@+id/tv_consummoney"
+	                    android:layout_width="wrap_content"
+	                    android:layout_height="wrap_content"
+	                    android:text="" />
+                    
+                </LinearLayout>
+                
+            </LinearLayout>
+
+            <!-- 支付金额  优惠金额 -->
+
+            <LinearLayout
+                android:id="@+id/rlBill_pay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:visibility="gone" >
+                
+                <LinearLayout 
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+                	
+                    <TextView
+	                    android:id="@+id/tv_billclass_paymoney"
+	                    android:layout_width="wrap_content"
+	                    android:layout_height="wrap_content"
+	                    android:layout_marginBottom="10dp"
+	                    android:layout_marginLeft="10dp"
+	                    android:text="@string/tv_billclass_paymoney" />
+
+                	<TextView
+	                    android:id="@+id/tv_paymoney"
+	                    android:layout_width="wrap_content"
+	                    android:layout_height="wrap_content"
+	                    android:text="" />
+                    
+                </LinearLayout>
+
+				<LinearLayout 
+				    android:layout_width="match_parent"
+				    android:layout_height="wrap_content"
+				    android:layout_weight="1"
+				    android:orientation="horizontal">
+				    
+				    <TextView
+	                    android:id="@+id/tv_billclass_discountmoney"
+	                    android:layout_width="wrap_content"
+	                    android:layout_height="wrap_content"
+	                    android:layout_marginLeft="20dp"
+	                    android:text="@string/tv_billclass_discountmoney" />
+
+                	<TextView
+	                    android:id="@+id/tv_discountmoney"
+	                    android:layout_width="wrap_content"
+	                    android:layout_height="wrap_content"
+	                    android:text="" />
+				    
+				</LinearLayout>
+                
+            </LinearLayout>
+
+            <!-- 消费金额    退款金额   补贴金额-->
+
+            <LinearLayout
+                android:id="@+id/rlBill_refund"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/layout_height"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                android:visibility="gone" >
+				
+                <LinearLayout 
+                    android:id="@+id/ly_billclass_monetary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal">
+                    
+                    <TextView
+	                    android:id="@+id/tv_billclass_monetary"
+	                    android:layout_width="wrap_content"
+	                    android:layout_height="wrap_content"
+	                    android:layout_marginLeft="10dp"
+	                    android:text="@string/tv_billclass_consummoney" />
+
+                	<TextView
+	                    android:id="@+id/tv_monetary"
+	                    android:layout_width="wrap_content"
+	                    android:layout_height="wrap_content"
+	                    android:text="" />
+                </LinearLayout>
+
+                <LinearLayout 
+                    android:id="@+id/ly_billclass_refund"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal">
+                    
+                    <TextView
+	                    android:id="@+id/tv_billclass_refund"
+	                    android:layout_width="wrap_content"
+	                    android:layout_height="wrap_content"
+	                    android:layout_marginLeft="20dp"
+	                    android:text="@string/tv_billclass_refund" />
+
+                	<TextView
+	                    android:id="@+id/tv_refund"
+	                    android:layout_width="wrap_content"
+	                    android:layout_height="wrap_content"
+	                    android:text="" />
+                    
+                </LinearLayout>
+                
+                 <LinearLayout 
+                    android:id="@+id/ly_billclass_subsidy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal">
+                    
+                    <TextView
+	                    android:layout_width="wrap_content"
+	                    android:layout_height="wrap_content"
+	                    android:layout_marginLeft="20dp"
+	                    android:text="@string/tv_billtoday_subsidy" />
+
+                	<TextView
+	                    android:id="@+id/tv_billclass_subsidy"
+	                    android:layout_width="wrap_content"
+	                    android:layout_height="wrap_content"
+	                    android:text="" />
+                    
+                </LinearLayout>
+                
+            </LinearLayout>
+
+            <!-- 合计 -->
+
+            <LinearLayout
+                android:id="@+id/ly_bill_total"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:visibility="gone"
+                android:orientation="vertical" >
+                
+                <LinearLayout 
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    
+                    <LinearLayout
+	                    android:layout_width="match_parent"
+	                    android:layout_height="wrap_content" 
+	                    android:layout_weight="1"
+	                    android:layout_marginLeft="10dp">
+
+	                    <TextView
+	                        android:id="@+id/tv_billclass_total"
+	                        android:layout_width="wrap_content"
+	                        android:layout_height="wrap_content"
+	                        android:text="@string/tv_billclass_total" />
+	
+	                    <TextView
+	                        android:id="@+id/tv_total"
+	                        android:layout_width="wrap_content"
+	                        android:layout_height="wrap_content"
+	                        android:text="" />
+                	</LinearLayout>
+
+                	<LinearLayout
+	                    android:layout_width="match_parent"
+	                    android:layout_height="wrap_content"
+	                    android:layout_weight="1">
+
+	                    <TextView
+	                        android:id="@+id/tv_billclass_consummoneyone"
+	                        android:layout_width="wrap_content"
+	                        android:layout_height="wrap_content"
+	                        android:text="@string/tv_billclass_consummoney" />
+	
+	                    <TextView
+	                        android:id="@+id/tv_consummoneyone"
+	                        android:layout_width="wrap_content"
+	                        android:layout_height="wrap_content"
+	                        android:text="" />
+                	</LinearLayout>
+                    
+                </LinearLayout>
+                
+                <LinearLayout 
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+                    
+                    <LinearLayout
+	                    android:layout_width="match_parent"
+	                    android:layout_height="wrap_content"
+	                    android:layout_marginLeft="10dp"
+	                    android:layout_weight="1">
+
+	                    <TextView
+	                        android:id="@+id/tv_billclass_pay"
+	                        android:layout_width="wrap_content"
+	                        android:layout_height="wrap_content"
+	                        android:text="@string/tv_billclass_paymoney" />
+	
+	                    <TextView
+	                        android:id="@+id/tv_pay"
+	                        android:layout_width="wrap_content"
+	                        android:layout_height="wrap_content"
+	                        android:text="" />
+                	</LinearLayout>
+                
+                	<LinearLayout 
+                	    android:id="@+id/ly_bill_subsidy"
+	                    android:layout_width="match_parent"
+	                    android:layout_height="wrap_content"
+	                    android:visibility="gone"
+	                    android:layout_weight="1">
+                    
+	                    <TextView
+	                        android:layout_width="wrap_content"
+	                        android:layout_height="wrap_content"
+	                        android:text="@string/tv_billtoday_subsidy" />
+	
+	                    <TextView
+	                        android:id="@+id/tv_subsidy"
+	                        android:layout_width="wrap_content"
+	                        android:layout_height="wrap_content"
+	                        android:text="" />
+                    
+                	</LinearLayout>
+                    
+                </LinearLayout>
+                
+            </LinearLayout>
+            
+        </LinearLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

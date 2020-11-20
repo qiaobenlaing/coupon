@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/LyOutSet" >
+
+    <include layout="@layout/common_title_home" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp" >
+
+        <ImageView
+            android:id="@+id/iv_actaddimage_img"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/actadd_image" />
+
+        <TextView
+            android:id="@+id/tv_edit_pictures"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_alignBottom="@id/iv_actaddimage_img"
+            android:background="#80FFFFFF"
+            android:gravity="center"
+            android:text="@string/toast_actadd_image"
+            android:textSize="16sp" />
+    </RelativeLayout>
+
+    <include layout="@layout/common_stept" />
+
+</LinearLayout>

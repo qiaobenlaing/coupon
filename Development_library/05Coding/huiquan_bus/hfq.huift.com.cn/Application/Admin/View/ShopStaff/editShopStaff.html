@@ -1,0 +1,156 @@
+<layout name="layout_admin" />
+<div class="tab-content">
+	<div role="tabpanel" class="tab-pane active" id="tab_basic_info">
+		<form class="form-horizontal" role="form" id="frm_edit_user" action="/Admin/ShopStaff/editShopStaff" method="post">
+			<input type="hidden" name="staffCode" value="{$shopStaffInfo.staffCode}" />
+            <div class="form-group">
+                <label class="col-sm-2 control-label">店员角色</label>
+                <div class="col-sm-8">
+                    <select class="form-control user-lvl" name="userLvl">
+                        <option value="1" <eq name="shopStaffInfo.userLvl" value="1">selected="selected"</eq>>普通员工</option>
+                        <option value="2" <eq name="shopStaffInfo.userLvl" value="2">selected="selected"</eq>>店长</option>
+                        <option value="3" <eq name="shopStaffInfo.userLvl" value="3">selected="selected"</eq>>大店长</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group big-mng-select-wrap">
+                <label class="col-sm-2 control-label">所属大店长</label>
+                <div class="col-sm-8">
+                    <select id="big-mng-select" class="form-control" name="parentCode">
+                        <option value="">请选择大店长</option>
+                        <foreach name="bigMngList" item="item">
+                            <option value="{$item.staffCode}" <eq name="shopStaffInfo.parentCode" value="$item.staffCode">selected="selected"</eq>>{$item.realName}({$item.mobileNbr})</option>
+                        </foreach>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group mng-select-wrap">
+                <label class="col-sm-2 control-label">所属店长或大店长</label>
+                <div class="col-sm-8">
+                    <select id="mng-select" class="form-control" name="parentCode">
+                        <option value="">请选择店长或大店长</option>
+                        <foreach name="mngList" item="item">
+                            <option value="{$item.staffCode}" <eq name="shopStaffInfo.parentCode" value="$item.staffCode">selected="selected"</eq>>{$item.realName}({$item.mobileNbr})</option>
+                        </foreach>
+                        <foreach name="bigMngList" item="item">
+                            <option value="{$item.staffCode}" <eq name="shopStaffInfo.parentCode" value="$item.staffCode">selected="selected"</eq>>{$item.realName}({$item.mobileNbr})</option>
+                        </foreach>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">姓名</label>
+                <div class="col-sm-8">
+                    <input type="text" name="realName" class="form-control"
+                           id="realName" placeholder="用户姓名" value="{$shopStaffInfo.realName}">
+                </div>
+            </div>
+			<div class="form-group">
+				<label class="col-sm-2 control-label">手机号码</label>
+				<div class="col-sm-8">
+					<input type="text" name="mobileNbr" class="form-control" id="mobileNbr" placeholder="手机号码" value="{$shopStaffInfo.mobileNbr}">
+				</div>
+			</div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label">所属平台</label>
+                <div class="col-sm-8">
+                    <select name="bank_id" id="" class="form-control">
+                        <foreach name="bankList" item="item2">
+                            <option value="{$item2['id']}"<eq name="item2['id']" value="$shopStaffInfo['bank_id']">selected="selected"</eq>>{$item2['name']}</option>
+                        </foreach>
+                    </select>
+                </div>
+            </div>
+
+			<div class="form-group">
+				<label class="col-sm-2 control-label">性别</label>
+				<div class="col-sm-8">
+                    <label class="radio-inline">
+                        <input type="radio" name="sex" id="m" value="M" <eq name="shopStaffInfo.sex" value="M">checked="checked"</eq>> 男
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="sex" id="f" value="F" <eq name="shopStaffInfo.sex" value="F">checked="checked"</eq>> 女
+                    </label>
+				</div>
+			</div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">密码</label>
+                <div class="col-sm-8">
+                    <input type="password" name="password" class="form-control" id="password" placeholder="密码" value="">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">确认密码</label>
+                <div class="col-sm-8">
+                    <input type="password" name="cfPassword" class="form-control" id="cfPassword" placeholder="确认密码" value="">
+                </div>
+            </div>
+
+            <div class="col-sm-8 col-sm-offset-2">
+                <input type="submit" class="btn btn-primary" id="submit" value="保存" />
+            </div>
+		</form>
+	</div>
+</div>
+<script type="text/javascript">
+	$(function($) {
+
+		$('#frm_edit_user').on('submit', function() {
+			var frm = $(this);
+			$.post(frm.attr('action'), frm.serialize(), function(resp) {
+				if (resp.status == sz.STATUS_SUCC) {
+					location.href = '/Admin/ShopStaff/listShopStaff?{$urlParam}'
+				} else {
+					sz.showErrMsg(resp.msg, 3);
+				}
+			});
+			return false;
+		});
+
+        // 初始化选择店长或大店长
+        $('#mng-select').select2({
+            placeholder: "请选店长或大店长",
+            allowClear: true
+        });
+        // 初始化选择大店长
+        $('#big-mng-select').select2({
+            placeholder: "请选大店长",
+            allowClear: true
+        });
+        // 判断店员角色
+        function checkStaffLvl(staffLvl) {
+            var NORMAL_STAFF = '1';
+            var MNG = '2';
+            var bigMngSelect = $('#big-mng-select');
+            var bigMngSltDiv = $('.big-mng-select-wrap');
+            var mngSelect = $('#mng-select');
+            var mngSltDiv = $('.mng-select-wrap');
+            if(staffLvl == NORMAL_STAFF) { // 普通员工
+                bigMngSelect.attr('disabled', 'disabled');
+                bigMngSltDiv.hide();
+                mngSelect.attr('disabled', false);
+                mngSltDiv.show();
+            } else if(staffLvl == MNG) { // 店长
+                mngSelect.attr('disabled', 'disabled');
+                mngSltDiv.hide();
+                bigMngSelect.attr('disabled', false);
+                bigMngSltDiv.show();
+            } else {
+                mngSelect.attr('disabled', 'disabled');
+                mngSltDiv.hide();
+                bigMngSelect.attr('disabled', 'disabled');
+                bigMngSltDiv.hide();
+            }
+        }
+        var staffLvlSlt = $('.user-lvl');
+        // 选择角色时的动作
+        staffLvlSlt.on('change', function(e){
+            var slt = $(this);
+            var staffLvl = slt.val();
+            checkStaffLvl(staffLvl);
+        });
+        var staffLvl = staffLvlSlt.val();
+        checkStaffLvl(staffLvl);
+	});
+</script>

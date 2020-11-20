@@ -1,0 +1,227 @@
+<layout name="layout_api" />
+<!-- Views -->
+<div class="views">
+    <!-- Your main view, should have "view-main" class -->
+    <div class="view view-main">
+        <!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
+        <div class="pages toolbar-through">
+            <!-- Page, "data-page" contains page name -->
+            <div data-page="index" class="page">
+                <!--<div class="navbar">-->
+                <!--<div class="navbar-inner">-->
+                <!--<div class="left"><a href="javascript:history.go(-1);" class="external"><img src="/Public/img/icon/backup.png" /></a></div>-->
+                <!--<div class="center">{$title}</div>-->
+                <!--<div class="right">&nbsp;</div>-->
+                <!--</div>-->
+                <!--</div>-->
+
+                <!-- Scrollable page content -->
+                <div class="page-content" style="padding-bottom: 0;">
+                    <div class="page_view">
+                        <p style="padding: 2%;margin: 0;font-size: 16px;color: #fff;" id="p_text">注册惠圈账号即可帮TA成功拆礼盒</p>
+                        <form id="my-form">
+                            <input type="hidden" name="userGiftId" value="{$userGiftInfo.id}">
+                            <input type="hidden" name="type" value="0">
+                            <div class="list-block">
+                                <ul style="background-color: rgb(213,204,255);">
+                                    <li>
+                                        <div class="item-content">
+                                            <div class="item-inner">
+                                                <div class="item-title label">手机号</div>
+                                                <div class="item-input" style="position: relative;">
+                                                    <input type="tel" name="mobileNbr" placeholder="手机号">
+                                                    <a href="#" class="external getValCode">发送验证码</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="item-content">
+                                            <div class="item-inner">
+                                                <div class="item-title label">验证码</div>
+                                                <div class="item-input">
+                                                    <input type="text" name="validateCode" placeholder="验证码">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="item-content">
+                                            <div class="item-inner">
+                                                <div class="item-title label">密码</div>
+                                                <div class="item-input">
+                                                    <input type="password" name="password" placeholder="密码">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </form>
+                        <p style="padding: 2%;margin: 0;color: #fff;">备注：下载APP后可以使用此账号登录 <a href="#" class="external hasAccount">已有账号</a><a href="#" class="external goBack" style="display: none;">返回</a></p>
+                        <div class="content-block" style="text-align: center;">
+                            <a href="#" class="form-to-json">马上拆</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .navbar{background-color: rgb(182, 0, 12);}
+    .navbar-inner .left img{width: 70%;height: auto;margin-left: -15%;}
+    .list-block .item-title.label{width: 25%;}
+    .list-block{margin: 0;}
+    .page_view{background-image: url('/Public/img/game/openBox.png');background-size: 100% 100%;background-repeat: no-repeat;height: 100%;}
+    .getValCode{border: 1px solid #007aff;font-size: 12px;border-radius: 4px;padding: 0.5% 2%;position: absolute;top: 27%;right: 0;}
+    .form-to-json{color: #fff;border: 1px solid rgb(182,0,12);background-color:rgb(182,0,12);border-radius: 4px;padding: 2% 30%;}
+</style>
+<script>
+    $(function() {
+        $('.getValCode').click(function(){
+            var tel = $('input[name="mobileNbr"]').val();
+            $(this).attr('disabled',true);
+            if(tel){
+                $.post('/Api/Browser/getValCode',
+                        {   mobileNbr:tel,
+                            isAjax:true },
+                        function(resp){
+                            if (resp.status != sz.STATUS_SUCC) {
+                                if(resp.data.code == 20000){
+                                    myApp.modal({
+                                        title:  '提醒',
+                                        text: '该手机号已经注册过了！',
+                                        buttons: [
+                                            {
+                                                text: '确定',
+                                                onClick: function(){
+                                                    $('.getValCode').attr('disabled',false);
+                                                }
+                                            }
+                                        ]
+                                    });
+                                }else{
+                                    myApp.modal({
+                                        title:  '提醒',
+                                        text: '发送失败，请重试！',
+                                        buttons: [
+                                            {
+                                                text: '确定',
+                                                onClick: function(){
+                                                    $('.getValCode').attr('disabled',false);
+                                                }
+                                            }
+                                        ]
+                                    });
+                                }
+                            }
+                        });
+            }else{
+                myApp.modal({
+                    title:  '提醒',
+                    text: '请输入手机号！',
+                    buttons: [
+                        {
+                            text: '确定',
+                            onClick: function(){
+                                $('.getValCode').attr('disabled',false);
+                            }
+                        }
+                    ]
+                });
+            }
+        });
+
+        $('.hasAccount').click(function(){
+            $(this).hide();
+            $('.goBack').show();
+            $('#p_text').text('');
+            $("ul li:gt(0)").hide();
+            $("ul li:first").find('a').hide();
+            $('input[name="type"]').val(1);
+        });
+
+        $('.goBack').click(function(){
+            $(this).hide();
+            $('.hasAccount').show();
+            $('#p_text').text('注册惠圈账号即可帮TA成功拆礼盒');
+            $("ul li:gt(0)").show();
+            $("ul li:first").find('a').show();
+            $('input[name="type"]').val(0);
+        });
+
+        $('.form-to-json').click(function(){
+            var mobileNbr = $('input[name="mobileNbr"]').val();
+            var validateCode = $('input[name="validateCode"]').val();
+            var password = $('input[name="password"]').val();
+            var type = $('input[name="type"]').val();
+            if(mobileNbr == ''){
+                myApp.modal({
+                    title:  '提醒',
+                    text: '请输入手机号！',
+                    buttons: [
+                        {
+                            text: '确定'
+                        }
+                    ]
+                });
+                return false;
+            }
+            if(type == 0 && (validateCode == ''|| password == '')){
+                myApp.modal({
+                    title:  '提醒',
+                    text: '请输入验证码或密码！',
+                    buttons: [
+                        {
+                            text: '确定'
+                        }
+                    ]
+                });
+                return false;
+
+            }else{
+                var frm = $('#my-form');
+                $.post('/Api/Browser/openBox', frm.serialize(), function(resp) {
+                    if (resp.status == sz.STATUS_SUCC) {
+                        var number = '{$userGiftInfo.openNbr}';
+                        number = parseInt(number) + 1;
+                        location.href = '/Api/Browser/getOpenResult?activityCode={$userGiftInfo.activityCode}&number='+number;
+                    } else {
+                        if(resp.data.code == 89001){
+                            show_error('自己不能给自己拆礼盒！');
+                        }else if(resp.data.code == 89002){
+                            show_error('该手机号用户已拆过了!');
+                        }else if(resp.data.code == 89003){
+                            show_error('你今天帮好友拆礼盒的机会已用完啦!');
+                        }else if(resp.data.code == 89004){
+                            show_error('拆礼盒的时间已经过了!');
+                        }else if(resp.data.code == 50008){
+                            show_error('用户不存在，请注册!');
+                        }else if(resp.data.code == 60001){
+                            show_error('手机号错误！');
+                        }else if(resp.data.code == 80011){
+                            show_error('验证码错误，请重试！');
+                        }else{
+                            show_error('拆礼盒失败，请重试！');
+                        }
+
+                    }
+                });
+                return false;
+            }
+        });
+    });
+
+    function show_error(text){
+        myApp.modal({
+            title:  '提醒',
+            text: text,
+            buttons: [
+                {
+                    text: '确定'
+                }
+            ]
+        });
+    }
+</script>

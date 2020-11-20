@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/LyWHFirst"
+    android:orientation="vertical" >
+
+    <WebView
+        android:id="@+id/wb_actdetail"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible" />
+
+    <LinearLayout
+        android:id="@+id/ly_turn_in"
+        style="@style/LyWHSecond"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/shape_transparent_round" >
+
+        <ImageView
+            android:id="@+id/iv_turn_in"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:background="@drawable/backup"
+            android:paddingLeft="@dimen/navigation_left_r" />
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/prog_nodata"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_gravity="center"
+        android:background="@drawable/shape_progress"
+        android:visibility="visible" />
+
+</FrameLayout>

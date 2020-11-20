@@ -1,0 +1,62 @@
+<layout name="layout_api" />
+<!-- Views -->
+<div class="views">
+    <!-- Your main view, should have "view-main" class -->
+    <div class="view view-main">
+        <!-- Navbar on index page -->
+        <div class="navbar">
+            <div class="navbar-inner">
+                <div class="left">
+                    <a href="/Api/Browser/getShopInfo?shopCode={$shopInfo.shopCode}&userCode={$userCode}" class="link external">
+                        <img src="/Public/img/icon/backup.png" alt="" style="width: 50%;"/>
+                    </a>
+                </div>
+                <div class="center">{$shopInfo.shopName}</div>
+                <div class="right">
+                    <a href="#" class="link"></a>
+                </div>
+            </div>
+        </div>
+        <!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
+        <div class="pages navbar-through">
+            <!-- Page, "data-page" contains page name -->
+            <div data-page="index" class="page">
+                <!-- Scrollable page content -->
+                <div class="page-content">
+                    <div class="shop-product-wrap">
+                        <foreach name="pCateList" item="pCate">
+                            <div>
+                                <div class="category-wrap">
+                                    <div class="category-name">{$pCate.categoryName}</div>
+                                    <div class="clear"></div>
+                                </div>
+                                <foreach name="pCate.productList" item="product">
+                                    <div class="product-wrap">
+                                        <div class="div-product-img-wrap">
+                                            <img src="{$product.productImg}" alt="{$product.productName}" class="product-img"/>
+                                            <div class="zan-wrap">
+                                                <span class="zan-icon-wrap <eq name="product.isZan" value="1">zan-icon<else/>nzan-icon</eq>" data-user-code="{$userCode}" data-product-id="{$product.productId}" data-is-zan="{$product.isZan}">{$product.zanCount}</span>
+                                            </div>
+                                        </div>
+                                        <a class="product-info-wrap external" href="/Api/Browser/shopProductInfo?productId={$product.productId}&userCode={$userCode}&backup=h5&backAction=shopProductList">
+                                            <div class="product-name">{$product.productName}</div>
+                                            <div class="product-des"></div>
+                                            <div class="product-price">
+                                                <eq name="product.isDiscount" value="1">
+                                                    <span class="final-price">&yen;{$product.finalPrice}</span>
+                                                    <span class="origin-price">原价{$product.originalPrice}</span>
+                                                    <else/>
+                                                    <span class="final-price">&yen;{$product.originalPrice}</span>
+                                                </eq>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </foreach>
+                            </div>
+                        </foreach>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

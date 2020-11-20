@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/shop_photo_bg"
+    android:layout_gravity="center">
+    
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/cardbg"
+        android:orientation="vertical"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp">
+        <RelativeLayout 
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_margin="10dp">
+	        <TextView 
+	            android:id="@+id/iv_pop_close"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:text="X"
+	            android:textSize="20sp"
+	            android:layout_gravity="left"/>
+		    <TextView
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:text="请输入支付密码"
+		        android:textColor="@color/activity_dialog_title"
+		        android:layout_centerInParent="true"
+		        android:textSize="18sp" 
+		        android:layout_marginTop="10dp"
+		        android:layout_marginBottom="10dp"/>
+		</RelativeLayout>
+		
+        <View 
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_divider"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp" >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:orientation="horizontal" 
+                android:gravity="center">
+
+                <TextView 
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="￥"
+                    android:textSize="26sp"/>
+                <TextView
+                    android:id="@+id/tv_total_price_pop"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="130"
+                    android:textColor="@color/red"
+                    android:textSize="26sp" />
+            </LinearLayout>
+        </RelativeLayout>
+        <View 
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_divider"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"/>
+
+        <RelativeLayout
+            android:id="@+id/rl_select_card_pop"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:layout_margin="10dp"
+            android:gravity="center_vertical" >
+            <TextView
+                android:id="@+id/tv_bank_card_pop"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                android:textColor="@color/black"
+                android:textSize="16sp" 
+                android:gravity="center"/>
+           <ImageView 
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:src="@drawable/shop_arrow"
+               android:layout_alignParentRight="true"/>
+        </RelativeLayout>
+        <View 
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_divider"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"/>
+         <com.jungly.gridpasswordview.GridPasswordView
+	            android:id="@+id/gpv_input_pop"
+	            android:layout_width="match_parent"
+	            android:layout_height="48dp"
+	            android:layout_marginBottom="10dp"
+	            android:layout_marginLeft="20dp"
+	            android:layout_marginRight="20dp"
+	            android:layout_marginTop="10dp" />
+    </LinearLayout>
+</ScrollView>

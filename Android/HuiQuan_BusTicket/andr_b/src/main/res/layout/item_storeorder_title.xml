@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/LyWHFirst"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/ly_order_content"
+        style="@style/LyWHFourth"
+        android:layout_height="36dp"
+        android:background="@color/sold_light_gray"
+        android:gravity="center|left"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/tv_storeorder_title"
+            style="@style/LyWHSecond"
+            android:layout_marginLeft="10dp"
+            android:textColor="@color/deep_red"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/lv_store_order_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:cacheColorHint="@color/line_corlor"
+        android:divider="@color/transparent"
+        android:dividerHeight="0.1dp"
+        android:scrollbars="none" >
+    </ListView>
+
+</LinearLayout>

@@ -1,0 +1,253 @@
+<layout name="layout_api" />
+<!-- Views -->
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=itxrBVxoPo7SFUdnVQc2MwTM"></script>
+<div class="views">
+    <!-- Your main view, should have "view-main" class -->
+    <div class="view view-main">
+        <!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
+        <div class="pages toolbar-through">
+            <!-- Page, "data-page" contains page name -->
+            <div data-page="index" class="page">
+                <!-- Scrollable page content -->
+                <div class="page-content">
+                    <div class="navbar">
+                        <div class="navbar-inner">
+                            <div class="left"><a href="/Api/Browser/getAddressList?userCode={$userCode}&orderCode={$orderCode}&userAddressId={$addressId}" class="external"><img src="/Public/img/icon/backup.png" /></a></div>
+                            <div class="center">编辑配送地址</div>
+                            <div class="right"><?php if(isset($addressInfo['userAddressId']) && !empty($addressInfo['userAddressId'])):?><a href="#" class="external" id="delete" data-user-address-id="{$addressInfo.userAddressId}"><img src="/Public/img/icon/delete.png" /></a><?php else:?>&nbsp;<?php endif;?></div>
+                        </div>
+                    </div>
+
+                    <form id="my-form">
+                        <input type="hidden" name="userCode" value="{$userCode}">
+                        <input type="hidden" name="userAddressId" id="userAddressId" value="{$addressInfo.userAddressId}">
+                        <input type="hidden" name="province" value="{$addressInfo.province}">
+                        <input type="hidden" name="city" value="{$addressInfo.city}">
+                        <input type="hidden" name="longitude" value="{$addressInfo.longitude}">
+                        <input type="hidden" name="latitude" value="{$addressInfo.latitude}">
+                        <div class="list-block">
+                            <ul>
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner">
+                                            <div class="item-title label">联系人</div>
+                                            <div class="item-input">
+                                                <input type="text" name="contactName" value="{$addressInfo.contactName}" placeholder="请填写收货人姓名">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner">
+                                            <div class="item-title label">手机号</div>
+                                            <div class="item-input">
+                                                <input type="tel" name="mobileNbr" value="{$addressInfo.mobileNbr}" placeholder="请填写收货人电话号码">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="align-top">
+                                    <div class="item-content">
+                                        <div class="item-inner">
+                                            <div class="item-title label">配送至</div>
+                                            <div class="item-input">
+                                                <select name="district">
+                                                    <option value="">请选择所在区县</option>
+                                                    <foreach name="districtList" item="vo">
+                                                        <option value="{$vo.name}" <eq name="addressInfo.district" value="$vo.name">selected="selected"</eq>>{$vo.name}</option>
+                                                    </foreach>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="align-top">
+                                    <div class="item-content">
+                                        <div class="item-inner">
+                                            <div class="item-title label"></div>
+                                            <div id="l-map" style="display: none;width: 100px;height: 100px;"></div>
+                                            <div class="item-input" id="r-result">
+                                                <input type="text" id="suggestId" size="20" name="street" value="{$addressInfo.street}" placeholder="请填写小区/写字楼/学校等">
+                                            </div>
+                                            <div id="searchResultPanel" style="border:1px solid #C0C0C0;width:150px;height:auto; display:none;"></div>
+                                        </div>
+                                        <script>
+                                            // 百度地图API功能
+                                            function G(id) {
+                                                return document.getElementById(id);
+                                            }
+
+                                            var map = new BMap.Map("l-map");
+                                            //                                        map.centerAndZoom("杭州",12);                   // 初始化地图,设置城市和地图级别。
+
+                                            var ac = new BMap.Autocomplete(    //建立一个自动完成的对象
+                                                    {"input" : "suggestId"
+                                                        ,"location" : map
+                                                    });
+
+                                            var myValue;
+                                            ac.addEventListener("onconfirm", function(e) {    //鼠标点击下拉列表后的事件
+                                                var _value = e.item.value;
+                                                myValue = _value.province +  _value.city +  _value.district +  _value.street +  _value.business;
+                                                G("searchResultPanel").innerHTML ="onconfirm<br />index = " + e.item.index + "<br />myValue = " + myValue;
+                                                setPlace();
+                                            });
+
+                                            function setPlace(){
+                                                map.clearOverlays();    //清除地图上所有覆盖物
+                                                function myFun(){
+                                                    var pp = local.getResults().getPoi(0).point;    //获取第一个智能搜索的结果
+                                                    console.log(pp.lng+"+"+pp.lat);
+                                                    $('input[name="longitude"]').val(pp.lng);
+                                                    $('input[name="latitude"]').val(pp.lat);
+                                                    map.centerAndZoom(pp, 18);
+                                                    map.addOverlay(new BMap.Marker(pp));    //添加标注
+                                                }
+                                                var local = new BMap.LocalSearch(map, { //智能搜索
+                                                    onSearchComplete: myFun
+                                                });
+                                                local.search(myValue);
+                                            }
+                                        </script>
+                                    </div>
+                                </li>
+                                <li class="align-top">
+                                    <div class="item-content">
+                                        <div class="item-inner">
+                                            <div class="item-title label"></div>
+                                            <div class="item-input">
+                                                <input type="text" name="position" value="{$addressInfo.position}" placeholder="补充详细地址 (如门牌号/楼层等)">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </form>
+                    <div class="content-block" style="text-align: center;">
+                        <a href="#" class="form-to-json">保存地址</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .item-input input{font-size: 15px!important;}
+    .item-input select{font-size: 15px!important;}
+    .tangram-suggestion-main{z-index: 5000;}
+</style>
+<script>
+    $(function() {
+        var dMap = new BMap.Map("l-map");
+
+        $('.form-to-json').on('click',function(){
+            $(this).attr('disabled', true);
+            var frm = $('#my-form');
+            $.post('/Api/Browser/editAddress', frm.serialize(), function(resp) {
+                if (resp.status == sz.STATUS_SUCC) {
+                    var shopLng = '{$shopInfo.longitude}';
+                    var shopLat = '{$shopInfo.latitude}';
+                    var distance = '{$shopInfo.deliveryDistance}';
+
+                    if(resp.data.action == 'add'){
+                        var pointA = new BMap.Point(shopLng,shopLat);  // 创建点坐标A
+                        var pointB = new BMap.Point(resp.data.longitude, resp.data.latitude);  // 创建点坐标B
+                        var current_distance = (dMap.getDistance(pointA,pointB)).toFixed(2);  //获取两点距离,保留小数点后两位
+                        if(Number(current_distance) <= Number(distance)){
+                            operate_modal('保存成功！', 1, resp.data.userAddressId);
+                        }else{
+                            operate_modal('保存成功！', 1, '');
+                        }
+                    }else{
+                        operate_modal('保存成功！', 1, '');
+                    }
+                } else {
+                    $(this).attr('disabled', false);
+                    operate_modal('保存失败，请重试！', 0, '');
+                }
+
+            });
+            return false;
+        });
+
+        $('#delete').on('click',function(){
+            var userAddressId = $(this).data('userAddressId');
+            myApp.modal({
+                title:  '提醒',
+                text: '您确定删除吗？',
+                buttons: [
+                    {
+                        text: '确定',
+                        onClick:function(){
+                            $.post('/Api/Browser/delAddress',
+                                    {   userAddressId:userAddressId,
+                                        isAjax:true },
+                                    function(resp){
+                                        if (resp.status == sz.STATUS_SUCC) {
+                                            operate_modal('删除成功！', 1, '');
+                                        } else {
+                                            operate_modal('删除失败，请重试！', 0, '');
+                                        }
+                                    });
+                        }
+                    },
+                    {
+                        text: '取消'
+                    }
+                ]
+            });
+
+            return false;
+        });
+
+    });
+
+    function operate_modal(text, result, userAddressId){
+        if(result == 1){
+            myApp.modal({
+                title:  '提醒',
+                text: text,
+                buttons: [
+                    {
+                        text: '确定',
+                        onClick:function(){
+                            if(userAddressId){
+                                location.href = '/Api/Browser/cOrderSubmit?orderCode={$orderCode}&userAddressId='+userAddressId;
+                            }else{
+                                location.href = '/Api/Browser/getAddressList?userCode={$userCode}&orderCode={$orderCode}&userAddressId={$addressId}';
+                            }
+
+                        }
+                    }
+                ]
+            })
+        }else{
+            myApp.modal({
+                title:  '提醒',
+                text: text,
+                buttons: [
+                    {
+                        text: '确定'
+                    }
+                ]
+            })
+        }
+    }
+</script>
+<style>
+    .button_nothing{background: none;border: none;padding: 0;}
+    .float_left{float: left;}
+    .float_right{float: right;}
+    .navbar{background-color: rgb(182, 0, 12);}
+    .navbar-inner .left img{width: 70%;height: auto;margin-left: -15%;}
+    .navbar-inner .right a{color: #fff;font-size: 15px;text-align: center;}
+    .navbar-inner .right img{width: 70%;height: auto;}
+    .list-block{margin: 0;padding: 0 4%;background-color: #fff;}
+    .item-content{border-bottom: 1px solid rgb(231,231,231);padding: 0;}
+    .list-block .item-title.label{width: 25%;}
+    .list-block ul{border: none;}
+    .list-block .item-inner{border: none;}
+    .form-to-json{background-color: rgb(182, 0, 12);border-color: rgb(182, 0, 12);color: #fff;font-size: 18px;padding: 2% 30%;border-radius: 4px;}
+</style>

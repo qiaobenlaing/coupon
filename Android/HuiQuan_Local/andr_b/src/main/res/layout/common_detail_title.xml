@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/NavigationTopBar" >
+
+    <LinearLayout
+        android:id="@+id/layout_turn_in"
+        android:layout_width="60dp"
+        android:layout_height="fill_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true" >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/backup"
+            android:visibility="visible" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_mid_content"
+        style="@style/LyWHSecond"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="@string/mainact_shopname"
+        android:textColor="@color/white"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tv_enroll"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginLeft="36dp"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@+id/tv_mid_content"
+        android:gravity="center_vertical|right"
+        android:text="@string/enroll"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/iv_share"
+        style="@style/LyWHSecond"
+        android:layout_toRightOf="@+id/tv_enroll"
+        android:background="@drawable/myshare"
+        android:paddingRight="30dp" />
+
+</RelativeLayout>

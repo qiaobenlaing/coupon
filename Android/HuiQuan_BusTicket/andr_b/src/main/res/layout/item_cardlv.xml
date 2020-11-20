@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp" >
+
+    <RelativeLayout
+        android:id="@+id/rl_card_style"
+        style="@style/LyWHSecond"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/silver_card" >
+
+        <RelativeLayout
+            style="@style/LyWHSecond"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/tv_cardnames"
+                style="@style/Tv_cardhome_center"
+                android:text="金卡"
+                android:layout_alignParentLeft="true"
+                android:layout_toLeftOf="@+id/tv_cms"
+                android:gravity="left"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_cms"
+                style="@style/Tv_cardhome_center"
+                android:layout_marginLeft="5dp"
+                android:layout_alignParentRight="true"
+                android:gravity="right"
+                android:text="消费：1.42" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            style="@style/LyWHFourth"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/tv_pnum"
+                style="@style/Tv_cardhome_center"
+                android:layout_alignParentLeft="true"
+                android:layout_toLeftOf="@+id/tv_point"
+                android:text="sfsd" />
+
+            <TextView
+                android:id="@+id/tv_point"
+                style="@style/Tv_cardhome_center"
+                android:layout_marginLeft="5dp"
+                android:layout_alignParentRight="true"
+                android:text="积分数：10000" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+</LinearLayout>

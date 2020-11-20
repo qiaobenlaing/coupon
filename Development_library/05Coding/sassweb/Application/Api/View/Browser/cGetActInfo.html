@@ -1,0 +1,70 @@
+<layout name="layout_api" />
+<!-- Views -->
+<div class="views">
+    <!-- Your main view, should have "view-main" class -->
+    <div class="view view-main">
+        <!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
+        <div class="pages">
+            <!-- Page, "data-page" contains page name -->
+            <div data-page="index" class="page">
+                <!-- Scrollable page content -->
+                <div class="page-content act">
+                    <div class="body act-body">
+                        <div class="act-name">{$actInfo.activityName}</div>
+                        <div class="act-shop-name">{$actInfo.createTime|substr=0,10}&nbsp;&nbsp;&nbsp;&nbsp;{$actInfo.shopName}</div>
+                        <div class="img">
+                            <img src="{$actInfo.activityImg|default='/Public/img/act.jpg'}" alt=""/>
+                        </div>
+                        <div class="detail">
+                            <div>
+                                <span class="detail-left">活动时间</span>
+                                <span class="detail-right">{$actInfo.startTime}-{$actInfo.endTime}</span>
+                            </div>
+                            <div>
+                                <span class="detail-left">活动地点</span>
+                                <span class="detail-right">{$actInfo.activityLocation}</span>
+                            </div>
+                            <div class="act-limit">
+                                <span class="detail-left">人数限制</span>
+                                <span class="detail-right"><if condition="($actInfo.limitedParticipators EQ '') OR ($actInfo.limitedParticipators EQ 0)">
+                                    无人数限制
+                                    <else/>
+                                    不能超过<span class="detail-num">{$actInfo.limitedParticipators|default="0"}</span>人
+                                </if></span>
+                            </div>
+                        </div>
+                        <div class="act-content">
+                            <div>
+                                <span class="detail-left">其他限制</span>
+                            </div>
+                        </div>
+                        <div class="detail">
+                            <div>
+                                 <span class="detail-left">
+                                    <if condition="$actInfo.isRegisterRequired EQ 0">
+                                        不需要提前报名
+                                        <else/>需要提前报名
+                                    </if>
+                                </span>
+                            </div>
+                            <div class="act-limit">
+                                <if condition="$actInfo.isPrepayRequired EQ 0">
+                                    <span class="detail-left">不需要预付款</span>
+                                    <else/>
+                                    <span class="detail-left">需要预付款，付款金额</span>
+                                    <span class="detail-right"><span class="detail-num">{$actInfo.prePayment}</span>元</span>
+                                </if>
+                            </div>
+                        </div>
+                        <div class="act-content">
+                            <div>
+                                <span class="detail-left">活动说明</span>
+                            </div>
+                        </div>
+                        <div class="act-introduction">{$actInfo.txtContent|default="暂无活动说明"}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

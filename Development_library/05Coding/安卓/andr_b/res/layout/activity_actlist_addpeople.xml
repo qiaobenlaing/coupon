@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/LyOutSet" >
+
+    <include layout="@layout/common_title_home" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/navigation_bar"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <EditText
+                android:id="@+id/et_actadd_people"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/navigation_bar"
+                android:layout_marginLeft="10dp"
+                android:background="@null"
+                android:hint="@string/tv_actadd_people"
+                android:inputType="number"
+                android:maxLength="9"
+                android:singleLine="true"
+                android:textColorHint="@color/actadd_gray"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <TextView style="@style/VLine" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <CheckBox
+                android:id="@+id/cb_actadd_amountadvanced"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:button="@drawable/sel_poscheckbox"
+                android:text="@string/tv_actadd_face"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <TextView style="@style/VLine" />
+        <!--
+        <LinearLayout 
+		    android:layout_width="match_parent"
+		    android:layout_height="@dimen/navigation_bar"
+		    android:gravity="center_vertical"
+		    android:background="@color/white"
+		    android:orientation="horizontal">
+		     <TextView
+                android:id="@+id/cb_actadd_"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:layout_marginLeft="10dp"
+                android:text="@string/tv_actadd_money" />
+
+            <LinearLayout 
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="right">
+                <EditText
+	                android:id="@+id/et_actadd_PrePayment"
+	                android:layout_width="80dp"
+	                android:layout_height="wrap_content"
+	                android:singleLine="true"
+	                android:background="@null"
+	                android:textColor="@color/red"
+	                android:inputType="numberDecimal"
+	               	android:hint="@string/tv_actadd_pay"/>
+                <TextView
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:background="@null"
+	                android:layout_marginRight="10dp"
+	               	android:text="@string/tv_actlist_yuan"/>
+            </LinearLayout>
+		</LinearLayout>
+        -->
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/navigation_bar"
+            android:background="@color/white"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/cb_actadd_"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:gravity="center_vertical"
+                android:text="@string/tv_actadd_money"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/et_actadd_PrePayment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:background="@null"
+                android:gravity="center"
+                android:hint="@string/tv_actadd_pay"
+                android:inputType="numberDecimal"
+                android:singleLine="true"
+                android:textColor="@color/red"
+                android:textColorHint="@color/actadd_gray"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_yuan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:background="@null"
+                android:text="@string/tv_actlist_yuan"
+                android:textSize="16sp" />
+        </RelativeLayout>
+
+        <TextView style="@style/VLine" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <CheckBox
+                android:id="@+id/cb_actadd_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:button="@drawable/sel_poscheckbox"
+                android:text="@string/tv_actadd_baoming"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <TextView style="@style/VLine" />
+    </LinearLayout>
+
+    <include layout="@layout/common_stept" />
+
+</LinearLayout>

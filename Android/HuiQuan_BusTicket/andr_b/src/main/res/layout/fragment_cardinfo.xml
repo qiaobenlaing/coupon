@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical" >
+
+    <!-- 会员卡列表查询 -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:padding="10dp" >
+
+        <ImageView
+            android:id="@+id/iv_card_ls_return"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:background="@drawable/cardlist_return" />
+
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="30dp"
+            android:gravity="center|bottom"
+            android:text="@string/card_list" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right|bottom" >
+
+            <ImageView
+                android:id="@+id/iv_card_add"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@drawable/add" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#000" />
+    <!--
+         <cn.suanzi.baomi.shop.view.PullToRefreshView 
+	    android:id="@+id/pv_main_refresh_view"
+    	android:background="@android:color/white"
+    	android:layout_width="fill_parent"
+    	android:layout_height="fill_parent" 
+    	android:orientation="vertical">
+    -->
+
+    <ListView
+        android:id="@+id/lv_card_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+    </ListView>
+    <!-- </cn.suanzi.baomi.shop.view.PullToRefreshView> -->
+
+</LinearLayout>

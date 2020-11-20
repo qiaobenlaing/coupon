@@ -1,0 +1,287 @@
+<layout name="layout_api" />
+<style>
+    .navbar{background-color: rgba(0, 0, 0, 0.3)!important;}
+    .act-img{position: relative;background-color: #fff;}
+    .act-img img{ width: 100%;height: auto;}
+    .toTop {
+        background-image:-webkit-linear-gradient(to top, rgba(0,0,0,0.6), rgba(0,0,0,0));
+        background-image:linear-gradient(to top,rgba(0,0,0,0.6),rgba(0,0,0,0));
+    }
+    .toTop-deg{
+        background-image:-webkit-linear-gradient(0deg, rgba(0,0,0,0.6), rgba(0,0,0,0));
+        background-image:linear-gradient(0deg,rgba(0,0,0,0.6),rgba(0,0,0,0));
+    }
+    .toTop-deg2{
+        background-image:-webkit-linear-gradient(360deg, rgba(0,0,0,0.6), rgba(0,0,0,0));
+        background-image:linear-gradient(360deg,rgba(0,0,0,0.6),rgba(0,0,0,0));
+    }
+    .toTop-deg3 {
+        background-image:-webkit-linear-gradient(-360deg, rgba(0,0,0,0.6), rgba(0,0,0,0));
+        background-image:linear-gradient(-360deg,rgba(0,0,0,0.6),rgba(0,0,0,0));
+    }
+    .act-img .act-only-one{
+        color: white;
+        width: 90%;
+        position: absolute;
+        padding: 3% 5%;
+        font-size: 20px;
+        bottom: 4px;
+        left: 0;
+    }
+    .act-info{background-color:#fff;color: #666666;padding: 2% 4%;border-bottom: 1px solid #DBDBDB;}
+    .act-info .act-item-info{
+        color: #333333;
+        border: 1px solid rgb(153,153,153);
+        border-radius: 2px;
+        font-size: 16px;
+        padding: 1px 4px;
+    }
+    .separate-line{border-bottom: 1px solid #DBDBDB;}
+    .act-detail{margin-top:2%;background-color:#fff;border-bottom: 1px solid #DBDBDB;border-top: 1px solid #DBDBDB;}
+    .act-detail .act-row{padding: 3% 2% 3% 12%;font-size: 16px;color: #000;}
+    .act-detail .act-menu{padding: 5%;font-size: 18px;font-weight: bold;color: rgb(102,102,102);}
+    .act-detail .act-menu .act-menu-hint{background-color: rgb(116,208,254);}
+    .act-detail .act-des{padding: 0 5%;color: rgb(102,102,102);font-size: 16px;}
+    .act-detail .act-des p{margin: 0;}
+    .act-detail .act-des img{width: 100%;height: auto;}
+    .act-detail .act-separate{padding: 5% 0;text-align: center;}
+    .act-detail .act-separate img{width: 70%;height: auto;}
+    .act-body-bottom{background-color: #fff;}
+    .act-body-bottom .bottom-menu{text-align: center;color: rgb(51,51,51);font-size: 16px;width: 32%;display: inline-table;}
+    .act-body-bottom .bottom-menu img{width: 33%;height: auto;}
+    .act-body-bottom .act-order{background-color: rgb(253,119,0);color: #fff;width: 100%;padding: 3% 0 3% 0;text-align: center;font-size: 20px;}
+    .act-body-bottom .act-download{background-color: red;color: #fff;width: 100%;padding: 3% 0 3% 0;text-align: center;font-size: 20px;}
+</style>
+<!-- Views -->
+<div class="views">
+    <!-- Your main view, should have "view-main" class -->
+    <div class="view view-main">
+        <neq name="isShared" value="1">
+            <div class="navbar">
+                <div class="navbar-inner">
+                    <div class="left">
+                        <a href="hs://backup" class="external"><img src="/Public/img/icon/backup.png" style="width: 40px;height: auto;" /></a>
+                    </div>
+                    <div class="center"></div>
+                    <div class="right">
+                        <?php
+                    $string = array(
+                        'title' => $activityInfo['activityName'],
+                        'icon' => '/Public/img/avatar.jpg',
+                        'content' => $activityInfo['txtContent'],
+                        'link' => 'http://'.$_SERVER['HTTP_HOST'].'/Api/Browser/getActInfo?isShared=1&activityCode='.$activityInfo['activityCode']
+                        );
+                        $string = json_encode($string);
+                        ?>
+                        <a href="hs://share?params={$string|urlencode}" class="external"><img src="/Public/img/icon/share_white.png" style="width: 28px;height: auto;" /></a>
+                    </div>
+                </div>
+            </div>
+        </neq>
+        <!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
+        <div class="pages">
+            <!-- Page, "data-page" contains page name -->
+            <div data-page="index" class="page">
+                <!-- Scrollable page content -->
+                <div class="page-content">
+                    <div class="act-img">
+                        <img src="{$activityInfo.activityImg}" class="gradient" />
+                        <div class="act-only-one toTop toTop-deg toTop-deg2 toTop-deg3">{$activityInfo.activityName}</div>
+                    </div>
+                    <div class="act-info">
+                        <div class="act-item-info" style="float: left;display: inline-table;">
+                            <switch name="activityInfo.actType">
+                                <case value="1">聚会</case>
+                                <case value="2">运动</case>
+                                <case value="3">户外</case>
+                                <case value="4">亲子</case>
+                                <case value="5">体验课</case>
+                                <case value="6">音乐</case>
+                                <default />其他
+                            </switch>
+                        </div>
+                        <if condition="$activityInfo.totalPayment gt 0">
+                            <div class="act-item-info" style="display: inline-block;margin-left: 10px;">已报名：{$activityInfo.participators|default="0"}<if condition="$activityInfo.limitedParticipators gt 0">/{$activityInfo.limitedParticipators}</if></div>
+                        </if>
+                        <div class="act-item-info" style="float: right;display: inline-table;"><if condition="$activityInfo.totalPayment gt 0">￥<?php if(isset($activityInfo['minPrice']) && $activityInfo['minPrice'] < $activityInfo['totalPayment']):?>{$activityInfo.minPrice}-<?php endif;?>{$activityInfo.totalPayment}<else />免费</if></div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="act-detail">
+                        <div class="act-row separate-line" style="background-image: url('/Public/img/icon/act_time.png');background-position: 3% 50%;-moz-background-size:6% auto;background-size:6% auto;background-repeat: no-repeat;">
+                            {$activityInfo.startTime|substr=5,11} 至 {$activityInfo.endTime|substr=5,11}
+                        </div>
+                        <div class="act-row separate-line" style="background-image: url('/Public/img/icon/act_address.png');background-position: 3% 50%;-moz-background-size:6% auto;background-size:6% auto;background-repeat: no-repeat;">
+                            {$activityInfo.activityLocation}
+                        </div>
+                        <neq name="isShared" value="1">
+                            <a href="hs://call?tel={$activityInfo.contactMobileNbr|urlencode}" class="external">
+                                <else />
+                                <a href="tel:{$activityInfo.contactMobileNbr}" class="external">
+                        </neq>
+                        <div class="act-row" style="background-image: url('/Public/img/icon/act_tel.png');background-position: 3% 50%;-moz-background-size:6% auto;background-size:6% auto;background-repeat: no-repeat;">
+                            联系人：{$activityInfo.contactName}<img src="/Public/img/icon/arrow_right.png" alt="" style="float: right;width: 4%;" />
+                        </div>
+                        </a>
+                    </div>
+                    <div class="act-detail" style="border-bottom: none;">
+                        <!--活动介绍-->
+                        <div class="act-menu"><span class="act-menu-hint">&nbsp;</span>&nbsp;活动介绍</div>
+                        <div class="act-des">
+                            <?php if($activityInfo['richTextContent']){
+                                echo htmlspecialchars_decode($activityInfo['richTextContent']);
+                            }else{
+                                echo '暂无活动介绍';
+                            }?>
+                        </div>
+                        <div class="act-separate"><img src="/Public/img/icon/act_separateLine.png" /></div>
+                        <!--预定须知-->
+                        <div class="act-menu"><span class="act-menu-hint">&nbsp;</span>&nbsp;预定须知</div>
+                        <div class="act-des">
+                            <ol>
+                                <if condition="$activityInfo.totalPayment gt 0">
+                                    <li>
+                                        <if condition="$activityInfo.dayOfBooking gt 0">
+                                            请提前{$activityInfo.dayOfBooking}天预订。</if>预约电话：{$activityInfo.contactMobileNbr}</li>
+                                    </li>
+                                </if>
+                                <li>为了保证您的权益，请选择惠圈工行支付，如使用其他方式交易并在消费中产生纠纷，惠圈无法帮您进行调节并不承担责任，感谢您的理解和支持。</li>
+                            </ol>
+                        </div>
+                        <!--退款说明-->
+                        <?php if($activityInfo['refundRequired'] && $activityInfo['totalPayment'] > 0):?>
+                        <div class="act-menu"><span class="act-menu-hint">&nbsp;</span>&nbsp;退款说明</div>
+                        <div class="act-des">
+                            <ol>
+                                <li>
+                                    {$activityInfo.refundRequired}
+                                </li>
+                            </ol>
+                        </div>
+                        <?php endif;?>
+                        <!--活动联系-->
+                        <div class="act-menu"><span class="act-menu-hint">&nbsp;</span>&nbsp;活动联系</div>
+                        <div class="act-des">
+                            {$activityInfo.contactName}：{$activityInfo.contactMobileNbr}
+                        </div>
+                        <div class="act-separate"><img src="/Public/img/icon/act_separateLine.png" /></div>
+                    </div>
+                    <eq name="isShared" value="1">
+                        <div class="act-body-bottom">
+                            <a href="/Wechat/Index/cdownload" class="external"><div class="act-download">下载惠圈</div></a>
+                        </div>
+                        <else />
+                        <div class="act-body-bottom" style="padding: 5% 2% 0 2%;">
+                            <if condition="$activityInfo.totalPayment gt 0 AND $appType eq 1">
+                                <a href="hs://share?params={$string|urlencode}" class="external"><div class="bottom-menu"><img src="/Public/img/icon/act_person.png" /><br /><span>告诉朋友</span></div></a>
+                                <?php if(isset($activityInfo['isCollected']) && $activityInfo['isCollected'] != 0):?>
+                                <a href="javascript:void(0);" class="external collect_activity" collect="0"><div class="bottom-menu"><img src="/Public/img/icon/act_star.png" /><br /><span>取消收藏</span></div></a>
+                                <?php else:?>
+                                <a href="javascript:void(0);" class="external collect_activity" collect="1"><div class="bottom-menu"><img src="/Public/img/icon/act_star.png" /><br /><span>收藏</span></div></a>
+                                <?php endif;?>
+                                <a href="hs://call?tel={$activityInfo.contactMobileNbr|urlencode}" class="external"><div class="bottom-menu"><img src="/Public/img/icon/act_phone.png" /><br /><span>电话咨询</span></div></a>
+                            </if>
+                        </div>
+                        <div class="act-body-bottom" style="padding-top: 5%;">
+                            <if condition="$activityInfo.totalPayment gt 0 AND $appType eq 1">
+                                <?php if($activityInfo['startTime'] > date('Y-m-d H:i:s')):?>
+                                <a href="hs://orderAct?activityCode={$activityInfo.activityCode|urlencode}" class="external order_activity"><div class="act-order">马上预订</div></a>
+                                <?php endif;?>
+                            </if>
+                        </div>
+                    </eq>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="__PUBLIC__/js/jweixin-1.0.0.js"></script>
+<script>
+    $(function(){
+        var userCode = '{$userCode}';
+        var activityCode = '{$activityInfo.activityCode}';
+        $('.order_activity').click(function(){
+            if(userCode == ''){
+                login_modal();
+                return false;
+            }
+        });
+
+        $('.collect_activity').click(function(){
+            var obj = $(this);
+            obj.attr('disabled', true);
+            if(userCode == ''){
+                login_modal();
+                obj.attr('disabled', false);
+                return false;
+            }
+            var collect = obj.attr('collect');
+            var spanTxt = '收藏';
+            var newCollect = 1;
+            if(collect == 1){
+                spanTxt = '取消收藏';
+                newCollect = 0;
+            }
+            $.get('/Api/Browser/collectAct',{activityCode:activityCode, userCode:userCode, collect:collect}, function(resp){
+                if(resp.status == sz.STATUS_SUCC){
+                    obj.find('span').text(spanTxt);
+                    obj.attr('collect', newCollect);
+                }
+                obj.attr('disabled', false);
+            });
+            return false;
+        });
+
+        var title = '{$activityInfo.activityName}';
+        var icon = 'http://api.huiquan.suanzi.cn/Public/img/avatar.jpg';
+        var content = '{$activityInfo.txtContent}';
+        var link = "http://{$_SERVER['HTTP_HOST']}/Api/Browser/getActInfo?isShared=1&activityCode={$activityInfo.activityCode}";
+        wx.config({
+            debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+            appId: '{$appId}', // 必填，公众号的唯一标识
+            timestamp: '{$timestamp}', // 必填，生成签名的时间戳
+            nonceStr: '{$nonceStr}', // 必填，生成签名的随机串
+            signature: '{$signature}',// 必填，签名，见附录1
+            jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage', 'onMenuShareQQ'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+        });
+
+        /**
+         * 微信分享
+         */
+        wx.ready(function() {
+            //分享到朋友圈
+            wx.onMenuShareTimeline({
+                title: title, // 分享标题
+                link: link, // 分享链接
+                imgUrl: icon, // 分享图标
+                success: function () {
+                    // 用户确认分享后执行的回调函数
+//                    alert("分享成功！");
+                }
+            });
+            //分享给朋友
+            wx.onMenuShareAppMessage({
+                title: title, // 分享标题
+                desc: content, // 分享描述
+                link: link, // 分享链接
+                imgUrl: icon, // 分享图标
+//                type: '', // 分享类型,music、video或link，不填默认为link
+//                dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+                success: function () {
+                    // 用户确认分享后执行的回调函数
+//                    alert("分享成功！");
+                }
+            });
+            //分享到qq
+            wx.onMenuShareQQ({
+                title: title, // 分享标题
+                desc: content, // 分享描述
+                link: link, // 分享链接
+                imgUrl: icon, // 分享图标
+                success: function () {
+                    // 用户确认分享后执行的回调函数
+//                    alert("分享成功！");
+                }
+            });
+        });
+    });
+</script>

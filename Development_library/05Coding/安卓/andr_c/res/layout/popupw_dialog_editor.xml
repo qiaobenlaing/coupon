@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/LyWHFirst"
+    android:background="@color/shop_photo_bg"
+    android:gravity="center"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        style="@style/LyWHFourth"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/cardbg"
+        android:orientation="vertical"
+        android:paddingBottom="10dp" >
+
+        <TextView
+            android:id="@+id/tv_dialgo_title"
+            style="@style/LyWHSecond"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
+            android:text="温馨提示"
+            android:textColor="@color/red"
+            android:textSize="18dp" />
+
+        <TextView
+            android:id="@+id/tv_line"
+            style="@style/LyWHFourth"
+            android:layout_height="1dp"
+            android:layout_below="@+id/tv_dialgo_title"
+            android:layout_centerVertical="true"
+            android:layout_margin="15dp"
+            android:background="@color/red" />
+
+        <EditText
+            android:id="@+id/et_dialog_pwd"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/navigation_bar"
+            android:layout_below="@+id/tv_line"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="8dp"
+            android:inputType="textPassword"
+            android:singleLine="true"
+            android:background="@drawable/bg_border"
+            android:hint="@string/setting_no_iden_input_login_code"
+            android:textColorHint="@color/msg_font"
+            android:textSize="16sp" />
+
+        <!-- <EditText
+            android:id="@+id/et_dialog_pwd"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/navigation_bar"
+            android:layout_below="@+id/et_dialog_name"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_border"
+            android:hint="请输入手机号"
+            android:textColorHint="@color/msg_font"
+            android:textSize="16sp" /> -->
+
+        <LinearLayout
+            style="@style/LyWHFourth"
+            android:layout_below="@+id/et_dialog_pwd"
+            android:gravity="center" >
+
+            <Button
+                android:id="@+id/btn_cancel"
+                style="@style/LyWHSecond"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginBottom="15dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_myred_border"
+                android:text="取消"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/btn_ok"
+                style="@style/LyWHSecond"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginBottom="15dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_myred_border"
+                android:text="确定"
+                android:textColor="@color/white" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>

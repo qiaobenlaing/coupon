@@ -1,0 +1,42 @@
+<table class="fp-table table table-striped table-bordered table-condensed" id="data_table">
+    <thead>
+    <tr>
+        <th>广告名称</th>
+        <th>广告副标题</th>
+        <th>所属分类</th>
+        <th>商圈</th>
+        <th>跳转链接</th>
+        <th>广告图</th>
+        <th>背景</th>
+        <th>排序号</th>
+        <th>创建时间</th>
+        <th>状态</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    <foreach name="dataList" item="item">
+        <tr>
+            <td>{$item.title|default="暂无"}</td>
+            <td>{$item.sub_title|default="暂无"}</td>
+            <td>{$item['advtitle']}</td>
+            <td>{$item.name}</td>
+            <td><a href="{$item.link}" target="_blank">点击查看</a></td>
+            <td><a href="{$item.pic}" target="_blank"><img src="{$item.pic}" width="50"/></a></td>
+            <td><a href="{$item.back_pic}" target="_blank"><img src="{$item.back_pic}" width="50"/></a></td>
+            <td>{$item.sort}</td>
+            <td>{$item.readtime}</td>
+            <td>
+                <if condition="$item.state eq 1"><span class="label label-success">启用</span>
+                    <else/><span class="label label-danger">禁用</span>
+                </if>
+            </td>
+            <td>
+                <a class="btn btn-xs btn-primary" href="/Admin/QNotice/editAdv/id/{$item.id}/page/{$pager:page}">编辑</a>
+                <a class="btn btn-xs btn-danger" href="/Admin/QNotice/deleteAdv/id/{$item.id}/page/{$pager:page}">删除</a>
+            </td>
+        </tr>
+    </foreach>
+    </tbody>
+</table>
+<include file="Application/Admin/View/Widget/pager.html" />

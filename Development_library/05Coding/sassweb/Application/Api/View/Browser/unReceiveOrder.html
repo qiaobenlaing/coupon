@@ -1,0 +1,595 @@
+<layout name="layout_api" />
+<script>
+
+    var interval = 1000;
+    function ShowCountDown(year,month,day,hour,minute,second,divname)
+    {
+        var now = new Date();
+        var endDate = new Date(year, month-1, day, hour, minute, second);
+        var leftTime=endDate.getTime()-now.getTime();
+        var leftsecond = parseInt(leftTime/1000);
+        var d=Math.floor(leftsecond/(60*60*24));
+        var h=Math.floor((leftsecond-d*24*60*60)/3600);
+        var m=Math.floor((leftsecond-d*24*60*60-h*3600)/60);
+        var s=Math.floor(leftsecond-d*24*60*60-h*3600-m*60);
+        var cc = document.getElementById(divname);
+        if(cc){
+//            console.log(d+'天'+h+"小时"+m+"分"+s+"秒");
+            if(d == 0 && h == 0 && m == 0 && s== 0){
+                cc.innerText = '';
+            }else{
+                if(d == 0 ){
+                    if(h == 0){
+                        if(m == 0){
+                            cc.innerText = s+"秒";
+                        }else if(m > 0){
+                            cc.innerText = m+"分"+s+"秒";
+                        }
+                    }else if(h > 0){
+                        cc.innerText = h+"小时"+m+"分"+s+"秒";
+                    }
+                }else if(d > 0 ){
+                    cc.innerText = d+"天"+h+"小时"+m+"分"+s+"秒";
+                }
+            }
+        }
+    }
+
+    var by = parseInt('{$orderInfo.bTime.y}');
+    var bm = parseInt('{$orderInfo.bTime.m}');
+    var bd = parseInt('{$orderInfo.bTime.d}');
+    var bh = parseInt('{$orderInfo.bTime.h}');
+    var bi = parseInt('{$orderInfo.bTime.i}');
+    var bs = parseInt('{$orderInfo.bTime.s}');
+    var int = window.setInterval(function(){
+        ShowCountDown(by,bm,bd,bh,bi,bs,'time_down');
+        var text = $('#time_down').text();
+        if(text == ''){
+            window.clearInterval(int);
+        }
+    }, interval);
+
+</script>
+<!-- Views -->
+<div class="views">
+    <!-- Your main view, should have "view-main" class -->
+    <div class="view view-main">
+        <!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
+        <div class="pages toolbar-through">
+            <!-- Page, "data-page" contains page name -->
+            <div data-page="index" class="page">
+
+                <div class="navbar">
+                    <div class="navbar-inner">
+                        <div class="left">
+                            <!--<a href="javascript:history.go(-1);" class="external">-->
+                                <a href="/Api/Browser/cGetOrder?shopCode={$orderInfo.shopCode}&userCode={$orderInfo.clientCode}&openId={$shopInfo.openId}" class="external">
+                                <img src="/Public/img/icon/backup.png" /></a></div>
+                        <div class="center">{$title}</div>
+                        <div class="right"><a href="#" class="external tel"><img src="/Public/img/icon/tel_other.png" /></a></div>
+                    </div>
+                </div>
+
+                <!-- Scrollable page content -->
+                <div class="page-content pull-to-refresh-content">
+                    <div class="pull-to-refresh-layer" style="margin: 0;">
+                        <div class="preloader"></div>
+                        <div class="pull-to-refresh-arrow"></div>
+                    </div>
+                    <?php
+                    $string = array(
+                    'shopCode'=>$shopInfo['shopCode'],
+                    'shopName'=>$shopInfo['shopName'],
+                    'logoUrl'=>$shopInfo['logoUrl'],
+                    'orderCode'=>$orderInfo['orderCode'],
+                    'orderAmount'=>$orderInfo['orderAmount'],
+                    'orderNbr'=>$orderInfo['orderNbr'],
+                    'orderType' => $orderInfo['orderType']
+                    );
+                    $string = json_encode($string);
+                    ?>
+                    <div class="list-block" style="margin: 0;font-size: 14px;">
+                        <if condition="($orderInfo.status eq 4) OR (($orderInfo.status eq 1 OR $orderInfo.status eq 0) AND $orderInfo.orderStatus eq 24)">
+                            <!-- 订单取消 -->
+                            <div class="status_for_order">
+                                <div style="padding: 0 3%;">订单类型：
+                                    <if condition="$orderInfo.orderType eq 21">外卖订单
+                                        <elseif condition="$orderInfo.orderType eq 20" />堂食订单<br /><p style="font-size: 18px;font-weight: bold;text-align: center;"><empty name="orderInfo.tableNbr">餐号：{$orderInfo.mealNbr}<else/>桌号：{$orderInfo.tableNbr}</empty></p>
+                                        <else />其他
+                                    </if>
+                                </div>
+
+                                <div style="padding: 0 3%;">
+                                    <span style="font-size: 18px;line-height: 2;">订单已取消</span>
+                                    <br />
+                                    <?php if(isset($consumeInfo['consumeCode'])):?>
+                                    <span style="color: rgb(153,153,153);font-size: 10px;">订单于{$orderInfo.cancelTime}被取消，已支付金额将在24小时内原路返回账户</span>
+
+                                    <div class="status_dis">
+                                        <div class="square_div">
+                                            <div class="square" <if condition="($orderInfo.orderStatus egt 20) AND ($orderInfo.orderStatus neq 25)">style="background-color: rgb(241,78,14);"<else />style="background-color: rgb(203,203,203);"</if>>
+                                            <img src="/Public/img/icon/ros.png" />
+                                        </div>
+                                        <if condition="($orderInfo.orderStatus egt 20) AND ($orderInfo.orderStatus neq 25)">下单成功<br />{$orderInfo.orderTime}<else />待下单</if>
+                                    </div>
+
+                                    <div class="line" <if condition="($orderInfo.orderStatus egt 20) AND ($orderInfo.orderStatus neq 25)">style="border-color:rgb(241,78,14);"</if>>&nbsp;<br />&nbsp;</div>
+
+                                <div class="square_div">
+                                    <div class="square" <if condition="$orderInfo.orderStatus eq 24">style="background-color: rgb(241,78,14);"<else />style="background-color: rgb(203,203,203);"</if>>
+                                    <img src="/Public/img/icon/order_cancel.png" />
+                                </div>
+                                <if condition="$orderInfo.orderStatus eq 24">订单已取消<br />{$orderInfo.cancelTime}<else />商家待确认</if>
+                            </div>
+                    </div>
+                    <?php else:?>
+                    <span style="color: rgb(153,153,153);font-size: 10px;"><if condition="$orderInfo.rTime elt 0 AND $orderInfo.cTime gt 0">商家未接单，订单已经取消<else />30分钟内未完成支付，订单已经取消</if></span>
+                    <div class="status_dis">
+                        <div class="square_div">
+                            <div class="square" style="background-color: rgb(241,78,14);">
+                                <img src="/Public/img/icon/ros.png" />
+                            </div>
+                            <if condition="$orderInfo.rTime elt 0 AND $orderInfo.cTime gt 0">未接单<else />未支付</if>
+                        </div>
+
+                        <div class="line">&nbsp;<br />&nbsp;</div>
+
+                        <div class="square_div">
+                            <div class="square" style="background-color: rgb(203,203,203);">
+                                <img src="/Public/img/icon/order_cancel.png" />
+                            </div>
+                            订单已取消<br />{$orderInfo.cancelTime}
+                        </div>
+                    </div>
+                    <?php endif;?>
+                </div>
+            </div>
+            <elseif condition="($orderInfo.status eq 6) OR ($orderInfo.status eq 7)" />
+            <div class="request_cancel">
+                <div style="background-color: #fff;padding: 3%;">订单类型：
+                    <if condition="$orderInfo.orderType eq 21">外卖订单
+                        <elseif condition="$orderInfo.orderType eq 20" />堂食订单<br /><p style="font-size: 18px;font-weight: bold;text-align: center;"><empty name="orderInfo.tableNbr">餐号：{$orderInfo.mealNbr}<else/>桌号：{$orderInfo.tableNbr}</empty></p>
+                        <else />其他
+                    </if>
+                </div>
+                <div style="padding: 1% 3%;">
+                    <div class="square"><img src="/Public/img/icon/tk.png" /></div>
+                    <div style="display: inline-block;width: 88%;padding: 1%;">
+                        <div style="display: inline-block;color:rgb(103,103,103);font-size: 18px;line-height: 2;">退款状态：<if condition="$orderInfo.status eq 6">已申请退款<elseif condition="$orderInfo.status eq 7" />商家已同意退款</if></div>
+                        <div style="color: rgb(128,128,128);font-size: 12px;padding: 1% 0;">退款说明：如果卖家不处理退款申请，默认24小时后订单关闭并且自动退款成功</div>
+                        <div style="line-height: 2;color: rgb(102,102,102);">订单编号：{$orderInfo.orderNbr}</div>
+                        <div style="line-height: 2;">电话投诉：400-04-95588</div>
+                    </div>
+                </div>
+            </div>
+            <else />
+            <if condition="($orderInfo.orderStatus eq 21 OR $orderInfo.orderStatus eq 22) AND ($orderInfo.orderType eq 21 OR ($orderInfo.orderType eq 20 AND $orderInfo.eatPayType eq 1))">
+                <div class="receive_time">
+                    <span id="time_down"></span>后系统将自动 “确认收货”
+                </div>
+            </if>
+            <if condition="$orderInfo.orderStatus eq 20">
+                <div class="receive_time">
+                    商户将在今天{$orderInfo.receiveTime}点前确认接单
+                </div>
+            </if>
+
+            <div class="order_status">
+                <div>订单类型：
+                    <if condition="$orderInfo.orderType eq 21">外卖订单
+                        <elseif condition="$orderInfo.orderType eq 20" />堂食订单<br /><p style="font-size: 18px;font-weight: bold;text-align: center;"><empty name="orderInfo.tableNbr">餐号：{$orderInfo.mealNbr}<else/>桌号：{$orderInfo.tableNbr}</empty></p>
+                        <else />其他
+                    </if>
+                </div>
+
+                <?php if($orderInfo['orderStatus'] == 25):?>
+                <div style="border-top: 1px solid rgb(197,197,197);margin-top: 2%;">
+                    <span style="font-size: 18px;line-height: 2;">等待支付</span>
+                    <br />
+                    <span style="color: rgb(153,153,153);font-size: 10px;">30分钟内未完成支付，订单自动取消</span>
+
+                    <a href="hs://icbcPay?params={$string|urlencode}" class="external" style="background-color: rgb(182, 0, 12);border: 1px solid rgb(182, 0, 12);color: #fff;padding: 1% 8%;border-radius: 4px;float: right;margin-top: -5%;">去支付</a>
+                </div>
+                <?php else:?>
+
+                <div class="child_order_status">
+                    <div class="square_div">
+                        <div class="square" <if condition="($orderInfo.orderStatus egt 20) AND ($orderInfo.orderStatus lt 25)">style="background-color: rgb(241,78,14);"<else />style="background-color: rgb(203,203,203);"</if>>
+                        <img src="/Public/img/icon/ros.png" />
+                    </div>
+                    <if condition="($orderInfo.orderStatus egt 20) AND ($orderInfo.orderStatus lt 25)"><strong>下单成功</strong><br />{$orderInfo.orderTime}<else /><strong>待下单</strong></if>
+                </div>
+
+                <div class="line" <if condition="($orderInfo.orderStatus egt 20) AND ($orderInfo.orderStatus lt 25)">style="border-color:rgb(241,78,14);"</if>>&nbsp;</div>
+
+            <div class="square_div">
+                <div class="square" <if condition="($orderInfo.orderStatus egt 21) AND ($orderInfo.orderStatus lt 25)">style="background-color: rgb(241,78,14);"<else />style="background-color: rgb(203,203,203);"</if>>
+                <img src="/Public/img/icon/moto.png" />
+            </div>
+            <if condition="($orderInfo.orderStatus egt 21) AND ($orderInfo.orderStatus lt 25)"><strong>已接单</strong><br />{$orderInfo.receivedTime}<else /><strong style="color: rgb(241,78,14);">待接单</strong></if>
+        </div>
+
+        <div class="line" <if condition="($orderInfo.orderStatus egt 21) AND ($orderInfo.orderStatus lt 25)">style="border-color:rgb(241,78,14);"</if>>&nbsp;</div>
+
+    <div class="square_div">
+        <div class="square" <if condition="($orderInfo.orderStatus eq 23) AND ($orderInfo.status eq 3)">style="background-color: rgb(241,78,14);"<else />style="background-color: rgb(203,203,203);"</if>>
+        <img src="/Public/img/icon/tick.png" />
+    </div>
+    <if condition="($orderInfo.orderStatus eq 23) AND ($orderInfo.status eq 3)">
+        <eq name="orderInfo.orderType" value="21">
+            <strong>确认收货</strong><br />{$orderInfo.arrivalTime}
+            <else />
+            <strong>
+                <eq name="orderInfo.eatPayType" value="1">确认收货
+                    <else />已买单
+                </eq>
+            </strong>
+        </eq>
+        <else />
+        <strong>
+            <eq name="orderInfo.orderType" value="21">待收货
+                <else /><eq name="orderInfo.eatPayType" value="1">待收货<else />待买单</eq>
+            </eq>
+        </strong>
+    </if>
+</div>
+</div>
+<?php endif;?>
+</div>
+</if>
+<?php if(isset($shopInfo['openId'])):?>
+    <a href="/Api/Browser/getShopInfo?shopCode={$orderInfo.shopCode}&userCode={$orderInfo.clientCode}&openId={$shopInfo.openId}" class="external">
+<?php else:?>
+    <a href="hs://getShopInfo?shopCode={$orderInfo.shopCode|urlencode}" class="external">
+<?php endif;?>
+<div class="shop"><img src="/Public/img/icon/shop.png" style="margin-bottom: -1%;" /><span style="font-size: 18px;margin-left: 4%;color: #000;">{$shopInfo.shopName}</span><img src="/Public/img/icon/arrow_right.png" class="float_right" style="margin-top: 2%;" /></div></a>
+
+<if condition="($orderInfo.orderType eq 21) AND ($orderInfo.orderStatus eq 21 OR $orderInfo.orderStatus eq 22) AND ($orderInfo.status neq 6)">
+    <div class="request">
+        <a href="/Api/Browser/cApplyRefund?orderCode={$orderInfo.orderCode}&backType=h5" class="external">申请退款</a>
+    </div>
+</if>
+
+<span style="line-height: 2;padding: 0 3%;">订单详情 <span style="color: rgb(241,78,14);">({$orderProductCount}个商品)</span></span>
+
+<div class="order_list">
+    <foreach name="orderProductList" item="vo" key="k">
+        <div <if condition="$orderInfo.orderType eq 21">class="info bottom_border"<else />class="info"</if>>
+        <span class="float_left" style="width: 60%;text-align: left;">{$vo.productName}</span>
+        <span style="color: rgb(153,153,153);">X{$vo.productNbr}</span>
+        <span class="float_right">{$vo.productTotalPrice} 元</span>
+</div>
+</foreach>
+<if condition="$orderInfo.orderType eq 21">
+    <div style="line-height: 3;color: rgb(241,78,14);">配送费<span class="float_right">{$shopInfo.deliveryFee} 元</span></div>
+</if>
+</div>
+
+<div class="order_price">
+    <?php if(isset($consumeInfo['consumeCode'])):?>
+    <div class="bottom_border" style="line-height: 3;">消费金额<span class="float_right">{$orderInfo.orderAmount} 元</span></div>
+    <a onclick="showDisplay($(this), $('.deduction'));" data-type="0" style="color: #000;">
+        <div style="line-height: 3;">优惠金额<span class="float_right"><strong>{$consumeInfo.deduction|default=0.00}</strong> 元<img src="/Public/img/icon/up_arrow.png" /></span></div></a>
+    <div class="deduction">
+        <div>会员卡：<span class="float_right">{$consumeInfo.cardDeduction|default=0.00} 元</span></div>
+        <div>优惠券：<span class="float_right">{$consumeInfo.couponDeduction|default=0.00} 元</span></div>
+        <div>商家红包：<span class="float_right">{$consumeInfo.shopBonus|default=0.00} 元</span></div>
+        <div>惠圈红包：<span class="float_right">{$consumeInfo.platBonus|default=0.00} 元</span></div>
+        <div>银行卡折扣：<span class="float_right">{$consumeInfo.bankCardDeduction|default=0.00} 元</span></div>
+    </div>
+    <div style="line-height: 3;font-weight: bold;font-size: 16px;">实际支付<span class="float_right" style="color: rgb(255,106,0);">{$consumeInfo.realPay} 元</span></div>
+    <?php else:?>
+    <div style="line-height: 3;">消费金额<span class="float_right"><strong>{$orderInfo.orderAmount}</strong> 元</span></div>
+    <?php endif;?>
+</div>
+
+<div class="receive_address">
+    <div>收货人：<if condition="$orderInfo.orderType eq 21">{$orderInfo.receiver}<else />{$userInfo.nickName}</if></div>
+    <div>电话：<if condition="$orderInfo.orderType eq 21">{$orderInfo.receiverMobileNbr}<else />{$userInfo.mobileNbr}</if></div>
+    <if condition="$orderInfo.orderType eq 21">
+        <div>地址：{$orderInfo.deliveryAddress}</div>
+    </if>
+    <div>付款方式：
+        <if condition="$consumeInfo.payType EQ 1">
+            银行卡支付
+            <elseif condition="$consumeInfo.payType EQ 2"/>
+            POS机支付
+            <elseif condition="$consumeInfo.payType EQ 3"/>
+            现金支付
+            <else/>
+            未选择支付方式
+        </if>
+    </div>
+    <div>订单编号：{$orderInfo.orderNbr}</div>
+    <div>备注：{$orderInfo.remark}</div>
+</div>
+
+<div class="cancel_order" <if condition="($orderInfo.orderStatus egt 23) AND ($orderInfo.orderStatus lt 25)">style="display:none;"</if>>
+<if condition="($orderInfo.orderStatus lt 21) OR ($orderInfo.orderStatus eq 25)">
+    <a href="#" data-order-code="{$orderInfo.orderCode}" class="external co_button">取消订单</a>
+</if>
+<if condition="orderInfo.eatPayType eq 2 AND $orderInfo.orderType eq 20">
+    <a href="/Api/Browser/cEatOrder?orderCode={$orderInfo.orderCode}&shopCode={$orderInfo.shopCode}&userCode={$orderInfo.clientCode}&type=1&openId={$shopInfo.openId}" class="external add_product">加几个菜</a>
+</if>
+</div>
+<?php if(isset($shopInfo['openId'])):?>
+<div style="text-align: center;padding: 20px 10px 20px 10px;">
+    <a href="javascript:void(0);" class="external" onclick="$(this).parent().remove();"><img src="/Public/img/icon/close.png" style="width: 25px;height:25px;float: right;" /></a>
+    <p style="font-size: 16px;font-weight: bold;margin: 2em 0;">下载惠圈，移动点餐结账，享受更多优惠</p>
+    <a href="/Wechat/Index/cdownload" class="external" style="background-color: #C5000A;border-radius: 4px;border: none;color: #fff;font-size: 18px;padding: 2% 20%;">下载惠圈</a>
+</div>
+<?php endif;?>
+</div>
+</div>
+<if condition="($orderInfo.orderStatus eq 21 OR $orderInfo.orderStatus eq 22) AND ($orderInfo.orderType eq 21 OR ($orderInfo.orderType eq 20 AND $orderInfo.eatPayType eq 1))">
+    <div class="toolbar">
+        <div class="toolbar-inner">
+            <a href="#"></a>
+            <a href="#" data-order-code="{$orderInfo.orderCode}" class="external so_button">确认收货</a>
+            <a href="#"></a>
+        </div>
+    </div>
+</if>
+</div>
+</div>
+</div>
+</div>
+<?php
+    $weChatOpenId = '';
+    if(isset($shopInfo['openId'])){
+    $weChatOpenId = $shopInfo['openId'];
+    }
+?>
+<script>
+
+$(function() {
+    var myApp = new Framework7();
+    var $$ = Dom7;
+    // 下拉刷新页面
+    var ptrContent = $$('.pull-to-refresh-content');
+
+    // 添加'refresh'监听器
+    ptrContent.on('refresh', function (e) {
+        // 模拟2s的加载过程
+        setTimeout(function () {
+            history.go(0);
+        }, 2000);
+    });
+
+    var width1 = $('.order_status').find('.square').width();
+    $('.order_status').find('.square').height(width1);
+//        var width3 = $('.request_cancel').find('.square').width();
+//        $('.request_cancel').find('.square').height(width3);
+    var width4 = $('.status_dis').find('.square').width();
+    $('.status_dis').find('.square').height(width4);
+
+    var height1 = $('.child_order_status').find('.square_div').height();
+    $('.child_order_status').height(height1);
+    var height2 = $('.status_dis').find('.square_div').height();
+    $('.status_dis').height(height2);
+
+    var aObj = $('.cancel_order').find('a');
+    if(aObj.length > 1){
+        $('.cancel_order').find('a:first').css('margin-right','10%');
+    }
+
+    var oc = '{$orderInfo.orderCode}';
+    var status = '{$orderInfo.status}';
+    var orderStatus = '{$orderInfo.orderStatus}';
+    var orderType = '{$orderInfo.orderType}';
+    var weChatOpenId = '{$weChatOpenId}';
+    //console.log(oc+'-'+status+'-'+orderStatus+'-'+orderType);
+    if(status == 1 && orderType == 20 && orderStatus == 23){
+
+        var orderAmount = '{$orderInfo.orderAmount}';
+        if(weChatOpenId == ''){
+            myApp.modal({
+                title:  '',
+                text: '商家已发起买单',
+                afterText: '<div style="font-size: 12px;text-align: center;">(如果您对本次支付有疑问，可拒绝支付!)</div>' +
+                        '<div style="font-size: 18px;font-weight: bold;padding-top: 10px;">消费金额: '+orderAmount+' 元</div>' +
+                        '<div style="line-height: 2;margin-bottom: -15px;border-bottom: 1px solid darkgray;"><a href="hs://icbcPay?params={$string|urlencode}" class="external" style="font-size: 17px;">去支付</a></div>',
+                buttons: [
+                    {
+                        text: '拒绝',
+                        onClick:function(){
+                            $.post('/Api/Browser/rejectPay',
+                                    {   orderCode:oc,
+                                        isAjax:true },
+                                    function(result){
+                                        if(result.status == 0){
+                                            result_modal('该次支付被打回，请商家重新发起支付！');
+                                        }else{
+                                            result_modal('操作失败，请重试！');
+                                        }
+                                    });
+                        }
+                    }
+                ]
+            });
+        }else{
+            myApp.modal({
+                title:  '',
+                text: '商家已发起买单',
+                afterText: '<div style="font-size: 12px;text-align: center;">(如果您对本次支付有疑问，可拒绝支付!)</div>' +
+                        '<div style="font-size: 18px;font-weight: bold;padding-top: 10px;">消费金额: '+orderAmount+' 元</div>' +
+                        '<a href="/Wechat/Index/cdownload" class="external"><div style="margin: 10px 0 0 0;">现金支付<hr style="border: 1px solid #A7A7A7;width: 50%;margin: auto" />下载惠圈，点餐结账，更多优惠</div></a>'
+//                    buttons: [
+//                        {
+//                            text: '拒绝',
+//                            onClick:function(){
+//                                $.post('/Api/Browser/rejectPay',
+//                                        {   orderCode:oc,
+//                                            isAjax:true },
+//                                        function(result){
+//                                            if(result.status == 0){
+//                                                result_modal('该次支付被打回，请商家重新发起支付！');
+//                                            }else{
+//                                                result_modal('操作失败，请重试！');
+//                                            }
+//                                        });
+//                            }
+//                        }
+//                    ]
+            });
+        }
+
+    }
+
+
+    $('.co_button').click(function(){
+        var orderCode = $(this).data('orderCode');
+        myApp.modal({
+            title:  '提醒',
+            text: '您确定取消该订单吗？',
+            buttons: [
+                {
+                    text: '确定',
+                    onClick:function(){
+                        $.post('/Api/Browser/cancelOrder',
+                                {   orderCode:orderCode,
+                                    isAjax:true },
+                                function(result){
+                                    if(result.status == 0){
+                                        result_modal('您已成功取消该订单！');
+                                    }else{
+                                        result_modal('取消失败，请重试！');
+                                    }
+                                });
+                    }
+                },
+                {
+                    text: '取消'
+                }
+            ]
+        });
+    });
+
+    $('.so_button').click(function(){
+        var orderCode = $(this).data('orderCode');
+        $.post('/Api/Browser/confirmOrder',
+                {   orderCode:orderCode,
+                    isAjax:true },
+                function(result){
+                    if(result.status == 0){
+                        result_modal('确认收货成功！');
+                    }else{
+                        result_modal('确认收货失败，请重试！');
+                    }
+                });
+    });
+
+    $('.tel').on('click', function () {
+        var buttons1 = [
+            {
+                text: '联系电话',
+                label: true
+            },
+            {
+                text: '<a href="hs://call?tel={$shopInfo.tel|urlencode}" class="external">商家电话：{$shopInfo.tel}</a>'
+            },
+            {
+                text: '<a href="hs://call?tel={$serviceTel|urlencode}" class="external">客服电话：{$serviceTel}</a>'
+            }
+        ];
+        if(weChatOpenId != ''){
+            buttons1 = [
+                {
+                    text: '联系电话',
+                    label: true
+                },
+                {
+                    text: '<a href="tel:{$shopInfo.tel}" class="external">商家电话：{$shopInfo.tel}</a>'
+                },
+                {
+                    text: '<a href="tel:{$serviceTel}" class="external">客服电话：{$serviceTel}</a>'
+                }
+            ];
+        }
+        var buttons2 = [
+            {
+                text: '取消',
+                color: 'red'
+            }
+        ];
+        var groups = [buttons1, buttons2];
+        myApp.actions(groups);
+    });
+
+});
+
+function showDisplay(aObj, divObj){
+    var val = aObj.attr("data-type");
+
+    if(val==1){
+        divObj.show();
+        aObj.attr("data-type","0");
+        aObj.find('img').remove();
+        aObj.find('span').append('<img src="/Public/img/icon/up_arrow.png" />');
+    }else{
+        divObj.hide();
+        aObj.attr("data-type","1");
+        aObj.find('img').remove();
+        aObj.find('span').append('<img src="/Public/img/icon/down_arrow.png" />');
+    }
+}
+
+function result_modal(text){
+    myApp.modal({
+        title:  '提醒',
+        text: text,
+        buttons: [
+            {
+                text: '确定',
+                onClick:function(){
+                    location.href = '/Api/Browser/unReceiveOrder?orderCode={$orderInfo.orderCode}&openId={$shopInfo.openId}';
+                }
+            }
+        ]
+    })
+
+}
+</script>
+<style>
+    .button_nothing{background: none;border: none;padding: 0;}
+    .float_left{float: left;}
+    .float_right{float: right;}
+    .bottom_border{border-bottom: 1px solid rgb(197,197,197);}
+    .navbar{background-color: rgb(182, 0, 12);}
+    .navbar-inner .left img{width: 70%;height: auto;margin-left: -15%;}
+    .navbar-inner .right a{color: #fff;font-size: 15px;text-align: center;}
+    .navbar-inner .right img{width: 80%;height: auto;}
+    .receive_time{background-color: rgb(250,254,195);line-height: 2;text-align: center;border-bottom: 1px solid rgb(197,197,197);}
+
+    .status_for_order{background-color: #fff;margin-bottom: 3%;}
+    .status_dis{margin-top: 3%;padding: 3% 10%;}
+    .status_dis .square_div{display: inline-table;width: 30%;text-align: center;font-size: 10px;float: left;}
+    .status_dis .line{display: inline-table;width: 33%;border-bottom: 1px solid rgb(203,203,203);vertical-align: top;float: left;}
+    .status_dis .square{border-radius: 100px;}
+    .status_dis .square img{width: 60%;height:auto;margin-top: 20%;}
+
+    .order_status{background-color: #fff;;padding: 2% 3%;margin-bottom: 3%;}
+    .child_order_status{padding: 5%;}
+    .child_order_status img{width: 50%;height:auto;margin-top: 20%;}
+    .order_status .square_div{display: inline-table;width: 18%;text-align: center;font-size: 10px;float: left;}
+    .order_status .line{display: inline-table;width: 19%;border-bottom: 1px solid rgb(203,203,203);vertical-align: top;float: left;}
+    .order_status .square{border-radius: 100px;}
+
+    .request_cancel .square{display:inline-table;width:8%;float: left;margin-top: 3%;}
+    .request_cancel .square img{width: 80%;height:auto;}
+    .shop{background-color: #fff;padding: 0 3%;line-height: 2;}
+    .order_list{background-color: #fff;padding: 0 3%;}
+    .order_list .info{line-height: 3;}
+    .order_price{background-color: #fff;margin-top:2%;padding: 0 3%;}
+    .order_price .deduction{padding: 2% 5%;border-bottom: 1px solid rgb(197, 197, 197);border-top: 1px solid rgb(197, 197, 197);}
+    .order_price .deduction div{line-height: 1.5;color: rgb(153,153,153);}
+    .receive_address{background-color: #fff;margin-top:2%;padding: 2% 3%;}
+    .receive_address div{line-height: 1.5;color: rgb(153,153,153);}
+    .cancel_order{margin-top:3%;padding: 5%  3%;text-align: center;}
+    .cancel_order .co_button{background-color: #fff;border: 1px solid rgb(190,190,190);color: rgb(108,108,108);padding: 2% 10%;font-size:18px;border-radius: 4px;}
+    .cancel_order .add_product{background-color: rgb(182, 0, 12);border: 1px solid rgb(182, 0, 12);color: #fff;padding: 2% 10%;font-size:18px;border-radius: 4px;}
+    .request{background-color:#fff;border-top: 1px solid rgb(197,197,197);padding: 5%  3%;text-align: center;}
+    .request a{background-color: #fff;border: 1px solid rgb(190,190,190);color: rgb(108,108,108);padding: 2% 10%;font-size:18px;border-radius: 4px;}
+    .toolbar{background-color: #fff;text-align: center;}
+    .toolbar .so_button{background-color: rgb(182, 0, 12);border: 1px solid rgb(182, 0, 12);color: #fff;padding: 2% 8%;font-size:18px;border-radius: 4px;}
+</style>

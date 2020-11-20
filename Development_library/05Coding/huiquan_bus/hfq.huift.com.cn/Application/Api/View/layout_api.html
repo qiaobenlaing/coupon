@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Required meta tags-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <!-- Your app title -->
+    <title>{$title}</title>
+    <!-- Path to Framework7 Library CSS-->
+    <link rel="stylesheet" href="__PUBLIC__/css/framework7.min.css">
+    <!-- Path to your custom app styles-->
+    <link rel="stylesheet" href="__PUBLIC__/css/api.css">
+    <script type="text/javascript" src="__PUBLIC__/js/jquery.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/js/wechat_min.js"></script>
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            var http_host = "{$_SERVER['HTTP_HOST']}";
+            var id = '4393fb8c068d73a397ca6f7d1b30dd7b';
+            if(http_host == 'api.huiquan.suanzi.cn'){
+                id = 'b6442de87a3bc3578b44b31e5b0f353b';
+            }
+            hm.src = "//hm.baidu.com/hm.js?"+id;
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+</head>
+<body>
+<!-- Status bar overlay for full screen mode (PhoneGap) -->
+<div class="statusbar-overlay"></div>
+<!-- Panels overlay-->
+<div class="panel-overlay"></div>
+<!-- Left panel with reveal effect-->
+<div class="panel panel-left panel-reveal">
+    <div class="content-block">
+        <p>Left panel content goes here</p>
+    </div>
+</div>
+<!--<div class="head">-->
+<!--<div class="back">-->
+<!--<a href="#"><span class="back-icon"></span></a>-->
+<!--</div>-->
+<!--<p class="title">{$title}</p>-->
+<!--</div>-->
+{__CONTENT__}
+<!-- Path to Framework7 Library JS-->
+<script type="text/javascript" src="__PUBLIC__/js/framework7.min.js"></script>
+<!-- Path to your app js-->
+<script type="text/javascript" src="__PUBLIC__/js/api.js"></script>
+
+<script>
+    $(function(){
+        var a = $('iframe').remove();
+
+        var aObj = $('a');
+        for(var i=0;i<aObj.length;i++){
+            var href = $(aObj.get(i)).attr('href');
+            //console.log(href);
+            if(typeof(href) != "undefined" ){
+                href = href.replace(/(^\s*)|(\s*$)/g, "");
+                if(href.substr(0, 7) == 'http://'){
+                    if(href.substr(0, 12) != 'http://baomi' && href.substr(0, 28) != 'http://web.huiquan.suanzi.cn'){
+                        $(aObj.get(i)).parent().remove();
+                        $(aObj.get(i)).remove();
+                    }
+                }
+//                else{
+//                    if(!(href.indexOf("Api/") > 0)){
+//                        $(aObj.get(i)).parent().remove();
+//                        $(aObj.get(i)).remove();
+//                    }
+//                }
+            }
+        }
+        // 检查是否设置了免验证支付，和拒绝次数
+        function checkFreeValPay() {
+            var action = '{$action}';
+            var freeValCodePay = parseInt('{$userInfo.freeValCodePay}');
+            var rejectFreeValTimes = parseInt('{$userInfo.rejectFreeValTimes}');
+            if(action == 'paySucc') {
+                if(freeValCodePay == 0 && rejectFreeValTimes < 3) {
+//                showFreeValPayTip();
+                }
+            }
+        }
+        checkFreeValPay();
+    });
+</script>
+</body>
+</html>

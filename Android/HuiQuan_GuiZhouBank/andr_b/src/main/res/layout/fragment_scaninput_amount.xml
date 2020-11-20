@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_bg"
+    android:orientation="vertical" >
+    
+    <include layout="@layout/common_title_commit" />
+    
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/layout_height"
+            android:gravity="center"
+            android:layout_marginLeft="10dp"
+            android:textSize="16sp"
+            android:text="@string/consumptionamount"/>
+        <EditText 
+            android:id="@+id/et_totalMoney"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:textSize="16sp"
+            android:singleLine="true"
+            android:gravity="center|right"
+            android:layout_marginRight="10dp"
+            android:textColorHint="@color/red"
+            android:textColor="@color/red"
+            android:inputType="numberDecimal"
+            android:maxLength="9"/>
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/red"
+            android:layout_marginRight="10dp"
+            android:textSize="16sp"
+            android:text="元"/>
+    </LinearLayout>
+    
+    <TextView style="@style/VLine"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/layout_height"
+        android:background="@color/white"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/layout_height"
+            android:gravity="center"
+            android:layout_marginLeft="10dp"
+            android:textSize="16sp"
+            android:text="优惠券"/>
+        <EditText
+            android:id="@+id/et_couponNo"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:textSize="16sp"
+            android:singleLine="true"
+            android:gravity="center"
+            android:layout_marginHorizontal="10dp"
+            android:textColor="@color/red"
+            android:inputType="numberDecimal"
+            android:hint="输入优惠券码"/>
+        <ImageView
+            android:id="@+id/iv_scan"
+            android:layout_width="@dimen/layout_height"
+            android:layout_height="@dimen/layout_height"
+            android:padding="10dp"
+            android:src="@drawable/scan"
+            android:layout_marginRight="10dp"/>
+    </LinearLayout>
+
+    <TextView style="@style/VLine"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/layout_height"
+        android:background="@color/white">
+
+        <CheckBox
+            android:id="@+id/ck_scan_nodiscount"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:button="@drawable/sel_checkbox_state"
+            android:textSize="16sp"
+            android:textColor="@color/msg_font"
+            android:background="@color/white"
+            android:text="@string/nodiscount"
+            android:checked="false"/>
+
+        <LinearLayout
+            android:id="@+id/ly_scan_nodiscount"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@id/ck_scan_nodiscount"
+            android:gravity="center_vertical"
+            android:visibility="gone">
+
+            <EditText
+                android:id="@+id/et_scan_nodiscount"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:textSize="16sp"
+                android:singleLine="true"
+                android:gravity="right"
+                android:layout_marginRight="10dp"
+                android:textColorHint="@color/red"
+                android:textColor="@color/red"
+                android:inputType="numberDecimal"
+                android:maxLength="9"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/red"
+                android:layout_marginRight="10dp"
+                android:text="元"/>
+        </LinearLayout>
+
+    </RelativeLayout>
+    
+    <TextView style="@style/VLine"/>
+    
+    <Button
+         android:id="@+id/b_submit"
+         android:layout_width="match_parent"
+         android:layout_height="@dimen/navigation_bar"
+         android:background="@drawable/login_btn"
+         android:text="@string/scanreceivables"
+         android:layout_margin="10dp"
+         android:textColor="@color/white" />
+
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone">
+        <TextView 
+           	android:layout_width="wrap_content"
+           	android:layout_height="@dimen/layout_height"
+           	android:gravity="center"
+           	android:layout_marginLeft="10dp"
+           	android:textColor="@color/red"
+           	android:text="@string/maxamount"/>
+    </LinearLayout>
+
+</LinearLayout>

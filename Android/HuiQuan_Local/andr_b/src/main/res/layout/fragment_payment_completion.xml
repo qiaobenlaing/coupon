@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/LyOutSet"
+    android:background="@color/bgall" >
+    <include layout="@layout/common_title_commit" />
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:fadingEdge="vertical"
+        android:scrollbars="none" >
+        <LinearLayout
+            style="@style/LyWHFirst"
+            android:orientation="vertical" >
+            <LinearLayout 
+                style="@style/LyWHFourth"
+                android:orientation="vertical"
+                android:background="@color/white">
+                <TextView 
+                    style="@style/LyWHSecond"
+                    android:text="支付成功"
+                    android:layout_marginTop="10dp"
+                    android:layout_gravity="center"
+                    android:textSize="24sp"/>
+                <ImageView 
+                    android:id="@+id/iv_userlogo"
+                    android:layout_width="76dp"
+                    android:layout_height="76dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/bg_border"
+                    android:src="@drawable/no_shoplogo"/>
+                <TextView 
+                    android:id="@+id/tv_username"
+                    style="@style/LyWHSecond"
+                    android:text="xxxx"
+                    android:layout_marginTop="5dp"
+                    android:layout_gravity="center"
+                    android:singleLine="true"
+                    android:layout_marginBottom="10dp"/>
+            </LinearLayout>
+            <TextView style="@style/VSpace_one"
+		              android:background="@color/bgall"/>
+		    <LinearLayout
+		            android:layout_width="match_parent"
+		            android:layout_height="wrap_content"
+		            android:divider="@drawable/shape_divider"
+		            android:orientation="vertical"
+		            android:showDividers="middle" >
+		         <RelativeLayout
+		                style="@style/LyWHFourth"
+		                android:layout_height="@dimen/layout_height"
+		                android:background="@color/white"
+		                android:paddingLeft="10dp"
+		                android:paddingRight="10dp">
+		                <TextView
+		                    android:id="@+id/tv_ordernbr_describe"
+		                    style="@style/textview"
+		                    android:layout_alignParentLeft="true"
+		                    android:layout_marginTop="10dp"
+		                    android:layout_centerVertical="true"
+		                    android:text="@string/payment_ordernbr" />
+		                <TextView 
+		                    android:id="@+id/tv_ordernbr"
+		                    style="@style/LyWHSecond"
+		                    android:text="xxxx"
+		                    android:layout_centerVertical="true"
+		                    android:layout_toRightOf="@+id/tv_ordernbr_describe"
+		                    android:layout_marginLeft="10dp"/>
+		          </RelativeLayout>
+		          <TextView style="@style/VSpace_one"
+		              android:background="@color/bgall"/>
+		          <RelativeLayout
+		                style="@style/LyWHFourth"
+		                android:layout_height="@dimen/layout_height"
+		                android:background="@color/white"
+		                android:paddingLeft="10dp"
+		                android:paddingRight="10dp">
+		                <TextView
+		                    style="@style/textview"
+		                    android:layout_alignParentLeft="true"
+		                    android:layout_centerVertical="true"
+		                    android:text="@string/csm_money" />
+		                <TextView 
+		                    android:id="@+id/tv_consumer_money"
+		                    style="@style/LyWHSecond"
+		                    android:text="xxxx"
+		                    android:layout_centerVertical="true"
+		                    android:layout_toLeftOf="@+id/tv_notprice_money"
+		                    android:layout_marginRight="5dp"/>
+		                <TextView
+		                    android:id="@+id/tv_notprice_money"
+		                    style="@style/LyWHSecond"
+		                    android:text="@string/tv_actlist_yuan"
+		                    android:layout_alignParentRight="true"
+		                    android:layout_centerVertical="true"/>
+		          </RelativeLayout>
+		          <RelativeLayout
+		              	android:id="@+id/ry_coupon_deduction"
+		                style="@style/LyWHFourth"
+		                android:layout_height="@dimen/layout_height"
+		                android:background="@color/white"
+		                android:paddingLeft="10dp"
+		                android:paddingRight="10dp">
+		                <TextView
+		                    android:id="@+id/tv_coupon_type"
+		                    style="@style/textview"
+		                    android:layout_alignParentLeft="true"
+		                    android:layout_centerVertical="true"
+		                    android:text="@string/total_ddtmoney" />
+		                 <TextView 
+		                    android:id="@+id/tv_coupon_money"
+		                    style="@style/LyWHSecond"
+		                    android:text="xxxx"
+		                    android:layout_centerVertical="true"
+		                    android:layout_toLeftOf="@+id/tv_reduceprice_money"
+		                    android:layout_marginRight="5dp"/>
+		                <TextView
+		                    android:id="@+id/tv_reduceprice_money"
+		                    style="@style/LyWHSecond"
+		                    android:text="@string/tv_actlist_yuan"
+		                    android:layout_alignParentRight="true"
+		                    android:layout_centerVertical="true"/>
+		          </RelativeLayout>
+		          <RelativeLayout
+		                android:id="@+id/ry_card_deduction"
+		                style="@style/LyWHFourth"
+		                android:layout_height="@dimen/layout_height"
+		                android:background="@color/white"
+		                android:paddingLeft="10dp"
+		                android:paddingRight="10dp">
+		                <TextView
+		                    style="@style/textview"
+		                    android:layout_alignParentLeft="true"
+		                    android:layout_marginTop="10dp"
+		                    android:layout_centerVertical="true"
+		                    android:text="@string/payment_actual_money" />
+		                <TextView 
+		                    android:id="@+id/tv_actual_money"
+		                    style="@style/LyWHSecond"
+		                    android:text="xxxx"
+		                    android:layout_centerVertical="true"
+		                    android:layout_toLeftOf="@+id/tv_card_money"
+		                    android:layout_marginRight="5dp"/>
+		                <TextView
+		                    android:id="@+id/tv_card_money" 
+		                    style="@style/LyWHSecond"
+		                    android:text="@string/tv_actlist_yuan"
+		                    android:layout_alignParentRight="true"
+		                    android:layout_centerVertical="true"/>
+		          </RelativeLayout>
+		          
+		          <Button
+		            android:id="@+id/btn_pay_print"
+		            android:layout_width="match_parent"
+		            android:layout_height="@dimen/navigation_bar"
+		            android:background="@drawable/login_btn"
+		            android:text="@string/btn_scan_print"
+		            android:layout_margin="10dp"
+		            android:visibility="visible"
+		            android:textColor="@color/white" />
+		    </LinearLayout>
+		  </LinearLayout>
+	  </ScrollView>
+</LinearLayout>

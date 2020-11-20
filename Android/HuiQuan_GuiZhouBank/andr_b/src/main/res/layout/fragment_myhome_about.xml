@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/LyWHFirst"
+    android:background="@color/app_bg"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/aboutTop"
+        layout="@layout/common_title_home" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:divider="@drawable/shape_divider"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/ly_myhome_phone"
+                style="@style/LyWHFourth"
+                android:layout_height="@dimen/layout_height"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:src="@drawable/service_tel" />
+
+                <TextView
+                    style="@style/textview"
+                    android:layout_marginLeft="10dp"
+                    android:text="@string/ser_phone"
+                    android:textSize="16sp" />
+
+                <TextView
+                    style="@style/textview"
+                    android:layout_marginLeft="5dp"
+                    android:text="@string/ser_number"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <TextView
+                style="@style/VLine"
+                android:layout_height="0.5dp"
+                android:background="@color/bghome" />
+
+            <LinearLayout
+                android:id="@+id/ly_weixin"
+                style="@style/LyWHFourth"
+                android:layout_height="@dimen/layout_height"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <ImageView
+                    android:id="@+id/iv_weixin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:src="@drawable/public_num" />
+
+                <TextView
+                    style="@style/textview"
+                    android:layout_marginLeft="10dp"
+                    android:text="@string/weixin"
+                    android:textSize="16sp" />
+
+                <TextView
+                    style="@style/textview"
+                    android:layout_marginLeft="5dp"
+                    android:text="@string/weixi_number"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <TextView
+                style="@style/VLine"
+                android:layout_height="0.5dp"
+                android:background="@color/bghome" />
+
+            <LinearLayout
+                android:id="@+id/about_huiquan"
+                style="@style/LyWHFourth"
+                android:layout_height="@dimen/layout_height"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:src="@drawable/huiquan" />
+
+                <TextView
+                    style="@style/textview"
+                    android:layout_marginLeft="10dp"
+                    android:text="@string/myhome_abouthui"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <TextView
+                style="@style/VLine"
+                android:layout_height="0.5dp"
+                android:background="@color/bghome" />
+
+            <RelativeLayout
+                android:id="@+id/release_check"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/layout_height"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp">
+
+                <ImageView
+                    android:id="@+id/iv_app_upp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/uppapk" />
+
+                <TextView
+                    android:id="@+id/tv_checkcode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@+id/iv_app_upp"
+                    android:text="检查版本"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/myhome_version"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="15dp"
+                    android:layout_toRightOf="@+id/tv_checkcode"
+                    android:text="@string/app_full_version"
+                    android:textColor="@color/gray_version"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tv_appUpdate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:text="发现新版本"
+                    android:textColor="@color/red"
+                    android:visibility="gone" />
+            </RelativeLayout>
+
+            <TextView
+                style="@style/VLine"
+                android:layout_height="0.5dp"
+                android:background="@color/bghome" />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ly_coupon_item"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/bgall"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/tv_sortname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:text="我的优惠券"
+        android:textColor="@color/shopdetail_content"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tv_vline"
+        style="@style/VLine" />
+
+    <com.huift.hfq.base.view.MyListView
+        android:id="@+id/lv_sortcoupon"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="@color/white"
+        android:dividerHeight="0dp"
+        android:scrollbars="none"
+        android:visibility="visible" />
+
+</LinearLayout>

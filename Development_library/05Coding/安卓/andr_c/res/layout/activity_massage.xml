@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/LyCommSet_"
+    android:background="@color/white" >
+
+    <include layout="@layout/common_title_message" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="38dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:orientation="horizontal" >
+
+        <!-- 优惠券 -->
+
+        <FrameLayout
+            android:id="@+id/fl_msg"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" >
+
+            <Button
+                android:id="@+id/btn_msgcoupon"
+                style="@style/MsgBtn"
+                android:background="@drawable/msg_tableft_nosel"
+                android:text="@string/tv_shopdetail_coupon" />
+
+            <TextView
+                android:id="@+id/tv_couponcount"
+                style="@style/LyWHSecond"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_gravity="right"
+                android:background="@drawable/shape_red_round"
+                android:gravity="center_vertical|center_horizontal"
+                android:padding="2dp"
+                android:text="0"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                android:visibility="visible" />
+        </FrameLayout>
+
+        <!-- 会员卡 -->
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:visibility="gone" >
+
+            <Button
+                android:id="@+id/btn_msgcard"
+                style="@style/MsgBtn"
+                android:background="@drawable/msg_tabcenter_nosel"
+                android:text="@string/tv_shopdetail_card" />
+
+            <TextView
+                android:id="@+id/tv_cardcount"
+                style="@style/LyWHSecond"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_gravity="right"
+                android:background="@drawable/shape_red_round"
+                android:gravity="center_vertical|center_horizontal"
+                android:padding="2dp"
+                android:text="0"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                android:visibility="visible" />
+        </FrameLayout>
+        <!-- 商家沟通 -->
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" >
+
+            <Button
+                android:id="@+id/btn_msgvip"
+                style="@style/MsgBtn"
+                android:background="@drawable/msg_tabcenter_nosel"
+                android:text="@string/myhome_message_communicate" />
+
+            <TextView
+                android:id="@+id/tv_commcount"
+                style="@style/LyWHSecond"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_gravity="right"
+                android:background="@drawable/shape_red_round"
+                android:gravity="center_vertical|center_horizontal"
+                android:padding="2dp"
+                android:text="0"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                android:visibility="visible" />
+        </FrameLayout>
+        <!-- 广播 -->
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" >
+
+            <Button
+                android:id="@+id/btn_msgshop"
+                style="@style/MsgBtn"
+                android:background="@drawable/msg_tabright_nosel"
+                android:text="@string/myhome_message_broadcast" />
+
+            <TextView
+                android:id="@+id/tv_shopcount"
+                style="@style/LyWHSecond"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_gravity="right"
+                android:background="@drawable/shape_red_round"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="0"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                android:visibility="visible" />
+        </FrameLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ly_msgcontent"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@color/white"
+        android:orientation="vertical" >
+    </LinearLayout>
+
+</LinearLayout>

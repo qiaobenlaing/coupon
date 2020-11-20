@@ -1,0 +1,761 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.huift.hfq.shop">
+
+    <!-- 收银 -->
+    <uses-permission android:name="com.icbc.smartpos.bankpay.trans.multiPurchase" />
+    <!-- 余额查询 -->
+    <uses-permission android:name="com.icbc.smartpos.bankpay.trans.inquery" />
+    <!-- 积分查询 -->
+    <uses-permission android:name="com.icbc.smartpos.bankpay.trans.integralQuery" />
+    <!-- 当日撤销 -->
+    <uses-permission android:name="com.icbc.smartpos.bankpay.trans.posVoid" />
+    <!-- 隔日退货 -->
+    <uses-permission android:name="com.icbc.smartpos.bankpay.trans.refund" />
+    <!-- 积分退货 -->
+    <uses-permission android:name="com.icbc.smartpos.bankpay.trans.integralRefund" />
+    <!-- 二维码退货 -->
+    <uses-permission android:name="com.icbc.smartpos.bankpay.trans.qrRefund" />
+    <!-- 预授权 -->
+    <uses-permission android:name="com.icbc.smartpos.bankpay.trans.preauth" />
+    <!-- 追加预授权 -->
+    <uses-permission android:name="com.icbc.smartpos.bankpay.trans.addPreauth" />
+    <!-- 预授权确认 -->
+    <uses-permission android:name="com.icbc.smartpos.bankpay.trans.preauthEnd" />
+    <!-- 预授权撤销 -->
+    <uses-permission android:name="com.icbc.smartpos.bankpay.trans.preauthVoid" />
+    <!-- 查本机交易记录 -->
+    <uses-permission android:name="com.icbc.smartpos.bankpay.trans.queryTransRec" />
+    <!-- 获取终端信息 -->
+    <uses-permission android:name="com.icbc.smartpos.bankpay.trans.terminalInfo" />
+    <!-- 重打印交易凭条 -->
+    <uses-permission android:name="com.icbc.smartpos.bankpay.trans.reprint" />
+
+    <!-- 驱动设备使用权限 -->
+    <!-- 打印机 -->
+    <uses-permission android:name="smartpos.deviceservice.permission.Printer" />
+    <!-- 扫码器 -->
+    <uses-permission android:name="smartpos.deviceservice.permission.Scanner" />
+    <!-- 磁条卡阅读器 -->
+    <uses-permission android:name="smartpos.deviceservice.permission.MagReader" />
+    <!-- IC 卡阅读器 -->
+    <uses-permission android:name="smartpos.deviceservice.permission.ICReader" />
+    <!-- 非接卡阅读器 -->
+    <uses-permission android:name="smartpos.deviceservice.permission.RFReader" />
+    <!-- PBOC 金融交互流程功能 -->
+    <uses-permission android:name="smartpos.deviceservice.permission.PBOC" />
+    <!-- 蜂鸣器 -->
+    <uses-permission android:name="smartpos.deviceservice.permission.Beeper" />
+    <!-- LED灯 -->
+    <uses-permission android:name="smartpos.deviceservice.permission.Led" />
+
+    <!-- 特殊权限 -->
+    <!-- 免打凭条 -->
+    <uses-permission android:name="com.icbc.smartpos.bankpay.advance.withoutPrint" />
+    <!-- 打印附加信息 -->
+    <uses-permission android:name="com.icbc.smartpos.bankpay.advance.additionalPrint" />
+    <!-- 输出敏感信息 -->
+    <uses-permission android:name="com.icbc.smartpos.bankpay.advance.privateInfo" />
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <application
+        android:name=".ShopApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme">
+
+        <activity
+            android:name=".activity.StartActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:scheme="main" android:host="com.huift.hfq.shop"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activity.GuideActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <activity
+            android:name=".activity.HomeActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <activity
+            android:name=".activity.LoginActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 我要入驻 -->
+        <activity
+            android:name=".activity.SettledActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 修改活动类型 -->
+        <activity
+            android:name=".activity.UpdateCampaignTypeActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 修改活动介绍 -->
+        <activity
+            android:name=".activity.UpdateCampaignIntroducesActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 修改活动规格 -->
+        <activity
+            android:name=".activity.UpdateCampaignFreeActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 编辑活动 -->
+        <activity
+            android:name=".activity.EditAcitityContextActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 对活动的验证 -->
+        <activity
+            android:name=".activity.ActivityVerificationActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 编辑基本的所有信息-->
+        <activity
+            android:name=".activity.EditAcitityMsgActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 预定名单-->
+        <activity
+            android:name=".activity.PredeterListActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 验证码 -->
+        <activity
+            android:name=".activity.SecurityCodeActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!--活动h5 -->
+        <activity
+            android:name=".activity.ActThemeDetailActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!--对兑换券和代金券的验证-->
+        <activity
+            android:name=".activity.CouponVerificationActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 活动管理界面 -->
+        <activity
+            android:name=".activity.ActivityManagerActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 门店信息 -->
+        <activity
+            android:name=".activity.SettledShopInfoActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 扫码支付完成 -->
+        <activity
+            android:name="com.huift.hfq.shop.activity.PaymentCompletionActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 修改商家配送方案-->
+        <activity
+            android:name=".activity.UppDeliveryProgramActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 餐厅设置 -->
+        <activity
+            android:name=".activity.RestaurantSetActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 扫码支付的确认订单页面 -->
+        <activity
+            android:name=".activity.ConfirmOrderActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 提交成功 -->
+        <activity
+            android:name=".activity.SettledCommitSuccActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 提交成功返回到首页 -->
+        <activity
+            android:name=".activity.SettledCommitHomeActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <activity
+            android:name=".activity.RegisterActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <activity
+            android:name=".activity.ResetPwdActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <activity
+            android:name=".activity.BigPhotoActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 扫一扫 -->
+        <activity
+            android:name=".activity.ScanActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 店员管理 -->
+        <activity
+            android:name=".activity.StaffManagerActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 设置店铺的营业时间 -->
+        <activity
+            android:name=".activity.UpdateShopTimeActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 修改店铺简介 -->
+        <activity
+            android:name=".activity.UpdateShopDecActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 设置门店 -->
+        <activity
+            android:name=".activity.StoreSetActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 用户浏览总量 -->
+        <activity
+            android:name=".activity.UserAccessActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 首页选择店铺 -->
+        <activity
+            android:name=".activity.ChooseStoreActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 查看产品大图 -->
+        <activity
+            android:name=".activity.ProductBigPhotoActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 查看商店logo大图 -->
+        <activity
+            android:name=".activity.BigShopLogoActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 查看环境大图 -->
+        <activity
+            android:name=".activity.EnvironMentBigPhotoActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 产品相册页面 -->
+        <activity
+            android:name=".activity.ProductPhotoActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 上传环境图片页面 -->
+        <activity
+            android:name=".activity.UploadEnvironmentPhotoActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 添加产品相册名称页面 -->
+        <activity
+            android:name=".activity.AddPhotoActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 上传照片页面 -->
+        <activity
+            android:name=".activity.UploadPhotoActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 查询子相册名称页面 -->
+        <activity
+            android:name=".activity.ProductPhotoTypeActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 商家相册 -->
+        <activity
+            android:name=".activity.MyPhotoAlbumActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 扫一扫 主页面 -->
+        <activity
+            android:name=".activity.ScanMainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 店铺信息页面 -->
+        <activity
+            android:name=".activity.MyShopInfoActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 店铺形象页面 -->
+        <activity
+            android:name=".activity.MyImageShopActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 验证原密码页面 -->
+        <activity
+            android:name=".activity.OriginalPwdActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 修改密码页面 -->
+        <activity
+            android:name=".activity.UpdatePwdActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 忘记密码页面 -->
+        <activity
+            android:name=".activity.ForgetPwdActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- POS服务页面 -->
+        <activity
+            android:name=".activity.MyPosServActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 订单管理页面 -->
+        <activity
+            android:name=".activity.MyOrderManagerActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 门店订单页面 -->
+        <activity
+            android:name=".activity.MyStoreOrderActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 退款订单详情页面 -->
+        <activity
+            android:name=".activity.MyRefundOrderDetailActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 餐前订单详情页面 (待接单) -->
+        <activity
+            android:name=".activity.MyFastingOrderDetailActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 对账页面 -->
+        <activity
+            android:name=".activity.MyBalanceManagerActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 订单管理的餐后支付(配送中) -->
+        <activity
+            android:name=".activity.MyAfterOrderDetailDistributionActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 订单管理的餐后支付(结算) -->
+        <activity
+            android:name=".activity.MyAfterOrderDetailSettleActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 添加店员页面 -->
+        <activity
+            android:name=".activity.AddStaffActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 修改店员页面 -->
+        <activity
+            android:name=".activity.UppStaffActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 门店列表 -->
+        <activity
+            android:name=".activity.MyStaffShopListActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 店员管理列表 -->
+        <activity
+            android:name=".activity.MyStaffManagementActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 二维码页面 -->
+        <activity
+            android:name=".activity.MyTwoCodeActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 二维码结果 -->
+        <activity
+            android:name=".activity.ScanResultActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- POS FAQ页面 -->
+        <activity
+            android:name=".activity.MyPosFaqActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 微信公共帐号页面 -->
+        <activity
+            android:name=".activity.SysWechatActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 会员卡列表页 -->
+        <activity
+            android:name=".activity.CardListActitivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 会员卡规定设置 -->
+        <activity
+            android:name=".activity.CardSettingsActitivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- CardDetailActivity 每张会员卡的详细信息 -->
+        <activity
+            android:name=".activity.CardDetailActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- VipChatActivity 会员卡管理者和会员交流 -->
+        <activity
+            android:name=".activity.VipChatActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar"
+            android:windowSoftInputMode="adjustResize" />
+        <!-- 优惠券列表 -->
+        <activity
+            android:name=".activity.CouponListActitivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 优惠券设置 -->
+        <activity
+            android:name=".activity.CouponSettingActitivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 优惠券使用详情 -->
+        <activity
+            android:name=".activity.CouponCsmDetailActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 营销活动 主页 -->
+        <activity
+            android:name=".activity.ActListActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 营销活动报名人数 -->
+        <activity
+            android:name=".activity.ContentEnrollActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 添加红包列表 -->
+        <activity
+            android:name=".activity.ActAddMoneyActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 红包详情页 -->
+        <activity
+            android:name=".activity.ActMoneyDetailActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 添加营销活动 -->
+        <activity
+            android:name=".activity.ActAddActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 添加营销活动说明 -->
+        <activity
+            android:name=".activity.ActAddExplainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 添加营销人数限制 -->
+        <activity
+            android:name=".activity.ActAddPeopleActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 添加营销图片预览 -->
+        <activity
+            android:name=".activity.ActAddImageActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 图片预览 -->
+        <activity
+            android:name=".activity.AlbumActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 图片预览 -->
+        <activity
+            android:name=".activity.GalleryActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <activity
+            android:name=".activity.ImageFile"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <activity
+            android:name=".activity.ShowAllPhoto"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 添加营销图片预览添加详情 -->
+        <activity
+            android:name=".activity.ActAddSelectDetailActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 营销活动详情 -->
+        <activity
+            android:name=".activity.ActContentDetailActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 红包领取人数 -->
+        <activity
+            android:name=".activity.MoneyReceiverActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 对账单首页 -->
+        <activity
+            android:name=".activity.AccntStatActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 银行卡对账 -->
+        <activity
+            android:name=".activity.MyBalanceManagerSusActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 银行卡对账详情 -->
+        <activity
+            android:name=".activity.MyBalanceDetailActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 关于页 -->
+        <activity
+            android:name=".activity.MyHomeAboutActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 推荐用户 -->
+        <activity
+            android:name=".activity.MyRecommonedActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 关于惠圈 -->
+        <activity
+            android:name=".activity.AboutActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 优惠券 详细设置 -->
+        <activity
+            android:name=".activity.CouponSetDetailActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar"
+            android:windowSoftInputMode="adjustResize" />
+        <!-- 优惠券 预览到提交 -->
+        <activity
+            android:name=".activity.CouponSetPreViewActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- POS机支付 -->
+        <activity
+            android:name=".activity.PosPayActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- POS机支付 -->
+        <activity
+            android:name=".activity.SelectPicActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 会员卡积分设置 -->
+        <activity
+            android:name="com.huift.hfq.shop.activity.CardSetGradeActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 第一张会员卡会员卡积分设置 -->
+        <activity
+            android:name="com.huift.hfq.shop.activity.CardGradeFirstActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar"
+            android:windowSoftInputMode="adjustResize" />
+        <!-- 第二张会员卡会员卡积分设置 -->
+        <activity
+            android:name="com.huift.hfq.shop.activity.CardGradeSecondActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar"
+            android:windowSoftInputMode="adjustResize" />
+        <!-- 第三张会员卡会员卡积分设置 -->
+        <activity
+            android:name="com.huift.hfq.shop.activity.CardGradeThirdActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar"
+            android:windowSoftInputMode="adjustResize" />
+        <!-- 会员卡列表设置 -->
+        <activity
+            android:name="com.huift.hfq.shop.activity.CardGradeListActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 会员卡查询 -->
+        <activity
+            android:name=".activity.CardInfoListActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 条形统计图 -->
+        <activity android:name="org.achartengine.GraphicalActivity" />
+        <!-- 设置的图片 -->
+        <activity
+            android:name=".activity.MyHomeSettingActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 我的消息 -->
+        <activity
+            android:name=".activity.MassageActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 收银台 -->
+        <activity
+            android:name=".activity.CashierActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 收银台 撤销交易 -->
+        <activity
+            android:name=".activity.CashierCancelTransActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 收银台 隔日退货交易 -->
+        <activity
+            android:name=".activity.CashierRefundTransActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 收银台 打印交易 -->
+        <activity
+            android:name=".activity.CashierPrintTransActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 收银台 查询明细交易 -->
+        <activity
+            android:name=".activity.CashierQueryTransActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 优惠券详情列表 -->
+        <activity
+            android:name="com.huift.hfq.shop.activity.CouponDetailActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 收银台 分期付款交易 -->
+        <activity
+            android:name=".activity.CashierInstallmentTransActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 收银台 操作确认 -->
+        <activity
+            android:name=".activity.CashierConfirmActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 收银台 处理结果 -->
+        <activity
+            android:name=".activity.CashierResultActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 输入金额-->
+        <activity
+            android:name=".activity.ScanInputAmountActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 机器打印 -->
+        <activity
+            android:name=".activity.ScanPrinterActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 活动列表 -->
+        <activity
+            android:name=".activity.CampaignListActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 新建活动列表 -->
+        <activity
+            android:name=".activity.CampaignAddActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 活动类型-->
+        <activity
+            android:name=".activity.CampaignTypeActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 活动介绍-->
+        <activity
+            android:name=".activity.CampaignIntroducesActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 活动费用-->
+        <activity
+            android:name=".activity.CampaignFreeActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 惠圈账本-->
+        <activity
+            android:name=".activity.BillHomeActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 惠圈账本的列表-->
+        <activity
+            android:name=".activity.BillClassActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 惠圈账本的详情-->
+        <activity
+            android:name=".activity.BillDetailActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 短信接收设置-->
+        <activity
+            android:name=".activity.TextMessageActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!-- 添加短信接收者-->
+        <activity
+            android:name=".activity.AddTextMessageActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+        <!--照片的首页(活动)-->
+        <activity android:name=".activity.ImageUploadActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar"/>
+        <!--支付结果-->
+        <activity android:name=".activity.PayStatusActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar"/>
+
+        <service android:name="com.huift.hfq.shop.service.UpdateService" />
+        <service android:name="com.huift.hfq.shop.service.PrintBillService" />
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.huift.hfq.shop.FileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+        <!--解决某些网络请求出错-->
+        <uses-library android:name="org.apache.http.legacy" android:required="false" />
+    </application>
+
+</manifest>

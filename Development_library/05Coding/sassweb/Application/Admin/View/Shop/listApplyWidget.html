@@ -1,0 +1,82 @@
+<table class="fp-table table table-striped table-bordered table-condensed" id="data_table">
+    <thead>
+    <tr>
+        <th>商家简称</th>
+        <th>联系电话</th>
+        <th>营业开始时间</th>
+        <th>营业结束时间</th>
+        <th>店铺地址</th>
+        <th>手机号码</th>
+        <th>申请时间</th>
+        <th>申请状态</th>
+    </tr>
+    </thead>
+    <tbody>
+    <foreach name="dataList" item="item">
+        <tr>
+            <td>{$item.shopName}</td>
+            <td>{$item.tel}</td>
+            <td>{$item.startTime}</td>
+            <td>{$item.endTime}</td>
+            <td>{$item.street}</td>
+            <td>{$item.mobileNbr}</td>
+            <td>{$item.applyTime}</td>
+            <td>
+                <div class="btn-group">
+                    <switch name="item.applyStatus">
+                        <case value="1">
+                            <button type="button" class="btn btn-xs btn-danger dropdown-toggle btn-apply-status-{$item.id}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="status-text">未处理</span><span class="caret"></span>
+                            </button>
+                        </case>
+                        <case value="2">
+                            <button type="button" class="btn btn-xs btn-success dropdown-toggle btn-apply-status-{$item.shopCode}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="status-text">已处理</span><span class="caret"></span>
+                            </button>
+                        </case>
+                    </switch>
+                    <ul class="dropdown-menu" style="min-width: 0">
+                        <li><a href="#" data-id="{$item.id}" data-apply-status="1" class="edit-apply-status">未处理</a></li>
+                        <li><a href="#" data-id="{$item.id}" data-apply-status="2" class="edit-apply-status">已处理</a></li>
+                    </ul>
+                </div>
+            </td>
+        </tr>
+    </foreach>
+    </tbody>
+</table>
+<script>
+    // 修改商家申请处理的状态
+    ;(function(){
+        $('.edit-apply-status').on('click', function(){
+            var id = $(this).data('id');
+            var applyStatus = $(this).data('applyStatus');
+
+            var applyStatusBtn = $('.btn-apply-status-' + id);
+            applyStatusBtn.removeClass('btn-default').removeClass('btn-success').removeClass('btn-danger');
+            $.get(
+                    '/Admin/Shop/editApplyStatus',
+                    {'id': id, 'applyStatus': applyStatus},
+                    function(resp){
+                        if(resp.status == sz.STATUS_SUCC) {
+                            switch(applyStatus){
+                                case 1:
+                                    applyStatusBtn.children().filter('.status-text').html('未处理');
+                                    applyStatusBtn.addClass('btn-danger');
+                                    break;
+                                case 2:
+                                    applyStatusBtn.children().filter('.status-text').html('已处理');
+                                    applyStatusBtn.addClass('btn-success');
+                                    break;
+                            }
+                        } else {
+                            sz.showErrMsg(resp.msg)
+                        }
+                    }
+            );
+            return false;
+        });
+    })();
+</script>
+<include file="Application/Admin/View/Widget/pager.html" />
+

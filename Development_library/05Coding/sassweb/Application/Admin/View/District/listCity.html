@@ -1,0 +1,78 @@
+<layout name="layout_admin" />
+<div>
+
+    <form class="form-inline" id="data_search_form" action="#" method="get">
+        <div class="form-group">
+            <label for="bank_id">所属商圈</label>
+            <input type="hidden" value="{$get.bank_id}" id="search-bank"/>
+            <select class="form-control" name="bank_id" id="bank_id">
+                <option value="">请选择</option>
+                <volist name="list" id="vo">
+                    <option value="{$vo['id']}" {:isCheck($vo['id'],$get['bank_id'],'selected')}>{$vo['name']}</option>
+                </volist>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="search-province">省份</label>
+            <input type="hidden" value="{$get.name}" id="search-province"/>
+            <select class="form-control frm-select" name="name" id='province'>
+                <option value="">全部省份</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="is-open">是否开通</label>
+            <select class="form-control" name="isOpen" id="is-open">
+                <option value="1" <eq name="get.isOpen" value="1">selected="selected"</eq>>已开通</option>
+                <option value="0" <eq name="get.isOpen" value="0">selected="selected"</eq>>未开通</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary btn-sm" id="search_form_submit_btn">查询</button>
+        <input type="hidden" id="frm_ele_page" name="page" value="1" />
+    </form>
+</div>
+<script type="text/javascript">
+    $(function($) {
+        // 初始化省份、城市、地区
+        var defaultProvince = $('#search-province').val();
+        sz.initDistrict(defaultProvince);
+    });
+</script>
+<div id="data_table_wrapper">
+    <include file="./Application/Admin/View/District/listCityWidget.html" />
+</div>
+<script type="text/javascript">
+    $(function () {
+
+        // 初始化选择店长或大店长
+        $('#bankId').select2({
+            placeholder: "请选择所属商圈",
+            allowClear: true
+        });
+
+
+        $(".qiao_close_open").click(function () {
+           var   bank_id    = $(this).attr("data-bank");
+           var   status     = $(this).attr("data-status");
+           var   dist_id      = $(this).attr("data-id");
+           var Jsondata = {"bank_id":bank_id,"status":status,"id":dist_id};
+
+           if(bank_id.length<1){
+               sz.showErrMsg("必须选择所属商圈", 3);
+               return ;
+           }
+
+           var url = "/Admin/District/changeStatus";
+            $.get(url,Jsondata,function (res) {
+
+                if(res.status==1){
+                    sz.showSuccMsg(res.info, 3);
+                }else {
+                    sz.showErrMsg(res.info, 3);
+                }
+                      // window.location.reload();
+            },"json");
+        });
+    });
+
+</script>

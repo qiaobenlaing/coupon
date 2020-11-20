@@ -1,0 +1,111 @@
+<layout name="layout_admin" />
+<div>
+    <form class="form-inline" id="data_search_form" action="#" method="get">
+        <div class="form-group">
+            <label for="shop-name">手机</label>
+            <input type="text" class="form-control" name="mobileNbr" value="{$get.mobileNbr}" placeholder="用户手机号" id="mobileNbr">
+        </div>
+        <div class="form-group">
+            <label for="shop-name">用户编号</label>
+            <input type="text" class="form-control" name="userCode" value="" placeholder="用户编号" id="userCode">
+        </div>
+        <div class="form-group">
+            <label for="shop-name">昵称</label>
+            <input type="text" class="form-control" name="nickName" value="{$get.nickName}" placeholder="用户昵称" id="nickName">
+        </div>
+        <div class="form-group">
+            <label for="shop-name">姓名</label>
+            <input type="text" class="form-control" name="realName" value="{$get.realName}" placeholder="用户真实姓名" id="realName">
+        </div>
+        <div class="form-group">
+            <label for="shop-name">商家名</label>
+            <input type="text" class="form-control" name="shopName" value="{$get.shopName}" placeholder="商家名" id="shop-name">
+        </div>
+        <br/> <br/>
+        <div class="form-group">
+            <label for="order-time-start">账单生成时间</label>
+            <div class="input-group date consume-time">
+                <input type="text" class="form-control ipt-date-time-picker" id="order-time-start" name="orderTimeStart" value="{$get.orderTimeStart}" readonly placeholder="开始时间"/>
+                <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="order-time-end">至</label>
+            <div class="input-group date consume-time">
+                <input type="text" class="form-control ipt-date-time-picker" name="orderTimeEnd" value="{$get.orderTimeEnd}" readonly placeholder="结束时间" id="order-time-end"/>
+                <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="status">支付状态</label>
+            <select class="form-control" name="status" id="status">
+                <option value="">全部类型</option>
+                <option value="100" <eq name="get.status" value="100">selected="selected"</eq>>不能支付</option>
+                <option value="1" <eq name="get.status" value="1">selected="selected"</eq>>未付款</option>
+                <option value="2" <eq name="get.status" value="2">selected="selected"</eq>>付款中</option>
+                <option value="3" <eq name="get.status" value="3">selected="selected"</eq>>已付款</option>
+                <option value="4" <eq name="get.status" value="4">selected="selected"</eq>>已取消付款</option>
+                <option value="5" <eq name="get.status" value="5">selected="selected"</eq>>付款失败</option>
+                <option value="6" <eq name="get.status" value="6">selected="selected"</eq>>退款中</option>
+                <option value="7" <eq name="get.status" value="7">selected="selected"</eq>>退款成功</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-sm btn-primary" id="search_form_submit_btn">查询</button>
+        <button type="button" class="btn btn-sm btn-primary" id="export">导出</button>
+        <input type="hidden" id="frm_ele_page" name="page" value="1" />
+
+    </form>
+</div>
+<br/>
+<div><button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#myModal">结算平台补贴</button></div>
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">结算平台补贴</h4>
+            </div>
+            <div class="modal-body">
+                你确认这些账单的平台补贴都已经结算了吗？
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">让我再考虑一下</button>
+                <button type="button" class="btn btn-primary btn-hq-subsidy-settled">确认</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="data_table_wrapper">
+    <include file="./Application/Admin/View/UserConsume/listUserConsumeWidget.html" />
+</div>
+<script>
+    $(function(){
+        // 初始化时间控件
+        $('.consume-time').datetimepicker({
+            format: 'yyyy-mm-dd',
+            autoclose: true,
+            todayBtn: true,
+            minView: 'month',
+            pickerPosition: "bottom-left"
+        });
+        // 设置账单的平台补贴为已结算
+        $('.btn-hq-subsidy-settled').on('click', function(){
+            $.post('/Admin/UserConsume/settleHqSubsidy', $('#data_search_form').serialize(), function(resp){
+                if(resp.status == sz.STATUS_SUCC) {
+                    location.reload();
+                } else {
+                    sz.showErrMsg(resp.msg);
+                }
+            });
+        });
+        //导出账单
+        $('#export').click(function(){
+            var frm = $('#data_search_form');
+            location.href= '/Admin/UserConsume/exportUserConsume?' + frm.serialize()+'&page=0';
+        });
+    });
+</script>

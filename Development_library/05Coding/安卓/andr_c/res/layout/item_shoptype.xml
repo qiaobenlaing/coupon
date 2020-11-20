@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/white" >
+
+    <RelativeLayout
+        android:id="@+id/ly_home_shoptype"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/iv_shoptype"
+            style="@style/IvShopTypeImage"
+            android:background="@drawable/other"
+            android:layout_centerHorizontal="true"
+            android:scaleType="fitXY" />
+
+        <TextView
+            android:id="@+id/tv_shoptype"
+            style="@style/TvHomeImge"
+            android:layout_below="@+id/iv_shoptype"
+            android:text="@string/other_home"
+          	android:layout_centerHorizontal="true"
+            android:textColor="@color/home_font" />
+    </RelativeLayout>
+
+</RelativeLayout>

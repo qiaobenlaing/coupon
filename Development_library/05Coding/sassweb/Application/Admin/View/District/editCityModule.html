@@ -1,0 +1,3041 @@
+<layout name="layout_admin" />
+<div class="row">
+<div class="col-md-11">
+<form id="template_form" action="/Admin/District/editCityModule" method="post" class="form-horizontal">
+<input type="hidden" name="relId" value="{$dataInfo.relId}" />
+<div class="form-group">
+<label class="col-sm-2 control-label">显示模板 (原模板：{$dataInfo.template})</label>
+<div class="col-sm-10">
+<if condition="$subModuleCount eq 1">
+<label class="radio-inline">
+    <input type="radio" name="template" value="101" checked="checked">
+    <div class="show_template">
+        <table>
+            <tr>
+                <td style="background-color: {$subModuleList[0].bgColor};">
+                    <div class="sub_module">
+                        <?php if($subModuleList[0]['imgPosition'] == 0):?>
+                        <div class="first_sm">
+                            <img src="{$subModuleList[0].imgUrl}" style="width: {$subModuleList[0].imgWidth};height: {$subModuleList[0].imgHeight};">
+                        </div>
+                        <div class="first_sm">
+                            <p style="color: {$subModuleList[0].titleColor};">{$subModuleList[0].title}</p>
+                            <p style="color: {$subModuleList[0].subTitleColor};">{$subModuleList[0].subTitle|msubstr=0,4,'utf-8',true}</p>
+                        </div>
+                        <?php elseif($subModuleList[0]['imgPosition'] == 1):?>
+                        <div class="one_sm">
+                            <img src="{$subModuleList[0].imgUrl}" style="width: {$subModuleList[0].imgWidth};height: {$subModuleList[0].imgHeight};">
+                        </div>
+                        <div class="one_sm">
+                            <p style="color: {$subModuleList[0].titleColor};">{$subModuleList[0].title}</p>
+                            <p style="color: {$subModuleList[0].subTitleColor};">{$subModuleList[0].subTitle|msubstr=0,4,'utf-8',true}</p>
+                        </div>
+                        <?php elseif($subModuleList[0]['imgPosition'] == 2):?>
+                        <div class="first_sm">
+                            <p style="color: {$subModuleList[0].titleColor};">{$subModuleList[0].title}</p>
+                            <p style="color: {$subModuleList[0].subTitleColor};">{$subModuleList[0].subTitle|msubstr=0,4,'utf-8',true}</p>
+                        </div>
+                        <div class="first_sm">
+                            <img src="{$subModuleList[0].imgUrl}" style="width: {$subModuleList[0].imgWidth};height: {$subModuleList[0].imgHeight};">
+                        </div>
+                        <?php elseif($subModuleList[0]['imgPosition'] == 3):?>
+                        <div class="one_sm">
+                            <p style="color: {$subModuleList[0].titleColor};">{$subModuleList[0].title}</p>
+                            <p style="color: {$subModuleList[0].subTitleColor};">{$subModuleList[0].subTitle|msubstr=0,4,'utf-8',true}</p>
+                        </div>
+                        <div class="one_sm">
+                            <img src="{$subModuleList[0].imgUrl}" style="width: {$subModuleList[0].imgWidth};height: {$subModuleList[0].imgHeight};">
+                        </div>
+                        <?php elseif($subModuleList[0]['imgPosition'] == 4):?>
+                        <div class="one_sm">
+                            <img src="{$subModuleList[0].imgUrl}" style="width: {$subModuleList[0].imgWidth};height: {$subModuleList[0].imgHeight};">
+                        </div>
+                        <?php endif;?>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <p>101</p>
+    </div>
+</label>
+<elseif condition="$subModuleCount eq 2" />
+<label class="radio-inline">
+    <input type="radio" name="template" value="201" <neq name="dataInfo.template" value="202">checked="checked"</neq>>
+    <div class="show_template">
+        <table>
+            <tr>
+                <td style="background-color: {$subModuleList[0].bgColor};">
+                    <div class="sub_module">
+                        <?php if($subModuleList[0]['imgPosition'] == 0):?>
+                        <div class="first_sm">
+                            <img src="{$subModuleList[0].imgUrl}" style="width: {$subModuleList[0].imgWidth};height: {$subModuleList[0].imgHeight};">
+                        </div>
+                        <div class="first_sm">
+                            <p style="color: {$subModuleList[0].titleColor};">{$subModuleList[0].title}</p>
+                            <p style="color: {$subModuleList[0].subTitleColor};">{$subModuleList[0].subTitle|msubstr=0,4,'utf-8',true}</p>
+                        </div>
+                        <?php elseif($subModuleList[0]['imgPosition'] == 1):?>
+                        <div class="one_sm">
+                            <img src="{$subModuleList[0].imgUrl}" style="width: {$subModuleList[0].imgWidth};height: {$subModuleList[0].imgHeight};">
+                        </div>
+                        <div class="one_sm">
+                            <p style="color: {$subModuleList[0].titleColor};">{$subModuleList[0].title}</p>
+                            <p style="color: {$subModuleList[0].subTitleColor};">{$subModuleList[0].subTitle|msubstr=0,4,'utf-8',true}</p>
+                        </div>
+                        <?php elseif($subModuleList[0]['imgPosition'] == 2):?>
+                        <div class="first_sm">
+                            <p style="color: {$subModuleList[0].titleColor};">{$subModuleList[0].title}</p>
+                            <p style="color: {$subModuleList[0].subTitleColor};">{$subModuleList[0].subTitle|msubstr=0,4,'utf-8',true}</p>
+                        </div>
+                        <div class="first_sm">
+                            <img src="{$subModuleList[0].imgUrl}" style="width: {$subModuleList[0].imgWidth};height: {$subModuleList[0].imgHeight};">
+                        </div>
+                        <?php elseif($subModuleList[0]['imgPosition'] == 3):?>
+                        <div class="one_sm">
+                            <p style="color: {$subModuleList[0].titleColor};">{$subModuleList[0].title}</p>
+                            <p style="color: {$subModuleList[0].subTitleColor};">{$subModuleList[0].subTitle|msubstr=0,4,'utf-8',true}</p>
+                        </div>
+                        <div class="one_sm">
+                            <img src="{$subModuleList[0].imgUrl}" style="width: {$subModuleList[0].imgWidth};height: {$subModuleList[0].imgHeight};">
+                        </div>
+                        <?php elseif($subModuleList[0]['imgPosition'] == 4):?>
+                        <div class="one_sm">
+                            <img src="{$subModuleList[0].imgUrl}" style="width: {$subModuleList[0].imgWidth};height: {$subModuleList[0].imgHeight};">
+                        </div>
+                        <?php endif;?>
+                    </div>
+                </td>
+                <td style="background-color: {$subModuleList[1].bgColor};">
+                    <div class="sub_module">
+                        <?php if($subModuleList[1]['imgPosition'] == 0):?>
+                        <div class="first_sm">
+                            <img src="{$subModuleList[1].imgUrl}" style="width: {$subModuleList[1].imgWidth};height: {$subModuleList[1].imgHeight};">
+                        </div>
+                        <div class="first_sm">
+                            <p style="color: {$subModuleList[1].titleColor};">{$subModuleList[1].title}</p>
+                            <p style="color: {$subModuleList[1].subTitleColor};">{$subModuleList[1].subTitle|msubstr=0,4,'utf-8',true}</p>
+                        </div>
+                        <?php elseif($subModuleList[1]['imgPosition'] == 1):?>
+                        <div class="one_sm">
+                            <img src="{$subModuleList[1].imgUrl}" style="width: {$subModuleList[1].imgWidth};height: {$subModuleList[1].imgHeight};">
+                        </div>
+                        <div class="one_sm">
+                            <p style="color: {$subModuleList[1].titleColor};">{$subModuleList[1].title}</p>
+                            <p style="color: {$subModuleList[1].subTitleColor};">{$subModuleList[1].subTitle|msubstr=0,4,'utf-8',true}</p>
+                        </div>
+                        <?php elseif($subModuleList[1]['imgPosition'] == 2):?>
+                        <div class="first_sm">
+                            <p style="color: {$subModuleList[1].titleColor};">{$subModuleList[1].title}</p>
+                            <p style="color: {$subModuleList[1].subTitleColor};">{$subModuleList[1].subTitle|msubstr=0,4,'utf-8',true}</p>
+                        </div>
+                        <div class="first_sm">
+                            <img src="{$subModuleList[1].imgUrl}" style="width: {$subModuleList[1].imgWidth};height: {$subModuleList[1].imgHeight};">
+                        </div>
+                        <?php elseif($subModuleList[1]['imgPosition'] == 3):?>
+                        <div class="one_sm">
+                            <p style="color: {$subModuleList[1].titleColor};">{$subModuleList[1].title}</p>
+                            <p style="color: {$subModuleList[1].subTitleColor};">{$subModuleList[1].subTitle|msubstr=0,4,'utf-8',true}</p>
+                        </div>
+                        <div class="one_sm">
+                            <img src="{$subModuleList[1].imgUrl}" style="width: {$subModuleList[1].imgWidth};height: {$subModuleList[1].imgHeight};">
+                        </div>
+                        <?php elseif($subModuleList[1]['imgPosition'] == 4):?>
+                        <div class="one_sm">
+                            <img src="{$subModuleList[1].imgUrl}" style="width: {$subModuleList[1].imgWidth};height: {$subModuleList[1].imgHeight};">
+                        </div>
+                        <?php endif;?>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <p>201</p>
+    </div>
+</label>
+<label class="radio-inline">
+    <input type="radio" name="template" value="202" <eq name="dataInfo.template" value="202">checked="checked"</eq>>
+    <div class="show_template">
+        <table>
+            <tr>
+                <td style="background-color: {$subModuleList[0].bgColor};">
+                    <div class="sub_module">
+                        <?php if($subModuleList[0]['imgPosition'] == 0):?>
+                        <div class="first_sm">
+                            <img src="{$subModuleList[0].imgUrl}" style="width: {$subModuleList[0].imgWidth};height: {$subModuleList[0].imgHeight};">
+                        </div>
+                        <div class="first_sm">
+                            <p style="color: {$subModuleList[0].titleColor};">{$subModuleList[0].title}</p>
+                            <p style="color: {$subModuleList[0].subTitleColor};">{$subModuleList[0].subTitle|msubstr=0,4,'utf-8',true}</p>
+                        </div>
+                        <?php elseif($subModuleList[0]['imgPosition'] == 1):?>
+                        <div class="one_sm">
+                            <img src="{$subModuleList[0].imgUrl}" style="width: {$subModuleList[0].imgWidth};height: {$subModuleList[0].imgHeight};">
+                        </div>
+                        <div class="one_sm">
+                            <p style="color: {$subModuleList[0].titleColor};">{$subModuleList[0].title}</p>
+                            <p style="color: {$subModuleList[0].subTitleColor};">{$subModuleList[0].subTitle|msubstr=0,4,'utf-8',true}</p>
+                        </div>
+                        <?php elseif($subModuleList[0]['imgPosition'] == 2):?>
+                        <div class="first_sm">
+                            <p style="color: {$subModuleList[0].titleColor};">{$subModuleList[0].title}</p>
+                            <p style="color: {$subModuleList[0].subTitleColor};">{$subModuleList[0].subTitle|msubstr=0,4,'utf-8',true}</p>
+                        </div>
+                        <div class="first_sm">
+                            <img src="{$subModuleList[0].imgUrl}" style="width: {$subModuleList[0].imgWidth};height: {$subModuleList[0].imgHeight};">
+                        </div>
+                        <?php elseif($subModuleList[0]['imgPosition'] == 3):?>
+                        <div class="one_sm">
+                            <p style="color: {$subModuleList[0].titleColor};">{$subModuleList[0].title}</p>
+                            <p style="color: {$subModuleList[0].subTitleColor};">{$subModuleList[0].subTitle|msubstr=0,4,'utf-8',true}</p>
+                        </div>
+                        <div class="one_sm">
+                            <img src="{$subModuleList[0].imgUrl}" style="width: {$subModuleList[0].imgWidth};height: {$subModuleList[0].imgHeight};">
+                        </div>
+                        <?php elseif($subModuleList[0]['imgPosition'] == 4):?>
+                        <div class="one_sm">
+                            <img src="{$subModuleList[0].imgUrl}" style="width: {$subModuleList[0].imgWidth};height: {$subModuleList[0].imgHeight};">
+                        </div>
+                        <?php endif;?>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="background-color: {$subModuleList[1].bgColor};">
+                    <div class="sub_module">
+                        <?php if($subModuleList[1]['imgPosition'] == 0):?>
+                        <div class="first_sm">
+                            <img src="{$subModuleList[1].imgUrl}" style="width: {$subModuleList[1].imgWidth};height: {$subModuleList[1].imgHeight};">
+                        </div>
+                        <div class="first_sm">
+                            <p style="color: {$subModuleList[1].titleColor};">{$subModuleList[1].title}</p>
+                            <p style="color: {$subModuleList[1].subTitleColor};">{$subModuleList[1].subTitle|msubstr=0,4,'utf-8',true}</p>
+                        </div>
+                        <?php elseif($subModuleList[1]['imgPosition'] == 1):?>
+                        <div class="one_sm">
+                            <img src="{$subModuleList[1].imgUrl}" style="width: {$subModuleList[1].imgWidth};height: {$subModuleList[1].imgHeight};">
+                        </div>
+                        <div class="one_sm">
+                            <p style="color: {$subModuleList[1].titleColor};">{$subModuleList[1].title}</p>
+                            <p style="color: {$subModuleList[1].subTitleColor};">{$subModuleList[1].subTitle|msubstr=0,4,'utf-8',true}</p>
+                        </div>
+                        <?php elseif($subModuleList[1]['imgPosition'] == 2):?>
+                        <div class="first_sm">
+                            <p style="color: {$subModuleList[1].titleColor};">{$subModuleList[1].title}</p>
+                            <p style="color: {$subModuleList[1].subTitleColor};">{$subModuleList[1].subTitle|msubstr=0,4,'utf-8',true}</p>
+                        </div>
+                        <div class="first_sm">
+                            <img src="{$subModuleList[1].imgUrl}" style="width: {$subModuleList[1].imgWidth};height: {$subModuleList[1].imgHeight};">
+                        </div>
+                        <?php elseif($subModuleList[1]['imgPosition'] == 3):?>
+                        <div class="one_sm">
+                            <p style="color: {$subModuleList[1].titleColor};">{$subModuleList[1].title}</p>
+                            <p style="color: {$subModuleList[1].subTitleColor};">{$subModuleList[1].subTitle|msubstr=0,4,'utf-8',true}</p>
+                        </div>
+                        <div class="one_sm">
+                            <img src="{$subModuleList[1].imgUrl}" style="width: {$subModuleList[1].imgWidth};height: {$subModuleList[1].imgHeight};">
+                        </div>
+                        <?php elseif($subModuleList[1]['imgPosition'] == 4):?>
+                        <div class="one_sm">
+                            <img src="{$subModuleList[1].imgUrl}" style="width: {$subModuleList[1].imgWidth};height: {$subModuleList[1].imgHeight};">
+                        </div>
+                        <?php endif;?>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <p>202</p>
+    </div>
+</label>
+<elseif condition="$subModuleCount eq 3" />
+<label class="radio-inline">
+    <input type="radio" name="template" value="301" <if condition="($dataInfo.template neq 302) AND ($dataInfo.template neq 303) AND ($dataInfo.template neq 304)">checked="checked"</if>>
+    <div class="show_template">
+        <table>
+            <tr>
+                <td style="background-color: {$subModuleList[0].bgColor};">
+                    <div class="sub_module">
+                        <?php if($subModuleList[0]['imgPosition'] == 0):?>
+                        <div class="first_sm">
+                            <img src="{$subModuleList[0].imgUrl}" style="width: {$subModuleList[0].imgWidth};height: {$subModuleList[0].imgHeight};">
+                        </div>
+                        <div class="first_sm">
+                            <p style="color: {$subModuleList[0].titleColor};">{$subModuleList[0].title}</p>
+                            <p style="color: {$subModuleList[0].subTitleColor};">{$subModuleList[0].subTitle|msubstr=0,4,'utf-8',true}</p>
+                        </div>
+                        <?php elseif($subModuleList[0]['imgPosition'] == 1):?>
+                        <div class="one_sm">
+                            <img src="{$subModuleList[0].imgUrl}" style="width: {$subModuleList[0].imgWidth};height: {$subModuleList[0].imgHeight};">
+                        </div>
+                        <div class="one_sm">
+                            <p style="color: {$subModuleList[0].titleColor};">{$subModuleList[0].title}</p>
+                            <p style="color: {$subModuleList[0].subTitleColor};">{$subModuleList[0].subTitle|msubstr=0,4,'utf-8',true}</p>
+                        </div>
+                        <?php elseif($subModuleList[0]['imgPosition'] == 2):?>
+                        <div class="first_sm">
+                            <p style="color: {$subModuleList[0].titleColor};">{$subModuleList[0].title}</p>
+                            <p style="color: {$subModuleList[0].subTitleColor};">{$subModuleList[0].subTitle|msubstr=0,4,'utf-8',true}</p>
+                        </div>
+                        <div class="first_sm">
+                            <img src="{$subModuleList[0].imgUrl}" style="width: {$subModuleList[0].imgWidth};height: {$subModuleList[0].imgHeight};">
+                        </div>
+                        <?php elseif($subModuleList[0]['imgPosition'] == 3):?>
+                        <div class="one_sm">
+                            <p style="color: {$subModuleList[0].titleColor};">{$subModuleList[0].title}</p>
+                            <p style="color: {$subModuleList[0].subTitleColor};">{$subModuleList[0].subTitle|msubstr=0,4,'utf-8',true}</p>
+                        </div>
+                        <div class="one_sm">
+                            <img src="{$subModuleList[0].imgUrl}" style="width: {$subModuleList[0].imgWidth};height: {$subModuleList[0].imgHeight};">
+                        </div>
+                        <?php elseif($subModuleList[0]['imgPosition'] == 4):?>
+                        <div class="one_sm">
+                            <img src="{$subModuleList[0].imgUrl}" style="width: {$subModuleList[0].imgWidth};height: {$subModuleList[0].imgHeight};">
+                        </div>
+                        <?php endif;?>
+                    </div>
+                </td>
+                <td style="background-color: {$subModuleList[1].bgColor};">
+                    <div class="sub_module">
+                        <?php if($subModuleList[1]['imgPosition'] == 0):?>
+                        <div class="first_sm">
+                            <img src="{$subModuleList[1].imgUrl}" style="width: {$subModuleList[1].imgWidth};height: {$subModuleList[1].imgHeight};">
+                        </div>
+                        <div class="first_sm">
+                            <p style="color: {$subModuleList[1].titleColor};">{$subModuleList[1].title}</p>
+                            <p style="color: {$subModuleList[1].subTitleColor};">{$subModuleList[1].subTitle|msubstr=0,4,'utf-8',true}</p>
+                        </div>
+                        <?php elseif($subModuleList[1]['imgPosition'] == 1):?>
+                        <div class="one_sm">
+                            <img src="{$subModuleList[1].imgUrl}" style="width: {$subModuleList[1].imgWidth};height: {$subModuleList[1].imgHeight};">
+                        </div>
+                        <div class="one_sm">
+                            <p style="color: {$subModuleList[1].titleColor};">{$subModuleList[1].title}</p>
+                            <p style="color: {$subModuleList[1].subTitleColor};">{$subModuleList[1].subTitle|msubstr=0,4,'utf-8',true}</p>
+                        </div>
+                        <?php elseif($subModuleList[1]['imgPosition'] == 2):?>
+                        <div class="first_sm">
+                            <p style="color: {$subModuleList[1].titleColor};">{$subModuleList[1].title}</p>
+                            <p style="color: {$subModuleList[1].subTitleColor};">{$subModuleList[1].subTitle|msubstr=0,4,'utf-8',true}</p>
+                        </div>
+                        <div class="first_sm">
+                            <img src="{$subModuleList[1].imgUrl}" style="width: {$subModuleList[1].imgWidth};height: {$subModuleList[1].imgHeight};">
+                        </div>
+                        <?php elseif($subModuleList[1]['imgPosition'] == 3):?>
+                        <div class="one_sm">
+                            <p style="color: {$subModuleList[1].titleColor};">{$subModuleList[1].title}</p>
+                            <p style="color: {$subModuleList[1].subTitleColor};">{$subModuleList[1].subTitle|msubstr=0,4,'utf-8',true}</p>
+                        </div>
+                        <div class="one_sm">
+                            <img src="{$subModuleList[1].imgUrl}" style="width: {$subModuleList[1].imgWidth};height: {$subModuleList[1].imgHeight};">
+                        </div>
+                        <?php elseif($subModuleList[1]['imgPosition'] == 4):?>
+                        <div class="one_sm">
+                            <img src="{$subModuleList[1].imgUrl}" style="width: {$subModuleList[1].imgWidth};height: {$subModuleList[1].imgHeight};">
+                        </div>
+                        <?php endif;?>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="background-color: {$subModuleList[2].bgColor};">
+                    <div class="sub_module">
+                        <?php if($subModuleList[2]['imgPosition'] == 0):?>
+                        <div class="first_sm">
+                            <img src="{$subModuleList[2].imgUrl}" style="width: {$subModuleList[2].imgWidth};height: {$subModuleList[2].imgHeight};">
+                        </div>
+                        <div class="first_sm">
+                            <p style="color: {$subModuleList[2].titleColor};">{$subModuleList[2].title}</p>
+                            <p style="color: {$subModuleList[2].subTitleColor};">{$subModuleList[2].subTitle|msubstr=0,4,'utf-8',true}</p>
+                        </div>
+                        <?php elseif($subModuleList[2]['imgPosition'] == 1):?>
+                        <div class="one_sm">
+                            <img src="{$subModuleList[2].imgUrl}" style="width: {$subModuleList[2].imgWidth};height: {$subModuleList[2].imgHeight};">
+                        </div>
+                        <div class="one_sm">
+                            <p style="color: {$subModuleList[2].titleColor};">{$subModuleList[2].title}</p>
+                            <p style="color: {$subModuleList[2].subTitleColor};">{$subModuleList[2].subTitle|msubstr=0,4,'utf-8',true}</p>
+                        </div>
+                        <?php elseif($subModuleList[2]['imgPosition'] == 2):?>
+                        <div class="first_sm">
+                            <p style="color: {$subModuleList[2].titleColor};">{$subModuleList[2].title}</p>
+                            <p style="color: {$subModuleList[2].subTitleColor};">{$subModuleList[2].subTitle|msubstr=0,4,'utf-8',true}</p>
+                        </div>
+                        <div class="first_sm">
+                            <img src="{$subModuleList[2].imgUrl}" style="width: {$subModuleList[2].imgWidth};height: {$subModuleList[2].imgHeight};">
+                        </div>
+                        <?php elseif($subModuleList[2]['imgPosition'] == 3):?>
+                        <div class="one_sm">
+                            <p style="color: {$subModuleList[2].titleColor};">{$subModuleList[2].title}</p>
+                            <p style="color: {$subModuleList[2].subTitleColor};">{$subModuleList[2].subTitle|msubstr=0,4,'utf-8',true}</p>
+                        </div>
+                        <div class="one_sm">
+                            <img src="{$subModuleList[2].imgUrl}" style="width: {$subModuleList[2].imgWidth};height: {$subModuleList[2].imgHeight};">
+                        </div>
+                        <?php elseif($subModuleList[2]['imgPosition'] == 4):?>
+                        <div class="one_sm">
+                            <img src="{$subModuleList[2].imgUrl}" style="width: {$subModuleList[2].imgWidth};height: {$subModuleList[2].imgHeight};">
+                        </div>
+                        <?php endif;?>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <p>301</p>
+    </div>
+</label>
+<label class="radio-inline">
+    <input type="radio" name="template" value="302" <eq name="dataInfo.template" value="302">checked="checked"</eq>>
+    <div class="show_template">
+        <table>
+            <tr>
+                <td rowspan="2" style="background-color: {$subModuleList[0].bgColor};">
+                    <div class="sub_module">
+                        <?php if($subModuleList[0]['imgPosition'] == 0):?>
+                        <div class="first_sm">
+                            <img src="{$subModuleList[0].imgUrl}" style="width: {$subModuleList[0].imgWidth};height: {$subModuleList[0].imgHeight};">
+                        </div>
+                        <div class="first_sm">
+                            <p style="color: {$subModuleList[0].titleColor};">{$subModuleList[0].title}</p>
+                            <p style="color: {$subModuleList[0].subTitleColor};">{$subModuleList[0].subTitle|msubstr=0,4,'utf-8',true}</p>
+                        </div>
+                        <?php elseif($subModuleList[0]['imgPosition'] == 1):?>
+                        <div class="one_sm">
+                            <img src="{$subModuleList[0].imgUrl}" style="width: {$subModuleList[0].imgWidth};height: {$subModuleList[0].imgHeight};">
+                        </div>
+                        <div class="one_sm">
+                            <p style="color: {$subModuleList[0].titleColor};">{$subModuleList[0].title}</p>
+                            <p style="color: {$subModuleList[0].subTitleColor};">{$subModuleList[0].subTitle|msubstr=0,4,'utf-8',true}</p>
+                        </div>
+                        <?php elseif($subModuleList[0]['imgPosition'] == 2):?>
+                        <div class="first_sm">
+                            <p style="color: {$subModuleList[0].titleColor};">{$subModuleList[0].title}</p>
+                            <p style="color: {$subModuleList[0].subTitleColor};">{$subModuleList[0].subTitle|msubstr=0,4,'utf-8',true}</p>
+                        </div>
+                        <div class="first_sm">
+                            <img src="{$subModuleList[0].imgUrl}" style="width: {$subModuleList[0].imgWidth};height: {$subModuleList[0].imgHeight};">
+                        </div>
+                        <?php elseif($subModuleList[0]['imgPosition'] == 3):?>
+                        <div class="one_sm">
+                            <p style="color: {$subModuleList[0].titleColor};">{$subModuleList[0].title}</p>
+                            <p style="color: {$subModuleList[0].subTitleColor};">{$subModuleList[0].subTitle|msubstr=0,4,'utf-8',true}</p>
+                        </div>
+                        <div class="one_sm">
+                            <img src="{$subModuleList[0].imgUrl}" style="width: {$subModuleList[0].imgWidth};height: {$subModuleList[0].imgHeight};">
+                        </div>
+                        <?php elseif($subModuleList[0]['imgPosition'] == 4):?>
+                        <div class="one_sm">
+                            <img src="{$subModuleList[0].imgUrl}" style="width: {$subModuleList[0].imgWidth};height: {$subModuleList[0].imgHeight};">
+                        </div>
+                        <?php endif;?>
+                    </div>
+                </td>
+                <td style="background-color: {$subModuleList[1].bgColor};">
+                    <div class="sub_module">
+                        <?php if($subModuleList[1]['imgPosition'] == 0):?>
+                        <div class="first_sm">
+                            <img src="{$subModuleList[1].imgUrl}" style="width: {$subModuleList[1].imgWidth};height: {$subModuleList[1].imgHeight};">
+                        </div>
+                        <div class="first_sm">
+                            <p style="color: {$subModuleList[1].titleColor};">{$subModuleList[1].title}</p>
+                            <p style="color: {$subModuleList[1].subTitleColor};">{$subModuleList[1].subTitle|msubstr=0,4,'utf-8',true}</p>
+                        </div>
+                        <?php elseif($subModuleList[1]['imgPosition'] == 1):?>
+                        <div class="one_sm">
+                            <img src="{$subModuleList[1].imgUrl}" style="width: {$subModuleList[1].imgWidth};height: {$subModuleList[1].imgHeight};">
+                        </div>
+                        <div class="one_sm">
+                            <p style="color: {$subModuleList[1].titleColor};">{$subModuleList[1].title}</p>
+                            <p style="color: {$subModuleList[1].subTitleColor};">{$subModuleList[1].subTitle|msubstr=0,4,'utf-8',true}</p>
+                        </div>
+                        <?php elseif($subModuleList[1]['imgPosition'] == 2):?>
+                        <div class="first_sm">
+                            <p style="color: {$subModuleList[1].titleColor};">{$subModuleList[1].title}</p>
+                            <p style="color: {$subModuleList[1].subTitleColor};">{$subModuleList[1].subTitle|msubstr=0,4,'utf-8',true}</p>
+                        </div>
+                        <div class="first_sm">
+                            <img src="{$subModuleList[1].imgUrl}" style="width: {$subModuleList[1].imgWidth};height: {$subModuleList[1].imgHeight};">
+                        </div>
+                        <?php elseif($subModuleList[1]['imgPosition'] == 3):?>
+                        <div class="one_sm">
+                            <p style="color: {$subModuleList[1].titleColor};">{$subModuleList[1].title}</p>
+                            <p style="color: {$subModuleList[1].subTitleColor};">{$subModuleList[1].subTitle|msubstr=0,4,'utf-8',true}</p>
+                        </div>
+                        <div class="one_sm">
+                            <img src="{$subModuleList[1].imgUrl}" style="width: {$subModuleList[1].imgWidth};height: {$subModuleList[1].imgHeight};">
+                        </div>
+                        <?php elseif($subModuleList[1]['imgPosition'] == 4):?>
+                        <div class="one_sm">
+                            <img src="{$subModuleList[1].imgUrl}" style="width: {$subModuleList[1].imgWidth};height: {$subModuleList[1].imgHeight};">
+                        </div>
+                        <?php endif;?>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="background-color: {$subModuleList[2].bgColor};">
+                    <div class="sub_module">
+                        <?php if($subModuleList[2]['imgPosition'] == 0):?>
+                        <div class="first_sm">
+                            <img src="{$subModuleList[2].imgUrl}" style="width: {$subModuleList[2].imgWidth};height: {$subModuleList[2].imgHeight};">
+                        </div>
+                        <div class="first_sm">
+                            <p style="color: {$subModuleList[2].titleColor};">{$subModuleList[2].title}</p>
+                            <p style="color: {$subModuleList[2].subTitleColor};">{$subModuleList[2].subTitle|msubstr=0,4,'utf-8',true}</p>
+                        </div>
+                        <?php elseif($subModuleList[2]['imgPosition'] == 1):?>
+                        <div class="one_sm">
+                            <img src="{$subModuleList[2].imgUrl}" style="width: {$subModuleList[2].imgWidth};height: {$subModuleList[2].imgHeight};">
+                        </div>
+                        <div class="one_sm">
+                            <p style="color: {$subModuleList[2].titleColor};">{$subModuleList[2].title}</p>
+                            <p style="color: {$subModuleList[2].subTitleColor};">{$subModuleList[2].subTitle|msubstr=0,4,'utf-8',true}</p>
+                        </div>
+                        <?php elseif($subModuleList[2]['imgPosition'] == 2):?>
+                        <div class="first_sm">
+                            <p style="color: {$subModuleList[2].titleColor};">{$subModuleList[2].title}</p>
+                            <p style="color: {$subModuleList[2].subTitleColor};">{$subModuleList[2].subTitle|msubstr=0,4,'utf-8',true}</p>
+                        </div>
+                        <div class="first_sm">
+                            <img src="{$subModuleList[2].imgUrl}" style="width: {$subModuleList[2].imgWidth};height: {$subModuleList[2].imgHeight};">
+                        </div>
+                        <?php elseif($subModuleList[2]['imgPosition'] == 3):?>
+                        <div class="one_sm">
+                            <p style="color: {$subModuleList[2].titleColor};">{$subModuleList[2].title}</p>
+                            <p style="color: {$subModuleList[2].subTitleColor};">{$subModuleList[2].subTitle|msubstr=0,4,'utf-8',true}</p>
+                        </div>
+                        <div class="one_sm">
+                            <img src="{$subModuleList[2].imgUrl}" style="width: {$subModuleList[2].imgWidth};height: {$subModuleList[2].imgHeight};">
+                        </div>
+                        <?php elseif($subModuleList[2]['imgPosition'] == 4):?>
+                        <div class="one_sm">
+                            <img src="{$subModuleList[2].imgUrl}" style="width: {$subModuleList[2].imgWidth};height: {$subModuleList[2].imgHeight};">
+                        </div>
+                        <?php endif;?>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <p>302</p>
+    </div>
+</label>
+<label class="radio-inline">
+    <input type="radio" name="template" value="303" <eq name="dataInfo.template" value="303">checked="checked"</eq>>
+    <div class="show_template">
+        <table>
+            <tr>
+                <td colspan="2" style="background-color: {$subModuleList[0].bgColor};">
+                    <div class="sub_module">
+                        <?php if($subModuleList[0]['imgPosition'] == 0):?>
+                        <div class="first_sm">
+                            <img src="{$subModuleList[0].imgUrl}" style="width: {$subModuleList[0].imgWidth};height: {$subModuleList[0].imgHeight};">
+                        </div>
+                        <div class="first_sm">
+                            <p style="color: {$subModuleList[0].titleColor};">{$subModuleList[0].title}</p>
+                            <p style="color: {$subModuleList[0].subTitleColor};">{$subModuleList[0].subTitle|msubstr=0,4,'utf-8',true}</p>
+                        </div>
+                        <?php elseif($subModuleList[0]['imgPosition'] == 1):?>
+                        <div class="one_sm">
+                            <img src="{$subModuleList[0].imgUrl}" style="width: {$subModuleList[0].imgWidth};height: {$subModuleList[0].imgHeight};">
+                        </div>
+                        <div class="one_sm">
+                            <p style="color: {$subModuleList[0].titleColor};">{$subModuleList[0].title}</p>
+                            <p style="color: {$subModuleList[0].subTitleColor};">{$subModuleList[0].subTitle|msubstr=0,4,'utf-8',true}</p>
+                        </div>
+                        <?php elseif($subModuleList[0]['imgPosition'] == 2):?>
+                        <div class="first_sm">
+                            <p style="color: {$subModuleList[0].titleColor};">{$subModuleList[0].title}</p>
+                            <p style="color: {$subModuleList[0].subTitleColor};">{$subModuleList[0].subTitle|msubstr=0,4,'utf-8',true}</p>
+                        </div>
+                        <div class="first_sm">
+                            <img src="{$subModuleList[0].imgUrl}" style="width: {$subModuleList[0].imgWidth};height: {$subModuleList[0].imgHeight};">
+                        </div>
+                        <?php elseif($subModuleList[0]['imgPosition'] == 3):?>
+                        <div class="one_sm">
+                            <p style="color: {$subModuleList[0].titleColor};">{$subModuleList[0].title}</p>
+                            <p style="color: {$subModuleList[0].subTitleColor};">{$subModuleList[0].subTitle|msubstr=0,4,'utf-8',true}</p>
+                        </div>
+                        <div class="one_sm">
+                            <img src="{$subModuleList[0].imgUrl}" style="width: {$subModuleList[0].imgWidth};height: {$subModuleList[0].imgHeight};">
+                        </div>
+                        <?php elseif($subModuleList[0]['imgPosition'] == 4):?>
+                        <div class="one_sm">
+                            <img src="{$subModuleList[0].imgUrl}" style="width: {$subModuleList[0].imgWidth};height: {$subModuleList[0].imgHeight};">
+                        </div>
+                        <?php endif;?>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="background-color: {$subModuleList[1].bgColor};">
+                    <div class="sub_module">
+                        <?php if($subModuleList[1]['imgPosition'] == 0):?>
+                        <div class="first_sm">
+                            <img src="{$subModuleList[1].imgUrl}" style="width: {$subModuleList[1].imgWidth};height: {$subModuleList[1].imgHeight};">
+                        </div>
+                        <div class="first_sm">
+                            <p style="color: {$subModuleList[1].titleColor};">{$subModuleList[1].title}</p>
+                            <p style="color: {$subModuleList[1].subTitleColor};">{$subModuleList[1].subTitle|msubstr=0,4,'utf-8',true}</p>
+                        </div>
+                        <?php elseif($subModuleList[1]['imgPosition'] == 1):?>
+                        <div class="one_sm">
+                            <img src="{$subModuleList[1].imgUrl}" style="width: {$subModuleList[1].imgWidth};height: {$subModuleList[1].imgHeight};">
+                        </div>
+                        <div class="one_sm">
+                            <p style="color: {$subModuleList[1].titleColor};">{$subModuleList[1].title}</p>
+                            <p style="color: {$subModuleList[1].subTitleColor};">{$subModuleList[1].subTitle|msubstr=0,4,'utf-8',true}</p>
+                        </div>
+                        <?php elseif($subModuleList[1]['imgPosition'] == 2):?>
+                        <div class="first_sm">
+                            <p style="color: {$subModuleList[1].titleColor};">{$subModuleList[1].title}</p>
+                            <p style="color: {$subModuleList[1].subTitleColor};">{$subModuleList[1].subTitle|msubstr=0,4,'utf-8',true}</p>
+                        </div>
+                        <div class="first_sm">
+                            <img src="{$subModuleList[1].imgUrl}" style="width: {$subModuleList[1].imgWidth};height: {$subModuleList[1].imgHeight};">
+                        </div>
+                        <?php elseif($subModuleList[1]['imgPosition'] == 3):?>
+                        <div class="one_sm">
+                            <p style="color: {$subModuleList[1].titleColor};">{$subModuleList[1].title}</p>
+                            <p style="color: {$subModuleList[1].subTitleColor};">{$subModuleList[1].subTitle|msubstr=0,4,'utf-8',true}</p>
+                        </div>
+                        <div class="one_sm">
+                            <img src="{$subModuleList[1].imgUrl}" style="width: {$subModuleList[1].imgWidth};height: {$subModuleList[1].imgHeight};">
+                        </div>
+                        <?php elseif($subModuleList[1]['imgPosition'] == 4):?>
+                        <div class="one_sm">
+                            <img src="{$subModuleList[1].imgUrl}" style="width: {$subModuleList[1].imgWidth};height: {$subModuleList[1].imgHeight};">
+                        </div>
+                        <?php endif;?>
+                    </div>
+                </td>
+                <td style="background-color: {$subModuleList[2].bgColor};">
+                    <div class="sub_module">
+                        <?php if($subModuleList[2]['imgPosition'] == 0):?>
+                        <div class="first_sm">
+                            <img src="{$subModuleList[2].imgUrl}" style="width: {$subModuleList[2].imgWidth};height: {$subModuleList[2].imgHeight};">
+                        </div>
+                        <div class="first_sm">
+                            <p style="color: {$subModuleList[2].titleColor};">{$subModuleList[2].title}</p>
+                            <p style="color: {$subModuleList[2].subTitleColor};">{$subModuleList[2].subTitle|msubstr=0,4,'utf-8',true}</p>
+                        </div>
+                        <?php elseif($subModuleList[2]['imgPosition'] == 1):?>
+                        <div class="one_sm">
+                            <img src="{$subModuleList[2].imgUrl}" style="width: {$subModuleList[2].imgWidth};height: {$subModuleList[2].imgHeight};">
+                        </div>
+                        <div class="one_sm">
+                            <p style="color: {$subModuleList[2].titleColor};">{$subModuleList[2].title}</p>
+                            <p style="color: {$subModuleList[2].subTitleColor};">{$subModuleList[2].subTitle|msubstr=0,4,'utf-8',true}</p>
+                        </div>
+                        <?php elseif($subModuleList[2]['imgPosition'] == 2):?>
+                        <div class="first_sm">
+                            <p style="color: {$subModuleList[2].titleColor};">{$subModuleList[2].title}</p>
+                            <p style="color: {$subModuleList[2].subTitleColor};">{$subModuleList[2].subTitle|msubstr=0,4,'utf-8',true}</p>
+                        </div>
+                        <div class="first_sm">
+                            <img src="{$subModuleList[2].imgUrl}" style="width: {$subModuleList[2].imgWidth};height: {$subModuleList[2].imgHeight};">
+                        </div>
+                        <?php elseif($subModuleList[2]['imgPosition'] == 3):?>
+                        <div class="one_sm">
+                            <p style="color: {$subModuleList[2].titleColor};">{$subModuleList[2].title}</p>
+                            <p style="color: {$subModuleList[2].subTitleColor};">{$subModuleList[2].subTitle|msubstr=0,4,'utf-8',true}</p>
+                        </div>
+                        <div class="one_sm">
+                            <img src="{$subModuleList[2].imgUrl}" style="width: {$subModuleList[2].imgWidth};height: {$subModuleList[2].imgHeight};">
+                        </div>
+                        <?php elseif($subModuleList[2]['imgPosition'] == 4):?>
+                        <div class="one_sm">
+                            <img src="{$subModuleList[2].imgUrl}" style="width: {$subModuleList[2].imgWidth};height: {$subModuleList[2].imgHeight};">
+                        </div>
+                        <?php endif;?>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <p>303</p>
+    </div>
+</label>
+<label class="radio-inline">
+    <input type="radio" name="template" value="304" <eq name="dataInfo.template" value="304">checked="checked"</eq>>
+    <div class="show_template">
+        <table>
+            <tr>
+                <td style="background-color: {$subModuleList[0].bgColor};">
+                    <div class="sub_module">
+                        <?php if($subModuleList[0]['imgPosition'] == 0):?>
+                        <div class="first_sm">
+                            <img src="{$subModuleList[0].imgUrl}" style="width: {$subModuleList[0].imgWidth};height: {$subModuleList[0].imgHeight};">
+                        </div>
+                        <div class="first_sm">
+                            <p style="color: {$subModuleList[0].titleColor};">{$subModuleList[0].title}</p>
+                            <p style="color: {$subModuleList[0].subTitleColor};">{$subModuleList[0].subTitle|msubstr=0,4,'utf-8',true}</p>
+                        </div>
+                        <?php elseif($subModuleList[0]['imgPosition'] == 1):?>
+                        <div class="one_sm">
+                            <img src="{$subModuleList[0].imgUrl}" style="width: {$subModuleList[0].imgWidth};height: {$subModuleList[0].imgHeight};">
+                        </div>
+                        <div class="one_sm">
+                            <p style="color: {$subModuleList[0].titleColor};">{$subModuleList[0].title}</p>
+                            <p style="color: {$subModuleList[0].subTitleColor};">{$subModuleList[0].subTitle|msubstr=0,4,'utf-8',true}</p>
+                        </div>
+                        <?php elseif($subModuleList[0]['imgPosition'] == 2):?>
+                        <div class="first_sm">
+                            <p style="color: {$subModuleList[0].titleColor};">{$subModuleList[0].title}</p>
+                            <p style="color: {$subModuleList[0].subTitleColor};">{$subModuleList[0].subTitle|msubstr=0,4,'utf-8',true}</p>
+                        </div>
+                        <div class="first_sm">
+                            <img src="{$subModuleList[0].imgUrl}" style="width: {$subModuleList[0].imgWidth};height: {$subModuleList[0].imgHeight};">
+                        </div>
+                        <?php elseif($subModuleList[0]['imgPosition'] == 3):?>
+                        <div class="one_sm">
+                            <p style="color: {$subModuleList[0].titleColor};">{$subModuleList[0].title}</p>
+                            <p style="color: {$subModuleList[0].subTitleColor};">{$subModuleList[0].subTitle|msubstr=0,4,'utf-8',true}</p>
+                        </div>
+                        <div class="one_sm">
+                            <img src="{$subModuleList[0].imgUrl}" style="width: {$subModuleList[0].imgWidth};height: {$subModuleList[0].imgHeight};">
+                        </div>
+                        <?php elseif($subModuleList[0]['imgPosition'] == 4):?>
+                        <div class="one_sm">
+                            <img src="{$subModuleList[0].imgUrl}" style="width: {$subModuleList[0].imgWidth};height: {$subModuleList[0].imgHeight};">
+                        </div>
+                        <?php endif;?>
+                    </div>
+                </td>
+                <td rowspan="2" style="background-color: {$subModuleList[2].bgColor};">
+                    <div class="sub_module">
+                        <?php if($subModuleList[2]['imgPosition'] == 0):?>
+                        <div class="first_sm">
+                            <img src="{$subModuleList[2].imgUrl}" style="width: {$subModuleList[2].imgWidth};height: {$subModuleList[2].imgHeight};">
+                        </div>
+                        <div class="first_sm">
+                            <p style="color: {$subModuleList[2].titleColor};">{$subModuleList[2].title}</p>
+                            <p style="color: {$subModuleList[2].subTitleColor};">{$subModuleList[2].subTitle|msubstr=0,4,'utf-8',true}</p>
+                        </div>
+                        <?php elseif($subModuleList[2]['imgPosition'] == 1):?>
+                        <div class="one_sm">
+                            <img src="{$subModuleList[2].imgUrl}" style="width: {$subModuleList[2].imgWidth};height: {$subModuleList[2].imgHeight};">
+                        </div>
+                        <div class="one_sm">
+                            <p style="color: {$subModuleList[2].titleColor};">{$subModuleList[2].title}</p>
+                            <p style="color: {$subModuleList[2].subTitleColor};">{$subModuleList[2].subTitle|msubstr=0,4,'utf-8',true}</p>
+                        </div>
+                        <?php elseif($subModuleList[2]['imgPosition'] == 2):?>
+                        <div class="first_sm">
+                            <p style="color: {$subModuleList[2].titleColor};">{$subModuleList[2].title}</p>
+                            <p style="color: {$subModuleList[2].subTitleColor};">{$subModuleList[2].subTitle|msubstr=0,4,'utf-8',true}</p>
+                        </div>
+                        <div class="first_sm">
+                            <img src="{$subModuleList[2].imgUrl}" style="width: {$subModuleList[2].imgWidth};height: {$subModuleList[2].imgHeight};">
+                        </div>
+                        <?php elseif($subModuleList[2]['imgPosition'] == 3):?>
+                        <div class="one_sm">
+                            <p style="color: {$subModuleList[2].titleColor};">{$subModuleList[2].title}</p>
+                            <p style="color: {$subModuleList[2].subTitleColor};">{$subModuleList[2].subTitle|msubstr=0,4,'utf-8',true}</p>
+                        </div>
+                        <div class="one_sm">
+                            <img src="{$subModuleList[2].imgUrl}" style="width: {$subModuleList[2].imgWidth};height: {$subModuleList[2].imgHeight};">
+                        </div>
+                        <?php elseif($subModuleList[2]['imgPosition'] == 4):?>
+                        <div class="one_sm">
+                            <img src="{$subModuleList[2].imgUrl}" style="width: {$subModuleList[2].imgWidth};height: {$subModuleList[2].imgHeight};">
+                        </div>
+                        <?php endif;?>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="background-color: {$subModuleList[1].bgColor};">
+                    <div class="sub_module">
+                        <?php if($subModuleList[1]['imgPosition'] == 0):?>
+                        <div class="first_sm">
+                            <img src="{$subModuleList[1].imgUrl}" style="width: {$subModuleList[1].imgWidth};height: {$subModuleList[1].imgHeight};">
+                        </div>
+                        <div class="first_sm">
+                            <p style="color: {$subModuleList[1].titleColor};">{$subModuleList[1].title}</p>
+                            <p style="color: {$subModuleList[1].subTitleColor};">{$subModuleList[1].subTitle|msubstr=0,4,'utf-8',true}</p>
+                        </div>
+                        <?php elseif($subModuleList[1]['imgPosition'] == 1):?>
+                        <div class="one_sm">
+                            <img src="{$subModuleList[1].imgUrl}" style="width: {$subModuleList[1].imgWidth};height: {$subModuleList[1].imgHeight};">
+                        </div>
+                        <div class="one_sm">
+                            <p style="color: {$subModuleList[1].titleColor};">{$subModuleList[1].title}</p>
+                            <p style="color: {$subModuleList[1].subTitleColor};">{$subModuleList[1].subTitle|msubstr=0,4,'utf-8',true}</p>
+                        </div>
+                        <?php elseif($subModuleList[1]['imgPosition'] == 2):?>
+                        <div class="first_sm">
+                            <p style="color: {$subModuleList[1].titleColor};">{$subModuleList[1].title}</p>
+                            <p style="color: {$subModuleList[1].subTitleColor};">{$subModuleList[1].subTitle|msubstr=0,4,'utf-8',true}</p>
+                        </div>
+                        <div class="first_sm">
+                            <img src="{$subModuleList[1].imgUrl}" style="width: {$subModuleList[1].imgWidth};height: {$subModuleList[1].imgHeight};">
+                        </div>
+                        <?php elseif($subModuleList[1]['imgPosition'] == 3):?>
+                        <div class="one_sm">
+                            <p style="color: {$subModuleList[1].titleColor};">{$subModuleList[1].title}</p>
+                            <p style="color: {$subModuleList[1].subTitleColor};">{$subModuleList[1].subTitle|msubstr=0,4,'utf-8',true}</p>
+                        </div>
+                        <div class="one_sm">
+                            <img src="{$subModuleList[1].imgUrl}" style="width: {$subModuleList[1].imgWidth};height: {$subModuleList[1].imgHeight};">
+                        </div>
+                        <?php elseif($subModuleList[1]['imgPosition'] == 4):?>
+                        <div class="one_sm">
+                            <img src="{$subModuleList[1].imgUrl}" style="width: {$subModuleList[1].imgWidth};height: {$subModuleList[1].imgHeight};">
+                        </div>
+                        <?php endif;?>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <p>304</p>
+    </div>
+</label>
+<elseif condition="$subModuleCount eq 4" />
+<label class="radio-inline">
+    <input type="radio" name="template" value="401" checked="checked">
+    <div class="show_template">
+        <table>
+            <tr>
+                <td style="background-color: {$subModuleList[0].bgColor};">
+                    <div class="sub_module">
+                        <?php if($subModuleList[0]['imgPosition'] == 0):?>
+                        <div class="first_sm">
+                            <img src="{$subModuleList[0].imgUrl}" style="width: {$subModuleList[0].imgWidth};height: {$subModuleList[0].imgHeight};">
+                        </div>
+                        <div class="first_sm">
+                            <p style="color: {$subModuleList[0].titleColor};">{$subModuleList[0].title}</p>
+                            <p style="color: {$subModuleList[0].subTitleColor};">{$subModuleList[0].subTitle|msubstr=0,4,'utf-8',true}</p>
+                        </div>
+                        <?php elseif($subModuleList[0]['imgPosition'] == 1):?>
+                        <div class="one_sm">
+                            <img src="{$subModuleList[0].imgUrl}" style="width: {$subModuleList[0].imgWidth};height: {$subModuleList[0].imgHeight};">
+                        </div>
+                        <div class="one_sm">
+                            <p style="color: {$subModuleList[0].titleColor};">{$subModuleList[0].title}</p>
+                            <p style="color: {$subModuleList[0].subTitleColor};">{$subModuleList[0].subTitle|msubstr=0,4,'utf-8',true}</p>
+                        </div>
+                        <?php elseif($subModuleList[0]['imgPosition'] == 2):?>
+                        <div class="first_sm">
+                            <p style="color: {$subModuleList[0].titleColor};">{$subModuleList[0].title}</p>
+                            <p style="color: {$subModuleList[0].subTitleColor};">{$subModuleList[0].subTitle|msubstr=0,4,'utf-8',true}</p>
+                        </div>
+                        <div class="first_sm">
+                            <img src="{$subModuleList[0].imgUrl}" style="width: {$subModuleList[0].imgWidth};height: {$subModuleList[0].imgHeight};">
+                        </div>
+                        <?php elseif($subModuleList[0]['imgPosition'] == 3):?>
+                        <div class="one_sm">
+                            <p style="color: {$subModuleList[0].titleColor};">{$subModuleList[0].title}</p>
+                            <p style="color: {$subModuleList[0].subTitleColor};">{$subModuleList[0].subTitle|msubstr=0,4,'utf-8',true}</p>
+                        </div>
+                        <div class="one_sm">
+                            <img src="{$subModuleList[0].imgUrl}" style="width: {$subModuleList[0].imgWidth};height: {$subModuleList[0].imgHeight};">
+                        </div>
+                        <?php elseif($subModuleList[0]['imgPosition'] == 4):?>
+                        <div class="one_sm">
+                            <img src="{$subModuleList[0].imgUrl}" style="width: {$subModuleList[0].imgWidth};height: {$subModuleList[0].imgHeight};">
+                        </div>
+                        <?php endif;?>
+                    </div>
+                </td>
+                <td style="background-color: {$subModuleList[2].bgColor};">
+                    <div class="sub_module">
+                        <?php if($subModuleList[2]['imgPosition'] == 0):?>
+                        <div class="first_sm">
+                            <img src="{$subModuleList[2].imgUrl}" style="width: {$subModuleList[2].imgWidth};height: {$subModuleList[2].imgHeight};">
+                        </div>
+                        <div class="first_sm">
+                            <p style="color: {$subModuleList[2].titleColor};">{$subModuleList[2].title}</p>
+                            <p style="color: {$subModuleList[2].subTitleColor};">{$subModuleList[2].subTitle|msubstr=0,4,'utf-8',true}</p>
+                        </div>
+                        <?php elseif($subModuleList[2]['imgPosition'] == 1):?>
+                        <div class="one_sm">
+                            <img src="{$subModuleList[2].imgUrl}" style="width: {$subModuleList[2].imgWidth};height: {$subModuleList[2].imgHeight};">
+                        </div>
+                        <div class="one_sm">
+                            <p style="color: {$subModuleList[2].titleColor};">{$subModuleList[2].title}</p>
+                            <p style="color: {$subModuleList[2].subTitleColor};">{$subModuleList[2].subTitle|msubstr=0,4,'utf-8',true}</p>
+                        </div>
+                        <?php elseif($subModuleList[2]['imgPosition'] == 2):?>
+                        <div class="first_sm">
+                            <p style="color: {$subModuleList[2].titleColor};">{$subModuleList[2].title}</p>
+                            <p style="color: {$subModuleList[2].subTitleColor};">{$subModuleList[2].subTitle|msubstr=0,4,'utf-8',true}</p>
+                        </div>
+                        <div class="first_sm">
+                            <img src="{$subModuleList[2].imgUrl}" style="width: {$subModuleList[2].imgWidth};height: {$subModuleList[2].imgHeight};">
+                        </div>
+                        <?php elseif($subModuleList[2]['imgPosition'] == 3):?>
+                        <div class="one_sm">
+                            <p style="color: {$subModuleList[2].titleColor};">{$subModuleList[2].title}</p>
+                            <p style="color: {$subModuleList[2].subTitleColor};">{$subModuleList[2].subTitle|msubstr=0,4,'utf-8',true}</p>
+                        </div>
+                        <div class="one_sm">
+                            <img src="{$subModuleList[2].imgUrl}" style="width: {$subModuleList[2].imgWidth};height: {$subModuleList[2].imgHeight};">
+                        </div>
+                        <?php elseif($subModuleList[2]['imgPosition'] == 4):?>
+                        <div class="one_sm">
+                            <img src="{$subModuleList[2].imgUrl}" style="width: {$subModuleList[2].imgWidth};height: {$subModuleList[2].imgHeight};">
+                        </div>
+                        <?php endif;?>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="background-color: {$subModuleList[1].bgColor};">
+                    <div class="sub_module">
+                        <?php if($subModuleList[1]['imgPosition'] == 0):?>
+                        <div class="first_sm">
+                            <img src="{$subModuleList[1].imgUrl}" style="width: {$subModuleList[1].imgWidth};height: {$subModuleList[1].imgHeight};">
+                        </div>
+                        <div class="first_sm">
+                            <p style="color: {$subModuleList[1].titleColor};">{$subModuleList[1].title}</p>
+                            <p style="color: {$subModuleList[1].subTitleColor};">{$subModuleList[1].subTitle|msubstr=0,4,'utf-8',true}</p>
+                        </div>
+                        <?php elseif($subModuleList[1]['imgPosition'] == 1):?>
+                        <div class="one_sm">
+                            <img src="{$subModuleList[1].imgUrl}" style="width: {$subModuleList[1].imgWidth};height: {$subModuleList[1].imgHeight};">
+                        </div>
+                        <div class="one_sm">
+                            <p style="color: {$subModuleList[1].titleColor};">{$subModuleList[1].title}</p>
+                            <p style="color: {$subModuleList[1].subTitleColor};">{$subModuleList[1].subTitle|msubstr=0,4,'utf-8',true}</p>
+                        </div>
+                        <?php elseif($subModuleList[1]['imgPosition'] == 2):?>
+                        <div class="first_sm">
+                            <p style="color: {$subModuleList[1].titleColor};">{$subModuleList[1].title}</p>
+                            <p style="color: {$subModuleList[1].subTitleColor};">{$subModuleList[1].subTitle|msubstr=0,4,'utf-8',true}</p>
+                        </div>
+                        <div class="first_sm">
+                            <img src="{$subModuleList[1].imgUrl}" style="width: {$subModuleList[1].imgWidth};height: {$subModuleList[1].imgHeight};">
+                        </div>
+                        <?php elseif($subModuleList[1]['imgPosition'] == 3):?>
+                        <div class="one_sm">
+                            <p style="color: {$subModuleList[1].titleColor};">{$subModuleList[1].title}</p>
+                            <p style="color: {$subModuleList[1].subTitleColor};">{$subModuleList[1].subTitle|msubstr=0,4,'utf-8',true}</p>
+                        </div>
+                        <div class="one_sm">
+                            <img src="{$subModuleList[1].imgUrl}" style="width: {$subModuleList[1].imgWidth};height: {$subModuleList[1].imgHeight};">
+                        </div>
+                        <?php elseif($subModuleList[1]['imgPosition'] == 4):?>
+                        <div class="one_sm">
+                            <img src="{$subModuleList[1].imgUrl}" style="width: {$subModuleList[1].imgWidth};height: {$subModuleList[1].imgHeight};">
+                        </div>
+                        <?php endif;?>
+                    </div>
+                </td>
+                <td style="background-color: {$subModuleList[3].bgColor};">
+                    <div class="sub_module">
+                        <?php if($subModuleList[3]['imgPosition'] == 0):?>
+                        <div class="first_sm">
+                            <img src="{$subModuleList[3].imgUrl}" style="width: {$subModuleList[3].imgWidth};height: {$subModuleList[3].imgHeight};">
+                        </div>
+                        <div class="first_sm">
+                            <p style="color: {$subModuleList[3].titleColor};">{$subModuleList[3].title}</p>
+                            <p style="color: {$subModuleList[3].subTitleColor};">{$subModuleList[3].subTitle|msubstr=0,4,'utf-8',true}</p>
+                        </div>
+                        <?php elseif($subModuleList[3]['imgPosition'] == 1):?>
+                        <div class="one_sm">
+                            <img src="{$subModuleList[3].imgUrl}" style="width: {$subModuleList[3].imgWidth};height: {$subModuleList[3].imgHeight};">
+                        </div>
+                        <div class="one_sm">
+                            <p style="color: {$subModuleList[3].titleColor};">{$subModuleList[3].title}</p>
+                            <p style="color: {$subModuleList[3].subTitleColor};">{$subModuleList[3].subTitle|msubstr=0,4,'utf-8',true}</p>
+                        </div>
+                        <?php elseif($subModuleList[3]['imgPosition'] == 2):?>
+                        <div class="first_sm">
+                            <p style="color: {$subModuleList[3].titleColor};">{$subModuleList[3].title}</p>
+                            <p style="color: {$subModuleList[3].subTitleColor};">{$subModuleList[3].subTitle|msubstr=0,4,'utf-8',true}</p>
+                        </div>
+                        <div class="first_sm">
+                            <img src="{$subModuleList[3].imgUrl}" style="width: {$subModuleList[3].imgWidth};height: {$subModuleList[3].imgHeight};">
+                        </div>
+                        <?php elseif($subModuleList[3]['imgPosition'] == 3):?>
+                        <div class="one_sm">
+                            <p style="color: {$subModuleList[3].titleColor};">{$subModuleList[3].title}</p>
+                            <p style="color: {$subModuleList[3].subTitleColor};">{$subModuleList[3].subTitle|msubstr=0,4,'utf-8',true}</p>
+                        </div>
+                        <div class="one_sm">
+                            <img src="{$subModuleList[3].imgUrl}" style="width: {$subModuleList[3].imgWidth};height: {$subModuleList[3].imgHeight};">
+                        </div>
+                        <?php elseif($subModuleList[3]['imgPosition'] == 4):?>
+                        <div class="one_sm">
+                            <img src="{$subModuleList[3].imgUrl}" style="width: {$subModuleList[3].imgWidth};height: {$subModuleList[3].imgHeight};">
+                        </div>
+                        <?php endif;?>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <p>401</p>
+    </div>
+</label>
+<elseif condition="$subModuleCount eq 5" />
+<label class="radio-inline">
+<input type="radio" name="template" value="501" <if condition="($dataInfo.template neq 502) AND ($dataInfo.template neq 503) AND ($dataInfo.template neq 504) AND ($dataInfo.template neq 505) AND ($dataInfo.template neq 506) AND ($dataInfo.template neq 507)">checked="checked"</if>>
+<div class="show_template">
+<table>
+<tr>
+    <td style="background-color: {$subModuleList[0].bgColor};">
+        <div class="sub_module">
+            <?php if($subModuleList[0]['imgPosition'] == 0):?>
+            <div class="first_sm">
+                <img src="{$subModuleList[0].imgUrl}" style="width: {$subModuleList[0].imgWidth};height: {$subModuleList[0].imgHeight};">
+            </div>
+            <div class="first_sm">
+                <p style="color: {$subModuleList[0].titleColor};">{$subModuleList[0].title}</p>
+                <p style="color: {$subModuleList[0].subTitleColor};">{$subModuleList[0].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <?php elseif($subModuleList[0]['imgPosition'] == 1):?>
+            <div class="one_sm">
+                <img src="{$subModuleList[0].imgUrl}" style="width: {$subModuleList[0].imgWidth};height: {$subModuleList[0].imgHeight};">
+            </div>
+            <div class="one_sm">
+                <p style="color: {$subModuleList[0].titleColor};">{$subModuleList[0].title}</p>
+                <p style="color: {$subModuleList[0].subTitleColor};">{$subModuleList[0].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <?php elseif($subModuleList[0]['imgPosition'] == 2):?>
+            <div class="first_sm">
+                <p style="color: {$subModuleList[0].titleColor};">{$subModuleList[0].title}</p>
+                <p style="color: {$subModuleList[0].subTitleColor};">{$subModuleList[0].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <div class="first_sm">
+                <img src="{$subModuleList[0].imgUrl}" style="width: {$subModuleList[0].imgWidth};height: {$subModuleList[0].imgHeight};">
+            </div>
+            <?php elseif($subModuleList[0]['imgPosition'] == 3):?>
+            <div class="one_sm">
+                <p style="color: {$subModuleList[0].titleColor};">{$subModuleList[0].title}</p>
+                <p style="color: {$subModuleList[0].subTitleColor};">{$subModuleList[0].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <div class="one_sm">
+                <img src="{$subModuleList[0].imgUrl}" style="width: {$subModuleList[0].imgWidth};height: {$subModuleList[0].imgHeight};">
+            </div>
+            <?php elseif($subModuleList[0]['imgPosition'] == 4):?>
+            <div class="one_sm">
+                <img src="{$subModuleList[0].imgUrl}" style="width: {$subModuleList[0].imgWidth};height: {$subModuleList[0].imgHeight};">
+            </div>
+            <?php endif;?>
+        </div>
+    </td>
+    <td style="background-color: {$subModuleList[2].bgColor};">
+        <div class="sub_module">
+            <?php if($subModuleList[2]['imgPosition'] == 0):?>
+            <div class="first_sm">
+                <img src="{$subModuleList[2].imgUrl}" style="width: {$subModuleList[2].imgWidth};height: {$subModuleList[2].imgHeight};">
+            </div>
+            <div class="first_sm">
+                <p style="color: {$subModuleList[2].titleColor};">{$subModuleList[2].title}</p>
+                <p style="color: {$subModuleList[2].subTitleColor};">{$subModuleList[2].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <?php elseif($subModuleList[2]['imgPosition'] == 1):?>
+            <div class="one_sm">
+                <img src="{$subModuleList[2].imgUrl}" style="width: {$subModuleList[2].imgWidth};height: {$subModuleList[2].imgHeight};">
+            </div>
+            <div class="one_sm">
+                <p style="color: {$subModuleList[2].titleColor};">{$subModuleList[2].title}</p>
+                <p style="color: {$subModuleList[2].subTitleColor};">{$subModuleList[2].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <?php elseif($subModuleList[2]['imgPosition'] == 2):?>
+            <div class="first_sm">
+                <p style="color: {$subModuleList[2].titleColor};">{$subModuleList[2].title}</p>
+                <p style="color: {$subModuleList[2].subTitleColor};">{$subModuleList[2].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <div class="first_sm">
+                <img src="{$subModuleList[2].imgUrl}" style="width: {$subModuleList[2].imgWidth};height: {$subModuleList[2].imgHeight};">
+            </div>
+            <?php elseif($subModuleList[2]['imgPosition'] == 3):?>
+            <div class="one_sm">
+                <p style="color: {$subModuleList[2].titleColor};">{$subModuleList[2].title}</p>
+                <p style="color: {$subModuleList[2].subTitleColor};">{$subModuleList[2].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <div class="one_sm">
+                <img src="{$subModuleList[2].imgUrl}" style="width: {$subModuleList[2].imgWidth};height: {$subModuleList[2].imgHeight};">
+            </div>
+            <?php elseif($subModuleList[2]['imgPosition'] == 4):?>
+            <div class="one_sm">
+                <img src="{$subModuleList[2].imgUrl}" style="width: {$subModuleList[2].imgWidth};height: {$subModuleList[2].imgHeight};">
+            </div>
+            <?php endif;?>
+        </div>
+    </td>
+    <td rowspan="2" style="background-color: {$subModuleList[4].bgColor};">
+        <div class="sub_module">
+            <?php if($subModuleList[4]['imgPosition'] == 0):?>
+            <div class="first_sm">
+                <img src="{$subModuleList[4].imgUrl}" style="width: {$subModuleList[4].imgWidth};height: {$subModuleList[4].imgHeight};">
+            </div>
+            <div class="first_sm">
+                <p style="color: {$subModuleList[4].titleColor};">{$subModuleList[4].title}</p>
+                <p style="color: {$subModuleList[4].subTitleColor};">{$subModuleList[4].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <?php elseif($subModuleList[4]['imgPosition'] == 1):?>
+            <div class="one_sm">
+                <img src="{$subModuleList[4].imgUrl}" style="width: {$subModuleList[4].imgWidth};height: {$subModuleList[4].imgHeight};">
+            </div>
+            <div class="one_sm">
+                <p style="color: {$subModuleList[4].titleColor};">{$subModuleList[4].title}</p>
+                <p style="color: {$subModuleList[4].subTitleColor};">{$subModuleList[4].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <?php elseif($subModuleList[4]['imgPosition'] == 2):?>
+            <div class="first_sm">
+                <p style="color: {$subModuleList[4].titleColor};">{$subModuleList[4].title}</p>
+                <p style="color: {$subModuleList[4].subTitleColor};">{$subModuleList[4].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <div class="first_sm">
+                <img src="{$subModuleList[4].imgUrl}" style="width: {$subModuleList[4].imgWidth};height: {$subModuleList[4].imgHeight};">
+            </div>
+            <?php elseif($subModuleList[4]['imgPosition'] == 3):?>
+            <div class="one_sm">
+                <p style="color: {$subModuleList[4].titleColor};">{$subModuleList[4].title}</p>
+                <p style="color: {$subModuleList[4].subTitleColor};">{$subModuleList[4].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <div class="one_sm">
+                <img src="{$subModuleList[4].imgUrl}" style="width: {$subModuleList[4].imgWidth};height: {$subModuleList[4].imgHeight};">
+            </div>
+            <?php elseif($subModuleList[4]['imgPosition'] == 4):?>
+            <div class="one_sm">
+                <img src="{$subModuleList[4].imgUrl}" style="width: {$subModuleList[4].imgWidth};height: {$subModuleList[4].imgHeight};">
+            </div>
+            <?php endif;?>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td style="background-color: {$subModuleList[1].bgColor};">
+        <div class="sub_module">
+            <?php if($subModuleList[1]['imgPosition'] == 0):?>
+            <div class="first_sm">
+                <img src="{$subModuleList[1].imgUrl}" style="width: {$subModuleList[1].imgWidth};height: {$subModuleList[1].imgHeight};">
+            </div>
+            <div class="first_sm">
+                <p style="color: {$subModuleList[1].titleColor};">{$subModuleList[1].title}</p>
+                <p style="color: {$subModuleList[1].subTitleColor};">{$subModuleList[1].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <?php elseif($subModuleList[1]['imgPosition'] == 1):?>
+            <div class="one_sm">
+                <img src="{$subModuleList[1].imgUrl}" style="width: {$subModuleList[1].imgWidth};height: {$subModuleList[1].imgHeight};">
+            </div>
+            <div class="one_sm">
+                <p style="color: {$subModuleList[1].titleColor};">{$subModuleList[1].title}</p>
+                <p style="color: {$subModuleList[1].subTitleColor};">{$subModuleList[1].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <?php elseif($subModuleList[1]['imgPosition'] == 2):?>
+            <div class="first_sm">
+                <p style="color: {$subModuleList[1].titleColor};">{$subModuleList[1].title}</p>
+                <p style="color: {$subModuleList[1].subTitleColor};">{$subModuleList[1].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <div class="first_sm">
+                <img src="{$subModuleList[1].imgUrl}" style="width: {$subModuleList[1].imgWidth};height: {$subModuleList[1].imgHeight};">
+            </div>
+            <?php elseif($subModuleList[1]['imgPosition'] == 3):?>
+            <div class="one_sm">
+                <p style="color: {$subModuleList[1].titleColor};">{$subModuleList[1].title}</p>
+                <p style="color: {$subModuleList[1].subTitleColor};">{$subModuleList[1].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <div class="one_sm">
+                <img src="{$subModuleList[1].imgUrl}" style="width: {$subModuleList[1].imgWidth};height: {$subModuleList[1].imgHeight};">
+            </div>
+            <?php elseif($subModuleList[1]['imgPosition'] == 4):?>
+            <div class="one_sm">
+                <img src="{$subModuleList[1].imgUrl}" style="width: {$subModuleList[1].imgWidth};height: {$subModuleList[1].imgHeight};">
+            </div>
+            <?php endif;?>
+        </div>
+    </td>
+    <td style="background-color: {$subModuleList[3].bgColor};">
+        <div class="sub_module">
+            <?php if($subModuleList[3]['imgPosition'] == 0):?>
+            <div class="first_sm">
+                <img src="{$subModuleList[3].imgUrl}" style="width: {$subModuleList[3].imgWidth};height: {$subModuleList[3].imgHeight};">
+            </div>
+            <div class="first_sm">
+                <p style="color: {$subModuleList[3].titleColor};">{$subModuleList[3].title}</p>
+                <p style="color: {$subModuleList[3].subTitleColor};">{$subModuleList[3].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <?php elseif($subModuleList[3]['imgPosition'] == 1):?>
+            <div class="one_sm">
+                <img src="{$subModuleList[3].imgUrl}" style="width: {$subModuleList[3].imgWidth};height: {$subModuleList[3].imgHeight};">
+            </div>
+            <div class="one_sm">
+                <p style="color: {$subModuleList[3].titleColor};">{$subModuleList[3].title}</p>
+                <p style="color: {$subModuleList[3].subTitleColor};">{$subModuleList[3].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <?php elseif($subModuleList[3]['imgPosition'] == 2):?>
+            <div class="first_sm">
+                <p style="color: {$subModuleList[3].titleColor};">{$subModuleList[3].title}</p>
+                <p style="color: {$subModuleList[3].subTitleColor};">{$subModuleList[3].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <div class="first_sm">
+                <img src="{$subModuleList[3].imgUrl}" style="width: {$subModuleList[3].imgWidth};height: {$subModuleList[3].imgHeight};">
+            </div>
+            <?php elseif($subModuleList[3]['imgPosition'] == 3):?>
+            <div class="one_sm">
+                <p style="color: {$subModuleList[3].titleColor};">{$subModuleList[3].title}</p>
+                <p style="color: {$subModuleList[3].subTitleColor};">{$subModuleList[3].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <div class="one_sm">
+                <img src="{$subModuleList[3].imgUrl}" style="width: {$subModuleList[3].imgWidth};height: {$subModuleList[3].imgHeight};">
+            </div>
+            <?php elseif($subModuleList[3]['imgPosition'] == 4):?>
+            <div class="one_sm">
+                <img src="{$subModuleList[3].imgUrl}" style="width: {$subModuleList[3].imgWidth};height: {$subModuleList[3].imgHeight};">
+            </div>
+            <?php endif;?>
+        </div>
+    </td>
+</tr>
+</table>
+<p>501</p>
+</div>
+</label>
+<label class="radio-inline">
+<input type="radio" name="template" value="502" <eq name="dataInfo.template" value="502">checked="checked"</eq>>
+<div class="show_template">
+<table>
+<tr>
+    <td style="background-color: {$subModuleList[0].bgColor};">
+        <div class="sub_module">
+            <?php if($subModuleList[0]['imgPosition'] == 0):?>
+            <div class="first_sm">
+                <img src="{$subModuleList[0].imgUrl}" style="width: {$subModuleList[0].imgWidth};height: {$subModuleList[0].imgHeight};">
+            </div>
+            <div class="first_sm">
+                <p style="color: {$subModuleList[0].titleColor};">{$subModuleList[0].title}</p>
+                <p style="color: {$subModuleList[0].subTitleColor};">{$subModuleList[0].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <?php elseif($subModuleList[0]['imgPosition'] == 1):?>
+            <div class="one_sm">
+                <img src="{$subModuleList[0].imgUrl}" style="width: {$subModuleList[0].imgWidth};height: {$subModuleList[0].imgHeight};">
+            </div>
+            <div class="one_sm">
+                <p style="color: {$subModuleList[0].titleColor};">{$subModuleList[0].title}</p>
+                <p style="color: {$subModuleList[0].subTitleColor};">{$subModuleList[0].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <?php elseif($subModuleList[0]['imgPosition'] == 2):?>
+            <div class="first_sm">
+                <p style="color: {$subModuleList[0].titleColor};">{$subModuleList[0].title}</p>
+                <p style="color: {$subModuleList[0].subTitleColor};">{$subModuleList[0].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <div class="first_sm">
+                <img src="{$subModuleList[0].imgUrl}" style="width: {$subModuleList[0].imgWidth};height: {$subModuleList[0].imgHeight};">
+            </div>
+            <?php elseif($subModuleList[0]['imgPosition'] == 3):?>
+            <div class="one_sm">
+                <p style="color: {$subModuleList[0].titleColor};">{$subModuleList[0].title}</p>
+                <p style="color: {$subModuleList[0].subTitleColor};">{$subModuleList[0].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <div class="one_sm">
+                <img src="{$subModuleList[0].imgUrl}" style="width: {$subModuleList[0].imgWidth};height: {$subModuleList[0].imgHeight};">
+            </div>
+            <?php elseif($subModuleList[0]['imgPosition'] == 4):?>
+            <div class="one_sm">
+                <img src="{$subModuleList[0].imgUrl}" style="width: {$subModuleList[0].imgWidth};height: {$subModuleList[0].imgHeight};">
+            </div>
+            <?php endif;?>
+        </div>
+    </td>
+    <td rowspan="2" style="background-color: {$subModuleList[2].bgColor};">
+        <div class="sub_module">
+            <?php if($subModuleList[2]['imgPosition'] == 0):?>
+            <div class="first_sm">
+                <img src="{$subModuleList[2].imgUrl}" style="width: {$subModuleList[2].imgWidth};height: {$subModuleList[2].imgHeight};">
+            </div>
+            <div class="first_sm">
+                <p style="color: {$subModuleList[2].titleColor};">{$subModuleList[2].title}</p>
+                <p style="color: {$subModuleList[2].subTitleColor};">{$subModuleList[2].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <?php elseif($subModuleList[2]['imgPosition'] == 1):?>
+            <div class="one_sm">
+                <img src="{$subModuleList[2].imgUrl}" style="width: {$subModuleList[2].imgWidth};height: {$subModuleList[2].imgHeight};">
+            </div>
+            <div class="one_sm">
+                <p style="color: {$subModuleList[2].titleColor};">{$subModuleList[2].title}</p>
+                <p style="color: {$subModuleList[2].subTitleColor};">{$subModuleList[2].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <?php elseif($subModuleList[2]['imgPosition'] == 2):?>
+            <div class="first_sm">
+                <p style="color: {$subModuleList[2].titleColor};">{$subModuleList[2].title}</p>
+                <p style="color: {$subModuleList[2].subTitleColor};">{$subModuleList[2].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <div class="first_sm">
+                <img src="{$subModuleList[2].imgUrl}" style="width: {$subModuleList[2].imgWidth};height: {$subModuleList[2].imgHeight};">
+            </div>
+            <?php elseif($subModuleList[2]['imgPosition'] == 3):?>
+            <div class="one_sm">
+                <p style="color: {$subModuleList[2].titleColor};">{$subModuleList[2].title}</p>
+                <p style="color: {$subModuleList[2].subTitleColor};">{$subModuleList[2].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <div class="one_sm">
+                <img src="{$subModuleList[2].imgUrl}" style="width: {$subModuleList[2].imgWidth};height: {$subModuleList[2].imgHeight};">
+            </div>
+            <?php elseif($subModuleList[2]['imgPosition'] == 4):?>
+            <div class="one_sm">
+                <img src="{$subModuleList[2].imgUrl}" style="width: {$subModuleList[2].imgWidth};height: {$subModuleList[2].imgHeight};">
+            </div>
+            <?php endif;?>
+        </div>
+    </td>
+    <td style="background-color: {$subModuleList[3].bgColor};">
+        <div class="sub_module">
+            <?php if($subModuleList[3]['imgPosition'] == 0):?>
+            <div class="first_sm">
+                <img src="{$subModuleList[3].imgUrl}" style="width: {$subModuleList[3].imgWidth};height: {$subModuleList[3].imgHeight};">
+            </div>
+            <div class="first_sm">
+                <p style="color: {$subModuleList[3].titleColor};">{$subModuleList[3].title}</p>
+                <p style="color: {$subModuleList[3].subTitleColor};">{$subModuleList[3].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <?php elseif($subModuleList[3]['imgPosition'] == 1):?>
+            <div class="one_sm">
+                <img src="{$subModuleList[3].imgUrl}" style="width: {$subModuleList[3].imgWidth};height: {$subModuleList[3].imgHeight};">
+            </div>
+            <div class="one_sm">
+                <p style="color: {$subModuleList[3].titleColor};">{$subModuleList[3].title}</p>
+                <p style="color: {$subModuleList[3].subTitleColor};">{$subModuleList[3].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <?php elseif($subModuleList[3]['imgPosition'] == 2):?>
+            <div class="first_sm">
+                <p style="color: {$subModuleList[3].titleColor};">{$subModuleList[3].title}</p>
+                <p style="color: {$subModuleList[3].subTitleColor};">{$subModuleList[3].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <div class="first_sm">
+                <img src="{$subModuleList[3].imgUrl}" style="width: {$subModuleList[3].imgWidth};height: {$subModuleList[3].imgHeight};">
+            </div>
+            <?php elseif($subModuleList[3]['imgPosition'] == 3):?>
+            <div class="one_sm">
+                <p style="color: {$subModuleList[3].titleColor};">{$subModuleList[3].title}</p>
+                <p style="color: {$subModuleList[3].subTitleColor};">{$subModuleList[3].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <div class="one_sm">
+                <img src="{$subModuleList[3].imgUrl}" style="width: {$subModuleList[3].imgWidth};height: {$subModuleList[3].imgHeight};">
+            </div>
+            <?php elseif($subModuleList[3]['imgPosition'] == 4):?>
+            <div class="one_sm">
+                <img src="{$subModuleList[3].imgUrl}" style="width: {$subModuleList[3].imgWidth};height: {$subModuleList[3].imgHeight};">
+            </div>
+            <?php endif;?>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td style="background-color: {$subModuleList[1].bgColor};">
+        <div class="sub_module">
+            <?php if($subModuleList[1]['imgPosition'] == 0):?>
+            <div class="first_sm">
+                <img src="{$subModuleList[1].imgUrl}" style="width: {$subModuleList[1].imgWidth};height: {$subModuleList[1].imgHeight};">
+            </div>
+            <div class="first_sm">
+                <p style="color: {$subModuleList[1].titleColor};">{$subModuleList[1].title}</p>
+                <p style="color: {$subModuleList[1].subTitleColor};">{$subModuleList[1].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <?php elseif($subModuleList[1]['imgPosition'] == 1):?>
+            <div class="one_sm">
+                <img src="{$subModuleList[1].imgUrl}" style="width: {$subModuleList[1].imgWidth};height: {$subModuleList[1].imgHeight};">
+            </div>
+            <div class="one_sm">
+                <p style="color: {$subModuleList[1].titleColor};">{$subModuleList[1].title}</p>
+                <p style="color: {$subModuleList[1].subTitleColor};">{$subModuleList[1].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <?php elseif($subModuleList[1]['imgPosition'] == 2):?>
+            <div class="first_sm">
+                <p style="color: {$subModuleList[1].titleColor};">{$subModuleList[1].title}</p>
+                <p style="color: {$subModuleList[1].subTitleColor};">{$subModuleList[1].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <div class="first_sm">
+                <img src="{$subModuleList[1].imgUrl}" style="width: {$subModuleList[1].imgWidth};height: {$subModuleList[1].imgHeight};">
+            </div>
+            <?php elseif($subModuleList[1]['imgPosition'] == 3):?>
+            <div class="one_sm">
+                <p style="color: {$subModuleList[1].titleColor};">{$subModuleList[1].title}</p>
+                <p style="color: {$subModuleList[1].subTitleColor};">{$subModuleList[1].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <div class="one_sm">
+                <img src="{$subModuleList[1].imgUrl}" style="width: {$subModuleList[1].imgWidth};height: {$subModuleList[1].imgHeight};">
+            </div>
+            <?php elseif($subModuleList[1]['imgPosition'] == 4):?>
+            <div class="one_sm">
+                <img src="{$subModuleList[1].imgUrl}" style="width: {$subModuleList[1].imgWidth};height: {$subModuleList[1].imgHeight};">
+            </div>
+            <?php endif;?>
+        </div>
+    </td>
+    <td style="background-color: {$subModuleList[4].bgColor};">
+        <div class="sub_module">
+            <?php if($subModuleList[4]['imgPosition'] == 0):?>
+            <div class="first_sm">
+                <img src="{$subModuleList[4].imgUrl}" style="width: {$subModuleList[4].imgWidth};height: {$subModuleList[4].imgHeight};">
+            </div>
+            <div class="first_sm">
+                <p style="color: {$subModuleList[4].titleColor};">{$subModuleList[4].title}</p>
+                <p style="color: {$subModuleList[4].subTitleColor};">{$subModuleList[4].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <?php elseif($subModuleList[4]['imgPosition'] == 1):?>
+            <div class="one_sm">
+                <img src="{$subModuleList[4].imgUrl}" style="width: {$subModuleList[4].imgWidth};height: {$subModuleList[4].imgHeight};">
+            </div>
+            <div class="one_sm">
+                <p style="color: {$subModuleList[4].titleColor};">{$subModuleList[4].title}</p>
+                <p style="color: {$subModuleList[4].subTitleColor};">{$subModuleList[4].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <?php elseif($subModuleList[4]['imgPosition'] == 2):?>
+            <div class="first_sm">
+                <p style="color: {$subModuleList[4].titleColor};">{$subModuleList[4].title}</p>
+                <p style="color: {$subModuleList[4].subTitleColor};">{$subModuleList[4].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <div class="first_sm">
+                <img src="{$subModuleList[4].imgUrl}" style="width: {$subModuleList[4].imgWidth};height: {$subModuleList[4].imgHeight};">
+            </div>
+            <?php elseif($subModuleList[4]['imgPosition'] == 3):?>
+            <div class="one_sm">
+                <p style="color: {$subModuleList[4].titleColor};">{$subModuleList[4].title}</p>
+                <p style="color: {$subModuleList[4].subTitleColor};">{$subModuleList[4].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <div class="one_sm">
+                <img src="{$subModuleList[4].imgUrl}" style="width: {$subModuleList[4].imgWidth};height: {$subModuleList[4].imgHeight};">
+            </div>
+            <?php elseif($subModuleList[4]['imgPosition'] == 4):?>
+            <div class="one_sm">
+                <img src="{$subModuleList[4].imgUrl}" style="width: {$subModuleList[4].imgWidth};height: {$subModuleList[4].imgHeight};">
+            </div>
+            <?php endif;?>
+        </div>
+    </td>
+</tr>
+</table>
+<p>502</p>
+</div>
+</label>
+<label class="radio-inline">
+<input type="radio" name="template" value="503" <eq name="dataInfo.template" value="503">checked="checked"</eq>>
+<div class="show_template">
+<table>
+<tr>
+    <td rowspan="2" style="background-color: {$subModuleList[0].bgColor};">
+        <div class="sub_module">
+            <?php if($subModuleList[0]['imgPosition'] == 0):?>
+            <div class="first_sm">
+                <img src="{$subModuleList[0].imgUrl}" style="width: {$subModuleList[0].imgWidth};height: {$subModuleList[0].imgHeight};">
+            </div>
+            <div class="first_sm">
+                <p style="color: {$subModuleList[0].titleColor};">{$subModuleList[0].title}</p>
+                <p style="color: {$subModuleList[0].subTitleColor};">{$subModuleList[0].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <?php elseif($subModuleList[0]['imgPosition'] == 1):?>
+            <div class="one_sm">
+                <img src="{$subModuleList[0].imgUrl}" style="width: {$subModuleList[0].imgWidth};height: {$subModuleList[0].imgHeight};">
+            </div>
+            <div class="one_sm">
+                <p style="color: {$subModuleList[0].titleColor};">{$subModuleList[0].title}</p>
+                <p style="color: {$subModuleList[0].subTitleColor};">{$subModuleList[0].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <?php elseif($subModuleList[0]['imgPosition'] == 2):?>
+            <div class="first_sm">
+                <p style="color: {$subModuleList[0].titleColor};">{$subModuleList[0].title}</p>
+                <p style="color: {$subModuleList[0].subTitleColor};">{$subModuleList[0].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <div class="first_sm">
+                <img src="{$subModuleList[0].imgUrl}" style="width: {$subModuleList[0].imgWidth};height: {$subModuleList[0].imgHeight};">
+            </div>
+            <?php elseif($subModuleList[0]['imgPosition'] == 3):?>
+            <div class="one_sm">
+                <p style="color: {$subModuleList[0].titleColor};">{$subModuleList[0].title}</p>
+                <p style="color: {$subModuleList[0].subTitleColor};">{$subModuleList[0].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <div class="one_sm">
+                <img src="{$subModuleList[0].imgUrl}" style="width: {$subModuleList[0].imgWidth};height: {$subModuleList[0].imgHeight};">
+            </div>
+            <?php elseif($subModuleList[0]['imgPosition'] == 4):?>
+            <div class="one_sm">
+                <img src="{$subModuleList[0].imgUrl}" style="width: {$subModuleList[0].imgWidth};height: {$subModuleList[0].imgHeight};">
+            </div>
+            <?php endif;?>
+        </div>
+    </td>
+    <td style="background-color: {$subModuleList[1].bgColor};">
+        <div class="sub_module">
+            <?php if($subModuleList[1]['imgPosition'] == 0):?>
+            <div class="first_sm">
+                <img src="{$subModuleList[1].imgUrl}" style="width: {$subModuleList[1].imgWidth};height: {$subModuleList[1].imgHeight};">
+            </div>
+            <div class="first_sm">
+                <p style="color: {$subModuleList[1].titleColor};">{$subModuleList[1].title}</p>
+                <p style="color: {$subModuleList[1].subTitleColor};">{$subModuleList[1].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <?php elseif($subModuleList[1]['imgPosition'] == 1):?>
+            <div class="one_sm">
+                <img src="{$subModuleList[1].imgUrl}" style="width: {$subModuleList[1].imgWidth};height: {$subModuleList[1].imgHeight};">
+            </div>
+            <div class="one_sm">
+                <p style="color: {$subModuleList[1].titleColor};">{$subModuleList[1].title}</p>
+                <p style="color: {$subModuleList[1].subTitleColor};">{$subModuleList[1].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <?php elseif($subModuleList[1]['imgPosition'] == 2):?>
+            <div class="first_sm">
+                <p style="color: {$subModuleList[1].titleColor};">{$subModuleList[1].title}</p>
+                <p style="color: {$subModuleList[1].subTitleColor};">{$subModuleList[1].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <div class="first_sm">
+                <img src="{$subModuleList[1].imgUrl}" style="width: {$subModuleList[1].imgWidth};height: {$subModuleList[1].imgHeight};">
+            </div>
+            <?php elseif($subModuleList[1]['imgPosition'] == 3):?>
+            <div class="one_sm">
+                <p style="color: {$subModuleList[1].titleColor};">{$subModuleList[1].title}</p>
+                <p style="color: {$subModuleList[1].subTitleColor};">{$subModuleList[1].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <div class="one_sm">
+                <img src="{$subModuleList[1].imgUrl}" style="width: {$subModuleList[1].imgWidth};height: {$subModuleList[1].imgHeight};">
+            </div>
+            <?php elseif($subModuleList[1]['imgPosition'] == 4):?>
+            <div class="one_sm">
+                <img src="{$subModuleList[1].imgUrl}" style="width: {$subModuleList[1].imgWidth};height: {$subModuleList[1].imgHeight};">
+            </div>
+            <?php endif;?>
+        </div>
+    </td>
+    <td style="background-color: {$subModuleList[3].bgColor};">
+        <div class="sub_module">
+            <?php if($subModuleList[3]['imgPosition'] == 0):?>
+            <div class="first_sm">
+                <img src="{$subModuleList[3].imgUrl}" style="width: {$subModuleList[3].imgWidth};height: {$subModuleList[3].imgHeight};">
+            </div>
+            <div class="first_sm">
+                <p style="color: {$subModuleList[3].titleColor};">{$subModuleList[3].title}</p>
+                <p style="color: {$subModuleList[3].subTitleColor};">{$subModuleList[3].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <?php elseif($subModuleList[3]['imgPosition'] == 1):?>
+            <div class="one_sm">
+                <img src="{$subModuleList[3].imgUrl}" style="width: {$subModuleList[3].imgWidth};height: {$subModuleList[3].imgHeight};">
+            </div>
+            <div class="one_sm">
+                <p style="color: {$subModuleList[3].titleColor};">{$subModuleList[3].title}</p>
+                <p style="color: {$subModuleList[3].subTitleColor};">{$subModuleList[3].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <?php elseif($subModuleList[3]['imgPosition'] == 2):?>
+            <div class="first_sm">
+                <p style="color: {$subModuleList[3].titleColor};">{$subModuleList[3].title}</p>
+                <p style="color: {$subModuleList[3].subTitleColor};">{$subModuleList[3].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <div class="first_sm">
+                <img src="{$subModuleList[3].imgUrl}" style="width: {$subModuleList[3].imgWidth};height: {$subModuleList[3].imgHeight};">
+            </div>
+            <?php elseif($subModuleList[3]['imgPosition'] == 3):?>
+            <div class="one_sm">
+                <p style="color: {$subModuleList[3].titleColor};">{$subModuleList[3].title}</p>
+                <p style="color: {$subModuleList[3].subTitleColor};">{$subModuleList[3].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <div class="one_sm">
+                <img src="{$subModuleList[3].imgUrl}" style="width: {$subModuleList[3].imgWidth};height: {$subModuleList[3].imgHeight};">
+            </div>
+            <?php elseif($subModuleList[3]['imgPosition'] == 4):?>
+            <div class="one_sm">
+                <img src="{$subModuleList[3].imgUrl}" style="width: {$subModuleList[3].imgWidth};height: {$subModuleList[3].imgHeight};">
+            </div>
+            <?php endif;?>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td style="background-color: {$subModuleList[2].bgColor};">
+        <div class="sub_module">
+            <?php if($subModuleList[2]['imgPosition'] == 0):?>
+            <div class="first_sm">
+                <img src="{$subModuleList[2].imgUrl}" style="width: {$subModuleList[2].imgWidth};height: {$subModuleList[2].imgHeight};">
+            </div>
+            <div class="first_sm">
+                <p style="color: {$subModuleList[2].titleColor};">{$subModuleList[2].title}</p>
+                <p style="color: {$subModuleList[2].subTitleColor};">{$subModuleList[2].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <?php elseif($subModuleList[2]['imgPosition'] == 1):?>
+            <div class="one_sm">
+                <img src="{$subModuleList[2].imgUrl}" style="width: {$subModuleList[2].imgWidth};height: {$subModuleList[2].imgHeight};">
+            </div>
+            <div class="one_sm">
+                <p style="color: {$subModuleList[2].titleColor};">{$subModuleList[2].title}</p>
+                <p style="color: {$subModuleList[2].subTitleColor};">{$subModuleList[2].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <?php elseif($subModuleList[2]['imgPosition'] == 2):?>
+            <div class="first_sm">
+                <p style="color: {$subModuleList[2].titleColor};">{$subModuleList[2].title}</p>
+                <p style="color: {$subModuleList[2].subTitleColor};">{$subModuleList[2].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <div class="first_sm">
+                <img src="{$subModuleList[2].imgUrl}" style="width: {$subModuleList[2].imgWidth};height: {$subModuleList[2].imgHeight};">
+            </div>
+            <?php elseif($subModuleList[2]['imgPosition'] == 3):?>
+            <div class="one_sm">
+                <p style="color: {$subModuleList[2].titleColor};">{$subModuleList[2].title}</p>
+                <p style="color: {$subModuleList[2].subTitleColor};">{$subModuleList[2].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <div class="one_sm">
+                <img src="{$subModuleList[2].imgUrl}" style="width: {$subModuleList[2].imgWidth};height: {$subModuleList[2].imgHeight};">
+            </div>
+            <?php elseif($subModuleList[2]['imgPosition'] == 4):?>
+            <div class="one_sm">
+                <img src="{$subModuleList[2].imgUrl}" style="width: {$subModuleList[2].imgWidth};height: {$subModuleList[2].imgHeight};">
+            </div>
+            <?php endif;?>
+        </div>
+    </td>
+    <td style="background-color: {$subModuleList[4].bgColor};">
+        <div class="sub_module">
+            <?php if($subModuleList[4]['imgPosition'] == 0):?>
+            <div class="first_sm">
+                <img src="{$subModuleList[4].imgUrl}" style="width: {$subModuleList[4].imgWidth};height: {$subModuleList[4].imgHeight};">
+            </div>
+            <div class="first_sm">
+                <p style="color: {$subModuleList[4].titleColor};">{$subModuleList[4].title}</p>
+                <p style="color: {$subModuleList[4].subTitleColor};">{$subModuleList[4].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <?php elseif($subModuleList[4]['imgPosition'] == 1):?>
+            <div class="one_sm">
+                <img src="{$subModuleList[4].imgUrl}" style="width: {$subModuleList[4].imgWidth};height: {$subModuleList[4].imgHeight};">
+            </div>
+            <div class="one_sm">
+                <p style="color: {$subModuleList[4].titleColor};">{$subModuleList[4].title}</p>
+                <p style="color: {$subModuleList[4].subTitleColor};">{$subModuleList[4].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <?php elseif($subModuleList[4]['imgPosition'] == 2):?>
+            <div class="first_sm">
+                <p style="color: {$subModuleList[4].titleColor};">{$subModuleList[4].title}</p>
+                <p style="color: {$subModuleList[4].subTitleColor};">{$subModuleList[4].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <div class="first_sm">
+                <img src="{$subModuleList[4].imgUrl}" style="width: {$subModuleList[4].imgWidth};height: {$subModuleList[4].imgHeight};">
+            </div>
+            <?php elseif($subModuleList[4]['imgPosition'] == 3):?>
+            <div class="one_sm">
+                <p style="color: {$subModuleList[4].titleColor};">{$subModuleList[4].title}</p>
+                <p style="color: {$subModuleList[4].subTitleColor};">{$subModuleList[4].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <div class="one_sm">
+                <img src="{$subModuleList[4].imgUrl}" style="width: {$subModuleList[4].imgWidth};height: {$subModuleList[4].imgHeight};">
+            </div>
+            <?php elseif($subModuleList[4]['imgPosition'] == 4):?>
+            <div class="one_sm">
+                <img src="{$subModuleList[4].imgUrl}" style="width: {$subModuleList[4].imgWidth};height: {$subModuleList[4].imgHeight};">
+            </div>
+            <?php endif;?>
+        </div>
+    </td>
+</tr>
+</table>
+<p>503</p>
+</div>
+</label>
+<label class="radio-inline">
+<input type="radio" name="template" value="504" <eq name="dataInfo.template" value="504">checked="checked"</eq>>
+<div class="show_template">
+<table>
+<tr>
+    <td colspan="3" style="background-color: {$subModuleList[0].bgColor};">
+        <div class="sub_module">
+            <?php if($subModuleList[0]['imgPosition'] == 0):?>
+            <div class="first_sm">
+                <img src="{$subModuleList[0].imgUrl}" style="width: {$subModuleList[0].imgWidth};height: {$subModuleList[0].imgHeight};">
+            </div>
+            <div class="first_sm">
+                <p style="color: {$subModuleList[0].titleColor};">{$subModuleList[0].title}</p>
+                <p style="color: {$subModuleList[0].subTitleColor};">{$subModuleList[0].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <?php elseif($subModuleList[0]['imgPosition'] == 1):?>
+            <div class="one_sm">
+                <img src="{$subModuleList[0].imgUrl}" style="width: {$subModuleList[0].imgWidth};height: {$subModuleList[0].imgHeight};">
+            </div>
+            <div class="one_sm">
+                <p style="color: {$subModuleList[0].titleColor};">{$subModuleList[0].title}</p>
+                <p style="color: {$subModuleList[0].subTitleColor};">{$subModuleList[0].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <?php elseif($subModuleList[0]['imgPosition'] == 2):?>
+            <div class="first_sm">
+                <p style="color: {$subModuleList[0].titleColor};">{$subModuleList[0].title}</p>
+                <p style="color: {$subModuleList[0].subTitleColor};">{$subModuleList[0].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <div class="first_sm">
+                <img src="{$subModuleList[0].imgUrl}" style="width: {$subModuleList[0].imgWidth};height: {$subModuleList[0].imgHeight};">
+            </div>
+            <?php elseif($subModuleList[0]['imgPosition'] == 3):?>
+            <div class="one_sm">
+                <p style="color: {$subModuleList[0].titleColor};">{$subModuleList[0].title}</p>
+                <p style="color: {$subModuleList[0].subTitleColor};">{$subModuleList[0].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <div class="one_sm">
+                <img src="{$subModuleList[0].imgUrl}" style="width: {$subModuleList[0].imgWidth};height: {$subModuleList[0].imgHeight};">
+            </div>
+            <?php elseif($subModuleList[0]['imgPosition'] == 4):?>
+            <div class="one_sm">
+                <img src="{$subModuleList[0].imgUrl}" style="width: {$subModuleList[0].imgWidth};height: {$subModuleList[0].imgHeight};">
+            </div>
+            <?php endif;?>
+        </div>
+    </td>
+    <td colspan="3" style="background-color: {$subModuleList[3].bgColor};">
+        <div class="sub_module">
+            <?php if($subModuleList[3]['imgPosition'] == 0):?>
+            <div class="first_sm">
+                <img src="{$subModuleList[3].imgUrl}" style="width: {$subModuleList[3].imgWidth};height: {$subModuleList[3].imgHeight};">
+            </div>
+            <div class="first_sm">
+                <p style="color: {$subModuleList[3].titleColor};">{$subModuleList[3].title}</p>
+                <p style="color: {$subModuleList[3].subTitleColor};">{$subModuleList[3].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <?php elseif($subModuleList[3]['imgPosition'] == 1):?>
+            <div class="one_sm">
+                <img src="{$subModuleList[3].imgUrl}" style="width: {$subModuleList[3].imgWidth};height: {$subModuleList[3].imgHeight};">
+            </div>
+            <div class="one_sm">
+                <p style="color: {$subModuleList[3].titleColor};">{$subModuleList[3].title}</p>
+                <p style="color: {$subModuleList[3].subTitleColor};">{$subModuleList[3].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <?php elseif($subModuleList[3]['imgPosition'] == 2):?>
+            <div class="first_sm">
+                <p style="color: {$subModuleList[3].titleColor};">{$subModuleList[3].title}</p>
+                <p style="color: {$subModuleList[3].subTitleColor};">{$subModuleList[3].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <div class="first_sm">
+                <img src="{$subModuleList[3].imgUrl}" style="width: {$subModuleList[3].imgWidth};height: {$subModuleList[3].imgHeight};">
+            </div>
+            <?php elseif($subModuleList[3]['imgPosition'] == 3):?>
+            <div class="one_sm">
+                <p style="color: {$subModuleList[3].titleColor};">{$subModuleList[3].title}</p>
+                <p style="color: {$subModuleList[3].subTitleColor};">{$subModuleList[3].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <div class="one_sm">
+                <img src="{$subModuleList[3].imgUrl}" style="width: {$subModuleList[3].imgWidth};height: {$subModuleList[3].imgHeight};">
+            </div>
+            <?php elseif($subModuleList[3]['imgPosition'] == 4):?>
+            <div class="one_sm">
+                <img src="{$subModuleList[3].imgUrl}" style="width: {$subModuleList[3].imgWidth};height: {$subModuleList[3].imgHeight};">
+            </div>
+            <?php endif;?>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td colspan="2" style="background-color: {$subModuleList[1].bgColor};">
+        <div class="sub_module">
+            <?php if($subModuleList[1]['imgPosition'] == 0):?>
+            <div class="first_sm">
+                <img src="{$subModuleList[1].imgUrl}" style="width: {$subModuleList[1].imgWidth};height: {$subModuleList[1].imgHeight};">
+            </div>
+            <div class="first_sm">
+                <p style="color: {$subModuleList[1].titleColor};">{$subModuleList[1].title}</p>
+                <p style="color: {$subModuleList[1].subTitleColor};">{$subModuleList[1].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <?php elseif($subModuleList[1]['imgPosition'] == 1):?>
+            <div class="one_sm">
+                <img src="{$subModuleList[1].imgUrl}" style="width: {$subModuleList[1].imgWidth};height: {$subModuleList[1].imgHeight};">
+            </div>
+            <div class="one_sm">
+                <p style="color: {$subModuleList[1].titleColor};">{$subModuleList[1].title}</p>
+                <p style="color: {$subModuleList[1].subTitleColor};">{$subModuleList[1].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <?php elseif($subModuleList[1]['imgPosition'] == 2):?>
+            <div class="first_sm">
+                <p style="color: {$subModuleList[1].titleColor};">{$subModuleList[1].title}</p>
+                <p style="color: {$subModuleList[1].subTitleColor};">{$subModuleList[1].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <div class="first_sm">
+                <img src="{$subModuleList[1].imgUrl}" style="width: {$subModuleList[1].imgWidth};height: {$subModuleList[1].imgHeight};">
+            </div>
+            <?php elseif($subModuleList[1]['imgPosition'] == 3):?>
+            <div class="one_sm">
+                <p style="color: {$subModuleList[1].titleColor};">{$subModuleList[1].title}</p>
+                <p style="color: {$subModuleList[1].subTitleColor};">{$subModuleList[1].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <div class="one_sm">
+                <img src="{$subModuleList[1].imgUrl}" style="width: {$subModuleList[1].imgWidth};height: {$subModuleList[1].imgHeight};">
+            </div>
+            <?php elseif($subModuleList[1]['imgPosition'] == 4):?>
+            <div class="one_sm">
+                <img src="{$subModuleList[1].imgUrl}" style="width: {$subModuleList[1].imgWidth};height: {$subModuleList[1].imgHeight};">
+            </div>
+            <?php endif;?>
+        </div>
+    </td>
+    <td colspan="2" style="background-color: {$subModuleList[2].bgColor};">
+        <div class="sub_module">
+            <?php if($subModuleList[2]['imgPosition'] == 0):?>
+            <div class="first_sm">
+                <img src="{$subModuleList[2].imgUrl}" style="width: {$subModuleList[2].imgWidth};height: {$subModuleList[2].imgHeight};">
+            </div>
+            <div class="first_sm">
+                <p style="color: {$subModuleList[2].titleColor};">{$subModuleList[2].title}</p>
+                <p style="color: {$subModuleList[2].subTitleColor};">{$subModuleList[2].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <?php elseif($subModuleList[2]['imgPosition'] == 1):?>
+            <div class="one_sm">
+                <img src="{$subModuleList[2].imgUrl}" style="width: {$subModuleList[2].imgWidth};height: {$subModuleList[2].imgHeight};">
+            </div>
+            <div class="one_sm">
+                <p style="color: {$subModuleList[2].titleColor};">{$subModuleList[2].title}</p>
+                <p style="color: {$subModuleList[2].subTitleColor};">{$subModuleList[2].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <?php elseif($subModuleList[2]['imgPosition'] == 2):?>
+            <div class="first_sm">
+                <p style="color: {$subModuleList[2].titleColor};">{$subModuleList[2].title}</p>
+                <p style="color: {$subModuleList[2].subTitleColor};">{$subModuleList[2].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <div class="first_sm">
+                <img src="{$subModuleList[2].imgUrl}" style="width: {$subModuleList[2].imgWidth};height: {$subModuleList[2].imgHeight};">
+            </div>
+            <?php elseif($subModuleList[2]['imgPosition'] == 3):?>
+            <div class="one_sm">
+                <p style="color: {$subModuleList[2].titleColor};">{$subModuleList[2].title}</p>
+                <p style="color: {$subModuleList[2].subTitleColor};">{$subModuleList[2].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <div class="one_sm">
+                <img src="{$subModuleList[2].imgUrl}" style="width: {$subModuleList[2].imgWidth};height: {$subModuleList[2].imgHeight};">
+            </div>
+            <?php elseif($subModuleList[2]['imgPosition'] == 4):?>
+            <div class="one_sm">
+                <img src="{$subModuleList[2].imgUrl}" style="width: {$subModuleList[2].imgWidth};height: {$subModuleList[2].imgHeight};">
+            </div>
+            <?php endif;?>
+        </div>
+    </td>
+    <td colspan="2" style="background-color: {$subModuleList[4].bgColor};">
+        <div class="sub_module">
+            <?php if($subModuleList[4]['imgPosition'] == 0):?>
+            <div class="first_sm">
+                <img src="{$subModuleList[4].imgUrl}" style="width: {$subModuleList[4].imgWidth};height: {$subModuleList[4].imgHeight};">
+            </div>
+            <div class="first_sm">
+                <p style="color: {$subModuleList[4].titleColor};">{$subModuleList[4].title}</p>
+                <p style="color: {$subModuleList[4].subTitleColor};">{$subModuleList[4].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <?php elseif($subModuleList[4]['imgPosition'] == 1):?>
+            <div class="one_sm">
+                <img src="{$subModuleList[4].imgUrl}" style="width: {$subModuleList[4].imgWidth};height: {$subModuleList[4].imgHeight};">
+            </div>
+            <div class="one_sm">
+                <p style="color: {$subModuleList[4].titleColor};">{$subModuleList[4].title}</p>
+                <p style="color: {$subModuleList[4].subTitleColor};">{$subModuleList[4].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <?php elseif($subModuleList[4]['imgPosition'] == 2):?>
+            <div class="first_sm">
+                <p style="color: {$subModuleList[4].titleColor};">{$subModuleList[4].title}</p>
+                <p style="color: {$subModuleList[4].subTitleColor};">{$subModuleList[4].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <div class="first_sm">
+                <img src="{$subModuleList[4].imgUrl}" style="width: {$subModuleList[4].imgWidth};height: {$subModuleList[4].imgHeight};">
+            </div>
+            <?php elseif($subModuleList[4]['imgPosition'] == 3):?>
+            <div class="one_sm">
+                <p style="color: {$subModuleList[4].titleColor};">{$subModuleList[4].title}</p>
+                <p style="color: {$subModuleList[4].subTitleColor};">{$subModuleList[4].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <div class="one_sm">
+                <img src="{$subModuleList[4].imgUrl}" style="width: {$subModuleList[4].imgWidth};height: {$subModuleList[4].imgHeight};">
+            </div>
+            <?php elseif($subModuleList[4]['imgPosition'] == 4):?>
+            <div class="one_sm">
+                <img src="{$subModuleList[4].imgUrl}" style="width: {$subModuleList[4].imgWidth};height: {$subModuleList[4].imgHeight};">
+            </div>
+            <?php endif;?>
+        </div>
+    </td>
+</tr>
+</table>
+<p>504</p>
+</div>
+</label>
+<label class="radio-inline">
+<input type="radio" name="template" value="505" <eq name="dataInfo.template" value="505">checked="checked"</eq>>
+<div class="show_template">
+<table>
+<tr>
+    <td colspan="2" style="background-color: {$subModuleList[0].bgColor};">
+        <div class="sub_module">
+            <?php if($subModuleList[0]['imgPosition'] == 0):?>
+            <div class="first_sm">
+                <img src="{$subModuleList[0].imgUrl}" style="width: {$subModuleList[0].imgWidth};height: {$subModuleList[0].imgHeight};">
+            </div>
+            <div class="first_sm">
+                <p style="color: {$subModuleList[0].titleColor};">{$subModuleList[0].title}</p>
+                <p style="color: {$subModuleList[0].subTitleColor};">{$subModuleList[0].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <?php elseif($subModuleList[0]['imgPosition'] == 1):?>
+            <div class="one_sm">
+                <img src="{$subModuleList[0].imgUrl}" style="width: {$subModuleList[0].imgWidth};height: {$subModuleList[0].imgHeight};">
+            </div>
+            <div class="one_sm">
+                <p style="color: {$subModuleList[0].titleColor};">{$subModuleList[0].title}</p>
+                <p style="color: {$subModuleList[0].subTitleColor};">{$subModuleList[0].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <?php elseif($subModuleList[0]['imgPosition'] == 2):?>
+            <div class="first_sm">
+                <p style="color: {$subModuleList[0].titleColor};">{$subModuleList[0].title}</p>
+                <p style="color: {$subModuleList[0].subTitleColor};">{$subModuleList[0].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <div class="first_sm">
+                <img src="{$subModuleList[0].imgUrl}" style="width: {$subModuleList[0].imgWidth};height: {$subModuleList[0].imgHeight};">
+            </div>
+            <?php elseif($subModuleList[0]['imgPosition'] == 3):?>
+            <div class="one_sm">
+                <p style="color: {$subModuleList[0].titleColor};">{$subModuleList[0].title}</p>
+                <p style="color: {$subModuleList[0].subTitleColor};">{$subModuleList[0].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <div class="one_sm">
+                <img src="{$subModuleList[0].imgUrl}" style="width: {$subModuleList[0].imgWidth};height: {$subModuleList[0].imgHeight};">
+            </div>
+            <?php elseif($subModuleList[0]['imgPosition'] == 4):?>
+            <div class="one_sm">
+                <img src="{$subModuleList[0].imgUrl}" style="width: {$subModuleList[0].imgWidth};height: {$subModuleList[0].imgHeight};">
+            </div>
+            <?php endif;?>
+        </div>
+    </td>
+    <td colspan="2" style="background-color: {$subModuleList[2].bgColor};">
+        <div class="sub_module">
+            <?php if($subModuleList[2]['imgPosition'] == 0):?>
+            <div class="first_sm">
+                <img src="{$subModuleList[2].imgUrl}" style="width: {$subModuleList[2].imgWidth};height: {$subModuleList[2].imgHeight};">
+            </div>
+            <div class="first_sm">
+                <p style="color: {$subModuleList[2].titleColor};">{$subModuleList[2].title}</p>
+                <p style="color: {$subModuleList[2].subTitleColor};">{$subModuleList[2].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <?php elseif($subModuleList[2]['imgPosition'] == 1):?>
+            <div class="one_sm">
+                <img src="{$subModuleList[2].imgUrl}" style="width: {$subModuleList[2].imgWidth};height: {$subModuleList[2].imgHeight};">
+            </div>
+            <div class="one_sm">
+                <p style="color: {$subModuleList[2].titleColor};">{$subModuleList[2].title}</p>
+                <p style="color: {$subModuleList[2].subTitleColor};">{$subModuleList[2].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <?php elseif($subModuleList[2]['imgPosition'] == 2):?>
+            <div class="first_sm">
+                <p style="color: {$subModuleList[2].titleColor};">{$subModuleList[2].title}</p>
+                <p style="color: {$subModuleList[2].subTitleColor};">{$subModuleList[2].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <div class="first_sm">
+                <img src="{$subModuleList[2].imgUrl}" style="width: {$subModuleList[2].imgWidth};height: {$subModuleList[2].imgHeight};">
+            </div>
+            <?php elseif($subModuleList[2]['imgPosition'] == 3):?>
+            <div class="one_sm">
+                <p style="color: {$subModuleList[2].titleColor};">{$subModuleList[2].title}</p>
+                <p style="color: {$subModuleList[2].subTitleColor};">{$subModuleList[2].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <div class="one_sm">
+                <img src="{$subModuleList[2].imgUrl}" style="width: {$subModuleList[2].imgWidth};height: {$subModuleList[2].imgHeight};">
+            </div>
+            <?php elseif($subModuleList[2]['imgPosition'] == 4):?>
+            <div class="one_sm">
+                <img src="{$subModuleList[2].imgUrl}" style="width: {$subModuleList[2].imgWidth};height: {$subModuleList[2].imgHeight};">
+            </div>
+            <?php endif;?>
+        </div>
+    </td>
+    <td colspan="2" style="background-color: {$subModuleList[3].bgColor};">
+        <div class="sub_module">
+            <?php if($subModuleList[3]['imgPosition'] == 0):?>
+            <div class="first_sm">
+                <img src="{$subModuleList[3].imgUrl}" style="width: {$subModuleList[3].imgWidth};height: {$subModuleList[3].imgHeight};">
+            </div>
+            <div class="first_sm">
+                <p style="color: {$subModuleList[3].titleColor};">{$subModuleList[3].title}</p>
+                <p style="color: {$subModuleList[3].subTitleColor};">{$subModuleList[3].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <?php elseif($subModuleList[3]['imgPosition'] == 1):?>
+            <div class="one_sm">
+                <img src="{$subModuleList[3].imgUrl}" style="width: {$subModuleList[3].imgWidth};height: {$subModuleList[3].imgHeight};">
+            </div>
+            <div class="one_sm">
+                <p style="color: {$subModuleList[3].titleColor};">{$subModuleList[3].title}</p>
+                <p style="color: {$subModuleList[3].subTitleColor};">{$subModuleList[3].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <?php elseif($subModuleList[3]['imgPosition'] == 2):?>
+            <div class="first_sm">
+                <p style="color: {$subModuleList[3].titleColor};">{$subModuleList[3].title}</p>
+                <p style="color: {$subModuleList[3].subTitleColor};">{$subModuleList[3].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <div class="first_sm">
+                <img src="{$subModuleList[3].imgUrl}" style="width: {$subModuleList[3].imgWidth};height: {$subModuleList[3].imgHeight};">
+            </div>
+            <?php elseif($subModuleList[3]['imgPosition'] == 3):?>
+            <div class="one_sm">
+                <p style="color: {$subModuleList[3].titleColor};">{$subModuleList[3].title}</p>
+                <p style="color: {$subModuleList[3].subTitleColor};">{$subModuleList[3].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <div class="one_sm">
+                <img src="{$subModuleList[3].imgUrl}" style="width: {$subModuleList[3].imgWidth};height: {$subModuleList[3].imgHeight};">
+            </div>
+            <?php elseif($subModuleList[3]['imgPosition'] == 4):?>
+            <div class="one_sm">
+                <img src="{$subModuleList[3].imgUrl}" style="width: {$subModuleList[3].imgWidth};height: {$subModuleList[3].imgHeight};">
+            </div>
+            <?php endif;?>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td colspan="3" style="background-color: {$subModuleList[1].bgColor};">
+        <div class="sub_module">
+            <?php if($subModuleList[1]['imgPosition'] == 0):?>
+            <div class="first_sm">
+                <img src="{$subModuleList[1].imgUrl}" style="width: {$subModuleList[1].imgWidth};height: {$subModuleList[1].imgHeight};">
+            </div>
+            <div class="first_sm">
+                <p style="color: {$subModuleList[1].titleColor};">{$subModuleList[1].title}</p>
+                <p style="color: {$subModuleList[1].subTitleColor};">{$subModuleList[1].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <?php elseif($subModuleList[1]['imgPosition'] == 1):?>
+            <div class="one_sm">
+                <img src="{$subModuleList[1].imgUrl}" style="width: {$subModuleList[1].imgWidth};height: {$subModuleList[1].imgHeight};">
+            </div>
+            <div class="one_sm">
+                <p style="color: {$subModuleList[1].titleColor};">{$subModuleList[1].title}</p>
+                <p style="color: {$subModuleList[1].subTitleColor};">{$subModuleList[1].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <?php elseif($subModuleList[1]['imgPosition'] == 2):?>
+            <div class="first_sm">
+                <p style="color: {$subModuleList[1].titleColor};">{$subModuleList[1].title}</p>
+                <p style="color: {$subModuleList[1].subTitleColor};">{$subModuleList[1].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <div class="first_sm">
+                <img src="{$subModuleList[1].imgUrl}" style="width: {$subModuleList[1].imgWidth};height: {$subModuleList[1].imgHeight};">
+            </div>
+            <?php elseif($subModuleList[1]['imgPosition'] == 3):?>
+            <div class="one_sm">
+                <p style="color: {$subModuleList[1].titleColor};">{$subModuleList[1].title}</p>
+                <p style="color: {$subModuleList[1].subTitleColor};">{$subModuleList[1].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <div class="one_sm">
+                <img src="{$subModuleList[1].imgUrl}" style="width: {$subModuleList[1].imgWidth};height: {$subModuleList[1].imgHeight};">
+            </div>
+            <?php elseif($subModuleList[1]['imgPosition'] == 4):?>
+            <div class="one_sm">
+                <img src="{$subModuleList[1].imgUrl}" style="width: {$subModuleList[1].imgWidth};height: {$subModuleList[1].imgHeight};">
+            </div>
+            <?php endif;?>
+        </div>
+    </td>
+    <td colspan="3" style="background-color: {$subModuleList[4].bgColor};">
+        <div class="sub_module">
+            <?php if($subModuleList[4]['imgPosition'] == 0):?>
+            <div class="first_sm">
+                <img src="{$subModuleList[4].imgUrl}" style="width: {$subModuleList[4].imgWidth};height: {$subModuleList[4].imgHeight};">
+            </div>
+            <div class="first_sm">
+                <p style="color: {$subModuleList[4].titleColor};">{$subModuleList[4].title}</p>
+                <p style="color: {$subModuleList[4].subTitleColor};">{$subModuleList[4].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <?php elseif($subModuleList[4]['imgPosition'] == 1):?>
+            <div class="one_sm">
+                <img src="{$subModuleList[4].imgUrl}" style="width: {$subModuleList[4].imgWidth};height: {$subModuleList[4].imgHeight};">
+            </div>
+            <div class="one_sm">
+                <p style="color: {$subModuleList[4].titleColor};">{$subModuleList[4].title}</p>
+                <p style="color: {$subModuleList[4].subTitleColor};">{$subModuleList[4].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <?php elseif($subModuleList[4]['imgPosition'] == 2):?>
+            <div class="first_sm">
+                <p style="color: {$subModuleList[4].titleColor};">{$subModuleList[4].title}</p>
+                <p style="color: {$subModuleList[4].subTitleColor};">{$subModuleList[4].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <div class="first_sm">
+                <img src="{$subModuleList[4].imgUrl}" style="width: {$subModuleList[4].imgWidth};height: {$subModuleList[4].imgHeight};">
+            </div>
+            <?php elseif($subModuleList[4]['imgPosition'] == 3):?>
+            <div class="one_sm">
+                <p style="color: {$subModuleList[4].titleColor};">{$subModuleList[4].title}</p>
+                <p style="color: {$subModuleList[4].subTitleColor};">{$subModuleList[4].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <div class="one_sm">
+                <img src="{$subModuleList[4].imgUrl}" style="width: {$subModuleList[4].imgWidth};height: {$subModuleList[4].imgHeight};">
+            </div>
+            <?php elseif($subModuleList[4]['imgPosition'] == 4):?>
+            <div class="one_sm">
+                <img src="{$subModuleList[4].imgUrl}" style="width: {$subModuleList[4].imgWidth};height: {$subModuleList[4].imgHeight};">
+            </div>
+            <?php endif;?>
+        </div>
+    </td>
+</tr>
+</table>
+<p>505</p>
+</div>
+</label>
+<label class="radio-inline">
+<input type="radio" name="template" value="506" <eq name="dataInfo.template" value="506">checked="checked"</eq>>
+<div class="show_template">
+<table>
+<tr>
+    <td rowspan="2" style="background-color: {$subModuleList[0].bgColor};">
+        <div class="sub_module">
+            <?php if($subModuleList[0]['imgPosition'] == 0):?>
+            <div class="first_sm">
+                <img src="{$subModuleList[0].imgUrl}" style="width: {$subModuleList[0].imgWidth};height: {$subModuleList[0].imgHeight};">
+            </div>
+            <div class="first_sm">
+                <p style="color: {$subModuleList[0].titleColor};">{$subModuleList[0].title}</p>
+                <p style="color: {$subModuleList[0].subTitleColor};">{$subModuleList[0].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <?php elseif($subModuleList[0]['imgPosition'] == 1):?>
+            <div class="one_sm">
+                <img src="{$subModuleList[0].imgUrl}" style="width: {$subModuleList[0].imgWidth};height: {$subModuleList[0].imgHeight};">
+            </div>
+            <div class="one_sm">
+                <p style="color: {$subModuleList[0].titleColor};">{$subModuleList[0].title}</p>
+                <p style="color: {$subModuleList[0].subTitleColor};">{$subModuleList[0].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <?php elseif($subModuleList[0]['imgPosition'] == 2):?>
+            <div class="first_sm">
+                <p style="color: {$subModuleList[0].titleColor};">{$subModuleList[0].title}</p>
+                <p style="color: {$subModuleList[0].subTitleColor};">{$subModuleList[0].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <div class="first_sm">
+                <img src="{$subModuleList[0].imgUrl}" style="width: {$subModuleList[0].imgWidth};height: {$subModuleList[0].imgHeight};">
+            </div>
+            <?php elseif($subModuleList[0]['imgPosition'] == 3):?>
+            <div class="one_sm">
+                <p style="color: {$subModuleList[0].titleColor};">{$subModuleList[0].title}</p>
+                <p style="color: {$subModuleList[0].subTitleColor};">{$subModuleList[0].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <div class="one_sm">
+                <img src="{$subModuleList[0].imgUrl}" style="width: {$subModuleList[0].imgWidth};height: {$subModuleList[0].imgHeight};">
+            </div>
+            <?php elseif($subModuleList[0]['imgPosition'] == 4):?>
+            <div class="one_sm">
+                <img src="{$subModuleList[0].imgUrl}" style="width: {$subModuleList[0].imgWidth};height: {$subModuleList[0].imgHeight};">
+            </div>
+            <?php endif;?>
+        </div>
+    </td>
+    <td rowspan="3" style="background-color: {$subModuleList[3].bgColor};">
+        <div class="sub_module">
+            <?php if($subModuleList[3]['imgPosition'] == 0):?>
+            <div class="first_sm">
+                <img src="{$subModuleList[3].imgUrl}" style="width: {$subModuleList[3].imgWidth};height: {$subModuleList[3].imgHeight};">
+            </div>
+            <div class="first_sm">
+                <p style="color: {$subModuleList[3].titleColor};">{$subModuleList[3].title}</p>
+                <p style="color: {$subModuleList[3].subTitleColor};">{$subModuleList[3].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <?php elseif($subModuleList[3]['imgPosition'] == 1):?>
+            <div class="one_sm">
+                <img src="{$subModuleList[3].imgUrl}" style="width: {$subModuleList[3].imgWidth};height: {$subModuleList[3].imgHeight};">
+            </div>
+            <div class="one_sm">
+                <p style="color: {$subModuleList[3].titleColor};">{$subModuleList[3].title}</p>
+                <p style="color: {$subModuleList[3].subTitleColor};">{$subModuleList[3].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <?php elseif($subModuleList[3]['imgPosition'] == 2):?>
+            <div class="first_sm">
+                <p style="color: {$subModuleList[3].titleColor};">{$subModuleList[3].title}</p>
+                <p style="color: {$subModuleList[3].subTitleColor};">{$subModuleList[3].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <div class="first_sm">
+                <img src="{$subModuleList[3].imgUrl}" style="width: {$subModuleList[3].imgWidth};height: {$subModuleList[3].imgHeight};">
+            </div>
+            <?php elseif($subModuleList[3]['imgPosition'] == 3):?>
+            <div class="one_sm">
+                <p style="color: {$subModuleList[3].titleColor};">{$subModuleList[3].title}</p>
+                <p style="color: {$subModuleList[3].subTitleColor};">{$subModuleList[3].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <div class="one_sm">
+                <img src="{$subModuleList[3].imgUrl}" style="width: {$subModuleList[3].imgWidth};height: {$subModuleList[3].imgHeight};">
+            </div>
+            <?php elseif($subModuleList[3]['imgPosition'] == 4):?>
+            <div class="one_sm">
+                <img src="{$subModuleList[3].imgUrl}" style="width: {$subModuleList[3].imgWidth};height: {$subModuleList[3].imgHeight};">
+            </div>
+            <?php endif;?>
+        </div>
+    </td>
+</tr>
+<tr></tr>
+<tr><td rowspan="2" style="background-color: {$subModuleList[1].bgColor};">
+    <div class="sub_module">
+        <?php if($subModuleList[1]['imgPosition'] == 0):?>
+        <div class="first_sm">
+            <img src="{$subModuleList[1].imgUrl}" style="width: {$subModuleList[1].imgWidth};height: {$subModuleList[1].imgHeight};">
+        </div>
+        <div class="first_sm">
+            <p style="color: {$subModuleList[1].titleColor};">{$subModuleList[1].title}</p>
+            <p style="color: {$subModuleList[1].subTitleColor};">{$subModuleList[1].subTitle|msubstr=0,4,'utf-8',true}</p>
+        </div>
+        <?php elseif($subModuleList[1]['imgPosition'] == 1):?>
+        <div class="one_sm">
+            <img src="{$subModuleList[1].imgUrl}" style="width: {$subModuleList[1].imgWidth};height: {$subModuleList[1].imgHeight};">
+        </div>
+        <div class="one_sm">
+            <p style="color: {$subModuleList[1].titleColor};">{$subModuleList[1].title}</p>
+            <p style="color: {$subModuleList[1].subTitleColor};">{$subModuleList[1].subTitle|msubstr=0,4,'utf-8',true}</p>
+        </div>
+        <?php elseif($subModuleList[1]['imgPosition'] == 2):?>
+        <div class="first_sm">
+            <p style="color: {$subModuleList[1].titleColor};">{$subModuleList[1].title}</p>
+            <p style="color: {$subModuleList[1].subTitleColor};">{$subModuleList[1].subTitle|msubstr=0,4,'utf-8',true}</p>
+        </div>
+        <div class="first_sm">
+            <img src="{$subModuleList[1].imgUrl}" style="width: {$subModuleList[1].imgWidth};height: {$subModuleList[1].imgHeight};">
+        </div>
+        <?php elseif($subModuleList[1]['imgPosition'] == 3):?>
+        <div class="one_sm">
+            <p style="color: {$subModuleList[1].titleColor};">{$subModuleList[1].title}</p>
+            <p style="color: {$subModuleList[1].subTitleColor};">{$subModuleList[1].subTitle|msubstr=0,4,'utf-8',true}</p>
+        </div>
+        <div class="one_sm">
+            <img src="{$subModuleList[1].imgUrl}" style="width: {$subModuleList[1].imgWidth};height: {$subModuleList[1].imgHeight};">
+        </div>
+        <?php elseif($subModuleList[1]['imgPosition'] == 4):?>
+        <div class="one_sm">
+            <img src="{$subModuleList[1].imgUrl}" style="width: {$subModuleList[1].imgWidth};height: {$subModuleList[1].imgHeight};">
+        </div>
+        <?php endif;?>
+    </div>
+</td></tr>
+<tr><td rowspan="3" style="background-color: {$subModuleList[4].bgColor};">
+    <div class="sub_module">
+        <?php if($subModuleList[4]['imgPosition'] == 0):?>
+        <div class="first_sm">
+            <img src="{$subModuleList[4].imgUrl}" style="width: {$subModuleList[4].imgWidth};height: {$subModuleList[4].imgHeight};">
+        </div>
+        <div class="first_sm">
+            <p style="color: {$subModuleList[4].titleColor};">{$subModuleList[4].title}</p>
+            <p style="color: {$subModuleList[4].subTitleColor};">{$subModuleList[4].subTitle|msubstr=0,4,'utf-8',true}</p>
+        </div>
+        <?php elseif($subModuleList[4]['imgPosition'] == 1):?>
+        <div class="one_sm">
+            <img src="{$subModuleList[4].imgUrl}" style="width: {$subModuleList[4].imgWidth};height: {$subModuleList[4].imgHeight};">
+        </div>
+        <div class="one_sm">
+            <p style="color: {$subModuleList[4].titleColor};">{$subModuleList[4].title}</p>
+            <p style="color: {$subModuleList[4].subTitleColor};">{$subModuleList[4].subTitle|msubstr=0,4,'utf-8',true}</p>
+        </div>
+        <?php elseif($subModuleList[4]['imgPosition'] == 2):?>
+        <div class="first_sm">
+            <p style="color: {$subModuleList[4].titleColor};">{$subModuleList[4].title}</p>
+            <p style="color: {$subModuleList[4].subTitleColor};">{$subModuleList[4].subTitle|msubstr=0,4,'utf-8',true}</p>
+        </div>
+        <div class="first_sm">
+            <img src="{$subModuleList[4].imgUrl}" style="width: {$subModuleList[4].imgWidth};height: {$subModuleList[4].imgHeight};">
+        </div>
+        <?php elseif($subModuleList[4]['imgPosition'] == 3):?>
+        <div class="one_sm">
+            <p style="color: {$subModuleList[4].titleColor};">{$subModuleList[4].title}</p>
+            <p style="color: {$subModuleList[4].subTitleColor};">{$subModuleList[4].subTitle|msubstr=0,4,'utf-8',true}</p>
+        </div>
+        <div class="one_sm">
+            <img src="{$subModuleList[4].imgUrl}" style="width: {$subModuleList[4].imgWidth};height: {$subModuleList[4].imgHeight};">
+        </div>
+        <?php elseif($subModuleList[4]['imgPosition'] == 4):?>
+        <div class="one_sm">
+            <img src="{$subModuleList[4].imgUrl}" style="width: {$subModuleList[4].imgWidth};height: {$subModuleList[4].imgHeight};">
+        </div>
+        <?php endif;?>
+    </div>
+</td></tr>
+<tr><td rowspan="2" style="background-color: {$subModuleList[2].bgColor};">
+    <div class="sub_module">
+        <?php if($subModuleList[2]['imgPosition'] == 0):?>
+        <div class="first_sm">
+            <img src="{$subModuleList[2].imgUrl}" style="width: {$subModuleList[2].imgWidth};height: {$subModuleList[2].imgHeight};">
+        </div>
+        <div class="first_sm">
+            <p style="color: {$subModuleList[2].titleColor};">{$subModuleList[2].title}</p>
+            <p style="color: {$subModuleList[2].subTitleColor};">{$subModuleList[2].subTitle|msubstr=0,4,'utf-8',true}</p>
+        </div>
+        <?php elseif($subModuleList[2]['imgPosition'] == 1):?>
+        <div class="one_sm">
+            <img src="{$subModuleList[2].imgUrl}" style="width: {$subModuleList[2].imgWidth};height: {$subModuleList[2].imgHeight};">
+        </div>
+        <div class="one_sm">
+            <p style="color: {$subModuleList[2].titleColor};">{$subModuleList[2].title}</p>
+            <p style="color: {$subModuleList[2].subTitleColor};">{$subModuleList[2].subTitle|msubstr=0,4,'utf-8',true}</p>
+        </div>
+        <?php elseif($subModuleList[2]['imgPosition'] == 2):?>
+        <div class="first_sm">
+            <p style="color: {$subModuleList[2].titleColor};">{$subModuleList[2].title}</p>
+            <p style="color: {$subModuleList[2].subTitleColor};">{$subModuleList[2].subTitle|msubstr=0,4,'utf-8',true}</p>
+        </div>
+        <div class="first_sm">
+            <img src="{$subModuleList[2].imgUrl}" style="width: {$subModuleList[2].imgWidth};height: {$subModuleList[2].imgHeight};">
+        </div>
+        <?php elseif($subModuleList[2]['imgPosition'] == 3):?>
+        <div class="one_sm">
+            <p style="color: {$subModuleList[2].titleColor};">{$subModuleList[2].title}</p>
+            <p style="color: {$subModuleList[2].subTitleColor};">{$subModuleList[2].subTitle|msubstr=0,4,'utf-8',true}</p>
+        </div>
+        <div class="one_sm">
+            <img src="{$subModuleList[2].imgUrl}" style="width: {$subModuleList[2].imgWidth};height: {$subModuleList[2].imgHeight};">
+        </div>
+        <?php elseif($subModuleList[2]['imgPosition'] == 4):?>
+        <div class="one_sm">
+            <img src="{$subModuleList[2].imgUrl}" style="width: {$subModuleList[2].imgWidth};height: {$subModuleList[2].imgHeight};">
+        </div>
+        <?php endif;?>
+    </div>
+</td></tr>
+<tr></tr>
+</table>
+<p>506</p>
+</div>
+</label>
+<label class="radio-inline">
+<input type="radio" name="template" value="507" <eq name="dataInfo.template" value="507">checked="checked"</eq>>
+<div class="show_template">
+<table>
+<tr>
+    <td rowspan="3" style="background-color: {$subModuleList[0].bgColor};">
+        <div class="sub_module">
+            <?php if($subModuleList[0]['imgPosition'] == 0):?>
+            <div class="first_sm">
+                <img src="{$subModuleList[0].imgUrl}" style="width: {$subModuleList[0].imgWidth};height: {$subModuleList[0].imgHeight};">
+            </div>
+            <div class="first_sm">
+                <p style="color: {$subModuleList[0].titleColor};">{$subModuleList[0].title}</p>
+                <p style="color: {$subModuleList[0].subTitleColor};">{$subModuleList[0].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <?php elseif($subModuleList[0]['imgPosition'] == 1):?>
+            <div class="one_sm">
+                <img src="{$subModuleList[0].imgUrl}" style="width: {$subModuleList[0].imgWidth};height: {$subModuleList[0].imgHeight};">
+            </div>
+            <div class="one_sm">
+                <p style="color: {$subModuleList[0].titleColor};">{$subModuleList[0].title}</p>
+                <p style="color: {$subModuleList[0].subTitleColor};">{$subModuleList[0].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <?php elseif($subModuleList[0]['imgPosition'] == 2):?>
+            <div class="first_sm">
+                <p style="color: {$subModuleList[0].titleColor};">{$subModuleList[0].title}</p>
+                <p style="color: {$subModuleList[0].subTitleColor};">{$subModuleList[0].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <div class="first_sm">
+                <img src="{$subModuleList[0].imgUrl}" style="width: {$subModuleList[0].imgWidth};height: {$subModuleList[0].imgHeight};">
+            </div>
+            <?php elseif($subModuleList[0]['imgPosition'] == 3):?>
+            <div class="one_sm">
+                <p style="color: {$subModuleList[0].titleColor};">{$subModuleList[0].title}</p>
+                <p style="color: {$subModuleList[0].subTitleColor};">{$subModuleList[0].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <div class="one_sm">
+                <img src="{$subModuleList[0].imgUrl}" style="width: {$subModuleList[0].imgWidth};height: {$subModuleList[0].imgHeight};">
+            </div>
+            <?php elseif($subModuleList[0]['imgPosition'] == 4):?>
+            <div class="one_sm">
+                <img src="{$subModuleList[0].imgUrl}" style="width: {$subModuleList[0].imgWidth};height: {$subModuleList[0].imgHeight};">
+            </div>
+            <?php endif;?>
+        </div>
+    </td>
+    <td rowspan="2" style="background-color: {$subModuleList[2].bgColor};">
+        <div class="sub_module">
+            <?php if($subModuleList[2]['imgPosition'] == 0):?>
+            <div class="first_sm">
+                <img src="{$subModuleList[2].imgUrl}" style="width: {$subModuleList[2].imgWidth};height: {$subModuleList[2].imgHeight};">
+            </div>
+            <div class="first_sm">
+                <p style="color: {$subModuleList[2].titleColor};">{$subModuleList[2].title}</p>
+                <p style="color: {$subModuleList[2].subTitleColor};">{$subModuleList[2].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <?php elseif($subModuleList[2]['imgPosition'] == 1):?>
+            <div class="one_sm">
+                <img src="{$subModuleList[2].imgUrl}" style="width: {$subModuleList[2].imgWidth};height: {$subModuleList[2].imgHeight};">
+            </div>
+            <div class="one_sm">
+                <p style="color: {$subModuleList[2].titleColor};">{$subModuleList[2].title}</p>
+                <p style="color: {$subModuleList[2].subTitleColor};">{$subModuleList[2].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <?php elseif($subModuleList[2]['imgPosition'] == 2):?>
+            <div class="first_sm">
+                <p style="color: {$subModuleList[2].titleColor};">{$subModuleList[2].title}</p>
+                <p style="color: {$subModuleList[2].subTitleColor};">{$subModuleList[2].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <div class="first_sm">
+                <img src="{$subModuleList[2].imgUrl}" style="width: {$subModuleList[2].imgWidth};height: {$subModuleList[2].imgHeight};">
+            </div>
+            <?php elseif($subModuleList[2]['imgPosition'] == 3):?>
+            <div class="one_sm">
+                <p style="color: {$subModuleList[2].titleColor};">{$subModuleList[2].title}</p>
+                <p style="color: {$subModuleList[2].subTitleColor};">{$subModuleList[2].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <div class="one_sm">
+                <img src="{$subModuleList[2].imgUrl}" style="width: {$subModuleList[2].imgWidth};height: {$subModuleList[2].imgHeight};">
+            </div>
+            <?php elseif($subModuleList[2]['imgPosition'] == 4):?>
+            <div class="one_sm">
+                <img src="{$subModuleList[2].imgUrl}" style="width: {$subModuleList[2].imgWidth};height: {$subModuleList[2].imgHeight};">
+            </div>
+            <?php endif;?>
+        </div>
+    </td>
+</tr>
+<tr></tr>
+<tr><td rowspan="2" style="background-color: {$subModuleList[3].bgColor};">
+    <div class="sub_module">
+        <?php if($subModuleList[3]['imgPosition'] == 0):?>
+        <div class="first_sm">
+            <img src="{$subModuleList[3].imgUrl}" style="width: {$subModuleList[3].imgWidth};height: {$subModuleList[3].imgHeight};">
+        </div>
+        <div class="first_sm">
+            <p style="color: {$subModuleList[3].titleColor};">{$subModuleList[3].title}</p>
+            <p style="color: {$subModuleList[3].subTitleColor};">{$subModuleList[3].subTitle|msubstr=0,4,'utf-8',true}</p>
+        </div>
+        <?php elseif($subModuleList[3]['imgPosition'] == 1):?>
+        <div class="one_sm">
+            <img src="{$subModuleList[3].imgUrl}" style="width: {$subModuleList[3].imgWidth};height: {$subModuleList[3].imgHeight};">
+        </div>
+        <div class="one_sm">
+            <p style="color: {$subModuleList[3].titleColor};">{$subModuleList[3].title}</p>
+            <p style="color: {$subModuleList[3].subTitleColor};">{$subModuleList[3].subTitle|msubstr=0,4,'utf-8',true}</p>
+        </div>
+        <?php elseif($subModuleList[3]['imgPosition'] == 2):?>
+        <div class="first_sm">
+            <p style="color: {$subModuleList[3].titleColor};">{$subModuleList[3].title}</p>
+            <p style="color: {$subModuleList[3].subTitleColor};">{$subModuleList[3].subTitle|msubstr=0,4,'utf-8',true}</p>
+        </div>
+        <div class="first_sm">
+            <img src="{$subModuleList[3].imgUrl}" style="width: {$subModuleList[3].imgWidth};height: {$subModuleList[3].imgHeight};">
+        </div>
+        <?php elseif($subModuleList[3]['imgPosition'] == 3):?>
+        <div class="one_sm">
+            <p style="color: {$subModuleList[3].titleColor};">{$subModuleList[3].title}</p>
+            <p style="color: {$subModuleList[3].subTitleColor};">{$subModuleList[3].subTitle|msubstr=0,4,'utf-8',true}</p>
+        </div>
+        <div class="one_sm">
+            <img src="{$subModuleList[3].imgUrl}" style="width: {$subModuleList[3].imgWidth};height: {$subModuleList[3].imgHeight};">
+        </div>
+        <?php elseif($subModuleList[3]['imgPosition'] == 4):?>
+        <div class="one_sm">
+            <img src="{$subModuleList[3].imgUrl}" style="width: {$subModuleList[3].imgWidth};height: {$subModuleList[3].imgHeight};">
+        </div>
+        <?php endif;?>
+    </div>
+</td></tr>
+<tr><td rowspan="3" style="background-color: {$subModuleList[1].bgColor};">
+    <div class="sub_module">
+        <?php if($subModuleList[1]['imgPosition'] == 0):?>
+        <div class="first_sm">
+            <img src="{$subModuleList[1].imgUrl}" style="width: {$subModuleList[1].imgWidth};height: {$subModuleList[1].imgHeight};">
+        </div>
+        <div class="first_sm">
+            <p style="color: {$subModuleList[1].titleColor};">{$subModuleList[1].title}</p>
+            <p style="color: {$subModuleList[1].subTitleColor};">{$subModuleList[1].subTitle|msubstr=0,4,'utf-8',true}</p>
+        </div>
+        <?php elseif($subModuleList[1]['imgPosition'] == 1):?>
+        <div class="one_sm">
+            <img src="{$subModuleList[1].imgUrl}" style="width: {$subModuleList[1].imgWidth};height: {$subModuleList[1].imgHeight};">
+        </div>
+        <div class="one_sm">
+            <p style="color: {$subModuleList[1].titleColor};">{$subModuleList[1].title}</p>
+            <p style="color: {$subModuleList[1].subTitleColor};">{$subModuleList[1].subTitle|msubstr=0,4,'utf-8',true}</p>
+        </div>
+        <?php elseif($subModuleList[1]['imgPosition'] == 2):?>
+        <div class="first_sm">
+            <p style="color: {$subModuleList[1].titleColor};">{$subModuleList[1].title}</p>
+            <p style="color: {$subModuleList[1].subTitleColor};">{$subModuleList[1].subTitle|msubstr=0,4,'utf-8',true}</p>
+        </div>
+        <div class="first_sm">
+            <img src="{$subModuleList[1].imgUrl}" style="width: {$subModuleList[1].imgWidth};height: {$subModuleList[1].imgHeight};">
+        </div>
+        <?php elseif($subModuleList[1]['imgPosition'] == 3):?>
+        <div class="one_sm">
+            <p style="color: {$subModuleList[1].titleColor};">{$subModuleList[1].title}</p>
+            <p style="color: {$subModuleList[1].subTitleColor};">{$subModuleList[1].subTitle|msubstr=0,4,'utf-8',true}</p>
+        </div>
+        <div class="one_sm">
+            <img src="{$subModuleList[1].imgUrl}" style="width: {$subModuleList[1].imgWidth};height: {$subModuleList[1].imgHeight};">
+        </div>
+        <?php elseif($subModuleList[1]['imgPosition'] == 4):?>
+        <div class="one_sm">
+            <img src="{$subModuleList[1].imgUrl}" style="width: {$subModuleList[1].imgWidth};height: {$subModuleList[1].imgHeight};">
+        </div>
+        <?php endif;?>
+    </div>
+</td></tr>
+<tr><td rowspan="2" style="background-color: {$subModuleList[4].bgColor};">
+    <div class="sub_module">
+        <?php if($subModuleList[4]['imgPosition'] == 0):?>
+        <div class="first_sm">
+            <img src="{$subModuleList[4].imgUrl}" style="width: {$subModuleList[4].imgWidth};height: {$subModuleList[4].imgHeight};">
+        </div>
+        <div class="first_sm">
+            <p style="color: {$subModuleList[4].titleColor};">{$subModuleList[4].title}</p>
+            <p style="color: {$subModuleList[4].subTitleColor};">{$subModuleList[4].subTitle|msubstr=0,4,'utf-8',true}</p>
+        </div>
+        <?php elseif($subModuleList[4]['imgPosition'] == 1):?>
+        <div class="one_sm">
+            <img src="{$subModuleList[4].imgUrl}" style="width: {$subModuleList[4].imgWidth};height: {$subModuleList[4].imgHeight};">
+        </div>
+        <div class="one_sm">
+            <p style="color: {$subModuleList[4].titleColor};">{$subModuleList[4].title}</p>
+            <p style="color: {$subModuleList[4].subTitleColor};">{$subModuleList[4].subTitle|msubstr=0,4,'utf-8',true}</p>
+        </div>
+        <?php elseif($subModuleList[4]['imgPosition'] == 2):?>
+        <div class="first_sm">
+            <p style="color: {$subModuleList[4].titleColor};">{$subModuleList[4].title}</p>
+            <p style="color: {$subModuleList[4].subTitleColor};">{$subModuleList[4].subTitle|msubstr=0,4,'utf-8',true}</p>
+        </div>
+        <div class="first_sm">
+            <img src="{$subModuleList[4].imgUrl}" style="width: {$subModuleList[4].imgWidth};height: {$subModuleList[4].imgHeight};">
+        </div>
+        <?php elseif($subModuleList[4]['imgPosition'] == 3):?>
+        <div class="one_sm">
+            <p style="color: {$subModuleList[4].titleColor};">{$subModuleList[4].title}</p>
+            <p style="color: {$subModuleList[4].subTitleColor};">{$subModuleList[4].subTitle|msubstr=0,4,'utf-8',true}</p>
+        </div>
+        <div class="one_sm">
+            <img src="{$subModuleList[4].imgUrl}" style="width: {$subModuleList[4].imgWidth};height: {$subModuleList[4].imgHeight};">
+        </div>
+        <?php elseif($subModuleList[4]['imgPosition'] == 4):?>
+        <div class="one_sm">
+            <img src="{$subModuleList[4].imgUrl}" style="width: {$subModuleList[4].imgWidth};height: {$subModuleList[4].imgHeight};">
+        </div>
+        <?php endif;?>
+    </div>
+</td></tr>
+<tr></tr>
+</table>
+<p>507</p>
+</div>
+</label>
+<elseif condition="$subModuleCount eq 6" />
+<label class="radio-inline">
+<input type="radio" name="template" value="601" <neq name="dataInfo.template" value="602">checked="checked"</neq>>
+<div class="show_template">
+<table>
+<tr>
+    <td style="background-color: {$subModuleList[0].bgColor};">
+        <div class="sub_module">
+            <?php if($subModuleList[0]['imgPosition'] == 0):?>
+            <div class="first_sm">
+                <img src="{$subModuleList[0].imgUrl}" style="width: {$subModuleList[0].imgWidth};height: {$subModuleList[0].imgHeight};">
+            </div>
+            <div class="first_sm">
+                <p style="color: {$subModuleList[0].titleColor};">{$subModuleList[0].title}</p>
+                <p style="color: {$subModuleList[0].subTitleColor};">{$subModuleList[0].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <?php elseif($subModuleList[0]['imgPosition'] == 1):?>
+            <div class="one_sm">
+                <img src="{$subModuleList[0].imgUrl}" style="width: {$subModuleList[0].imgWidth};height: {$subModuleList[0].imgHeight};">
+            </div>
+            <div class="one_sm">
+                <p style="color: {$subModuleList[0].titleColor};">{$subModuleList[0].title}</p>
+                <p style="color: {$subModuleList[0].subTitleColor};">{$subModuleList[0].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <?php elseif($subModuleList[0]['imgPosition'] == 2):?>
+            <div class="first_sm">
+                <p style="color: {$subModuleList[0].titleColor};">{$subModuleList[0].title}</p>
+                <p style="color: {$subModuleList[0].subTitleColor};">{$subModuleList[0].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <div class="first_sm">
+                <img src="{$subModuleList[0].imgUrl}" style="width: {$subModuleList[0].imgWidth};height: {$subModuleList[0].imgHeight};">
+            </div>
+            <?php elseif($subModuleList[0]['imgPosition'] == 3):?>
+            <div class="one_sm">
+                <p style="color: {$subModuleList[0].titleColor};">{$subModuleList[0].title}</p>
+                <p style="color: {$subModuleList[0].subTitleColor};">{$subModuleList[0].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <div class="one_sm">
+                <img src="{$subModuleList[0].imgUrl}" style="width: {$subModuleList[0].imgWidth};height: {$subModuleList[0].imgHeight};">
+            </div>
+            <?php elseif($subModuleList[0]['imgPosition'] == 4):?>
+            <div class="one_sm">
+                <img src="{$subModuleList[0].imgUrl}" style="width: {$subModuleList[0].imgWidth};height: {$subModuleList[0].imgHeight};">
+            </div>
+            <?php endif;?>
+        </div>
+    </td>
+    <td style="background-color: {$subModuleList[3].bgColor};">
+        <div class="sub_module">
+            <?php if($subModuleList[3]['imgPosition'] == 0):?>
+            <div class="first_sm">
+                <img src="{$subModuleList[3].imgUrl}" style="width: {$subModuleList[3].imgWidth};height: {$subModuleList[3].imgHeight};">
+            </div>
+            <div class="first_sm">
+                <p style="color: {$subModuleList[3].titleColor};">{$subModuleList[3].title}</p>
+                <p style="color: {$subModuleList[3].subTitleColor};">{$subModuleList[3].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <?php elseif($subModuleList[3]['imgPosition'] == 1):?>
+            <div class="one_sm">
+                <img src="{$subModuleList[3].imgUrl}" style="width: {$subModuleList[3].imgWidth};height: {$subModuleList[3].imgHeight};">
+            </div>
+            <div class="one_sm">
+                <p style="color: {$subModuleList[3].titleColor};">{$subModuleList[3].title}</p>
+                <p style="color: {$subModuleList[3].subTitleColor};">{$subModuleList[3].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <?php elseif($subModuleList[3]['imgPosition'] == 2):?>
+            <div class="first_sm">
+                <p style="color: {$subModuleList[3].titleColor};">{$subModuleList[3].title}</p>
+                <p style="color: {$subModuleList[3].subTitleColor};">{$subModuleList[3].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <div class="first_sm">
+                <img src="{$subModuleList[3].imgUrl}" style="width: {$subModuleList[3].imgWidth};height: {$subModuleList[3].imgHeight};">
+            </div>
+            <?php elseif($subModuleList[3]['imgPosition'] == 3):?>
+            <div class="one_sm">
+                <p style="color: {$subModuleList[3].titleColor};">{$subModuleList[3].title}</p>
+                <p style="color: {$subModuleList[3].subTitleColor};">{$subModuleList[3].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <div class="one_sm">
+                <img src="{$subModuleList[3].imgUrl}" style="width: {$subModuleList[3].imgWidth};height: {$subModuleList[3].imgHeight};">
+            </div>
+            <?php elseif($subModuleList[3]['imgPosition'] == 4):?>
+            <div class="one_sm">
+                <img src="{$subModuleList[3].imgUrl}" style="width: {$subModuleList[3].imgWidth};height: {$subModuleList[3].imgHeight};">
+            </div>
+            <?php endif;?>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td style="background-color: {$subModuleList[1].bgColor};">
+        <div class="sub_module">
+            <?php if($subModuleList[1]['imgPosition'] == 0):?>
+            <div class="first_sm">
+                <img src="{$subModuleList[1].imgUrl}" style="width: {$subModuleList[1].imgWidth};height: {$subModuleList[1].imgHeight};">
+            </div>
+            <div class="first_sm">
+                <p style="color: {$subModuleList[1].titleColor};">{$subModuleList[1].title}</p>
+                <p style="color: {$subModuleList[1].subTitleColor};">{$subModuleList[1].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <?php elseif($subModuleList[1]['imgPosition'] == 1):?>
+            <div class="one_sm">
+                <img src="{$subModuleList[1].imgUrl}" style="width: {$subModuleList[1].imgWidth};height: {$subModuleList[1].imgHeight};">
+            </div>
+            <div class="one_sm">
+                <p style="color: {$subModuleList[1].titleColor};">{$subModuleList[1].title}</p>
+                <p style="color: {$subModuleList[1].subTitleColor};">{$subModuleList[1].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <?php elseif($subModuleList[1]['imgPosition'] == 2):?>
+            <div class="first_sm">
+                <p style="color: {$subModuleList[1].titleColor};">{$subModuleList[1].title}</p>
+                <p style="color: {$subModuleList[1].subTitleColor};">{$subModuleList[1].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <div class="first_sm">
+                <img src="{$subModuleList[1].imgUrl}" style="width: {$subModuleList[1].imgWidth};height: {$subModuleList[1].imgHeight};">
+            </div>
+            <?php elseif($subModuleList[1]['imgPosition'] == 3):?>
+            <div class="one_sm">
+                <p style="color: {$subModuleList[1].titleColor};">{$subModuleList[1].title}</p>
+                <p style="color: {$subModuleList[1].subTitleColor};">{$subModuleList[1].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <div class="one_sm">
+                <img src="{$subModuleList[1].imgUrl}" style="width: {$subModuleList[1].imgWidth};height: {$subModuleList[1].imgHeight};">
+            </div>
+            <?php elseif($subModuleList[1]['imgPosition'] == 4):?>
+            <div class="one_sm">
+                <img src="{$subModuleList[1].imgUrl}" style="width: {$subModuleList[1].imgWidth};height: {$subModuleList[1].imgHeight};">
+            </div>
+            <?php endif;?>
+        </div>
+    </td>
+    <td style="background-color: {$subModuleList[4].bgColor};">
+        <div class="sub_module">
+            <?php if($subModuleList[4]['imgPosition'] == 0):?>
+            <div class="first_sm">
+                <img src="{$subModuleList[4].imgUrl}" style="width: {$subModuleList[4].imgWidth};height: {$subModuleList[4].imgHeight};">
+            </div>
+            <div class="first_sm">
+                <p style="color: {$subModuleList[4].titleColor};">{$subModuleList[4].title}</p>
+                <p style="color: {$subModuleList[4].subTitleColor};">{$subModuleList[4].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <?php elseif($subModuleList[4]['imgPosition'] == 1):?>
+            <div class="one_sm">
+                <img src="{$subModuleList[4].imgUrl}" style="width: {$subModuleList[4].imgWidth};height: {$subModuleList[4].imgHeight};">
+            </div>
+            <div class="one_sm">
+                <p style="color: {$subModuleList[4].titleColor};">{$subModuleList[4].title}</p>
+                <p style="color: {$subModuleList[4].subTitleColor};">{$subModuleList[4].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <?php elseif($subModuleList[4]['imgPosition'] == 2):?>
+            <div class="first_sm">
+                <p style="color: {$subModuleList[4].titleColor};">{$subModuleList[4].title}</p>
+                <p style="color: {$subModuleList[4].subTitleColor};">{$subModuleList[4].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <div class="first_sm">
+                <img src="{$subModuleList[4].imgUrl}" style="width: {$subModuleList[4].imgWidth};height: {$subModuleList[4].imgHeight};">
+            </div>
+            <?php elseif($subModuleList[4]['imgPosition'] == 3):?>
+            <div class="one_sm">
+                <p style="color: {$subModuleList[4].titleColor};">{$subModuleList[4].title}</p>
+                <p style="color: {$subModuleList[4].subTitleColor};">{$subModuleList[4].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <div class="one_sm">
+                <img src="{$subModuleList[4].imgUrl}" style="width: {$subModuleList[4].imgWidth};height: {$subModuleList[4].imgHeight};">
+            </div>
+            <?php elseif($subModuleList[4]['imgPosition'] == 4):?>
+            <div class="one_sm">
+                <img src="{$subModuleList[4].imgUrl}" style="width: {$subModuleList[4].imgWidth};height: {$subModuleList[4].imgHeight};">
+            </div>
+            <?php endif;?>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td style="background-color: {$subModuleList[2].bgColor};">
+        <div class="sub_module">
+            <?php if($subModuleList[2]['imgPosition'] == 0):?>
+            <div class="first_sm">
+                <img src="{$subModuleList[2].imgUrl}" style="width: {$subModuleList[2].imgWidth};height: {$subModuleList[2].imgHeight};">
+            </div>
+            <div class="first_sm">
+                <p style="color: {$subModuleList[2].titleColor};">{$subModuleList[2].title}</p>
+                <p style="color: {$subModuleList[2].subTitleColor};">{$subModuleList[2].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <?php elseif($subModuleList[2]['imgPosition'] == 1):?>
+            <div class="one_sm">
+                <img src="{$subModuleList[2].imgUrl}" style="width: {$subModuleList[2].imgWidth};height: {$subModuleList[2].imgHeight};">
+            </div>
+            <div class="one_sm">
+                <p style="color: {$subModuleList[2].titleColor};">{$subModuleList[2].title}</p>
+                <p style="color: {$subModuleList[2].subTitleColor};">{$subModuleList[2].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <?php elseif($subModuleList[2]['imgPosition'] == 2):?>
+            <div class="first_sm">
+                <p style="color: {$subModuleList[2].titleColor};">{$subModuleList[2].title}</p>
+                <p style="color: {$subModuleList[2].subTitleColor};">{$subModuleList[2].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <div class="first_sm">
+                <img src="{$subModuleList[2].imgUrl}" style="width: {$subModuleList[2].imgWidth};height: {$subModuleList[2].imgHeight};">
+            </div>
+            <?php elseif($subModuleList[2]['imgPosition'] == 3):?>
+            <div class="one_sm">
+                <p style="color: {$subModuleList[2].titleColor};">{$subModuleList[2].title}</p>
+                <p style="color: {$subModuleList[2].subTitleColor};">{$subModuleList[2].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <div class="one_sm">
+                <img src="{$subModuleList[2].imgUrl}" style="width: {$subModuleList[2].imgWidth};height: {$subModuleList[2].imgHeight};">
+            </div>
+            <?php elseif($subModuleList[2]['imgPosition'] == 4):?>
+            <div class="one_sm">
+                <img src="{$subModuleList[2].imgUrl}" style="width: {$subModuleList[2].imgWidth};height: {$subModuleList[2].imgHeight};">
+            </div>
+            <?php endif;?>
+        </div>
+    </td>
+    <td style="background-color: {$subModuleList[5].bgColor};">
+        <div class="sub_module">
+            <?php if($subModuleList[5]['imgPosition'] == 0):?>
+            <div class="first_sm">
+                <img src="{$subModuleList[5].imgUrl}" style="width: {$subModuleList[5].imgWidth};height: {$subModuleList[5].imgHeight};">
+            </div>
+            <div class="first_sm">
+                <p style="color: {$subModuleList[5].titleColor};">{$subModuleList[5].title}</p>
+                <p style="color: {$subModuleList[5].subTitleColor};">{$subModuleList[5].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <?php elseif($subModuleList[5]['imgPosition'] == 1):?>
+            <div class="one_sm">
+                <img src="{$subModuleList[5].imgUrl}" style="width: {$subModuleList[5].imgWidth};height: {$subModuleList[5].imgHeight};">
+            </div>
+            <div class="one_sm">
+                <p style="color: {$subModuleList[5].titleColor};">{$subModuleList[5].title}</p>
+                <p style="color: {$subModuleList[5].subTitleColor};">{$subModuleList[5].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <?php elseif($subModuleList[5]['imgPosition'] == 2):?>
+            <div class="first_sm">
+                <p style="color: {$subModuleList[5].titleColor};">{$subModuleList[5].title}</p>
+                <p style="color: {$subModuleList[5].subTitleColor};">{$subModuleList[5].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <div class="first_sm">
+                <img src="{$subModuleList[5].imgUrl}" style="width: {$subModuleList[5].imgWidth};height: {$subModuleList[5].imgHeight};">
+            </div>
+            <?php elseif($subModuleList[5]['imgPosition'] == 3):?>
+            <div class="one_sm">
+                <p style="color: {$subModuleList[5].titleColor};">{$subModuleList[5].title}</p>
+                <p style="color: {$subModuleList[5].subTitleColor};">{$subModuleList[5].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <div class="one_sm">
+                <img src="{$subModuleList[5].imgUrl}" style="width: {$subModuleList[5].imgWidth};height: {$subModuleList[5].imgHeight};">
+            </div>
+            <?php elseif($subModuleList[5]['imgPosition'] == 4):?>
+            <div class="one_sm">
+                <img src="{$subModuleList[5].imgUrl}" style="width: {$subModuleList[5].imgWidth};height: {$subModuleList[5].imgHeight};">
+            </div>
+            <?php endif;?>
+        </div>
+    </td>
+</tr>
+</table>
+<p>601</p>
+</div>
+</label>
+<label class="radio-inline">
+<input type="radio" name="template" value="602" <eq name="dataInfo.template" value="602">checked="checked"</eq>>
+<div class="show_template">
+<table>
+<tr>
+    <td style="background-color: {$subModuleList[0].bgColor};">
+        <div class="sub_module">
+            <?php if($subModuleList[0]['imgPosition'] == 0):?>
+            <div class="first_sm">
+                <img src="{$subModuleList[0].imgUrl}" style="width: {$subModuleList[0].imgWidth};height: {$subModuleList[0].imgHeight};">
+            </div>
+            <div class="first_sm">
+                <p style="color: {$subModuleList[0].titleColor};">{$subModuleList[0].title}</p>
+                <p style="color: {$subModuleList[0].subTitleColor};">{$subModuleList[0].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <?php elseif($subModuleList[0]['imgPosition'] == 1):?>
+            <div class="one_sm">
+                <img src="{$subModuleList[0].imgUrl}" style="width: {$subModuleList[0].imgWidth};height: {$subModuleList[0].imgHeight};">
+            </div>
+            <div class="one_sm">
+                <p style="color: {$subModuleList[0].titleColor};">{$subModuleList[0].title}</p>
+                <p style="color: {$subModuleList[0].subTitleColor};">{$subModuleList[0].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <?php elseif($subModuleList[0]['imgPosition'] == 2):?>
+            <div class="first_sm">
+                <p style="color: {$subModuleList[0].titleColor};">{$subModuleList[0].title}</p>
+                <p style="color: {$subModuleList[0].subTitleColor};">{$subModuleList[0].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <div class="first_sm">
+                <img src="{$subModuleList[0].imgUrl}" style="width: {$subModuleList[0].imgWidth};height: {$subModuleList[0].imgHeight};">
+            </div>
+            <?php elseif($subModuleList[0]['imgPosition'] == 3):?>
+            <div class="one_sm">
+                <p style="color: {$subModuleList[0].titleColor};">{$subModuleList[0].title}</p>
+                <p style="color: {$subModuleList[0].subTitleColor};">{$subModuleList[0].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <div class="one_sm">
+                <img src="{$subModuleList[0].imgUrl}" style="width: {$subModuleList[0].imgWidth};height: {$subModuleList[0].imgHeight};">
+            </div>
+            <?php elseif($subModuleList[0]['imgPosition'] == 4):?>
+            <div class="one_sm">
+                <img src="{$subModuleList[0].imgUrl}" style="width: {$subModuleList[0].imgWidth};height: {$subModuleList[0].imgHeight};">
+            </div>
+            <?php endif;?>
+        </div>
+    </td>
+    <td style="background-color: {$subModuleList[2].bgColor};">
+        <div class="sub_module">
+            <?php if($subModuleList[2]['imgPosition'] == 0):?>
+            <div class="first_sm">
+                <img src="{$subModuleList[2].imgUrl}" style="width: {$subModuleList[2].imgWidth};height: {$subModuleList[2].imgHeight};">
+            </div>
+            <div class="first_sm">
+                <p style="color: {$subModuleList[2].titleColor};">{$subModuleList[2].title}</p>
+                <p style="color: {$subModuleList[2].subTitleColor};">{$subModuleList[2].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <?php elseif($subModuleList[2]['imgPosition'] == 1):?>
+            <div class="one_sm">
+                <img src="{$subModuleList[2].imgUrl}" style="width: {$subModuleList[2].imgWidth};height: {$subModuleList[2].imgHeight};">
+            </div>
+            <div class="one_sm">
+                <p style="color: {$subModuleList[2].titleColor};">{$subModuleList[2].title}</p>
+                <p style="color: {$subModuleList[2].subTitleColor};">{$subModuleList[2].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <?php elseif($subModuleList[2]['imgPosition'] == 2):?>
+            <div class="first_sm">
+                <p style="color: {$subModuleList[2].titleColor};">{$subModuleList[2].title}</p>
+                <p style="color: {$subModuleList[2].subTitleColor};">{$subModuleList[2].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <div class="first_sm">
+                <img src="{$subModuleList[2].imgUrl}" style="width: {$subModuleList[2].imgWidth};height: {$subModuleList[2].imgHeight};">
+            </div>
+            <?php elseif($subModuleList[2]['imgPosition'] == 3):?>
+            <div class="one_sm">
+                <p style="color: {$subModuleList[2].titleColor};">{$subModuleList[2].title}</p>
+                <p style="color: {$subModuleList[2].subTitleColor};">{$subModuleList[2].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <div class="one_sm">
+                <img src="{$subModuleList[2].imgUrl}" style="width: {$subModuleList[2].imgWidth};height: {$subModuleList[2].imgHeight};">
+            </div>
+            <?php elseif($subModuleList[2]['imgPosition'] == 4):?>
+            <div class="one_sm">
+                <img src="{$subModuleList[2].imgUrl}" style="width: {$subModuleList[2].imgWidth};height: {$subModuleList[2].imgHeight};">
+            </div>
+            <?php endif;?>
+        </div>
+    </td>
+    <td style="background-color: {$subModuleList[4].bgColor};">
+        <div class="sub_module">
+            <?php if($subModuleList[4]['imgPosition'] == 0):?>
+            <div class="first_sm">
+                <img src="{$subModuleList[4].imgUrl}" style="width: {$subModuleList[4].imgWidth};height: {$subModuleList[4].imgHeight};">
+            </div>
+            <div class="first_sm">
+                <p style="color: {$subModuleList[4].titleColor};">{$subModuleList[4].title}</p>
+                <p style="color: {$subModuleList[4].subTitleColor};">{$subModuleList[4].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <?php elseif($subModuleList[4]['imgPosition'] == 1):?>
+            <div class="one_sm">
+                <img src="{$subModuleList[4].imgUrl}" style="width: {$subModuleList[4].imgWidth};height: {$subModuleList[4].imgHeight};">
+            </div>
+            <div class="one_sm">
+                <p style="color: {$subModuleList[4].titleColor};">{$subModuleList[4].title}</p>
+                <p style="color: {$subModuleList[4].subTitleColor};">{$subModuleList[4].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <?php elseif($subModuleList[4]['imgPosition'] == 2):?>
+            <div class="first_sm">
+                <p style="color: {$subModuleList[4].titleColor};">{$subModuleList[4].title}</p>
+                <p style="color: {$subModuleList[4].subTitleColor};">{$subModuleList[4].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <div class="first_sm">
+                <img src="{$subModuleList[4].imgUrl}" style="width: {$subModuleList[4].imgWidth};height: {$subModuleList[4].imgHeight};">
+            </div>
+            <?php elseif($subModuleList[4]['imgPosition'] == 3):?>
+            <div class="one_sm">
+                <p style="color: {$subModuleList[4].titleColor};">{$subModuleList[4].title}</p>
+                <p style="color: {$subModuleList[4].subTitleColor};">{$subModuleList[4].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <div class="one_sm">
+                <img src="{$subModuleList[4].imgUrl}" style="width: {$subModuleList[4].imgWidth};height: {$subModuleList[4].imgHeight};">
+            </div>
+            <?php elseif($subModuleList[4]['imgPosition'] == 4):?>
+            <div class="one_sm">
+                <img src="{$subModuleList[4].imgUrl}" style="width: {$subModuleList[4].imgWidth};height: {$subModuleList[4].imgHeight};">
+            </div>
+            <?php endif;?>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td style="background-color: {$subModuleList[1].bgColor};">
+        <div class="sub_module">
+            <?php if($subModuleList[1]['imgPosition'] == 0):?>
+            <div class="first_sm">
+                <img src="{$subModuleList[1].imgUrl}" style="width: {$subModuleList[1].imgWidth};height: {$subModuleList[1].imgHeight};">
+            </div>
+            <div class="first_sm">
+                <p style="color: {$subModuleList[1].titleColor};">{$subModuleList[1].title}</p>
+                <p style="color: {$subModuleList[1].subTitleColor};">{$subModuleList[1].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <?php elseif($subModuleList[1]['imgPosition'] == 1):?>
+            <div class="one_sm">
+                <img src="{$subModuleList[1].imgUrl}" style="width: {$subModuleList[1].imgWidth};height: {$subModuleList[1].imgHeight};">
+            </div>
+            <div class="one_sm">
+                <p style="color: {$subModuleList[1].titleColor};">{$subModuleList[1].title}</p>
+                <p style="color: {$subModuleList[1].subTitleColor};">{$subModuleList[1].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <?php elseif($subModuleList[1]['imgPosition'] == 2):?>
+            <div class="first_sm">
+                <p style="color: {$subModuleList[1].titleColor};">{$subModuleList[1].title}</p>
+                <p style="color: {$subModuleList[1].subTitleColor};">{$subModuleList[1].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <div class="first_sm">
+                <img src="{$subModuleList[1].imgUrl}" style="width: {$subModuleList[1].imgWidth};height: {$subModuleList[1].imgHeight};">
+            </div>
+            <?php elseif($subModuleList[1]['imgPosition'] == 3):?>
+            <div class="one_sm">
+                <p style="color: {$subModuleList[1].titleColor};">{$subModuleList[1].title}</p>
+                <p style="color: {$subModuleList[1].subTitleColor};">{$subModuleList[1].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <div class="one_sm">
+                <img src="{$subModuleList[1].imgUrl}" style="width: {$subModuleList[1].imgWidth};height: {$subModuleList[1].imgHeight};">
+            </div>
+            <?php elseif($subModuleList[1]['imgPosition'] == 4):?>
+            <div class="one_sm">
+                <img src="{$subModuleList[1].imgUrl}" style="width: {$subModuleList[1].imgWidth};height: {$subModuleList[1].imgHeight};">
+            </div>
+            <?php endif;?>
+        </div>
+    </td>
+    <td style="background-color: {$subModuleList[3].bgColor};">
+        <div class="sub_module">
+            <?php if($subModuleList[3]['imgPosition'] == 0):?>
+            <div class="first_sm">
+                <img src="{$subModuleList[3].imgUrl}" style="width: {$subModuleList[3].imgWidth};height: {$subModuleList[3].imgHeight};">
+            </div>
+            <div class="first_sm">
+                <p style="color: {$subModuleList[3].titleColor};">{$subModuleList[3].title}</p>
+                <p style="color: {$subModuleList[3].subTitleColor};">{$subModuleList[3].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <?php elseif($subModuleList[3]['imgPosition'] == 1):?>
+            <div class="one_sm">
+                <img src="{$subModuleList[3].imgUrl}" style="width: {$subModuleList[3].imgWidth};height: {$subModuleList[3].imgHeight};">
+            </div>
+            <div class="one_sm">
+                <p style="color: {$subModuleList[3].titleColor};">{$subModuleList[3].title}</p>
+                <p style="color: {$subModuleList[3].subTitleColor};">{$subModuleList[3].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <?php elseif($subModuleList[3]['imgPosition'] == 2):?>
+            <div class="first_sm">
+                <p style="color: {$subModuleList[3].titleColor};">{$subModuleList[3].title}</p>
+                <p style="color: {$subModuleList[3].subTitleColor};">{$subModuleList[3].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <div class="first_sm">
+                <img src="{$subModuleList[3].imgUrl}" style="width: {$subModuleList[3].imgWidth};height: {$subModuleList[3].imgHeight};">
+            </div>
+            <?php elseif($subModuleList[3]['imgPosition'] == 3):?>
+            <div class="one_sm">
+                <p style="color: {$subModuleList[3].titleColor};">{$subModuleList[3].title}</p>
+                <p style="color: {$subModuleList[3].subTitleColor};">{$subModuleList[3].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <div class="one_sm">
+                <img src="{$subModuleList[3].imgUrl}" style="width: {$subModuleList[3].imgWidth};height: {$subModuleList[3].imgHeight};">
+            </div>
+            <?php elseif($subModuleList[3]['imgPosition'] == 4):?>
+            <div class="one_sm">
+                <img src="{$subModuleList[3].imgUrl}" style="width: {$subModuleList[3].imgWidth};height: {$subModuleList[3].imgHeight};">
+            </div>
+            <?php endif;?>
+        </div>
+    </td>
+    <td style="background-color: {$subModuleList[5].bgColor};">
+        <div class="sub_module">
+            <?php if($subModuleList[5]['imgPosition'] == 0):?>
+            <div class="first_sm">
+                <img src="{$subModuleList[5].imgUrl}" style="width: {$subModuleList[5].imgWidth};height: {$subModuleList[5].imgHeight};">
+            </div>
+            <div class="first_sm">
+                <p style="color: {$subModuleList[5].titleColor};">{$subModuleList[5].title}</p>
+                <p style="color: {$subModuleList[5].subTitleColor};">{$subModuleList[5].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <?php elseif($subModuleList[5]['imgPosition'] == 1):?>
+            <div class="one_sm">
+                <img src="{$subModuleList[5].imgUrl}" style="width: {$subModuleList[5].imgWidth};height: {$subModuleList[5].imgHeight};">
+            </div>
+            <div class="one_sm">
+                <p style="color: {$subModuleList[5].titleColor};">{$subModuleList[5].title}</p>
+                <p style="color: {$subModuleList[5].subTitleColor};">{$subModuleList[5].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <?php elseif($subModuleList[5]['imgPosition'] == 2):?>
+            <div class="first_sm">
+                <p style="color: {$subModuleList[5].titleColor};">{$subModuleList[5].title}</p>
+                <p style="color: {$subModuleList[5].subTitleColor};">{$subModuleList[5].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <div class="first_sm">
+                <img src="{$subModuleList[5].imgUrl}" style="width: {$subModuleList[5].imgWidth};height: {$subModuleList[5].imgHeight};">
+            </div>
+            <?php elseif($subModuleList[5]['imgPosition'] == 3):?>
+            <div class="one_sm">
+                <p style="color: {$subModuleList[5].titleColor};">{$subModuleList[5].title}</p>
+                <p style="color: {$subModuleList[5].subTitleColor};">{$subModuleList[5].subTitle|msubstr=0,4,'utf-8',true}</p>
+            </div>
+            <div class="one_sm">
+                <img src="{$subModuleList[5].imgUrl}" style="width: {$subModuleList[5].imgWidth};height: {$subModuleList[5].imgHeight};">
+            </div>
+            <?php elseif($subModuleList[5]['imgPosition'] == 4):?>
+            <div class="one_sm">
+                <img src="{$subModuleList[5].imgUrl}" style="width: {$subModuleList[5].imgWidth};height: {$subModuleList[5].imgHeight};">
+            </div>
+            <?php endif;?>
+        </div>
+    </td>
+</tr>
+</table>
+<p>602</p>
+</div>
+</label>
+</if>
+</div>
+</div>
+<div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-primary">保存</button>
+    </div>
+</div>
+</form>
+</div>
+</div>
+<style>
+    .show_template{text-align: center;}
+    .show_template table{width: 300px;}
+    .show_template table td{border: 1px solid #000;width: 50px;}
+    table .sub_module{display: block;}
+    table .sub_module .first_sm{width: 50%;position: relative;float: left;height: 100%;display: block;}
+    table .sub_module .one_sm{width: 100%;position: relative;float: left;height: 100%;display: block;}
+</style>
+<script type="text/javascript">
+    $(function(){
+        $('#template_form').on('submit', function() {
+            $('button[type="submit"]').attr('disabled', true);
+            var frm = $(this);
+            $.post(frm.attr('action'), frm.serialize(), function(resp) {
+                if (resp.status == sz.STATUS_SUCC) {
+                    sz.showSuccMsg(resp.msg, 3);
+                    location.href = '/Admin/District/listCityIndexModule?id={$dataInfo.cityId}';
+                } else {
+                    sz.showErrMsg(resp.msg, 3);
+                    $('button[type="submit"]').attr('disabled', false);
+                }
+            });
+            return false;
+        });
+    });
+</script>

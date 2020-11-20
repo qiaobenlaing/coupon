@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:state_checked="true"><shape>
+
+            <!-- 开始颜色="" 结束颜色="" 颜色渐变="" -->
+            <gradient android:angle="270" android:endColor="@color/radiobutton_pressed" android:startColor="@color/radiobutton_pressed" />
+            <!-- //渐变方向     按钮边缘="" 边缘宽="" -->
+            <stroke android:width="1sp" android:color="@color/radiobutton_pressed" />
+            <!-- //边缘颜色   按钮四个圆角="" -->
+            <corners android:bottomLeftRadius="0dip" android:bottomRightRadius="5dip" android:topLeftRadius="0dip" android:topRightRadius="5dip" />
+            <!-- //半径    内边距="" 按钮文字和边缘距离="" -->
+            <padding android:bottom="8dp" android:left="8dp" android:right="8dp" android:top="8dp" />
+        </shape></item>
+    <item android:state_checked="false"><shape>
+            <gradient android:angle="270" android:endColor="@color/transparent" android:startColor="@color/transparent" />
+
+            <stroke android:width="1sp" android:color="@color/radiobutton_normal" />
+
+            <corners android:bottomLeftRadius="0dip" android:bottomRightRadius="5dip" android:topLeftRadius="0dip" android:topRightRadius="5dip" />
+
+            <padding android:bottom="8dp" android:left="8dp" android:right="8dp" android:top="8dp" />
+        </shape></item>
+
+</selector>

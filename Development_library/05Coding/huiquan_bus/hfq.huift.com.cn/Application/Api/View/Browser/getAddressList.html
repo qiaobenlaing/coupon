@@ -1,0 +1,136 @@
+<layout name="layout_api" />
+<!-- Views -->
+<div class="views">
+    <!-- Your main view, should have "view-main" class -->
+    <div class="view view-main">
+        <!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
+        <div class="pages toolbar-through">
+            <!-- Page, "data-page" contains page name -->
+            <div data-page="index" class="page">
+                <!-- Scrollable page content -->
+                <div class="page-content">
+                    <!-- head -->
+                    <div class="address_head">
+                        <span>外卖配送地址</span>
+                        <a href="/Api/Browser/cOrderSubmit?orderCode={$orderCode}&userAddressId={$userAddressId}" class="external"><img src="/Public/img/icon/backup.png" /></a>
+                    </div>
+
+                    <!-- address_add -->
+                    <a href="#" class="external" action="address_add">
+                        <div class="address_add">
+                            <img src="/Public/img/icon/order_add.png" class="add" />
+                            <span>添加配送地址</span>
+                            <img src="/Public/img/icon/arrow_right.png" class="add_enter" />
+                        </div>
+                    </a>
+
+                    <div class="address_list_title">配送地址</div>
+                    <div class="address_list">
+                        <foreach name="addressList" item="vo" key="k">
+                            <div <eq name="k" value="0">class="info checked_bg"<else />class="info"</eq>>
+                            <label data-longitude="{$vo.longitude}" data-latitude="{$vo.latitude}">
+                                <div class="info_left">
+                                    <input type="radio" name="address" value="{$vo.userAddressId}" <eq name="k" value="0">checked="checked"</eq> />
+                                </div>
+                                <div class="info_center">
+                                    <p class="contact">{$vo.contactName}&nbsp;&nbsp;&nbsp;&nbsp;{$vo.mobileNbr}</p>
+                                    <p>{$vo.city}{$vo.district}{$vo.street}{$vo.position}</p>
+                                </div>
+                            </label>
+                            <div class="info_right">
+                                <a href="/Api/Browser/editAddress?userCode={$userCode}&orderCode={$orderCode}&addressId={$userAddressId}&userAddressId={$vo.userAddressId}" class="external">
+                                    <img src="/Public/img/icon/edit.png" />
+                                </a>
+                            </div>
+                    </div>
+                    </foreach>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<div id="allmap" style="display: none;width: 100px;height: 100px;"></div>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=itxrBVxoPo7SFUdnVQc2MwTM"></script>
+<script>
+    $(function() {
+        var map = new BMap.Map("allmap");
+
+        $('label').click(function(){
+            var userAddressId = $(this).find('input[name="address"]').val();
+            $('.checked_bg').removeClass('checked_bg');
+            $(this).parent().addClass('checked_bg');
+            var address_lng = $(this).data('longitude');
+            var address_lat = $(this).data('latitude');
+            var shopLng = '{$shopInfo.longitude}';
+            var shopLat = '{$shopInfo.latitude}';
+            var distance = '{$shopInfo.deliveryDistance}';
+
+            var pointA = new BMap.Point(shopLng,shopLat);  // 创建商家点坐标
+            var pointB = new BMap.Point(address_lng,address_lat);  // 创建配送地址点坐标
+            var current_distance = (map.getDistance(pointA,pointB)).toFixed(2);  //获取两点距离,保留小数点后两位
+//            console.log(Number(current_distance));
+//            console.log(Number(distance));
+            if(Number(current_distance) <= Number(distance)){
+                location.href = '/Api/Browser/cOrderSubmit?orderCode={$orderCode}&userAddressId='+userAddressId;
+            }else{
+                myApp.modal({
+                    title:  '提醒',
+                    text: '该地址不在配送范围!',
+                    buttons: [
+                        {
+                            text: '知道了'
+                        }
+                    ]
+                })
+            }
+
+        });
+
+        var city = '';
+
+        // 百度地图API功能
+        var myCity = new BMap.LocalCity();
+        myCity.get(function(result){
+            city = result.name;
+        });
+
+        $('a[action="address_add"]').click(function(){
+            if(city){
+                location.href = '/Api/Browser/editAddress?userCode={$userCode}&orderCode={$orderCode}&addressId={$userAddressId}&city='+city;
+            }else{
+                myApp.modal({
+                    title:  '提醒',
+                    text: '所在城市定位中，请稍等！',
+                    buttons: [
+                        {
+                            text: '确定'
+                        }
+                    ]
+                })
+            }
+        });
+    });
+</script>
+<style>
+    .button_nothing{background: none;border: none;padding: 0;}
+    .float_left{float: left;}
+    .float_right{float: right;}
+    .checked_bg{background-color: #ABABA7;}
+    .address_head{background-color: rgb(182, 0, 12);line-height: 3;text-align: center;position: relative;}
+    .address_head span{font-size: 18px;color: #fff;}
+    .address_head img{position: absolute;left: 0;top: 5%;width: 12%;height: auto;margin-top: 1%;}
+    .address_add{background-color: #fff;color: #000;font-size:18px;line-height: 3;margin: 3% 0 0 0;border-bottom: 1px solid rgb(231,231,231);border-top: 1px solid rgb(231,231,231);padding: 0 4%;position: relative;}
+    .address_add .add{width: 6%;margin-bottom: -0.8%;}
+    .address_add span{color: rgb(182, 0, 12);}
+    .address_add .add_enter{float: right;margin-top: 5%;}
+    .address_list_title{line-height: 2;padding: 0 4%;font-size:16px;color: rgb(102,102,102);}
+    .address_list{border-top: 1px solid rgb(231,231,231);background-color: #fff;}
+    .address_list .info{padding: 2% 4%;border-bottom: 1px solid rgb(231,231,231);}
+    .address_list .info .info_left{display: inline-table;width: 7%;text-align:left;vertical-align: -webkit-baseline-middle;}
+    .address_list .info .info_center{display: inline-table;width: 75%;}
+    .address_list .info .info_center p{margin: 0;}
+    .address_list .info .info_center .contact{line-height: 2;font-size: 18px;}
+    .address_list .info .info_right{display: inline-table;width: 15%;text-align: center;vertical-align: -webkit-baseline-middle;}
+    .address_list .info .info_right img{width: 50%;height:auto;}
+</style>

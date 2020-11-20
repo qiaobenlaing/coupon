@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/LyOutSet"
+    android:background="@color/white" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:background="@drawable/scan_meal"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/tv_fail_shop"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/layout_height"
+            android:gravity="center"
+            android:text="@string/scan_fail_first"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/tv_fail_other"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/layout_height"
+            android:gravity="center"
+            android:text="@string/scan_fail_other"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:visibility="gone" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp" >
+
+            <TextView
+                android:id="@+id/tv_scanfail_second"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:text="@string/scan_fail_second"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/tv_scanfail_second"
+                android:layout_below="@+id/tv_scanfail_second"
+                android:text="@string/scan_fail_five"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/btn_scan_fail_back"
+            android:layout_width="210dp"
+            android:layout_height="@dimen/navigation_bar"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/shape_scan_order"
+            android:text="@string/scan_fail_third"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/btn_scan_fail_again"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/navigation_bar"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/shape_scan_order"
+            android:text="@string/scan_fail_four"
+            android:textColor="@color/white" />
+    </LinearLayout>
+
+</LinearLayout>

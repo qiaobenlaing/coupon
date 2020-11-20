@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/LyOutSet" >
+
+    <com.huift.hfq.base.view.XGridView
+        android:id="@+id/gv_envir_photo"
+        style="@style/LyWHFirst"
+        android:gravity="center_vertical"
+        android:horizontalSpacing="10dp"
+        android:numColumns="2"
+        android:scrollbars="none"
+        android:stretchMode="columnWidth"
+        android:verticalSpacing="10dp"
+        android:visibility="visible" />
+
+    <include layout="@layout/comm_no_data" />
+
+</LinearLayout>

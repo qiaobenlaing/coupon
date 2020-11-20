@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <TextView
+        style="@style/VSpace"
+        android:background="@color/bgall" />
+
+    <RelativeLayout
+        android:id="@+id/ly_cardimage"
+        style="@style/LyCradGradeImage"
+        android:layout_marginBottom="16dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/set_silvercard1" >
+
+        <RelativeLayout
+            android:id="@+id/ly_cardlogo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <ImageView
+                android:id="@+id/iv_shoplogo"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/bg_border" />
+
+            <TextView
+                android:id="@+id/tv_shopname"
+                style="@style/LyWHSecond"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="15dp"
+                android:layout_toRightOf="@+id/iv_shoplogo"
+                android:text="味千拉面"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tv_card"
+                style="@style/LyWHSecond"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:layout_marginRight="15dp"
+                android:text="@string/card_commoncard"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true" >
+
+            <TextView
+                android:id="@+id/tv_valitetime"
+                style="@style/LyWHSecond"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="15dp"
+                android:paddingBottom="30dp"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
+
+            <!--
+                 <TextView
+                android:id="@+id/tv_cardno"
+                style="@style/LyWHSecond"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:layout_marginRight="15dp"
+                android:paddingBottom="30dp"
+                android:text="@string/card_commoncard"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
+            -->
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <TextView
+        style="@style/VSpace"
+        android:background="@color/bgall" />
+
+    <LinearLayout
+        style="@style/LyCradGradeSet"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            style="@style/Ly_cardhome_top"
+            android:layout_marginTop="16dp" >
+
+            <TextView
+                style="@style/tvCradGrade"
+                android:text="@string/card_gradepoint" />
+
+            <TextView
+                android:id="@+id/tv_cardpoint"
+                style="@style/Tv_cardhome_top"
+                android:text="0分" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/Ly_cardhome_top" >
+
+            <TextView
+                style="@style/tvCradGrade"
+                android:text="@string/card_gradediscount" />
+
+            <TextView
+                android:id="@+id/tv_cardenjoy"
+                style="@style/Tv_cardhome_top" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/Ly_cardhome_top" >
+
+            <TextView
+                style="@style/tvCradGrade"
+                android:text="@string/card_grademoney" />
+
+            <TextView
+                android:id="@+id/tv_cardmoney"
+                style="@style/Tv_cardhome_top" />
+        </LinearLayout>
+
+        <!--
+        <LinearLayout style="@style/Ly_cardhome_top" >
+
+            <TextView
+                style="@style/tvCradGrade"
+                android:text="@string/card_jimoney" />
+
+            <TextView
+                android:id="@+id/tv_jimoney"
+                style="@style/Tv_cardhome_top"
+                android:text="@string/card_gradepointvalid" />
+        </LinearLayout>
+        -->
+    </LinearLayout>
+
+</LinearLayout>

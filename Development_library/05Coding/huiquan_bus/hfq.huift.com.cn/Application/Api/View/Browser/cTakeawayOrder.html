@@ -1,0 +1,753 @@
+<layout name="layout_api" />
+<style>
+.body {
+    background-color: #eeeeee;
+}
+
+.head_col {
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.backup img {
+    width: 60%;
+    height: auto;
+}
+.navbar{
+    position: absolute;
+}
+.toolbar-through .page-content, .toolbar-fixed .page-content,
+.tabbar-through .page-content, .tabbar-fixed .page-content {
+    padding-bottom: 0;
+}
+.navbar-through .page-content, .navbar-fixed .page-content{
+    padding-top: 0;
+}
+.content-block-title {
+    margin: 50px 15px 10px;
+}
+
+.list-block ul {
+    border-top: 0 solid #fff;
+    border-bottom: 0 solid #fff;
+}
+
+.col-25 .list-block {
+    margin: 0 0;
+    min-width: 81px;
+    height: 100%;
+    overflow: hidden;
+    font-size: 13px;
+}
+
+.list-block {
+    margin: 0 0;
+    min-width: 90px;
+    height: 100%;
+    overflow: hidden;
+    font-size: 14px;
+}
+
+.list-block .item-link.list-button {
+    color: #000000;
+    line-height: 20px;
+    background-color: #f8f8f8;
+    padding: 10px 10px;
+    width: 25%;
+    vertical-align: middle;
+    display: table-cell;
+
+}
+
+.list-block .item-link.list-button.active {
+    background-color: #fff;
+}
+
+.list-block .item-link.list-button.active.category {
+    border-right: 0px solid #fff;
+}
+
+.discount_add {
+    background-color: #fff;
+    font-size: 18px;
+    margin: 0 0 0 0;
+    margin-bottom: 5px;
+    padding: 2% 0;
+    position: relative;
+}
+
+.discount_enter {
+    position: absolute;
+    background-image: url("/Public/img/icon/shop_arrow.png");
+    background-position: center;
+    -moz-background-size: 60px 60px; /* 老版本的 Firefox */
+    background-size: 60px 60px;
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 60px;
+    top: 0;
+    right: 0;
+}
+
+.choose {
+    padding: 5px 10px 4px;
+    color: #999999;
+    font-size: 14px;
+    background-color: #eeeeee;
+}
+
+.choose_title {
+    max-height: 2.3em;
+    line-height: 1.15em;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    text-align: center;
+}
+
+.list-block .item-content {
+    display: inline;
+}
+
+.food_item {
+    border-bottom: 1px solid #dddddd;
+    padding: 3% 0 0 4%;
+}
+
+.food_inner1 {
+    width: 100%
+}
+
+.food_img {
+    float: left;
+    width: 55px;
+    text-align: center;
+    margin-right: 9px;
+    overflow: hidden;
+}
+
+.food_img img {
+    width: 100%;
+    height: auto;
+}
+
+.food_name {
+    font-size: 15px;
+    max-height: 2.3em;
+    line-height: 1.15em;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.food_evaluation {
+    font-size: 12px;
+    margin-top: 8px;
+    min-height: 20px;
+}
+
+.food_inner2 {
+    margin-bottom: 2%;
+}
+
+.food_univalent {
+    margin-top: 2%;
+    margin-left: 25%;
+}
+
+.food_price {
+    color: rgb(186, 14, 14);
+    font-size: 18px;
+}
+
+.price_symbol {
+    color: rgb(186, 14, 14);
+    font-size: 18px;
+}
+
+.food_company {
+    color: #888888;
+    font-size: 12px;
+}
+
+.food_number {
+    float: right;
+    position: relative;
+    margin-right: 3px;
+}
+
+.number_button {
+    background: none;
+    border: 1px solid #fff;
+}
+
+.number_button img {
+    width: 20px;
+}
+
+.number_button.minus {
+    padding-right: 15px;
+}
+
+.number {
+    top: 1px;
+    position: absolute;
+    right: 40%;
+}
+
+.order_number_div {
+    width: 18px;
+    height: 18px;
+    background-color: rgb(186, 14, 14);
+    border-radius: 25px;
+    position: absolute;
+    z-index: 100;
+    left: 35px; /*   定位到右上   */
+    top: 2px;
+}
+
+.order_number_div.category_name {
+    width: 18px;
+    height: 18px;
+    background-color: rgb(186, 14, 14);
+    border-radius: 25px;
+    position: absolute;
+    z-index: 100;
+    left: 60px; /*   定位到右上   */
+    top: 3;
+}
+
+.order_number {
+    font-size: 12px;
+    line-height: 18px;
+    display: block;
+    color: #FFF;
+    text-align: center;
+}
+
+.display_none {
+    display: none;
+}
+
+.picker_model {
+    position: absolute;
+    left: 0;
+    bottom: 40px;
+    z-index: 11000;
+    width: 100%;
+}
+.picker_model .list-block{
+    overflow: auto;
+    max-height: 200px;
+}
+.picker_model li {
+    background-color: #F5F5F5;
+    border-bottom: 1px solid #dddddd;
+}
+
+.picker_model .number_button {
+    background: none;
+    border: 0px solid #F5F5F5;
+    line-height: 10px;
+}
+
+.picker_model .food_name {
+    font-size: 16px;
+    padding-left: 4%;
+    padding-top: 1%;
+}
+
+.order {
+    border-right: 1px solid #dddddd;
+    min-height: 44px;
+}
+
+.order img {
+    width: 25px;
+    padding: 10px 15px 0 15px;
+}
+
+.fade {
+    display: none;
+}
+
+.fade.in {
+    display: block;
+}
+
+.navbar a.link, .toolbar a.link {
+    background-color: rgb(186, 14, 14);
+    color: #fff;
+    font-size: 15px;
+    width:35%;
+    display: block;
+    text-align: center;
+}
+
+.toolbar-inner {
+    padding: 0px 0px;
+}
+
+.symbol_price {
+    color: rgb(186, 14, 14);
+}
+
+.food_evaluation .great img {
+    width: 15px;
+    float: left;
+    margin-right: 3px;
+}
+
+.month_sales {
+    float: right;
+    color: #A3A3A3;
+    margin-right: 10px;
+}
+
+.food_evaluation img {
+    width: 10px;
+}
+
+.cart_univalent {
+    margin-top: 2%;
+    margin-left: 4%;
+}
+
+.modal_overlay {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 90%;
+    background: rgba(0, 0, 0, .4);
+    isibility: hidden;
+    -webkit-transition-duration: 400ms;
+    transition-duration: 400ms;
+    z-index: 5000;
+}
+
+.activity_title {
+    display: inline-block;
+    padding: 5px 7px;
+    font-size: 12px;
+    line-height: 0.8;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    background-color: #fff;
+    border-radius: 4px;
+    border: 1px solid #EC0000;
+}
+
+.activity_content {
+    font-size: 12px;
+}
+
+.discount_inner1 {
+    padding: 0px 5% 0 5%;
+    line-height: 1.5;
+}
+
+.inoperable {
+    background-color: rgb(63, 63, 63) !important;
+}
+.external{
+    color: #000;
+}
+.food_evaluation .great{
+    width:20px;
+}
+.delivery{
+    font-size: 12px;
+    color: #000;
+}
+</style>
+<!-- Views -->
+<div class="views">
+    <!-- Your main view, should have "view-main" class -->
+    <div class="view view-main">
+        <!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
+        <div class="pages toolbar-through">
+            <!-- Page, "data-page" contains page name -->
+            <div data-page="index" class="page navbar-fixed toolbar-fixed">
+                <div class="navbar">
+                    <div class="navbar-inner">
+                        <div class="left">
+                            <div class="backup">
+                                <a href="hs://backup" class="external"><img src="/Public/img/icon/backup.png" /></a>
+                                <!--<a href="/Api/Browser/getShopInfo?shopCode={$shopCode}&userCode={$userCode}" class="external"><img src="/Public/img/icon/backup.png" /></a>-->
+                            </div>
+                        </div>
+                        <div class="center">
+                            <if condition="$shopInfo.isOpenTakeout eq 1">
+                                <div class="head_col">{$shopInfo.shopName}(外卖点餐)</div>
+                                <else />
+                                <div class="head_col">外卖休息中</div>
+                            </if>
+                        </div>
+                        <div class="right"></div>
+                    </div>
+                </div>
+                <!-- Scrollable page content -->
+                <div class="page-content">
+                    <div class="body" style="padding: 0;">
+                        <div class="content-block-title" style="text-align: center">
+                            <span style="float: left">人气: {$shopInfo.popularity}</span>距离: <span id="distance"></span>
+                            <span style="float: right">起送: &#65509;{$shopInfo.takeoutRequirePrice}</span>
+                        </div>
+                        <if condition="!empty($userReductionCouponList) || !empty($shopReductionCouponList) || !empty($userDiscountCouponList) || !empty($shopDiscountCouponList) || $isFirst eq 1">
+                            <div class="discount_add">
+                                <if condition="!empty($userReductionCouponList) || !empty($shopReductionCouponList)">
+                                    <div class="discount_inner1">
+                                        <span class="activity_title">满减券</span>
+                                    <span class="activity_content">
+                                        <foreach name="userReductionCouponList" item="coupon">
+                                            满{$coupon.availablePrice}减{$coupon.insteadPrice}元；
+                                        </foreach>
+                                        <foreach name="shopReductionCouponList" item="coupon">
+                                            满{$coupon.availablePrice}减{$coupon.insteadPrice}元；
+                                        </foreach>
+                                    </span>
+                                    </div>
+                                </if>
+                                <if condition="!empty($userDiscountCouponList) || !empty($shopDiscountCouponList)">
+                                    <div class="discount_inner1">
+                                        <span class="activity_title">满折券</span>
+                                    <span class="activity_content">
+                                        <foreach name="userDiscountCouponList" item="coupon">
+                                            满{$coupon.availablePrice}元打{$coupon.discountPercent}折；
+                                        </foreach>
+                                        <foreach name="shopDiscountCouponList" item="coupon">
+                                            满{$coupon.availablePrice}元打{$coupon.discountPercent}折；
+                                        </foreach>
+                                    </span>
+                                    </div>
+                                </if>
+                                <if condition="$isFirst eq 1">
+                                    <div class="discount_inner1">
+                                        <span class="activity_title">首单</span>
+                                    <span class="activity_content">
+                                      	  首单立减10元
+                                    </span>
+                                    </div>
+                                </if>
+                            </div>
+                        </if>
+                        <if condition="$shopInfo.isOpenTakeout eq 1">
+                            <div class="page-content"
+                                 style="overflow: hidden !important;">
+                                <else />
+                                <div class="page-content"
+                                     style="overflow: hidden !important; "
+                                     disabled="disabled">
+                        </if>
+                        <div class="row no-gutter">
+                            <div class="col-25" style="background-color: #f8f8f8; border-right: 1px solid #dddddd;">
+                                <div class="list-block" style="overflow: auto;">
+                                    <ul>
+                                        <foreach name="categoryList" item="item">
+                                            <li>
+                                                <a href="#category_{$item.categoryId}" class="external list-button item-link category">{$item.categoryName}
+                                                    <if condition="$item.orderedNbr eq 0">
+                                                        <div class="order_number_div category_name display_none" id="category-div-{$item.categoryId}"></div>
+                                                        <else/>
+                                                        <div class="order_number_div category_name" id="category-div-{$item.categoryId}"></div>
+                                                    </if>
+                                                    <span class="order_number" id="category-{$item.categoryId}">{$item.orderedNbr}</span>
+                                                </a>
+                                            </li>
+                                        </foreach>
+                                    </ul>
+                            </div>
+                        </div>
+                        <div class="col-75">
+                            <div class="list-block" style="overflow: auto;">
+                                <notempty name="categoryList">
+                                    <foreach name="categoryList" item="category">
+                                        <ul id="category_{$category.categoryId}">
+                                            <li class="choose"><span class="choose_title">{$category.categoryName}</span></li>
+                                            <foreach name="category.productList" item="product">
+                                                <li class="food_item">
+                                                    <div class="food_img">
+                                                        <empty name="product.productImg"><img src="/Public/img/no_shoplogo.png" /><else/><img src="{$product.productImg}" /></empty>
+                                                    </div>
+                                                    <a href="/Api/Browser/shopProductInfo?shopCode={$shopCode}&productId={$product.productId}&userCode={$userCode}&type=21&openId={$openId}&backup=h5&backAction=cTakeawayOrder&orderCode={$orderCode}" class="external">
+                                                    <div class="food_inner1">
+                                                        <div class="food_name">{$product.productName}</div>
+                                                        <div class="food_evaluation">
+                                                            <if condition="$product.recommendLevel eq 0"> <elseif
+                                                                    condition="$product.recommendLevel eq 1" /> <img
+                                                                    src="/Public/img/icon/great.png" class="great"/> <elseif
+                                                                    condition="$product.recommendLevel eq 2" /> <img
+                                                                    src="/Public/img/icon/great.png" class="great"/> <img
+                                                                    src="/Public/img/icon/great.png" class="great"/> <elseif
+                                                                    condition="$product.recommendLevel eq 3" /> <img
+                                                                    src="/Public/img/icon/great.png" class="great"/> <img
+                                                                    src="/Public/img/icon/great.png" class="great"/> <img
+                                                                    src="/Public/img/icon/great.png" class="great"/> </if>
+                                                            <if condition="$product.spicyLevel eq 0"> <elseif
+                                                                    condition="$product.spicyLevel eq 1" /> <img
+                                                                    src="/Public/img/icon/spicy.png" /> <elseif
+                                                                    condition="$product.spicyLevel eq 2" /> <img
+                                                                    src="/Public/img/icon/spicy.png" /> <img
+                                                                    src="/Public/img/icon/spicy.png" /> <elseif
+                                                                    condition="$product.spicyLevel eq 3" /> <img
+                                                                    src="/Public/img/icon/spicy.png" /> <img
+                                                                    src="/Public/img/icon/spicy.png" /> <img
+                                                                    src="/Public/img/icon/spicy.png" /> </if>
+
+                                                            <span class="month_sales">月售&nbsp;{$product.monthlySalesVolume}{$product.unit}</span>
+                                                        </div>
+                                                    </div>
+                                                    </a>
+                                                    <div class="food_inner2">
+                                                        <neq name="product.productStatus" value="3">
+                                                            <div class="food_number index_{$product.productId}" id="index_{$product.productId}">
+                                                                <if condition="$product.orderNbr eq 0">
+                                                                    <button class="number_button minus display_none" data-category-id="{$product.categoryId}" data-product-id="{$product.productId}" data-product-name="{$product.productName}" data-product-price="{$product.takeoutPrice}">
+                                                                        <img src="/Public/img/icon/order_minus.png" />
+                                                                    </button>
+                                                                    <span class="number">{$product.productNbr}</span>
+                                                                    <else/>
+                                                                    <button class="number_button minus" data-category-id="{$product.categoryId}" data-product-id="{$product.productId}" data-product-name="{$product.productName}" data-product-price="{$product.takeoutPrice}">
+                                                                        <img src="/Public/img/icon/order_minus.png" />
+                                                                    </button>
+                                                                    <span class="number">{$product.orderNbr}</span>
+                                                                </if>
+                                                                <button class="number_button add" data-category-id="{$product.categoryId}" data-product-id="{$product.productId}" data-product-name="{$product.productName}" data-product-price="{$product.takeoutPrice}">
+                                                                    <img src="/Public/img/icon/order_add.png" />
+                                                                </button>
+                                                            </div>
+                                                        </neq>
+                                                        <div class="food_univalent">
+                                                            <neq name="product.productStatus" value="3">
+                                                                <span class="price_symbol">&#65509;</span>
+                                                                <span class="food_price">{$product.takeoutPrice}</span>
+                                                                <span class="food_company">/{$product.unit}</span>
+                                                                <else/>
+                                                                <span class="food_price">售完</span>
+                                                            </neq>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </foreach>
+                                        </ul>
+                                    </foreach>
+                                    <else/>
+                                    <script type="text/javascript">
+                                        function goBack(){
+                                            myApp.modal({
+                                                title:  '提醒',
+                                                text: '本店暂未提供该服务',
+                                                buttons: [
+                                                    {
+                                                        text: '确定',
+                                                        onClick:function(){
+                                                            location.href = '/Api/Browser/getShopInfo?shopCode={$shopCode}&userCode={$userCode}';
+                                                        }
+                                                    }
+                                                ]
+                                            });
+                                        }
+                                        window.onload=goBack;
+                                    </script>
+                                </notempty>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<input type="hidden" id="order_type" value="1"/>
+<div class="toolbar">
+    <div class="toolbar-inner" style="background: #fff;">
+        <if condition="$orderProductNbr eq 0">
+            <div class="order" disabled="disabled">
+                <else/>
+                <div class="order">
+        </if>
+        <img src="/Public/img/icon/cart.png" />
+        <if condition="$orderProductNbr eq 0">
+            <div class="order_number_div display_none">
+                <else/>
+                <div class="order_number_div">
+        </if>
+        <span class="order_number">{$orderProductNbr}</span>
+    </div>
+</div>
+<div class="symbol_price">
+    &#65509;<span class="total_price"><notempty name="orderCode">{$orderProductPrice}<else/>0</notempty></span>
+    <span class="delivery"><if condition="$shopInfo.deliveryFee gt 0">|&nbsp;另需配送费&#65509;{$shopInfo.deliveryFee}</if></span>
+
+</div>
+<if condition="$shopInfo.takeoutRequirePrice eq 0">
+    <if condition="$orderProductPrice eq 0">
+        <a href="#" class="link inoperable" disabled="disabled">选好了</a>
+        <else/>
+        <a href="#" class="link">选好了</a>
+    </if>
+    <else />
+    <egt name="orderProductPrice" value="$shopInfo.takeoutRequirePrice">
+        <a href="#" class="link">选好了</a>
+        <else/>
+        <a href="#" class="link inoperable" disabled="disabled">还差{$difference}元起送</a>
+    </egt>
+</if>
+</div>
+</div>
+</div>
+</div>
+<form action="/Api/Browser/editTakeoutOrder" method="post"
+      id="order_submit">
+    <input type="hidden" name="shopCode" value="{$shopCode}" id="shopCode" />
+    <input type="hidden" name="clientCode" value="{$userCode}" id="clientCode" />
+    <input type="hidden" value="{$shopInfo.takeoutRequirePrice}" id="takeoutRequirePrice"/>
+    <input type="hidden" name="orderCode" value="{$orderCode}" id="orderCode"/>
+    <div class="picker_model fade">
+        <div class="list-block">
+            <ul>
+                <foreach name="orderProductList" item="item">
+                    <li id="frame_{$item.productId}">
+                        <div class="left">
+                            <div class="food_name">{$item.productName}</div>
+                        </div>
+                        <div class="right">
+                            <div class="food_number">
+                                <button class="number_button minus" type="button" onclick="frameChange({$item.categoryId},{$item.productId},'{$item.productName}',{$item.productUnitPrice}, 'minus');">
+                                    <img src="/Public/img/icon/order_minus.png">
+                                </button>
+                                <span class="number">{$item.productNbr}</span>
+                                <button class="number_button add" type="button" onclick="frameChange({$item.categoryId},{$item.productId},'{$item.productName}',{$item.productUnitPrice}, 'add');">
+                                    <img src="/Public/img/icon/order_add.png">
+                                </button>
+                            </div>
+                            <div class="cart_univalent">
+                                <span class="price_symbol">&#65509;</span><span class="food_price">{$item.productUnitPrice}</span><span
+                                    class="food_company"></span>
+                            </div>
+                        </div>
+                    </li>
+                    <div id="input_value_{$item.productId}">
+                        <input type='hidden' name='productId[]' value='{$item.productId}'/>
+                        <input type='hidden' name='productUnitPrice[]' value='{$item.productUnitPrice}'/>
+                        <input type='hidden' name='productNbr[]' id="index_value_{$item.productId}" value='{$item.productNbr}'/>
+                    </div>
+                </foreach>
+            </ul>
+        </div>
+    </div>
+</form>
+<div class="modal_overlay fade"></div>
+<div id="allmap" style="display: none;width: 100px;height: 100px;"></div>
+<script type="text/javascript" src="__PUBLIC__/js/order/order.js"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=itxrBVxoPo7SFUdnVQc2MwTM"></script>
+<script>
+    $(function() {
+        var map = new BMap.Map("allmap");
+        var shopLng = '{$shopInfo.longitude}';
+        var shopLat = '{$shopInfo.latitude}';
+
+        $('#distance').text('定位中...');
+        var geolocation = new BMap.Geolocation();
+        geolocation.getCurrentPosition(function(r){
+            if(this.getStatus() == BMAP_STATUS_SUCCESS){
+                var pointA = new BMap.Point(shopLng,shopLat);  // 创建点坐标A
+                var pointB = new BMap.Point(r.point.lng,r.point.lat);  // 创建点坐标B
+                var current_distance = parseInt(map.getDistance(pointA,pointB));  //获取两点距离,
+                current_distance = formatDistance(current_distance);
+                $('#distance').text(current_distance);
+            }else {
+                $('#distance').text('定位失败！');
+            }
+        },{enableHighAccuracy: true});
+        //关于状态码
+        //BMAP_STATUS_SUCCESS	检索成功。对应数值“0”。
+        //BMAP_STATUS_CITY_LIST	城市列表。对应数值“1”。
+        //BMAP_STATUS_UNKNOWN_LOCATION	位置结果未知。对应数值“2”。
+        //BMAP_STATUS_UNKNOWN_ROUTE	导航结果未知。对应数值“3”。
+        //BMAP_STATUS_INVALID_KEY	非法密钥。对应数值“4”。
+        //BMAP_STATUS_INVALID_REQUEST	非法请求。对应数值“5”。
+        //BMAP_STATUS_PERMISSION_DENIED	没有权限。对应数值“6”。(自 1.1 新增)
+        //BMAP_STATUS_SERVICE_UNAVAILABLE	服务不可用。对应数值“7”。(自 1.1 新增)
+        //BMAP_STATUS_TIMEOUT	超时。对应数值“8”。(自 1.1 新增)
+        var height = window.screen.availHeight;
+        height = height * 0.9;
+        $('.col-25').find('.list-block').css('height', height);
+        $('.col-75').find('.list-block').css('height', height);
+        $(".col-25 li:last").css("padding-bottom","55%");
+        $(".col-75 ul:last").css("margin-bottom","16%");
+        $(".link").on('click', function() {
+            var frm = $("#order_submit");
+            $.post(frm.attr('action'), frm.serialize(), function(resp) {
+                if (resp.status == sz.STATUS_SUCC) {
+                    location.href = '/Api/Browser/cOrderSubmit?orderCode='+resp.data.orderCode;
+                } else {
+                    if(resp.msg == 20000){
+                        myApp.modal({
+                            title:  '提醒',
+                            text: '点餐失败!',
+                            buttons: [
+                                {
+                                    text: '确定'
+                                }
+                            ]
+                        });
+                    }else if(resp.msg == 50317) {
+                        myApp.modal({
+                            title:  '提醒',
+                            text: '请选择商家!',
+                            buttons: [
+                                {
+                                    text: '确定'
+                                }
+                            ]
+                        });
+                    }else if(resp.msg == 50319) {
+                        myApp.modal({
+                            title:  '',
+                            text: '抱歉,商家已经打烊了!',
+                            buttons: [
+                                {
+                                    text: '去看看其他店铺',
+                                    onClick:function(){
+                                        location.href = 'ho://shop';
+                                    }
+                                }
+                            ]
+                        });
+                    }else if(resp.msg == 50500) {
+                        myApp.modal({
+                            title:  '提醒',
+                            text: '请登录!',
+                            buttons: [
+                                {
+                                    text: '确定',
+                                    onClick:function(){
+                                        location.href = 'ho://login';
+                                    }
+                                }
+                            ]
+                        });
+                    }
+                }
+            });
+            return false;
+        });
+    });
+    function formatDistance(distance) {
+        if(!distance) {
+            return '0m';
+        } else if(distance > 0 && distance <= 1000) {
+            return distance + 'm';
+        } else if(distance > 1000 && distance <= 100000) {
+            return (distance / 1000).toFixed(1) + 'km';
+        } else {
+            return '>100km';
+        }
+    }
+</script>

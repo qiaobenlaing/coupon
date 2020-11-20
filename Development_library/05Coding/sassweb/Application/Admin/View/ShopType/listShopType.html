@@ -1,0 +1,14 @@
+<layout name="layout_admin" />
+<div>
+    <form class="form-inline" id="data_search_form" action="#" method="get">
+        <div class="form-group" >
+            <label for="type-zh">类型描述</label>
+            <input type="text" class="form-control" name="typeZh" value="{$get.typeZh}" id="type-zh" placeholder="类型描述">
+        </div>
+        <button type="submit" class="btn btn-primary" id="search_form_submit_btn">查询</button>
+        <input type="hidden" id="frm_ele_page" name="page" value="1" />
+    </form>
+</div>
+<div id="data_table_wrapper">
+  <include file="./Application/Admin/View/ShopType/listShopTypeWidget.html" />
+</div>

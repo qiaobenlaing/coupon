@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/LyOutSet_"
+    android:gravity="center_vertical"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/navigation_bar"
+        android:gravity="center_vertical" >
+
+        <TextView
+            style="@style/Tv_FontSize"
+            android:layout_marginLeft="10dp"
+            android:text="@string/tv_couponuse" />
+
+        <TextView
+            android:id="@+id/tv_usecoupon_num"
+            style="@style/Tv_FontSize"
+            android:textSize="16sp" />
+
+        <TextView
+            style="@style/Tv_FontSize"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="5dp"
+            android:text="@string/tv_coupon_uncsm_zhang" />
+
+        <TextView
+            style="@style/Tv_FontSize"
+            android:text="@string/tv_couponddt" />
+
+        <TextView
+            android:id="@+id/tv_usecoupon_money"
+            style="@style/Tv_FontSize" />
+
+        <TextView
+            style="@style/Tv_FontSize"
+            android:layout_marginLeft="2dp"
+            android:text="@string/tv_coupon_ddt_money_yuan"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <TextView style="@style/VLine" />
+
+</LinearLayout>

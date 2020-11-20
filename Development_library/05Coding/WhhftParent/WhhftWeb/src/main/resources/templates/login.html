@@ -1,0 +1,89 @@
+<link th:replace="/include/header" />
+<link rel="stylesheet" type="text/css" th:href="@{/css/login.css}" />
+<style type="text/css" title="text/css">
+/* <![CDATA[ */
+
+/* ]]> */
+</style>
+<script th:inline="javascript">
+/*<![CDATA[*/ 
+if (window.location != window.top.location) {
+	window.top.location = window.location;
+}
+
+$(function(){
+	changeCode();//加载验证码
+});
+
+
+//加载验证码
+function changeCode(){
+	$("#img_code").attr("src", [[@{/getAuthCode}]]+"?flag="+Math.random());
+}
+
+
+
+
+
+</script>
+<!-- /*]]>*/   -->
+	<div id="login">
+		<div id="login_header">
+			<h1 class="login_logo">
+				<a href="http://www.huift.com.cn/"><img src="images/login/logo.png" /></a>
+			</h1>
+			<div class="login_headerContent">
+				<div class="navList">
+					<ul>
+						<li><a href="#">设为首页</a></li>
+						<li><a href="http://www.huift.com.cn/">反馈</a></li>
+						<li><a href="http://www.huift.com.cn/" target="_blank">帮助</a></li>
+					</ul>
+				</div>
+				<h2 class="login_title"><img src="images/login/logo_title.png" /></h2>
+			</div>
+		</div>
+		<div id="login_content">
+			<div class="loginForm">
+				<form id="login_form" method="post" th:action="@{/main}">
+					<p>
+						<label>用户名：</label>
+						<input type="text" name="loginname" size="20" class="login_input"  value="admin"/>
+					</p>
+					<p>
+						<label>密码：</label>
+						<input type="password" name="password" size="20" class="login_input" value="a"/>
+					</p>
+					<p>
+						<label>验证码：</label>
+						<input id="code_input" type="text" name="authCode" size="5" class="login_input" value=""/>
+						<a href="#" onclick="changeCode()"><img id="img_code" src="" /></a>
+					</p>
+					<p style="padding-left: 30px; color:red;">
+					
+					</p>
+					<div class="login_bar">
+						<input class="sub" type="submit" value=" " />
+					</div>
+					<p style="color:red;" th:text="${loginFailedInfo}"></p>
+				</form>
+			</div>
+			<div class="login_banner"><img src="images/login/banner3.jpg" /></div>
+			<div class="login_main">
+				<ul class="helpList">
+					<li><a href="#">功能一</a></li>
+					<li><a href="#">功能二</a></li>
+					<li><a href="#">...</a></li>
+				</ul>
+				<div class="login_inner">
+					<p>功能介绍一</p>
+					<p>功能介绍二</p>
+					<p>功能介绍三</p>
+				</div>
+			</div>
+		</div>
+		<div id="login_footer">
+			武汉惠付通科技有限公司&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.huift.com.cn/">www.huift.com.cn</a>
+		</div>
+	</div>
+	<link th:replace="/include/footer" />

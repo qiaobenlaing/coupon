@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/ry_choose_store"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/white" >
+
+        <!--
+             <ImageView 
+	        android:id="@+id/iv_staffshoop_image"
+	        android:layout_width="@dimen/layout_sheight"
+	        android:layout_height="@dimen/layout_sheight"
+	        android:scaleType="fitXY"
+	        android:layout_marginLeft="10dp"
+	        android:layout_centerVertical="true"
+	        android:background="@drawable/bg_border"
+	        android:src="@drawable/activityimage" />
+        -->
+
+        <TextView
+            android:id="@+id/tv_storelist_branch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:textSize="16sp"
+            android:text="拉不拉卡(余杭店)" />
+    </RelativeLayout>
+
+</LinearLayout>

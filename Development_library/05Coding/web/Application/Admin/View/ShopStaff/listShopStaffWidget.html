@@ -1,0 +1,122 @@
+<table class="fp-table table table-striped table-bordered table-condensed" id="data_table">
+    <thead>
+    <tr>
+        <th>姓名</th>
+        <th>手机号</th>
+        <th>店员角色</th>
+        <th>上级人员</th>
+        <th>所属商店</th>
+        <th>激活验证码</th>
+        <th>找回密码验证码</th>
+        <th>是否接受短信</th>
+        <th>状态</th>
+        <th style="width: 177px">操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    <foreach name="dataList" item="item">
+        <tr id="shop-staff-{$item.staffCode}">
+            <td><strong>{$item.realName}</strong></td>
+            <td>{$item.mobileNbr}</td>
+            <td>
+                <if condition="$item.userLvl eq 1">
+                    员工
+                    <elseif condition="$item.userLvl eq 2"/>店长
+                    <elseif condition="$item.userLvl eq 3"/>大店长
+                    <else/>未定义
+                </if>
+            </td>
+            <td>
+                <notempty name="item.parentInfo.realName">
+                    <strong>{$item.parentInfo.realName}</strong>
+                    <span>({$item.parentInfo.mobileNbr})</span>
+                    <span style="color: #777777;">({$item.parentInfo.staffRole})</span>
+                    <else/>无
+                </notempty>
+            </td>
+            <td>
+                <empty name="item.shopList">
+                    无
+                    <else/>
+                    <foreach name="item.shopList" item="shop">
+                        <strong>{$shop.shopName}</strong>({$shop.province}/{$shop.city})<br/>
+                    </foreach>
+                </empty>
+            </td>
+            <td>{$item.rValidateCode}</td>
+            <td>{$item.fValidateCode}</td>
+            <td><eq name="item.isSendPayedMsg" value="1">是<else/>否</eq></td>
+            <td>
+                <div class="btn-group">
+                    <switch name="item.status">
+                        <case value="1">
+                            <button type="button" class="btn btn-xs btn-success dropdown-toggle btn-staff-status-{$item.staffCode}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="status-text">启用</span><span class="caret"></span>
+                            </button>
+                        </case>
+                        <case value="0">
+                            <button type="button" class="btn btn-xs btn-danger dropdown-toggle btn-staff-status-{$item.staffCode}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="status-text">禁用</span><span class="caret"></span>
+                            </button>
+                        </case>
+                        <case value="-1">
+                            <button type="button" class="btn btn-xs dropdown-toggle btn-staff-status-{$item.staffCode}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="status-text">未激活</span><span class="caret"></span>
+                            </button>
+                        </case>
+                        <default />
+                        <button type="button" class="btn btn-xs btn-default dropdown-toggle btn-staff-status-{$item.staffCode}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            未知<span class="caret"></span>
+                        </button>
+                    </switch>
+                    <ul class="dropdown-menu" style="min-width: 0">
+                        <li><a href="#" data-staff-code="{$item.staffCode}" data-status="0" class="change-shop-staff-status">禁用</a></li>
+                        <li><a href="#" data-staff-code="{$item.staffCode}" data-status="1" class="change-shop-staff-status">启用</a></li>
+                    </ul>
+                </div>
+            </td>
+            <td>
+                <a href="/Admin/ShopStaff/editShopStaff?staffCode={$item.staffCode}&mobileNbr={$get.mobileNbr}&page={$pager:page}&shopName={$get.shopName}&realName={$get.realName}&userLvl={$get.userLvl}&status={$get.status}&brandId={$get.brandId}" class="btn btn-xs btn-primary">编辑</a>
+                <a href="/Admin/ShopStaff/delShopStaff?staffCode={$item.staffCode}&page={$pager:page}" class="btn btn-xs btn-danger" data-staff-code="{$item.staffCode}">删除</a>
+                <a href="/Admin/ShopStaff/listStaffShop?staffCode={$item.staffCode}" class="btn btn-xs btn-info list-staff-shop-rel" data-staff-code="{$item.staffCode}">编辑所属商家</a>
+            </td>
+        </tr>
+    </foreach>
+    </tbody>
+</table>
+<script>
+    // 修改商家员工的状态
+    ;(function(){
+        $('.change-shop-staff-status').on('click', function(){
+            var staffCode = $(this).data('staffCode');
+            var status = $(this).data('status');
+
+            var btnStaffStatus = $('.btn-staff-status-' + staffCode);
+            btnStaffStatus.removeClass('btn-default').removeClass('btn-success').removeClass('btn-danger');
+            $.get(
+                    '/Admin/ShopStaff/changeStatus',
+                    {'staffCode': staffCode, 'status': status},
+                    function(resp){
+                        if(resp.status == sz.STATUS_SUCC) {
+                            switch(status){
+                                case 1:
+                                    btnStaffStatus.children().filter('.status-text').html('启用');
+                                    btnStaffStatus.addClass('btn-success');
+                                    break;
+                                case 0:
+                                    btnStaffStatus.children().filter('.status-text').html('禁用');
+                                    btnStaffStatus.addClass('btn-danger');
+                                    break;
+                            }
+                            btnStaffStatus.dropdown('toggle');
+                        } else {
+                            sz.showErrMsg(resp.msg)
+                        }
+                    }
+            );
+            return false;
+        });
+    })();
+</script>
+<include file="Application/Admin/View/Widget/pager.html" />
+

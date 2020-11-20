@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <FrameLayout
+        android:id="@+id/fy_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/layout_xxheight"
+        android:visibility="visible" >
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewPager"
+            style="@style/LyWHFirst"
+            android:background="@drawable/banner" />
+
+        <LinearLayout
+            android:id="@+id/ly_gropview"
+            style="@style/LyWHFirst"
+            android:layout_marginBottom="5dp"
+            android:gravity="center|bottom" >
+        </LinearLayout>
+    </FrameLayout>
+
+    <TextView
+        style="@style/VSpace"
+        android:layout_height="10dp" />
+
+</LinearLayout>

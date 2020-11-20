@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/LyWHFirst"
+    android:background="@color/deep_gray"
+    android:gravity="right"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        style="@style/LyWHSecond"
+        android:background="@color/deep_gray"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/tv_mail"
+            style="@style/LyWHSecond"
+            android:layout_width="85dp"
+            android:layout_height="35dp"
+            android:gravity="center"
+            android:text="男"
+            android:textColor="@color/white" />
+
+        <TextView
+            style="@style/VLine"
+            android:layout_height="0.5dp"
+            android:background="@color/shallow_gray" />
+
+        <TextView
+            android:id="@+id/tv_femail"
+            style="@style/LyWHSecond"
+            android:layout_width="85dp"
+            android:layout_height="35dp"
+            android:gravity="center"
+            android:text="女"
+            android:textColor="@color/white" />
+    </LinearLayout>
+
+</LinearLayout>

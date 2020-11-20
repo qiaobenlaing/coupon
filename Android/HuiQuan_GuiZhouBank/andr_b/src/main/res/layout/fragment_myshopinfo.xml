@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/LyOutSet"
+    android:background="@color/white" >
+
+    <include layout="@layout/common_title_commit" />
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:fadingEdge="vertical"
+        android:scrollbars="none" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:divider="@drawable/shape_divider"
+            android:orientation="vertical"
+            android:showDividers="middle" >
+            <LinearLayout
+                android:id="@+id/ly_nodate"
+                style="@style/LyWHFirst"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:visibility="visible" >
+
+                <ProgressBar
+                    android:id="@+id/prog_nodata"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="正在加载数据" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/ly_content"
+                style="@style/LyWHFourth"
+                android:orientation="vertical" >
+                <RelativeLayout
+                android:id="@+id/ry_shop_logo"
+                style="@style/LyWHFourth"
+                android:layout_height="@dimen/layout_xheight"
+                android:background="@color/white"
+                android:paddingLeft="22dp" 
+                android:visibility="visible">
+
+                <TextView
+                    style="@style/textview"
+                    android:layout_width="65dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerInParent="true"
+                    android:text="@string/shop_logo" />
+
+                <ImageView
+                    android:id="@+id/iv_shopinfo_shoplogo"
+                    android:layout_width="76dp"
+                    android:layout_height="76dp"
+                    android:layout_centerInParent="true"
+                    android:layout_toLeftOf="@+id/iv_shopinfo_arrow"
+                    android:background="@drawable/bg_border"
+                    android:scaleType="fitXY" />
+
+                <ImageView
+                    android:id="@+id/iv_shopinfo_arrow"
+                    style="@style/imageview"
+                    android:layout_height="fill_parent"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/shop_arrow" />
+            </RelativeLayout>
+            <TextView 
+                style="@style/VLine"/>
+            <TextView
+                style="@style/VSpaceSmall"
+                android:background="@color/bgall" />
+            <RelativeLayout
+                style="@style/LyWHFourth"
+                android:layout_height="@dimen/layout_sheight"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:paddingLeft="22dp"
+                android:paddingRight="25dp">
+
+                <TextView
+                    style="@style/textview"
+                    android:layout_width="65dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerInParent="true"
+                    android:text="@string/shop_name" />
+
+                <TextView
+                    android:id="@+id/tv_myshopinfo_name"
+                    style="@style/textview"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerInParent="true"
+                    android:textColor="@color/ivcolor" />
+            </RelativeLayout>
+            <TextView 
+                style="@style/VLine"/>
+            <RelativeLayout
+                style="@style/LyWHFourth"
+                android:layout_height="@dimen/layout_sheight"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:paddingLeft="22dp"
+                android:paddingRight="25dp">
+
+                <TextView
+                    style="@style/textview"
+                    android:layout_width="65dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerInParent="true"
+                    android:text="@string/manager_number" />
+
+                <TextView
+                    android:id="@+id/tv_manager_number"
+                    style="@style/textview"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerInParent="true"
+                    android:textColor="@color/ivcolor" />
+            </RelativeLayout>
+            <TextView 
+                style="@style/VLine"/>
+            <RelativeLayout
+                style="@style/LyWHFourth"
+                android:layout_height="@dimen/layout_sheight"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:paddingLeft="22dp"
+                android:paddingRight="25dp">
+
+                <TextView
+                    style="@style/textview"
+                    android:layout_width="65dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerInParent="true"
+                    android:text="@string/contact_number" />
+
+                <TextView
+                    android:id="@+id/tv_myshopinfo_tel"
+                    style="@style/textview"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerInParent="true"
+                    android:textColor="@color/ivcolor" />
+            </RelativeLayout>
+            <TextView 
+                style="@style/VLine"/>
+            <RelativeLayout
+                style="@style/LyWHFourth"
+                android:layout_height="@dimen/layout_sheight"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:paddingLeft="22dp"
+                android:paddingRight="5dp">
+
+                <TextView
+                    android:id="@+id/tv_address"
+                    style="@style/textview"
+                    android:layout_width="65dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerInParent="true"
+                    android:text="@string/shop_address" />
+
+                <TextView
+                    android:id="@+id/tv_shopaddress"
+                    style="@style/textview"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerInParent="true"
+                    android:layout_marginRight="25dp"
+                    android:layout_toRightOf="@+id/tv_address"
+                    android:textColor="@color/ivcolor" />
+            </RelativeLayout>
+            <TextView 
+                style="@style/VLine"/>
+            <TextView
+                style="@style/VSpaceSmall"
+                android:background="@color/bgall" />
+            <RelativeLayout
+               android:id="@+id/ry_business_time"
+               style="@style/LyWHFourth"
+               android:layout_height="wrap_content"
+               android:background="@color/white"
+               android:gravity="center_vertical"
+               android:paddingLeft="22dp">
+                	<TextView
+	                    android:id="@+id/tv_business"
+	                    style="@style/textview"
+	                    android:layout_width="65dp"
+	                    android:text="@string/business_hours"
+	                    android:layout_marginTop="3dp"
+	                    android:layout_alignParentLeft="true"/>
+                   <com.huift.hfq.base.view.MyGridView 
+	                    android:id="@+id/gv_myshopinfo_time"
+	                    android:layout_width="wrap_content"
+	                    android:layout_height="wrap_content"
+	                    android:numColumns="2"
+					    android:horizontalSpacing="10dp"
+					    android:verticalSpacing="10dp"
+					    android:layout_below="@+id/tv_business"
+					    android:scrollbars="@null"/>
+                   <ImageView
+	                    android:id="@+id/iv_shop_arrow"
+	                    style="@style/imageview"
+	                    android:layout_alignParentRight="true"
+	                    android:layout_centerInParent="true"
+	                    android:src="@drawable/shop_arrow" />
+	        </RelativeLayout>
+            <TextView
+                style="@style/VSpaceSmall"
+                android:background="@color/bgall" />
+            <RelativeLayout
+                android:id="@+id/ry_restaurantset"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/layout_sheight"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="22dp">
+
+                <TextView
+                    style="@style/textview"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginTop="10dp"
+                    android:layout_centerVertical="true"
+                    android:text="@string/restaurant_set" />
+
+                 <ImageView
+                    style="@style/imageview"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/shop_arrow" />
+            </RelativeLayout>
+             <TextView
+                style="@style/VSpaceSmall"
+                android:background="@color/bgall" />
+            <LinearLayout
+                android:id="@+id/ly_short_dec"
+                style="@style/LyWHFourth"
+                android:background="@color/white"
+                android:orientation="vertical" >
+
+                <RelativeLayout
+                    style="@style/LyWHFourth"
+                    android:layout_height="36dp"
+                    android:layout_marginLeft="22dp" >
+
+                    <TextView
+                        style="@style/LyWHSecond"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:text="店铺简介"
+                        android:textSize="16sp" />
+
+                    <ImageView
+                        android:id="@+id/tv_shop_arrow5"
+                        style="@style/imageview"
+                        android:layout_width="60dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/shop_arrow" />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/tv_shop_des"
+                    style="@style/LyWHSecond"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginRight="22dp"/>
+            </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

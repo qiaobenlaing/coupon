@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="white">#ffffff</color>
+    <!-- 深灰色 -->
+    <color name="dark_gray">#333333</color>
+    <color name="gold">#FFD700</color>
+    <color name="lightgoldenrodyellow">#FAFAD2</color>
+    <color name="darkgoldenrod">#B8860B</color>
+    <color name="snow">#FFFAFA</color>
+    <color name="dark">#000000</color>
+    <color name="bule">#0033CC</color>
+    <color name="result_view">#b0000000</color>
+    <color name="viewfinder_mask">#60000000</color>
+    <color name="possible_result_points">#c0ffff00</color>
+    <color name="albumback">#E1E0DE</color>
+    <!-- 红色 -->
+    <color name="red">#CC0000</color>
+    <!-- 黑色 -->
+    <color name="black">#000000</color>
+    <color name="bule_overlay">#660D92DD</color>
+    <!-- 浅灰色 -->
+    <color name="light_grey">#D2D2D2</color>
+    <!-- 蓝紫色 -->
+    <color name="blue_violet">#3333CC</color>
+    <!-- app的背景颜色 -->
+    <color name="bgall">#efeff4</color>
+    <!-- 登录的字体颜色 -->
+    <color name="login_font_gray">#B2B2B2</color>
+    <color name="timelimit_font_color">#989898</color>
+    <!-- 透明颜色 -->
+    <color name="shop_photo_bg">#7f666666</color>
+    <color name="shopdetail_divider">#D7D7D7</color>
+    <!-- 检测网络的颜色 -->
+    <color name="check_net">#7f626263</color>
+    <color name="msg_font">#BBBBBB</color>
+
+</resources>

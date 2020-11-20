@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical" >
+
+    <ImageView
+        android:id="@+id/iv_setphone"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginLeft="190dp"
+        android:src="@drawable/myshopinfo_setphone" />
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="5dp"
+        android:gravity="center"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/business_hours"
+            android:textColor="@android:color/black"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/et_time1"
+            android:layout_width="85dp"
+            android:layout_height="25dp"
+            android:background="@drawable/sel_edt_input" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/reach"
+            android:textColor="@android:color/black"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/et_time2"
+            android:layout_width="85dp"
+            android:layout_height="25dp"
+            android:background="@drawable/sel_edt_input" />
+    </TableRow>
+
+    <TextView
+        android:id="@+id/tv_myshopinfo_submit"
+        android:layout_width="15dp"
+        android:layout_height="25dp"
+        android:layout_marginLeft="190dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
+        android:background="@android:color/darker_gray"
+        android:gravity="center"
+        android:text="@string/raise" />
+
+</TableLayout>

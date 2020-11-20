@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+    
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        
+        <RelativeLayout
+	        android:id="@+id/rl_campaign_image"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content">
+
+	        <ImageView
+                android:id="@+id/tv_campaign_image"
+                android:layout_width="match_parent"
+                android:layout_height="166dp"
+                android:layout_centerVertical="true"
+                android:scaleType="fitXY"
+                android:background="@drawable/no_data"/>
+	        
+	        <RelativeLayout 
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:background="@color/act_title_bg"
+	            android:layout_alignParentBottom="true">
+	            
+	            <TextView 
+		            android:id="@+id/tv_campaign_name"
+	                android:layout_width="match_parent"
+	                android:layout_height="wrap_content"
+	                android:layout_centerVertical="true"
+	                android:textColor="@color/white"
+	                android:textSize="16sp"
+	                android:layout_marginLeft="10dp"
+	                android:layout_marginRight="10dp"
+	                android:text="xx"/>
+	            
+	        </RelativeLayout>
+	        
+    	</RelativeLayout>
+    	
+        <RelativeLayout 
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/layout_height">
+            <TextView 
+                android:id="@+id/tv_campaign_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/bg_border"
+                android:singleLine="true"
+                android:text="xx"/>
+             <TextView 
+                android:id="@+id/tv_campaign_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/tv_campaign_time"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/bg_border"
+                android:singleLine="true"
+                android:text="xx"/>
+            <TextView
+                android:id="@+id/tv_campaign_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/bg_border"
+                android:singleLine="true"
+                android:text="xx"/>
+        </RelativeLayout>
+        
+    </LinearLayout>
+    
+</LinearLayout>

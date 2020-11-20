@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_bg"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/navigation_bar"
+        android:background="@color/red"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:id="@+id/backup"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:src="@drawable/backup" />
+
+        <TextView
+            style="@style/TvSet"
+            android:layout_centerInParent="true"
+            android:text="@string/icbc_pay"
+            android:textColor="@color/white"
+            android:textSize="@dimen/app_title_bar_font" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/app_item_bg"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:divider="@drawable/shape_divider"
+            android:orientation="vertical"
+            android:showDividers="middle" >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/layout_height"
+                android:gravity="center_vertical"
+                android:paddingBottom="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="10dp" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:text="@string/shop_name" />
+
+                <TextView
+                    android:id="@+id/shop_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/layout_height"
+                android:gravity="center_vertical"
+                android:paddingBottom="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="10dp" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:text="@string/csm_money" />
+
+                <TextView
+                    android:id="@+id/price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toLeftOf="@+id/price_unit"
+                    android:text="@string/num_zero" />
+
+                <TextView
+                    android:id="@+id/price_unit"
+                    style="@style/LyWHSecond"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="10dp"
+                    android:text="@string/money_unit" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_all_discount"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/layout_height"
+                android:layout_gravity="center_vertical"
+                android:paddingBottom="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="10dp" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:text="@string/total_ddtmoney" />
+
+                <ImageView
+                    android:id="@+id/iv_icbc_shop_arrow"
+                    style="@style/LyWHSecond"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/down_arrow" />
+
+                <TextView
+                    android:id="@+id/totalprice_unit"
+                    style="@style/LyWHSecond"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="2dp"
+                    android:layout_toLeftOf="@+id/iv_icbc_shop_arrow"
+                    android:text="@string/money_unit" />
+
+                <TextView
+                    android:id="@+id/total_dcprice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@+id/totalprice_unit"
+                    android:text="@string/num_zero"
+                    android:textColor="@color/red" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/all_icbc_discount"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingLeft="40dp"
+                android:visibility="gone" >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/layout_height"
+                    android:gravity="center_vertical"
+                    android:paddingBottom="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingTop="10dp" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:text="@string/card_ddtmoney" />
+
+                    <TextView
+                        android:id="@+id/card_dcprice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toLeftOf="@+id/cardprice_unit"
+                        android:text="@string/num_zero" />
+
+                    <TextView
+                        android:id="@+id/cardprice_unit"
+                        style="@style/LyWHSecond"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginLeft="2dp"
+                        android:text="@string/money_unit" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/layout_height"
+                    android:gravity="center_vertical"
+                    android:paddingBottom="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingTop="10dp" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:text="@string/coupon_dcmoney" />
+
+                    <TextView
+                        android:id="@+id/coupons_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toLeftOf="@+id/cprice_unit"
+                        android:text="@string/num_zero" />
+
+                    <TextView
+                        android:id="@+id/cprice_unit"
+                        style="@style/LyWHSecond"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginLeft="2dp"
+                        android:text="@string/money_unit" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/layout_height"
+                    android:gravity="center_vertical"
+                    android:paddingBottom="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingTop="10dp" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:text="@string/bouns_shop" />
+
+                    <TextView
+                        android:id="@+id/bouns_price_shop"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toLeftOf="@+id/bprice_unit"
+                        android:text="@string/num_zero" />
+
+                    <TextView
+                        android:id="@+id/bprice_unit"
+                        style="@style/LyWHSecond"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginLeft="2dp"
+                        android:text="@string/money_unit" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/layout_height"
+                    android:gravity="center_vertical"
+                    android:paddingBottom="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingTop="10dp" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:text="@string/bounds_huiquan" />
+
+                    <TextView
+                        android:id="@+id/bouns_price_huiquan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toLeftOf="@+id/bprice_unit_huiquan"
+                        android:text="@string/num_zero" />
+
+                    <TextView
+                        android:id="@+id/bprice_unit_huiquan"
+                        style="@style/LyWHSecond"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginLeft="2dp"
+                        android:text="@string/money_unit" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/layout_height"
+                    android:gravity="center_vertical"
+                    android:paddingBottom="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingTop="10dp" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:text="@string/bank_dcmoney" />
+
+                    <TextView
+                        android:id="@+id/bank_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toLeftOf="@+id/bkprice_unit"
+                        android:text="@string/num_zero" />
+
+                    <TextView
+                        android:id="@+id/bkprice_unit"
+                        style="@style/LyWHSecond"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginLeft="2dp"
+                        android:text="@string/money_unit" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/layout_height"
+                android:gravity="center_vertical"
+                android:paddingBottom="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="10dp" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:text="@string/pay_totalmoney" />
+
+                <TextView
+                    android:id="@+id/new_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toLeftOf="@+id/newprice_unit"
+                    android:text="@string/num_zero"
+                    android:textColor="@color/red" />
+
+                <TextView
+                    android:id="@+id/newprice_unit"
+                    style="@style/LyWHSecond"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="10dp"
+                    android:text="@string/money_unit" />
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/online_pay"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/layout_height"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/login_btn"
+        android:text="建行卡支付"
+        android:textColor="@color/white" />
+
+    <Button
+        android:id="@+id/card_pay"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/layout_height"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/login_btn"
+        android:text="@string/pay_card"
+        android:textColor="@color/white" />
+
+   <!-- 
+         <Button
+        android:id="@+id/cash_pay"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/layout_height"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/login_btn"
+        android:text="现金支付"
+        android:textColor="@color/white"/>
+        --> 
+
+</LinearLayout>

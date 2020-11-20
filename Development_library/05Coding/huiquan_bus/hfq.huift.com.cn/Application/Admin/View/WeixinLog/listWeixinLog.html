@@ -1,0 +1,64 @@
+<layout name="layout_admin" />
+<div>
+    <form class="form-inline" id="data_search_form" action="#" method="get">
+        <div class="form-group">
+            <label for="invite-code">用户编号</label>
+            <input type="text" class="form-control" name="userCode" value="{$get.userCode}" id="invite-code" placeholder="用户编号">
+        </div>
+        <div class="form-group">
+            <label for="recom-nbr">卡券号</label>
+            <input type="text" class="form-control" name="cardNumber" value="{$get.cardNumber}" id="recom-nbr" placeholder="卡券编号">
+        </div>
+        <div class="form-group">
+            <label for="state">卡类型</label>
+            <select class="form-control" name="cardType" id="cardType">
+                <option value="" <eq name="get.cardType" value="">selected="selected"</eq>>所有</option>
+                <option value="1"<eq name="get.cardType" value="1">selected="selected"</eq>>会员卡</option>
+                <option value="2"<eq name="get.cardType" value="2">selected="selected"</eq>>优惠券</option>
+            </select>
+        </div>
+        <br/>   <br/>
+        <div class="form-group">
+            <label for="reg-date">操作时间</label>
+            <div class="input-group date reg_date">
+                <input type="text" class="form-control ipt-date-time-picker" id="reg-date" name="readtimeStart" value="{$get.readtimeStart}" readonly placeholder="开始时间" />
+                <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="reg-end-date">至</label>
+            <div class="input-group date reg_date">
+                <input type="text" class="form-control ipt-date-time-picker" id="reg-end-date" name="readtimeEnd" value="{$get.readtimeEnd}" readonly placeholder="结束时间" />
+                <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary btn-sm" id="search_form_submit_btn">查询</button>
+        <input type="hidden" id="frm_ele_page" name="page" value="1" />
+    </form>
+</div>
+<div id="data_table_wrapper">
+    <include file="./Application/Admin/View/WeixinLog/WeixinLogWidget.html" />
+</div>
+<script type="text/javascript">
+    $(function() {
+        $("#input-box").attr("name", "shopName");
+        $('.reg_date').datetimepicker({
+            format: 'yyyy-mm-dd',
+            autoclose: true,
+            todayBtn: true,
+            minView: 'month',
+            pickerPosition: "bottom-left"
+        })
+        $("#select").change(function() {
+            var val = $('#select').val();
+            $("#input-box").attr("name", val);
+        });
+        // 导出用户信息
+        $('#export').click(function(){
+            var frm = $('#data_search_form');
+            location.href = '/Admin/User/exportAllUser?' + frm.serialize();
+        });
+    });
+</script>

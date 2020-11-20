@@ -1,0 +1,25 @@
+<layout name="layout_admin" />
+<form class="form-inline" role="form" id="data_search_form" action="#" method="get">
+    <div class="form-group">
+        <label for="userLvl">角色</label>
+        <select name="userLvl" id="userLvl" class="form-control">
+            <option value="">所有</option>
+            <foreach name="hqStaffType" item="item">
+                <option value="{$item.value}" <eq name="item.value" value="$get.userLvl">selected="selected"</eq>>{$item.zh}</option>
+            </foreach>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="realName">姓名</label>
+        <input type="text" name="realName" id="realName" value="{$get.realName}" class="form-control" placeholder="姓名"/>
+    </div>
+    <div class="form-group">
+        <label for="mobile-nbr">账号</label>
+        <input type="text" name="mobileNbr" id="mobile-nbr" value="{$get.mobileNbr}" class="form-control" placeholder="账号"/>
+    </div>
+    <button type="submit" class="btn btn-primary btn-sm" id="search_form_submit_btn">查询</button>
+    <input type="hidden" id="frm_ele_page" name="page" value="1" />
+</form>		
+<div id="data_table_wrapper">
+  <include file="./Application/Admin/View/BmStaff/listBmStaffWidget.html" />
+</div>

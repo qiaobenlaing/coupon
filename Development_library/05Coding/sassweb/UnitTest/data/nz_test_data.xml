@@ -1,0 +1,655 @@
+<?xml version="1.0"?>
+<dataset>
+	<table name="actions">
+    <column>id</column>
+    <column>uid</column>
+    <column>nid</column>
+    <column>read_time</column>
+    <column>vote_score</column>
+    <column>vote_time</column>
+    <column>is_author</column>
+	<row>
+		<value name="id">1</value>
+		<value name="uid">1</value>
+		<value name="nid">1</value>
+		<value name="read_time">1336424772</value>
+		<value name="vote_score">2</value>
+		<value name="vote_time">1336424772</value>
+		<value name="is_author">1</value>
+	</row>
+	<row>
+		<value name="id">2</value>
+		<value name="uid">6</value>
+		<value name="nid">2</value>
+		<value name="read_time">1336424782</value>
+		<value name="vote_score">2</value>
+		<value name="vote_time">1336424782</value>
+		<value name="is_author">1</value>
+	</row>
+	<row>
+		<value name="id">3</value>
+		<value name="uid">2</value>
+		<value name="nid">1</value>
+		<value name="read_time">1336424783</value>
+		<value name="vote_score">2</value>
+		<value name="vote_time">1336424783</value>
+		<value name="is_author">0</value>
+	</row>
+	<row>
+		<value name="id">4</value>
+		<value name="uid">4</value>
+		<value name="nid">1</value>
+		<value name="read_time">1336424784</value>
+		<value name="vote_score">2</value>
+		<value name="vote_time">1336424784</value>
+		<value name="is_author">0</value>
+	</row>
+	<row>
+		<value name="id">5</value>
+		<value name="uid">6</value>
+		<value name="nid">1</value>
+		<value name="read_time">1336424785</value>
+		<value name="vote_score">0</value>
+		<value name="vote_time">0</value>
+		<value name="is_author">0</value>
+	</row>
+	<row>
+		<value name="id">6</value>
+		<value name="uid">10</value>
+		<value name="nid">1</value>
+		<value name="read_time">1336424786</value>
+		<value name="vote_score">0</value>
+		<value name="vote_time">0</value>
+		<value name="is_author">0</value>
+	</row>
+	<row>
+		<value name="id">7</value>
+		<value name="uid">5</value>
+		<value name="nid">1</value>
+		<value name="read_time">1336424787</value>
+		<value name="vote_score">2</value>
+		<value name="vote_time">1336424787</value>
+		<value name="is_author">0</value>
+	</row>
+	<row>
+		<value name="id">8</value>
+		<value name="uid">8</value>
+		<value name="nid">1</value>
+		<value name="read_time">1336424788</value>
+		<value name="vote_score">2</value>
+		<value name="vote_time">1336424788</value>
+		<value name="is_author">0</value>
+	</row>
+	<row>
+		<value name="id">9</value>
+		<value name="uid">9</value>
+		<value name="nid">1</value>
+		<value name="read_time">1336424789</value>
+		<value name="vote_score">2</value>
+		<value name="vote_time">1336424789</value>
+		<value name="is_author">0</value>
+	</row>
+	<row>
+		<value name="id">10</value>
+		<value name="uid">8</value>
+		<value name="nid">2</value>
+		<value name="read_time">1336424790</value>
+		<value name="vote_score">0</value>
+		<value name="vote_time">0</value>
+		<value name="is_author">0</value>
+	</row>
+	<row>
+		<value name="id">11</value>
+		<value name="uid">7</value>
+		<value name="nid">2</value>
+		<value name="read_time">1336424791</value>
+		<value name="vote_score">0</value>
+		<value name="vote_time">0</value>
+		<value name="is_author">0</value>
+	</row>
+	<row>
+		<value name="id">12</value>
+		<value name="uid">10</value>
+		<value name="nid">2</value>
+		<value name="read_time">1336424792</value>
+		<value name="vote_score">2</value>
+		<value name="vote_time">1336424792</value>
+		<value name="is_author">0</value>
+	</row>
+	</table>
+	<table name="feeds_push">
+	<column>id</column>
+	<column>uid</column>
+	<column>nid</column>
+	<column>feed_time</column>
+	<column>first_from</column>
+	<column>is_read</column>
+	<column>rc_times</column>
+	<column>trail</column>
+	<row>
+		<value name="id">1</value>
+		<value name="uid">5</value>
+		<value name="nid">1</value>
+		<value name="feed_time">1336424783</value>
+		<value name="first_from">2</value>
+		<value name="is_read">1</value>
+		<value name="rc_times">1</value>
+		<value name="trail">1,2</value>
+	</row>
+	<row>
+		<value name="id">2</value>
+		<value name="uid">9</value>
+		<value name="nid">1</value>
+		<value name="feed_time">1336424784</value>
+		<value name="first_from">4</value>
+		<value name="is_read">1</value>
+		<value name="rc_times">2</value>
+		<value name="trail">1,4</value>
+	</row>
+	<row>
+		<value name="id">3</value>
+		<value name="uid">11</value>
+		<value name="nid">1</value>
+		<value name="feed_time">1336424788</value>
+		<value name="first_from">8</value>
+		<value name="is_read">0</value>
+		<value name="rc_times">2</value>
+		<value name="trail">1,4,8</value>
+	</row>
+	<row>
+		<value name="id">4</value>
+		<value name="uid">11</value>
+		<value name="nid">2</value>
+		<value name="feed_time">1336424792</value>
+		<value name="first_from">10</value>
+		<value name="is_read">0</value>
+		<value name="rc_times">1</value>
+		<value name="trail">6,10</value>
+	</row>
+	</table>
+	<table name="leaders">
+	<column>id</column>
+	<column>uid</column>
+	<column>leaderid</column>
+	<column>create_time</column>
+	<column>similarity</column>
+	<column>news_num</column>
+	<column>news_score</column>
+	<column>is_system</column>
+	<row>
+		<value name="id">1</value>
+		<value name="uid">1</value>
+		<value name="leaderid">12</value>
+		<value name="create_time">1321973751</value>
+		<value name="similarity">1000</value>
+		<value name="news_num">0</value>
+		<value name="news_score">0</value>
+		<value name="is_system">1</value>
+	</row>
+	<row>
+		<value name="id">2</value>
+		<value name="uid">2</value>
+		<value name="leaderid">1</value>
+		<value name="create_time">1321972752</value>
+		<value name="similarity">1000</value>
+		<value name="news_num">1</value>
+		<value name="news_score">2</value>
+		<value name="is_system">0</value>
+	</row>
+	<row>
+		<value name="id">3</value>
+		<value name="uid">4</value>
+		<value name="leaderid">1</value>
+		<value name="create_time">1321972753</value>
+		<value name="similarity">1000</value>
+		<value name="news_num">1</value>
+		<value name="news_score">2</value>
+		<value name="is_system">1</value>
+	</row>
+	<row>
+		<value name="id">4</value>
+		<value name="uid">4</value>
+		<value name="leaderid">6</value>
+		<value name="create_time">1321972754</value>
+		<value name="similarity">1000</value>
+		<value name="news_num">1</value>
+		<value name="news_score">0</value>
+		<value name="is_system">0</value>
+	</row>
+	<row>
+		<value name="id">5</value>
+		<value name="uid">4</value>
+		<value name="leaderid">14</value>
+		<value name="create_time">1321972755</value>
+		<value name="similarity">1000</value>
+		<value name="news_num">0</value>
+		<value name="news_score">0</value>
+		<value name="is_system">1</value>
+	</row>
+	<row>
+		<value name="id">6</value>
+		<value name="uid">5</value>
+		<value name="leaderid">2</value>
+		<value name="create_time">1321972756</value>
+		<value name="similarity">1000</value>
+		<value name="news_num">1</value>
+		<value name="news_score">2</value>
+		<value name="is_system">0</value>
+	</row>
+	<row>
+		<value name="id">7</value>
+		<value name="uid">6</value>
+		<value name="leaderid">13</value>
+		<value name="create_time">1321972757</value>
+		<value name="similarity">1000</value>
+		<value name="news_num">0</value>
+		<value name="news_score">0</value>
+		<value name="is_system">1</value>
+	</row>
+	<row>
+		<value name="id">8</value>
+		<value name="uid">7</value>
+		<value name="leaderid">3</value>
+		<value name="create_time">1321972758</value>
+		<value name="similarity">1000</value>
+		<value name="news_num">0</value>
+		<value name="news_score">0</value>
+		<value name="is_system">0</value>
+	</row>
+	<row>
+		<value name="id">9</value>
+		<value name="uid">8</value>
+		<value name="leaderid">4</value>
+		<value name="create_time">1321972759</value>
+		<value name="similarity">1000</value>
+		<value name="news_num">1</value>
+		<value name="news_score">2</value>
+		<value name="is_system">1</value>
+	</row>
+	<row>
+		<value name="id">10</value>
+		<value name="uid">8</value>
+		<value name="leaderid">5</value>
+		<value name="create_time">1321972760</value>
+		<value name="similarity">1000</value>
+		<value name="news_num">1</value>
+		<value name="news_score">2</value>
+		<value name="is_system">0</value>
+	</row>
+	<row>
+		<value name="id">11</value>
+		<value name="uid">9</value>
+		<value name="leaderid">5</value>
+		<value name="create_time">1321972761</value>
+		<value name="similarity">1000</value>
+		<value name="news_num">1</value>
+		<value name="news_score">2</value>
+		<value name="is_system">1</value>
+	</row>
+	<row>
+		<value name="id">12</value>
+		<value name="uid">9</value>
+		<value name="leaderid">6</value>
+		<value name="create_time">1321972762</value>
+		<value name="similarity">1000</value>
+		<value name="news_num">1</value>
+		<value name="news_score">0</value>
+		<value name="is_system">0</value>
+	</row>
+	<row>
+		<value name="id">13</value>
+		<value name="uid">10</value>
+		<value name="leaderid">5</value>
+		<value name="create_time">1321972763</value>
+		<value name="similarity">1000</value>
+		<value name="news_num">1</value>
+		<value name="news_score">1</value>
+		<value name="is_system">1</value>
+	</row>
+	<row>
+		<value name="id">14</value>
+		<value name="uid">10</value>
+		<value name="leaderid">6</value>
+		<value name="create_time">1321972764</value>
+		<value name="similarity">1000</value>
+		<value name="news_num">1</value>
+		<value name="news_score">2</value>
+		<value name="is_system">0</value>
+	</row>
+	<row>
+		<value name="id">15</value>
+		<value name="uid">6</value>
+		<value name="leaderid">10</value>
+		<value name="create_time">1321972765</value>
+		<value name="similarity">1000</value>
+		<value name="news_num">0</value>
+		<value name="news_score">0</value>
+		<value name="is_system">0</value>
+	</row>
+	<row>
+		<value name="id">16</value>
+		<value name="uid">10</value>
+		<value name="leaderid">7</value>
+		<value name="create_time">1321972766</value>
+		<value name="similarity">1000</value>
+		<value name="news_num">0</value>
+		<value name="news_score">0</value>
+		<value name="is_system">1</value>
+	</row>
+	<row>
+		<value name="id">17</value>
+		<value name="uid">11</value>
+		<value name="leaderid">8</value>
+		<value name="create_time">1321972767</value>
+		<value name="similarity">1000</value>
+		<value name="news_num">1</value>
+		<value name="news_score">0</value>
+		<value name="is_system">0</value>
+	</row>
+	<row>
+		<value name="id">18</value>
+		<value name="uid">11</value>
+		<value name="leaderid">9</value>
+		<value name="create_time">1321972768</value>
+		<value name="similarity">1000</value>
+		<value name="news_num">1</value>
+		<value name="news_score">0</value>
+		<value name="is_system">1</value>
+	</row>
+	<row>
+		<value name="id">19</value>
+		<value name="uid">11</value>
+		<value name="leaderid">10</value>
+		<value name="create_time">1321972769</value>
+		<value name="similarity">1000</value>
+		<value name="news_num">1</value>
+		<value name="news_score">0</value>
+		<value name="is_system">0</value>
+	</row>
+	<row>
+		<value name="id">20</value>
+		<value name="uid">12</value>
+		<value name="leaderid">11</value>
+		<value name="create_time">1321972770</value>
+		<value name="similarity">1000</value>
+		<value name="news_num">0</value>
+		<value name="news_score">0</value>
+		<value name="is_system">1</value>
+	</row>
+	<row>
+		<value name="id">21</value>
+		<value name="uid">12</value>
+		<value name="leaderid">14</value>
+		<value name="create_time">1321972771</value>
+		<value name="similarity">1000</value>
+		<value name="news_num">0</value>
+		<value name="news_score">0</value>
+		<value name="is_system">0</value>
+	</row>
+	<row>
+		<value name="id">22</value>
+		<value name="uid">9</value>
+		<value name="leaderid">4</value>
+		<value name="create_time">1321972772</value>
+		<value name="similarity">1000</value>
+		<value name="news_num">1</value>
+		<value name="news_score">2</value>
+		<value name="is_system">0</value>
+	</row>
+	</table>
+	<table name="news">
+	<column>nid</column>
+	<column>submitter</column>
+	<column>sub_time</column>
+	<column>category</column>
+	<column>read_num</column>
+	<column>vote_num</column>
+	<column>comment_num</column>
+	<column>media_type</column>
+	<column>url</column>
+	<column>url_hash</column>
+	<column>title</column>
+	<column>abs</column>
+	<column>avatar</column>
+	<row>
+		<value name="nid">1</value>
+		<value name="submitter">1</value>
+		<value name="sub_time">1336424772</value>
+		<value name="category">0</value>
+		<value name="read_num">8</value>
+		<value name="vote_num">6</value>
+		<value name="comment_num">0</value>
+		<value name="media_type">0</value>
+		<value name="url">http://www.1.com</value>
+		<value name="url_hash">-3999851798472058549</value>
+		<value name="title">news 1</value>
+		<value name="abs">news abs 1</value>
+		<value name="avatar"></value>
+	</row>
+	<row>
+		<value name="nid">2</value>
+		<value name="submitter">6</value>
+		<value name="sub_time">1336424782</value>
+		<value name="category">0</value>
+		<value name="read_num">4</value>
+		<value name="vote_num">2</value>
+		<value name="comment_num">0</value>
+		<value name="media_type">0</value>
+		<value name="url">http://www.2.com</value>
+		<value name="url_hash">-7364513539974274536</value>
+		<value name="title">news 2</value>
+		<value name="abs">news abs 2</value>
+		<value name="avatar"></value>
+	</row>
+	</table>
+	<table name="users">
+	<column>uid</column>
+	<column>email</column>
+	<column>pwd</column>
+	<column>is_push</column>
+	<column>type</column>
+	<column>status</column>
+	<column>init_category</column>
+	<column>reg_time</column>
+	<row>
+		<value name="uid">1</value>
+		<value name="email">1@1.com</value>
+		<value name="pwd">1</value>
+		<value name="is_push">1</value>
+		<value name="type">0</value>
+		<value name="status">1</value>
+		<value name="init_category">5</value>
+		<value name="reg_time">1321972740</value>
+	</row>
+	<row>
+		<value name="uid">2</value>
+		<value name="email">2@2.com</value>
+		<value name="pwd">1</value>
+		<value name="is_push">0</value>
+		<value name="type">0</value>
+		<value name="status">1</value>
+		<value name="init_category">19</value>
+		<value name="reg_time">1321973741</value>
+	</row>
+	<row>
+		<value name="uid">3</value>
+		<value name="email">3@3.com</value>
+		<value name="pwd">1</value>
+		<value name="is_push">1</value>
+		<value name="type">0</value>
+		<value name="status">1</value>
+		<value name="init_category">100</value>
+		<value name="reg_time">1321972743</value>
+	</row>
+	<row>
+		<value name="uid">4</value>
+		<value name="email">4</value>
+		<value name="pwd">1</value>
+		<value name="is_push">0</value>
+		<value name="type">0</value>
+		<value name="status">1</value>
+		<value name="init_category">5</value>
+		<value name="reg_time">1321972744</value>
+	</row>
+	<row>
+		<value name="uid">5</value>
+		<value name="email">5</value>
+		<value name="pwd">1</value>
+		<value name="is_push">1</value>
+		<value name="type">0</value>
+		<value name="status">1</value>
+		<value name="init_category">1</value>
+		<value name="reg_time">1321972745</value>
+	</row>
+	<row>
+		<value name="uid">6</value>
+		<value name="email">6</value>
+		<value name="pwd">1</value>
+		<value name="is_push">0</value>
+		<value name="type">0</value>
+		<value name="status">1</value>
+		<value name="init_category">1</value>
+		<value name="reg_time">1321972746</value>
+	</row>
+	<row>
+		<value name="uid">7</value>
+		<value name="email">7</value>
+		<value name="pwd">1</value>
+		<value name="is_push">1</value>
+		<value name="type">0</value>
+		<value name="status">1</value>
+		<value name="init_category">1</value>
+		<value name="reg_time">1321972747</value>
+	</row>
+	<row>
+		<value name="uid">8</value>
+		<value name="email">8</value>
+		<value name="pwd">1</value>
+		<value name="is_push">0</value>
+		<value name="type">0</value>
+		<value name="status">1</value>
+		<value name="init_category">1</value>
+		<value name="reg_time">1321972748</value>
+	</row>
+	<row>
+		<value name="uid">9</value>
+		<value name="email">9</value>
+		<value name="pwd">1</value>
+		<value name="is_push">1</value>
+		<value name="type">0</value>
+		<value name="status">1</value>
+		<value name="init_category">1</value>
+		<value name="reg_time">1321972749</value>
+	</row>
+	<row>
+		<value name="uid">10</value>
+		<value name="email">10</value>
+		<value name="pwd">1</value>
+		<value name="is_push">0</value>
+		<value name="type">0</value>
+		<value name="status">1</value>
+		<value name="init_category">1</value>
+		<value name="reg_time">1321972750</value>
+	</row>
+	<row>
+		<value name="uid">11</value>
+		<value name="email">11</value>
+		<value name="pwd">1</value>
+		<value name="is_push">1</value>
+		<value name="type">0</value>
+		<value name="status">1</value>
+		<value name="init_category">1</value>
+		<value name="reg_time">1321972751</value>
+	</row>
+	<row>
+		<value name="uid">12</value>
+		<value name="email">12</value>
+		<value name="pwd">1</value>
+		<value name="is_push">0</value>
+		<value name="type">0</value>
+		<value name="status">1</value>
+		<value name="init_category">1</value>
+		<value name="reg_time">1321972752</value>
+	</row>
+	<row>
+		<value name="uid">13</value>
+		<value name="email">13</value>
+		<value name="pwd">1</value>
+		<value name="is_push">0</value>
+		<value name="type">3</value>
+		<value name="status">1</value>
+		<value name="init_category">1</value>
+		<value name="reg_time">1321972753</value>
+	</row>
+	<row>
+		<value name="uid">14</value>
+		<value name="email">14</value>
+		<value name="pwd">1</value>
+		<value name="is_push">0</value>
+		<value name="type">3</value>
+		<value name="status">1</value>
+		<value name="init_category">1</value>
+		<value name="reg_time">1321972754</value>
+	</row>
+	</table>
+	
+	<table name="favorites">
+	<column>id</column>
+	<column>uid</column>
+	<column>nid</column>
+	<column>fav_time</column>
+	</table>
+	
+	<table name="push_queue">
+	<column>id</column>
+	<column>uid</column>
+	<column>nid</column>
+	<column>target_uid</column>
+	<column>share_time</column>
+	<column>status</column>
+	</table>
+	
+	<table name="user_log">
+	<column>id</column>
+	<column>uid</column>
+	<column>action</column>
+	<column>ip</column>
+	<column>log_time</column>
+	<column>note_int</column>
+	<column>note_str</column>
+	</table>
+	
+	<table name="leaders_deleted">
+	<column>id</column>
+	<column>uid</column>
+	<column>leaderid</column>
+	<column>create_time</column>
+	<column>remove_time</column>
+	<column>similarity</column>
+	<column>news_num</column>
+	<column>news_score</column>
+	<column>type</column>
+	</table>
+	
+	<table name="email_queue">
+	<column>id</column>
+	<column>email</column>
+	<column>user_name</column>
+	<column>user_id</column>
+	<column>subject</column>
+	<column>add_time</column>
+	<column>send_time</column>
+	<column>flag</column>
+	<column>type</column>
+	<column>body</column>
+	<column>altbody</column>
+	</table>
+	
+	<table name="cache">
+	<column>ckey</column>
+	<column>cvalue</column>
+	<column>expire_time</column>
+	</table>
+	
+	
+</dataset>

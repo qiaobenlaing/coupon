@@ -1,0 +1,30 @@
+<table class="fp-table table table-striped table-bordered" id="data_table">
+    <thead>
+    <tr>
+        <th>商店名称</th>
+        <th>红包名</th>
+        <th>红包金额(元)</th>
+        <th>领取日期</th>
+        <th>红包有效期(天)</th>
+        <th>状态</th>
+    </tr>
+    </thead>
+    <tbody>
+    <foreach name="dataList" item="item">
+        <tr>
+            <td>{$item.shopName}</td>
+            <td>{$item.bonusName}</td>
+            <td>{$item.value}</td>
+            <td>{$item.getDate}</td>
+            <td>{$item.validityPeriod}</td>
+            <td>
+                <if condition='$item.userBonusStatus EQ 1'><span class="label label-success">未使用</span>
+                    <elseif condition='$item.userBonusStatus EQ 2'/><span class="label label-danger">已使用</span>{$item.consumeTime}
+                    <else /><span class="label label-default">已失效</span>
+                </if>
+            </td>
+        </tr>
+    </foreach>
+    </tbody>
+</table>
+<include file="Application/Admin/View/Widget/pager.html" />

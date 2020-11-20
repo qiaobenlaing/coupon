@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1" >
+
+            <!-- 优惠券使用批次图片 -->
+
+            <ImageView
+                android:id="@+id/iv_coupon_batch"
+                android:layout_width="130dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/u23" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/tv_coupon_batch_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/tv_coupon_batch_title" />
+
+            <TextView
+                android:id="@+id/tv_coupon_ddt_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tv_coupon_ddt_money_title" />
+
+            <TextView
+                android:id="@+id/tv_coupon_csm_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tv_coupon_csm_money_title" />
+
+            <TextView
+                android:id="@+id/tv_coupon_csm_person"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tv_coupon_csm_p_title" />
+
+            <TextView
+                android:id="@+id/tv_coupon_uncsm_sum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tv_coupon_uncsm_title" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

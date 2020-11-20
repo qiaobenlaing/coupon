@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_bigimage"
+    style="@style/LyWHFirst"
+    android:background="@color/gray_transparent"
+    android:gravity="center"
+    android:orientation="vertical" >
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewPager"
+            style="@style/LyWHFirst" />
+
+        <TextView
+            android:id="@+id/tv_pic_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|bottom"
+            android:layout_marginBottom="30dp"
+            android:textColor="@color/white"
+            android:visibility="visible" />
+
+        <Button
+            android:id="@+id/tv_download"
+            android:layout_width="96dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right|bottom"
+            android:layout_marginBottom="30dp"
+            android:paddingRight="10dp"
+            android:text="下 载"
+            android:textColor="@color/white"
+            android:visibility="gone" />
+    </FrameLayout>
+
+</LinearLayout>

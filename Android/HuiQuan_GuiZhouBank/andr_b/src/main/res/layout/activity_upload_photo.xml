@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/LyWHFirst"
+    android:background="@color/bgall"
+    android:orientation="vertical" >
+
+    <include layout="@layout/common_title_commit" />
+
+    <ImageView
+        android:id="@+id/iv_upload_photo"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_margin="10dp"
+        android:scaleType="centerCrop" />
+
+    <TextView
+        style="@style/VLine"
+        android:layout_height="0.5dp"
+        android:background="@color/shallow_gray" />
+
+    <RelativeLayout
+        android:id="@+id/ry_check_type"
+        style="@style/LyWHFourth"
+        android:layout_height="48dp"
+        android:background="@color/bgall" >
+
+        <TextView
+            android:id="@+id/tv_mag"
+            style="@style/LyWHSecond"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:text="@string/upload_here"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_photo_type"
+            style="@style/textview"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/iv_arrow"
+            android:text="xxx"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/iv_arrow"
+            style="@style/imageview"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/shop_arrow" />
+    </RelativeLayout>
+
+    <TextView
+        style="@style/VLine"
+        android:layout_height="0.5dp"
+        android:background="@color/shallow_gray" />
+
+    <TextView
+        style="@style/LyWHSecond"
+        android:layout_gravity="center|left"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/product_name"
+        android:textSize="16sp" />
+
+    <EditText
+        android:id="@+id/et_product_name"
+        style="@style/LyWHFourth"
+        android:layout_height="50dp"
+        android:layout_margin="10dp"
+        android:background="@drawable/bg_border"
+        android:gravity="center|left"
+        android:hint="@string/input_proname"
+        android:textColorHint="@color/deep_grey"
+        android:textSize="14sp" />
+
+    <LinearLayout
+        style="@style/LyWHFourth"
+        android:orientation="horizontal" >
+
+        <TextView
+            style="@style/LyWHSecond"
+            android:layout_marginLeft="10dp"
+            android:text="@string/product_price"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/et_product_price"
+            style="@style/LyWHSecond"
+            android:layout_width="100dp"
+            android:layout_height="35dp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/bg_border"
+            android:inputType="numberDecimal"
+            android:maxLength="6"/>
+
+        <TextView
+            style="@style/LyWHSecond"
+            android:layout_marginLeft="10dp"
+            android:text="@string/money"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+</LinearLayout>

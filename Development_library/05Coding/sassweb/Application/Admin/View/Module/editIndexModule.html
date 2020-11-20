@@ -1,0 +1,49 @@
+<layout name="layout_admin" />
+<div class="row">
+    <div class="col-md-11">
+        <form id="index_module_add_form" action="/Admin/Module/editIndexModule" method="post" class="form-horizontal">
+            <input type="hidden" name="id" value="{$dataInfo.id}" />
+            <div class="form-group">
+                <label for="moduleTitle" class="col-sm-2 control-label">模块中文描述</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="moduleTitle" placeholder="模块中文描述" name="moduleTitle" value="{$dataInfo.moduleTitle}">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="moduleValue" class="col-sm-2 control-label">模块值</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="moduleValue" placeholder="模块值" name="moduleValue" value="{$dataInfo.moduleValue}" <if condition="$dataInfo.id gt 0">disabled</if>>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="content" class="col-sm-2 control-label">模块内容</label>
+                <div class="col-sm-10">
+                    <textarea class="form-control" id="content" name="content" rows="6">{$dataInfo.content}</textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-primary">保存</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function(){
+        $('#index_module_add_form').on('submit', function() {
+            $('button[type="submit"]').attr('disabled', true);
+            var frm = $(this);
+            $.post(frm.attr('action'), frm.serialize(), function(resp) {
+                if (resp.status == sz.STATUS_SUCC) {
+                    sz.showSuccMsg(resp.msg, 3);
+                    location.href = '/Admin/Module/listIndexModule';
+                } else {
+                    sz.showErrMsg(resp.msg, 3);
+                    $('button[type="submit"]').attr('disabled', false);
+                }
+            });
+            return false;
+        });
+    });
+</script>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="48dp"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="10dp"
+        android:layout_toLeftOf="@+id/iv_shop_brand"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/tv_shop_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="味千拉面味千拉面味千拉面味千拉面味千拉面味千拉面"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_shop_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_shop_name"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:text="美味袭来，抵挡不了"
+            android:textSize="13sp" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/iv_shop_brand"
+        android:layout_width="@dimen/small_picture"
+        android:layout_height="@dimen/small_picture"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="5dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/food" />
+
+</RelativeLayout>

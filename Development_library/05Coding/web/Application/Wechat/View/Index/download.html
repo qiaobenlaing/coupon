@@ -1,0 +1,95 @@
+<layout name="layout_normal" />
+<style>
+    .download-page{background-image: url(/Public/img/webchat/bgDownload.png); overflow: hidden;}
+    .huiquan-icon-wrap{text-align: center;  padding-top: 45px;  margin-bottom: 50px;}
+    .huiquan-icon-wrap img{
+        width: 160px;
+        height: 160px;}
+    .huiquan-c, .huiquan-s{
+        width: 50%;
+        float: left;
+        text-align: center;
+    }
+    .downloadImg{
+        width: 113%;
+    }
+    .downloadImg-c, .downloadImg-s{
+        width: 150px;
+    }
+    .huiquan-c img, .huiquan-s img{
+        /*width: 73px;*/
+        /*height: 73px;*/
+    }
+    .huiquan-c{}
+    .huiquan-s{}
+    .shadow{
+        display: none;
+        position: absolute;
+        width: 105px;
+        right: 2px;
+        top: 5px;
+        text-align: center;
+    }
+    .shadow img{
+        height: 65px;
+    }
+    .tip{
+        border: 1px solid #98C431;
+        font-size: 15px;
+        border-radius: 5px;
+        font-weight: 800;
+        background-color: #96BE2C;
+        color: #FFFFFF;
+        position: absolute;
+        top: 66px;
+        right: 2px;
+        padding: 1px 4px;
+    }
+</style>
+<!-- Views -->
+<div class="views">
+    <!-- Your main view, should have "view-main" class -->
+    <div class="view view-main">
+        <!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
+        <div class="pages">
+            <!-- Page, "data-page" contains page name -->
+            <div data-page="index" class="page">
+                <!-- Scrollable page content -->
+                <div class="page-content download-page">
+                    <div class="huiquan-icon-wrap"><img src="/Public/img/webchat/huiquan.png" alt=""/></div>
+                    <div class="download-wrap">
+                        <div class="huiquan-s">
+                            <img src="/Public/img/webchat/download.png" alt="" class="downloadImg"/>
+                            <a href="{$sDownloadUrl}" class="external download"><img src="/Public/img/webchat/sDownload.png" alt="" class="downloadImg-s"/></a>
+                        </div>
+                        <div class="huiquan-c">
+                            <img src="/Public/img/webchat/download.png" alt="" class="downloadImg"/>
+                            <a href="{$cDownloadUrl}" class="external download"><img src="/Public/img/webchat/cDownload.png" alt="" class="downloadImg-c"/></a>
+                        </div>
+                    </div>
+                    <div class="shadow">
+                        <img src="/Public/img/webchat/jiantou.png" alt=""/>
+                        <div class="tip">在浏览器打开</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    ;(function(){
+        function isWeiXin(){
+            var navgator = window.navigator.userAgent.toLowerCase();
+            if(navgator.match(/MicroMessenger/i) == 'micromessenger'){
+                $('.shadow').show();
+                return false;
+            }else{
+                return true;
+            }
+        }
+        $('.download').on('click', isWeiXin);
+        $('.shadow').on('click', function(){
+            $(this).hide();
+        })
+    })();
+</script>

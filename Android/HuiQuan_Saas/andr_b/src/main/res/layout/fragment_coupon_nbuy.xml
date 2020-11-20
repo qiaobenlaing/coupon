@@ -1,0 +1,557 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/LyOutSet" >
+
+    <include layout="@layout/common_title_home" />
+
+    <ScrollView
+        android:id="@+id/sv_couponset"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:fadingEdge="vertical"
+        android:scrollbars="none" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                style="@style/VSpace"
+                android:layout_height="16dp"
+                android:background="@color/bgall" />
+            <!-- 优惠券的扩张规则 -->
+
+            <LinearLayout
+                android:id="@+id/ly_exRuleDes"
+                style="@style/LyCoupon_setrow" >
+
+                <TextView
+                    style="@style/Tv_CouponSetFont"
+                    android:layout_marginLeft="10dp"
+                    android:text="@string/tv_coupon_can" />
+
+                <EditText
+                    android:id="@+id/edt_exRuleDes"
+                    style="@style/Edt_Couponset"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="10dp"
+                    android:gravity="left|center_vertical"
+                    android:hint="@string/tv_coupon_cando"
+                    android:inputType="text"
+                    android:maxLength="25"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <TextView style="@style/VLine" />
+
+            <LinearLayout
+                android:id="@+id/ly_issuenum"
+                style="@style/LyCoupon_setrow" 
+                android:visibility="gone">
+
+                <TextView
+                    style="@style/Tv_CouponSetFont"
+                    android:layout_marginLeft="10dp"
+                    android:text="@string/tv_coupon_issuenum" />
+
+                <EditText
+                    android:id="@+id/edt_issue_num"
+                    style="@style/Edt_Couponset"
+                    android:hint="@string/hint_nbr"
+                    android:inputType="number"
+                    android:maxLength="9"
+                    android:textSize="14sp" />
+
+                <TextView
+                    style="@style/Tv_CouponSetFont"
+                    android:layout_marginRight="10dp"
+                    android:text="@string/tv_coupon_uncsm_zhang" />
+            </LinearLayout>
+            <!-- 面值多少 -->
+
+            <LinearLayout
+                android:id="@+id/ly_coupon_cost"
+                style="@style/LyCoupon_setrow" >
+
+                <TextView
+                    android:id="@+id/tv_couponprice"
+                    style="@style/Tv_CouponSetFont"
+                    android:layout_marginLeft="10dp"
+                    android:text="@string/tv_coupon_cost" />
+                <!-- 每张面值 -->
+
+                <EditText
+                    android:id="@+id/edt_coupon_cost"
+                    style="@style/Edt_Couponset"
+                    android:hint="@string/hint_money"
+                    android:imeOptions="actionNext"
+                    android:maxLength="9"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tv_distcount"
+                    style="@style/Tv_CouponSetFont"
+                    android:text="@string/tv_coupon_cost_yuan" />
+                <!-- 共发多少张优惠券  issue：发行 -->
+
+                <EditText
+                    android:id="@+id/edt_coupon_issue_count"
+                    style="@style/Edt_Couponset"
+                    android:hint="@string/hint_nbr"
+                    android:inputType="number"
+                    android:maxLength="9"
+                    android:textSize="14sp" />
+
+                <TextView
+                    style="@style/Tv_CouponSetFont"
+                    android:layout_marginRight="10dp"
+                    android:text="@string/tv_coupon_uncsm_zhang" />
+            </LinearLayout>
+
+            <TextView style="@style/VLine" />
+            <!-- 每满多少元消费 -->
+
+            <LinearLayout
+                android:id="@+id/ly_csmmoeny"
+                style="@style/LyCoupon_setrow"
+				android:visibility="gone">
+
+                <TextView
+                    style="@style/Tv_CouponSetFont"
+                    android:layout_marginLeft="10dp"
+                    android:text="@string/tv_coupon_money_full" />
+                <!-- 每满多少元可以使用优惠券 -->
+
+                <EditText
+                    android:id="@+id/edt_coupon_csm_money"
+                    style="@style/Edt_Couponset"
+                    android:hint="@string/hint_money"
+                    android:maxLength="9"
+                    android:textSize="14sp" />
+
+                <TextView
+                    style="@style/Tv_CouponSetFont"
+                    android:layout_marginRight="10dp"
+                    android:text="@string/tv_coupon_csm_money" />
+            </LinearLayout>
+			 <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone" >
+
+                <TextView style="@style/VLine" />
+
+                <TextView
+                    style="@style/VSpace"
+                    android:layout_height="8dp"
+                    android:background="@color/bgall" />
+
+                <TextView style="@style/VLine"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ly_single_draw"
+                style="@style/LyCoupon_setrow"
+                android:visibility="gone" >
+
+                <TextView
+                    style="@style/Tv_CouponSetFont"
+                    android:layout_marginLeft="10dp"
+                    android:text="@string/single_people_draw" />
+                <!-- 每满多少元可以使用优惠券 -->
+
+                <EditText
+                    android:id="@+id/edt_single_draw"
+                    style="@style/Edt_Couponset"
+                    android:hint="@string/hint_coupon_num"
+                    android:maxLength="9"
+                    android:textSize="14sp" />
+
+                <TextView
+                    style="@style/Tv_CouponSetFont"
+                    android:layout_marginRight="10dp"
+                    android:text="@string/single_people_draw_num" />
+            </LinearLayout>
+            <TextView 
+                style="@style/VLine"
+                android:visibility="gone" />
+            <LinearLayout
+                android:id="@+id/ly_single_use"
+                style="@style/LyCoupon_setrow" 
+                android:visibility="gone">
+
+                <TextView
+                    style="@style/Tv_CouponSetFont"
+                    android:layout_marginLeft="10dp"
+                    android:text="@string/single_people_use" />
+                <!-- 每满多少元可以使用优惠券 -->
+
+                <EditText
+                    android:id="@+id/edt_single_use"
+                    style="@style/Edt_Couponset"
+                    android:hint="@string/hint_coupon_num"
+                    android:maxLength="9"
+                    android:textSize="14sp" />
+
+                <TextView
+                    style="@style/Tv_CouponSetFont"
+                    android:layout_marginRight="10dp"
+                    android:text="@string/single_people_draw_num" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView style="@style/VLine" />
+
+                <TextView
+                    style="@style/VSpace"
+                    android:layout_height="8dp"
+                    android:background="@color/bgall" />
+
+                <TextView style="@style/VLine" />
+            </LinearLayout>
+
+            <!--
+            <LinearLayout style="@style/LyCoupon_setrow" >
+
+                一次限使用多少张优惠券
+
+                <TextView
+                    style="@style/Tv_CouponSetFont"
+                    android:layout_marginLeft="10dp"
+                    android:text="@string/tv_coupon_limit_csm" />
+                限制使用多少张优惠券
+
+                <EditText
+                    android:id="@+id/edt_coupon_limit_nbr"
+                    style="@style/Edt_Couponset"
+                    android:inputType="number" 
+                    android:maxLength="9"
+                    android:textSize="14sp"
+                    android:text="@string/card_zemo"/>
+
+                <TextView
+                    style="@style/Tv_CouponSetFont"
+                    android:layout_marginRight="10dp"
+                    android:text="@string/tv_coupon_limit_dtl" />
+
+            -->
+
+            <TextView
+                android:id="@+id/line"
+                style="@style/VLine" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:gravity="center_vertical" >
+
+                <CheckBox
+                    android:id="@+id/use_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:button="@drawable/multiple_choice"
+                    android:paddingBottom="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingTop="10dp" />
+
+                <TextView
+                    style="@style/LyWHFourth"
+                    android:text="@string/coupon_usedate"
+                    android:textColor="@color/home_topsixfont" />
+            </LinearLayout>
+			<TextView style="@style/VLine" />
+            <LinearLayout
+                style="@style/LyCoupon_setrow"
+                android:layout_marginRight="10dp"
+                android:background="@color/white"
+                android:paddingLeft="34dp"
+                android:visibility="visible" >
+
+                <TextView
+                    style="@style/Tv_CouponSetFont"
+                    android:text="@string/tv_cong" />
+
+                <EditText
+                    android:id="@+id/edt_startuse_date"
+                    style="@style/Edt_Couponset"
+                    android:editable="false"
+                    android:focusable="false"
+                    android:maxLength="10"
+                    android:textSize="14sp" />
+
+                <TextView
+                    style="@style/Tv_CouponSetFont"
+                    android:text="@string/tv_dao" />
+
+                <EditText
+                    android:id="@+id/edt_enduse_date"
+                    style="@style/Edt_Couponset"
+                    android:layout_marginLeft="5dp"
+                    android:editable="false"
+                    android:focusable="false"
+                    android:maxLength="10"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <TextView style="@style/VLine" />
+
+            <LinearLayout
+                android:id="@+id/ly_ckbtime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:gravity="center_vertical" >
+
+                <CheckBox
+                    android:id="@+id/use_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:button="@drawable/multiple_choice"
+                    android:paddingBottom="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingTop="10dp" />
+
+                <TextView
+                    style="@style/LyWHSecond"
+                    android:text="@string/coupon_usetime"
+                    android:textColor="@color/home_topsixfont" />
+                <TextView
+                    style="@style/LyWHFourth"
+                    android:text="@string/suggeste_time"
+                    android:layout_marginLeft="5dp"
+                    android:textColor="@color/suggeste_time" />
+            </LinearLayout>
+			<TextView style="@style/VLine" />
+            <LinearLayout
+                android:id="@+id/ly_nbuy_time"
+                style="@style/LyCoupon_setrow"
+                android:paddingLeft="34dp"
+                android:background="@color/white"
+                android:visibility="visible" >
+
+                <TextView
+                    style="@style/Tv_CouponSetFont"
+                    android:text="@string/tv_cong" />
+
+                <EditText
+                    android:id="@+id/edt_startuse_time"
+                    style="@style/Edt_Couponset"
+                    android:editable="false"
+                    android:focusable="false"
+                    android:maxLength="9"
+                    android:textSize="14sp" />
+
+                <TextView
+                    style="@style/Tv_CouponSetFont"
+                    android:text="@string/tv_dao" />
+
+                <EditText
+                    android:id="@+id/edt_enduse_time"
+                    style="@style/Edt_Couponset"
+                    android:editable="false"
+                    android:focusable="false"
+                    android:maxLength="9"
+                    android:textSize="14sp" />
+            </LinearLayout>
+			<LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView style="@style/VLine" />
+
+                <TextView
+                    style="@style/VSpace"
+                    android:layout_height="8dp"
+                    android:background="@color/bgall" />
+
+                <TextView style="@style/VLine" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/LyCoupon_setrow"
+                android:visibility="visible" >
+
+                <CheckBox
+                    android:id="@+id/draw_time"
+                    style="@style/LyWHSecond"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:button="@drawable/radio_yes"
+                    android:paddingBottom="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingTop="10dp" />
+
+                <TextView
+                    style="@style/Tv_CouponSetFont"
+                    android:text="@string/tv_coupon_limit_draw_time" />
+
+                <EditText
+                    android:id="@+id/edt_draw_date"
+                    style="@style/Edt_Couponset"
+                    android:layout_marginLeft="5dp"
+                    android:editable="false"
+                    android:focusable="false"
+                    android:textSize="14sp" />
+
+                <TextView
+                    style="@style/Tv_CouponSetFont"
+                    android:background="@drawable/shape_edtset"
+                    android:text="@string/tv_coupon_s"
+                    android:visibility="invisible" />
+            </LinearLayout>
+            <TextView style="@style/VLine" />
+            <!-- 每满多少元可以领优惠券 -->
+
+            <LinearLayout
+                style="@style/LyCoupon_setrow"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="visible" >
+
+                <CheckBox
+                    android:id="@+id/full_send"
+                    style="@style/LyWHSecond"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:button="@drawable/radio_no"
+                    android:paddingBottom="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingTop="10dp" />
+
+                <TextView
+                    style="@style/LyWHFourth"
+                    android:text="@string/coupon_fullsend"
+                    android:textColor="@color/home_topsixfont" />
+            </LinearLayout>
+			<TextView style="@style/VLine" />
+            <LinearLayout
+                android:id="@+id/ly_csmdraw"
+                style="@style/LyCoupon_setrow"
+                android:visibility="visible" >
+
+                <TextView
+                    style="@style/Tv_CouponSetFont"
+                    android:layout_marginLeft="48dp"
+                    android:text="@string/tv_coupon_money_full" />
+
+                <EditText
+                    android:id="@+id/edt_csmdraw_coupon"
+                    style="@style/Edt_Couponset"
+                    android:hint="@string/hint_money"
+                    android:inputType="numberDecimal"
+                    android:textSize="14sp" />
+
+                <TextView
+                    style="@style/Tv_CouponSetFont"
+                    android:layout_marginRight="10dp"
+                    android:text="@string/tv_cmsmoney_draw" />
+            </LinearLayout>
+            <TextView style="@style/VLine"
+                android:visibility="gone" />
+            <LinearLayout
+                android:id="@+id/ly_single_send"
+                style="@style/LyCoupon_setrow"
+                android:visibility="gone" >
+
+                <TextView
+                    style="@style/Tv_CouponSetFont"
+                    android:layout_marginLeft="48dp"
+                    android:text="@string/single_people_use_send" />
+
+                <EditText
+                    android:id="@+id/edt_single_send"
+                    style="@style/Edt_Couponset"
+                    android:hint="@string/hint_money"
+                    android:inputType="numberDecimal"
+                    android:text="@string/num_one"
+                    android:textSize="14sp" />
+
+                <TextView
+                    style="@style/Tv_CouponSetFont"
+                    android:layout_marginRight="10dp"
+                    android:text="@string/single_people_draw_num" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView style="@style/VLine" />
+
+                <TextView
+                    style="@style/VSpace"
+                    android:layout_height="8dp"
+                    android:background="@color/bgall" />
+
+                <TextView style="@style/VLine" />
+            </LinearLayout>
+            <!--
+            <LinearLayout style="@style/LyCoupon_setrow" >
+
+                <TextView
+                    style="@style/Tv_CouponSetFont"
+                    android:layout_marginLeft="10dp"
+                    android:text="@string/tv_coupon_limit_draw" />
+
+                <EditText
+                    android:id="@+id/edt_draw_coupon"
+                    style="@style/Edt_Couponset"
+                    android:inputType="number"
+                    android:maxLength="9"
+                    android:textSize="14sp"
+                    android:text="@string/card_zemo" />
+
+                <TextView
+                    style="@style/Tv_CouponSetFont"
+                    android:layout_marginRight="10dp"
+                    android:text="@string/tv_coupon_limit_dtl" />
+            </LinearLayout>
+            -->
+
+            <LinearLayout
+                style="@style/LyCoupon_setrow"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:gravity="center"
+                android:orientation="vertical" >
+
+                <TextView
+                    style="@style/LyWHFourth"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/white"
+                    android:text="@string/coupon_rule_explain"
+                    android:textColor="@color/home_topsixfont" />
+                <!-- 优惠券 使用说明 -->
+
+                <EditText
+                    android:id="@+id/edt_coupon_use_remark"
+                    style="@style/Edt_Couponset"
+                    android:layout_margin="10dp"
+                    android:gravity="left|top"
+                    android:hint="@string/edt_coupon_use_epl"
+                    android:imeOptions="actionDone"
+                    android:inputType="textMultiLine"
+                    android:minLines="4"
+                    android:textColor="@color/home_topsixfont"
+                    android:textSize="14sp" />
+            </LinearLayout>
+            <!-- 优惠券  预览 -->
+
+            <Button
+                android:id="@+id/btn_coupon_next"
+                style="@style/LyWHFourth"
+                android:layout_margin="10dp"
+                android:background="@drawable/login_btn"
+                android:text="@string/coupon_preview"
+                android:textColor="@color/white" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

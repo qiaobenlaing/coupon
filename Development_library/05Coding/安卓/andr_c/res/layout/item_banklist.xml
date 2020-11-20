@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bgall"
+    android:orientation="horizontal" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="70dp"
+        android:background="@color/white" >
+
+        <ImageView
+            android:id="@+id/iv_bankdetail_bankcardimage"
+            style="@style/IvBankImage"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/card_four" />
+
+        <TextView
+            android:id="@+id/et_bankdetail_banktext"
+            style="@style/TvContent"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="60dp"
+            android:text="@string/myhome_bankdetail_four" />
+
+        <TextView
+            android:id="@+id/et_bankdetail_bankcard"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/et_bankdetail_banktext"
+            android:layout_toRightOf="@+id/et_bankdetail_banktext"
+            android:gravity="end"
+            android:text="0000" />
+    </RelativeLayout>
+
+</LinearLayout>

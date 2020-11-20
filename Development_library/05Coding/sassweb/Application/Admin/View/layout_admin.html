@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>智能POS惠圈优惠促销平台</title>
+    <link href="__PUBLIC__/css/bootstrap.min.css" rel="stylesheet">
+    <link href="__PUBLIC__/css/admin.css" rel="stylesheet">
+    <link href="__PUBLIC__/datetimepicker/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="__PUBLIC__/datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+    <link href="__PUBLIC__/js/umeditor/themes/default/css/umeditor.min.css" type="text/css" rel="stylesheet">
+    <link href="__PUBLIC__/css/jasny-bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/css/main.css" />
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/css/select2.min.css" />
+    <script src="__PUBLIC__/js/jquery.min.js"></script>
+    <script src="__PUBLIC__/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/datetimepicker/js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="__PUBLIC__/datetimepicker/js/locales/bootstrap-datetimepicker.fr.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="__PUBLIC__/js/admin.js" charset="UTF-8"></script>
+    <script src="__PUBLIC__/js/bootbox.js" charset="UTF-8"></script>
+    <script src="__PUBLIC__/js/demos.js" charset="UTF-8"></script>
+    <script src="__PUBLIC__/js/jasny-bootstrap.min.js" charset="UTF-8"></script>
+    <script src="__PUBLIC__/js/example.js" charset="UTF-8"></script>
+    <script src="__PUBLIC__/js/select2.min.js"></script>
+</head>
+<body data-spy="scroll" data-target="#myScrollspy">
+<div class="container-fluid">
+    <div class="alert alert-success alert-fixed-top alert-top-tip" style='display: none;text-align: center;'></div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="header_top">
+                <div class="col-md-10 col-sm-9 col-xs-9">
+                    <a href="/Admin/BmStaff/homepage" class='logo'>智能POS惠圈优惠促销平台</a>
+                </div>
+                <div class="col-md-2 col-sm-3 col-xs-3 login-info">
+                    <span>用户: </span>
+                    <span><a href="/Admin/BmStaff/editBmStaff?mobileNbr={$user.mobileNbr}">{$user.realName}</a></span>
+                    <a href="/Admin/BmStaff/logout">退出</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <nav class="navbar navbar-default col-xs-12 col-sm-2 col-md-2" role="navigation" style="background-color: #fff;border: 0px">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#toall-nav" aria-expanded="false">
+                    <span class="sr-only">菜单</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!--<a class="navbar-brand" href="#">Brand</a>-->
+            </div>
+            <div class="collapse navbar-collapse"  id='toall-nav' >
+                <ul class="nav nav-stacked nav-tabs-totall" id="menu-bar">
+                    <foreach name="menu" item="item">
+                        <li class="panel dropdown panel-active">
+
+                            <?php if(in_array_col($menuUrl, $item['submenu'], 'url', true)) {
+?>
+                            <a data-toggle="collapse" data-parent="#menu-bar" href="#submenu_{$item.id}" class='panel-active-a menu-focus'>{$item.name}</a>
+                            <ul id='submenu_{$item.id}' class="panel-collapse in">
+                                <?php } else { ?>
+                                <a data-toggle="collapse" data-parent="#menu-bar" href="#submenu_{$item.id}" class='panel-active-a collapsed'>{$item.name}</a>
+                                <ul id='submenu_{$item.id}' class="panel-collapse collapse">
+                                    <?php }
+?>
+                                    <foreach name="item.submenu" item="subitem">
+
+                                        <eq name="subitem.url" value="$menuUrl">
+                                            <li class='nav_second submenu-focus'><a href="{$subitem.url}">{$subitem.name}</a></li>
+                                            <else />
+                                            <li class='nav_second'><a href="{$subitem.url}">{$subitem.name}</a></li>
+                                        </eq>
+                                    </foreach>
+                                </ul>
+                        </li>
+                    </foreach>
+                </ul>
+            </div>
+        </nav>
+        <div class="col-xs-12 col-sm-10 col-md-10">
+            <ol class="breadcrumb">
+                <foreach name="route" item="item">
+                    <li><a href="{$item.url}">{$item.title}</a></li>
+                </foreach>
+                <li class="active">{$title}</li>
+            </ol>
+            {__CONTENT__}
+        </div>
+    </div>
+</div>
+</body>
+</html>

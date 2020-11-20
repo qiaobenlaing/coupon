@@ -1,0 +1,156 @@
+<layout name="layout_admin" />
+<div class="container-fluid">
+    <div class="row shop-search-wrap">
+        <form class="form-inline" id="data_search_form" action="#" method="get">
+            <div class="col-md-12">
+                <div style="width: 250px;float: left;">
+                    <div class="form-group">
+                        <label class="sr-only" for="shop-id">商家号</label>
+                        <div class="input-group input-group-sm">
+                            <div class="input-group-addon search-label">商家号</div>
+                            <input type="text" class="form-control" id="shop-id" placeholder="商家号" name="shopId" value="{$get.shopId}" autocomplete="off">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="sr-only" for="suggest_input">商家名</label>
+                        <div class="input-group input-group-sm">
+                            <div class="input-group-addon search-label">商家名</div>
+                            <input type="text" class="form-control" id="suggest_input" placeholder="商家名" name="shopName" value="{$get.shopName}" autocomplete="off">
+                            <ul id="suggest_ul"></ul>
+                        </div>
+                    </div>
+                </div>
+                <div style="width: 250px;float: left;">
+                    <!--<div class="form-group">-->
+                        <!--<label class="sr-only" for="hq-icbc-shop-nbr">内部商户号</label>-->
+                        <!--<div class="input-group input-group-sm">-->
+                            <!--<div class="input-group-addon search-label">内部商户号</div>-->
+                            <!--<input type="text" class="form-control" id="hq-icbc-shop-nbr" placeholder="内部商户号" name="hqIcbcShopNbr" value="{$get.hqIcbcShopNbr}"/>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <div class="form-group">
+                        <label class="sr-only" for="mobile-nbr">手机号</label>
+                        <div class="input-group input-group-sm">
+                            <div class="input-group-addon search-label">手机号</div>
+                            <input type="text" class="form-control" id="mobile-nbr" placeholder="手机号" name="mobileNbr" value="{$get.mobileNbr}"/>
+                        </div>
+                    </div>
+                </div>
+                <div style="width: 319px;float: left;">
+                    <div class="form-group">
+                        <label class="sr-only" for="reg-date">注册开始时间</label>
+                        <div class="input-group date reg_date input-group-sm">
+                            <div class="input-group-addon search-label">注册开始时间</div>
+                            <input type="text" class="form-control ipt-date-time-picker" id="reg-date" name="createDateStart" value="{$get.createDateStart}" readonly placeholder="开始时间"/>
+                            <div class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></div>
+                            <div class="input-group-addon"><span class="glyphicon glyphicon-th"></span></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="sr-only" for="reg-end-time">注册结束时间</label>
+                        <div class="input-group date reg_date input-group-sm">
+                            <div class="input-group-addon search-label">注册结束时间</div>
+                            <input type="text" class="form-control ipt-date-time-picker" name="createDateEnd" value="{$get.createDateEnd}" readonly placeholder="结束时间" id="reg-end-time"/>
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+                        </div>
+                    </div>
+                </div>
+                <div style="">
+                    <div class="form-group">
+                        <label class="sr-only" for="status">商户状态</label>
+                        <div class="input-group input-group-sm">
+                            <div class="input-group-addon search-label">商户状态</div>
+                            <select class="form-control" name="status" id="status">
+                                <option value="" <eq name="get.status" value="">selected="selected"</eq>>所有</option>
+                                <!--<option value="2" <eq name="get.status" value="1">selected="selected"</eq>>待审核</option>-->
+                                <option value="1" <eq name="get.status" value="1">selected="selected"</eq>>启用</option>
+                                <option value="0" <eq name="get.status" value="0">selected="selected"</eq>>禁用</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="sr-only" for="shop-status">入驻状态</label>
+                        <div class="input-group input-group-sm">
+                            <div class="input-group-addon search-label">入驻状态</div>
+                            <select class="form-control" name="shopStatus" id="shop-status">
+                                <option value="" <eq name="get.shopStatus" value="">selected="selected"</eq>>所有</option>
+                                <option value="1" <eq name="get.shopStatus" value="1">selected="selected"</eq>>未入驻</option>
+                                <option value="2" <eq name="get.shopStatus" value="2">selected="selected"</eq>>已入驻</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="sr-only" for="type-id">类型</label>
+                        <div class="input-group input-group-sm">
+                            <div class="input-group-addon search-label">类型</div>
+                            <select class="form-control" name="typeId" id="type-id">
+                                <option value="" <eq name="get.typeId" value="">selected="selected"</eq>>所有</option>
+                                <foreach name="shopTypeList" item="shopType">
+                                    <option value="{$shopType.shopTypeId}" <eq name="get.typeId" value="$shopType.typeValue">selected="selected"</eq>>{$shopType.typeZh}</option>
+                                </foreach>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label class="sr-only" for="slt-province">地区</label>
+                    <div class="input-group input-group-sm">
+                        <div class="input-group-addon search-label">地区</div>
+                        <select class="form-control" name="province" id="slt-province"></select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group input-group-sm">
+                        <!--<div class="input-group-addon"></div>-->
+                        <select class="form-control" name="city" id="slt-city"></select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group input-group-sm">
+                        <select class="form-control" name="district" id="slt-district"></select>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-sm btn-primary" id="search_form_submit_btn">查询</button>
+                <button type="button" class="btn btn-sm btn-primary" id="export-shop">导出EXCEL</button>
+                <button type="button" class="btn btn-sm btn-primary" id="exportAll">商户清算导出</button>
+            </div>
+            <input type="hidden" id="frm_ele_page" name="page" value="1" />
+        </form>
+    </div>
+</div>
+<div id="data_table_wrapper">
+    <include file="./Application/Admin/View/Shop/listShopWidget.html" />
+</div>
+<script>
+    $(function(){
+        $('.reg_date').datetimepicker({
+            format: 'yyyy-mm-dd',
+            autoclose: true,
+            todayBtn: true,
+            minView: 'month',
+            pickerPosition: "bottom-left"
+        });
+        // 初始化select2
+        $('.js-brand-single').select2({
+            placeholder: "请选品牌",
+            allowClear: true
+        });
+        // 导出符合条件的商户excel
+        $('#export-shop').on('click', function(){
+            var frm = $('#data_search_form');
+            var url = '/Admin/Shop/exportShop?' + frm.serialize() + '&page=0';
+            location.href = url;
+        });
+        // 导出商户excel
+        $('#exportAll').on('click', function(){
+            var frm = $('#data_search_form');
+            var url = '/Admin/Shop/exportAllShop?' + frm.serialize() + '&page=0';
+            location.href = url;
+        });
+        // 地区初始化
+        sz.initDistrict('{$get.province}', '{$get.city}', '{$get.district}', '#slt-province', '#slt-city', '#slt-district');
+    });
+</script>

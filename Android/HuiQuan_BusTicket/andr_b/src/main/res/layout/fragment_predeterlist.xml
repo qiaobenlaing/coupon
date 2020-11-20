@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/LyWHFirst"
+    android:background="@color/bgall"
+    android:orientation="vertical" >
+
+    <include layout="@layout/common_title_commit" />
+
+    <com.huift.hfq.base.view.XListView
+        android:id="@+id/lv_predeterlist"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/app_bg"
+        android:cacheColorHint="#00000000"
+        android:divider="@color/transparent"
+        android:scrollbars="none"
+        android:visibility="visible" 
+        android:layout_marginTop="10dp"/>
+    <include layout="@layout/comm_no_data" />
+</LinearLayout>

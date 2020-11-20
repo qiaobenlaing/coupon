@@ -1,0 +1,14 @@
+<layout name="layout_admin" />
+<div>
+    <form class="form-inline" id="data_search_form" action="#" method="get">
+        <div class="form-group" >
+            <label for="module-name">模块名</label>
+            <input type="text" class="form-control" name="moduleName" value="{$get.moduleName}" id="module-name" placeholder="模块名">
+        </div>
+        <button type="submit" class="btn btn-primary" id="search_form_submit_btn">查询</button>
+        <input type="hidden" id="frm_ele_page" name="page" value="1" />
+    </form>
+</div>
+<div id="data_table_wrapper">
+  <include file="./Application/Admin/View/ClientActModule/listClientActModuleWidget.html" />
+</div>

@@ -1,0 +1,30 @@
+<layout name="layout_admin" />
+<div>
+    <form class="form-inline" id="data_search_form" action="#" method="get">
+        <div class="form-group" >
+            <label>名称</label>
+            <input type="text" class="form-control" name="title" value="{$get.title}" id="shop-name" placeholder="分类名称">
+        </div>
+        <div class="form-group">
+            <label for="state">商圈</label>
+            <select class="form-control" name="bank_id" id="bank_id">
+                <foreach name="bankList" item="bank">
+                    <option value="{$bank.id}"<eq name="get.bank_id" value="$bank.id">selected="selected"</eq>>{$bank.name}</option>
+                </foreach>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="state">状态</label>
+            <select class="form-control" name="state" id="state">
+                <option value="" <eq name="get.state" value="">selected="selected"</eq>>所有</option>
+                <option value="1" <eq name="get.state" value="1">selected="selected"</eq>>启用</option>
+                <option value="0" <eq name="get.state" value="0">selected="selected"</eq>>禁用</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary" id="search_form_submit_btn">查询</button>
+        <input type="hidden" id="frm_ele_page" name="page" value="1" />
+    </form>
+</div>
+<div id="data_table_wrapper">
+    <include file="./Application/Admin/View/QNotice/listSortWidget.html" />
+</div>

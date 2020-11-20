@@ -1,0 +1,58 @@
+<table class="fp-table table table-bordered table-condensed table-hover" id="data_table">
+    <thead>
+    <tr>
+        <th>手机</th>
+        <th>用户编号</th>
+        <th>用户昵称</th>
+        <th>姓名</th>
+        <th>商户</th>
+        <th>所属平台</th>
+        <th>生成时间</th>
+        <th>实际支付</th>
+        <th title="平台补贴(优惠券平台补贴+首单立减)">平台补贴</th>
+        <th>平台补贴结算</th>
+        <th>支付状态</th>
+    </tr>
+    </thead>
+    <tbody>
+    <foreach name="dataList" item="item">
+        <tr>
+            <td>{$item.userMobileNbr}</td>
+            <td>{$item.userCode}</td>
+            <td>{$item.nickName}</td>
+            <td>{$item.realName}</td>
+            <td>{$item.shopName}</td>
+            <td>{$item.bank_name}</td>
+            <td>{$item.consumeTime}</td>
+            <td>{$item.realPay}</td>
+            <td>{$item.hqSubsidy}</td>
+            <td>
+                <switch name="item.subsidySettlementStatus" >
+                    <case value="0"><span class="red">没有结算</span></case>
+                    <case value="1"><span class="grey">结算中</span></case>
+                    <case value="2"><span class="green">已结算</span></case>
+                    <case value="3"><span class="green">不需要结算</span></case>
+                    <default /><span class="grey">未知</span>
+                </switch>
+            </td>
+            <td>
+                <switch name="item.userConsumeStatus" >
+                    <case value="0"><span class="red">不能支付</span></case>
+                    <case value="1"><span class="grey">未付款</span></case>
+                    <case value="2"><span class="grey">付款中</span></case>
+                    <case value="3"><span class="green">已付款</span></case>
+                    <case value="4"><span class="red">已取消付款</span></case>
+                    <case value="5"><span class="red">付款失败</span></case>
+                    <case value="6"><span class="grey">退款申请中</span></case>
+                    <case value="7"><span class="green">退款成功</span></case>
+                    <case value="8"><span class="green">部分退款成功</span></case>
+                    <default /><span class="grey">未知</span>
+                </switch>
+            </td>
+        </tr>
+    </foreach>
+    </tbody>
+</table>
+<include file="Application/Admin/View/Widget/pager.html" />
+
+    

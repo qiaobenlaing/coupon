@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/LyOutSet" >
+
+    <!-- 优惠券编码 -->
+
+    <TextView
+        android:id="@+id/tv_timeLimitCode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/tv_ismyreceived"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/tv_countmyreceived"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
+
+    <RelativeLayout
+        style="@style/LyWHFourth"
+        android:layout_marginLeft="10dp"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            android:id="@+id/ly_timeLimit_head"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/couponlist_left"
+            android:orientation="vertical"
+            android:paddingLeft="15dp" >
+
+            <!-- 列表 -->
+
+            <RelativeLayout
+                android:layout_width="240dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:layout_marginTop="15dp"
+                android:orientation="horizontal" >
+
+                <LinearLayout
+                    android:id="@+id/rl_logo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_border"
+                    android:gravity="center_horizontal" >
+
+                    <ImageView
+                        android:id="@+id/focus_logo"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:scaleType="fitXY" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/rl_logo"
+                    android:orientation="vertical" >
+
+                    <RelativeLayout
+                        android:id="@+id/rl_theam"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp" >
+
+                        <TextView
+                            android:id="@+id/iv_timelimit_image"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="15dp"
+                            android:background="@drawable/vip"
+                            android:visibility="gone" />
+
+                        <TextView
+                            android:id="@+id/tv_timelimit_memlogo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginTop="-5dp"
+                            android:layout_toRightOf="@+id/iv_timelimit_image"
+                            android:text="@string/myhome_timelimitl_memlogo"
+                            android:textSize="16sp" >
+                        </TextView>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp" >
+
+                        <TextView
+                            android:id="@+id/tv_timelimt_all"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="15dp"
+                            android:text="满"
+                            android:textColor="@color/timelimit_font_color"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/tv_timelimt_availablePrice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toRightOf="@+id/tv_timelimt_all"
+                            android:text="0"
+                            android:textColor="@color/timelimit_font_color"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toRightOf="@+id/tv_timelimt_availablePrice"
+                            android:text="元可使用"
+                            android:textColor="@color/timelimit_font_color"
+                            android:textSize="12sp" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="5dp" >
+
+                        <TextView
+                            android:id="@+id/tv_timelimit_dayStartUsingTime"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="xxxxxxx"
+                            android:textColor="@color/timelimit_font_color"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/tv_timelimt_or"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toRightOf="@+id/tv_timelimit_dayStartUsingTime"
+                            android:text="-"
+                            android:textColor="@color/timelimit_font_color"
+                            android:textSize="12sp"
+                            android:visibility="visible" />
+
+                        <TextView
+                            android:id="@+id/tv_timelimit_dayEndUsingTime"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toRightOf="@+id/tv_timelimt_or"
+                            android:text="xxxxxxx"
+                            android:textColor="@color/timelimit_font_color"
+                            android:textSize="12sp" />
+                    </RelativeLayout>
+                </LinearLayout>
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/ly_timelimit_show"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone" >
+
+                <!-- no -->
+
+                <LinearLayout
+                    style="@style/LyWHSecond"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/tv_coupon_range"
+                        android:textColor="@color/timelimit_font_color"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/tv_timelimit_number"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="全店通用"
+                        android:textColor="@color/timelimit_font_color"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/LyWHSecond"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="使用时间："
+                        android:textColor="@color/timelimit_font_color"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/tv_timelimit_starttime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@+id/tv_timlimt_start"
+                        android:text="xxxxxxx"
+                        android:textColor="@color/timelimit_font_color"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/LyWHSecond"
+                    android:layout_marginTop="5dp" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/tv_coupon_tel"
+                        android:textColor="@color/timelimit_font_color"
+                        android:textSize="12sp" />
+                </LinearLayout>
+                <!-- 有效期 -->
+
+                <LinearLayout
+                    style="@style/LyWHSecond"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/tv_timelimt_remark"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="xxxxxxx"
+                        android:textColor="@color/timelimit_font_color"
+                        android:textSize="12sp" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- 图片 -->
+
+        <RelativeLayout
+            android:id="@+id/ly_timelimit_showlist"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/ly_timeLimit_head"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/ly_timeLimit_head"
+            android:layout_marginRight="10dp"
+            android:layout_toEndOf="@+id/ly_timeLimit_head"
+            android:layout_toRightOf="@+id/ly_timeLimit_head"
+            android:background="@drawable/timecoupon_right"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/tv_timelimit_distance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="5dp"
+                android:text="XXX"
+                android:textColor="@color/white"
+                android:textSize="12sp" />
+
+            <LinearLayout
+                android:id="@+id/ly_timelimt_money"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_timelimit_distance"
+                android:layout_marginTop="1dp"
+                android:gravity="center"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/tv_timelimit_money"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textColor="@color/white"
+                    android:textSize="22sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ly_timelimt_grab"
+                style="@style/LyWHSecond"
+                android:layout_below="@+id/ly_timelimt_money"
+                android:layout_centerInParent="true"
+                android:gravity="center_vertical|center_horizontal"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/iv_timelimit_grab"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="抢"
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ly_timelimt_grab"
+                android:layout_centerInParent="true" >
+
+                <TextView
+                    android:id="@+id/tv_couponedraw"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/ly_timelimit_showlist"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/ly_timelimit_showlist"
+            android:layout_marginTop="-18dp"
+            android:gravity="center" >
+
+            <CheckBox
+                android:id="@+id/iv_timelimit_click"
+                android:layout_width="wrap_content"
+                android:layout_height="18dp"
+                android:layout_marginLeft="-10dp"
+                android:button="@drawable/sel_arrow"
+                android:gravity="center" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>

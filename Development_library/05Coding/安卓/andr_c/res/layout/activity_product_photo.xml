@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/LyWHFirst"
+    android:orientation="vertical" >
+
+    <include layout="@layout/common_title_commit" />
+
+    <com.huift.hfq.base.view.XGridView
+        android:id="@+id/gv_photo_product"
+        style="@style/LyWHFourth"
+        android:gravity="center"
+        android:horizontalSpacing="10dp"
+        android:numColumns="2"
+        android:stretchMode="columnWidth"
+        android:verticalSpacing="10dp"
+        android:visibility="visible" />
+
+    <include layout="@layout/comm_no_data" />
+
+</LinearLayout>

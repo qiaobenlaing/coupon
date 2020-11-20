@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/NavigationTopBar"
+    android:background="@color/bgall" >
+
+    <RadioGroup
+        android:id="@+id/rg_coupon_group"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/layout_height"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:orientation="horizontal" >
+
+        <RadioButton
+            android:id="@+id/unavailable"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/layout_height"
+            android:layout_weight="1"
+            android:background="@drawable/selector_bg_checked"
+            android:button="@null"
+            android:checked="true"
+            android:gravity="center"
+            android:text="@string/fail"
+            android:textColor="@drawable/selector_color_checked"
+            android:textSize="18sp" />
+
+        <RadioButton
+            android:id="@+id/available"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/layout_height"
+            android:layout_weight="1"
+            android:background="@drawable/selector_bg_checked"
+            android:button="@null"
+            android:gravity="center"
+            android:text="@string/use"
+            android:textColor="@drawable/selector_color_checked"
+            android:textSize="18sp" />
+    </RadioGroup>
+
+</RelativeLayout>

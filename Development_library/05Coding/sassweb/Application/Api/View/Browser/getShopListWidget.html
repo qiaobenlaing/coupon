@@ -1,0 +1,126 @@
+<style>
+    .shop-info-wrap{
+        display: block;
+        color: #000000;
+    }
+    .shop-info-wrap .shop-info{
+        display: block;
+        margin-left: 25%;
+        padding-left: 2%;
+    }
+    .shop-info .shop-name{
+        font-size: 17px;
+        font-weight: 500;
+        margin-bottom: 3px;
+    }
+    .shop-info .shop-distance{
+        float:right;
+        font-size: 12px;
+        color: #A3A3A3;
+    }
+    .shop-info .shop-icon-img{
+        width: 16px;
+        height: auto;
+    }
+    .shop-info .shop-des{
+        font-size: 13px;
+        color: #A3A3A3;
+    }
+</style>
+
+<foreach name="shopList" item="item">
+    <a class="shop-info-wrap external" href="hs://getShopInfo?shopCode={$item.shopCode|urlencode}">
+        <div style="background-image: url('{$item.logoUrl|default="/Public/img/avatar.jpg"}');background-position: center left;-moz-background-size:25% 80%;background-size:25% 80%;background-repeat: no-repeat;margin: 0 2%;padding:2% 0;border-bottom: 1px solid #E5E5E5;min-height: 90px;">
+            <div class="shop-info">
+                <div class="shop-name">
+                    {$item.shopName|msubstr=0,9,'utf-8',true}
+                    <span class="shop-distance" id="distance_{$item.shopCode}">
+                        定位中...
+                    </span>
+                </div>
+                <div class="row">
+                    <div style="width: 70%;">
+                        <div class="col-100">
+                            <if condition="$item.isAcceptBankCard eq 1 AND $item.onlinePaymentDiscount lt 100">
+                                <img src="/Public/img/android/other_focused.png" class="shop-icon-img" />&nbsp;
+                            </if>
+                            <if condition="$item.hasBatchCoupon eq 1">
+                                <img src="/Public/img/android/conpon_icon.png" class="shop-icon-img" />&nbsp;
+                            </if>
+                            <if condition="$item.hasActivity eq 1">
+                                <img src="/Public/img/android/act_icon.png" class="shop-icon-img" />
+                            </if>
+                        </div>
+                        <div class="col-100 shop-des" <if condition="(($item.isAcceptBankCard eq 1 AND $item.onlinePaymentDiscount egt 100) OR $item.isAcceptBankCard neq 1) AND $item.hasBatchCoupon neq 1 AND $item.hasActivity neq 1">style="margin-top:3%;"</if>>{$item.street}</div>
+                    <div class="col-100 shop-des">
+                        <switch name="item.type">
+                            <case value="1">美食</case>
+                            <case value="2">咖啡</case>
+                            <case value="3">健身</case>
+                            <case value="4">娱乐</case>
+                            <case value="5">服饰</case>
+                            <case value="6">其他</case>
+                            <default/>未知
+                        </switch>
+                        <span style="float: right;">人气：{$item.shopPopularity}</span>
+                    </div>
+                </div>
+                <div style="width: 30%;">
+                    <if condition="$item.isAcceptBankCard eq 1 AND  $item.onlinePaymentDiscount lt 100">
+                        <div class="col-100">
+                            <span style="float: right;font-size: 18px;color: #FF7600;"><?php echo number_format($item['onlinePaymentDiscount'] / 10, 1, '.', '');?>折</span>
+                        </div>
+                    </if>
+                </div>
+            </div>
+        </div>
+        </div>
+    </a>
+</foreach>
+<div id="allmap" style="display: none;width: 100px;height: 100px;"></div>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=itxrBVxoPo7SFUdnVQc2MwTM"></script>
+<script>
+    $(function(){
+        var map = new BMap.Map("allmap");
+        var geolocation = new BMap.Geolocation();
+        geolocation.getCurrentPosition(function(r){
+            <?php foreach($shopList as $v):?>
+            var shopCode = "<?php echo $v['shopCode'];?>";
+            if(this.getStatus() == BMAP_STATUS_SUCCESS){
+                var shopLng = "<?php echo $v['longitude'];?>";
+                var shopLat = "<?php echo $v['latitude'];?>";
+                var pointA = new BMap.Point(shopLng,shopLat);  // 创建点坐标A
+                var pointB = new BMap.Point(r.point.lng,r.point.lat);  // 创建点坐标B
+                var current_distance = parseInt(map.getDistance(pointA,pointB));  //获取两点距离
+                current_distance = formatDistance(current_distance);
+                $('#distance_'+shopCode).text(current_distance);
+            }else {
+                $('#distance_'+shopCode).text('定位失败！');
+            }
+            <?php endforeach;?>
+        },{enableHighAccuracy: true});
+        //关于状态码
+        //BMAP_STATUS_SUCCESS	检索成功。对应数值“0”。
+        //BMAP_STATUS_CITY_LIST	城市列表。对应数值“1”。
+        //BMAP_STATUS_UNKNOWN_LOCATION	位置结果未知。对应数值“2”。
+        //BMAP_STATUS_UNKNOWN_ROUTE	导航结果未知。对应数值“3”。
+        //BMAP_STATUS_INVALID_KEY	非法密钥。对应数值“4”。
+        //BMAP_STATUS_INVALID_REQUEST	非法请求。对应数值“5”。
+        //BMAP_STATUS_PERMISSION_DENIED	没有权限。对应数值“6”。(自 1.1 新增)
+        //BMAP_STATUS_SERVICE_UNAVAILABLE	服务不可用。对应数值“7”。(自 1.1 新增)
+        //BMAP_STATUS_TIMEOUT	超时。对应数值“8”。(自 1.1 新增)
+
+
+    }); // 格式化距离
+    function formatDistance(distance) {
+        if(!distance) {
+            return '0m';
+        } else if(distance > 0 && distance <= 1000) {
+            return distance + 'm';
+        } else if(distance > 1000 && distance <= 100000) {
+            return (distance / 1000).toFixed(1) + 'km';
+        } else {
+            return '>100km';
+        }
+    }
+</script>

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/LyOutSet_"
+    android:gravity="center_vertical"
+    android:orientation="horizontal" >
+
+    <ImageView
+        android:id="@+id/iv_coupon_ls_pic"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center_vertical"
+        android:layout_margin="10dp"
+        android:background="@drawable/coupon_batch" />
+
+    <LinearLayout
+        android:id="@+id/ly_cardvip_ls_title"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="5dp"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        android:paddingLeft="10dp" >
+
+        <RelativeLayout
+            style="@style/LyWHSecond"
+            android:layout_marginTop="5dp" >
+
+            <TextView
+                android:id="@+id/tv_coupon_batch"
+                style="@style/Tv_Font"
+                android:text="@string/tv_coupon_batch" />
+            <!-- 优惠券发放的批次 -->
+
+            <TextView
+                android:id="@+id/tv_coupon_ls_batch"
+                style="@style/Tv_Font"
+                android:layout_toRightOf="@+id/tv_coupon_batch"
+                android:text="XX" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            style="@style/LyWHSecond"
+            android:layout_marginTop="5dp" >
+
+            <TextView
+                android:id="@+id/tv_coupon_cost"
+                style="@style/Tv_Font"
+                android:text="@string/tv_coupon_costs" />
+            <!-- 优惠券的面值 -->
+
+            <TextView
+                android:id="@+id/tv_coupon_ls_cost"
+                style="@style/Tv_Font"
+                android:layout_toRightOf="@+id/tv_coupon_cost"
+                android:text="XX元" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            style="@style/LyWHSecond"
+            android:layout_marginTop="5dp" >
+
+            <TextView
+                android:id="@+id/tv_coupon_csm_total"
+                style="@style/Tv_Font"
+                android:text="@string/tv_coupon_csm_moneys" />
+
+            <TextView
+                android:id="@+id/tv_coupon_ls_csm_total"
+                style="@style/Tv_Font"
+                android:layout_toRightOf="@+id/tv_coupon_csm_total"
+                android:text="XX元" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/LyWHFourth"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="5dp"
+        android:gravity="center_vertical|left"
+        android:orientation="vertical"
+        android:paddingLeft="10dp" >
+
+        <RelativeLayout
+            style="@style/LyWHSecond"
+            android:layout_marginTop="5dp" >
+
+            <TextView
+                android:id="@+id/tv_coupon_ls_sum_title"
+                style="@style/Tv_Font"
+                android:text="@string/tv_coupon_ls_sum_title" />
+            <!-- 优惠价总张数 -->
+
+            <TextView
+                android:id="@+id/tv_coupon_ls_count"
+                style="@style/Tv_Font"
+                android:layout_toRightOf="@+id/tv_coupon_ls_sum_title"
+                android:text="XXX张" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            style="@style/LyWHSecond"
+            android:layout_marginTop="5dp" >
+
+            <TextView
+                android:id="@+id/tv_coupon_csm_sum_title"
+                style="@style/Tv_Font"
+                android:text="@string/tv_coupon_ls_csm_sum_title" />
+            <!-- 优惠消费总张数 -->
+
+            <TextView
+                android:id="@+id/tv_coupon_ls_csm_count"
+                style="@style/Tv_Font"
+                android:layout_toRightOf="@+id/tv_coupon_csm_sum_title"
+                android:text="XX张" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            style="@style/LyWHSecond"
+            android:layout_marginTop="5dp" >
+
+            <TextView
+                android:id="@+id/tv_coupon_ddt_sum_title"
+                style="@style/Tv_Font"
+                android:text="@string/tv_coupon_ls_ddt_sum_title" />
+            <!-- 优惠券抵扣总金额 -->
+
+            <TextView
+                android:id="@+id/tv_coupon_ls_ddt_sum"
+                style="@style/Tv_Font"
+                android:layout_toRightOf="@+id/tv_coupon_ddt_sum_title"
+                android:text="XX元" />
+        </RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>

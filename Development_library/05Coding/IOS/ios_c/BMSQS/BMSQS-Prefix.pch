@@ -1,0 +1,41 @@
+//
+//  RRCShop-Prefix.pch
+//  RRCShop
+//
+//  Created by djx on 14-12-2.
+//  Copyright (c) 2014年 djx. All rights reserved.
+//
+
+#ifndef RRCShop_RRCShop_Prefix_pch
+#define RRCShop_RRCShop_Prefix_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#ifdef __OBJC__
+#import"GloabVariable.h"
+#import"UIViewControllerEx.h"
+#import "cacheFileOperation.h"
+#import"gloabFunction.h"
+#import "NSMutableDictionary+NSString.h"
+#import"ProgressManage.h"
+#import "AppDelegate.h"
+#import "RRC_webViewController.h"
+#import "AFJSONRPCClient.h"
+#import "UIImageView+WebCache.h"
+#import "SLCGRectHelper.h"
+
+#define BUNDLE_NAME @"Resource"
+
+#define IMAGE_NAME @"sharesdk_img"
+#define IMAGE_EXT @"jpg"
+
+#define CONTENT NSLocalizedString(@"TEXT_SHARE_CONTENT", @"ShareSDK不仅集成简单、支持如QQ好友、微信、新浪微博、腾讯微博等所有社交平台，而且还有强大的统计分析管理后台，实时了解用户、信息流、回流率、传播效应等数据，详情见官网http://sharesdk.cn @ShareSDK")
+#define SHARE_URL @"http://www.mob.com"
+
+#endif
+
+
+#endif
+
+

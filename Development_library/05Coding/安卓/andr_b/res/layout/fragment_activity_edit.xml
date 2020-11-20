@@ -1,0 +1,546 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bgall"
+    android:orientation="vertical" >
+	
+    <include layout="@layout/common_title_commit" />
+    
+    <ScrollView
+        android:id="@+id/sv_coupon"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:fadingEdge="vertical"
+        android:scrollbars="none" >
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+    
+	   <LinearLayout 
+	       android:layout_width="match_parent"
+	       android:layout_height="wrap_content"
+	       android:orientation="vertical">
+	       
+	       <FrameLayout 
+	           android:layout_width="match_parent"
+	           android:layout_height="wrap_content"
+	           android:visibility="visible">
+	           <ImageView 
+	               android:id="@+id/tv_campaign_upload"
+	               android:layout_width="match_parent"
+	               android:layout_height="200dp"
+	               android:text="@string/campaign_upload"
+	               android:background="@color/order_grad_add"
+	               android:scaleType="fitXY"/>
+	           <LinearLayout 
+	               android:id="@+id/ly_camapignadd_text"
+	               android:layout_width="match_parent"
+	               android:layout_height="wrap_content"
+	               android:gravity="center"
+		           android:layout_gravity="center"
+	               android:orientation="vertical"
+	               android:visibility="gone">
+	               <TextView 
+		               android:layout_width="match_parent"
+		               android:layout_height="wrap_content"
+		               android:gravity="center"
+		               android:layout_gravity="center"
+		               android:textSize="24sp"
+		               android:text="@string/campaignadd_upload"/>
+	           	  <TextView 
+		               android:layout_width="match_parent"
+		               android:layout_height="wrap_content"
+		               android:gravity="center"
+		               android:layout_gravity="center"
+		               android:text="@string/campaignadd_advice"/>
+	           </LinearLayout>
+	       </FrameLayout>
+           
+	       <TextView style="@style/VLine" />
+	       
+	       <LinearLayout 
+	           android:layout_width="match_parent"
+	           android:layout_height="wrap_content"
+	           android:visibility="visible"
+	           android:orientation="vertical">
+	           <LinearLayout 
+	               android:layout_width="match_parent"
+	               android:layout_height="@dimen/layout_height"
+	               android:background="@color/white"
+	               android:orientation="horizontal">
+	               <ImageView 
+	                   android:layout_width="wrap_content"
+	                   android:layout_height="wrap_content"
+	                   android:layout_gravity="center"
+	                   android:layout_marginLeft="10dp"
+	                   android:src="@drawable/campaign_title"/>
+	               <EditText 
+	                   android:id="@+id/et_campaignadd_title"
+	                   style="@style/Edt_campaign"
+	                   android:layout_marginLeft="10dp"
+	                   android:layout_gravity="center"
+	                   android:maxLength="30"
+	                   android:hint="@string/campaignadd_title"/>
+	           </LinearLayout>
+	           
+	           <TextView style="@style/VLine" />
+	           
+	           <LinearLayout 
+	               android:layout_width="match_parent"
+	               android:layout_height="@dimen/layout_height"
+	               android:background="@color/white"
+	               android:orientation="horizontal">
+	               <ImageView 
+	                   android:layout_width="wrap_content"
+	                   android:layout_height="wrap_content"
+	                   android:layout_gravity="center"
+	                   android:layout_marginLeft="10dp"
+	                   android:src="@drawable/campaign_address"/>
+	               <EditText 
+	                   android:id="@+id/et_campaignadd_address"
+	                  	style="@style/Edt_campaign"
+	                  	android:layout_marginLeft="10dp"
+	                  	android:layout_gravity="center"
+	                   android:hint="@string/campaignadd_address"/>
+	           </LinearLayout>
+	           
+	           <TextView style="@style/VLine" />
+	           
+	           <LinearLayout 
+	               android:layout_width="match_parent"
+	               android:layout_height="@dimen/layout_height"
+	               android:background="@color/white"
+	               android:orientation="horizontal">
+	               <ImageView 
+	                   android:layout_width="wrap_content"
+	                   android:layout_height="wrap_content"
+	                   android:layout_gravity="center"
+	                   android:layout_marginLeft="10dp"
+	                   android:src="@drawable/campaign_time"/>
+	               <EditText 
+	                   android:id="@+id/et_campaignadd_starttime"
+	                   android:layout_width="match_parent"
+	                   android:layout_height="wrap_content"
+	                   android:background="@null"
+	                   android:layout_gravity="center"
+	                   android:layout_marginLeft="10dp"
+	                   android:textSize="14sp"
+	                   android:layout_weight="1"
+	                   android:singleLine="true"
+	                   android:textColor="@color/home_topsixfont"
+	                   android:editable="false"
+                	   android:focusable="true"
+                	   android:focusableInTouchMode="false"
+	                   android:hint="@string/campaignadd_time_start"/>
+	               <LinearLayout
+	                    style="@style/LyWHFourth"
+	                    android:layout_weight="2"
+	                    android:gravity="right" >
+	                    <ImageView
+	                        style="@style/imageview"
+	                        android:src="@drawable/shop_arrow" />
+	               </LinearLayout>
+	           </LinearLayout>
+	           
+	           <TextView style="@style/VLine" />
+	           
+	           <LinearLayout 
+	               android:layout_width="match_parent"
+	               android:layout_height="@dimen/layout_height"
+	               android:background="@color/white"
+	               android:orientation="horizontal">
+	               <ImageView 
+	                   android:layout_width="23dp"
+	                   android:layout_height="wrap_content"
+	                   android:layout_gravity="center"
+	                   android:layout_marginLeft="10dp"/>
+	               <EditText 
+	                   android:id="@+id/et_campaignadd_endtime"
+	                   android:layout_width="match_parent"
+	                   android:layout_height="wrap_content"
+	                   android:background="@null"
+	                   android:layout_gravity="center"
+	                   android:layout_marginLeft="10dp"
+	                   android:textSize="14sp"
+	                   android:layout_weight="1"
+	                   android:singleLine="true"
+	                   android:textColor="@color/home_topsixfont"
+	                   android:editable="false"
+                	   android:focusable="true"
+                	   android:focusableInTouchMode="false"
+	                   android:hint="@string/campaignadd_time_end"/>
+	               <LinearLayout
+	                    style="@style/LyWHFourth"
+	                    android:layout_weight="2"
+	                    android:gravity="right" >
+	                    <ImageView
+	                        style="@style/imageview"
+	                        android:src="@drawable/shop_arrow" />
+	               </LinearLayout>
+	           </LinearLayout>
+	           
+	           <TextView style="@style/VLine" />
+	           
+	           <RelativeLayout 
+	               android:id="@+id/ly_campaign_type"
+	               android:layout_width="match_parent"
+	               android:layout_height="@dimen/layout_height"
+	               android:background="@color/white"
+	               android:orientation="horizontal">
+	               <TextView 
+	                   android:id="@+id/tv_campaignadd_type"
+	                   android:layout_width="wrap_content"
+	                   android:layout_height="wrap_content"
+	                   android:background="@null"
+	                   android:layout_gravity="center"
+	                   android:layout_marginLeft="10dp"
+	                   android:layout_centerVertical="true"
+	                   android:layout_alignParentLeft="true"
+	                   android:text="@string/campaignadd_type"/>
+	                <TextView
+	                   android:id="@+id/et_campaignadd_type"
+	                   android:layout_width="wrap_content"
+	                   android:layout_height="wrap_content"
+	                   android:layout_centerVertical="true"
+	                   android:layout_toLeftOf="@+id/ly_camapigntype_row"/>
+	               <LinearLayout
+	                    android:id="@+id/ly_camapigntype_row"
+	                    android:layout_width="wrap_content"
+	    				android:layout_height="wrap_content"
+	                    android:layout_centerVertical="true"
+	                    android:layout_alignParentRight="true" >
+	                    <ImageView
+	                        style="@style/imageview"
+	                        android:src="@drawable/shop_arrow" />
+	               </LinearLayout>
+	           </RelativeLayout>
+	           
+	           <TextView style="@style/VLine" />
+	           
+	           <LinearLayout 
+	               android:layout_width="match_parent"
+	               android:layout_height="@dimen/layout_height"
+	               android:background="@color/white"
+	               android:orientation="horizontal">
+	               <TextView 
+	                   android:id="@+id/tv_campaignadd_person"
+	                   android:layout_width="60dp"
+	                   android:layout_height="wrap_content"
+	                   android:layout_gravity="center"
+	                   android:layout_marginLeft="10dp"
+	                   android:text="@string/campaignadd_person"/>
+	               <EditText 
+	                   android:id="@+id/et_campaignadd_person"
+	                   style="@style/Edt_campaign"
+	                   android:layout_marginLeft="10dp"
+	                   android:layout_gravity="center"
+	                   android:gravity="right|center_vertical"
+	                   android:layout_marginRight="25dp"
+	                   android:hint="@string/campaignadd_inputperson"/> 
+	           </LinearLayout>
+	           
+	           <TextView style="@style/VLine" />
+	           
+	           <LinearLayout 
+	               android:layout_width="match_parent"
+	               android:layout_height="@dimen/layout_height"
+	               android:background="@color/white"
+	               android:orientation="horizontal">
+	               <TextView 
+	                   android:id="@+id/tv_campaignadd_phone"
+	                   android:layout_width="60dp"
+	                   android:layout_height="wrap_content"
+	                   android:layout_gravity="center"
+	                   android:layout_marginLeft="10dp"
+	                   android:text="@string/campaignadd_phone"/>
+	               <EditText 
+	                   android:id="@+id/et_campaignadd_phone"
+	                   style="@style/Edt_campaign"
+	                   android:layout_marginLeft="10dp"
+	                   android:layout_gravity="center"
+	                   android:gravity="right|center_vertical"
+	                   android:layout_marginRight="25dp"
+	                   android:inputType="number"
+	                   android:hint="@string/campaignadd_inputphone"/>
+	           </LinearLayout>
+	           
+	       </LinearLayout>
+	       <!-- 高级设置 -->
+	       <RelativeLayout 
+	           android:id="@+id/rl_campaign_set"
+	           android:layout_width="match_parent"
+	           android:layout_height="@dimen/layout_height">
+	           <TextView 
+	               android:id="@+id/tv_campaign_set"
+	               android:layout_width="wrap_content"
+	               android:layout_height="wrap_content"
+	               android:layout_centerInParent="true"
+	               android:text="@string/campaignadd_set"/>
+	           <ImageView
+	               android:id="@+id/iv_campaign_arrow"
+	               style="@style/imageview"
+	               android:layout_centerVertical="true"
+	               android:layout_alignParentRight="true"
+	               android:layout_marginRight="25dp"/>
+	       </RelativeLayout>
+	       
+	       <TextView style="@style/VLine" />
+	       
+	       <LinearLayout 
+	           android:id="@+id/ly_campaign_advancedset"
+	           android:layout_width="match_parent"
+	           android:layout_height="wrap_content"
+	           android:orientation="vertical"
+	           android:visibility="visible">
+	           <RelativeLayout 
+	               android:id="@+id/ly_campaign_specifications"
+	               android:layout_width="match_parent"
+	               android:layout_height="@dimen/layout_height"
+	               android:background="@color/white"
+	               android:orientation="horizontal">
+	               <TextView 
+	                   android:id="@+id/tv_campaignadd_specifications"
+	                   android:layout_width="wrap_content"
+	                   android:layout_height="wrap_content"
+	                   android:background="@null"
+	                   android:layout_centerVertical="true"
+	                   android:layout_alignParentLeft="true"
+	                   android:layout_marginLeft="10dp"
+	                   android:text="@string/campaignadd_specifications"/>
+	               <TextView
+	                   android:id="@+id/et_campaignadd_specifications"
+	                   android:layout_width="wrap_content"
+	                   android:layout_height="wrap_content"
+	                   android:layout_centerVertical="true"
+	                   android:layout_toLeftOf="@+id/ly_camp_row"
+	                   android:hint=""/>
+	               <LinearLayout
+	                    android:id="@+id/ly_camp_row"
+	                    android:layout_width="wrap_content"
+	                    android:layout_height="wrap_content"
+	                    android:layout_alignParentRight="true"
+	                    android:layout_centerVertical="true" >
+	                    <ImageView
+	                        style="@style/imageview"
+	                        android:src="@drawable/shop_arrow" />
+	               </LinearLayout>
+	           </RelativeLayout>
+	           
+	           <TextView style="@style/VLine" />
+	           
+	           <LinearLayout 
+	               android:layout_width="match_parent"
+	               android:layout_height="@dimen/layout_height"
+	               android:background="@color/white"
+	               android:orientation="horizontal">
+	               <TextView 
+	                   android:layout_width="wrap_content" 
+	                   android:layout_height="wrap_content"
+	                   android:background="@null"
+	                   android:layout_gravity="center"
+	                   android:layout_marginLeft="10dp"
+	                   android:text="@string/campaignadd_price"/>
+	               <TextView
+	                   android:id="@+id/et_campaignadd_price"
+	                   style="@style/Edt_campaign_number"
+	                   android:layout_marginRight="10dp"
+	                   android:gravity="right"/>
+	               <TextView 
+	                   android:layout_width="wrap_content"
+	                   android:layout_height="wrap_content"
+	                   android:background="@null"
+	                   android:layout_gravity="center"
+	                   android:layout_marginRight="25dp"
+	                   android:text="@string/campaignadd_yuan"/>
+	           </LinearLayout>
+	           
+	           <TextView style="@style/VLine" />
+	           
+	           <LinearLayout 
+	               android:layout_width="match_parent"
+	               android:layout_height="@dimen/layout_height"
+	               android:background="@color/white"
+	               android:orientation="horizontal">
+	               <TextView 
+	                   android:layout_width="wrap_content"
+	                   android:layout_height="wrap_content"
+	                   android:background="@null"
+	                   android:layout_gravity="center"
+	                   android:layout_marginLeft="10dp"
+	                   android:text="@string/campaignadd_refund"/>
+	                   <RelativeLayout 
+				            android:id="@+id/ly_refund_line"
+				            android:layout_width="wrap_content"
+				            android:layout_height="36dp"
+				            android:layout_marginLeft="65dp"
+				            android:layout_marginRight="25dp"
+				            android:background="@drawable/bg_border_one"
+				            android:layout_gravity="center"
+				            android:orientation="horizontal">
+				           <TextView
+					            android:id="@+id/tv_select_error"
+					            android:layout_width="wrap_content"
+					            android:layout_height="wrap_content"
+					            android:gravity="left|center_vertical"
+					            android:layout_centerVertical="true"
+					            android:layout_marginLeft="10dp"
+					            android:text="@string/campaignadd_refund_name"/> 
+				          <ImageView 
+					             android:layout_width="wrap_content"
+					             android:layout_height="wrap_content"
+					             android:layout_centerVertical="true"
+					             android:layout_alignParentRight="true"
+					             android:layout_marginRight="20dp"
+					             android:src="@drawable/downc_arrow"/>
+				       </RelativeLayout>
+	           </LinearLayout>
+	           
+	           <TextView style="@style/VLine" />
+	           
+	           <LinearLayout 
+	               android:layout_width="match_parent"
+	               android:layout_height="@dimen/layout_height"
+	               android:background="@color/white"
+	               android:orientation="horizontal">
+	               <TextView 
+	                   android:layout_width="wrap_content"
+	                   android:layout_height="wrap_content"
+	                   android:background="@null"
+	                   android:layout_gravity="center"
+	                   android:layout_marginLeft="10dp"
+	                   android:textSize="14sp"
+	                   android:text="@string/campaignadd_advance"/>
+	               <EditText 
+	                   android:id="@+id/et_campaignadd_advance"
+	                   style="@style/Edt_campaign_number"
+	                   android:gravity="center|right"
+	                   android:inputType="numberDecimal"
+	                   android:hint="0"/>
+	               <TextView 
+	                   android:layout_width="wrap_content"
+	                   android:layout_height="wrap_content"
+	                   android:background="@null"
+	                   android:layout_gravity="center"
+	                   android:layout_marginLeft="10dp"
+	                   android:layout_marginRight="25dp"
+	                   android:text="@string/campaignadd_booking"/>
+	           </LinearLayout>
+	           
+	           <TextView style="@style/VLine" />
+	           
+	           <LinearLayout 
+	               android:layout_width="match_parent"
+	               android:layout_height="@dimen/layout_height"
+	               android:background="@color/white"
+	               android:orientation="horizontal">
+	               <TextView 
+	                   android:layout_width="wrap_content"
+	                   android:layout_height="wrap_content"
+	                   android:background="@null"
+	                   android:layout_gravity="center"
+	                   android:layout_marginLeft="10dp"
+	                   android:textSize="14sp"
+	                   android:text="@string/campaignadd_singelperson"/>
+	               <EditText 
+	                   android:id="@+id/et_campaignadd_singelperson"
+	                   style="@style/Edt_campaign_number"
+	                   android:gravity="center|right"
+	                   android:hint="0"/>
+	               <TextView 
+	                   android:layout_width="wrap_content"
+	                   android:layout_height="wrap_content"
+	                   android:background="@null"
+	                   android:layout_gravity="center"
+	                   android:layout_marginLeft="10dp"
+	                   android:layout_marginRight="25dp"
+	                   android:text="@string/campaignadd_people"/>
+	           </LinearLayout>
+	           
+	           <TextView style="@style/VLine" />
+	           
+	           <LinearLayout 
+	               android:layout_width="match_parent"
+	               android:layout_height="@dimen/layout_height"
+	               android:background="@color/white"
+	               android:orientation="horizontal">
+	               <TextView 
+	                   android:layout_width="wrap_content"
+	                   android:layout_height="wrap_content"
+	                   android:background="@null"
+	                   android:layout_gravity="center"
+	                   android:layout_marginLeft="10dp"
+	                   android:textSize="14sp"
+	                   android:text="@string/campaignadd_maxperson"/>
+	               <EditText 
+	                   android:id="@+id/et_campaignadd_maxperson"
+	                  style="@style/Edt_campaign_number"
+	                   android:gravity="center|right"
+	                   android:hint="0"/>
+	               <TextView 
+	                   android:layout_width="wrap_content"
+	                   android:layout_height="wrap_content"
+	                   android:layout_gravity="center"
+	                   android:layout_marginLeft="10dp"
+	                   android:layout_marginRight="25dp"
+	                   android:text="@string/campaignadd_people"/>
+	           </LinearLayout>
+	           
+	       </LinearLayout>
+	       
+	       <RelativeLayout 
+	           android:id="@+id/rl_campaign_introduces"
+	           android:layout_width="match_parent"
+	           android:layout_height="@dimen/layout_height">
+	           <TextView 
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_centerInParent="true"
+	                android:text="@string/campaignadd_introduces"/>
+	       </RelativeLayout>
+	       
+	       <LinearLayout
+	           android:id="@+id/ly_campaign_intro_detail"
+	           android:layout_width="match_parent"
+	           android:layout_height="wrap_content"
+	           android:background="@color/white"
+	           android:orientation="vertical">
+	           <!-- <EditText 
+		            android:id="@+id/et_errorinfo_input"
+		            android:layout_width="match_parent"
+		            android:layout_height="@dimen/layout_xheight"
+		            android:gravity="top"
+		            android:textSize="14sp"
+		            android:background="@null"
+		            android:paddingLeft="10dp"
+		            android:paddingTop="10dp"
+		            android:editable="false"
+	          	    android:focusable="true"
+	          	    android:focusableInTouchMode="false"
+		            android:textColor="@color/coupon_hometopfont"/> -->
+	       </LinearLayout>
+	       
+	       <LinearLayout
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_marginTop="20dp"
+		        android:orientation="vertical"
+		        android:paddingBottom="20dp"
+		        android:paddingLeft="10dp"
+		        android:paddingRight="10dp">
+	
+		        <Button
+		            android:id="@+id/campaign_save"
+		            android:layout_width="match_parent"
+		            android:layout_height="@dimen/navigation_bar"
+		            android:layout_gravity="center_horizontal"
+		            android:background="@drawable/login_btn"
+		            android:text="@string/campaignadd_save"
+		            android:textColor="@color/white" />
+	   	</LinearLayout>
+	       
+	   </LinearLayout>
+    </LinearLayout>
+    </ScrollView>
+</LinearLayout>

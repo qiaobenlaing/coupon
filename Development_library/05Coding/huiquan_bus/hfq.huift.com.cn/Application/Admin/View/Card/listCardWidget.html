@@ -1,0 +1,60 @@
+<table class="fp-table table table-striped table-bordered table-condensed" id="data_table">
+    <thead>
+    <tr>
+        <th>商户名</th>
+        <th>会员卡名称</th>
+        <th>等级</th>
+        <th>享受折扣积分要求</th>
+        <th>享受折扣</th>
+        <th>上次修改时间</th>
+        <th>有效期(月)</th>
+        <th>每1元兑换积分</th>
+        <th>多少积分兑换1元</th>
+        <th>状态</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    <foreach name="dataList" item="item">
+        <tr>
+            <td>{$item.shopName}</td>
+            <td>
+                <switch name="item.cardLvl" >
+                    <case value="1"><span class="label label-yin">{$item.cardName}</span></case>
+                    <case value="2"><span class="label label-jin">{$item.cardName}</span></case>
+                    <case value="3"><span class="label label-baijin">{$item.cardName}</span></case>
+                    <default />未知
+                </switch>
+            </td>
+            <td>
+                <switch name="item.cardLvl" >
+                    <case value="1"><span class="badge badge-yin">{$item.cardLvl}</span></case>
+                    <case value="2"><span class="badge badge-jin">{$item.cardLvl}</span></case>
+                    <case value="3"><span class="badge badge-baijin">{$item.cardLvl}</span></case>
+                    <default />未知
+                </switch>
+            </td>
+            <td>{$item.discountRequire}</td>
+            <td>{$item['discount'] / 10} 折</td>
+            <td>{$item.createTime}</td>
+            <td>{$item.pointLifetime}</td>
+            <td>{$item.pointsPerCash}分</td>
+            <td><eq name="item.outPointsPerCash" value="0">不能兑换<else/>{$item.outPointsPerCash}</eq></td>
+            <td>
+                <if condition="$item.status eq 1"><span class="label label-success">启用</span>
+                    <else/><span class="label label-danger">禁用</span>
+                </if>
+            </td>
+            <td>
+                <a class="btn btn-xs btn-primary" href="/Admin/Card/editCard/cardCode/{$item.cardCode}/page/{$pager:page}">编辑</a>
+                <eq name="item.status" value="1">
+                    <a class="td-distant btn btn-xs btn-info" href="/Admin/Card/changeStatus/cardCode/{$item.cardCode}" data-status="0">禁用</a>
+                    <else />
+                    <a class="td-distant btn btn-xs btn-info" href="/Admin/Card/changeStatus/cardCode/{$item.cardCode}" data-status="1">启用</a>
+                </eq>
+            </td>
+        </tr>
+    </foreach>
+    </tbody>
+</table>
+<include file="Application/Admin/View/Widget/pager.html" /> 

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/LyOutSet" >
+
+    <include layout="@layout/common_title_home" />
+
+    <FrameLayout
+        style="@style/LyWHFirst"
+        android:orientation="vertical" >
+
+        <WebView
+            android:id="@+id/wb_actdetail"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <LinearLayout
+            android:id="@+id/ly_nodata"
+            style="@style/LyWHFourth"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            android:visibility="visible" >
+
+            <ImageView
+                android:id="@+id/iv_nodata"
+                style="@style/LyWHSecond"
+                android:scaleType="centerInside"
+                android:src="@drawable/no_message"
+                android:visibility="gone" />
+
+            <ProgressBar
+                android:id="@+id/prog_nodata"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_gravity="center"
+                android:background="@drawable/shape_progress"
+                android:visibility="visible" />
+        </LinearLayout>
+    </FrameLayout>
+
+</LinearLayout>

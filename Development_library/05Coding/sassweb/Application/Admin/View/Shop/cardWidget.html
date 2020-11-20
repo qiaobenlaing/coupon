@@ -1,0 +1,30 @@
+<table class="fp-table table table-striped table-bordered" id="data_table">
+    <thead>
+    <tr>
+        <th>卡名</th>
+        <th>创建时间</th>
+        <th>积分有效期(月)</th>
+        <th>状态</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    <foreach name="dataList" item="item">
+        <tr>
+            <td><span>{$item.cardName}</span></td>
+            <td>{$item.createTime}</td>
+            <td>{$item.pointLifetime}</td>
+            <td><if condition="$item.status eq 1">启用<else />禁用</if></td>
+            <td>
+                <a href="/Admin/Card/editCard/cardCode/{$item.cardCode/page/{$pager::page}}" class="btn btn-xs btn-primary">编辑</a>
+                <eq name="item.status" value="1">
+                    <a href="/Admin/Card/changeStatus/cardCode/{$item.cardCode}"  class="td-distant btn btn-xs btn-info" data-status="0">禁用</a>
+                    <else />
+                    <a href="/Admin/Card/changeStatus/cardCode/{$item.cardCode}"  class="td-distant btn btn-xs btn-info" data-status="1">启用</a>
+                </eq>
+            </td>
+        </tr>
+    </foreach>
+    </tbody>
+</table>
+<include file="Application/Admin/View/Widget/pager.html" />

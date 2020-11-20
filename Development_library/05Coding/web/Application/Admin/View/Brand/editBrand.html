@@ -1,0 +1,54 @@
+<layout name="layout_admin" />
+<script src="__PUBLIC__/js/webuploader.js" charset="UTF-8"></script>
+<script src="__PUBLIC__/js/upload.js" charset="UTF-8"></script>
+<script src="__PUBLIC__/shop/set.js" charset="UTF-8"></script>
+<link rel="stylesheet" href="__PUBLIC__/shop/set.css">
+<div class="container-fluid">
+    <div class="row">
+        <form id="edit-brand-frm" action="/Admin/Brand/editBrand" method="post" class="form-horizontal">
+            <input type="hidden" name="brandId" value="{$brandInfo.brandId}" />
+            <div class="col-md-2">
+                <input type="hidden" value="{$brandInfo.brandLogo}" name="brandLogo" id="logoUrl" />
+                <label>品牌Logo: </label>
+                <div class="row-fluid employee-item-img">
+                    <div class="employee-item-imgdiv">
+                        <img name="avatar" src="{$brandInfo.brandLogo|default='__PUBLIC__/img/upload.png'}" class="avatar img-responsive img-rounded">
+                    </div>
+                    <div class="J_avatar"></div>
+                </div>
+            </div>
+            <div class="col-md-10">
+                <div class="form-group">
+                    <label for="brandName" class="col-sm-2 control-label">名称</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="brandName" placeholder="名称" name="brandName" value="{$brandInfo.brandName}" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="brandDes" class="col-sm-2 control-label">描述</label>
+                    <div class="col-sm-10">
+                        <textarea type="text" class="form-control" id="brandDes" placeholder="描述" name="brandDes" rows="6">{$brandInfo.brandDes}</textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-2">
+                        <button type="submit" class="btn btn-primary btn-block">保存</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<script type="text/javascript">
+	$('#edit-brand-frm').on('submit', function() {
+        var frm = $(this);
+        $.post(frm.attr('action'), frm.serialize(), function(resp) {
+            if (resp.status == sz.STATUS_SUCC) {
+                sz.showSuccMsg(resp.msg, 3);
+            } else {
+                sz.showErrMsg(resp.msg, 3);
+            }
+        });
+        return false;
+    });
+</script>

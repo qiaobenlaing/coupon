@@ -1,0 +1,61 @@
+<layout name="layout_api" />
+<!-- Views -->
+<div class="views">
+    <!-- Your main view, should have "view-main" class -->
+    <div class="view view-main">
+        <!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
+        <div class="pages toolbar-through">
+            <!-- Page, "data-page" contains page name -->
+            <div data-page="index" class="page">
+                <!--<div class="navbar">-->
+                <!--<div class="navbar-inner">-->
+                <!--<div class="left"><a href="javascript:history.go(-1);" class="external"><img src="/Public/img/icon/backup.png" /></a></div>-->
+                <!--<div class="center">{$title}</div>-->
+                <!--<div class="right">&nbsp;</div>-->
+                <!--</div>-->
+                <!--</div>-->
+
+                <!-- Scrollable page content -->
+                <div class="page-content" style="padding-bottom: 0;">
+                    <!--<div class="page_view" <?php if(empty($userGiftInfo)):?>-->
+                    <!--style="background-image: url('/Public/img/game/game_share_1.png');"<?php else:?>style="background-image: url('/Public/img/game/game_share_2.png');"<?php endif;?>>-->
+                    <div class="page_view" style="background-image: url('/Public/img/game/game_share_1.png');">
+                    <?php if(empty($userGiftInfo)):?>
+                    <div style="text-align: center;padding: 10% 0;"><img src="/Public/img/game/open_log_title.png" style="width: 70%;height: auto;"></div>
+                    <!--<div style="padding: 25px 10% 3% 10%;color: #423535;line-height: 1.5;text-align: center;font-size: 18px;font-family: fantasy;">您的好友正在疯抢惠圈礼盒，当前游戏最高纪录：踩到了{$activityInfo.max|default=10}个盒子！你也来试试吧~-->
+                    <!--</div>-->
+                    <div class="share_next" style="margin: 5% 10% 70% 10%;">已有{$count}人参与了礼盒活动</div>
+                    <div class="share_button">
+                        <a href="/Api/Browser/gameInfo?activityCode={$activityCode}" class="external"><img src="/Public/img/game/join.png" /></a>
+                    </div>
+                    <?php else:?>
+                        <div style="text-align: center;padding: 10% 0;"><img src="/Public/img/game/open_log_title_2.png" style="width: 70%;height: auto;"></div>
+                    <div style="padding: 50% 0 0 0;"></div>
+                    <div class="share_next" style="margin: 8%">已有{$userGiftInfo.openNbr|default=0}位好友为TA拆了礼盒</div>
+                    <div class="share_button">
+                        <a href="/Api/Browser/openBox?userGiftId={$userGiftInfo.id}" class="external"><img src="/Public/img/game/game_open_help.png" /></a>
+                        <a href="/Api/Browser/gameInfo?activityCode={$activityCode}" class="external"><img src="/Public/img/game/game_join.png" /></a>
+                    </div>
+
+                    <?php endif;?>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<style>
+    .navbar{background-color: rgb(182, 0, 12);}
+    .navbar-inner .left img{width: 70%;height: auto;margin-left: -15%;}
+    .page_view{background-size: 100% 100%;background-repeat: no-repeat;height: 100%;}
+    .share_next{text-align: center;font-size: 16px;background-image: url('/Public/img/game/game_join_2.png');background-size: 100% 100%;background-repeat: no-repeat;color: rgb(194,92,3);line-height: 2;}
+    .share_button{text-align: center;}
+    .share_button a:first-child{display: block;}
+    .share_button a:last-child{display: block;margin-top: 15px;}
+    .share_button img{width: 40%;height:auto;}
+</style>
+<script>
+    $(function() {
+
+    });
+</script>

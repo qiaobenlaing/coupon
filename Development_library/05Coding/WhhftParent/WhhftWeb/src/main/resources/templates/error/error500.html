@@ -1,0 +1,32 @@
+<link th:replace="/include/header" />
+<script th:inline="javascript">
+
+    $(function () {
+       //setTimeout('closePage()',3000);
+    });
+   
+   function closePage(){    	
+	  history.go(-1);	   
+   } 
+   
+   function refresh(){
+	    location.reload();
+	}
+	function back(){
+	    location.replace(document.referrer);
+	}
+</script>
+<div id="div1" style="width:100%; vertical-align: middle;text-align: center;" >
+
+<img alt="" src="/whhft/images/500page.jpg" style="width: 100%;vertical-align: middle;text-align: center;">
+</div>
+<div style="position: absolute;bottom: 400px;left: 650px;">
+    <a href="javaScript:void(0)" onclick="refresh()" style="font-size: 14px;color: red;">刷新</a>&nbsp;&nbsp;&nbsp;&nbsp; <a
+        href="javaScript:void(0)" onclick="back()"style="font-size: 14px;color: red;">后退</a>
+</div>
+<link th:replace="/include/footer" />
+
+
+
+
+

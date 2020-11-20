@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/LyOutSet" >
+
+    <include layout="@layout/common_title_serch" />
+
+    <LinearLayout
+        android:id="@+id/ll_sort"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/layout_height"
+        android:background="@color/condition_sel"
+        android:gravity="center"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            android:id="@+id/ll_shop_circle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center" >
+
+            <TextView
+                android:id="@+id/tv_shop_circle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/circle"
+                android:textSize="@dimen/condition_sel" />
+
+            <ImageView
+                android:id="@+id/icon_shop_circle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:background="@drawable/down_gray" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_shop_industry"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center" >
+
+            <TextView
+                android:id="@+id/tv_shop_industry"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/type"
+                android:textSize="@dimen/condition_sel" />
+
+            <ImageView
+                android:id="@+id/icon_shop_industry"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:background="@drawable/down_gray" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_shop_intelligent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center" >
+
+            <TextView
+                android:id="@+id/tv_shop_intelligent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/order"
+                android:textSize="@dimen/condition_sel" />
+
+            <ImageView
+                android:id="@+id/icon_shop_intelligent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:background="@drawable/down_gray" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_shop_filter"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center" >
+
+            <TextView
+                android:id="@+id/tv_shop_filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/filter"
+                android:textSize="@dimen/condition_sel" />
+
+            <ImageView
+                android:id="@+id/icon_shop_filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:background="@drawable/down_gray" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/fl_shop"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/index_swipe_refresh"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="visible" >
+
+            <com.huift.hfq.base.view.XListView
+                android:id="@+id/listView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/app_bg"
+                android:cacheColorHint="#000000"
+                android:divider="@color/shopdetail_divider"
+                android:dividerHeight="0.5px"
+                android:scrollbars="none"
+                android:visibility="visible" />
+        </android.support.v4.widget.SwipeRefreshLayout>
+
+        <include layout="@layout/comm_no_data" />
+    </FrameLayout>
+
+</LinearLayout>

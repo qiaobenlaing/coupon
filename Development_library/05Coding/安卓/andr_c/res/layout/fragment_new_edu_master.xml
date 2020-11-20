@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" >
+    
+    <LinearLayout
+        android:id="@+id/ll_edu_master" 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <ImageView 
+            android:id="@+id/iv_edu_master"
+            android:layout_width="match_parent"
+            android:layout_height="124dp"
+            android:src="@drawable/no_message"/>
+        <TextView 
+            android:id="@+id/tv_edu_master"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="暗黑世界发哈计划发射计划进口货扣积分回馈啊几号放假咯就发货即可噶健康"
+            android:padding="5dp"/>
+    </LinearLayout>
+</RelativeLayout>

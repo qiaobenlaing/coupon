@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/LyWHFirst"
+    android:background="@color/app_bg"
+    android:orientation="vertical" >
+
+    <include layout="@layout/common_title_commit" />
+
+    <TextView
+        android:id="@+id/tv_order_time"
+        style="@style/LyWHSecond"
+        android:layout_gravity="right"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="5dp"
+        android:gravity="center"
+        android:text="aaaaaaaaaa" />
+	 <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/index_swipe_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible" >
+       <ScrollView
+		        android:layout_width="match_parent"
+		        android:layout_height="0dp"
+		        android:layout_marginTop="5dp"
+		        android:layout_weight="1"
+		        android:scrollbars="none" >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@color/app_item_bg"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:id="@+id/ly_nodate"
+                style="@style/LyWHFirst"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:visibility="visible" >
+
+                <ProgressBar
+                    android:id="@+id/prog_nodata"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="正在加载数据" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ry_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/shape_divider"
+                android:orientation="vertical"
+                android:showDividers="middle" >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/layout_height"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center_vertical"
+                    android:visibility="visible" >
+
+                    <TextView
+                        android:id="@+id/shop_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:text="xxx" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/layout_lheight"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center_vertical"
+                    android:visibility="visible" >
+
+                    <TextView
+                        android:id="@+id/tv_ordernbr"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:text="@string/ordernbr" />
+
+                    <ImageView
+                        android:id="@+id/iv_barcode"
+                        style="@style/LyWHSecond"
+                        android:layout_below="@+id/tv_ordernbr"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginTop="5dp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/layout_height"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center_vertical"
+                    android:visibility="visible" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:text="@string/csm_money" />
+
+                    <TextView
+                        android:id="@+id/price_unit"
+                        style="@style/LyWHSecond"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="10dp"
+                        android:text="@string/money_unit"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+
+                <TextView
+                    style="@style/LyWHFourth"
+                    android:layout_height="10dp"
+                    android:background="@color/app_bg" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/layout_height"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center_vertical"
+                    android:visibility="visible" >
+
+                    <TextView
+                        android:id="@+id/tv_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:text="@string/order_status" />
+
+                    <TextView
+                        android:id="@+id/tv_order_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:layout_toRightOf="@+id/tv_status"
+                        android:text="xxxx"
+                        android:textColor="@color/home_font" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/ry_arrow_discount"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/layout_height"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center_vertical" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:text="@string/total_ddtmoney" />
+
+                    <TextView
+                        android:id="@+id/tv_totalprice_unit"
+                        style="@style/LyWHSecond"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="5dp"
+                        android:layout_toLeftOf="@+id/iv_arrow_down"
+                        android:text="@string/money_unit"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:id="@+id/iv_arrow_down"
+                        style="@style/LyWHSecond"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="10dp" />
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:id="@+id/ly_all_discount"
+                    style="@style/LyWHFourth"
+                    android:orientation="vertical"
+                    android:visibility="visible" >
+
+                    <RelativeLayout
+                        android:id="@+id/ry_couponUtil"
+                        style="@style/LyWHFourth"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:gravity="center_vertical"
+                        android:paddingTop="5dp" >
+
+                        <TextView
+                            android:id="@+id/tv_coupon_type"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:text="@string/coupon_dcmoney"
+                            android:textColor="@color/timelimit_font_color" />
+
+                        <TextView
+                            android:id="@+id/tv_insteadprice"
+                            style="@style/LyWHSecond"
+                            android:layout_marginLeft="2dp"
+                            android:layout_toRightOf="@+id/tv_coupon_type"
+                            android:text="xxxx"
+                            android:textColor="@color/timelimit_font_color" />
+
+                        <TextView
+                            android:id="@+id/tv_coupon_unit"
+                            style="@style/LyWHSecond"
+                            android:layout_alignParentRight="true"
+                            android:text="@string/money_unit"
+                            android:textColor="@color/timelimit_font_color" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/ry_bankcard_Util"
+                        style="@style/LyWHFourth"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:gravity="center_vertical"
+                        android:paddingTop="5dp" >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:text="@string/bank_dcmoney"
+                            android:textColor="@color/timelimit_font_color" />
+
+                        <TextView
+                            android:id="@+id/tv_bankcardcard_unit"
+                            style="@style/LyWHSecond"
+                            android:layout_alignParentRight="true"
+                            android:text="@string/money_unit"
+                            android:textColor="@color/timelimit_font_color" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        style="@style/LyWHFourth"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:gravity="center_vertical"
+                        android:paddingTop="5dp" >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:text="@string/card_ddtmoney"
+                            android:textColor="@color/timelimit_font_color" />
+
+                        <TextView
+                            android:id="@+id/tv_cardprice_unit"
+                            style="@style/LyWHSecond"
+                            android:layout_alignParentRight="true"
+                            android:text="@string/money_unit"
+                            android:textColor="@color/timelimit_font_color" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        style="@style/LyWHFourth"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:gravity="center_vertical"
+                        android:paddingTop="5dp" >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:text="@string/bouns_shop"
+                            android:textColor="@color/timelimit_font_color" />
+
+                        <TextView
+                            android:id="@+id/tv_shop_bouns"
+                            style="@style/LyWHSecond"
+                            android:layout_alignParentRight="true"
+                            android:text="@string/money_unit"
+                            android:textColor="@color/timelimit_font_color" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        style="@style/LyWHFourth"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:gravity="center_vertical"
+                        android:paddingTop="5dp" >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:text="@string/huiquan_bouns"
+                            android:textColor="@color/timelimit_font_color" />
+
+                        <TextView
+                            android:id="@+id/tv_huiquan_bounds"
+                            style="@style/LyWHSecond"
+                            android:layout_alignParentRight="true"
+                            android:text="@string/money_unit"
+                            android:textColor="@color/timelimit_font_color" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/ry_isfirst"
+                        style="@style/LyWHFourth"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:gravity="center_vertical" >
+
+                        <TextView
+                            android:id="@+id/tv_isfirst"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:text="@string/min_isfirst"
+                            android:textColor="@color/timelimit_font_color" />
+                        <TextView
+                            android:id="@+id/tv_first_unit"
+                            style="@style/LyWHSecond"
+                            android:layout_alignParentRight="true"
+                            android:textColor="@color/timelimit_font_color" />
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/layout_height"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center_vertical" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:text="@string/pay_totalmoney"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_newprice_unit"
+                        style="@style/LyWHSecond"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="15dp"
+                        android:text="@string/money_unit"
+                        android:textColor="@color/burgundy"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+            </LinearLayout>
+             <Button
+		        android:id="@+id/online_pay"
+		        android:layout_width="match_parent"
+		        android:layout_height="@dimen/layout_height"
+		        android:layout_marginBottom="5dp"
+		        android:layout_marginLeft="10dp"
+		        android:layout_marginRight="10dp"
+		        android:layout_marginTop="5dp"
+		        android:background="@drawable/login_btn"
+		        android:text="建行卡支付"
+		        android:textColor="@color/white"
+		        android:visibility="visible" />
+		    <Button
+		        android:id="@+id/cancel_pay"
+		        android:layout_width="match_parent"
+		        android:layout_height="@dimen/layout_height"
+		        android:layout_marginBottom="5dp"
+		        android:layout_marginLeft="10dp"
+		        android:layout_marginRight="10dp"
+		        android:layout_marginTop="5dp"
+		        android:background="@color/gray_transparent"
+		        android:text="取消支付"
+		        android:textColor="@color/white"
+		        android:visibility="visible" />
+        </LinearLayout>
+    </ScrollView>
+      </android.support.v4.widget.SwipeRefreshLayout>
+</LinearLayout>

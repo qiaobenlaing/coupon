@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_bg"
+    android:orientation="vertical" >
+
+    <include layout="@layout/common_title_commit" />
+
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/layout_height"
+        android:background="@color/white"
+        android:orientation="horizontal">
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/layout_height"
+            android:gravity="center|left"
+            android:layout_marginLeft="10dp"
+            android:text="@string/err_info"/>
+        <RelativeLayout 
+            android:id="@+id/ly_error_line"
+            android:layout_width="200dp"
+            android:layout_height="36dp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/bg_border_one"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+            <TextView
+	            android:id="@+id/tv_select_error"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:entries="@array/errorInfo"
+	            android:layout_centerVertical="true"
+	            android:layout_marginLeft="10dp"
+	            android:gravity="center"
+	            android:text="@string/err_info_list"/> 
+         	<ImageView 
+	             android:layout_width="wrap_content"
+	             android:layout_height="wrap_content"
+	             android:layout_centerVertical="true"
+	             android:layout_alignParentRight="true"
+	             android:layout_marginRight="10dp"
+	             android:src="@drawable/downc_arrow"/>
+        </RelativeLayout>
+    </LinearLayout>
+    
+    <TextView
+          style="@style/VSpace"
+          android:background="@color/app_bg" />
+    
+    <TextView style="@style/VLine" />
+    
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical">
+        
+      	<TextView
+           android:id="@+id/tv_errorinfo_input" 
+	       android:layout_width="wrap_content"
+	       android:layout_height="@dimen/layout_height"
+	       android:layout_marginLeft="10dp"
+	       android:gravity="center"
+	       android:text="@string/error_info"/>
+            
+        <TextView style="@style/VLine" />
+        
+        <LinearLayout 
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_border_one"
+            android:layout_margin="10dp"
+            android:orientation="vertical">
+        
+	        <EditText 
+	            android:id="@+id/et_errorinfo_input"
+	            android:layout_width="match_parent"
+	            android:layout_height="@dimen/layout_xxheight"
+	            android:gravity="top"
+	            android:hint="@string/input_error_info"
+	            android:textSize="14sp"
+	            android:background="@null"
+	            android:paddingLeft="10dp"
+	            android:paddingTop="10dp"
+	            android:textColor="@color/coupon_hometopfont"/>
+	       
+        </LinearLayout>
+        
+        <LinearLayout 
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp">
+            
+            <GridView
+		        android:id="@+id/noScrollgridview"
+		        android:layout_width="wrap_content"
+		        android:layout_height="100dp"
+		        android:numColumns="3"
+		        android:paddingTop="10dp"
+		        android:paddingBottom="10dp"
+		        android:scrollbars="none"/>
+            
+        </LinearLayout>
+        
+    </LinearLayout>
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp" >
+
+        <Button
+            android:id="@+id/btn_commit"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/navigation_bar"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/login_btn"
+            android:text="@string/btn_login"
+            android:textColor="@color/white" />
+    </LinearLayout>
+
+</LinearLayout>

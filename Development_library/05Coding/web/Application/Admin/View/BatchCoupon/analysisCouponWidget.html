@@ -1,0 +1,29 @@
+<table class="table table-striped table-bordered table-condensed table-hover" id="data_table">
+    <thead>
+    <tr>
+        <th>地市</th>
+        <th>商户名</th>
+        <th>发放数量</th>
+        <th>使用量</th>
+        <eq name="get.couponType" value="3">
+            <th>应补贴金额</th>
+            <th>实际补贴金额</th>
+        </eq>
+    </tr>
+    </thead>
+    <tbody>
+    <foreach name="batchCouponList" item="item">
+        <tr>
+            <td>{$item.city}</td>
+            <td>{$item.shopName}</td>
+            <td>{$item.totalVolume}</td>
+            <td>{$item.usedCount}</td>
+            <eq name="get.couponType" value="3">
+                <td>{$item.totalOriginSubsidy}</td>
+                <td>{$item.totalSubsidy}</td>
+            </eq>
+        </tr>
+    </foreach>
+    </tbody>
+</table>
+<include file="Application/Admin/View/Widget/pager.html"/>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/ly_common_card_style"
+        style="@style/LyWHFirst"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/silver_card"
+        android:gravity="center|center_vertical" >
+
+        <LinearLayout
+            android:id="@+id/ly_content"
+            style="@style/LyWHFourth"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:id="@+id/iv_common_shoplogo"
+                style="@style/LyWHSecond"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/bg_border"
+                android:scaleType="fitXY" />
+
+            <LinearLayout
+                style="@style/LyWHSecond"
+                android:layout_width="160dp" >
+
+                <TextView
+                    android:id="@+id/tv_common_shopname"
+                    style="@style/LyWHSecond"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    android:text="sfsd"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/LyWHFourth"
+                android:layout_marginRight="20dp"
+                android:gravity="center_vertical|right" >
+
+                <TextView
+                    android:id="@+id/tv_common_isfocus"
+                    style="@style/Tv_cardhome_center"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/focus"
+                    android:textSize="18sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_common_cardname"
+            style="@style/Tv_cardhome_center"
+            android:layout_below="@+id/ly_content"
+            android:layout_marginTop="5dp"
+            android:text="银卡"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_common_points"
+            style="@style/Tv_cardhome_center"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/ly_content"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="5dp"
+            android:text="bb"
+            android:textSize="16sp" />
+    </RelativeLayout>
+
+    <TextView
+        style="@style/VSpace"
+        android:background="@color/white" />
+
+</LinearLayout>

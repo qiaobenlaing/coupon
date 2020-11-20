@@ -1,0 +1,31 @@
+<table class="fp-table table table-striped table-bordered" id="data_table">
+    <thead>
+    <tr>
+        <th>城市</th>
+        <th>状态</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    <foreach name="dataList" item="item">
+        <tr>
+            <td>{$item.name}</td>
+            <td>
+                <if condition="$item.isOpen eq 1"><span class="label label-success">开通</span>
+                    <else /><span class="label label-danger">关闭</span>
+                </if>
+            </td>
+            <td>
+                <eq name="item.isOpen" value="1">
+                    <a href="/Admin/District/changeStatus/id/{$item.id}"  class="td-distant btn btn-xs btn-danger" data-status="0">关闭</a>
+                    <else />
+                    <a href="/Admin/District/changeStatus/id/{$item.id}"  class="td-distant btn btn-xs btn-success" data-status="1">开通</a>
+                </eq>
+                <a href="/Admin/District/listCityIndexModule?id={$item.id}"  class="btn btn-xs btn-info">查看首页模块</a>
+               <!--  <a href="/Admin/District/listCityQuery?id={$item.id}"  class="btn btn-xs btn-warning">查看筛选条件</a> -->
+            </td>
+        </tr>
+    </foreach>
+    </tbody>
+</table>
+<include file="Application/Admin/View/Widget/pager.html" /> 

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/LyOutSet"
+    android:background="@color/bgall" >
+
+    <include layout="@layout/common_title_commit" />
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+           	android:layout_height="@dimen/navigation_bar"
+           	android:background="@color/white"
+            android:orientation="horizontal"
+            android:layout_marginTop="15dp" >
+
+        <TextView
+            android:id="@+id/btn_reset_send_iden_code"
+            android:layout_width="65dp"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:text="@string/new_pwd"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/et_new_pwd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@+id/btn_reset_send_iden_code"
+            android:background="@null"
+            android:digits="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+            android:hint="@string/input_newpwd"
+            android:inputType="textPassword"
+            android:textSize="16sp" 
+            android:layout_centerVertical="true"/>
+
+        <CheckBox
+            android:id="@+id/ck_showpassword"
+            android:layout_width="20dp"
+	        android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:background="@null"
+            android:button="@drawable/sel_loginpass_state"
+            android:layout_centerVertical="true"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="25dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/btn_ok"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/navigation_bar"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/login_btn"
+            android:text="@string/confirm"
+            android:textColor="@color/white" />
+    </LinearLayout>
+
+</LinearLayout>

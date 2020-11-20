@@ -1,0 +1,122 @@
+<layout name="layout_api" />
+<!-- Views -->
+<div class="views">
+    <!-- Your main view, should have "view-main" class -->
+    <div class="view view-main">
+        <!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
+        <div class="pages">
+            <!-- Page, "data-page" contains page name -->
+            <div data-page="index" class="page">
+                <!-- Scrollable page content -->
+                <div class="page-content" style="background: #FDF6E4;">
+                    <if condition="($bonusCode eq '')">
+                        <div class="body bonus-wrap">
+                            <div class="bonus-head">
+                            </div>
+                            <div class="bonus-body" style="text-align: left;padding: 20px 10%;">
+                                <!--<div class="bonus-body" style="text-align: center;">-->
+                                <!--<strong>活动还在计划中, 请耐心等待</strong>-->
+                                <strong>亲爱的惠圈用户：</strong><br />
+                                <br />
+                                11月，我们惠动全城，拆礼盒赢惊喜！<br />
+                                <br />
+                                <strong>Android用户：</strong><br />
+                                请手动更新APP至最新版本，才能参加拆礼盒活动！<br />
+                                <br />
+                                <strong>惠圈APP更新步骤：</strong><br />
+                                “我的” -> “关于” -> “检查版本”<br />
+                                <br />
+                                <strong>iphone用户：</strong><br />
+                                由于系统升级，我们预计在11月5日左右将“惠圈”更新至最新版本，请及时确保您的APP为最新版本！我们诚挚地邀请您届时参加拆礼盒活动！奖品丰厚，敬请期待！<br />
+                            </div>
+                        </div>
+                        <else />
+                        <div class="body bonus-wrap">
+                            <div class="bonus-head">
+                                活动时间：{$bonusInfo.startTime|substr=0,10} - {$bonusInfo.endTime|substr=0,10}
+                            </div>
+                            <div class="bonus-body">
+                                <div class="bonus-detail">
+                                    <span class="detail-title">秒杀说明时间点</span>
+                                    <p class="detail-content">红包开抢时间：{$bonusInfo.startTime} 至 {$bonusInfo.endTime}</p>
+                                    <!--<span class="detail-title">红包分享说明</span>-->
+                                    <!--<p class="detail-content">{$bonusInfo.shareRule|htmlspecialchars_decode}</p>-->
+                                    <span class="detail-title">红包规则说明</span>
+                                    <p class="detail-content">{$bonusInfo.rule|htmlspecialchars_decode}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </if>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="__PUBLIC__/js/jweixin-1.0.0.js"></script>
+<script>
+    $(function() {
+        var myAvatar = '{$bonusInfo.url}';
+        var link = 'http://web.huiquan.suanzi.cn/Wechat/Bonus/share/bonusCode/{$bonusInfo.bonusCode}';
+        wx.config({
+            debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+            appId: '{$appId}', // 必填，公众号的唯一标识
+            timestamp: '{$timestamp}', // 必填，生成签名的时间戳
+            nonceStr: '{$nonceStr}', // 必填，生成签名的随机串
+            signature: '{$signature}',// 必填，签名，见附录1
+            jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+        });
+
+        /**
+         * 微信分享
+         */
+        wx.ready(function() {
+            wx.onMenuShareTimeline({
+                title: '苞米活动分享', // 分享标题
+                link: link, // 分享链接
+                imgUrl: myAvatar, // 分享图标
+                success: function (res) {
+                    // 用户确认分享后执行的回调函数
+                    hasShared = true;
+                    alert("分享成功！");
+//                    $.get('{:U("/Agent/Possess/addPossess",array("coupon_id"=>$couponInfo["id"]))}',
+//                            [],
+//                            function(ret){
+//                                alert(ret.msg);
+//                                if(ret.status == 0){
+//                                    window.location.href='{:U("/Agent/Possess/listPossess")}';
+//                                }
+//                            }
+//                    );
+                }
+            });
+            wx.onMenuShareAppMessage({
+                title: '苞米活动分享', // 分享标题
+                desc: '苞米活动分享', // 分享描述
+                link: link, // 分享链接
+                imgUrl: myAvatar, // 分享图标
+                type: 'link', // 分享类型,music、video或link，不填默认为link
+                dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+                success: function (res) {
+                    // 用户确认分享后执行的回调函数
+                    hasShared = true;
+                    alert("分享成功！");
+//                    $.get('{:U("/Agent/Possess/addPossess",array("coupon_id"=>$couponInfo["id"]))}',
+//                            [],
+//                            function(ret){
+//                                alert(ret.msg);
+//                                if(ret.status == 0){
+//                                    window.location.href='{:U("/Agent/Possess/listPossess")}';
+//                                }
+//                            }
+//                    );
+                }
+            });
+        });
+
+        // 百度统计
+//        var hm = document.createElement("script");
+//        hm.src = "//hm.baidu.com/hm.js?086fb61bd38301e2d91254c2c423c76b";
+//        var s = document.getElementsByTagName("script")[0];
+//        s.parentNode.insertBefore(hm, s);
+    });
+</script>

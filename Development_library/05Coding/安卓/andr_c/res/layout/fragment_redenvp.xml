@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/LyCommSet" >
+
+    <include layout="@layout/top_redenvp" />
+
+    <ScrollView
+        style="@style/LyWHFourth"
+        android:scrollbars="none" >
+
+        <LinearLayout
+            style="@style/LyWHFourth"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                style="@style/LyWHFourth"
+                android:layout_margin="10dp" >
+
+                <Button
+                    android:id="@+id/btn_red_packet_show"
+                    style="@style/LyWHFourth"
+                    android:layout_height="200dp"
+                    android:background="@drawable/image"
+                    android:text="@string/btn_red_packet"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/LyWHSecond"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="10dp"
+                android:background="@drawable/qreddetail"
+                android:gravity="center"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/tv_red_packet_detail"
+                    style="@style/LyWHSecond"
+                    android:text="@string/tv_red_packet_detail" />
+
+                <TextView
+                    android:id="@+id/tv_red_packet_date"
+                    style="@style/LyWHSecond"
+                    android:text="@string/tv_red_packet_date" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/LyWHSecond"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="10dp"
+                android:background="@drawable/reddetail"
+                android:gravity="center"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/tv_red_packet_share_dtl"
+                    style="@style/LyWHSecond"
+                    android:text="@string/tv_red_packet_share_dtl" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/LyWHSecond"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="10dp"
+                android:background="@drawable/redgreade"
+                android:gravity="center"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/tv_red_packet_greade_dtl"
+                    style="@style/LyWHSecond"
+                    android:text="@string/tv_red_packet_greade_dtl" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

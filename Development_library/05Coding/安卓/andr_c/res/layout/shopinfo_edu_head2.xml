@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_shopinfo_topview"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+    <View 
+	    android:layout_width="match_parent"
+	    android:layout_height="0.1dp"
+	    android:background="@color/thin_gray"/>
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:paddingTop="10dp"
+       	android:paddingBottom="10dp"
+       	android:background="@color/white">
+        <TextView 
+            android:id="@+id/tv_shopname"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="艺甜法式烘焙坊(明珠店)"
+            android:layout_marginLeft="10dp"
+            android:layout_gravity="center_vertical"
+            android:textSize="20sp"/>
+        
+        <ImageView 
+            android:id="@+id/iv_icbc_log"
+            android:layout_gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/icbkbank"
+            android:visibility="invisible"/>
+        <TextView 
+            android:id="@+id/tv_icbc_discount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="8.8折"
+            android:gravity="center"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="1dp"
+            android:visibility="invisible"/>
+        
+        <ImageView
+            android:id="@+id/iv_phone"
+            android:layout_gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/phone"
+            android:layout_marginLeft="10dp" 
+            android:layout_marginRight="5dp"/>
+    </LinearLayout>
+    
+     <View 
+	    android:layout_width="match_parent"
+	    android:layout_height="5dp"
+	    android:background="@color/thin_gray"/>
+     
+    
+    <View 
+	    android:layout_width="match_parent"
+	    android:layout_height="5dp"
+	    android:background="@color/thin_gray"/>
+    
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:background="@color/white">
+        <TextView 
+            android:id="@+id/edu_homepage_shop"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="首页"
+            android:gravity="center"
+            android:padding="5dp"/>
+        
+         <TextView 
+            android:id="@+id/edu_coupon_promotion"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="优惠/活动"
+            android:gravity="center"
+            android:padding="5dp"/>
+         
+          <TextView 
+            android:id="@+id/edu_shechudle"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="课程表"
+            android:gravity="center"
+            android:padding="5dp"/>
+          
+           <TextView 
+            android:id="@+id/edu_honour"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="荣誉墙"
+            android:gravity="center"
+            android:padding="5dp"/>
+           
+           <TextView 
+            android:id="@+id/edu_master"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="校长之语"
+            android:gravity="center"
+            android:padding="5dp"/>
+        
+    </LinearLayout>
+    
+	<View 
+	    android:layout_width="match_parent"
+	    android:layout_height="0.5dp"
+	    android:background="@color/thin_gray"/>
+</LinearLayout>

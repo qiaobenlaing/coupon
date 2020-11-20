@@ -1,0 +1,29 @@
+<table class="fp-table table table-striped table-bordered" id="data_table">
+    <thead>
+    <tr>
+        <th>用户名</th>
+        <th>昵称</th>
+        <th>手机号码</th>
+        <th>商店名称</th>
+        <th>使用时间</th>
+        <th>平台红包使用金额(元)</th>
+        <th>商家红包使用金额(元)</th>
+        <th>本次消费金额(元)</th>
+    </tr>
+    </thead>
+    <tbody>
+    <foreach name="dataList" item="item">
+        <tr>
+            <td>{$item.realName}</td>
+            <td>{$item.nickName}</td>
+            <td>{$item.mobileNbr}</td>
+            <td>{$item.shopName}</td>
+            <td>{$item.consumeTime}</td>
+            <td>{$item.platBonus}</td>
+            <td>{$item.shopBonus}</td>
+            <td>{$item.price}</td>
+        </tr>
+    </foreach>
+    </tbody>
+</table>
+<include file="Application/Admin/View/Widget/pager.html" />

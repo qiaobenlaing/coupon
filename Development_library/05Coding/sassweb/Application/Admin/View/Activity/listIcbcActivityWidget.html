@@ -1,0 +1,132 @@
+<table class="fp-table table table-striped table-bordered table-condensed" id="data_table">
+    <thead>
+    <tr>
+        <th>活动名</th>
+        <th>活动简介</th>
+        <th>活动位置</th>
+        <th>活动收费</th>
+        <th>活动参与人数上限</th>
+        <th>活动 开始 - 结束 时间</th>
+        <th style="width: 47px;">状态</th>
+        <th style="width: 47px;">操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    <foreach name="dataList" item="item">
+        <tr>
+            <td>{$item.activityName}</td>
+            <td>{$item.txtContent}</td>
+            <td>
+                <if condition="$item.pos eq 1">滚屏位置
+                    <elseif condition="$item.pos eq 3"/>红包活动区
+                    <else />无
+                </if>
+            </td>
+            <td>
+                <gt name="item.totalPayment" value="0">
+                    ￥<?php if(isset($item['minPrice']) && $item['minPrice'] < $item['totalPayment']):?>{$item.minPrice} - <?php endif;?>{$item.totalPayment}
+                    <else />
+                    <span class="label label-success">免费</span>
+                </gt>
+            </td>
+            <td><gt name="item.limitedParticipators" value="0">{$item.limitedParticipators}<else /><span class="label label-success">无限制</span></gt> <gt name="item.totalPayment" value="0">(已报名：{$item.participators|default="0"})</gt></td>
+            <td>{$item.startTime|substr=0,10} - {$item.endTime|substr=0,10}</td>
+            <td>
+                <if condition="$item.status egt 0">
+                    <div class="dropdown">
+                        <switch name="item.status">
+                            <case value="1">
+                                <button type="button" class="btn btn-xs btn-success dropdown-toggle btn-act-status-{$item.activityCode}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <span class="status-text">启用</span><span class="caret"></span>
+                                </button>
+                            </case>
+                            <case value="0">
+                                <button type="button" class="btn btn-xs btn-danger dropdown-toggle btn-act-status-{$item.activityCode}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <span class="status-text">禁用</span><span class="caret"></span>
+                                </button>
+                            </case>
+                            <case value="2">
+                                <button type="button" class="btn btn-xs btn-danger dropdown-toggle btn-act-status-{$item.activityCode}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <span class="status-text">暂停报名</span><span class="caret"></span>
+                                </button>
+                            </case>
+                            <case value="3">
+                                <button type="button" class="btn btn-xs btn-danger dropdown-toggle btn-act-status-{$item.activityCode}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <span class="status-text">取消</span><span class="caret"></span>
+                                </button>
+                            </case>
+                        </switch>
+                        <ul class="dropdown-menu" style="min-width: 0">
+                            <li><a href="#" data-act-code="{$item.activityCode}" data-status="0" class="change-act-status">禁用</a></li>
+                            <li><a href="#" data-act-code="{$item.activityCode}" data-status="1" class="change-act-status">启用</a></li>
+                            <li><a href="#" data-act-code="{$item.activityCode}" data-status="2" class="change-act-status">暂停报名</a></li>
+                            <li><a href="#" data-act-code="{$item.activityCode}" data-status="3" class="change-act-status">取消</a></li>
+                        </ul>
+                    </div>
+                    <if condition="$item.status eq 4">
+                        <span class="label label-danger">已结束</span>
+                        <elseif condition="$item.status eq 5"/>
+                        <span class="label label-danger">已满员</span>
+                    </if>
+                    <else />
+                    <span class="label label-danger">已删除</span>
+                </if>
+            </td>
+            <td class="data-list-operation-wrap">
+                <if condition="$item.status egt 0">
+                    <a href="/Admin/Activity/editActivity?activityCode={$item.activityCode}&page={$pager:page}&bk=Icbc" class="btn btn-xs btn-primary">编辑</a>
+                </if>
+            </td>
+        </tr>
+    </foreach>
+    </tbody>
+</table>
+<script>
+    // 修改商家活动的状态
+    ;(function(){
+        $('.change-act-status').on('click', function(){
+            var actCode = $(this).data('actCode');
+            var status = $(this).data('status');
+
+            var btnActStatus = $('.btn-act-status-' + actCode);
+            btnActStatus.removeClass('btn-default').removeClass('btn-success').removeClass('btn-danger');
+            $.get(
+                    '/Admin/Activity/changeStatus',
+                    {'activityCode': actCode, 'status': status},
+                    function(resp){
+                        if(resp.status == sz.STATUS_SUCC) {
+                            switch(status){
+                                case 1:
+                                    btnActStatus.children().filter('.status-text').html('启用');
+                                    btnActStatus.addClass('btn-success');
+                                    break;
+                                case 0:
+                                    btnActStatus.children().filter('.status-text').html('禁用');
+                                    btnActStatus.addClass('btn-danger');
+                                    break;
+                                case 2:
+                                    btnActStatus.children().filter('.status-text').html('暂停报名');
+                                    btnActStatus.addClass('btn-danger');
+                                    break;
+                                case 3:
+                                    btnActStatus.children().filter('.status-text').html('取消');
+                                    btnActStatus.addClass('btn-danger');
+                                    break;
+                                case -1:
+                                    btnActStatus.children().filter('.status-text').html('删除');
+                                    btnActStatus.addClass('btn-danger');
+                                    break;
+                            }
+                            // 隐藏下拉框
+                            btnActStatus.dropdown('toggle');
+                        } else {
+                            sz.showErrMsg(resp.msg)
+                        }
+                    }
+            );
+            return false;
+        });
+    })();
+</script>
+<include file="Application/Admin/View/Widget/pager.html" />
+

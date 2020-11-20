@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bgall"
+    android:orientation="horizontal" >
+
+    <RelativeLayout
+        android:id="@+id/rl_coupon"
+        style="@style/LyWHFourth"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/right_allcoupon" >
+
+        <LinearLayout
+            android:id="@+id/ly_couponpic"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/rl_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignTop="@+id/rl_content"
+            android:background="@drawable/available_n"
+            android:gravity="center_vertical"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                style="@style/LyWHFourth"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/tv_money"
+                    style="@style/LyWHSecond"
+                    android:text="@string/home_money"
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tv_insteadPrice"
+                    style="@style/LyWHSecond"
+                    android:text="0"
+                    android:textColor="@color/white"
+                    android:textSize="22sp" />
+
+                <TextView
+                    android:id="@+id/tv_symbol"
+                    style="@style/LyWHSecond"
+                    android:text="@string/home_discount"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:visibility="gone" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_content"
+            style="@style/LyWHFourth"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/ly_couponpic"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp" >
+
+            <TextView
+                android:id="@+id/coupon_batch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_marginBottom="5dp"
+                android:text="批次:1501"
+                android:textColor="@color/coupon_hometopfont" />
+
+            <TextView
+                android:id="@+id/coupon_available"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/coupon_batch"
+                android:layout_marginBottom="5dp"
+                android:layout_toLeftOf="@+id/iv_share"
+                android:text="满50减2"
+                android:textColor="@color/coupon_hometopfont" />
+
+            <ImageView
+                android:id="@+id/iv_share"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_toLeftOf="@+id/btn_draw"
+                android:paddingRight="5dp"
+                android:src="@drawable/share" />
+
+            <Button
+                android:id="@+id/btn_draw"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/enroll_nomal"
+                android:text="领取人员"
+                android:textColor="@color/red"
+                android:textSize="12sp" />
+
+            <LinearLayout
+                android:id="@+id/ly_progess"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/coupon_available"
+                android:layout_marginBottom="5dp"
+                android:layout_marginRight="5dp"
+                android:orientation="vertical" >
+
+                <com.huift.hfq.base.utils.MyProgress
+                    android:id="@+id/progress_drawcoupon"
+                    style="@style/StyleProgressBarMini"
+                    android:layout_width="wrap_content"
+                    android:layout_height="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/shape_progressbar_bg"
+                    android:minWidth="150dp" />
+
+                <TextView
+                    android:id="@+id/coupon_percentage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="已领取 42%(108/240)"
+                    android:textColor="@color/coupon_hometopfont"
+                    android:textSize="12sp" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ly_couponpic"
+            android:layout_marginTop="-18dp"
+            android:gravity="center_horizontal" >
+
+            <TextView
+                android:id="@+id/tv_coupontype"
+                style="@style/LyWHSecond"
+                android:text="实物券"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                android:visibility="visible" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ly_unavailable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true" >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleType="centerInside"
+                android:src="@drawable/unavailable" />
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>

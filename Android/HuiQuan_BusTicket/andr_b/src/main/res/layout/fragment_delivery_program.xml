@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/LyOutSet"
+    android:orientation="vertical" >
+
+    <include layout="@layout/common_title_commit" />
+    <LinearLayout
+        android:id="@+id/ly_shop_time"
+        style="@style/LyWHFourth"
+        android:layout_marginTop="15dp"
+        android:orientation="vertical" >
+        <ListView
+	        android:id="@+id/lv_upp_delivery_program"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:background="@color/app_bg"
+	        android:cacheColorHint="#00000000"
+	        android:dividerHeight="0.5dp"
+	        android:divider="@color/shallow_gray"
+	        android:scrollbars="none"
+	        android:visibility="visible" />
+    </LinearLayout>
+</LinearLayout>

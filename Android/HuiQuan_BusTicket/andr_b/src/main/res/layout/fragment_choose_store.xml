@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/LyWHFirst"
+    android:orientation="vertical" >
+
+    <include layout="@layout/common_title_commit" />
+
+    <FrameLayout
+         android:layout_width="match_parent"
+         android:layout_height="match_parent">
+         
+         <com.scwang.smartrefresh.layout.SmartRefreshLayout
+	        android:id="@+id/index_swipe_refresh"
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent"
+	        android:visibility="visible" >
+		    <ListView
+                android:id="@+id/lv_mystorelist_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/app_bg"
+                android:cacheColorHint="#000000"
+                android:divider="@color/shopdetail_divider"
+                android:dividerHeight="0.5px"
+                android:scrollbars="none"
+                android:visibility="visible" />
+	    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+	
+	    <include layout="@layout/comm_no_data" />
+	    
+    </FrameLayout>
+
+</LinearLayout>

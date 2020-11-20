@@ -1,0 +1,33 @@
+<layout name="layout_admin" />
+<div>
+    <form class="form-inline" id="data_search_form" action="#" method="get">
+        <div class="form-group">
+            <label>商户编号</label>
+            <input type="text" class="form-control" name="shopCode" value="{$get.shopCode}"  placeholder="商户编号">
+        </div>
+        <div class="form-group">
+            <label>商户名称</label>
+            <input type="text" class="form-control" name="shopName" value="{$get.shopName}"  placeholder="商户名称">
+        </div>
+        <div class="form-group">
+            <label>第三方商户编号</label>
+            <input type="text" class="form-control" name="thirdShopCode" value="{$get.thirdShopCode}" placeholder="第三方商户编号">
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-sm" id="search_form_submit_btn">查询</button>
+        <button type="button" class="btn btn-primary btn-sm" id="export">导出</button>
+        <input type="hidden" id="frm_ele_page" name="page" value="1" />
+    </form>
+</div>
+<div id="data_table_wrapper">
+    <include file="./Application/Admin/View/ShopLink/linkShopListWidget.html" />
+</div>
+<script type="text/javascript">
+    $(function() {
+        // 导出用户信息
+        $('#export').click(function(){
+            var frm = $('#data_search_form');
+            location.href = '/Admin/ShopLink/exportAllLinkShop?' + frm.serialize();
+        });
+    });
+</script>

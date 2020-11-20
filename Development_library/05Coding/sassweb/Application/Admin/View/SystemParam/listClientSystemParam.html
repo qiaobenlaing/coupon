@@ -1,0 +1,21 @@
+<layout name="layout_admin" />
+<div>
+    <form class="form-inline" id="data_search_form" action="#" method="get">
+        <!--<button type="submit" class="btn btn-sm btn-primary" id="search_form_submit_btn">查询</button>-->
+        <input type="hidden" id="frm_ele_page" name="page" value="1" />
+    </form>
+</div>
+<div id="data_table_wrapper">
+  <include file="./Application/Admin/View/SystemParam/listClientSystemParamWidget.html" />
+</div>
+<script>
+    ;(function(){
+        $('.create-time').datetimepicker({
+            format: 'yyyy-mm-dd',
+            autoclose: true,
+            todayBtn: true,
+            minView: 'month',
+            pickerPosition: "bottom-left"
+        })
+    })();
+</script>

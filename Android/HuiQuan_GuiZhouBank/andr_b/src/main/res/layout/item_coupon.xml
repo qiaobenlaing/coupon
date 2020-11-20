@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_coupon"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp"
+    android:gravity="center_vertical|center_horizontal"
+    android:orientation="horizontal" >
+
+    <LinearLayout
+        style="@style/LyWHSecond"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:id="@+id/iv_couponuser_pic"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:src="@drawable/csm_copon" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ly_ecsm_title"
+        style="@style/LyWHSecond"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/tv_use_coupone_sum"
+            style="@style/LyWHSecond"
+            android:text="XXX" />
+
+        <TextView
+            android:id="@+id/tv_csm_money"
+            style="@style/LyECsm"
+            android:text="XX" />
+
+        <TextView
+            android:id="@+id/tv_csm_ddt_money"
+            style="@style/LyECsm"
+            android:text="XXX" />
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/LyWHFourth"
+        android:layout_marginLeft="10dp"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/tv_csm_code"
+            style="@style/LyWHSecond"
+            android:text="XX" />
+
+        <TextView
+            android:id="@+id/tv_csm_igl"
+            style="@style/LyECsm"
+            android:text="XXX" />
+
+        <TextView
+            android:id="@+id/tv_csm_time"
+            style="@style/LyECsm"
+            android:text="2015/3/14" />
+    </LinearLayout>
+
+</LinearLayout>

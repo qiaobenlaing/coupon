@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_bg"
+    android:orientation="vertical" >
+
+    <include layout="@layout/common_title_commit" />
+
+    <ListView
+        android:id="@+id/lv_coupon_select"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="5dp"
+        android:layout_weight="1"
+        android:divider="#00000000"
+        android:dividerHeight="18dp" >
+    </ListView>
+
+    <Button
+        android:id="@+id/btn_go_pay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/shape_paybill"
+        android:enabled="false"
+        android:text="去结算"
+        android:textColor="@color/white" />
+
+</LinearLayout>

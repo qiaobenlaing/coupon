@@ -1,0 +1,47 @@
+<layout name="layout_api" />
+<style>
+    .pay-ret-warp{
+        padding: 35px;
+        background-color: #FFFFFD;
+    }
+    .pay-ret{
+        padding: 27px;
+        border: 1px solid #DBC59C;
+        background-color: #F8EEA6;
+        border-radius: 7px;
+        font-size: 15px;
+        margin-bottom: 16px;
+    }
+    .pay-ret .pay-fail-img {
+        width: 25px;
+        float: left;
+        margin-right: 7px;
+    }
+    .pay-ret .pay-ret-text {
+        line-height: 23px;
+    }
+</style>
+<!-- Views -->
+<div class="views">
+    <!-- Your main view, should have "view-main" class -->
+    <div class="view view-main">
+        <!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
+        <div class="pages toolbar-through">
+            <!-- Page, "data-page" contains page name -->
+            <div data-page="index" class="page">
+                <!-- Scrollable page content -->
+                <div class="page-content" style="background: #FFFFFD;">
+                    <div class="pay-ret-warp">
+                        <div class="pay-ret">
+                            <img src="/Public/img/icon/wrong_img.png" alt="" class="pay-fail-img"/>
+                            <div class="pay-ret-text">
+                                抱歉，支付失败!<br/>
+                                {$retMsg}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

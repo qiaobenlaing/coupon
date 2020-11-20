@@ -1,0 +1,76 @@
+<layout name="layout_admin" />
+<script src="__PUBLIC__/js/webuploader.js" charset="UTF-8"></script>
+<script src="__PUBLIC__/js/upload.js" charset="UTF-8"></script>
+<script src="__PUBLIC__/shop/album.js" charset="UTF-8"></script>
+<link rel="stylesheet" href="__PUBLIC__/shop/set.css">
+<div class="row">
+    <div class="col-sm-12">
+        <form role="form" id="frm_edit_shop" action="/Admin/Shop/listAlbumPhoto" method="post">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h5 class="panel-title">
+                        产品目录 - {$data.name}
+                    </h5>
+                </div>
+                <div class="panel-body">
+
+                    <input type="hidden" id="sub_album_code" value="{$data.code}" />
+                    <div id="product">
+                        <foreach name="data.photo" item="vo" >
+                            <div class="col-xs-4" id="div-{$vo.code}" style="position: relative;">
+                                <img src="{$vo.url}" class="img-responsive img-rounded" style="height: 150px;width: auto;">
+                                <a href="#" action="del_product" code="{$vo.code}" style="position: absolute;right: 35px;top: 0;"><span class="glyphicon glyphicon-remove-circle" style="color: #ff0000;font-size: 20px;"></span></a>
+                                <div class="row row-top" style="margin: 10px 0;">
+                                    <div class="input-group">
+                                        <span class="input-group-addon frm-span">标题</span>
+                                        <input type="text" class="form-control" name="title[{$vo.code}]" value="{$vo.title}" />
+                                    </div>
+                                </div>
+                                <div class="row row-top" style="margin: 10px 0;">
+                                    <div class="input-group">
+                                        <span class="input-group-addon frm-span">价格</span>
+                                        <input type="text" class="form-control" name="price[{$vo.code}]" value="{$vo.price}" />
+                                    </div>
+                                </div>
+                                <div class="row row-top" style="margin: 10px 0;">
+                                    <div class="input-group">
+                                        <span class="input-group-addon frm-span">描述</span>
+                                        <input type="text" class="form-control" name="des[{$vo.code}]" value="{$vo.des}" />
+                                    </div>
+                                </div>
+                            </div>
+                        </foreach>
+                    </div>
+                    <div class="row-fluid employee-item-img">
+                        <div class="employee-item-imgdiv">
+                            <img name="business_card" src="__PUBLIC__/img/upload.png" class="J_business_card img-responsive img-rounded">
+                        </div>
+                        <div class="J_card"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row row-top row-btn">
+                <div class="btn-group ">
+                    <input type="submit" class="btn btn-primary" id="submit" value="保存" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<script>
+    $(document).ready(function(){
+        del_product();
+
+        $('#frm_edit_shop').on('submit', function() {
+            var frm = $(this);
+            $.post(frm.attr('action'), frm.serialize(), function(resp) {
+                if (resp.status == sz.STATUS_SUCC) {
+                    sz.showSuccMsg('保存成功！',5);
+                } else {
+                    sz.showErrMsg(resp.msg, 3);
+                }
+            });
+            return false;
+        });
+    });
+</script>

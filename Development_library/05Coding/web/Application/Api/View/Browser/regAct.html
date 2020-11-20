@@ -1,0 +1,56 @@
+<layout name="layout_api" />
+<style>
+    .reg-act{
+        background-image: url('/Public/img/regAct/bg.png');
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        text-align: center;
+    }
+    .reg-act .text{
+        margin-top: 70%;
+    }
+    .reg-act .text img{
+        width: 63%;
+    }
+    .reg-act .reg-button-wrap{
+        padding: 0 49px;
+        margin-top: 50%;
+    }
+    .reg-act .reg-button-wrap .reg-button{
+        background-image: url('/Public/img/regAct/button.png');
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        text-align: center;
+        height: 41px;
+        line-height: 41px;
+    }
+    .reg-act .reg-button-wrap .reg-button a{
+        color: #AA4818;
+        font-size: 18px;
+        font-weight: 800;
+        display: block;
+    }
+</style>
+<!-- Views -->
+<div class="views">
+    <!-- Your main view, should have "view-main" class -->
+    <div class="view view-main">
+        <!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
+        <div class="pages toolbar-through">
+            <!-- Page, "data-page" contains page name -->
+            <div data-page="index" class="page">
+                <!-- Scrollable page content -->
+                <div class="page-content reg-act">
+                    <div class="text">
+                        <img src="/Public/img/regAct/text.png" alt=""/>
+                    </div>
+                    <div class="reg-button-wrap">
+                        <div class="reg-button">
+                            <a href="hq://register" class="external">注册领取福利</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,145 @@
+<layout name="layout_admin" />
+<script src="__PUBLIC__/js/knockout.js" charset="UTF-8"></script>
+<script type="text/javascript" src="__PUBLIC__/js/jscolor.min.js"></script>
+<script>
+    var __exButtonList = {$dataInfo.exButtonList|json_encode};
+</script>
+<div class="row">
+    <div class="col-md-11">
+        <form id="sub_module_add_form" action="/Admin/Module/editSubModule" method="post" class="form-horizontal">
+            <input type="hidden" name="id" value="{$dataInfo.id}" />
+            <input type="hidden" name="parentModuleId" value="{$dataInfo.parentModuleId}" />
+            <input type="hidden" name="cityId" value="{$dataInfo.cityId}" />
+            <div class="form-group">
+                <label for="title" class="col-sm-2 control-label">标题</label>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" id="title" placeholder="标题" name="title" value="{$dataInfo.title}">
+                </div>
+
+                <label for="titleColor" class="col-sm-2 control-label">未选中标题颜色(16进制形式)</label>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control jscolor" id="titleColor" name="titleColor" value="{$dataInfo.titleColor|default='000000'}">
+                </div>
+
+                <label for="subTitleColor" class="col-sm-2 control-label">选中的标题颜色(16进制形式)</label>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control jscolor" id="subTitleColor" name="subTitleColor" value="{$dataInfo.subTitleColor|default='000000'}">
+                </div>
+            </div>
+            <div class="form-group"><hr /></div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">选中时的图片</label>
+                <div class="col-sm-4">
+                    <input type="hidden" name="focusedUrl" value="{$dataInfo.focusedUrl}" />
+                    <div class="fileinput fileinput-new" data-provides="fileinput">
+                        <div class="fileinput-new thumbnail"><img src="{$dataInfo.focusedUrl}" style="max-width: 400px; max-height: 100px;" /></div>
+                        <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 400px; max-height: 100px;"></div>
+                        <div>
+                    <span class="btn btn-default btn-file">
+                        <span class="fileinput-new">选择背景图片</span>
+                        <span class="fileinput-exists">换一张</span>
+                        <input type="file" name="upfile" class="ajax-file-upload" data-imgname="focusedUrl" data-url="/Admin/Util/imageUp" multiple>
+                    </span>
+                            <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">移除</a>
+                            <span id="state_focusedUrl" class="ajax-file-state"></span>
+                        </div>
+                    </div>
+                </div>
+                <label class="col-sm-2 control-label">未选中时的图片</label>
+                <div class="col-sm-4">
+                    <input type="hidden" name="notFocusedUrl" value="{$dataInfo.notFocusedUrl}" />
+                    <div class="fileinput fileinput-new" data-provides="fileinput">
+                        <div class="fileinput-new thumbnail"><img src="{$dataInfo.notFocusedUrl}" style="max-width: 400px; max-height: 100px;" /></div>
+                        <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 400px; max-height: 100px;"></div>
+                        <div>
+                    <span class="btn btn-default btn-file">
+                        <span class="fileinput-new">选择背景图片</span>
+                        <span class="fileinput-exists">换一张</span>
+                        <input type="file" name="upfile" class="ajax-file-upload" data-imgname="notFocusedUrl" data-url="/Admin/Util/imageUp" multiple>
+                    </span>
+                            <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">移除</a>
+                            <span id="state_notFocusedUrl" class="ajax-file-state"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="imgRate" class="col-sm-2 control-label">图片宽 / 图片高</label>
+                <div class="col-sm-3">
+                    <input type="text" class="form-control" id="imgRate" name="imgRate" value="{$dataInfo.imgRate|default='2'}">
+                </div>
+                <label for="screenRate" class="col-sm-2 control-label">图片宽 / 屏幕宽</label>
+                <div class="col-sm-3">
+                    <input type="text" class="form-control" id="screenRate" placeholder="0~1的数" name="screenRate" value="{$dataInfo.screenRate}">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="bgColor" class="col-sm-2 control-label">背景色(16进制形式)</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control jscolor" id="bgColor" name="bgColor" value="{$dataInfo.bgColor|default='F5F5F5'}">
+                </div>
+
+                <label class="col-sm-2 control-label">是否显示</label>
+                <div class="col-sm-4">
+                    <label class="radio-inline">
+                        <input type="radio" name="hide" value="0" <neq name="dataInfo.hide" value="1">checked="checked"</neq>> 显示
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="hide" value="1" <eq name="dataInfo.hide" value="1">checked="checked"</eq>> 隐藏
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-primary">保存</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<script src="__PUBLIC__/js/vendor/jquery.ui.widget.js"></script>
+<script src="__PUBLIC__/js/jquery.iframe-transport.js"></script>
+<script src="__PUBLIC__/js/jquery.fileupload.js"></script>
+<script type="text/javascript">
+    $(function(){
+        $('#sub_module_add_form').on('submit', function() {
+            $('button[type="submit"]').attr('disabled', true);
+            var frm = $(this);
+            $.post(frm.attr('action'), frm.serialize(), function(resp) {
+                if (resp.status == sz.STATUS_SUCC) {
+                    sz.showSuccMsg(resp.msg, 3);
+                    location.href = '/Admin/District/listCityIndexModule?id={$dataInfo.cityId}';
+                } else {
+                    sz.showErrMsg(resp.msg, 3);
+                    $('button[type="submit"]').attr('disabled', false);
+                }
+            });
+            return false;
+        });
+
+        $('.ajax-file-upload').fileupload({
+            dataType: 'json',
+            add: function (e, data) {
+                var imgname = $(this).data('imgname'); // imgname为 activityImg或者activityLogo
+                data.context = $('#state_' + imgname).text('正在上传...');
+                data.submit();
+            },
+            /* progressall: function (e, data) {
+             var progress = parseInt(data.loaded / data.total * 100, 10);
+             $('#progress_img_quare .bar').css('width', progress + '%');
+             }, */
+            done: function (e, data) {
+                var resp = data.result;
+                if (resp.state == 'SUCCESS') {
+                    data.context.text('上传完成');
+                    var imgname = data.context.attr('id').substr('state_'.length);
+                    var imgUrl = resp.url.substr(0, 1) == '.' ? resp.url.substr(1) : resp.url; // 去掉"./"中的"."
+                    $('#sub_module_add_form input[name=' + imgname + ']').val('/'+ imgUrl);
+                } else {
+                    data.context.text('上传失败');
+                    $('#sub_module_add_form input[name=' + imgname + ']').val('');
+                }
+            }
+        });
+    });
+</script>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/LyWHFirst"
+    android:background="@color/app_bg"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/ly_great_manager"
+        style="@style/LyWHFourth"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            style="@style/LyWHFourth"
+            android:layout_height="48dp"
+            android:background="@color/white" >
+
+            <TextView
+                style="@style/LyWHSecond"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
+                android:text="大店长"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <TextView style="@style/VLine" />
+
+        <LinearLayout
+            style="@style/LyWHFourth"
+            android:layout_height="48dp"
+            android:background="@color/white"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/tv_great_manager_name"
+                style="@style/LyWHSecond"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
+                android:text="大店长姓名:"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tv_great_manager_phone"
+                style="@style/LyWHSecond"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:text="15868179748"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <TextView style="@style/VLine" />
+
+        <TextView
+            style="@style/VSpace"
+            android:layout_height="10dp"
+            android:background="@color/app_bg" />
+
+        <TextView style="@style/VLine" />
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/LyWHFourth"
+        android:layout_height="48dp"
+        android:background="@color/white" >
+
+        <TextView
+            style="@style/LyWHSecond"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:text="店长"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <TextView style="@style/VLine" />
+
+</LinearLayout>

@@ -1,0 +1,27 @@
+<table class="fp-table table table-striped table-bordered table-condensed" id="data_table">
+    <thead>
+    <tr>
+        <th>编号</th>
+        <th width="20%">创建时间</th>
+        <th>IP</th>
+        <th width="7%">卡券类型</th>
+        <th>卡券号</th>
+        <th width="30%">事件描述</th>
+        <th>用户编号</th>
+    </tr>
+    </thead>
+    <tbody>
+    <foreach name="dataList" item="item">
+        <tr>
+            <td>{$item.id}</td>
+            <td>{$item.readtime}</td>
+            <td>{$item.addip}</td>
+            <td><if condition="$item.cardType eq 1">会员卡<elseif condition="$item.cardType eq 2"/>优惠券<else />未知</if></td>
+            <td>{$item.cardNumber}</td>
+            <td>{$item.event}</td>
+            <td>{$item.userCode}</td>
+        </tr>
+    </foreach>
+    </tbody>
+</table>
+<include file="Application/Admin/View/Widget/pager.html" />

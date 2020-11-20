@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/LyOutSet"
+    android:background="@color/app_bg" >
+
+    <include layout="@layout/common_title_commit" />
+
+    <LinearLayout
+        android:id="@+id/ly_validate"
+        style="@style/LyWHFourth"
+        android:layout_marginTop="30dp"
+        android:gravity="center"
+        android:orientation="horizontal" >
+
+        <TextView
+            style="@style/LyWHSecond"
+            android:text="@string/tv_validate_pwd"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_my_phone"
+            style="@style/LyWHSecond"
+            android:text="xxxx"
+            android:textSize="16sp" />
+
+        <TextView
+            style="@style/LyWHSecond"
+            android:text="上"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ly_forget_pwd"
+        style="@style/LyWHFourth"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:orientation="horizontal" >
+
+        <TextView
+            style="@style/LyWHSecond"
+            android:text="@string/tv_forget_pwd"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_phone"
+            style="@style/LyWHSecond"
+            android:text="xxxx"
+            android:textSize="16sp" />
+
+        <TextView
+            style="@style/LyWHSecond"
+            android:text="上"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <RelativeLayout
+        style="@style/LyWHFourth"
+        android:layout_height="48dp"
+        android:layout_marginTop="15dp"
+        android:background="@color/white"
+        android:gravity="center"
+        android:orientation="horizontal" >
+
+        <EditText
+            android:id="@+id/et_validate_code"
+            style="@style/LyWHSecond"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="10dp"
+            android:background="@null"
+            android:gravity="center"
+            android:hint="@string/input_msg_pwd"
+            android:inputType="phone"
+            android:textColorHint="@color/deep_grey"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/btn_validate_code"
+            style="@style/LyWHSecond"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/register_indencode" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/btn_ok"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/navigation_bar"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/login_btn"
+            android:gravity="center"
+            android:text="@string/confirm"
+            android:textColor="@color/white" />
+    </LinearLayout>
+
+</LinearLayout>

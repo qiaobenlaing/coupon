@@ -1,0 +1,556 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>惠圈商圈服务平台</title>
+    <link href="css/bootstrap.min_16.css" rel="stylesheet">
+    <link href="css/admin_8.css" rel="stylesheet">
+    <link href="css/bootstrap.min_17.css" rel="stylesheet">
+    <link href="css/bootstrap-datetimepicker.min_8.css" rel="stylesheet">
+    <link href="css/umeditor.min_8.css" type="text/css" rel="stylesheet">
+    <link href="css/jasny-bootstrap.min_8.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/main_8.css" />
+    <link rel="stylesheet" type="text/css" href="css/select2.min_8.css" />
+    <script src="js/jquery.min_8.js"></script>
+    <script src="js/bootstrap.min_8.js"></script>
+    <script type="text/javascript" src="js/bootstrap-datetimepicker_7.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="js/bootstrap-datetimepicker.fr_8.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="js/admin_8.js" charset="UTF-8"></script>
+    <script src="js/bootbox_8.js" charset="UTF-8"></script>
+    <script src="js/demos_8.js" charset="UTF-8"></script>
+    <script src="js/jasny-bootstrap.min_8.js" charset="UTF-8"></script>
+    <script src="js/example_8.js" charset="UTF-8"></script>
+    <script src="js/select2.min_8.js"></script>
+</head>
+<body data-spy="scroll" data-target="#myScrollspy">
+<div class="container-fluid">
+    <div class="alert alert-success alert-fixed-top alert-top-tip" style='display: none;text-align: center;'></div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="header_top">
+                <div class="col-md-10 col-sm-9 col-xs-9">
+                    <a href="/Admin/BmStaff/homepage" class='logo'>惠圈移动商圈服务平台</a>
+                </div>
+                <div class="col-md-2 col-sm-3 col-xs-3 login-info">
+                    <span>用户: </span>
+                    <span><a href="/Admin/BmStaff/editBmStaff?mobileNbr=15868179748">季华飞</a></span>
+                    <a href="/Admin/BmStaff/logout">退出</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <nav class="navbar navbar-default col-xs-12 col-sm-2 col-md-2" role="navigation" style="background-color: #fff;border: 0px">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#toall-nav" aria-expanded="false">
+                    <span class="sr-only">菜单</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!--<a class="navbar-brand" href="#">Brand</a>-->
+            </div>
+            <div class="collapse navbar-collapse"  id='toall-nav' >
+                <ul class="nav nav-stacked nav-tabs-totall" id="menu-bar">
+                    <li class="panel dropdown panel-active">
+                                                            <a data-toggle="collapse" data-parent="#menu-bar" href="#submenu_preShop" class='panel-active-a collapsed'>地推商户</a>
+                                <ul id='submenu_preShop' class="panel-collapse collapse">
+                                                                                                                    <li class='nav_second'><a href="/Admin/PreShop/listPreShop">商户列表</a></li>                                            <li class='nav_second'><a href="/Admin/PreShop/dataExport">数据导出</a></li>                                </ul>
+                        </li><li class="panel dropdown panel-active">
+                                                            <a data-toggle="collapse" data-parent="#menu-bar" href="#submenu_brand" class='panel-active-a collapsed'>品牌管理</a>
+                                <ul id='submenu_brand' class="panel-collapse collapse">
+                                                                                                                    <li class='nav_second'><a href="/Admin/Brand/listBrand">品牌列表</a></li>                                            <li class='nav_second'><a href="/Admin/Brand/editBrand">编辑品牌</a></li>                                </ul>
+                        </li><li class="panel dropdown panel-active">
+                                                            <a data-toggle="collapse" data-parent="#menu-bar" href="#submenu_shop" class='panel-active-a collapsed'>商户相关管理</a>
+                                <ul id='submenu_shop' class="panel-collapse collapse">
+                                                                                                                    <li class='nav_second'><a href="/Admin/Shop/listShop">商户列表</a></li>                                            <li class='nav_second'><a href="/Admin/Shop/editShop">编辑商户</a></li>                                            <li class='nav_second'><a href="/Admin/Shop/listApply">商户入驻申请</a></li>                                            <li class='nav_second'><a href="/Admin/ShopStaff/listShopStaff">商户员工列表</a></li>                                            <li class='nav_second'><a href="/Admin/ShopStaff/editShopStaff">编辑商户员工</a></li>                                            <li class='nav_second'><a href="/Admin/BatchCoupon/listSpCoupon">商户优惠券列表</a></li>                                            <li class='nav_second'><a href="/Admin/BatchCoupon/editCoupon">编辑优惠券</a></li>                                            <li class='nav_second'><a href="/Admin/ConsumeOrder/listConsumeOrder">商户订单列表</a></li>                                            <li class='nav_second'><a href="/Admin/UserConsume/listUserConsume">账单列表</a></li>                                            <li class='nav_second'><a href="/Admin/Bonus/listSpBonus">商户红包列表</a></li>                                            <li class='nav_second'><a href="/Admin/Bonus/editBonus">编辑红包</a></li>                                            <li class='nav_second'><a href="/Admin/Activity/listSpActivity">商户活动列表</a></li>                                            <li class='nav_second'><a href="/Admin/Activity/editActivity">编辑活动</a></li>                                            <li class='nav_second'><a href="/Admin/Card/listCard">商户会员卡列表</a></li>                                            <li class='nav_second'><a href="/Admin/Card/editCard">编辑会员卡</a></li>                                            <li class='nav_second'><a href="/Admin/ShopType/listShopType">商家类型列表</a></li>                                            <li class='nav_second'><a href="/Admin/ShopType/editShopType">编辑商家类型</a></li>                                </ul>
+                        </li><li class="panel dropdown panel-active">
+                                                            <a data-toggle="collapse" data-parent="#menu-bar" href="#submenu_user" class='panel-active-a collapsed'>用户相关管理</a>
+                                <ul id='submenu_user' class="panel-collapse collapse">
+                                                                                                                    <li class='nav_second'><a href="/Admin/User/listUser">用户列表</a></li>                                            <li class='nav_second'><a href="/Admin/User/editUser">用户添加</a></li>                                            <li class='nav_second'><a href="/Admin/UserCard/listUserCard">用户会员卡</a></li>                                            <li class='nav_second'><a href="/Admin/UserCoupon/listUsCoupon">用户优惠券</a></li>                                            <li class='nav_second'><a href="/Admin/UserBonus/listUserBonus">用户红包</a></li>                                            <li class='nav_second'><a href="/Admin/User/listUserPoint">用户圈值</a></li>                                            <li class='nav_second'><a href="/Admin/BankAccount/listBankAccount">用户银行卡</a></li>                                            <li class='nav_second'><a href="/Admin/User/exportExcelRegister">用户绑卡数据导出</a></li>                                </ul>
+                        </li><li class="panel dropdown panel-active">
+                                                            <a data-toggle="collapse" data-parent="#menu-bar" href="#submenu_plat" class='panel-active-a collapsed'>惠圈平台相关管理</a>
+                                <ul id='submenu_plat' class="panel-collapse collapse">
+                                                                                                                    <li class='nav_second'><a href="/Admin/BmStaff/listBmStaff">惠圈平台人员列表</a></li>                                            <li class='nav_second'><a href="/Admin/StaffActionLog/listActionLog">惠圈管理员日志</a></li>                                            <li class='nav_second'><a href="/Admin/BmStaff/editBmStaff">编辑人员</a></li>                                            <li class='nav_second'><a href="/Admin/BatchCoupon/listPfCoupon">惠圈平台优惠券</a></li>                                            <li class='nav_second'><a href="/Admin/BatchCoupon/editCoupon">编辑优惠券</a></li>                                            <li class='nav_second'><a href="/Admin/Bonus/listPfBonus">平台红包列表</a></li>                                            <li class='nav_second'><a href="/Admin/Bonus/editBonus">编辑红包</a></li>                                            <li class='nav_second'><a href="/Admin/Activity/listPfActivity">平台活动列表</a></li>                                            <li class='nav_second'><a href="/Admin/Activity/editActivity">编辑活动</a></li>                                </ul>
+                        </li><li class="panel dropdown panel-active">
+                                                            <a data-toggle="collapse" data-parent="#menu-bar" href="#submenu_activity" class='panel-active-a collapsed'>活动管理</a>
+                                <ul id='submenu_activity' class="panel-collapse collapse">
+                                                                                                                    <li class='nav_second'><a href="/Admin/Activity/listIcbcActivity">工行活动列表</a></li>                                </ul>
+                        </li><li class="panel dropdown panel-active">
+                                                            <a data-toggle="collapse" data-parent="#menu-bar" href="#submenu_message" class='panel-active-a collapsed'>消息管理</a>
+                                <ul id='submenu_message' class="panel-collapse collapse">
+                                                                                                                    <li class='nav_second'><a href="/Admin/Message/listMessage">平台消息</a></li>                                            <li class='nav_second'><a href="/Admin/Message/analysisMessage">消息查询统计</a></li>                                </ul>
+                        </li><li class="panel dropdown panel-active">
+                                                            <a data-toggle="collapse" data-parent="#menu-bar" href="#submenu_feedback" class='panel-active-a collapsed'>投诉反馈</a>
+                                <ul id='submenu_feedback' class="panel-collapse collapse">
+                                                                                                                    <li class='nav_second'><a href="/Admin/Feedback/listShopFeedback">商家反馈</a></li>                                            <li class='nav_second'><a href="/Admin/Feedback/listUserFeedback">用户反馈</a></li>                                </ul>
+                        </li><li class="panel dropdown panel-active">
+                                                            <a data-toggle="collapse" data-parent="#menu-bar" href="#submenu_city" class='panel-active-a collapsed'>城市开通管理</a>
+                                <ul id='submenu_city' class="panel-collapse collapse">
+                                                                                                                    <li class='nav_second'><a href="/Admin/District/listCity">城市列表</a></li>                                </ul>
+                        </li><li class="panel dropdown panel-active">
+                                                            <a data-toggle="collapse" data-parent="#menu-bar" href="#submenu_ShopAppLog" class='panel-active-a collapsed'>APP升级记录</a>
+                                <ul id='submenu_ShopAppLog' class="panel-collapse collapse">
+                                                                                                                    <li class='nav_second'><a href="/Admin/ShopAppLog/listShopAppLog">商家端升级记录</a></li>                                            <li class='nav_second'><a href="/Admin/ShopAppLog/editShopAppLog">编辑商家端升级记录</a></li>                                            <li class='nav_second'><a href="/Admin/ClientAppLog/listClientAppLog">顾客端升级记录</a></li>                                            <li class='nav_second'><a href="/Admin/ClientAppLog/editClientAppLog">编辑顾客端升级记录</a></li>                                            <li class='nav_second'><a href="/Admin/PcAppLog/listPcAppLog">PC端升级记录</a></li>                                            <li class='nav_second'><a href="/Admin/PcAppLog/editPcAppLog">编辑PC端升级记录</a></li>                                </ul>
+                        </li><li class="panel dropdown panel-active">
+                                                            <a data-toggle="collapse" data-parent="#menu-bar" href="#submenu_CrashLog" class='panel-active-a collapsed'>APP崩溃日志</a>
+                                <ul id='submenu_CrashLog' class="panel-collapse collapse">
+                                                                                                                    <li class='nav_second'><a href="/Admin/CrashLog/listClientCrashLog">顾客端APP崩溃日志</a></li>                                            <li class='nav_second'><a href="/Admin/CrashLog/listShopCrashLog">商家端APP崩溃日志</a></li>                                </ul>
+                        </li><li class="panel dropdown panel-active">
+                                                            <a data-toggle="collapse" data-parent="#menu-bar" href="#submenu_Module" class='panel-active-a collapsed'>APP配置管理</a>
+                                <ul id='submenu_Module' class="panel-collapse collapse">
+                                                                                                                    <li class='nav_second'><a href="/Admin/Module/listIndexModule">首页模块列表</a></li>                                            <li class='nav_second'><a href="/Admin/Module/listQuery">筛选条件管理</a></li>                                </ul>
+                        </li><li class="panel dropdown panel-active">
+                                                            <a data-toggle="collapse" data-parent="#menu-bar" href="#submenu_SystemParam" class='panel-active-a collapsed'>系统参数</a>
+                                <ul id='submenu_SystemParam' class="panel-collapse collapse">
+                                                                                                                    <li class='nav_second'><a href="/Admin/SystemParam/listClientSystemParam">顾客端</a></li>                                            <li class='nav_second'><a href="/Admin/SystemParam/listShopSystemParam">商家端</a></li>                                            <li class='nav_second'><a href="/Admin/SystemParam/editSystemParam">编辑系统参数</a></li>                                </ul>
+                        </li><li class="panel dropdown panel-active">
+                                                            <a data-toggle="collapse" data-parent="#menu-bar" href="#submenu_Statistics" class='panel-active-a collapsed'>统计分析</a>
+                                <ul id='submenu_Statistics' class="panel-collapse collapse">
+                                                                                                                    <li class='nav_second'><a href="/Admin/Shop/analysisShop">商户统计分析</a></li>                                            <li class='nav_second'><a href="/Admin/ConsumeOrder/listShopConsumeStatistics">商户订单统计</a></li>                                            <li class='nav_second'><a href="/Admin/ConsumeOrder/listOrderStatisticsByDay">按日订单成交统计</a></li>                                            <li class='nav_second'><a href="/Admin/Card/analysisCard">商户会员卡统计分析</a></li>                                            <li class='nav_second'><a href="/Admin/BatchCoupon/analysisCoupon">商户优惠券统计</a></li>                                            <li class='nav_second'><a href="/Admin/Activity/analysisActivity">活动统计分析</a></li>                                            <li class='nav_second'><a href="/Admin/Bonus/analysisBonus">红包统计分析</a></li>                                            <li class='nav_second'><a href="/Admin/User/userAnalysis">用户统计分析</a></li>                                            <li class='nav_second'><a href="/Admin/User/consumptionStatistics">用户消费统计</a></li>                                            <li class='nav_second'><a href="/Admin/QrCode/listLog">惠圈下载记录</a></li>                                </ul>
+                        </li><li class="panel dropdown panel-active">
+                                                            <a data-toggle="collapse" data-parent="#menu-bar" href="#submenu_QrCode" class='panel-active-a collapsed'>二维码生成</a>
+                                <ul id='submenu_QrCode' class="panel-collapse collapse">
+                                                                                                                    <li class='nav_second'><a href="/Admin/QrCode/cDownloadQC">生成下载惠圈二维码</a></li>                                </ul>
+                        </li><li class="panel dropdown panel-active">
+                                                            <a data-toggle="collapse" data-parent="#menu-bar" href="#submenu_Liquidation" class='panel-active-a collapsed'>商户资金清算</a>
+                                <ul id='submenu_Liquidation' class="panel-collapse collapse">
+                                                                                                                    <li class='nav_second'><a href="/Admin/Liquidation/getLiquidationFileList">文件列表</a></li>                                            <li class='nav_second'><a href="/Admin/Liquidation/getLiquidationRecord">生成请求文件</a></li>                                </ul>
+                        </li>                </ul>
+            </div>
+        </nav>
+        <div class="col-xs-12 col-sm-10 col-md-10">
+            <ol class="breadcrumb">
+                                <li class="active">编辑子模块</li>
+            </ol>
+            
+<script src="js/knockout_1.js" charset="UTF-8"></script>
+<script type="text/javascript" src="js/jscolor.min.js"></script>
+<script>
+    var __exButtonList = [];
+</script>
+<div class="row">
+<div class="col-md-11">
+<form id="sub_module_add_form" action="/Admin/Module/editSubModule" method="post" class="form-horizontal">
+<input type="hidden" name="id" value="" />
+<input type="hidden" name="parentModuleId" value="3" />
+<input type="hidden" name="cityId" value="41" />
+<div class="form-group">
+    <label for="title" class="col-sm-2 control-label">标题</label>
+    <div class="col-sm-4">
+        <input type="text" class="form-control" id="title" placeholder="标题" name="title" value="">
+    </div>
+
+    <label for="titleColor" class="col-sm-2 control-label">标题颜色(16进制形式)</label>
+    <div class="col-sm-4">
+        <input type="text" class="form-control jscolor" id="titleColor" name="titleColor" value="000000">
+    </div>
+</div>
+<div class="form-group">
+    <label for="subTitle" class="col-sm-2 control-label">子标题</label>
+    <div class="col-sm-4">
+        <input type="text" class="form-control" id="subTitle" placeholder="子标题" name="subTitle" value="">
+    </div>
+
+    <label for="subTitleColor" class="col-sm-2 control-label">子标题颜色(16进制形式)</label>
+    <div class="col-sm-4">
+        <input type="text" class="form-control jscolor" id="subTitleColor" name="subTitleColor" value="000000">
+    </div>
+</div>
+<div class="form-group"><hr /></div>
+<div class="form-group" id="link_div">
+    <label class="col-sm-2 control-label">链接类型</label>
+    <div class="col-sm-2">
+        <label class="radio-inline">
+            <input type="radio" name="linkType" value="0" checked="checked"> H5
+        </label>
+    </div>
+    <label class="col-sm-2 control-label">链接</label>
+    <div class="col-sm-4">
+        <input type="text" class="form-control" placeholder="链接" name="content" value="">
+                </div>
+</div>
+<div class="form-group" id="sList_div">
+    <label class="col-sm-2 control-label"></label>
+    <div class="col-sm-2">
+        <label class="radio-inline">
+            <input type="radio" name="linkType" value="1" > 商家列表
+        </label>
+    </div>
+    <label class="col-sm-2 control-label">商家类型</label>
+    <div class="col-sm-4">
+        <select class="form-control" name="shopType" disabled>
+        <option value="1" >美食</option><option value="2" >丽人</option><option value="3" >健身</option><option value="4" >娱乐</option><option value="6" >其他</option><option value="11" >惠圈平台</option><option value="21" >银行</option><option value="0" >未知</option>        </select>
+    </div>
+</div>
+<div class="form-group" id="cList_div">
+    <label class="col-sm-2 control-label"></label>
+    <div class="col-sm-2">
+        <label class="radio-inline">
+            <input type="radio" name="linkType" value="2" > 优惠券列表
+        </label>
+    </div>
+    <label class="col-sm-2 control-label">优惠券类型</label>
+    <div class="col-sm-4">
+        <select class="form-control" name="couponType" disabled>
+        <option value="0">未知</option>
+        <option value="1" >N元购</option><option value="3" >抵扣券</option><option value="4" >折扣券</option><option value="5" >实物券</option><option value="6" >体验券</option><option value="7" >兑换券</option><option value="8" >代金券</option>        </select>
+    </div>
+</div>
+<div class="form-group" id="bList_div">
+    <label class="col-sm-2 control-label"></label>
+    <div class="col-sm-2">
+        <label class="radio-inline">
+            <input type="radio" name="linkType" value="3" > 工银特惠
+        </label>
+    </div>
+    <label class="col-sm-2 control-label">商家类型</label>
+    <div class="col-sm-4">
+        <select class="form-control" name="shopType" disabled>
+        <option value="1" >美食</option><option value="2" >丽人</option><option value="3" >健身</option><option value="4" >娱乐</option><option value="6" >其他</option><option value="11" >惠圈平台</option><option value="21" >银行</option><option value="0" >未知</option>        </select>
+    </div>
+</div>
+<div class="form-group"><hr /></div>
+<div class="form-group">
+    <label class="col-sm-2 control-label">图片</label>
+    <div class="col-sm-10">
+        <input type="hidden" name="imgUrl" value="" />
+        <div class="fileinput fileinput-new" data-provides="fileinput">
+            <div class="fileinput-new thumbnail"><img src="" style="max-width: 400px; max-height: 100px;" /></div>
+            <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 400px; max-height: 100px;"></div>
+            <div>
+                    <span class="btn btn-default btn-file">
+                        <span class="fileinput-new">选择背景图片</span>
+                        <span class="fileinput-exists">换一张</span>
+                        <input type="file" name="upfile" class="ajax-file-upload" data-imgname="imgUrl" data-url="/Admin/Util/imageUp" multiple>
+                    </span>
+                <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">移除</a>
+                <span id="state_imgUrl" class="ajax-file-state"></span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="form-group">
+    <label for="imgPosition" class="col-sm-2 control-label">图片位置（相对块而言）</label>
+    <div class="col-sm-4">
+        <select class="form-control" name="imgPosition" id="imgPosition">
+            <option value="0" >左边</option>
+            <option value="1" >上边</option>
+            <option value="2" >右边</option>
+            <option value="3" >下边</option>
+            <option value="4" >全屏</option>
+        </select>
+    </div>
+
+    <label for="imgSize" class="col-sm-2 control-label">图片大小（单位：px，width|height）(适用于老版本)</label>
+    <div class="col-sm-4">
+        <input type="text" class="form-control" id="imgSize" placeholder="图片大小（如：80|80）" name="imgSize" value="">
+    </div>
+</div>
+<div class="form-group">
+    <label for="imgRate" class="col-sm-2 control-label">图片宽 / 图片高(适用于新版本)</label>
+    <div class="col-sm-4">
+        <input type="text" class="form-control" id="imgRate" name="imgRate" value="2">
+    </div>
+    <label for="screenRate" class="col-sm-2 control-label">图片宽 / 屏幕宽</label>
+    <div class="col-sm-4">
+        <input type="text" class="form-control" id="screenRate" placeholder="0~1的数" name="screenRate" value="0.5">
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-sm-2 control-label">是否显示</label>
+    <div class="col-sm-4">
+        <label class="radio-inline">
+            <input type="radio" name="hide" value="0" checked="checked"> 显示
+        </label>
+        <label class="radio-inline">
+            <input type="radio" name="hide" value="1" > 隐藏
+        </label>
+    </div>
+
+    <label for="bgColor" class="col-sm-2 control-label">背景色(16进制形式)</label>
+    <div class="col-sm-4">
+        <input type="text" class="form-control jscolor" id="bgColor" name="bgColor" value="FFFFFF">
+    </div>
+</div>
+<div class="form-group"><hr /></div>
+<div class="form-group">
+    <label class="col-sm-2 control-label">商家列表页分类图片（选中）</label>
+    <div class="col-sm-4">
+        <input type="hidden" name="focusedUrl" value="" />
+        <div class="fileinput fileinput-new" data-provides="fileinput">
+            <div class="fileinput-new thumbnail"><img src="" style="max-width: 400px; max-height: 100px;" /></div>
+            <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 400px; max-height: 100px;"></div>
+            <div>
+                    <span class="btn btn-default btn-file">
+                        <span class="fileinput-new">选择背景图片</span>
+                        <span class="fileinput-exists">换一张</span>
+                        <input type="file" name="upfile" class="ajax-file-upload" data-imgname="focusedUrl" data-url="/Admin/Util/imageUp" multiple>
+                    </span>
+                <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">移除</a>
+                <span id="state_focusedUrl" class="ajax-file-state"></span>
+            </div>
+        </div>
+    </div>
+
+    <label class="col-sm-2 control-label">商家列表页分类图片（未选中）</label>
+    <div class="col-sm-4">
+        <input type="hidden" name="notFocusedUrl" value="" />
+        <div class="fileinput fileinput-new" data-provides="fileinput">
+            <div class="fileinput-new thumbnail"><img src="" style="max-width: 400px; max-height: 100px;" /></div>
+            <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 400px; max-height: 100px;"></div>
+            <div>
+                    <span class="btn btn-default btn-file">
+                        <span class="fileinput-new">选择背景图片</span>
+                        <span class="fileinput-exists">换一张</span>
+                        <input type="file" name="upfile" class="ajax-file-upload" data-imgname="notFocusedUrl" data-url="/Admin/Util/imageUp" multiple>
+                    </span>
+                <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">移除</a>
+                <span id="state_notFocusedUrl" class="ajax-file-state"></span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="form-group"><hr /></div>
+<div class="form-group" id="button_div" >
+<label class="col-sm-2 control-label">H5背景图</label>
+<div class="col-sm-10">
+    <input type="hidden" name="bgUrl" value="" />
+    <div class="fileinput fileinput-new" data-provides="fileinput">
+        <div class="fileinput-new thumbnail"><img src="" style="max-width: 400px; max-height: 200px;" /></div>
+        <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 400px; max-height: 200px;"></div>
+        <div>
+            <span class="btn btn-default btn-file">
+                <span class="fileinput-new">选择背景图片</span>
+                <span class="fileinput-exists">换一张</span>
+                <input type="file" name="upfile" class="ajax-file-upload" data-imgname="bgUrl" data-url="/Admin/Util/imageUp" multiple>
+            </span>
+            <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">移除</a>
+            <span id="state_bgUrl" class="ajax-file-state"></span>
+        </div>
+    </div>
+</div>
+<label class="control-label col-sm-offset-1">内部按钮(没有则不填)&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-info btn-xs" data-bind="click: addExButton"><div class="glyphicon glyphicon-plus"></div></button></label>
+<div class="col-sm-12" style="margin-top: 10px;">
+    <div class="col-sm-3 text-center">链接（例如：hs://getShopInfo?shopCode=***）</div>
+    <div class="col-sm-2 text-center">宽度（例如：25%）</div>
+    <div class="col-sm-2 text-center">高度（例如：25%[固定高度]，auto[自适应]）</div>
+    <div class="col-sm-2 text-center">左边缘（例如：25%）</div>
+    <div class="col-sm-2 text-center">上边缘（例如：25%）</div>
+</div>
+<!-- ko foreach: exButton -->
+<div class="col-sm-12">
+    <div class="col-sm-3">
+        <input type="text" class="form-control" name="exButtonList[ebLink][]" data-bind="value:ebLink" />
+    </div>
+    <div class="col-sm-2">
+        <input type="text" class="form-control" name="exButtonList[ebWidth][]" data-bind="value:ebWidth" />
+    </div>
+    <div class="col-sm-2">
+        <input type="text" class="form-control" name="exButtonList[ebHeight][]" data-bind="value:ebHeight" />
+    </div>
+    <div class="col-sm-2">
+        <input type="text" class="form-control" name="exButtonList[ebLeft][]" data-bind="value:ebLeft" />
+    </div>
+    <div class="col-sm-2">
+        <input type="text" class="form-control" name="exButtonList[ebTop][]" data-bind="value:ebTop" />
+    </div>
+    <div class="col-sm-1">
+        <button type="button" class="btn btn-danger btn-xs minus" data-bind="click:$parent.delExButton, style: { display: $index() == 0 ? 'none' : 'inline' }"><div class="glyphicon glyphicon-minus"></div></button>
+    </div>
+</div>
+<!-- /ko -->
+</div>
+<div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-primary">保存</button>
+    </div>
+</div>
+</form>
+</div>
+</div>
+<script src="js/jquery.ui.widget.js"></script>
+<script src="js/jquery.iframe-transport.js"></script>
+<script src="js/jquery.fileupload.js"></script>
+<script type="text/javascript">
+    $(function(){
+        $('input[name="linkType"]').change(function(){
+            var value = $('input[name="linkType"]:checked').val();
+            if(value == 0){
+                $('#link_div').find('input[name="content"]').attr('disabled', false);
+                $('#sList_div').find('select').attr('disabled', true);
+                $('#cList_div').find('select').attr('disabled', true);
+                $('#bList_div').find('select').attr('disabled', true);
+                $('#button_div').show();
+            }else if(value == 1){
+                $('#sList_div').find('select').attr('disabled', false);
+                $('#link_div').find('input[name="content"]').attr('disabled', true);
+                $('#cList_div').find('select').attr('disabled', true);
+                $('#bList_div').find('select').attr('disabled', true);
+                $('#button_div').hide();
+            }else if(value == 2){
+                $('#cList_div').find('select').attr('disabled', false);
+                $('#link_div').find('input[name="content"]').attr('disabled', true);
+                $('#sList_div').find('select').attr('disabled', true);
+                $('#bList_div').find('select').attr('disabled', true);
+                $('#button_div').hide();
+            }else{
+                $('#bList_div').find('select').attr('disabled', false);
+                $('#cList_div').find('select').attr('disabled', true);
+                $('#link_div').find('input[name="content"]').attr('disabled', true);
+                $('#sList_div').find('select').attr('disabled', true);
+                $('#button_div').hide();
+            }
+        });
+
+        $('#sub_module_add_form').on('submit', function() {
+            $('button[type="submit"]').attr('disabled', true);
+            var frm = $(this);
+            $.post(frm.attr('action'), frm.serialize(), function(resp) {
+                if (resp.status == sz.STATUS_SUCC) {
+                    sz.showSuccMsg(resp.msg, 3);
+                    location.href = '/Admin/District/listCityIndexModule?id=41';
+                } else {
+                    sz.showErrMsg(resp.msg, 3);
+                    $('button[type="submit"]').attr('disabled', false);
+                }
+            });
+            return false;
+        });
+
+        $('.ajax-file-upload').fileupload({
+            dataType: 'json',
+            add: function (e, data) {
+                var imgname = $(this).data('imgname'); // imgname为 activityImg或者activityLogo
+                data.context = $('#state_' + imgname).text('正在上传...');
+                data.submit();
+            },
+            /* progressall: function (e, data) {
+             var progress = parseInt(data.loaded / data.total * 100, 10);
+             $('#progress_img_quare .bar').css('width', progress + '%');
+             }, */
+            done: function (e, data) {
+                var resp = data.result;
+                if (resp.state == 'SUCCESS') {
+                    data.context.text('上传完成');
+                    var imgname = data.context.attr('id').substr('state_'.length);
+                    var imgUrl = resp.url.substr(0, 1) == '.' ? resp.url.substr(1) : resp.url; // 去掉"./"中的"."
+                    $('#sub_module_add_form input[name=' + imgname + ']').val('/'+ imgUrl);
+                } else {
+                    data.context.text('上传失败');
+                    $('#sub_module_add_form input[name=' + imgname + ']').val('');
+                }
+            }
+        });
+    });
+    ;(function(){
+        __exButtonList = __exButtonList || [];
+        var ExButton = function(ebLink, ebWidth, ebHeight, ebLeft, ebTop){
+            this.ebLink = ebLink || '';
+            this.ebWidth = ebWidth || '';
+            this.ebHeight = ebHeight || '';
+            this.ebLeft = ebLeft || '';
+            this.ebTop = ebTop || '';
+            return this;
+        };
+
+        var viewMdl = function(data){
+            var self = this;
+            self.exButton = ko.observableArray(data);
+            self.addExButton = function(){
+                self.exButton.push(new ExButton());
+            };
+            self.delExButton = function(){
+                self.exButton.remove(this);
+            };
+        };
+
+        ko.applyBindings(new viewMdl(__exButtonList));
+    })();
+</script>
+        </div>
+    </div>
+</div>
+</body>
+</html><div id="think_page_trace" style="position: fixed;bottom:0;right:0;font-size:14px;width:100%;z-index: 999999;color: #000;text-align:left;font-family:'微软雅黑';">
+<div id="think_page_trace_tab" style="display: none;background:white;margin:0;height: 250px;">
+<div id="think_page_trace_tab_tit" style="height:30px;padding: 6px 12px 0;border-bottom:1px solid #ececec;border-top:1px solid #ececec;font-size:16px">
+	    <span style="color:#000;padding-right:12px;height:30px;line-height: 30px;display:inline-block;margin-right:3px;cursor: pointer;font-weight:700">基本</span>
+        <span style="color:#000;padding-right:12px;height:30px;line-height: 30px;display:inline-block;margin-right:3px;cursor: pointer;font-weight:700">文件</span>
+        <span style="color:#000;padding-right:12px;height:30px;line-height: 30px;display:inline-block;margin-right:3px;cursor: pointer;font-weight:700">流程</span>
+        <span style="color:#000;padding-right:12px;height:30px;line-height: 30px;display:inline-block;margin-right:3px;cursor: pointer;font-weight:700">错误</span>
+        <span style="color:#000;padding-right:12px;height:30px;line-height: 30px;display:inline-block;margin-right:3px;cursor: pointer;font-weight:700">SQL</span>
+        <span style="color:#000;padding-right:12px;height:30px;line-height: 30px;display:inline-block;margin-right:3px;cursor: pointer;font-weight:700">调试</span>
+    </div>
+<div id="think_page_trace_tab_cont" style="overflow:auto;height:212px;padding: 0; line-height: 24px">
+		    <div style="display:none;">
+    <ol style="padding: 0; margin:0">
+	<li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">请求信息 : 2017-12-07 17:13:35 HTTP/1.1 GET : /Admin/Module/editSubModule?parentModuleId=3&amp;cityId=41</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">运行时间 : 0.0346s ( Load:0.0060s Init:0.0022s Exec:0.0131s Template:0.0133s )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">吞吐率 : 28.90req/s</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">内存开销 : 3,020.63 kb</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">查询信息 : 2 queries 1 writes </li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">文件加载 : 48</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">缓存信息 : 0 gets 0 writes </li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">配置加载 : 246</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">会话信息 : SESSION_ID=01dmvdi5aqil6gfv3av1gc0471</li>    </ol>
+    </div>
+        <div style="display:none;">
+    <ol style="padding: 0; margin:0">
+	<li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/index.php ( 1.10 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/ThinkPHP/ThinkPHP.php ( 4.61 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/ThinkPHP/Library/Think/Think.class.php ( 11.98 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/ThinkPHP/Library/Think/Storage.class.php ( 1.34 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/ThinkPHP/Library/Think/Storage/Driver/File.class.php ( 3.44 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/ThinkPHP/Mode/common.php ( 2.75 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/ThinkPHP/Common/functions.php ( 52.41 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/ThinkPHP/Library/Think/Hook.class.php ( 3.91 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/ThinkPHP/Library/Think/App.class.php ( 13.26 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/ThinkPHP/Library/Think/Dispatcher.class.php ( 14.75 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/ThinkPHP/Library/Think/Route.class.php ( 13.07 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/ThinkPHP/Library/Think/Controller.class.php ( 10.65 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/ThinkPHP/Library/Think/View.class.php ( 7.73 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/ThinkPHP/Library/Behavior/BuildLiteBehavior.class.php ( 3.61 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/ThinkPHP/Library/Behavior/ParseTemplateBehavior.class.php ( 3.80 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/ThinkPHP/Library/Behavior/ContentReplaceBehavior.class.php ( 1.87 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/ThinkPHP/Conf/convention.php ( 11.02 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/Application/Common/Conf/config.php ( 1.41 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/Application/Common/Conf/tags.php ( 0.23 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/ThinkPHP/Lang/zh-cn.php ( 2.52 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/ThinkPHP/Conf/debug.php ( 1.48 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/Application/Common/Conf/debug.php ( 0.32 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/Application/Common/Conf/const.php ( 50.79 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/Application/Common/Conf/function.php ( 1.13 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/Application/Admin/Conf/config.php ( 19.96 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/Application/Admin/Conf/menu.php ( 8.99 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/ThinkPHP/Library/Behavior/ReadHtmlCacheBehavior.class.php ( 5.51 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/Application/Admin/Controller/ModuleController.class.php ( 15.67 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/Application/Admin/Controller/AdminBaseController.class.php ( 3.29 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/Application/Admin/Controller/MwBaseController.class.php ( 1.94 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/Application/Common/Model/Pager.class.php ( 1.49 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/Application/Common/Model/StaffActionLogModel.class.php ( 2.43 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/Application/Common/Model/BaseModel.class.php ( 26.18 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/ThinkPHP/Library/Think/Model.class.php ( 64.98 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/ThinkPHP/Library/Think/Exception.class.php ( 0.67 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/ThinkPHP/Library/Think/Db.class.php ( 5.55 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/ThinkPHP/Library/Think/Db/Driver/Mysql.class.php ( 6.79 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/ThinkPHP/Library/Think/Db/Driver.class.php ( 40.21 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/Application/Common/Model/CityIndexModuleRelModel.class.php ( 2.29 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/Application/Common/Model/SubModuleModel.class.php ( 4.43 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/Application/Common/Model/IndexModuleModel.class.php ( 1.88 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/Application/Common/Model/ShopTypeModel.class.php ( 2.97 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/ThinkPHP/Library/Think/Template.class.php ( 27.66 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/ThinkPHP/Library/Think/Template/TagLib/Cx.class.php ( 22.02 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/ThinkPHP/Library/Think/Template/TagLib.class.php ( 8.95 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/Application/Runtime/Cache/Admin/75aaefc17f6b1a9ec1f8b90f2a21ef3f.php ( 24.35 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/ThinkPHP/Library/Behavior/WriteHtmlCacheBehavior.class.php ( 1.40 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/ThinkPHP/Library/Behavior/ShowPageTraceBehavior.class.php ( 5.15 KB )</li>    </ol>
+    </div>
+        <div style="display:none;">
+    <ol style="padding: 0; margin:0">
+	<li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[ app_init ] --START--</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">Run Behavior\BuildLiteBehavior [ RunTime:0.000008s ]</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[ app_init ] --END-- [ RunTime:0.000041s ]</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[ app_begin ] --START--</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000276s ]</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[ app_begin ] --END-- [ RunTime:0.000311s ]</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[ view_parse ] --START--</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[ template_filter ] --START--</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">Run Behavior\ContentReplaceBehavior [ RunTime:0.000080s ]</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[ template_filter ] --END-- [ RunTime:0.000115s ]</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">Run Behavior\ParseTemplateBehavior [ RunTime:0.012524s ]</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[ view_parse ] --END-- [ RunTime:0.012555s ]</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[ view_filter ] --START--</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000095s ]</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[ view_filter ] --END-- [ RunTime:0.000128s ]</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[ app_end ] --START--</li>    </ol>
+    </div>
+        <div style="display:none;">
+    <ol style="padding: 0; margin:0">
+	<li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined index: exButtonList /data/huiquan/webApp/api/Application/Admin/Controller/ModuleController.class.php 第 200 行.</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined variable: route /data/huiquan/webApp/api/Application/Runtime/Cache/Admin/75aaefc17f6b1a9ec1f8b90f2a21ef3f.php 第 74 行.</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined index: id /data/huiquan/webApp/api/Application/Runtime/Cache/Admin/75aaefc17f6b1a9ec1f8b90f2a21ef3f.php 第 86 行.</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined index: title /data/huiquan/webApp/api/Application/Runtime/Cache/Admin/75aaefc17f6b1a9ec1f8b90f2a21ef3f.php 第 92 行.</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined index: subTitle /data/huiquan/webApp/api/Application/Runtime/Cache/Admin/75aaefc17f6b1a9ec1f8b90f2a21ef3f.php 第 103 行.</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined index: linkType /data/huiquan/webApp/api/Application/Runtime/Cache/Admin/75aaefc17f6b1a9ec1f8b90f2a21ef3f.php 第 116 行.</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined index: linkType /data/huiquan/webApp/api/Application/Runtime/Cache/Admin/75aaefc17f6b1a9ec1f8b90f2a21ef3f.php 第 116 行.</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined index: linkType /data/huiquan/webApp/api/Application/Runtime/Cache/Admin/75aaefc17f6b1a9ec1f8b90f2a21ef3f.php 第 121 行.</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined index: linkType /data/huiquan/webApp/api/Application/Runtime/Cache/Admin/75aaefc17f6b1a9ec1f8b90f2a21ef3f.php 第 121 行.</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined index: linkType /data/huiquan/webApp/api/Application/Runtime/Cache/Admin/75aaefc17f6b1a9ec1f8b90f2a21ef3f.php 第 121 行.</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined index: content /data/huiquan/webApp/api/Application/Runtime/Cache/Admin/75aaefc17f6b1a9ec1f8b90f2a21ef3f.php 第 121 行.</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined index: linkType /data/huiquan/webApp/api/Application/Runtime/Cache/Admin/75aaefc17f6b1a9ec1f8b90f2a21ef3f.php 第 130 行.</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined index: linkType /data/huiquan/webApp/api/Application/Runtime/Cache/Admin/75aaefc17f6b1a9ec1f8b90f2a21ef3f.php 第 135 行.</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined index: content /data/huiquan/webApp/api/Application/Runtime/Cache/Admin/75aaefc17f6b1a9ec1f8b90f2a21ef3f.php 第 136 行.</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined index: content /data/huiquan/webApp/api/Application/Runtime/Cache/Admin/75aaefc17f6b1a9ec1f8b90f2a21ef3f.php 第 136 行.</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined index: content /data/huiquan/webApp/api/Application/Runtime/Cache/Admin/75aaefc17f6b1a9ec1f8b90f2a21ef3f.php 第 136 行.</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined index: content /data/huiquan/webApp/api/Application/Runtime/Cache/Admin/75aaefc17f6b1a9ec1f8b90f2a21ef3f.php 第 136 行.</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined index: content /data/huiquan/webApp/api/Application/Runtime/Cache/Admin/75aaefc17f6b1a9ec1f8b90f2a21ef3f.php 第 136 行.</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined index: content /data/huiquan/webApp/api/Application/Runtime/Cache/Admin/75aaefc17f6b1a9ec1f8b90f2a21ef3f.php 第 136 行.</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined index: content /data/huiquan/webApp/api/Application/Runtime/Cache/Admin/75aaefc17f6b1a9ec1f8b90f2a21ef3f.php 第 136 行.</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined index: content /data/huiquan/webApp/api/Application/Runtime/Cache/Admin/75aaefc17f6b1a9ec1f8b90f2a21ef3f.php 第 136 行.</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined index: linkType /data/huiquan/webApp/api/Application/Runtime/Cache/Admin/75aaefc17f6b1a9ec1f8b90f2a21ef3f.php 第 144 行.</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined index: linkType /data/huiquan/webApp/api/Application/Runtime/Cache/Admin/75aaefc17f6b1a9ec1f8b90f2a21ef3f.php 第 149 行.</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined index: content /data/huiquan/webApp/api/Application/Runtime/Cache/Admin/75aaefc17f6b1a9ec1f8b90f2a21ef3f.php 第 151 行.</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined index: content /data/huiquan/webApp/api/Application/Runtime/Cache/Admin/75aaefc17f6b1a9ec1f8b90f2a21ef3f.php 第 151 行.</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined index: content /data/huiquan/webApp/api/Application/Runtime/Cache/Admin/75aaefc17f6b1a9ec1f8b90f2a21ef3f.php 第 151 行.</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined index: content /data/huiquan/webApp/api/Application/Runtime/Cache/Admin/75aaefc17f6b1a9ec1f8b90f2a21ef3f.php 第 151 行.</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined index: content /data/huiquan/webApp/api/Application/Runtime/Cache/Admin/75aaefc17f6b1a9ec1f8b90f2a21ef3f.php 第 151 行.</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined index: content /data/huiquan/webApp/api/Application/Runtime/Cache/Admin/75aaefc17f6b1a9ec1f8b90f2a21ef3f.php 第 151 行.</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined index: content /data/huiquan/webApp/api/Application/Runtime/Cache/Admin/75aaefc17f6b1a9ec1f8b90f2a21ef3f.php 第 151 行.</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined index: linkType /data/huiquan/webApp/api/Application/Runtime/Cache/Admin/75aaefc17f6b1a9ec1f8b90f2a21ef3f.php 第 159 行.</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined index: linkType /data/huiquan/webApp/api/Application/Runtime/Cache/Admin/75aaefc17f6b1a9ec1f8b90f2a21ef3f.php 第 164 行.</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined index: content /data/huiquan/webApp/api/Application/Runtime/Cache/Admin/75aaefc17f6b1a9ec1f8b90f2a21ef3f.php 第 165 行.</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined index: content /data/huiquan/webApp/api/Application/Runtime/Cache/Admin/75aaefc17f6b1a9ec1f8b90f2a21ef3f.php 第 165 行.</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined index: content /data/huiquan/webApp/api/Application/Runtime/Cache/Admin/75aaefc17f6b1a9ec1f8b90f2a21ef3f.php 第 165 行.</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined index: content /data/huiquan/webApp/api/Application/Runtime/Cache/Admin/75aaefc17f6b1a9ec1f8b90f2a21ef3f.php 第 165 行.</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined index: content /data/huiquan/webApp/api/Application/Runtime/Cache/Admin/75aaefc17f6b1a9ec1f8b90f2a21ef3f.php 第 165 行.</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined index: content /data/huiquan/webApp/api/Application/Runtime/Cache/Admin/75aaefc17f6b1a9ec1f8b90f2a21ef3f.php 第 165 行.</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined index: content /data/huiquan/webApp/api/Application/Runtime/Cache/Admin/75aaefc17f6b1a9ec1f8b90f2a21ef3f.php 第 165 行.</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined index: content /data/huiquan/webApp/api/Application/Runtime/Cache/Admin/75aaefc17f6b1a9ec1f8b90f2a21ef3f.php 第 165 行.</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined index: imgUrl /data/huiquan/webApp/api/Application/Runtime/Cache/Admin/75aaefc17f6b1a9ec1f8b90f2a21ef3f.php 第 173 行.</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined index: imgUrl /data/huiquan/webApp/api/Application/Runtime/Cache/Admin/75aaefc17f6b1a9ec1f8b90f2a21ef3f.php 第 175 行.</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined index: imgPosition /data/huiquan/webApp/api/Application/Runtime/Cache/Admin/75aaefc17f6b1a9ec1f8b90f2a21ef3f.php 第 193 行.</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined index: imgPosition /data/huiquan/webApp/api/Application/Runtime/Cache/Admin/75aaefc17f6b1a9ec1f8b90f2a21ef3f.php 第 194 行.</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined index: imgPosition /data/huiquan/webApp/api/Application/Runtime/Cache/Admin/75aaefc17f6b1a9ec1f8b90f2a21ef3f.php 第 195 行.</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined index: imgPosition /data/huiquan/webApp/api/Application/Runtime/Cache/Admin/75aaefc17f6b1a9ec1f8b90f2a21ef3f.php 第 196 行.</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined index: imgPosition /data/huiquan/webApp/api/Application/Runtime/Cache/Admin/75aaefc17f6b1a9ec1f8b90f2a21ef3f.php 第 197 行.</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined index: imgSize /data/huiquan/webApp/api/Application/Runtime/Cache/Admin/75aaefc17f6b1a9ec1f8b90f2a21ef3f.php 第 203 行.</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined index: hide /data/huiquan/webApp/api/Application/Runtime/Cache/Admin/75aaefc17f6b1a9ec1f8b90f2a21ef3f.php 第 220 行.</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined index: hide /data/huiquan/webApp/api/Application/Runtime/Cache/Admin/75aaefc17f6b1a9ec1f8b90f2a21ef3f.php 第 223 行.</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined index: focusedUrl /data/huiquan/webApp/api/Application/Runtime/Cache/Admin/75aaefc17f6b1a9ec1f8b90f2a21ef3f.php 第 236 行.</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined index: focusedUrl /data/huiquan/webApp/api/Application/Runtime/Cache/Admin/75aaefc17f6b1a9ec1f8b90f2a21ef3f.php 第 238 行.</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined index: notFocusedUrl /data/huiquan/webApp/api/Application/Runtime/Cache/Admin/75aaefc17f6b1a9ec1f8b90f2a21ef3f.php 第 254 行.</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined index: notFocusedUrl /data/huiquan/webApp/api/Application/Runtime/Cache/Admin/75aaefc17f6b1a9ec1f8b90f2a21ef3f.php 第 256 行.</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined index: linkType /data/huiquan/webApp/api/Application/Runtime/Cache/Admin/75aaefc17f6b1a9ec1f8b90f2a21ef3f.php 第 271 行.</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined index: bgUrl /data/huiquan/webApp/api/Application/Runtime/Cache/Admin/75aaefc17f6b1a9ec1f8b90f2a21ef3f.php 第 274 行.</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined index: bgUrl /data/huiquan/webApp/api/Application/Runtime/Cache/Admin/75aaefc17f6b1a9ec1f8b90f2a21ef3f.php 第 276 行.</li>    </ol>
+    </div>
+        <div style="display:none;">
+    <ol style="padding: 0; margin:0">
+	<li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">INSERT INTO `StaffActionLog` (`logCode`,`staffId`,`actionDes`,`actionTime`,`ipAddr`) VALUES ('335e8683-d560-2735-aa8f-a39b2cecb7fa','c00803ca-fec6-11e4-ac45-00163e021731',NULL,'2017-12-07 17:13:35','219.139.230.189') [ RunTime:0.0038s ]</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">SELECT * FROM `SubModule` WHERE `id` = '' LIMIT 1   [ RunTime:0.0003s ]</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">SELECT `shopTypeId`,`typeValue`,`typeZh` FROM `ShopType`  [ RunTime:0.0002s ]</li>    </ol>
+    </div>
+        <div style="display:none;">
+    <ol style="padding: 0; margin:0">
+	    </ol>
+    </div>
+    </div>
+</div>
+<div id="think_page_trace_close" style="display:none;text-align:right;height:15px;position:absolute;top:10px;right:12px;cursor: pointer;"><img style="vertical-align:top;" src="data:image/gif;base64,R0lGODlhDwAPAJEAAAAAAAMDA////wAAACH/C1hNUCBEYXRhWE1QPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS4wLWMwNjAgNjEuMTM0Nzc3LCAyMDEwLzAyLzEyLTE3OjMyOjAwICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdFJlZj0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlUmVmIyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IFdpbmRvd3MiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MUQxMjc1MUJCQUJDMTFFMTk0OUVGRjc3QzU4RURFNkEiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MUQxMjc1MUNCQUJDMTFFMTk0OUVGRjc3QzU4RURFNkEiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDoxRDEyNzUxOUJBQkMxMUUxOTQ5RUZGNzdDNThFREU2QSIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDoxRDEyNzUxQUJBQkMxMUUxOTQ5RUZGNzdDNThFREU2QSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PgH//v38+/r5+Pf29fTz8vHw7+7t7Ovq6ejn5uXk4+Lh4N/e3dzb2tnY19bV1NPS0dDPzs3My8rJyMfGxcTDwsHAv769vLu6ubi3trW0s7KxsK+urayrqqmop6alpKOioaCfnp2cm5qZmJeWlZSTkpGQj46NjIuKiYiHhoWEg4KBgH9+fXx7enl4d3Z1dHNycXBvbm1sa2ppaGdmZWRjYmFgX15dXFtaWVhXVlVUU1JRUE9OTUxLSklIR0ZFRENCQUA/Pj08Ozo5ODc2NTQzMjEwLy4tLCsqKSgnJiUkIyIhIB8eHRwbGhkYFxYVFBMSERAPDg0MCwoJCAcGBQQDAgEAACH5BAAAAAAALAAAAAAPAA8AAAIdjI6JZqotoJPR1fnsgRR3C2jZl3Ai9aWZZooV+RQAOw==" /></div>
+</div>
+<div id="think_page_trace_open" style="height:30px;float:right;text-align: right;overflow:hidden;position:fixed;bottom:0;right:0;color:#000;line-height:30px;cursor:pointer;"><div style="background:#232323;color:#FFF;padding:0 6px;float:right;line-height:30px;font-size:14px">0.0346s </div><img width="30" style="" title="ShowPageTrace" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyBpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBXaW5kb3dzIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjVERDVENkZGQjkyNDExRTE5REY3RDQ5RTQ2RTRDQUJCIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjVERDVENzAwQjkyNDExRTE5REY3RDQ5RTQ2RTRDQUJCIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6NURENUQ2RkRCOTI0MTFFMTlERjdENDlFNDZFNENBQkIiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6NURENUQ2RkVCOTI0MTFFMTlERjdENDlFNDZFNENBQkIiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz5fx6IRAAAMCElEQVR42sxae3BU1Rk/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"></div>
+<script type="text/javascript">
+(function(){
+var tab_tit  = document.getElementById('think_page_trace_tab_tit').getElementsByTagName('span');
+var tab_cont = document.getElementById('think_page_trace_tab_cont').getElementsByTagName('div');
+var open     = document.getElementById('think_page_trace_open');
+var close    = document.getElementById('think_page_trace_close').childNodes[0];
+var trace    = document.getElementById('think_page_trace_tab');
+var cookie   = document.cookie.match(/thinkphp_show_page_trace=(\d\|\d)/);
+var history  = (cookie && typeof cookie[1] != 'undefined' && cookie[1].split('|')) || [0,0];
+open.onclick = function(){
+	trace.style.display = 'block';
+	this.style.display = 'none';
+	close.parentNode.style.display = 'block';
+	history[0] = 1;
+	document.cookie = 'thinkphp_show_page_trace='+history.join('|')
+}
+close.onclick = function(){
+	trace.style.display = 'none';
+this.parentNode.style.display = 'none';
+	open.style.display = 'block';
+	history[0] = 0;
+	document.cookie = 'thinkphp_show_page_trace='+history.join('|')
+}
+for(var i = 0; i < tab_tit.length; i++){
+	tab_tit[i].onclick = (function(i){
+		return function(){
+			for(var j = 0; j < tab_cont.length; j++){
+				tab_cont[j].style.display = 'none';
+				tab_tit[j].style.color = '#999';
+			}
+			tab_cont[i].style.display = 'block';
+			tab_tit[i].style.color = '#000';
+			history[1] = i;
+			document.cookie = 'thinkphp_show_page_trace='+history.join('|')
+		}
+	})(i)
+}
+parseInt(history[0]) && open.click();
+(tab_tit[history[1]] || tab_tit[0]).click();
+})();
+</script>

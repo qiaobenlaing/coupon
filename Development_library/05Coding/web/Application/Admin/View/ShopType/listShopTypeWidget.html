@@ -1,0 +1,30 @@
+<table class="fp-table table table-striped table-bordered table-condensed" id="data_table">
+    <thead>
+    <tr>
+        <th>类型图标</th>
+        <th>类型描述</th>
+        <th>类型值</th>
+        <th>标志</th>
+        <th>排序号</th>
+        <th>拥有城市</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    <foreach name="dataList" item="item">
+        <tr>
+            <td><img src="{$item.shopTypeImg}" alt="{$item.typeZh}" style="width: 70px;"/></td>
+            <td>{$item.typeZh}</td>
+            <td>{$item.typeValue}</td>
+            <td>{$item.sign}</td>
+            <td>{$item.sortNbr}</td>
+            <td>{$item.city}</td>
+            <td>
+                <a class="btn btn-xs btn-primary" href="/Admin/ShopType/editShopType?shopTypeId={$item.shopTypeId}&page={$pager:page}">编辑</a>
+                </eq>
+            </td>
+        </tr>
+    </foreach>
+    </tbody>
+</table>
+<include file="Application/Admin/View/Widget/pager.html" /> 

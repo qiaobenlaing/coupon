@@ -1,0 +1,29 @@
+<layout name="layout_admin" />
+<div id="data_table_wrapper">
+    <a href="/Admin/Module/editIndexModule" class="btn btn-sm btn-info"><span class="glyphicon glyphicon-plus"></span> 新增模块</a>
+    <?php $count = count($dataList);?>
+    <table class="fp-table table table-striped table-bordered table-condensed" id="data_table">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>模块中文描述</th>
+            <th>模块值</th>
+            <th>模块内容</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <foreach name="dataList" item="item" key="key">
+            <tr>
+                <td><?php echo $key + 1;?></td>
+                <td>{$item.moduleTitle}</td>
+                <td>{$item.moduleValue}</td>
+                <td>{$item.content}</td>
+                <td>
+                    <a href="/Admin/Module/editIndexModule?id={$item.id}" class="btn btn-xs btn-primary">编辑</a>
+                </td>
+            </tr>
+        </foreach>
+        </tbody>
+    </table>
+</div>

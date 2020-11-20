@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="indicator_right_padding">10dp</dimen>
+    <dimen name="indicator_corner_radius">12dp</dimen>
+    <dimen name="indicator_internal_padding">4dp</dimen>
+    <dimen name="header_footer_left_right_padding">24dp</dimen>
+    <dimen name="header_footer_top_bottom_padding">12dp</dimen>
+    <dimen name="xlistview_footer_padding">8dp</dimen>
+    <dimen name="xlistview_down_sep">100dp</dimen>
+    <dimen name="load_more_margin">10dp</dimen>
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <!-- 最上面导航条 -->
+    <dimen name="navigation_bar">48dp</dimen>
+    <!-- 导航条左边的边距 -->
+    <dimen name="navigation_left">5dp</dimen>
+    <!-- 导航条饭后按钮距离左边的边距 -->
+    <dimen name="navigation_left_r">8dp</dimen>
+    <!-- 导航条右边的边距 -->
+    <dimen name="navigation_right">8dp</dimen>
+    <!-- gridView上拉刷新底部的高度 -->
+
+</resources>

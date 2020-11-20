@@ -1,0 +1,954 @@
+body{
+    font-family: "microsoft yahei", "Times New Roman", "宋体", Times, serif;
+}
+ul li{
+    list-style-type: none;
+}
+.navbar {
+    background: #C5000A;
+}
+.view .shop-info-nav{
+    background-color: rgba(0, 0, 0, 0.3)!important;
+}
+.navbar .center {
+    color: #FFFFFF;
+}
+.body {
+    padding: 20px;
+    color: #000;
+    font-family: '微软雅黑';
+    background: #fff;
+}
+.body .protocol-title {
+    font-size: 15px;
+    margin-bottom: 10px;
+    margin-top: 0px;
+}
+.body .line {
+    border-bottom: 1px solid #C8C8C8;
+}
+.body .one-stage-title {
+    font-size: 13px;
+}
+.body .content {
+    font-size: 12px;
+    margin-bottom: 12px;
+}
+.body .content span{
+    margin-right: 10px;
+}
+/***********活动样式****************/
+.act, .pos-faq, .about, .protocol{
+    background: #FFFFFF;
+}
+.act-body{padding-left: 0px;padding-right: 0px;padding-top:5px;padding-bottom: 0px;}
+.act-body .act-name{
+    width: 100%;
+    font-size: 25px;
+    text-align: center;
+}
+.act-body .act-shop-name{
+    font-size: 18px;
+    margin-top: 2%;
+    color: #333333;
+    padding-left: 5%;
+}
+.act-body .img {
+    /*padding: 0 10px 0 10px;*/
+    width: auto;
+    height: auto;
+    margin-top: 10px;
+    padding-bottom: 15px;
+    background-color: #F0EFF5;
+}
+.act-body .img img{
+    width: 100%;
+}
+.act-body .detail {
+    border-top: 1px solid #C0C0C0;
+    border-bottom: 1px solid #C0C0C0;
+    padding:  0 10px;
+}
+.act-body .detail div{
+    width: 100%;
+    padding-bottom: 30px;
+    padding-top: 10px;
+    border-bottom: 1px solid #C0C0C0;
+    font-size: 15px;
+    color: #333333;
+}
+.detail-left{
+    float: left;
+}
+.detail-right{
+    float: right;
+    color: #666666;
+}
+.detail-num {
+    color: #C2020A;
+}
+.act-body .detail .act-limit {
+    border-bottom: none;
+}
+.act-body .act-content {
+    background-color: #F0EFF5;
+    /*border-bottom: 1px solid #C0C0C0;*/
+    padding:  0 10px;
+}
+.act-body .act-content div{
+    width: 100%;
+    padding-bottom: 30px;
+    padding-top: 10px;
+    color: #989899;
+    font-size: 15px;
+}
+.act-introduction{
+    border-top: 1px solid #C0C0C0;
+    font-size: 14px;
+    padding:  10px;
+    color: #666666;
+}
+/*.act-body .act-content {*/
+/*padding-bottom: 10px;*/
+/*padding-top: 10px;*/
+/*padding-left: 10px;*/
+/*border-bottom: 1px solid #C0C0C0;*/
+/*font-size: 13px;*/
+/*color: #323232;*/
+/*}*/
+/**********红包样式****************/
+.bonus-wrap {
+    padding: 0px;
+    background: #FDF6E4;
+    height: auto;
+}
+.bonus-head{
+    background-image: url("../img/bonusHead.png");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    height: 210px;
+    color: #FFFFFF;
+    text-align: center;
+    line-height: 160px;
+    font-size: 12px;
+}
+.bonus-body {
+    height: auto;
+    padding: 10px 30px 30px 30px;
+}
+.bonus-body .bonus-detail {
+    background-image: url("../img/detail-bg.png");
+    background-size: 100%;
+    background-repeat: repeat-y;
+    height: 120%;
+    padding-left: 13px;
+    padding-right: 12px;
+    font-size: 12px;
+    padding-top: 18px;
+}
+.bonus-body .bonus-detail .detail-title {
+    background: #FCD633;
+    padding: 5px 10px 5px 10px;
+    border-radius: 4px;
+    color: #CF2D2F;
+}
+.bonus-body .bonus-detail .detail-content {
+    color: #FCD633;
+    font-size: 12px;
+}
+.bonus-foot {
+}
+/**********主题活动样式****************/
+.plat-act-theme img{
+    width: 100%;
+    height: auto;
+}
+.plat-act{
+    margin: 10px 10px 0 10px;
+    border: 1px solid #d3d3d3;
+    border-radius: 4px;
+}
+.plat-act img{
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+}
+.plat-act .detail{
+    width: 100%;
+    font-size: 16px;
+    font-family: '黑体 Regular', '黑体';
+    padding: 16px 0 16px 5px;
+}
+
+.plat-act .detail a{
+    padding: 12px 10px;
+    background-color: red;
+    color: white;
+    border: 1px solid #000000;
+    border-radius: 4px;
+    font-weight: bold;
+    float: right;
+    margin: -13px 13px 0 0;
+}
+.search-div{
+    padding: 10px 0 0 10px;
+}
+.search-div input, button{
+    border-radius: 4px;
+}
+
+/**********滚屏活动样式****************/
+.scroll-info{
+    font-weight: bold;
+    font-size: 16px;
+    font-family: '黑体 Regular', '黑体';
+    margin-left: 3%;
+    position: absolute;
+    top: 89%;
+}
+
+.rule-title{
+    text-align: center;
+    font-size: 14px;
+    font-family: '方正姚体 Regular', '方正姚体';
+}
+.rule-info{
+    margin: 10px;
+    font-size: 12px;
+    text-align: left;
+    font-family: "Microsoft YaHei", "宋体", Helvetica, Arial, sans-serif;
+}
+/**********滚屏活动样式****************/
+.special-act{
+    background-image: url("../img/act.jpg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    padding: 17% 0;
+    color: #0263FA;
+    font-size: 16px;
+    padding-left: 10px;
+    font-weight: bold;
+    position: relative;
+}
+.special-act a{
+    position: absolute;
+    padding: 1px 11px;
+    background-color: red;
+    color: white;
+    border: 1px solid #000000;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: bold;
+    top: 80%;
+    left: 75%;
+}
+.special-shopInfo{
+    font-size: 14px;
+    font-family: '黑体 Regular', '黑体';
+    padding: 10px;
+    border-bottom: 1px solid #DBDBDB;
+}
+.special-img{
+    padding: 10px;
+    border-bottom: 1px solid #DBDBDB;
+}
+.special-img img{
+    width: 100%;
+    height: auto;
+}
+/***huibiIntro**/
+.huibi{background-color: #F0EFF5}
+.huibi .head{
+    padding: 0 20px 0 20px;
+    background-color: #C5000A;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    color: #fff;
+    font-size: 17px;
+}
+.huibi .body{
+    background-color: #F0EFF5;
+    padding-top: 0;
+}
+/*******paySucc********/
+.pay-ret-warp{
+    padding: 30px;
+    background-color: #EFEFF4;
+}
+.pay-ret{
+    padding: 27px;
+    border: 1px solid #DBC59C;
+    background-color: #F8EEA6;
+    border-radius: 7px;
+    font-size: 13px;
+    margin-bottom: 16px;
+}
+.pay-ret .pay-succ-icon {
+    width: 25px;
+    float: left;
+    margin-right: 7px;
+}
+.pay-ret .pay-ret-text {
+    line-height: 23px;
+}
+.pay-ret-warp .send-coupon-title {
+    padding: 27px;
+    border: 1px solid #DBC59C;
+    background-color: #F8EEA6;
+    border-radius: 7px;
+    font-size: 16px;
+    color: #B50706;
+    text-align: center;
+    font-weight: 800;
+    border-bottom: 0px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+.pay-ret-warp .send-coupon-wrap{
+    border: 1px solid #ECECEC;
+    padding-left: 5px;
+}
+.send-coupon-wrap .send-coupon-left{
+    float: left;
+    width: 76%;
+    margin-top: 6px;
+}
+.pay-ret-warp .send-coupon-wrap .shop-logo{
+    float: left;
+    padding-top: 9px;
+}
+.pay-ret-warp .send-coupon-wrap .shop-logo img{
+    width: 45px;
+    height: 45px;
+}
+.pay-ret-warp .send-coupon-wrap .coupon-content-wrap{
+    margin-right: 3px;
+    padding-left: 50px;
+}
+.pay-ret-warp .send-coupon-wrap .coupon-content-wrap p{
+    margin: 1px;
+}
+.pay-ret-warp .send-coupon-wrap .coupon-content-wrap .shop-name{
+    margin-bottom: 6px;
+    font-size: 15px;
+    color: #151414;
+}
+.pay-ret-warp .send-coupon-wrap .coupon-content-wrap .coupon-content{
+    margin-bottom: 3px;
+    color: #707070;
+    font-size: 12px;
+}
+.pay-ret-warp .send-coupon-wrap .coupon-content-wrap .use-time{
+    color: #707070;
+    font-size: 12px;
+}
+.pay-ret-warp .send-coupon-wrap .send-coupon-right{
+    float: right;
+    text-align: center;
+    color: #FFFFFD;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    width: 56px;
+    /*min-height: 92px;*/
+}
+.send-coupon-right .coupon-value{
+    margin-top: 19px;
+    margin-bottom: 0;
+    font-size: 14px;
+    min-height: 17px;
+}
+.send-coupon-right .coupon-type{
+    margin-bottom: 9px;
+    font-size: 14px;
+    color: #FFFFFD;
+}
+.coupon-type-extra {
+    margin-bottom: 60px;
+}
+.send-coupon-extra {
+    font-size: 12px;
+    color: #595958;
+    clear: both;
+}
+.send-coupon-extra p{
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+.clear{
+    clear: both;
+}
+.display-none{
+    display: none;
+}
+.send-coupon-right .arrow-link{
+    display: block;
+}
+.free-val-pay-tip-wrap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.25);
+}
+.free-val-pay-tip-wrap .free-val-pay-tip-content-wrap{
+    padding-top: 45%;
+    padding-left: 82px;
+    padding-right: 82px;
+}
+.free-val-pay-tip-wrap .free-val-pay-tip-content-wrap .free-val-pay-tip {
+    border: 1px solid #6E6E6E;
+    text-align: center;
+    padding: 10px;
+    background-color: #fff;
+}
+.free-val-pay-tip-wrap .free-val-pay-tip-content-wrap .buttons-row {
+    background-color: #fff;
+}
+.coupon-order-pay-succ {
+    color: #F36534;
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+.order-coupon-title {
+    color: #A2A2A1;
+    margin-bottom: 3px;
+}
+.order-coupon-wrap .coupon-wrap-7 {
+    background-image: url('/Public/img/couponDefault/couponBar/detail_ex_voucher.png');
+}
+.order-coupon-wrap .coupon-wrap-8 {
+    background-image: url('/Public/img/couponDefault/couponBar/detail_voucher.png');
+}
+.order-coupon-wrap .coupon-wrap {
+    background-size: 100% 47px;
+    background-repeat: no-repeat;
+    height: 73px;
+    background-color: #D5D5D5;
+    margin-bottom: 10px;
+    border: 1px solid #E1E0E7;
+    border-radius: 8px;
+    box-shadow: 0 2px 0 #C4C3C9;
+    overflow: hidden;
+}
+.order-coupon-wrap .coupon-wrap .coupon-code-wrap {
+    padding-top: 6px;
+    padding-left: 16px;
+    padding-right: 10px;
+    color: #fff;
+    font-size: 15px;
+    height: 23px;
+}
+.order-coupon-wrap .coupon-wrap .coupon-code-wrap .coupon-code {
+    display: inline-block;
+    padding-top: 2px;
+    border: 0;
+}
+.order-coupon-wrap .coupon-wrap .coupon-code-wrap a{
+    color: #FDFFFF;
+    padding: 0px 11px;
+    border-radius: 5px;
+    float: right;
+    font-size: 15px;
+    display: block;
+}
+.order-coupon-wrap .coupon-wrap .coupon-code-wrap .ln-refund-7 {border: 1px solid #C1E0F7;}
+.order-coupon-wrap .coupon-wrap .coupon-code-wrap .ln-refund-8 {border: 1px solid #FDB39C;}
+.order-coupon-wrap .coupon-wrap .coupon-bar-arrow{
+    text-align: center;
+}
+.order-coupon-wrap .coupon-wrap .coupon-bar-arrow img {
+    width: 14px;
+}
+.order-coupon-wrap .coupon-wrap .coupon-barcode-wrap{
+    text-align: center;
+    margin-top: 4px;
+    padding: 0 26px;
+    position: relative;
+}
+.order-coupon-wrap .coupon-wrap .coupon-barcode-wrap .coupon-barcode-img-wrap {
+    background-color: #FFFFFF;
+    padding: 4px 4px;
+}
+.order-coupon-wrap .coupon-wrap .coupon-barcode-wrap .coupon-barcode-shadow {
+    width: 100%;
+    position: absolute;
+    /* top: 0; */
+    height: 23px;
+    background-color: rgba(213, 213, 213, 0.45);
+}
+.order-coupon-wrap .coupon-wrap .coupon-barcode-wrap img{
+    width: 100%;
+}
+.sweep-code-pay-success-wrap .scpsw-part1{
+    text-align: center;
+    font-size: 29px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-top: 1px solid #BEBEBE;
+    border-bottom: 1px solid #BEBEBE;
+    margin-top: 5px;
+    background-color: #fff;
+    color: #343332;
+}
+.sweep-code-pay-success-wrap .scpsw-part2{
+    font-size: 20px;
+    padding: 10px;
+    border-top: 1px solid #BEBEBE;
+    border-bottom: 1px solid #BEBEBE;
+    margin-top: 5px;
+    background-color: #fff;
+    color: #696969;
+}
+.sweep-code-pay-success-wrap .scpsw-part2 .img-shop-logo-url{
+    width: 70px;
+    height: 70px;
+    vertical-align: middle;
+    float: left;
+}
+.sweep-code-pay-success-wrap .span-shop-name{
+    margin-left: 13px;
+    margin-top: 18px;
+    float: left;
+}
+.sweep-code-pay-success-wrap .scpsw-part3{
+    font-size: 18px;
+    padding: 10px;
+    border-top: 1px solid #BEBEBE;
+    border-bottom: 1px solid #BEBEBE;
+    margin-top: 5px;
+    background-color: #fff;
+    color: rgb(37, 34, 33);
+}
+.sweep-code-pay-success-wrap .scpsw-part4{
+    font-size: 18px;
+    padding: 10px 0;
+    border-top: 1px solid #DDDDDD;;
+    border-bottom: 1px solid #BEBEBE;
+    margin-top: 5px;
+    background-color: #fff;
+    color: rgb(37, 34, 33);
+}
+/*****regSucc*******/
+.reg-succ{
+    background-image: url('/Public/img/regSucc/bg.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    text-align: center;
+}
+.reg-succ .congratulations{
+    width: 83%;
+    margin-top: 25px;
+}
+.reg-succ .coupon-content-wrap{
+    padding-left: 60px;
+    padding-right: 60px;
+    padding-top: 10px;
+}
+.reg-succ .coupon-content-wrap .coupon-content-bg{
+    background-image: url('/Public/img/webchat/wechatCouponShare/version1/couponContent2x.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    padding-left: 18px;
+    height: 88px;
+}
+.reg-succ .coupon-content-wrap .coupon-content-bg .coupon-name{
+    float: left;
+    width: 10px;
+    color: #FF562D;
+    margin-top: 13px;
+    font-weight: 700;
+}
+.reg-succ .coupon-content-wrap .coupon-content-bg .coupon-value{
+    color: #FF562D;
+    margin-top: 13px;
+    font-weight: 700;
+    line-height: 88px;
+    font-size: 36px;
+}
+.reg-succ .go-to-look-look{
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+.reg-succ .go-to-look-look a{
+    text-decoration: none;
+    color: #FF562D;
+    font-size: 15px;
+}
+.reg-succ .dividing-line .dividing-line-img{
+    width: 80%;
+}
+.reg-succ .invite-code-wrap{
+    padding-left: 87px;
+    padding-right: 87px;
+}
+.reg-succ .invite-code-wrap a{
+    text-decoration: none;
+    color: #A42303;
+    font-size: 15px;
+}
+.reg-succ .invite-code-wrap a p{
+    text-decoration: underline;
+}
+.reg-succ .invite-code-wrap .invite-code{
+    color: #A42303;
+    background: #fff;
+    border-radius: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 20px;
+}
+/************Api/Browser/shopProductList************/
+.shop-product-wrap {
+    background: #EFEFF4;
+}
+.shop-product-wrap .category-wrap {
+    position: relative;
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+.category-wrap .category-name {
+    text-align: center;
+}
+.shop-product-wrap .product-wrap {
+    margin-top: -1px;
+    margin-bottom: 0;
+    height: 85px;
+    padding: 5px;
+    background: #ffffff;
+    border-top: 1px solid #DBDBDB;
+    border-bottom: 1px solid #DBDBDB;
+    position: relative;
+    display: block;
+    color: #000000;
+    padding-left: 10px;
+}
+.shop-product-wrap .product-wrap .div-product-img-wrap{
+    position: relative;
+    float: left;
+}
+.shop-product-wrap .product-wrap .product-img{
+    float: left;
+    height: 80px;
+    width: 80px;
+    border: 1px solid #E5E5E5;
+}
+.shop-product-wrap .product-wrap .product-info-wrap {
+    padding-left: 90px;
+    display: block;
+    color: #000000;
+}
+.shop-product-wrap .product-wrap .product-info-wrap .product-name {
+    font-size: 17px;
+    font-weight: 500;
+    margin-bottom: 3px;
+}
+.shop-product-wrap .product-wrap .product-info-wrap .product-des {
+    font-size: 13px;
+    color: #575757;
+    max-height: 36px;
+    overflow: hidden;
+    height: 34px;
+}
+.shop-product-wrap .product-wrap .product-info-wrap .product-price .final-price {
+    font-size: 17px;
+    color: #DB5A03;
+}
+.shop-product-wrap .product-wrap .product-info-wrap .product-price .origin-price {
+    font-size: 12px;
+    color: #6F6F6F;
+    text-decoration: line-through;
+    margin-left: 15px;
+}
+.shop-product-wrap .product-wrap .shop-img{
+    float: left;
+    height: 65px;
+    width: 65px;
+    border: 1px solid #E5E5E5;
+}
+.shop-product-wrap .product-wrap .shop-info-wrap {
+    padding-left: 80px;
+    display: block;
+    color: #000000;
+}
+.shop-product-wrap .product-wrap .icon-img{
+    width: 15px;
+  	height: auto;
+}
+.shop-product-wrap .product-wrap .product-name .shop-distance{
+    float:right;
+	margin-right: 10px;
+	font-size: 12px;
+	color: #A3A3A3;
+}
+.shop-product-wrap .product-wrap .shop-info-wrap .product-discount{
+    font-size: 13px;
+    max-height: 20px;
+    overflow: hidden;
+}
+.shop-product-wrap .product-wrap .shop-info-wrap .product-address{
+    font-size: 12px;
+    max-height: 20px;
+    overflow: hidden;
+	color: #A3A3A3;
+}
+.shop-product-wrap .product-wrap .shop-info-wrap .product-address .final-type {
+    font-size: 13px;
+    color: #A3A3A3;
+}
+.shop-product-wrap .product-wrap .shop-info-wrap .product-address .shop-popularity {
+    float: right;
+  	margin-right: 10px;
+}
+.shop-product-wrap .product-wrap .zan-wrap {
+    position: absolute;
+    top: 60px;
+    right: 1px;
+    background-color: rgba(255, 255, 255, 0.72);
+    border-radius: 4px;
+    font-size: 13px;
+    padding: 1px 3px;
+}
+.shop-product-wrap .product-wrap .zan-wrap .zan-icon-wrap {
+    background-image: url('/Public/img/icon/nzan.png');
+    width: auto;
+    display: inline-block;
+    background-repeat: no-repeat;
+    height: 18px;
+    background-size: 14px;
+    background-position: 0 center;
+    padding-left: 17px;
+}
+.shop-product-wrap .product-wrap .zan-wrap .nzan-icon {
+    background-image: url('/Public/img/icon/nzan.png');
+}
+.shop-product-wrap .product-wrap .zan-wrap .zan-icon {
+    background-image: url('/Public/img/icon/zan.png');
+}
+/************Api/Browser/shopProductInfo************/
+.shop-product-info-wrap .product-img-wrap {
+    min-height: 200px;
+    text-align: center;
+}
+.shop-product-info-wrap .product-img-wrap img {
+    width: 100%;
+    height: auto;
+}
+.shop-product-info-wrap .product-info-wrap {
+    padding-left: 16px;
+    padding-right: 16px;
+    border-bottom: 1px solid #DADADA;
+}
+.shop-product-info-wrap .product-info-wrap .zan-wrap{
+    float: right;
+    background: #fff;
+    padding: 2px 15px;
+    border-radius: 12px;
+    position: relative;
+    top: -40px;
+}
+.shop-product-info-wrap .product-info-wrap .zan-wrap .zan-icon-wrap {
+    width: auto;
+    display: inline-block;
+    background-repeat: no-repeat;
+    height: 18px;
+    background-size: 14px;
+    background-position: 0 center;
+    padding-left: 17px;
+}
+.shop-product-info-wrap .product-info-wrap .zan-wrap .nzan-icon {
+    background-image: url('/Public/img/icon/nzan.png');
+}
+.shop-product-info-wrap .product-info-wrap .zan-wrap .zan-icon {
+    background-image: url('/Public/img/icon/zan.png');
+}
+.shop-product-info-wrap .product-info-wrap .product-price .final-price {
+    font-size: 17px;
+    color: #DB5A03;
+}
+.shop-product-info-wrap .product-info-wrap .product-price .origin-price {
+    font-size: 12px;
+    color: #6F6F6F;
+    margin-left: 15px;
+    text-decoration: line-through;
+}
+.shop-product-info-wrap .product-info-wrap .product-name {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 7px;
+}
+.shop-product-info-wrap .product-info-wrap .product-des {
+    font-size: 13px;
+    color: #575757;
+	padding-bottom: 5px;
+}
+.shop-product-info-wrap .product-part-wrap{
+	height: 15px;
+	background-color: #E8E8E8;
+}
+.shop-product-info-wrap .product-detail-wrap{
+	text-align:center;
+	font-size: 16px;
+	padding: 5px;
+    border-bottom: 1px solid #DADADA;
+}
+.shop-product-info-wrap .product-detail-des-wrap{
+	font-size: 16px;
+    padding: 5px 16px;
+    border-bottom: 1px solid #DADADA;
+    border-top: 1px solid #DADADA;
+} 
+.shop-product-info-wrap .product-detail-des-wrap .detail-title{
+	
+}
+.shop-product-info-wrap .product-detail-des-wrap .detail-name{
+	color:#666666;
+}
+.shop-product-info-wrap .product-white{
+	height: 60px;
+    border-top: 1px solid #D7D7D7;
+    border-bottom: 1px solid #DADADA;
+    padding-left: 16px;
+    padding-right: 16px;
+}
+.shop-product-info-wrap .product-white .product-des{
+    font-size: 13px;
+    color: #575757;
+    padding-bottom: 5px;
+}
+.shop-product-info-wrap .product-last-wrap{
+	height: 30px;
+	background-color: #E8E8E8;
+}
+/**********Api/Browser/cApplyRefund/orderCoupon**********/
+.order .order-info{
+	padding: 8px 0 8px 0;
+	border-bottom: 1px solid #DADADA;
+}
+.order .order-info .order-type{
+	padding-left: 15px;
+}
+.order .order-status{
+	border-bottom: 1px solid #DADADA;
+	background: #F5F5F5;
+}
+.order .order-status .order-status-info{
+	padding-left: 15px;
+	padding-top: 5px;
+  	padding-bottom: 5px;
+}
+.order .order-status .order-status-info img{
+	float: left;
+  	margin-right: 4px;
+  	margin-bottom: 70px;
+  	padding-top: 2px;
+  	width: 6%;
+}
+.order .order-info .shop-name{
+	padding-left:15px;
+	padding-right:60%;
+}
+.order .order-info .shop-name img{
+	width:6%;
+	padding-right:4px;
+}
+.order .order-info .shop-url img{
+	width:3%;
+	padding-right:4px;
+}
+.order .order-info .refund-title{
+	padding-left:15px;
+}
+.order .refund-ticket{
+	padding-left:15px;
+	padding-top: 5px;
+  	padding-bottom: 5px;
+	border-bottom: 1px solid #DADADA;
+}
+.order .refund-details{
+    padding: 0 15px;
+    background-color: #D0D0D0;
+}
+.order .refund-details .refund-details-title{
+    float: left;
+    width: 89%
+}
+.order .refund-details .refund-details-amount{
+    float: left;
+    width: 10%
+}
+.order .refund-ticket .ticket-left{
+	float:left;
+	width: 67%;
+}
+.order .refund-ticket .actual-refund{
+	float:left;
+	width: 85%;
+}
+.order .refund-reason{
+	padding-left:25px;
+	padding-top: 5px;
+  	padding-bottom: 5px;
+}
+.order .more-reason{
+	padding: 5px 15px 5px 15px;
+}
+.order .more-reason textarea{
+	height: 50px;
+  	resize: none;
+  	line-height: 1.4;
+  	padding-top: 8px;
+  	padding-bottom: 7px;
+	width:100%;
+}
+.order .refund-reason-wrap{
+    padding-left:5px;
+    border-bottom: 1px solid #E5E2E2;
+    color: #525252;
+}
+/**********Api/Browser/exchageCouponRet**********/
+.exchange-coupon-wrap{
+}
+.exchange-coupon-wrap .duihuan-wrap {
+    background-color: #FEF8C4;
+    padding-top: 10px;
+    padding-bottom: 5px;
+    margin-bottom: 6px;
+}
+.exchange-coupon-wrap .success-text{
+    text-align: center;
+    font-size: 23px;
+    color: #FC7239;
+}
+.exchange-coupon-wrap .shop-info{
+    margin-top: 5px;
+    text-align: center;
+    color: #686866;
+}
+.exchange-coupon-wrap .used-coupon-info{
+    margin-top: 5px;
+    text-align: center;
+    color: #686866;
+}
+.exchange-coupon-wrap .can-use-coupon-wrap{
+    text-align: center;
+    margin: 5px;
+}
+.exchange-coupon-wrap .can-use-coupon-wrap a{
+    color: #FC7239;
+}
+.exchange-coupon-wrap .can-use-coupon-wrap span{
+    color: #C4070E;
+}
+.exchange-coupon-wrap .shop-list-title{
+    background-color: #fff;
+    border-top: 1px solid #DBDBDB;
+    border-bottom: 1px solid #DBDBDB;
+    padding: 6px 0 6px 9px;
+    font-size: 15px;
+}
+.exchange-coupon-wrap .list-block{
+    margin: 0;
+}

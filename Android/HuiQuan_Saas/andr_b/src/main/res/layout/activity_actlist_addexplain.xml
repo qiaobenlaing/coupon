@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/LyOutSet" >
+
+    <include layout="@layout/common_title_home" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <!-- android:background="@drawable/sel_edt_input" -->
+
+            <EditText
+                android:id="@+id/et_actadd_context"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:background="@drawable/shape_edtset"
+                android:gravity="top"
+                android:hint="@string/tv_actadd_explain"
+                android:inputType="textMultiLine"
+                android:textColorHint="@color/actadd_gray"
+                android:textSize="16sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <include layout="@layout/common_stept" />
+
+</LinearLayout>

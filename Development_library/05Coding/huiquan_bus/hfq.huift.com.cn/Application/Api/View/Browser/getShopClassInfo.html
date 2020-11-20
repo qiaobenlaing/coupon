@@ -1,0 +1,85 @@
+<layout name="layout_api" />
+<style>
+    .page-content img{width: 100%;height: auto;}
+    .shop-contact{padding: 3% 0;background-image: url('/Public/img/icon/tel.png');background-position: 2%;-moz-background-size:5% auto;background-size:5% auto;background-repeat: no-repeat;background-color: #fff;}
+    .shop-contact p{margin: 0;font-size: 16px;color: #000;display: inline-block;padding-left: 9%;}
+    .download{background-color: red;color: #fff;width: 100%;padding: 3% 0 3% 0;text-align: center;font-size: 20px;}
+    .class-info{background-color: #fff;padding: 2% 3%;border: 1px solid rgb(204,204,204);}
+    .class-remark{background-color: #fff;}
+    .class-remark-info{padding: 2% 3%;border-bottom: 1px solid rgb(204,204,204);}
+    .class-remark-info p{margin: 0;word-break:break-all;word-wrap: break-word;}
+    .class-remark-info .remark-img{width: 100%;}
+    .class-info table{width: 100%;border-spacing: 0;border-collapse: collapse;}
+    .class-info table tbody{vertical-align: top;}
+    .class-info table tr td{border: 1px solid rgb(204,204,204);text-align: left;font-size: 14px;padding: 2% 3%;word-break:break-all;word-wrap: break-word;}
+</style>
+<!-- Views -->
+<div class="views">
+    <!-- Your main view, should have "view-main" class -->
+    <div class="view view-main">
+        <!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
+        <div class="pages">
+            <!-- Page, "data-page" contains page name -->
+            <div data-page="index" class="page">
+                <!-- Scrollable page content -->
+                <div class="page-content">
+                    <?php if($shopClassInfo['classUrl']):?>
+                    <img src="{$shopClassInfo.classUrl}" class="gradient" />
+                    <?php endif;?>
+                    <p style="background-color: rgb(204,204,204);padding: 3% 2%;margin: -4px 0 0 0;">{$shopClassInfo.className}</p>
+                    <a href="tel:{$shopClassInfo.tel}">
+                        <div class="shop-contact">
+                            <p>{$shopClassInfo.tel}</p>
+                            <img src="/Public/img/icon/arrow_right.png" class="gradient" style="width: 4%;height: auto;float: right;margin-right: 2%;" />
+                            <p style="float: right;margin-right:3%;color: rgb(175,175,175);">免费咨询</p>
+                        </div>
+                    </a>
+                    <p style="color: rgb(153,153,153);font-size: 18px;margin: 0;padding: 2% 2%;">课程介绍</p>
+                    <div class="class-info">
+                        <table>
+                            <tr><td style="width: 30%;">所开班级</td><td style="width: 70%;">{$shopClassInfo.className}</td></tr>
+                            <tr><td style="width: 30%;">学习时间</td><td style="width: 70%;">{$shopClassInfo.learnStartDate}至{$shopClassInfo.learnEndDate}</td></tr>
+                            <tr><td style="width: 30%;">上课时间</td>
+                                <td style="width: 70%;">
+                                    <foreach name="shopClassInfo.classWeekInfo" item="week">
+                                        {$week.weekName}
+                                        <foreach name="week.learnTime" item="time" key="k">
+                                            {$time.startTime}-{$time.endTime}<?php if($k == count($week['learnTime']) - 1):?><br /><?php else:?>&nbsp;<?php endif;?>
+                                        </foreach>
+                                    </foreach>
+                                </td>
+                            </tr>
+                            <tr><td style="width: 30%;">适合年龄段</td><td style="width: 70%;">{$shopClassInfo.learnMemo}</td></tr>
+                            <tr><td style="width: 30%;">报名费用</td><td style="width: 70%;"><gt name="shopClassInfo.learnFee" value="0">{$shopClassInfo.learnFee}元<else />价格可商议</gt></td></tr>
+                            <tr><td style="width: 30%;">所学课时</td><td style="width: 70%;">{$shopClassInfo.learnNum|default='0'}节课</td></tr>
+                            <tr><td style="width: 30%;">任课老师</td><td style="width: 70%;">{$shopClassInfo.teacherName}</td></tr>
+                            <tr><td style="width: 30%;">报名时间</td><td style="width: 70%;">{$shopClassInfo.signStartDate}至{$shopClassInfo.signEndDate}</td></tr>
+                            <tr><td style="width: 30%;">课程简介</td><td style="width: 70%;">{$shopClassInfo.classInfo}</td></tr>
+                        </table>
+                    </div>
+                    <p style="color: rgb(153,153,153);font-size: 18px;margin: 0;padding: 2% 2%;">网友点评</p>
+                    <div class="class-remark">
+                        <foreach name="classRemarkList" item="vo">
+                            <div class="class-remark-info">
+                                <p style="font-size: 18px;font-weight: bold;">{$vo.nickName}</p>
+                                <span>####</span><span style="float: right">{$vo.remarkTime}</span><br />
+                                <p style="margin: 2% 0;">{$vo.remark}</p>
+                                <div class="row" style="text-align: center;">
+                                    <foreach name="vo.classRemarkImg" item="img">
+                                        <div style="width: 33%;display: inline-table;"><img src="{$img.remarkImgUrl}" class="gradient remark-img" /></div>
+                                    </foreach>
+                                </div>
+                            </div>
+                        </foreach>
+                    </div>
+                    <a href="/Wechat/Index/cdownload" class="external"><div class="download">报名</div></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(function(){
+        $('.remark-img').height($('.remark-img:first').width());
+    });
+</script>

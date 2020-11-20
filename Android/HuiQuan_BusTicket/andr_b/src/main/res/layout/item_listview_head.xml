@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/bgall"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/white"
+        android:paddingLeft="10dp"
+        android:paddingRight="4dp" >
+
+        <EditText
+            android:id="@+id/et_ordernbr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/tv_ordernbr"
+            android:background="@drawable/shape_my_order"
+            android:gravity="left"
+            android:hint="输入订单号后4位/手机号/餐号"
+            android:inputType="number"
+            android:paddingLeft="25dp"
+            android:singleLine="true"
+            android:textColor="@color/gray"
+            android:textColorHint="@color/hint_light_gray"
+            android:textSize="14sp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="5dp"
+            android:src="@drawable/order_seach" />
+
+        <TextView
+            android:id="@+id/tv_ordernbr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:padding="6dp"
+            android:text="查询"
+            android:textSize="16sp" />
+    </RelativeLayout>
+
+    <LinearLayout
+        style="@style/LyWHFourth"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/white"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/tv_less"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="上一天"
+            android:textColor="@color/dark_gray" />
+
+        <TextView style="@style/VLineV" />
+
+        <TextView
+            android:id="@+id/tv_time_switch"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="今天"
+            android:textColor="@color/dark_gray" />
+
+        <TextView style="@style/VLineV" />
+
+        <TextView
+            android:id="@+id/tv_add"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="下一天"
+            android:textColor="@color/dark_gray" />
+    </LinearLayout>
+
+    <TextView style="@style/VLine" />
+
+</LinearLayout>

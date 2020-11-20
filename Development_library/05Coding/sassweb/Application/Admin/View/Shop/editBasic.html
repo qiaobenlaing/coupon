@@ -1,0 +1,320 @@
+<layout name="layout_admin" />
+<script src="__PUBLIC__/js/knockout.js" charset="UTF-8"></script>
+<script src="__PUBLIC__/js/webuploader.js" charset="UTF-8"></script>
+<script src="__PUBLIC__/js/upload.js" charset="UTF-8"></script>
+<script src="__PUBLIC__/shop/set.js" charset="UTF-8"></script>
+<link rel="stylesheet" href="__PUBLIC__/shop/set.css">
+<script>
+    var __businessHours = {$shopInfo.businessHours|json_encode};
+</script>
+<div class="container-fluid">
+    <div class="row">
+        <include file="./Application/Admin/View/Shop/editShopMenuWidget.html"/>
+        <div class="col-md-11">
+            <form role="form" id="frm_edit_basic" action="/Admin/Shop/editBasic" method="post" class="form-horizontal">
+                <input type="hidden" name="shopCode" value="{$shopInfo.shopCode}" id="shopCode" />
+                <input type="hidden" value="shop" id="shopType" />
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-6 col-md-6">
+                            <div class="form-group">
+                                <label for="parent-code" class="col-md-4">总店</label>
+                                <div class="col-md-8">
+                                    <select class="form-control js-parent-single" name="parentCode" id="parent-code">
+                                        <option value="">请选择总店</option>
+                                        <foreach name="parentList" item="item">
+                                            <option value="{$item.shopCode}" <eq name="shopInfo.parentCode" value="$item.shopCode">selected="selected"</eq>>{$item.shopName}</option>
+                                        </foreach>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input type="hidden" value="" id="search_info_country" />
+                                <label for="country" class="col-md-4"><span class='required-ele'>*</span>国家</label>
+                                <div class="col-md-8">
+                                    <select class="form-control" name="country" id="country">
+                                        <option value="中国" <eq name="shopInfo.country" value="中国">selected="selected"</eq>>中国</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input type="hidden" value="" id="search_info_city" />
+                                <input type="hidden" value="{$shopInfo.province}" id="search-province"/>
+                                <label for="province" class="col-md-4"><span class='required-ele'>*</span>省份/直辖市/特别行政区</label>
+                                <div class="col-md-8">
+                                    <select class="form-control" name="province" id='province'>
+                                        <option value="">请选择省份</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input type="hidden" value="{$shopInfo.city}" id="search-city"/>
+                                <label for="city" class="col-md-4"><span class='required-ele'>*</span>城市/区域</label>
+                                <div class="col-md-8">
+                                    <select class="form-control" name='city' id='city'>
+                                        <option value="">请选择城市</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input type="hidden" value="{$shopInfo.district}" id="search-district"/>
+                                <label for="district" class="col-md-4">地区</label>
+                                <div class="col-md-8">
+                                    <select class="form-control" name='district' id='district'>
+                                        <option value="">请选择地区</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="street" class="col-md-4">街道地址</label>
+                                <div class="col-md-8">
+                                    <textarea class="form-control" name="street" id="street" rows="5" placeholder="街道地址" style="resize: none">{$shopInfo.street}</textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="shop-name" class="col-md-4"><span class='required-ele'>*</span>商户名称</label>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control" name="shopName" value="{$shopInfo.shopName}" placeholder="商户名称" id="shop-name"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="type" class="col-md-4"><span class='required-ele'>*</span>商户类型</label>
+                                <div class="col-md-8">
+                                    <select class="form-control" name="type" id="type">
+                                        <option value="">请选择商店类型</option>
+                                        <foreach name="shopTypeList" item="shopType">
+                                            <option value="{$shopType.typeValue}" <eq name="shopInfo.type" value="$shopType.typeValue">selected="selected"</eq>>{$shopType.typeZh}</option>
+                                        </foreach>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="shop-status" class="col-md-4"><span class='required-ele'>*</span>商户状态</label>
+                                <div class="col-md-8">
+                                    <select class="form-control" name="shopStatus" id="shop-status">
+                                        <option value="1" <eq name="shopInfo.shopStatus" value="1">selected="selected"</eq>>未入驻</option>
+                                        <option value="2" <eq name="shopInfo.shopStatus" value="2">selected="selected"</eq>>已入驻</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-4">是否为公司</label>
+                                <div class="col-md-8">
+                                    <label class="radio-inline">
+                                        <input type="radio" name="isCompany" value="1" <eq name="shopInfo.isCompany" value="1">checked="checked"</eq>> 是
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="isCompany" value="0" <eq name="shopInfo.isCompany" value="0">checked="checked"</eq>> 否
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-6">
+                            <div class="form-group">
+                                <label for="license-nbr" class="col-md-4"><span class='required-ele'>*</span>营业执照编号</label>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control" name="licenseNbr" value="{$shopInfo.licenseNbr}" placeholder="营业执照编号" id="license-nbr"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="license-expire-time" class="col-md-4"><span class='required-ele'>*</span>营业执照到期日</label>
+                                <div class="col-md-8">
+                                    <input type="text" class="license-time-picker form-control ipt-date-time-picker" name="licenseExpireTime" value="{$shopInfo.licenseExpireTime}" readonly id="license-expire-time" placeholder="点击选择日期"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="tel" class="col-md-4"><span class='required-ele'>*</span>商户固定电话</label>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control" name="tel" value="{$shopInfo.tel}" placeholder="商户固定电话" id="tel"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="mobile-nbr" class="col-md-4"><span class='required-ele'>*</span>商户预留电话</label>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control" name="mobileNbr" value="{$shopInfo.mobileNbr}" placeholder="商户预留电话" id="mobile-nbr"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-4">
+                                    <span class='required-ele'>*</span>营业时间
+                                </label>
+                                <div class="col-md-8">
+                                    <button type="button" class="btn btn-success btn-xs plus" data-bind="click:addHour"><div class="glyphicon glyphicon-plus"></div></button>
+                                </div>
+                            </div>
+                            <!-- ko foreach: hour -->
+                            <div class="form-group">
+                                <label class="col-md-4" style="text-align: right">
+                                    <button type="button" class="btn btn-danger btn-xs minus" data-bind="click:$parent.delHour, style: { display: $index() == 0 ? 'none' : 'inline' }"><div class="glyphicon glyphicon-minus"></div></button>
+                                </label>
+                                <div class="col-md-8 input-group add-padding">
+                                    <input type="text" class="business-start-time form-control ipt-date-time-picker" name="shopOpeningTime[]" data-bind="value:open" readonly placeholder="开始时间"/>
+                                    <span class="input-group-addon frm-span">至</span>
+                                    <input type="text" class="business-end-time form-control ipt-date-time-picker" name="shopClosedTime[]" data-bind="value:close" readonly placeholder="结束时间"/>
+                                </div>
+                            </div>
+                            <!-- /ko -->
+                            <div class="form-group">
+                                <label for="short-des" class="col-md-4">商户简介</label>
+                                <div class="col-md-8">
+                                    <textarea class="form-control" name="shortDes" rows="10" id="short-des" placeholder="商户简介" style="resize: none">{$shopInfo.shortDes}</textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="longitude" class="col-md-4">商店经度</label>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control" name="longitude" value="{$shopInfo.longitude}" id="longitude" placeholder="商店经度"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="latitude" class="col-md-4">商店纬度</label>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control" name="latitude" value="{$shopInfo.latitude}" id="latitude" placeholder="商店纬度"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12"><hr/></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-offset-2 col-md-2">
+                            <button type="submit" class="btn btn-primary btn-block" id="submit">保存</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+</div>
+</div>
+<script src="http://api.map.baidu.com/api?v=1.5&ak=BpGriR9K48MyUr933ecTuxmS" type="text/javascript"></script>
+<div id="container"></div>
+<script type="text/javascript">
+$(function() {
+    // 营业执照到期日期选择器
+    $('.license-time-picker').datetimepicker({
+        format: 'yyyy-mm-dd',
+        autoclose: true,
+        minView: 'month',
+        todayBtn: '1'
+    });
+
+    // 初始化省份、城市、地区
+    var defaultProvince = $('#search-province').val();
+    var defaultCity = $('#search-city').val();
+    var defaultDistrict = $('#search-district').val();
+    sz.initDistrict(defaultProvince, defaultCity, defaultDistrict);
+
+    //根据地址获取经纬度
+    var map = new BMap.Map("container");
+    var point = new BMap.Point(118.879005, 28.966899);
+    map.centerAndZoom(point, 15);
+    var localSearch = new BMap.LocalSearch(map);
+    function searchByAddress(province, city, district) {
+        if(! province) {
+            province = $('#search-province').val();
+        }
+        if(! city) {
+            city = $('#search-city').val();
+        }
+        if(! district) {
+            district = $('#search-district').val();
+        }
+        var country = $('#country').val();
+        var street = $("#street").val();
+        var shopName = $('#shop-name').val();
+        var keyword = province + city + district + street + shopName;
+        localSearch.setSearchCompleteCallback(function (searchResult) {
+            var poi = searchResult.getPoi(0);
+            if(! poi) {
+                sz.showErrMsg('没有找到相关地点，请仔细查看信息是否输入正确', 4);
+                return false;
+            }
+            $("#longitude").val(poi.point.lng);
+            $("#latitude").val(poi.point.lat);
+        });
+        localSearch.search(keyword);
+    };
+    $('#province, #city, #district, #street').change(function(){
+        var province = $('#province').val();
+        var city = $('#city').val();
+        var district = $('#district').val();
+        searchByAddress(province, city, district);
+    });
+
+    // 表单提交
+    $('#frm_edit_basic').on('submit', function() {
+        var subBtn = $('#submit');
+        subBtn.attr('disabled', 'disabled');
+        var frm = $(this);
+        $.post(frm.attr('action'), frm.serialize(), function(resp) {
+            if (resp.status == sz.STATUS_SUCC) {
+                $('.shopCode').val(resp.data.shopCode);
+                location.href = '/Admin/Shop/editBasic?shopCode=' + resp.data.shopCode;
+            } else {
+                sz.showErrMsg(resp.msg, 3);
+            }
+        });
+        subBtn.attr('disabled', false);
+        return false;
+    });
+
+    var $parentSelect = $('.js-parent-single');
+    // 初始化选择总店
+    $parentSelect.select2({
+        placeholder: "请选总店",
+        allowClear: true
+    });
+    // 选择总店时，获取大店长信息
+    $parentSelect.on("select2:select", function (e) {
+        var shopCode = e.params.data.id;
+        $.post('/Admin/Shop/getBigMngInfo', {'shopCode' : shopCode}, function(resp) {
+            if(resp.data) {
+                $('.bigMngRealName').text(resp.data.realName);
+                $('.bigMngMobileNbr').text(resp.data.mobileNbr);
+                $('#big-mng-code').val(resp.data.staffCode);
+            } else {
+                $('.bigMngRealName').text('');
+                $('.bigMngMobileNbr').text('');
+                $('#big-mng-code').val('');
+            }
+        });
+    });
+});
+;(function(){
+    // 营业时间初始化时间选择器
+    function initBusinessTime() {
+        // 营业开始时间的初始化时间选择器
+        $('.business-start-time').datetimepicker({
+            format: 'hh:ii',
+            autoclose: true,
+            startView: 'day',
+            minuteStep: 1
+        });
+        // 营业结束时间的初始化时间选择器
+        $('.business-end-time').datetimepicker({
+            format: 'hh:ii',
+            autoclose: true,
+            startView: 'day',
+            minuteStep: 1
+        });
+    };
+
+    __businessHours = __businessHours || [];
+    var viewMdl = function(data){
+        var self = this;
+        self.hour = ko.observableArray(data);
+        self.addHour = function(){
+            self.hour.push({
+                open: '',
+                close: ''
+            });
+            initBusinessTime();
+        };
+        self.delHour = function(){
+            self.hour.remove(this);
+        };
+    };
+    ko.applyBindings(new viewMdl(__businessHours));
+
+    initBusinessTime(); // 营业时间初始化时间选择器
+})();
+</script>

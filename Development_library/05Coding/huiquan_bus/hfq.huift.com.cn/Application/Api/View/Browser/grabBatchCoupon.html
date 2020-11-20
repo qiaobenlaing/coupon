@@ -1,0 +1,241 @@
+<layout name="layout_api" />
+<style>
+    .pyf_batch_coupon{
+        background-image:url('/Public/img/activity/pyf_background.png');
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        width:100%;
+        height: 100%;
+        padding-top: 50%;
+        position: relative;
+    }
+    .msw_batch_coupon{
+        background-image:url('/Public/img/activity/msw_background.png');
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        width:100%;
+        height: 100%;
+        padding-top: 50%;
+        position: relative;
+    }
+    .batch_coupon_area{
+        width: 90%;
+        height:210px;
+        background-color: #FEBD3A;
+        margin-left: auto;
+        margin-right: auto;
+        position: absolute;
+        top: 43%;
+        left: 5%;
+        -webkit-border-radius: 15px;
+        -moz-border-radius: 15px;
+    }
+    .batch_coupon_area .batch_coupon_img {
+        background-image:url('/Public/img/activity/batch_coupon.png');
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        width: 75%;
+        height: 70px;
+        margin-left: 13%;
+        margin-top: 4%;
+    }
+    .batch_coupon_area .batch_coupon_img .batch_coupon_name{
+        color: #FF562D;
+        font-size: 12px;
+        font-weight: bolder;
+        width: 0;
+        float: left;
+        padding-top: 4%;
+        padding-left: 8%;
+        margin-right: 20%;
+    }
+    .batch_coupon_area .batch_coupon_img .batch_coupon_number{
+        color: #FF562D;
+        font-size: 16px;
+        font-weight: bolder;
+        line-height: 82px;
+    }
+    .batch_coupon_area .batch_coupon_img .batch_coupon_number .function{
+        color: #FF562D;
+        font-size: 13px;
+        font-weight: bolder;
+        line-height: 18px;
+        padding-top: 6px;
+    }
+    .batch_coupon_area .batch_coupon_mobileNbr{
+        padding-left: 5%;
+    }
+    .batch_coupon_area .batch_coupon_mobileNbr input{
+        margin-top: 8%;
+        height: 40px;
+        width: 90%;
+        -webkit-border-radius: 5px;
+        border: none;
+        padding-left: 5%;
+        font-size: 15px;
+        z-index: 999999;
+    }
+    .batch_coupon_area img {
+        width: 100%;
+        height: auto;
+    }
+    .batch_coupon_area a{
+        position: absolute;
+        top: 100%;
+        padding: 0% 5% 0 5%;
+        width: 80%;
+    }
+    .batch_coupon_area a img{
+        width:100%;
+        height: auto;
+    }
+    .ret-wrap{
+        position: relative;
+        top: 5%;
+        padding-left: 13%;
+        padding-right: 13%;
+        display: none;
+    }
+    .ret-msg{
+        font-size: 16px;
+        text-align: center;
+        margin-bottom: 6px;
+        color: #FF3B30;
+    }
+</style>
+<div class="views">
+    <!-- Your main view, should have "view-main" class -->
+    <div class="view view-main">
+        <!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
+        <div class="pages">
+            <!-- Page, "data-page" contains page name -->
+            <div data-page="index" class="page">
+                <div class="page-content">
+                    <if condition="$batchCouponCode eq 'fab74aa8-d314-a99f-c425-e902a8b7f50d'">
+                        <div class="msw_batch_coupon">
+                            <elseif condition="$batchCouponCode eq 'a2e78ee6-f7ca-1ba3-35cd-2d22503ab5a3'"/>
+                            <div class="pyf_batch_coupon">
+                    </if>
+                    <div class="batch_coupon_area">
+                        <div class="batch_coupon_img">
+                    			<span class="batch_coupon_name">
+	                    			<if condition="$batchCouponInfo.couponType eq 1">
+                                        N元购
+                                        <elseif condition="$batchCouponInfo.couponType eq 3"/>
+                                        抵扣券
+                                        <elseif condition="$batchCouponInfo.couponType eq 4"/>
+                                        折扣券
+                                        <elseif condition="$batchCouponInfo.couponType eq 5"/>
+                                        实物券
+                                        <elseif condition="$batchCouponInfo.couponType eq 6"/>
+                                        体验券
+                                        <elseif condition="$batchCouponInfo.couponType eq 7"/>
+                                        兑换券
+                                        <elseif condition="$batchCouponInfo.couponType eq 8"/>
+                                        代金券
+                                    </if>
+                    			</span>
+                    			<span class="batch_coupon_number">
+                    			<eq name="batchCouponInfo.isTaken" value="1">
+                                    <switch name="batchCouponInfo.couponType">
+                                        <case value="1"><div class="function">{$batchCouponInfo.insteadPrice} 元 {$batchCouponInfo.function}</div></case>
+                                        <case value="3">满{$batchCouponInfo.availablePrice}元减{$batchCouponInfo.insteadPrice} 元</case>
+                                        <case value="4">满{$batchCouponInfo.availablePrice}元打{$batchCouponInfo.discountPercent} 折</case>
+                                        <case value="5"><div class="function">{$batchCouponInfo.function}</div></case>
+                                        <case value="6"><div class="function">{$batchCouponInfo.function}</div></case>
+                                        <case value="7"><div class="function">{$batchCouponInfo.function}</div></case>
+                                        <case value="8">￥{$batchCouponInfo.payPrice} 代{$batchCouponInfo.insteadPrice} 元</case>
+                                    </switch>
+                                    <else/>
+                                    <if condition="$batchCouponInfo.totalVolume GT 0 AND $batchCouponInfo.remaining EQ 0">
+                                        已抢完
+                                        <else/>
+                                        已过期
+                                    </if>
+                                </eq>
+                    			</span>
+                        </div>
+                        <form method="post" action="/Wechat/UserCoupon/getVirtualCoupon" id="get-coupon-frm">
+                            <input type="hidden" name="batchCouponCode" value="{$batchCouponInfo.batchCouponCode}"/>
+                            <div class="batch_coupon_mobileNbr"  <if condition="($batchCouponInfo.isTaken eq 0) OR ($batchCouponInfo.totalVolume GT 0 AND $batchCouponInfo.remaining EQ 0)">style="display:none"</if>>
+                            <input name="mobileNbr" placeholder="输入手机号码"  class="input-mobileNbr"/>
+                            <p>
+                                <button type="submit" class="button button-big button-fill color-red" style="width: 96%;">领取优惠券</button>
+                            </p>
+                    </div>
+                    </form>
+                    <div class="ret-wrap" <if condition="($batchCouponInfo.isTaken eq 0) OR ($batchCouponInfo.totalVolume GT 0 AND $batchCouponInfo.remaining EQ 0)">style="display:block;width:96%;"</if>>
+                    <div class="ret-msg"></div>
+                    <!--<a class="external button button-big button-fill color-red download" href="/Wechat/Index/cdownload" style="margin-bottom: 7px;">IOS惠圈下载</a>-->
+                    <!--<a class="external button button-big button-fill color-red download" href="{$cDownloadUrl}">安卓惠圈下载</a>-->
+                    <a class="external button button-big button-fill color-red download" href="/Wechat/Index/cdownload">惠圈下载</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</div>
+<script type="text/javascript" src="__PUBLIC__/js/jweixin-1.0.0.js"></script>
+<script>
+    ;(function() {
+        $('#get-coupon-frm').on('submit', function(){
+            var frm = $(this);
+            $.post(frm.attr('action'), frm.serialize(), function(resp){
+                if(resp.status == sz.STATUS_SUCC) {
+                    if(resp.msg == '您领用的数量已达上限') {
+                        $('.batch_coupon_number').text('您领用的数量已上限');
+                    }
+                    var html = '优惠券已经存入账户<span class="ret-msg-mobileNbr">' + $('.input-mobileNbr').val() + '</span><br/>登录APP即可使用';
+                    $('.ret-msg').html(html);
+                    $('#get-coupon-frm').hide();
+                    $('.ret-wrap').show();
+                } else {
+                    myApp.alert(resp.msg, '');
+                }
+            });
+            return false;
+        });
+    })();
+
+    $(function() {
+        var imgUrl = 'http://web.huiquan.suanzi.cn/Public/img/huiquan-icon.png';
+        var link = 'http://web.huiquan.suanzi.cn/Wechat/BatchCoupon/share?batchCouponCode={$batchCouponInfo.batchCouponCode}';
+        wx.config({
+            debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+            appId: '{$appId}', // 必填，公众号的唯一标识
+            timestamp: '{$timestamp}', // 必填，生成签名的时间戳
+            nonceStr: '{$nonceStr}', // 必填，生成签名的随机串
+            signature: '{$signature}',// 必填，签名，见附录1
+            jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+        });
+
+        /**
+         * 微信分享
+         */
+        wx.ready(function() {
+            wx.onMenuShareTimeline({
+                title: '{$title}', // 分享标题
+                link: link, // 分享链接
+                imgUrl: imgUrl, // 分享图标
+                success: function (res) {
+                    // 用户确认分享后执行的回调函数
+                    hasShared = true;
+                }
+            });
+            wx.onMenuShareAppMessage({
+                title: '{$title}', // 分享标题
+                desc: '惠圈优惠券', // 分享描述
+                link: link, // 分享链接
+                imgUrl: imgUrl, // 分享图标
+                type: 'link', // 分享类型,music、video或link，不填默认为link
+                dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+                success: function (res) {
+                    // 用户确认分享后执行的回调函数
+                    hasShared = true;
+                }
+            });
+        });
+    });
+</script>

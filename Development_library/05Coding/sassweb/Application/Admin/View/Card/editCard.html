@@ -1,0 +1,165 @@
+<layout name="layout_admin" />
+<form class="form-horizontal" id="card_add_form" action="/Admin/Card/editCard" method="post">
+    <input type="hidden" name="cardCode" value="{$cardInfo.cardCode}" />
+    <div class="form-group">
+        <label for="card-name" class="col-sm-2 control-label"><span class='required-ele'>*</span>会员卡名</label>
+        <div class="col-sm-5">
+            <input type="text" class="form-control" name="cardName" value="{$cardInfo.cardName}" id="card-name" placeholder="会员卡名">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="shop-code" class="col-sm-2 control-label"><span class='required-ele'>*</span>商店名</label>
+        <div class="col-sm-5">
+            <select class="form-control frm-select" name="shopCode" id="shop-code">
+                <option value="">请选择商店</option>
+                <foreach name="getShopName" item="item">
+                    <option value="{$item.shopCode}" <eq name="cardInfo.shopCode" value="$item.shopCode">selected="selected"</eq>>{$item.shopName}</option>
+                </foreach>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label"><span class='required-ele'>*</span>卡类型</label>
+        <div class="col-sm-6">
+            <label class="radio-inline">
+                <input type="radio" name="cardType" value="1000" <eq name="cardInfo.cardType" value="1000">checked="checked"</eq> checked="checked"> 会员卡
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="cardType" value="2000" <eq name="cardInfo.cardType" value="2000">checked="checked"</eq>> 储值卡
+            </label>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="discount-require" class="col-sm-2 control-label"><span class='required-ele'>*</span>所需积分</label>
+        <div class="col-sm-5">
+            <input type="text" class="form-control" name="discountRequire" value="{$cardInfo.discountRequire}" id="discount-require" placeholder="所需积分">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="card-lvl" class="col-sm-2 control-label"><span class='required-ele'>*</span>卡的等级</label>
+        <div class="col-sm-5">
+            <input type="text" class="form-control" name="cardLvl" value="{$cardInfo.cardLvl}" id="card-lvl" placeholder="卡的等级">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="discount" class="col-sm-2 control-label"><span class='required-ele'>*</span>可享折扣</label>
+        <div class="col-sm-5">
+            <input type="text" class="form-control" name="discount" value="{$cardInfo.discount}" id="discount" placeholder="可享折扣">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="point-lifetime" class="col-sm-2 control-label"><span class='required-ele'>*</span>积分有效期</label>
+        <div class="col-sm-5">
+            <input type="text" class="form-control" name="pointLifetime" value="{$cardInfo.pointLifetime}" id="point-lifetime" placeholder="积分有效期">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="forward-point" class="col-sm-2 control-label"><span class='required-ele'>*</span>每次升级所需积分</label>
+        <div class="col-sm-5">
+            <input type="text" class="form-control" name="forwardPoint" value="{$cardInfo.forwardPoint}" id="forward-point" placeholder="每次升级所需积分">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="points-per-cash" class="col-sm-2 control-label"><span class='required-ele'>*</span>每消费1元所积积分</label>
+        <div class="col-sm-5">
+            <input type="text" class="form-control" name="pointsPerCash" value="{$cardInfo.pointsPerCash}" id="points-per-cash" placeholder="每消费1元所积积分">
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" value="1" name="isRealNameRequired" <eq name="cardInfo.isRealNameRequired" value="1">checked="checked"</eq>> 是否要求实名
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" value="1" name="isSharable" <eq name="cardInfo.isSharable" value="1">checked="checked"</eq>> 是否可以多人使用
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="txtContent" class="col-sm-2 control-label"><span class='required-ele'>*</span>备注</label>
+        <div class="col-sm-5">
+            <textarea class="form-control" name="remark" rows="6" id="txtContent">{$cardInfo.remark}</textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="" class="col-sm-2 control-label"><span class='required-ele'>*</span>背景图片</label>
+        <div class="col-sm-5">
+            <input type="hidden" name="url" value="" />
+            <div class="fileinput fileinput-new  col-xs-6" data-provides="fileinput">
+                <div class="fileinput-new thumbnail"><img src="{$cardInfo.url}" /></div>
+                <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 400px; max-height: 100px;"></div>
+                <div>
+                    <span class="btn btn-default btn-file">
+                        <span class="fileinput-new">选择背景图片</span>
+                        <span class="fileinput-exists">换一张</span>
+                        <input type="file" name="upfile" class="ajax-file-upload" data-imgname="url" data-url="/Admin/Util/imageUp" multiple>
+                    </span>
+                    <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">移除</a>
+                    <span id="state_url" class="ajax-file-state"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-primary" id="submit">保存</button>
+        </div>
+    </div>
+</form>
+<script src="__PUBLIC__/js/vendor/jquery.ui.widget.js"></script>
+<script src="__PUBLIC__/js/jquery.iframe-transport.js"></script>
+<script src="__PUBLIC__/js/jquery.fileupload.js"></script>
+<script type="text/javascript">
+    $('#shop-code').select2();
+	$('#card_add_form').on('submit', function() {
+        var frm = $(this);
+        $.post(frm.attr('action'), frm.serialize(), function(resp) {
+            console.log(resp);
+            if (resp.status == sz.STATUS_SUCC) {
+                    location.href = '/Admin/Card/listCard/page/{$page}';
+            } else {
+                sz.showErrMsg(resp.msg.code, 3);
+            }
+        });
+        return false;
+    });
+	$('.ajax-file-upload').fileupload({
+		dataType: 'json',
+		add: function (e, data) {
+		    var imgname = $(this).data('imgname'); // imgname为 url
+			data.context = $('#state_' + imgname).text('正在上传...');
+			data.submit();
+		},
+		/* progressall: function (e, data) {
+		var progress = parseInt(data.loaded / data.total * 100, 10);
+		$('#progress_img_quare .bar').css('width', progress + '%');
+		}, */
+		done: function (e, data) {
+		    var resp = data.result;
+			/* data.result结果为:
+			{name: "14165352127461.jpg", originalName: "xueche.jpg", size: 49710, state: "SUCCESS", type: ".jpg", url: "./upload/20141121/14165352127461.jpg"}
+			*/
+			console.log(resp);
+			/* $.each(data.result.files, function (index, file) {
+			$('<p/>').text(file.name).appendTo(document.body);
+			}); */
+		    if (resp.state == 'SUCCESS') {
+			    data.context.text('上传完成');
+			    var imgname = data.context.attr('id').substr('state_'.length);
+			    var imgUrl = resp.url.substr(0, 1) == '.' ? resp.url.substr(1) : resp.url; // 去掉"./"中的"."
+			    $('#card_add_form input[name=' + imgname + ']').val('/'+ imgUrl);
+			} else {
+		        data.context.text('上传失败');
+		        $('#card_add_form input[name=' + imgname + ']').val('');
+		    }
+		}
+	});
+</script>

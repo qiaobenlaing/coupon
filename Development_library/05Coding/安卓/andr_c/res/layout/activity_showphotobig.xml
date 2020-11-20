@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_bigphoto"
+    style="@style/LyWHFirst"
+    android:background="@color/gray_transparent"
+    android:gravity="center"
+    android:orientation="vertical" >
+
+    <FrameLayout style="@style/LyWHFirst" >
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewPager"
+            style="@style/LyWHFirst" />
+
+        <LinearLayout
+            style="@style/LyWHFourth"
+            android:layout_gravity="center|bottom"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:id="@+id/ry_name"
+                style="@style/LyWHFourth"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/tv_name"
+                    style="@style/LyWHSecond"
+                    android:layout_alignParentTop="true"
+                    android:layout_margin="10dp"
+                    android:text="xxx"
+                    android:textColor="@color/white" />
+
+                <TextView
+                    android:id="@+id/tv_count"
+                    style="@style/LyWHSecond"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_gravity="right"
+                    android:layout_margin="10dp"
+                    android:text="1/50"
+                    android:textColor="@color/white"
+                    android:visibility="visible" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/tv_price"
+                style="@style/LyWHSecond"
+                android:layout_margin="10dp"
+                android:text="￥xxxx"
+                android:textColor="@color/white" />
+        </LinearLayout>
+    </FrameLayout>
+
+    <LinearLayout
+        style="@style/LyWHFourth"
+        android:orientation="horizontal" >
+
+        <TextView
+            style="@style/LyWHSecond"
+            android:layout_gravity="bottom|left"
+            android:text="xxxxx" />
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/LyWHFourth"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/tv_productname"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/layout_height"
+        android:layout_marginLeft="10dp"
+        android:gravity="center_vertical"
+        android:text="冷饮"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tv_vline"
+        style="@style/VLine" />
+
+    <com.huift.hfq.base.view.MyGridView
+        android:id="@+id/gv_product"
+        style="@style/LyWHFirst"
+        android:layout_margin="20dp"
+        android:gravity="center_vertical"
+        android:horizontalSpacing="20dp"
+        android:numColumns="2"
+        android:scrollbars="none"
+        android:stretchMode="columnWidth"
+        android:verticalSpacing="10dp"
+        android:visibility="visible" />
+
+</LinearLayout>

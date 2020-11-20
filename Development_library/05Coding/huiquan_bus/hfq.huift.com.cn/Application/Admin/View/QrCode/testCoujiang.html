@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>抽奖</title>
+    <script src="__PUBLIC__/js/jquery.min.js"></script>
+</head>
+<body>
+<h2>抽奖</h2>
+<div class="mobileNbr">***********</div>
+<button type="button" id="start">开始</button>
+<button type="button" id="stop">停止</button>
+<script>
+    // 循环手机号码
+    $(function(){
+        // 开始滚动手机号码
+        function change(userList) {
+            var len = userList.length;
+            var pos = parseInt(len * Math.random());
+            $('.mobileNbr').empty().text(userList[pos]['mobileNbr']);
+        }
+        // 开始抽奖
+        function startChou() {
+            $.post('/Admin/QrCode/testCoujiang', {}, function(resp){
+                var userList = resp.data['userList'];
+                var timeOutStart = setInterval(function(){change(userList);}, 100);
+                // 停止抽奖
+                $('#stop').on('click', function(){
+                    clearInterval(timeOutStart);
+                    console.log($('.mobileNbr').text());
+                });
+            });
+        }
+        // 点击开始
+        $('#start').on('click', function(){
+            startChou();
+        })
+    });
+</script>
+</body>
+</html>

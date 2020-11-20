@@ -1,0 +1,196 @@
+<link th:replace="/include/header" xmlns:th="http://www.w3.org/1999/xhtml" />
+<script th:src="@{/js/Map.js}"></script>
+<style type="text/css" title="text/css">
+.theme-navigation-title {
+	position: absolute;
+}
+.theme-setting-left{
+	margin-left: 620px;
+}
+</style>
+<script th:inline="javascript">
+	function refreshmenu(){
+		$(".menu-contents").empty();
+		$(".menu-contents").createMenuTree([[@{/sysauth/userMainMenu}]]);
+	}
+top.tabMap = new Map();//定义的以tab页的id 为序的数组
+
+//修改密码
+function submitChangePwd(){
+	var node = $('#userForm').serializeArray();
+	console.log(node);
+	$g.post([[@{/sysuser/changePassword}]], node, function(data){
+		var json = $.parseJSON(data);
+		$g.showMsg('消息', json.message);
+		$("#userEditor").window("close");
+	});
+}
+/*<![CDATA[*/  
+$(document).ready(function() {
+    //初始化主菜单
+    $(".menu-contents").createMenuTree([[@{/sysauth/userMainMenu}]]);
+    /*退出系统*/
+    $("#logout").on('click', function() {
+    	$.messager.confirm('提示', '确定退出系统？', function(r) {
+    		if(r) {
+    			location.href= [[@{/logout}]];
+    		}
+    	});
+    });
+    
+    $('#tt').tabs({
+    	onBeforeClose: function(title,index){             
+        //当有tab页面关闭时，将索引大于改选项卡的索引减1，保存在tabMap中
+        var keys=top.tabMap.keys();
+        for ( var i = 0; i < keys.length; i++) {
+        	var value=top.tabMap.get(keys[i]);
+        	if(value>index){
+        		top.tabMap.removeByKey(keys[i]);
+        		top.tabMap.put(keys[i],(value-1));
+        	}
+        }
+
+        //根据当前选项信息，截取src是否含有18位数字的新闻Id，有表示需要修改topMap以及提示保存
+        var tab= $('#tt').tabs('getTab',index);
+        var strHtml=tab[0].innerHTML;  
+
+
+       var newsId=strHtml.match(/[0-9]{18}/g);  //截取src的内容，得到新闻id
+       
+       if(newsId!=null || newsId!=undefined){
+       	var target = this;
+       	$.messager.confirm("提示", "你确定要关闭吗?请先保存", function(r){                     
+       		if (r) {
+       			var opts = $(target).tabs('options');
+       			var bc = opts.onBeforeClose;
+       			opts.onBeforeClose = function(){
+       				top.tabMap.removeByKey(newsId);  
+       			};  
+
+       			$(target).tabs('close',index);
+                   opts.onBeforeClose = bc;  // restore the event function
+               }
+           });
+       }else{
+       	$(target).tabs('close',index);
+       	return true;
+       }
+       return false;
+   }
+});
+});
+</script>
+<div data-options="region:'north',border:false" class="theme-north"
+style="height: 60px;">
+<!--顶部-->
+
+<div class="theme-navigation">
+	<div class="theme-navigation-title" >
+		<img alt="" src="images/hft_logo.png" height="64px"  >
+		武汉惠付通科技有限公司
+	</div>
+	<div class="theme-navigation-main">
+		<div class="theme-setting-left">
+			<ul>
+				<li>信息<i class="fa fa-commenting-o"></i></li>
+				<li>邮件<i class="fa fa-envelope-o"></i></li>
+				<li>提示<i class="fa fa-bell-o"></i></li>
+			</ul>
+		</div>
+		<div class="theme-setting-right">
+			<ul>
+				<li class="user"><span class="user-icon"
+					style="margin-top: 10px"><img th:src="@{/images/user.jpg}"></span>
+					<span th:text="${session.currentUser.userName}"
+					style="font-size: 12px; margin-top: 20px; margin-left: 10px;">管理员</span>
+					<span class="fa fa-angle-down"
+					style="margin-top: 22px; margin-left: 10px;"></span>
+					<div id="mm1" class="easyui-menu">
+						<div id="passWordSetting">修改密码</div>
+						<div id="themeSetting">更换主题</div>
+					</div></li>
+					<li class="logout" id="logout">
+						<div class="theme-setting-icon" style="margin-top: 25px;">
+							<i class=" fa fa-power-off"></i>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- 左侧菜单 -->
+<div data-options="region:'west',border:false" style="width: 200px;">
+	<div id="sidebar">
+		<div class="menu-show">
+			<span class="show-title">欢迎您!</span> <span class="show-tool"><a
+				class="fa fa-bars" style="line-height: 50px;"></a></span>
+			</div>
+			<div class="menu-contents"></div>
+		</div>
+	</div>
+	<!--中间内容 -->
+	<div data-options="region:'center'" style="padding-top: 2px;">
+		<!--主要内容-->
+		<div id="tt" class="easyui-tabs" data-options="border:false,fit:true">
+		<!-- <div title="首页" data-options="iconCls:'fa fa-home'">
+			<iframe src="p/sysmanage/index" width="100%" height="99%" frameborder="no"></iframe>
+		</div> -->
+	</div>
+</div>
+<!-- 底部 -->
+<div data-options="region:'south',border:false" style="height: 20px; text-align: center; vertical-align: middle;">Copy Right by WhHft</div>
+<!-- 修改密码 -->
+<div id="passWordEdit" style="display: none">
+	<form id="userForm" class="editForm" method="post">
+		<!-- <input type="hidden" id="form_userId" name="userId"> -->
+		<label class="themeButFirst">旧密码:</label> <input class="easyui-textbox" name="userPwd"
+		data-options="required:true,validType:'length[0,16]'"><br>
+		<label class="themeBut">新密码:</label> <input class="easyui-textbox" id="newPwd"
+		name="newPwd" data-options="required:true,validType:'length[0,16]'"><br>
+		<label class="themeBut">重复新密码:</label> <input class="easyui-textbox" name="newPwd2"
+		data-options="required:true,validType:{length:[0,16],eq:'#newPwd'}"><br>
+	</form>
+</div>
+<!--主题设置-->
+<div id="themeSettingWin">
+	<div class="themeItem">
+		<ul>
+			<li>
+				<div class="default">default</div>
+			</li>
+			<li>
+				<div class="gray">gray</div>
+			</li>
+			<li>
+				<div class="black">black</div>
+			</li>
+			<li>
+				<div class="bootstrap">bootstrap</div>
+			</li>
+			<li>
+				<div class="material">material</div>
+			</li>
+			<li>
+				<div class="metro">metro</div>
+			</li>
+			<!-- <li>
+				<div class="CARROT">CARROT</div>
+			</li>
+			<li class="themeActive">
+				<div class="ALIZARIN">ALIZARIN</div>
+			</li> -->
+		</ul>
+	</div>
+</div>
+<!-- 右键菜单 -->
+<div id="menu" class="easyui-menu" style="width:150px;">
+	<div id="m-refresh">刷新</div>
+	<div class="menu-sep"></div>
+	<div id="m-closeall">全部关闭</div>
+	<div id="m-closeother">关闭其他</div>
+	<div class="menu-sep"></div>
+	<div id="m-close">关闭</div>
+</div>
+
+<link th:replace="/include/footer" />

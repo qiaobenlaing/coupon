@@ -1,0 +1,98 @@
+<layout name="layout_admin" />
+<ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" <if condition='($get.action eq "") OR ($get.action eq "listGrabBonus") '>class="active"</if>>
+        <a href="#listGrabBonus" role="tab" data-toggle="tab">红包领取列表</a>
+    </li>
+    <li role="presentation" <if condition='($get.action eq "listUseBonus") '>class="active"</if>>
+        <a href="#listUseBonus" role="tab" data-toggle="tab">红包使用列表</a>
+    </li>
+</ul>
+<div class="tab-content" style="margin-top: 10px;">
+    <form class="form-inline" action="#" method="get" id="data_search_form" role="form">
+        <div class="form-group">
+            <label for="real-name">用户名</label>
+            <input type="text" class="form-control" name="realName" value="{$get.realName}" id="real-name" placeholder="用户名">
+        </div>
+        <div class="form-group">
+            <label for="mobile-nbr">手机号码</label>
+            <input type="text" class="form-control" name="mobileNbr" value="{$get.mobileNbr}" id="mobile-nbr" placeholder="手机号码">
+        </div>
+        <div class="form-group">
+            <label for="shop-name">商户名</label>
+            <input type="text" class="form-control" name="shopName" value="{$get.shopName}" id="shop-name" placeholder="商户名">
+        </div>
+        <div class="form-group" id="bonusName">
+            <label for="bonus-name">红包名</label>
+            <input type="text" class="form-control" name="bonusName" value="{$get.bonusName}" id="bonus-name" placeholder="红包名">
+        </div>
+        <input type="hidden" id="frm_ele_page" name="page" value="1" />
+        <button type="submit" class="btn btn-primary" id="search_form_submit_btn">查询</button>
+    </form>
+    <div <if condition='($get.action eq "") OR ($get.action eq "listGrabBonus") '>class="tab-pane active"<else />class="tab-pane"</if> id='listGrabBonus'>
+        <div class="col-xs-12"></div>
+    </div>
+    <div <if condition='($get.action eq "listUseBonus") '>class="tab-pane active"<else />class="tab-pane"</if> id='listUseBonus'>
+        <div class="col-xs-12"></div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function(){
+        ;(function(){
+            var divTable = $('div.tab-content div.active');
+            var linkAddress = divTable.attr('id');
+            var searchFrm = $(sz.SEARCH_FORM_ID);
+            if(linkAddress == 'listUseBonus'){
+                $('#bonusName').hide();
+            }else{
+                $('#bonusName').show();
+            }
+            searchFrm.attr('action','/Admin/UserBonus/'+linkAddress);
+            linkAddress = searchFrm.attr('action');
+            $.get(linkAddress, searchFrm.serialize(),function(resp){
+                if (resp.status == sz.STATUS_SUCC) {
+                    if(resp.html) {
+                        divTable.find('div').html(resp.html);
+                    }else {
+                        divTable.find('div').text('暂无记录!');
+                    }
+                    $(sz.DATA_LIST_TABLE_WRAPPER_ID).removeAttr('id');
+                    divTable.find('div').attr('id','data_table_wrapper');
+                } else {
+                    sz.showErrMsg(resp.msg);
+                }
+            });
+        })();
+
+        $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+            var divTable = $('div.tab-content div.active');
+            var linkAddress = divTable.attr('id');
+            var searchFrm = $(sz.SEARCH_FORM_ID);
+            if(linkAddress == 'listUseBonus'){
+                $('#bonusName').hide();
+            }else{
+                $('#bonusName').show();
+            }
+            $('#actionInput').val(linkAddress);
+            searchFrm.attr('action','/Admin/UserBonus/'+linkAddress);
+            linkAddress = searchFrm.attr('action');
+            $.get(linkAddress, searchFrm.serialize(),function(resp){
+                if (resp.status == sz.STATUS_SUCC) {
+                    if(resp.html) {
+                        divTable.find('div').html(resp.html);
+                    }else {
+                        divTable.find('div').text('暂无记录!');
+                    }
+                    $(sz.DATA_LIST_TABLE_WRAPPER_ID).removeAttr('id');
+                    divTable.find('div').attr('id','data_table_wrapper');
+                } else {
+                    sz.showErrMsg(resp.msg);
+                }
+            });
+        })
+
+    });
+</script>
+
+
+
+

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+  <meta http-equiv="Access-Control-Allow-Origin" content="*" />
+  <title>第三方模拟</title>
+  <style>
+  body,html{
+    width: 100%
+  }
+  div,button{
+    font-size: 1rem;
+  }
+  .title{
+    width: 17em;
+    margin: 3em auto;
+    margin-top: 9em
+  }
+  .pay{
+    width: 16em;
+    margin: 6em auto;
+  }
+  button{
+    border-radius: 5px;
+    margin:0 0.5em;
+    padding: 0.3em 0.8em;
+    color: #fff;
+    border: none;
+  }
+  button:nth-child(1){
+    background: #009a61;
+    margin-right: 2.3em;
+  }
+  button:nth-child(2){
+    background: #f64f48;
+  }
+</style>
+</head>
+<body>
+  <div class="title">
+    这里是模拟第三方支付页面，直接点击表示支付
+  </div>
+  <div class="pay">
+    <button onclick="isSuccess('success')">支付成功</button>
+    <button onclick="isSuccess(5)">支付失败</button>
+  </div>
+  <script>
+    var payCode = '';
+    var callbackurl = '';
+
+    var splitUrl = function(){
+      var url=window.location.href;
+      console.log(url);
+      var kv=url.split('?')[1];
+      var kv1=kv.split('&')[0];
+      var kv2=kv.split('&')[1];
+      callbackurl=kv1.split('=')[1];
+      payCode = kv2.split('=')[1];
+      console.log(callbackurl);
+      console.log(payCode)
+    };
+    var isSuccess = function(succ){
+      var xml = new XMLHttpRequest();
+      xml.open('post','https://hfq.huift.com.cn/Api/Shop');
+      xml.setRequestHeader("Content-Type", "application/json");
+      xml.send('{"id":19,"jsonrpc":"2.0","method":"getSuccess","params":{"status":"' + succ + '","payCode":"'+ payCode +'"}}');
+      console.log('{"id":19,"jsonrpc":"2.0","method":"getSuccess","params":{"status":"' + succ + '","payCode":"'+ payCode +'"}}');
+      xml.onreadystatechange = function () {
+        if (xml.readyState == 4 && xml.status == 200) {
+          var data = JSON.parse(xml.responseText);
+          console.log(data);
+          if (data.error) {
+            console.log(data.error.code);
+          }else{
+            console.log(callbackurl + '?issuccess=true&consumeCode='+data.result.consumeCode);
+            if (data.result.info === "success") {
+              window.location.replace(callbackurl + 'payresult?issuccess=true&consumeCode='+data.result.consumeCode);
+            }else{
+              window.location.replace(callbackurl + 'payresult?issuccess=false&consumeCode='+data.result.consumeCode);
+            }
+          }
+        }
+      };
+    }
+    splitUrl();
+  </script>
+</body>
+</html>

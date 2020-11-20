@@ -1,0 +1,112 @@
+<layout name="layout_api" />
+<link rel="stylesheet" href="/Public/css/Api/cApplyRefund.css"/>
+<!-- Views -->
+<div class="views">
+    <!-- Your main view, should have "view-main" class -->
+    <div class="view view-main">
+        <div class="navbar">
+            <div class="navbar-inner">
+                <div class="left">
+                    <eq name="backType" value="h5">
+                        <a href="/Api/Browser/unReceiveOrder?orderCode={$orderInfo.orderCode}" class="external">
+                            <div class="backup">
+                                <img src="/Public/img/icon/backup.png" />
+                            </div>
+                        </a>
+                        <else/>
+                        <a href="hs://backup" class="external">
+                            <div class="backup">
+                                <img src="/Public/img/icon/backup.png" />
+                            </div>
+                        </a>
+                    </eq>
+                </div>
+                <div class="center"><div class="head_col">{$title}</div></div>
+                <div class="right"><a href="#" class="external tel"><img src="/Public/img/icon/tel_other.png" /></a></div>
+            </div>
+        </div>
+        <!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
+        <div class="pages navbar-through">
+            <!-- Page, "data-page" contains page name -->
+            <div class="page">
+                <!-- Scrollable page content -->
+                <div class="page-content" style="background-color: #FFFFFF">
+                    <div class="order-coupon-refunding-wrap">
+                        <div class="order">
+                            <div class="order-info">
+                                <span class="order-type">订单类型：{$batchCouponInfo.couponName}</span>
+                            </div>
+                            <div class="order-status">
+                                <div class="order-status-info">
+                                    <img src="/Public/img/icon/tk.png" />
+                                    <div><span>退款状态：退款中</span><br/>
+                                        <span style="font-size:12px">退款说明：3-10个工作日内原路退回</span><br/>
+                                        <span>订单编号：{$orderInfo.orderNbr}</span><br/>
+                                        <span style="font-weight: bold;">服务电话：{$serviceTel}</span><br/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="order-info">
+                                <a href="hs://getShopInfo?shopCode={$shopInfo.shopCode|urlencode}" class="external" style="color: #000000">
+                                    <span class="shop-name" style="padding-right: 58%;"><img src="/Public/img/icon/service.png"/>{$shopInfo.shopName}</span>
+                                    <span class="shop-url"><img src="/Public/img/icon/arrow_right.png"/></span>
+                                </a>
+                            </div>
+                            <div class="order-info">
+                                <span class="refund-title">退款内容</span>
+                            </div>
+                            <div class="refund-ticket">
+                                <foreach name="orderCouponList" item="item">
+                                    <label class="ticket-list">
+                                        <div class="ticket-left">
+                                            <input class="ipt-order-coupon-code" type="checkbox" name="orderCouponCode[]" value="{$item.orderCouponCode}" <eq name="item.status" value="11">checked="checked" disabled="disabled"</eq>/>
+                                            {$batchCouponInfo.couponName}{$item.couponCode}
+                                        </div>
+                                        <div class="ticket-right">
+                                            {$batchCouponInfo.payPrice}元抵{$batchCouponInfo.insteadPrice}元
+                                        </div>
+                                        <div class="refund-reason-wrap">
+                                            退款原因：
+                                            <switch name="item.refundReason" >
+                                                <case value="1">计划有变，没时间消费。</case>
+                                                <case value="2">后悔了不想要。</case>
+                                                <case value="3">买多了/不想买了。</case>
+                                                <case value="4">商家停业/装修/转让。</case>
+                                                <case value="5">商家不承认。</case>
+                                                <case value="6">商家说可以现金/刷卡来享受折扣。</case>
+                                                <default />未知
+                                            </switch>
+                                            {$item.refundRemark}
+                                        </div>
+                                    </label>
+                                </foreach>
+                            </div>
+                            <div class="refund-ticket refund-real-amount-wrap">
+                                <span class="actual-refund">实际退款金额</span>
+                                <span>{$toRefundAmount}</span>
+                                <span><img src="/Public/img/icon/down_arrow.png" alt="" class="img-refund-real-amount-arrow"/></span>
+                            </div>
+                            <div class="refund-details">
+                                <div>
+                                    <span class="refund-details-title">工行卡</span>
+                                    <span class="refund-details-amount rf-bankcard-amount">{$toRefundAmountDetails.bankcardAmount}</span>
+                                </div>
+                                <div>
+                                    <span class="refund-details-title">惠圈红包</span>
+                                    <span class="refund-details-amount rf-pb-amount">{$toRefundAmountDetails.platBonus}</span>
+                                </div>
+                                <div>
+                                    <span class="refund-details-title">商家红包</span>
+                                    <span class="refund-details-amount rf-sb-amount">{$toRefundAmountDetails.shopBonus}</span>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+</script>

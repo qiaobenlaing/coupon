@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/LyOutSet" >
+
+    <LinearLayout
+        android:id="@+id/ly_nodate"
+        style="@style/LyWHFirst"
+        android:layout_marginTop="48dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:visibility="visible" >
+
+        <ProgressBar
+            android:id="@+id/prog_nodata"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:visibility="visible" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="正在加载数据" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/ry_content"
+        style="@style/LyWHFourth"
+        android:visibility="gone" >
+
+        <TextView
+            android:id="@+id/tv_nophoto_title"
+            style="@style/LyWHFourth"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="@string/no_album"
+            android:textSize="18sp"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/tv_add_photo"
+            android:layout_width="250dp"
+            android:layout_height="@dimen/navigation_bar"
+            android:layout_below="@+id/tv_nophoto_title"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/shape_btn_red"
+            android:gravity="center"
+            android:text="@string/new_add_album" />
+
+        <GridView
+            android:id="@+id/gv_photo"
+            style="@style/LyWHFirst"
+            android:layout_below="@+id/tv_add_photo"
+            android:gravity="center_vertical"
+            android:horizontalSpacing="0dp"
+            android:numColumns="2"
+            android:scrollbars="none"
+            android:stretchMode="columnWidth"
+            android:verticalSpacing="0dp"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+</LinearLayout>

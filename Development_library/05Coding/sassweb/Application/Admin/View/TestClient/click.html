@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+    <title>添加卡券到微信卡包</title>
+</head>
+
+<style type="text/css">
+    *{
+        margin: 0px;
+        padding: 0px;
+    }
+
+    a{
+        text-decoration: none;
+        color: #807A7A;
+    }
+
+    /*最外层*/
+    .wrap{
+        width: 100%;
+        height: 100vh;
+        background: #fff;
+    }
+
+    /*头部份*/
+    .info_head{
+        background: #9158CB;
+        width: 100%;
+        height: 40vh;
+    }
+
+    .shop_info{
+        display: flex;
+        width: 100%;
+    }
+
+    .shop_info .logo{
+        width: 20%;
+        text-align: center;
+        padding: 10px;
+        box-sizing: content-box;
+    }
+
+    .shop_info .name{
+        width: 80%;
+        font-size: 20px;
+        color: white;
+        padding: 20px;
+        padding-top: 15px;
+        box-sizing: content-box;
+    }
+
+    .shop_info .logo img{
+        width: 90%;
+        border-radius: 50%;
+    }
+
+    .card_info{
+        text-align: center;
+        font-size: 25px;
+        font-weight: bold;
+        padding: 20px 0px;
+        color: white;
+    }
+
+    .validate_time{
+        text-align: center;
+        font: 15px;
+        padding: 5px 0px;
+        color: #aaa;
+    }
+
+    /*其他信息*/
+    .center{
+        background: #EBEBEB;
+        width: 100%;
+        height: 60vh;
+        position: relative;
+    }
+
+    .center_tip p{
+        background: #fff;
+        width: 100%;
+        position: absolute;
+        top: 10vh;
+        height: 40px;
+        padding-left: 40px;
+        box-sizing: border-box;
+        line-height: 40px;
+    }
+
+    .center_btn{
+        position: absolute;
+        top: 40vh;
+        width: 96%;
+        height: 40px;
+        background: #45BF1A;
+        color: white;
+        border-radius: 5px;
+        text-align: center;
+        line-height: 40px;
+        left: 2%;
+    }
+
+    /*弹层*/
+    .hidden_ceng{
+        width: 100%;
+        height: 100vh;
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        z-index: 2;
+        background:rgba(13,14,15,0.8);
+    }
+
+    .hidden_info{
+        width: 80%;
+        height: 55vh;
+        position: absolute;
+        z-index: 3;
+        top: 20%;
+        left: 10%;
+        background: white;
+        border-radius: 5px;
+    }
+
+    .hidden_info_title{
+        font-size: 20px;
+        font-weight: bold;
+        color: #45BF1A;
+        text-align: center;
+        border-bottom: 2px solid #ccc;
+        height: 60px;
+        line-height: 40px;
+        padding: 10px;
+        box-sizing: border-box;
+        width: 90%;
+        margin: auto;
+    }
+
+    .hidden_info_pic{
+        margin-top: 20px;
+        width: 100%;
+    }
+
+    .hidden_info_pic img{
+        width: 100%;
+    }
+
+    .hidden_info_tip{
+        width: 90%;
+        padding: 10px;
+        line-height: 20px;
+        box-sizing: border-box;
+        color: #888;
+        border-bottom: 2px solid #ccc;
+        margin: auto;
+    }
+
+    .i_know{
+        margin-top: 10px;
+        width: 100%;
+        height: 30px;
+        line-height: 30px;
+        color: #aaa;
+        text-align: center;
+    }
+</style>
+
+<body>
+<div class="wrap">
+    <!--头部-->
+    <div class="info_head">
+        <div class="shop_info">
+            <p class="logo"><img src="{$shopInfo['logoUrl']}"/></p>
+            <p class="name">{$shopInfo['shopName']}</p>
+        </div>
+        <div class="card_info">{$shopInfo['shopName']}会员卡</div>
+        <div class="validate_time">有效期：永久有效</div>
+    </div>
+    <!--头部-->
+
+    <!--center-->
+    <div class="center">
+        <div class="center_tip">
+            <p><a>添加详情</a></p>
+        </div>
+        <div class="center_btn">
+            <p><span id="addCard">添加卡券</span></p>
+        </div>
+    </div>
+    <!--center-->
+
+</div>
+<script type="text/javascript" src="https://hfq.huift.com.cn/Public/js/jquery.min.js" ></script>
+<script type="text/javascript">
+    $(function(){
+        $(".center_tip").click(function(){
+            //弹层
+            var html ='<div class="hidden_ceng">'+
+                '<div class="hidden_info">'+
+                '<div class="hidden_info_title">'+
+                '<p><span>微信卡包</span></p>'+
+                '</div>'+
+                '<div class="hidden_info_pic">'+
+                '<p><img src="https://hfq.huift.com.cn/Public/img/card.png"/></p>'+
+                '</div>'+
+                '<div class="hidden_info_tip">'+
+                '<p>优惠券成功添加并放到微信卡包，请到<strong>我-卡包</strong>里查看何使用。</p>'+
+                '</div>'+
+                '<div class="i_know">'+
+                '<p>我知道了</p>'+
+                '</div>'+
+                '</div>'+
+                '</div>';
+
+            $("body").append(html);
+            $(".i_know").click(function(){
+                $(".hidden_ceng").remove();
+            });
+        });
+    });
+</script>
+</body>
+<script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script>
+    wx.config({
+        debug: true,
+        appId: "{$signPakage['appid']}",
+        timestamp: {$signPakage['timestamp']},
+        nonceStr: "{$signPakage['noncestr']}",
+        signature: "{$signPakage['signature']}",
+        jsApiList: [
+            'addCard'
+        ]
+    });
+    wx.ready(function(){
+        //添加卡券
+        document.querySelector('.center_btn').onclick = function () {
+            wx.addCard({
+                cardList: [
+                    {   code   : "{$cardinfo.code}",
+                        cardId : "{$cardinfo.card_id}",
+                        cardExt: '{"code":"<?php echo $cardinfo["code"]; ?>","timestamp":"<?php echo $cardinfo["timestamp"]; ?>","signature":"<?php echo $cardinfo["signature"]; ?>","nonce_str":"<?php echo $cardinfo["nonce_str"]; ?>"}'
+                    }
+                ],
+                success: function (res) {
+                    // alert('已添加卡券：' + JSON.stringify(res.cardList));
+                },
+                    cancel: function (res) {
+                        alert(JSON.stringify(res))
+                    }
+                });
+            };
+    });
+</script>
+
+</html>

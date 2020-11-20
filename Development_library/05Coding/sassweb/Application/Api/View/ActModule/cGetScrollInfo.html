@@ -1,0 +1,295 @@
+<layout name="layout_api" />
+<script>
+    function changeDisplay(){
+        var divObj = $("#rule_info");
+        var aObj = $("#rule_a");
+        var val = aObj.attr("data-type");
+        if(val==1){
+            divObj.show();
+            aObj.attr("data-type","2");
+        }else{
+            divObj.hide();
+            aObj.attr("data-type","1");
+        }
+    }
+</script>
+<style>
+    .scroll{
+        position: relative;
+    }
+    .scroll img{
+        width: 100%;
+        height: auto;
+    }
+</style>
+<!-- Views -->
+<div class="views">
+<!-- Your main view, should have "view-main" class -->
+<div class="view view-main">
+<neq name="isShared" value="1">
+    <div class="navbar shop-info-nav">
+        <div class="navbar-inner">
+            <div class="left">
+                <a href="hg://backup" class="external"><img src="/Public/img/icon/backup.png" style="width: 48px;height: auto;margin-left: -7px;" /></a>
+            </div>
+            <div class="center"></div>
+            <div class="right">
+                <?php
+                    $string = array(
+                        'title'=> $activityInfo['activityName'],
+                'icon'=> 'http://api.huiquan.suanzi.cn'.$activityInfo['activityLogo'],
+                'content'=> $activityInfo['txtContent'],
+                'link'=> 'http://api.huiquan.suanzi.cn/Api/'.$activityInfo['webUrl'].$activityInfo['activityCode'].'&isShared=1',
+                );
+                $string = json_encode($string);
+                ?>
+                <a href="hg://share?params={$string|urlencode}" class="external"><img src="/Public/img/icon/share_white.png" style="width: 30px;height: auto;margin-right: 4px;" /></a>
+            </div>
+        </div>
+    </div>
+</neq>
+<!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
+<div class="pages">
+    <!-- Page, "data-page" contains page name -->
+    <div data-page="index" class="page">
+        <!-- Scrollable page content -->
+        <div class="page-content">
+            <div class="scroll">
+                <img src="{$activityInfo.posterImg}" />
+                <?php if(empty($activityInfo['exButtonList'])):?>
+                <neq name="isShared" value="1">
+                    <?php if($activityInfo['activityCode'] == 'cf93d701-272d-2379-c77c-d29d16547d08'):?>
+                    <!--小当家(d12b3af9-8522-0f98-b076-f9a309b5ee96)-->
+                    <?php $shopCode = 'd12b3af9-8522-0f98-b076-f9a309b5ee96';?>
+                    <a href="hs://getShopInfo?shopCode={$shopCode|urlencode}" class="external"><img src="/Public/img/brand/enter_shop.png" style="position:absolute;width: 50%;left: 25%;top:64%;" /></a>
+                    <!--欧巴来了(25157de8-838c-5d6f-e81f-2e837c1f6c72)-->
+                    <?php elseif($activityInfo['activityCode'] == 'b8836bca-8293-588e-b933-7582781851eb'):?>
+                    <?php $shopCode = '25157de8-838c-5d6f-e81f-2e837c1f6c72';?>
+                    <a href="hs://getShopInfo?shopCode={$shopCode|urlencode}" class="external"><img src="/Public/img/brand/enter_shop.png" style="position:absolute;width: 50%;left: 25%;top:64%;" /></a>
+                    <!--温粥人(2c3709b6-86a3-2039-a4b5-f9565642d273)-->
+                    <?php elseif($activityInfo['activityCode'] == 'f0af6b2e-f5a4-cf02-c41c-c951493fb58d'):?>
+                    <?php $shopCode = '2c3709b6-86a3-2039-a4b5-f9565642d273';?>
+                    <a href="hs://getShopInfo?shopCode={$shopCode|urlencode}" class="external"><img src="/Public/img/brand/enter_shop.png" style="position:absolute;width: 50%;left: 25%;top:64%;" /></a>
+                    <!--哈苏(305b3825-c56a-96a9-dcb2-8072218855d0)-->
+                    <?php elseif($activityInfo['activityCode'] == 'ba279360-464c-6319-0e4d-6d50c5b05028'):?>
+                    <?php $shopCode = '305b3825-c56a-96a9-dcb2-8072218855d0';?>
+                    <a href="hs://getShopInfo?shopCode={$shopCode|urlencode}" class="external"><img src="/Public/img/brand/enter_shop.png" style="position:absolute;width: 50%;left: 25%;top:86%;" /></a>
+                    <!--惠圈甜蜜来袭 - 唯优(9dbb22d0-4abb-a6f0-d0b3-12dcae537039)-->
+                    <?php elseif($activityInfo['activityCode'] == 'e4d87b23-9417-0e2f-2b04-005b8a24332f'):?>
+                    <?php $shopCode = '9dbb22d0-4abb-a6f0-d0b3-12dcae537039';?>
+                    <a href="hs://getShopInfo?shopCode={$shopCode|urlencode}" class="external"><img src="/Public/img/brand/enter_shop.png" style="position:absolute;width: 50%;left: 25%;top:67%;" /></a>
+                    <!--暖冬送优惠-->
+                    <?php elseif($activityInfo['activityCode'] == '33fec256-b0f9-9f8d-7646-c3e72464bdff'):?>
+                    <a href="/Api/Browser/getShopList?brandId=50" class="external"><img src="/Public/img/scroll/s-scroll-1.jpg" style="top:17.5%;left: 4%;" /></a>
+                    <?php $shopCode = '25f52384-33e1-e8d6-8c8c-bdbd3c6b66c2';?>
+                    <a href="hs://getShopInfo?shopCode={$shopCode|urlencode}" class="external"><img src="/Public/img/scroll/s-scroll-2.jpg" style="top:32.4%;left: 4%;" /></a>
+                    <?php $shopCode = '00eb569d-5003-9f88-2214-586bb4a1b939';?>
+                    <a href="hs://getShopInfo?shopCode={$shopCode|urlencode}" class="external"><img src="/Public/img/scroll/s-scroll-3.jpg" style="top:47.2%;left: 4%;" /></a>
+                    <?php $shopCode = 'd04a825f-803b-d2f6-1bdb-e92039774278';?>
+                    <a href="hs://getShopInfo?shopCode={$shopCode|urlencode}" class="external"><img src="/Public/img/scroll/s-scroll-4.jpg" style="top:62.1%;left: 4%;" /></a>
+                    <?php $shopCode = '886f2f3f-0e4a-a91b-2783-b1dffbee1a77';?>
+                    <a href="hs://getShopInfo?shopCode={$shopCode|urlencode}" class="external"><img src="/Public/img/scroll/s-scroll-5.jpg" style="top:77%;left: 4%;" /></a>
+                    <!--诺亚方舟电影票优惠活动-->
+                    <?php elseif($activityInfo['activityCode'] == '5f4f11bd-8da7-abd5-a1d5-cf0cbb040d56'):?>
+                    <?php $shopCode = '2f7a5b30-ea05-18ce-b467-019a7293d4f2';?>
+                    <a href="hs://getShopInfo?shopCode={$shopCode|urlencode}" class="external"><img src="/Public/img/scroll/nuoya.png" style="position:absolute;width: 38%;left: 34%;top: 19.5%;" /></a>
+                    <!--东方超市10元购20元礼券限量优惠活动-->
+                    <?php elseif($activityInfo['activityCode'] == '07c0faf1-3e67-6e07-3004-85e0e66aa729'):?>
+                    <?php $shopCode = '151be9d3-dae8-a77a-a928-32a43572704e';?>
+                    <a href="hs://getShopInfo?shopCode={$shopCode|urlencode}" class="external"><img src="/Public/img/scroll/dfmarket.png" style="position:absolute;width: 50%;left: 25%;top:25%;" /></a>
+                    <!--悦四海80元晚餐惠-->
+                    <?php elseif($activityInfo['activityCode'] == '2bb72165-35c9-5f3f-cf48-9a2be6d2549f'):?>
+                    <?php $shopCode = 'a47cb2c5-1387-dcd1-5716-03c0e807e436';?>
+                    <a href="hs://getShopInfo?shopCode={$shopCode|urlencode}" class="external"><img src="/Public/img/scroll/yuesihai.png" style="position:absolute;width: 39%;left: 56%;top:20%;" /></a>
+                    <!--1元抢鸡蛋-->
+                    <?php elseif($activityInfo['activityCode'] == '3bbc146f-2b5d-0454-05fa-7007534fb572'):?>
+                    <?php $shopCode = 'd96dbef7-f417-30b9-bbf8-0f17e87e9103';?>
+                    <a href="hs://getShopInfo?shopCode={$shopCode|urlencode}" class="external"><img src="/Public/img/scroll/egg.png" style="position:absolute;width: 70%;left: 21%;top:46%;" /></a>
+                    <!--品琯香满10元立减5元！-->
+                    <?php elseif($activityInfo['activityCode'] == '5d9c4fd5-feb8-c603-a4d9-852363f020da'):?>
+                    <?php $shopCode = 'da6ee0d4-a84f-18cc-37b7-07a603fffedf';?>
+                    <a href="hs://getShopInfo?shopCode={$shopCode|urlencode}" class="external"><img src="/Public/img/scroll/transparent.png" style="position:absolute;width: 47%;left: 22%;height: 18%;top: 0;" /></a>
+                    <!--九号桥老眯小吃店1元就能吃！-->
+                    <?php elseif($activityInfo['activityCode'] == '8bac607e-3658-d483-e553-075460396fe8'):?>
+                    <?php $shopCode = '9c1dbeb5-e49c-377d-3c8d-423df041e458';?>
+                    <a href="hs://getShopInfo?shopCode={$shopCode|urlencode}" class="external"><img src="/Public/img/scroll/transparent.png" style="position:absolute;width: 21%;left: 10%;top: 33%;" /></a>
+                    <!--25度N咖啡，满20减5-->
+                    <?php elseif($activityInfo['activityCode'] == 'a07c1ba0-8646-5893-f4b7-9a0733350e7a'):?>
+                    <?php $shopCode = 'dd305b17-b450-8a5c-0740-f7a642301a35';?>
+                    <a href="hs://getShopInfo?shopCode={$shopCode|urlencode}" class="external"><img src="/Public/img/scroll/transparent.png" style="position:absolute;width: 50%;left: 25%;height: 5.5%;top: 41.5%;" /></a>
+                    <!--榴莲咖啡·西餐满100减15-->
+                    <?php elseif($activityInfo['activityCode'] == '1e6283a6-d1d1-f811-1365-4f42efcf8798'):?>
+                    <?php $shopCode = '0a8a38d9-7c1b-a12a-ae98-2f7eeede38a1';?>
+                    <a href="hs://getShopInfo?shopCode={$shopCode|urlencode}" class="external"><img src="/Public/img/scroll/transparent.png" style="position:absolute;width: 58%;left: 20%;height: 6%;top: 32%;" /></a>
+                    <!--8588烘焙咖啡-->
+                    <?php elseif($activityInfo['activityCode'] == '46c8bcd3-ddfc-f8ce-05b5-ebdab3187b65'):?>
+                    <?php $shopCode = '9c9ab43a-d093-a6d0-06a3-f65195172607';?>
+                    <a href="hs://getShopInfo?shopCode={$shopCode|urlencode}" class="external"><img src="/Public/img/scroll/transparent.png" style="position:absolute;width: 63%;left: 20%;height: 7%;top: 29%;" /></a>
+                    <!--九块九看大片-->
+                    <?php elseif($activityInfo['activityCode'] == '0f2ca6bb-6ca1-4ed9-ea8e-2f098fcb0e15'):?>
+                    <?php $shopCode = '0c1fc3d6-c37d-298e-e7c9-81a192600163';?>
+                    <a href="hs://getShopInfo?shopCode={$shopCode|urlencode}" class="external"><img src="/Public/img/scroll/transparent.png" style="position:absolute;width: 38%;left: 33%;height: 3%;top: 28%;" /></a>
+                    <?php $shopCode = 'fb8498c9-5c22-269c-af28-c26dc3fb7055';?>
+                    <a href="hs://getShopInfo?shopCode={$shopCode|urlencode}" class="external"><img src="/Public/img/scroll/transparent.png" style="position:absolute;width: 38%;left: 33%;height: 3%;top: 44%;" /></a>
+                    <?php $shopCode = '2f7a5b30-ea05-18ce-b467-019a7293d4f2';?>
+                    <a href="hs://getShopInfo?shopCode={$shopCode|urlencode}" class="external"><img src="/Public/img/scroll/transparent.png" style="position:absolute;width: 38%;left: 33%;height: 3%;top: 60%;" /></a>
+                    <?php elseif($activityInfo['activityCode'] == '6a9f7f11-0cee-3b53-15ab-d778d8e4bf63'):?>
+                    <!--余记-->
+                    <?php $shopCode = '04ee4042-19bd-4c0e-d373-70fa1f2c4105';?>
+                    <a href="hs://getShopInfo?shopCode={$shopCode|urlencode}" class="external"><img src="/Public/img/scroll/transparent.png" style="position:absolute;width: 52%;left: 24%;height: 4%;top: 59.2%;" /></a>
+                    <?php $shopCode = '89ae2e84-e373-1a4a-1df0-0c8ef2ed8572';?>
+                    <a href="hs://getShopInfo?shopCode={$shopCode|urlencode}" class="external"><img src="/Public/img/scroll/transparent.png" style="position:absolute;width: 52%;left: 24%;height: 4%;top: 67%;" /></a>
+                    <?php elseif($activityInfo['activityCode'] == '176bbd09-5506-2454-14f0-f9c95502ace5'):?>
+                    <!--廊桥遗梦温泉酒店-->
+                    <?php $shopCode = 'addf2a03-7b1a-4797-07a9-40be020dbc60';?>
+                    <a href="hs://getShopInfo?shopCode={$shopCode|urlencode}" class="external"><img src="/Public/img/scroll/transparent.png" style="position:absolute;width: 54%;left: 24%;height: 5%;top: 33.5%;" /></a>
+                    <?php elseif($activityInfo['activityCode'] == '4d598a17-9bf5-3d1c-d11a-648bf136b616'):?>
+                    <!--彭氏雪莲养生会所-->
+                    <?php $shopCode = 'e5eaee34-f191-c4a8-1af1-8dbd900eb22e';?>
+                    <a href="hs://getShopInfo?shopCode={$shopCode|urlencode}" class="external"><img src="/Public/img/scroll/transparent.png" style="position:absolute;width: 17%;left: 79%;height: 5%;top: 9%;" /></a>
+                    <?php endif;?>
+                    <else />
+                    <?php if($activityInfo['activityCode'] == 'cf93d701-272d-2379-c77c-d29d16547d08'):?>
+                    <a href="/Wechat/Index/cdownload" class="external"><img src="/Public/img/brand/enter_shop.png" style="position:absolute;width: 50%;left: 25%;top:64%;" /></a>
+                    <?php elseif($activityInfo['activityCode'] == 'b8836bca-8293-588e-b933-7582781851eb'):?>
+                    <a href="/Wechat/Index/cdownload" class="external"><img src="/Public/img/brand/enter_shop.png" style="position:absolute;width: 50%;left: 25%;top:64%;" /></a>
+                    <?php elseif($activityInfo['activityCode'] == 'f0af6b2e-f5a4-cf02-c41c-c951493fb58d'):?>
+                    <a href="/Wechat/Index/cdownload" class="external"><img src="/Public/img/brand/enter_shop.png" style="position:absolute;width: 50%;left: 25%;top:64%;" /></a>
+                    <?php elseif($activityInfo['activityCode'] == 'ba279360-464c-6319-0e4d-6d50c5b05028'):?>
+                    <a href="/Wechat/Index/cdownload" class="external"><img src="/Public/img/brand/enter_shop.png" style="position:absolute;width: 50%;left: 25%;top:86%;" /></a>
+                    <?php elseif($activityInfo['activityCode'] == 'e4d87b23-9417-0e2f-2b04-005b8a24332f'):?>
+                    <a href="/Wechat/Index/cdownload" class="external"><img src="/Public/img/brand/enter_shop.png" style="position:absolute;width: 50%;left: 25%;top:67%;" /></a>
+                    <?php elseif($activityInfo['activityCode'] == '33fec256-b0f9-9f8d-7646-c3e72464bdff'):?>
+                    <a href="/Wechat/Index/cdownload" class="external"><img src="/Public/img/scroll/s-scroll-1.jpg" style="top:17.5%;left: 4%;" /></a>
+                    <a href="/Wechat/Index/cdownload" class="external"><img src="/Public/img/scroll/s-scroll-2.jpg" style="top:32.4%;left: 4%;" /></a>
+                    <a href="/Wechat/Index/cdownload" class="external"><img src="/Public/img/scroll/s-scroll-3.jpg" style="top:47.2%;left: 4%;" /></a>
+                    <a href="/Wechat/Index/cdownload" class="external"><img src="/Public/img/scroll/s-scroll-4.jpg" style="top:62.1%;left: 4%;" /></a>
+                    <a href="/Wechat/Index/cdownload" class="external"><img src="/Public/img/scroll/s-scroll-5.jpg" style="top:77%;left: 4%;" /></a>
+                    <!--诺亚方舟电影票优惠活动-->
+                    <?php elseif($activityInfo['activityCode'] == '5f4f11bd-8da7-abd5-a1d5-cf0cbb040d56'):?>
+                    <a href="/Wechat/Index/cdownload" class="external"><img src="/Public/img/scroll/nuoya.png" style="position:absolute;width: 38%;left: 34%;top: 19.5%;" /></a>
+                    <!--东方超市10元购20元礼券限量优惠活动-->
+                    <?php elseif($activityInfo['activityCode'] == '07c0faf1-3e67-6e07-3004-85e0e66aa729'):?>
+                    <a href="/Wechat/Index/cdownload" class="external"><img src="/Public/img/scroll/dfmarket.png" style="position:absolute;width: 50%;left: 25%;top:25%;" /></a>
+                    <!--悦四海80元晚餐惠-->
+                    <?php elseif($activityInfo['activityCode'] == '2bb72165-35c9-5f3f-cf48-9a2be6d2549f'):?>
+                    <a href="/Wechat/Index/cdownload" class="external"><img src="/Public/img/scroll/yuesihai.png" style="position:absolute;width: 39%;left: 56%;top:20%;" /></a>
+                    <!--1元抢鸡蛋-->
+                    <?php elseif($activityInfo['activityCode'] == '3bbc146f-2b5d-0454-05fa-7007534fb572'):?>
+                    <a href="/Wechat/Index/cdownload" class="external"><img src="/Public/img/scroll/egg.png" style="position:absolute;width: 70%;left: 21%;top:46%;" /></a>
+                    <!--品琯香满10元立减5元！-->
+                    <?php elseif($activityInfo['activityCode'] == '5d9c4fd5-feb8-c603-a4d9-852363f020da'):?>
+                    <a href="/Wechat/Index/cdownload" class="external"><img src="/Public/img/scroll/transparent.png" style="position:absolute;width: 47%;left: 22%;height: 18%;top: 0;" /></a>
+                    <!--九号桥老眯小吃店1元就能吃！-->
+                    <?php elseif($activityInfo['activityCode'] == '8bac607e-3658-d483-e553-075460396fe8'):?>
+                    <a href="/Wechat/Index/cdownload" class="external"><img src="/Public/img/scroll/transparent.png" style="position:absolute;width: 21%;left: 10%;top: 33%;" /></a>
+                    <!--25度N咖啡，满20减5-->
+                    <?php elseif($activityInfo['activityCode'] == 'a07c1ba0-8646-5893-f4b7-9a0733350e7a'):?>
+                    <a href="/Wechat/Index/cdownload" class="external"><img src="/Public/img/scroll/transparent.png" style="position:absolute;width: 50%;left: 25%;height: 5.5%;top: 41.5%;" /></a>
+                    <!--榴莲咖啡·西餐满100减15-->
+                    <?php elseif($activityInfo['activityCode'] == '1e6283a6-d1d1-f811-1365-4f42efcf8798'):?>
+                    <a href="/Wechat/Index/cdownload" class="external"><img src="/Public/img/scroll/transparent.png" style="position:absolute;width: 58%;left: 20%;height: 6%;top: 32%;" /></a>
+                    <!--8588烘焙咖啡-->
+                    <?php elseif($activityInfo['activityCode'] == '46c8bcd3-ddfc-f8ce-05b5-ebdab3187b65'):?>
+                    <a href="/Wechat/Index/cdownload" class="external"><img src="/Public/img/scroll/transparent.png" style="position:absolute;width: 63%;left: 20%;height: 7%;top: 29%;" /></a>
+                    <!--九块九看大片-->
+                    <?php elseif($activityInfo['activityCode'] == '0f2ca6bb-6ca1-4ed9-ea8e-2f098fcb0e15'):?>
+                    <?php $shopCode = '0c1fc3d6-c37d-298e-e7c9-81a192600163';?>
+                    <a href="/Wechat/Index/cdownload" class="external"><img src="/Public/img/scroll/transparent.png" style="position:absolute;width: 38%;left: 33%;height: 3%;top: 28%;" /></a>
+                    <?php $shopCode = 'fb8498c9-5c22-269c-af28-c26dc3fb7055';?>
+                    <a href="/Wechat/Index/cdownload" class="external"><img src="/Public/img/scroll/transparent.png" style="position:absolute;width: 38%;left: 33%;height: 3%;top: 44%;" /></a>
+                    <?php $shopCode = '2f7a5b30-ea05-18ce-b467-019a7293d4f2';?>
+                    <a href="/Wechat/Index/cdownload" class="external"><img src="/Public/img/scroll/transparent.png" style="position:absolute;width: 38%;left: 33%;height: 3%;top: 60%;" /></a>
+                    <?php elseif($activityInfo['activityCode'] == '6a9f7f11-0cee-3b53-15ab-d778d8e4bf63'):?>
+                    <!--余记-->
+                    <a href="/Wechat/Index/cdownload" class="external"><img src="/Public/img/scroll/transparent.png" style="position:absolute;width: 52%;left: 24%;height: 4%;top: 59.2%;" /></a>
+                    <a href="/Wechat/Index/cdownload" class="external"><img src="/Public/img/scroll/transparent.png" style="position:absolute;width: 52%;left: 24%;height: 4%;top: 67%;" /></a>
+                    <?php elseif($activityInfo['activityCode'] == '176bbd09-5506-2454-14f0-f9c95502ace5'):?>
+                    <!--廊桥遗梦温泉酒店-->
+                    <a href="/Wechat/Index/cdownload" class="external"><img src="/Public/img/scroll/transparent.png" style="position:absolute;width: 54%;left: 24%;height: 5%;top: 33.5%;" /></a>
+                    <?php elseif($activityInfo['activityCode'] == '4d598a17-9bf5-3d1c-d11a-648bf136b616'):?>
+                    <!--彭氏雪莲养生会所-->
+                    <a href="/Wechat/Index/cdownload" class="external"><img src="/Public/img/scroll/transparent.png" style="position:absolute;width: 17%;left: 79%;height: 5%;top: 9%;" /></a>
+                    <?php else:?>
+                    <a href="/Wechat/Index/cdownload" class="external"><img src="/Public/img/game/join.png" style="position:absolute;width: 30%;left: 35%;bottom:3%;" /></a>
+                    <?php endif;?>
+                </neq>
+                <?php else:?>
+                <foreach name="activityInfo.exButtonList" item="vo">
+                    <neq name="isShared" value="1">
+                        <a href="{$vo.ebLink}" class="external">
+                            <img src="/Public/img/scroll/transparent.png" style="position: absolute;top: {$vo.ebTop};width: {$vo.ebWidth};left: {$vo.ebLeft};height: {$vo.ebHeight};" />
+                        </a>
+                        <else />
+                        <a href="/Wechat/Index/cdownload" class="external">
+                            <img src="/Public/img/scroll/transparent.png" style="position: absolute;top: {$vo.ebTop};width: {$vo.ebWidth};left: {$vo.ebLeft};height: {$vo.ebHeight};" />
+                        </a>
+                    </neq>
+                </foreach>
+                <?php if(empty($activityInfo['exButtonList']) && $isShared == 1):?>
+                <a href="/Wechat/Index/cdownload" class="external"><img src="/Public/img/game/join.png" style="position:absolute;width: 30%;left: 35%;bottom:3%;" /></a>
+                <?php endif;?>
+                <?php endif;?>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+<script type="text/javascript" src="__PUBLIC__/js/jweixin-1.0.0.js"></script>
+<script>
+    $(function() {
+        var title = '{$activityInfo.activityName}';
+        var icon = 'http://api.huiquan.suanzi.cn{$activityInfo.activityLogo}';
+        var content = '{$activityInfo.txtContent}';
+        var link = 'http://api.huiquan.suanzi.cn/Api/{$activityInfo.webUrl}{$activityInfo.activityCode}&isShared=1';
+        wx.config({
+            debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+            appId: '{$appId}', // 必填，公众号的唯一标识
+            timestamp: '{$timestamp}', // 必填，生成签名的时间戳
+            nonceStr: '{$nonceStr}', // 必填，生成签名的随机串
+            signature: '{$signature}',// 必填，签名，见附录1
+            jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage', 'onMenuShareQQ'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+        });
+
+        /**
+         * 微信分享
+         */
+        wx.ready(function() {
+            //分享到朋友圈
+            wx.onMenuShareTimeline({
+                title: title, // 分享标题
+                link: link, // 分享链接
+                imgUrl: icon, // 分享图标
+                success: function () {
+                    // 用户确认分享后执行的回调函数
+//                    alert("分享成功！");
+                }
+            });
+            //分享给朋友
+            wx.onMenuShareAppMessage({
+                title: title, // 分享标题
+                desc: content, // 分享描述
+                link: link, // 分享链接
+                imgUrl: icon, // 分享图标
+//                type: '', // 分享类型,music、video或link，不填默认为link
+//                dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+                success: function () {
+                    // 用户确认分享后执行的回调函数
+//                    alert("分享成功！");
+                }
+            });
+            //分享到qq
+            wx.onMenuShareQQ({
+                title: title, // 分享标题
+                desc: content, // 分享描述
+                link: link, // 分享链接
+                imgUrl: icon, // 分享图标
+                success: function () {
+                    // 用户确认分享后执行的回调函数
+//                    alert("分享成功！");
+                }
+            });
+        });
+    });
+</script>

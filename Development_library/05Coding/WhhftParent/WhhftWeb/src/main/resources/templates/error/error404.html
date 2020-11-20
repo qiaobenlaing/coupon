@@ -1,0 +1,96 @@
+<link th:replace="/include/header" />
+<script th:inline="javascript">
+
+    $(function () {
+     setTimeout('goHome()',3000);
+ });
+
+    function goHome(){    	
+	/*var jq=top.jQuery;
+    var isExist=jq("#tt").tabs('exists','首页');
+    if(isExist){
+    	var tab=jq("#tt").tabs('getSelected');
+    	var index=jq('#tt').tabs('getTabIndex',tab);
+    	jq("#tt").tabs('close',index);
+    	jq("#tt").tabs('select','首页');    	
+    } else{
+    	history.go(-1);
+    } */
+}
+function refresh(){
+	location.reload();
+}
+function back(){
+	// location.replace(document.referrer);
+    history.go(-1);
+}
+
+</script>
+<style>
+@media screen and (min-width: 320px) {
+  html{ font-size: 20px }
+}
+@media screen and ( min-width: 360px) {
+  html{ font-size: 22.5px }
+}
+@media screen and ( min-width: 375px) {
+  html{ font-size: 23.4575px }
+}
+@media screen and ( min-width: 400px) {
+  html{ font-size: 25px }
+}
+@media screen and ( min-width: 414px) {
+  html{ font-size: 25.875px }
+}
+@media screen and ( min-width: 480px) {
+  html{ font-size: 30px }
+  .zixun{width: 5%!important;}
+}
+@media screen and ( min-width: 600px) {
+  html{ font-size: 37.5px }
+}
+@media screen and ( min-width: 640px) {
+  html{ font-size: 40px }
+}
+button{
+    padding: 7px 32px;
+    margin-left: 30px;
+    background: #bd0346;
+    border-radius: 8px;
+    /* box-shadow: 1px 2px 0px #9e9e9e; */
+    color: #e6e6e6;
+    font-size: 0.2rem;
+}
+.text{
+    margin: 0 auto;
+    width: 100%;
+    max-width: 800px;
+    border: 2px solid #cecece;
+    padding: 70px 0px;
+    border-radius: 3px;
+    text-align: center;
+    background: #f6f6f6;
+}
+.text p{
+    font-size: 0.5rem;
+}
+.text p:nth-child(2){
+    font-size: 0.4rem;
+    color: #8c8c8c;
+    margin-top: 40px;
+}
+</style>
+<div id="div1" style="width: 100%; max-width: 800px;margin: 0 auto; vertical-align: middle; text-align: center;">
+	<img alt="" src="/whhft/images/404page.jpg" style="width: 100%; vertical-align: middle; text-align: center;">
+</div>
+
+<div class="text">
+    <p>对不起，您要访问的页面暂时没有找到！</p>
+    <p>您可以:<button onclick="refresh()">刷新</button><button onclick="back()">后退</button></p>
+    </div>
+    <link th:replace="/include/footer" />
+
+
+
+
+

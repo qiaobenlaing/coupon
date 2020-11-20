@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="
+          http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+          http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+          http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+          http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd
+          http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.3.xsd" 
+          default-lazy-init="true">
+	<!-- component-scan自动搜索@Component , @Controller , @Service , @Repository等标注的类 -->
+	
+	<context:component-scan base-package="com.whhft" />
+	
+	<bean id="sysAuthService" class="org.springframework.remoting.rmi.RmiProxyFactoryBean">
+		<property name="serviceUrl" value="${rmi.path}/remotingSysAuthService"/>
+		<property name="serviceInterface" value="com.whhft.sysmanage.common.rmi.SysAuthService"/>
+	</bean>
+	
+	<bean id="sysLogService" class="org.springframework.remoting.rmi.RmiProxyFactoryBean">
+		<property name="serviceUrl" value="${rmi.path}/remotingSysLogService"/>
+		<property name="serviceInterface" value="com.whhft.sysmanage.common.rmi.SysLogService"/>
+	</bean>
+	
+	<bean id="sysRoleService" class="org.springframework.remoting.rmi.RmiProxyFactoryBean">
+		<property name="serviceUrl" value="${rmi.path}/remotingSysRoleService"/>
+		<property name="serviceInterface" value="com.whhft.sysmanage.common.rmi.SysRoleService"/>
+	</bean>
+	
+	<bean id="sysUserService" class="org.springframework.remoting.rmi.RmiProxyFactoryBean">
+		<property name="serviceUrl" value="${rmi.path}/remotingSysUserService"/>
+		<property name="serviceInterface" value="com.whhft.sysmanage.common.rmi.SysUserService"/>
+	</bean>
+	
+	<bean id="dictDefineService" class="org.springframework.remoting.rmi.RmiProxyFactoryBean">
+		<property name="serviceUrl" value="${rmi.path}/remotingDictDefineService"/>
+		<property name="serviceInterface" value="com.whhft.sysmanage.common.rmi.DictDefineService"/>
+	</bean>
+	
+	<bean id="dictDetailService" class="org.springframework.remoting.rmi.RmiProxyFactoryBean">
+		<property name="serviceUrl" value="${rmi.path}/remotingDictDetailService"/>
+		<property name="serviceInterface" value="com.whhft.sysmanage.common.rmi.DictDetailService"/>
+	</bean>
+	
+	<bean id="actionInfoService" class="org.springframework.remoting.rmi.RmiProxyFactoryBean">
+		<property name="serviceUrl" value="${rmi.path}/remotingActionInfoService"/>
+		<property name="serviceInterface" value="com.whhft.sysmanage.common.rmi.ActionInfoService"/>
+	</bean>
+	
+	<bean id="serverInfoService" class="org.springframework.remoting.rmi.RmiProxyFactoryBean">
+		<property name="serviceUrl" value="${rmi.path}/remotingServerInfoService"/>
+		<property name="serviceInterface" value="com.whhft.sysmanage.common.rmi.ServerInfoService"/>
+	</bean>
+	
+	<bean id="catalogService" class="org.springframework.remoting.rmi.RmiProxyFactoryBean">
+        <property name="serviceUrl" value="${rmi.path}/remotingNewsCatalogService"/>
+        <property name="serviceInterface" value="com.whhft.sysmanage.common.rmi.NewsCatalogService"/>
+    </bean>
+    
+    <bean id="newsService" class="org.springframework.remoting.rmi.RmiProxyFactoryBean">
+        <property name="serviceUrl" value="${rmi.path}/remotingNewsService"/>
+        <property name="serviceInterface" value="com.whhft.sysmanage.common.rmi.NewsService"/>
+    </bean>
+</beans>

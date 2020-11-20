@@ -1,0 +1,52 @@
+<table class="fp-table table table-bordered table-condensed table-hover" id="data_table">
+    <thead>
+    <tr>
+        <th>用户</th>
+        <th>商户</th>
+        <th>券号</th>
+        <th>券票名称（功能）</th>
+        <th>实际支付</th>
+        <th>支付状态</th>
+        <th>使用状态</th>
+        <th>生成时间</th>
+    </tr>
+    </thead>
+    <tbody>
+    <foreach name="dataList" item="item">
+        <tr>
+            <td>{$item.nickName}</td>
+            <td>{$item.shopName}</td>
+            <td><span class="badge badge-reen">{$item.couponCode}</span></td>
+            <td>{$item.function}</td>
+            <td>{$item.realPay}</td>
+            <td>
+                <switch name="item.userConsumeStatus" >
+                    <case value="0"><span class="red">不能支付</span></case>
+                    <case value="1"><span class="grey">未付款</span></case>
+                    <case value="2"><span class="grey">付款中</span></case>
+                    <case value="3"><span class="green">已付款</span></case>
+                    <case value="4"><span class="red">已取消付款</span></case>
+                    <case value="5"><span class="red">付款失败</span></case>
+                    <case value="6"><span class="grey">退款申请中</span></case>
+                    <case value="7"><span class="green">退款成功</span></case>
+                    <case value="8"><span class="green">部分退款成功</span></case>
+                    <default /><span class="grey">未知</span>
+                </switch>
+            </td>
+            <td>
+                <switch name="item.userOrderStatus" >
+                    <case value="10"><span class="red">订单未付款，不可用</span></case>
+                    <case value="11"><span class="grey">已退款，不可用</span></case>
+                    <case value="12"><span class="grey">申请退款，不可用</span></case>
+                    <case value="20"><span class="green">可用</span></case>
+                    <case value="30"><span class="red">已使用</span></case>
+                    <default /><span class="grey">未知</span>
+                </switch>
+            </td>
+            <td>{$item.consumeTime}</td>
+        </tr>
+    </foreach>
+    </tbody>
+</table>
+<include file="Application/Admin/View/Widget/pager.html" />
+

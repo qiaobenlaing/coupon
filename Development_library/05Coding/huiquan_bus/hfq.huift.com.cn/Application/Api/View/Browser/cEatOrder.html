@@ -1,0 +1,360 @@
+<layout name="layout_api" />
+<link rel="stylesheet" href="__PUBLIC__/css/Api/cEatOrder.css"/>
+<!-- Views -->
+<div class="views">
+    <!-- Your main view, should have "view-main" class -->
+    <div class="view view-main">
+        <!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
+        <div class="pages toolbar-through">
+            <!-- Page, "data-page" contains page name -->
+            <div data-page="index" class="page navbar-fixed toolbar-fixed">
+                <div class="navbar">
+                    <div class="navbar-inner">
+                        <empty name="openId">
+                            <div class="left">
+                                <a href="hs://backup" class="external">
+                                <!--<a href="/Api/Browser/getShopInfo?shopCode={$shopCode}&userCode={$userCode}" class="external">-->
+                                <else/>
+                                <div class="left"><a href="/Api/Browser/getShopInfo?shopCode={$shopCode}&userCode={$userCode}&openId={$openId}" class="external">
+                        </empty>
+                        <div class="backup">
+                            <img src="/Public/img/icon/backup.png" />
+                        </div>
+                        </a></div>
+                    <div class="center"><div class="head_col">{$shopInfo.shopName}(堂食点餐)</div></div>
+                    <div class="right"></div>
+                </div>
+            </div>
+            <!-- Scrollable page content -->
+            <div class="page-content" style="padding-top:40px;">
+                <div class="body" style="padding: 0;">
+                    <empty name="openId">
+                        <if condition="!empty($userReductionCouponList) || !empty($shopReductionCouponList) || !empty($userDiscountCouponList) || !empty($shopDiscountCouponList) || $isFirst eq 1">
+                            <div class="discount_add">
+                                <if condition="!empty($userReductionCouponList) || !empty($shopReductionCouponList)">
+                                    <div class="discount_inner1">
+                                        <span class="activity_title">满减券</span>
+                                            <span class="activity_content">
+                                                <notempty name="userReductionCouponList">
+                                                    <foreach name="userReductionCouponList" item="coupon">
+                                                        满{$coupon.availablePrice}减{$coupon.insteadPrice}元；
+                                                    </foreach>
+                                                </notempty>
+                                                <notempty name="shopReductionCouponList">
+                                                    <foreach name="shopReductionCouponList" item="coupon">
+                                                        满{$coupon.availablePrice}减{$coupon.insteadPrice}元；
+                                                    </foreach>
+                                                </notempty>
+                                            </span>
+                                    </div>
+                                </if>
+                                <if condition="!empty($userDiscountCouponList) || !empty($shopDiscountCouponList)">
+                                    <div class="discount_inner1">
+                                        <span class="activity_title">满折券</span>
+                                            <span class="activity_content">
+                                                <notempty name="userDiscountCouponList">
+                                                    <foreach name="userDiscountCouponList" item="coupon">
+                                                        满{$coupon.availablePrice}元打{$coupon.discountPercent}折；
+                                                    </foreach>
+                                                </notempty>
+                                                <notempty name="shopDiscountCouponList">
+                                                    <foreach name="shopDiscountCouponList" item="coupon">
+                                                        满{$coupon.availablePrice}元打{$coupon.discountPercent}折；
+                                                    </foreach>
+                                                </notempty>
+                                            </span>
+                                    </div>
+                                </if>
+                                <if condition="$isFirst eq 1">
+                                    <div class="discount_inner1">
+                                        <span class="activity_title">首单</span>
+                                        <span class="activity_content"> 首单立减10元 </span>
+                                    </div>
+                                </if>
+                            </div>
+                        </if>
+                    </empty>
+                    <div class="content-wrap">
+                        <div class="row no-gutter">
+                            <div class="col-25" style="background-color: #F2F2F2; border-right: 1px solid #dddddd;">
+                                <div class="list-block" style="overflow: auto;">
+                                    <ul>
+                                        <foreach name="categoryList" item="item">
+                                            <li class="li-category" data-key="{$item.categoryId}">
+                                                <a href="#category_{$item.categoryId}" class="external list-button item-link category" data-category-id="{$item.categoryId}">{$item.categoryName}
+                                                    <if condition="$item.orderedNbr eq 0">
+                                                        <div class="order_number_div category_name display_none" id="category-div-{$item.categoryId}"></div>
+                                                        <else/>
+                                                        <div class="order_number_div category_name" id="category-div-{$item.categoryId}"></div>
+                                                    </if>
+                                                    <span class="order_number" id="category-{$item.categoryId}">{$item.orderedNbr}</span>
+
+                                                </a>
+                                            </li>
+                                        </foreach>
+                                    </ul>
+                            </div>
+                        </div>
+                        <div class="col-75 div-goods-wrap" style="transition-timing-function: cubic-bezier(0.1, 0.57, 0.1, 1);-webkit-transition-timing-function: cubic-bezier(0.1, 0.57, 0.1, 1);transition-duration: 0ms;-webkit-transition-duration: 0ms;transform: translate(0, 0px) translateZ(0px)">
+                            <div class="list-block" style="overflow: auto;">
+                                <notempty name="categoryList">
+                                    <foreach name="categoryList" item="category">
+                                        <ul id="category_{$category.categoryId}">
+                                            <li class="choose"><span class="choose_title">{$category.categoryName}</span></li>
+                                            <foreach name="category.productList" item="product">
+                                                <li class="food_item">
+                                                    <div class="food_img">
+                                                        <empty name="product.productImg"><img src="/Public/img/no_shoplogo.png" /><else/><img src="{$product.productImg}" /></empty>
+                                                    </div>
+                                                    <a href="/Api/Browser/shopProductInfo?shopCode={$shopCode}&productId={$product.productId}&userCode={$userCode}&type=20&openId={$openId}&backup=h5&backAction=cEatOrder&orderCode={$orderCode}" class="external">
+                                                        <div class="food_inner1">
+                                                            <div class="food_name">{$product.productName}</div>
+                                                            <div class="food_evaluation">
+                                                                <for start="0" end="$product.recommendLevel">
+                                                                    <img src="/Public/img/icon/great.png" class="great"/>
+                                                                </for>
+                                                                <for start="0" end="$product.spicyLevel">
+                                                                    <img src="/Public/img/icon/spicy.png" />
+                                                                </for>
+                                                                <span class="month_sales">月售&nbsp;{$product.monthlySalesVolume}{$product.unit}</span>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                    <div class="food_inner2">
+                                                        <neq name="product.productStatus" value="3">
+                                                            <div class="food_number index_{$product.productId}" id="index_{$product.productId}">
+                                                                <if condition="$product.orderNbr eq 0">
+                                                                    <button class="number_button minus display_none" data-category-id="{$product.categoryId}" data-product-id="{$product.productId}" data-product-name="{$product.productName}" data-product-price="{$product.notTakeoutPrice}">
+                                                                        <img src="/Public/img/icon/order_minus.png" />
+                                                                    </button>
+                                                                    <span class="number"><empty name="type">{$product.productNbr}</empty></span>
+                                                                    <else/>
+                                                                    <empty name="type">
+                                                                        <button class="number_button minus" data-category-id="{$product.categoryId}" data-product-id="{$product.productId}" data-product-name="{$product.productName}" data-product-price="{$product.notTakeoutPrice}">
+                                                                            <img src="/Public/img/icon/order_minus.png" />
+                                                                        </button>
+                                                                        <span class="number">{$product.orderNbr}</span>
+                                                                        <else/>
+                                                                        <button class="number_button minus display_none" data-category-id="{$product.categoryId}" data-product-id="{$product.productId}" data-product-name="{$product.productName}" data-product-price="{$product.notTakeoutPrice}">
+                                                                            <img src="/Public/img/icon/order_minus.png" />
+                                                                        </button>
+                                                                        <span class="number"></span>
+                                                                    </empty>
+                                                                </if>
+                                                                <button class="number_button add" data-category-id="{$product.categoryId}" data-product-id="{$product.productId}" data-product-name="{$product.productName}" data-product-price="{$product.notTakeoutPrice}">
+                                                                    <img src="/Public/img/icon/order_add.png" />
+                                                                </button>
+                                                            </div>
+                                                        </neq>
+                                                        <div class="food_univalent">
+                                                            <neq name="product.productStatus" value="3">
+                                                                <span class="price_symbol">&#65509;</span>
+                                                                <span class="food_price">{$product.notTakeoutPrice}</span>
+                                                                <span class="food_company">/{$product.unit}</span>
+                                                                <else/>
+                                                                <span class="food_price">售完</span>
+                                                            </neq>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </foreach>
+                                        </ul>
+                                    </foreach>
+                                    <else/>
+                                    <script type="text/javascript">
+                                        // 显示未提供服务的提示，并跳回商家详情页面
+                                        ;(function(){
+                                            function goBack(){
+                                            var openId = "{$openId}";
+                                                if(openId){
+                                                    myApp.modal({
+                                                        title:  '提醒',
+                                                        text: '本店暂未提供该服务',
+                                                        buttons: [
+                                                            {
+                                                                text: '确定',
+                                                                onClick:function(){
+                                                                    location.href = '/Api/Browser/getShopInfo?shopCode={$shopCode}&userCode={$userCode}';
+                                                                }
+                                                            }
+                                                        ]
+                                                    });
+                                                }else{
+                                                    myApp.modal({
+                                                        title:  '提醒',
+                                                        text: '本店暂未提供该服务',
+                                                        afterText: '<div style="line-height: 2;margin-bottom: -15px;border-bottom: 1px solid darkgray;"><a href="hs://backup" class="external" style="font-size: 17px;">确定</a></div>'
+                                                    });
+                                                }
+                                            }
+                                            window.onload = goBack;
+                                        })();
+                                    </script>
+                                </notempty>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="toolbar">
+    <div class="toolbar-inner" style="background: #fff;">
+        <if condition="$orderProductNbr eq 0">
+            <div class="order" disabled="disabled">
+                <else/>
+                <div class="order">
+        </if>
+        <img src="/Public/img/icon/cart.png" />
+        <if condition="$orderProductNbr eq 0">
+            <div class="order_number_div display_none">
+                <else/>
+                <div class="order_number_div">
+        </if>
+        <span class="order_number">{$orderProductNbr}</span>
+    </div>
+</div>
+<div class="symbol_price">
+    <span class="total_symbol">&#65509;</span><span class="total_price">{$orderProductPrice}</span>
+</div>
+<if condition="$orderProductPrice eq 0">
+    <a href="#" class="link inoperable" disabled="disabled">选好了</a>
+    <else/>
+    <a href="#" class="link">选好了</a>
+</if>
+</div>
+</div>
+</div>
+</div>
+<form action="/Api/Browser/editNotTakeoutOrder" method="post" id="order_submit">
+    <input type="hidden" name="shopCode" value="{$shopCode}" id="shopCode"/>
+    <input type="hidden" name="clientCode" value="{$userCode}" id="clientCode"/>
+    <input type="hidden" name="orderCode" value="{$orderCode}" id="orderCode"/>
+    <input type="hidden" name="openId" value="{$openId}" id="openId"/>
+    <div class="picker_model fade">
+        <div class="list-block">
+            <ul>
+                <foreach name="orderProductList" item="item">
+                    <notempty name="type">
+                        <input type="hidden" value="{$type}" id="type_{$item.productId}"/>
+                        <li disabled="disabled">
+                            <div class="left">
+                                <else/>
+                                <li id="frame_{$item.productId}">
+                                    <div class="left">
+                    </notempty>
+                    <div class="food_name">{$item.productName}</div>
+        </div>
+        <div class="right">
+            <div class="food_number">
+                <button class="number_button minus" type="button" onclick="frameChange({$item.categoryId},{$item.productId},'{$item.productName}',{$item.productUnitPrice}, 'minus');">
+                    <img src="/Public/img/icon/order_minus.png">
+                </button>
+                <span class="number">{$item.productNbr}</span>
+                <button class="number_button add" type="button" onclick="frameChange({$item.categoryId},{$item.productId},'{$item.productName}',{$item.productUnitPrice}, 'add');">
+                    <img src="/Public/img/icon/order_add.png">
+                </button>
+            </div>
+            <div class="cart_univalent">
+                <span class="price_symbol">&#65509;</span>
+                <span class="food_price">{$item.productUnitPrice}</span>
+                <span class="food_company"></span>
+            </div>
+        </div>
+        </li>
+        <div id="input_value_{$item.productId}">
+            <input type='hidden' name='productId[]' value='{$item.productId}'/>
+            <input type='hidden' name='productUnitPrice[]' value='{$item.productUnitPrice}'/>
+            <input type='hidden' name='productNbr[]' id="index_value_{$item.productId}" value='{$item.productNbr}'/>
+        </div>
+        </foreach>
+        <notempty name="type">
+            <div class="new_add_food">新加菜品</div>
+        </notempty>
+        <li id="deliveryFee"></li>
+        </ul>
+    </div>
+    </div>
+</form>
+<div class="modal_overlay fade"></div>
+<script type="text/javascript" src="__PUBLIC__/js/order/order.js"></script>
+<script>
+    $(function() {
+        var height = window.screen.availHeight;
+        height = height * 0.9;
+        $('.col-25').find('.list-block').css('height', height);
+        $('.col-75').find('.list-block').css('height', height);
+        $(".col-25 li:last").css("margin-bottom","40%");
+        $(".col-75 ul:last").css("margin-bottom","16%");
+        $(".link").on('click', function() {
+            var frm = $("#order_submit");
+            $.post(frm.attr('action'), frm.serialize(), function(resp) {
+                if (resp.status == sz.STATUS_SUCC) {
+                    location.href = '/Api/Browser/cEatSubmit?openId={$openId}&orderCode='+resp.data.orderCode;
+                } else {
+                    if(resp.msg == 20000){
+                        myApp.modal({
+                            title:  '提醒',
+                            text: '点餐失败!',
+                            buttons: [
+                                {
+                                    text: '确定'
+                                }
+                            ]
+                        });
+                    }else if(resp.msg == 50317) {
+                        myApp.modal({
+                            title:  '提醒',
+                            text: '请选择商家!',
+                            buttons: [
+                                {
+                                    text: '确定'
+                                }
+                            ]
+                        });
+                    }else if(resp.msg == 50320) {
+                        myApp.modal({
+                            title:  '提醒',
+                            text: '商家已经打烊了!',
+                            buttons: [
+                                {
+                                    text: '确定'
+                                }
+                            ]
+                        });
+                    }else if(resp.msg == 50500) {
+                        myApp.modal({
+                            title:  '提醒',
+                            text: '请登录!',
+                            buttons: [
+                                {
+                                    text: '确定',
+                                    onClick:function(){
+                                        location.href = 'ho://login';
+                                    }
+                                }
+                            ]
+                        });
+                    }
+                }
+            });
+            return false;
+        });
+        // 菜品的滚动
+        ;(function(){
+//            $('.li-category').on('click', function(){
+//                var divGoodsWrap = $('.div-goods-wrap');
+//                var parentLi = $(this).prev();
+//                if(parentLi.length) {
+//                    var categoryId = parentLi.data('key');
+//                    var goodCategory = $('#category_' + categoryId);
+//                    var height = goodCategory.css('height');
+//                    divGoodsWrap.css('transform', 'translate(0px, -' + height +') translateZ(0px)');
+//                } else {
+//                    divGoodsWrap.css('transform', 'translate(0px, 0px) translateZ(0px)');
+//                }
+//            });
+        })();
+    });
+</script>

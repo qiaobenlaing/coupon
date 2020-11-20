@@ -1,0 +1,62 @@
+<layout name="layout_api" />
+<link href="__PUBLIC__/css/scroll-img.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript" src="__PUBLIC__/js/scroll-img.js"></script>
+<script>
+//    console.log($);
+    function changeDisplay(){
+        var divObj = $("#rule_info");
+        var aObj = $("#rule_a");
+        var val = aObj.attr("data-type");
+        if(val==1){
+            divObj.show();
+            aObj.attr("data-type","2");
+        }else{
+            divObj.hide();
+            aObj.attr("data-type","1");
+        }
+    }
+</script>
+<!-- Views -->
+<div class="views">
+    <!-- Your main view, should have "view-main" class -->
+    <div class="view view-main">
+        <!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
+        <div class="pages">
+            <!-- Page, "data-page" contains page name -->
+            <div data-page="index" class="page">
+                <!-- Scrollable page content -->
+                <div class="page-content">
+                    <div class="special-act">
+                        {$specialInfo.title}
+                        <a href="hq://robCoupon?batchCouponCode={$specialInfo.batchCouponCode|urlencode}" class="external"> 立即抢券 </a>
+                    </div>
+                    <div class="special-shopInfo">
+                        {$specialInfo.shortDes}
+                    </div>
+                    <div class="special-img">
+                        <div id="box_lanrenzhijia">
+                            <div class="list">
+                                <ul>
+                                    <foreach name="specialInfo.img" item="vo" >
+                                        <li><img src="{$vo}" /></li>
+                                    </foreach>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="rule">
+                        <div class="rule-title"><a href="#" onclick="changeDisplay();" data-type="1" id="rule_a">活动细则</a></div>
+                        <div class="rule-info" id="rule_info" style="display: none;">
+                            1.本活动限建行龙卡信用卡持卡人参加，VISA卡除外(卡号4开头)。<br/>
+                            2.本活动时间为2015年3月28日至2016年3月31日期间的每周六。上午10点起，使用龙卡信用卡在蜘蛛网可以5元购买电影票，限前1000张。下午3点起，使用龙卡信用卡在蜘蛛网可以15元购买电影票，限前5000张.<br/>
+                            3.本活动支持蜘蛛网PC端(film.spider.com.cn)、手机WAP、APP端订购。<br/>
+                            4.支付时需选择“龙卡星期六”电影票优惠抢购活动标签。<br/>
+                            5.在线购买蜘蛛网全国任意影院，优惠标识中显示“龙卡星期六”的场次均可享受此次优惠(4D、VIP厅、IMAX以及蜘蛛网标注“特殊”的场次除外)。
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

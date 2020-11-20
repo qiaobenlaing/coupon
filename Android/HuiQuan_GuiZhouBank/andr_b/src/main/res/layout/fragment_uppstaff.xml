@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/LyOutSet"
+    android:background="@color/bgstaff" >
+
+    <include layout="@layout/common_title_commit" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
+
+        <EditText
+            android:id="@+id/et_upp_name"
+            android:layout_width="185dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:background="@null"
+            android:gravity="center_vertical"
+            android:hint="@string/name_inputtype"
+            android:inputType="text" />
+    </LinearLayout>
+
+    <TextView style="@style/VLine" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
+
+        <EditText
+            android:id="@+id/et_upp_number"
+            android:layout_width="185dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:background="@null"
+            android:gravity="center_vertical"
+            android:hint="@string/num_inputtype"
+            android:inputType="phone" />
+    </LinearLayout>
+
+    <TextView style="@style/VLine" />
+    <!--
+    <LinearLayout
+            android:background="@color/bgstaff"
+            style="@style/LyWHFourth"
+            android:layout_height="48dp"
+            android:orientation="horizontal"
+            android:gravity="center|left">
+             <TextView
+                   android:layout_marginTop="5dp"
+                   android:layout_marginBottom="5dp"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginLeft="20dp"
+                   android:textColor="@color/ivcolor"
+                   android:text="@string/num_type" />
+    </LinearLayout>
+    -->
+    <!--
+    <LinearLayout
+        	android:background="@color/white"
+            style="@style/LyWHFourth"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+            <TextView
+                style="@style/textview"
+                android:layout_marginLeft="20dp"
+                android:text="@string/my_part_type"/>
+             <LinearLayout
+	             style="@style/LyWHFourth"
+	             android:gravity="right">
+                <CheckBox 
+                    android:id="@+id/ck_upp_manager"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@null"
+                    android:background="@drawable/sel_poscheckbox"/>
+             </LinearLayout>
+     </LinearLayout>
+    <TextView style="@style/VLine"/>
+    <LinearLayout
+        	android:background="@color/white"
+            style="@style/LyWHFourth"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+            <TextView
+                style="@style/textview"
+                android:layout_marginLeft="20dp"
+                android:text="@string/assistant_type"/>
+             <LinearLayout
+	             style="@style/LyWHFourth"
+	             android:gravity="right">
+                <CheckBox 
+                    android:id="@+id/ck_upp_staff"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@null"
+                    android:background="@drawable/sel_poscheckbox"/>
+             </LinearLayout>
+     </LinearLayout>
+    <TextView style="@style/VLine"/>
+    -->
+
+</LinearLayout>

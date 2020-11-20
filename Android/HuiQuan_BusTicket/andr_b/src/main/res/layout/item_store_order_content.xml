@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ry_into_detail"
+    style="@style/LyWHFirst"
+    android:layout_height="48dp"
+    android:background="@color/white" >
+
+    <TextView
+        android:id="@+id/tv_order_number"
+        style="@style/LyWHSecond"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:text="@string/order_number"
+        android:textColor="@color/home_topsixfont"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_order_date"
+        style="@style/LyWHSecond"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:textColor="@color/ivcolor" />
+
+    <TextView
+        android:id="@+id/tv_order_status"
+        style="@style/LyWHSecond"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/tv_order_date"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="5dp"
+        android:textColor="@color/status_corlor" />
+
+    <TextView
+        style="@style/VLine"
+        android:background="@color/line_corlor" />
+
+</RelativeLayout>

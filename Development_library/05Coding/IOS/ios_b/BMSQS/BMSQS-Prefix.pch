@@ -1,0 +1,32 @@
+//
+//  RRCShop-Prefix.pch
+//  RRCShop
+//
+//  Created by djx on 14-12-2.
+//  Copyright (c) 2014年 djx. All rights reserved.
+//
+
+#ifndef RRCShop_RRCShop_Prefix_pch
+#define RRCShop_RRCShop_Prefix_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#ifdef __OBJC__
+#import"GloabVariable.h"
+#import"UIViewControllerEx.h"
+#import "cacheFileOperation.h"
+#import"gloabFunction.h"
+#import "NSMutableDictionary+NSString.h"
+#import"ProgressManage.h"
+#import "AppDelegate.h"
+//#import "RRC_webViewController.h"
+#import "AFJSONRPCClient.h"
+#define SAFELY_RELEASE(obj)  {if(obj != nil) { [obj release]; obj = nil;}}
+
+#endif
+
+
+#endif
+
+

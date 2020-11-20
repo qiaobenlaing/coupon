@@ -1,0 +1,70 @@
+<layout name="layout_admin" />
+<div class="row">
+    <div class="col-md-12">
+        <form class="form-inline" role="form" id="data_search_form" action="#" method="get">
+            <div class="form-group">
+                <label for="activity-nbr">活动编码</label>
+                <input type="text" class="form-control" id="activity-nbr" placeholder="活动编码" name="activityNbr" value="{$get.activityNbr}">
+            </div>
+            <div class="form-group">
+                <label for="city-id">城市</label>
+                <select name="cityId" id="city-id" class="form-control slt-city">
+                    <option value="">所有城市</option>
+                    <foreach name="openCityList" item="item">
+                        <option value="{$item.id}" <eq name="get.cityId" value="$item.id">selected="selected"</eq>>{$item.name}</option>
+                    </foreach>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="shop-code">商户</label>
+                <select name="shopCode" id="shop-code" class="form-control js-shop-select">
+                    <option value="">所有</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="operation">操作系统</label>
+                <select name="operation" id="operation" class="form-control">
+                    <option value="">所有</option>
+                    <option value="1" <eq name="get.operation" value="1">selected="selected"</eq>>Adroid</option>
+                    <option value="1" <eq name="get.operation" value="2">selected="selected"</eq>>IOS</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-sm btn-primary" id="search_form_submit_btn">查询</button>
+            <input type="hidden" id="frm_ele_page" name="page" value="1" />
+        </form>
+    </div>
+</div>
+<div id="data_table_wrapper">
+    <include file="./Application/Admin/View/QrCode/listLogWidget.html" />
+</div>
+<script>
+    // 得到城市下的商户
+    function fillShopSlt(cityId) {
+        if(!cityId){
+            cityId = $('.slt-city').val();
+        }
+        var jsShopSlt = $('.js-shop-select');
+        $.get('/Admin/Shop/getCityShop', {'cityId' : cityId}, function(resp){
+            if(resp.data.shopList) {
+                // 清空原数据
+                jsShopSlt.empty();
+                // 初始化选择商户select
+                var $jsShopSlt2 = jsShopSlt.select2({
+                    'placeholder' : '请选商户',
+                    'data' : resp.data.shopList,
+                    'allowClear' : true
+                });
+                // 设置选中的商户
+                $jsShopSlt2.val(['{$get.shopCode}']).trigger("change");
+            }
+        });
+    }
+    // 选择城市时，得到城市下的商户
+    $('.slt-city').on('change', function(){
+        var cityId = $(this).val();
+        // 得到城市下的商户
+        fillShopSlt(cityId);
+    });
+    // 得到城市下的商户
+    fillShopSlt();
+</script>

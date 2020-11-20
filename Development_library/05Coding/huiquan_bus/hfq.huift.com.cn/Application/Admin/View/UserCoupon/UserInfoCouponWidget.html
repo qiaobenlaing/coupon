@@ -1,0 +1,69 @@
+<table class="fp-table table table-striped table-bordered" id="data_table">
+    <thead>
+    <tr>
+        <th>商户名</th>
+        <th>批次号</th>
+        <th>券号</th>
+        <th>类型</th>
+        <th>获取时间</th>
+        <th>有效期</th>
+        <th>状态</th>
+    </tr>
+    </thead>
+    <tbody>
+    <foreach name="dataList" item="item">
+        <tr>
+            <td><if condition='$item.couponBelonging eq 2'>惠圈平台<else />{$item.shopName}</if></td>
+            <td>{$item.batchNbr}</td>
+            <td>{$item.userCouponNbr}</td>
+            <td>
+                <switch name="item.couponType">
+                    <case value="1">
+                        <span class="label n-yuan-gou">N元购</span>
+                        <div class="">面值：{$item.insteadPrice}元</div>
+                    </case>
+                    <case value="3">
+                        <span class="label man-jian">抵扣券</span>
+                        <div class="">抵扣：{$item.insteadPrice}元</div>
+                    </case>
+                    <case value="4">
+                        <span class="label limit-time">折扣券</span>
+                        <div class="">折扣：{$item.discountPercent}折</div>
+                    </case>
+                    <case value="5">
+                        <span class="label shi-wu">实物券</span>
+                        <div class="">内容：{$item.function|default='空'}</div>
+                    </case>
+                    <case value="6">
+                        <span class="label ti-yan">体验券</span>
+                        <div class="">内容：{$item.function|default='空'}</div>
+                    </case>
+                    <case value="7">
+                        <span class="label dui-huan">兑换券</span>
+                        <div class="">内容：{$item.insteadPrice}元 {$item.function|default='空'}</div>
+                    </case>
+                    <case value="8">
+                        <span class="label dai-jin">代金券</span>
+                        <div class="">内容：￥{$item.payPrice}代{$item.insteadPrice}元{$item.function|default='空'}</div>
+                    </case>
+                </switch>
+            </td>
+            <td>{$item.applyTime}</td>
+            <td>
+                {$item.startUsingTime|substr=0,16}至{$item.expireTime|substr=0,16}
+                <if condition='$nowTime gt strtotime($item["expireTime"])'><span class="label label-danger">已失效</span>
+                    <elseif condition='$nowTime lt strtotime($item["startUsingTime"])'/><span class="label label-default">未生效</span>
+                    <else /><span class="label label-success">使用中</span>
+                </if>
+            </td>
+            <td>
+                <if condition="$item.status eq 0"><span class="label label-warning">不可用</span>
+                    <elseif condition="$item.status eq 1"/><span class="label label-success">可用</span>
+                    <else/><span class="label label-danger">已使用</span>
+                </if>
+            </td>
+        </tr>
+    </foreach>
+    </tbody>
+</table>
+<include file="Application/Admin/View/Widget/pager.html" /> 

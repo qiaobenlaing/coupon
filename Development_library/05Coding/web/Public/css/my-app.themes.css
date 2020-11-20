@@ -1,0 +1,270 @@
+.panel-left{
+border: 1px solid #ababab;
+margin-top: -1px;
+}
+.page{
+background: #fff;
+}
+#select_Submit,#Submit-ac{
+background: #e8311f;
+}
+#rank_col{
+padding: 0px;
+}
+.theme-white label.label-radio input[type=checkbox]:checked~.item-inner, .theme-white label.label-radio input[type=radio]:checked~.item-inner{
+background-image: url(/img/checkbox.png);
+}
+/* === White layout === */
+.layout-navbar-green .navbar-inner{
+background: #34b094 ;
+}
+.layout-navbar-red .navbar-inner{
+background: #e8311f;
+}
+.layout-navbar-yellow .navbar-inner{
+background: #e7b820;
+}
+.layout-navbar-black .navbar-inner{
+background: #322d34;
+}
+.layout-navbar-black .conter_title{
+color:#e8311f;
+}
+/* === Red layout === */
+.layout-red  .building_name{
+color: #e73324;
+}
+.layout-red .select_down-inner{
+color: #e8311f;
+}
+#select_cancel,#cancel-ac{
+background: #cacaca;
+}
+.layout-red .layout-red-ul li,.layout-red .layout-row,.layout-red .layout-red-block{
+border: 1px solid #f5a584;
+border-radius: 6px;
+margin-top: 5px;
+overflow: hidden;
+}
+.layout-red .layout-row ul{
+border-radius: 10px;
+overflow: hidden;
+}
+.layout-red .layout-show a{
+display: block;
+}
+.layout-red-newrcmm{
+	margin-left: 5px !important;
+
+}
+.layout-red .layout-red-rcmmtitle .person,.layout-red .layout-red-newrcmm .person{
+background: url(/img/person.jpg) no-repeat left center;
+padding-left: 32px;
+}
+.layout-red .layout-red-rcmmtitle .person,.layout-red .layout-red-rcmmtitle .phone{
+border-bottom: 1px dashed #f5a584;
+}
+.layout-red .layout-red-rcmmtitle .phone,.layout-red .layout-red-newrcmm .phone{
+	background: url(/img/phone.jpg) no-repeat left center;
+	padding-left: 32px;
+}
+.layout-red .layout-red-newrcmm .item-text{
+	line-height: 30px;
+	height: 30px;
+}
+.layout-red .layout-red-newrcmm .person,.layout-red .layout-red-newrcmm .phone{
+	font-weight: bolder;
+	line-height: 34px;
+	height: 34px;
+}
+.layout-row-rcmm{
+	border: 1px solid #f5a584;
+	border-radius: 6px;
+	overflow: hidden; 
+	border-bottom: none;
+}
+.layout-row-rcmm .item-inner{
+	padding: 0px 5px 0px 5px !important;
+	min-height: 30px;
+}
+.layout-row-rcmm li{
+	border-bottom: 1px solid #f5a584;
+}
+.layout-row-rcmm .item-title{
+	color: #000;
+}
+.Modal{
+	width: 60px;
+	height: 40px;
+	margin-top: 10px;
+	font-size: 16px;
+	color: #fff !important;
+	background: #e8311f;
+	border: none;
+	border-radius: 5px;
+	padding-left: 12px;
+	padding-right: 12px;
+}
+.layout-red .layout-red-list ul,.layout-noborder ul,.layout-noborder .item-inner{
+	border: none;
+	border-radius: 5px;
+}
+.layout-red  .layout-red-nospace li{
+	border: 1px solid #f5a584;
+	margin-top: -1px;
+	border-radius: 5px;
+}
+#list_ranking_1 li,#list_ranking_2 li,#list_ranking_3 li,#list_ranking_4 li,#list_ranking_5 li{
+	border: 1px solid #f5a584;
+	margin-top: -1px;
+
+}
+.layout-red .layout-red-list li{
+	border: 1px solid #f5a584;
+	margin-top: 5px;
+	border-radius: 5px;
+}
+.layout-red .layout-red-list .item-text-height{
+	line-height: 60px;
+}
+.layout-red .layout-red-list .list-group-title{
+font-size: 30px;line-height: 42px;height: 42px;color: #f5a584;padding: 0px;
+}
+.layout-red .layout-red-inner{
+border: 1px solid #f5a584;
+margin-top: -1px;
+}
+.border-rad{
+	border-radius: 5px;
+}
+.layout-red  .item-text-time p{
+font-size: 14px;line-height: 16px;height: 16px;
+}
+.layout-red  .item-text-time div{
+	text-align: center;
+	font-size: 20px;
+	font-weight: bolder;
+}
+.layout-red .layout-red-list .item-inner{
+border: none !important;
+}
+.layout-red .rcmmlist-state{
+background: #e93421;
+border-radius: 5px;
+color: #fff;
+padding: 2px;
+font-size: 12px;
+}
+.layout-red .layout-list-li{
+border-top: 1px dashed #ed734a;
+border-bottom: 1px dashed #ed734a;
+margin-top: -1px;
+}
+.layout-red-btn a,.layout-red-btn button{
+border-radius: 15px;
+background: #e8311f;
+width: 50% ;
+display: block;float: left;
+}
+.layout-red-btn .btn-cancel{
+background: #cacaca;
+}
+.layout-red .layout-red-countTitle{
+border: 1px solid #f5a584;
+border-radius: 8px;
+padding: 2px;
+color: #f5a584;
+font-size: 12px;
+}
+.layout-red .yuan,.layout-red .have_yuan{
+color: #e8311f;font-size: 24px;
+}
+.layout-red #money-title3{
+border-bottom: 1px solid #f5a584;
+}
+.layout-red .all-btn .button,.layout-toobar .all-btn .button{
+background: #e8311f !important;
+width: 80% !important;
+border: none;
+border-radius: 20px;
+color: #fff;
+}
+.layout-toobar .all-btn{width: 100%;}
+.layout-red .row-color-green{
+background: #34b094;
+color: #fff;
+}
+.layout-red .row-color-red{
+background: #e8311f;
+color: #fff;
+}
+.layout-red .row-color-yellow{
+background: #e7b820;
+color: #fff;
+}
+.layout-red .row-color-lightblue{
+background: #28acb9;
+color: #fff;
+}
+.layout-red .row-color-blue{
+background: #2b71b7;
+color: #fff;
+}
+.layout-red .row-color-lightgreen{
+background: #8cc76d;
+color: #fff;
+}
+.layout-red .row-color-lightgreen2{
+background: #8dc76d;
+color: #fff;
+}
+.layout-red .layout-red-fbhome .col-100{
+height: 150px;
+}
+.layout-red .layout-red-homepage{
+	padding: 0px;
+}
+.layout-red .layout-red-homepage .col-100{
+height: 80px !important;
+}
+.layout-red .layout-content .item-content{
+padding-left: 0px;
+}
+.font-style span{
+height: 20px;
+line-height: 20px;
+font-size: 12px;
+
+}
+.font-style .switch{
+	padding: 10px 0px !important;height: 140px;
+}
+.font-style .switch em{
+	font-size: 20px;
+}
+.font-style strong{
+	font-family: "DIN Engschrift Std";
+	font-size: 30px !important;
+	line-height: 100px;
+	height: 100px;
+}
+.font-style em{
+	display: block;
+	font-weight: bolder;
+	line-height: 100px;
+	height: 100px;
+	font-size: 20px;
+}
+.layout-red .layout-red-blcoktit{
+margin: 0px 0px 10px;
+}
+.layout-red .toolbar_css{
+background: #e8311f !important;
+}
+.views .navbar-inner .msg-ico{background-image: url(/img/msg-ico1.png) !important;}
+.list-help a{color: #000;}
+.list-help .item-inner,.list-help ul{border: none;}
+#item-time{border: none;}
+#item-time .deal_list{border: 1px solid #f5a584;border-radius: 5px;}
+#item-time .deal_list .pre-day{border-right:  1px solid #f5a584}
+#item-time .deal_list .next-day{border-left:  1px solid #f5a584}

@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/LyOutSet"
+    android:background="@color/bgall" >
+
+    <include layout="@layout/common_title_commit" />
+
+    <ScrollView
+        android:id="@+id/sv_card"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:fadingEdge="vertical"
+        android:scrollbars="none" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:background="@color/white"
+                    android:orientation="vertical" >
+
+                    <!-- 会员总人数 -->
+
+                    <LinearLayout style="@style/Ly_cardhome_top" >
+
+                        <TextView
+                            style="@style/Tv_CouponTopFont"
+                            android:text="@string/tv_cardvip_p" />
+
+                        <TextView
+                            android:id="@+id/tv_cardvip_p_sum"
+                            style="@style/Tv_cardhome_top" />
+                    </LinearLayout>
+
+                    <TextView style="@style/VLine" />
+
+                    <LinearLayout style="@style/Ly_cardhome_top" >
+
+                        <TextView
+                            style="@style/Tv_CouponTopFont"
+                            android:text="@string/tv_cardvip_add_p" />
+
+                        <TextView
+                            android:id="@+id/tv_cardvip_add_sum"
+                            style="@style/Tv_cardhome_top" />
+                    </LinearLayout>
+
+                    <TextView style="@style/VLine" />
+
+                    <LinearLayout style="@style/Ly_cardhome_top" >
+
+                        <TextView
+                            style="@style/Tv_CouponTopFont"
+                            android:text="@string/tv_cardvip_csp" />
+
+                        <TextView
+                            android:id="@+id/tv_cardvip_csp_sum"
+                            style="@style/Tv_cardhome_top" />
+                    </LinearLayout>
+
+                    <TextView style="@style/VLine" />
+
+                    <LinearLayout style="@style/Ly_cardhome_top" >
+
+                        <TextView
+                            style="@style/Tv_CouponTopFont"
+                            android:text="@string/tv_cardvip_igl" />
+
+                        <TextView
+                            android:id="@+id/tv_cardvip_igl_sum"
+                            style="@style/Tv_cardhome_top" />
+                    </LinearLayout>
+
+                    <TextView style="@style/VLine" />
+
+                    <LinearLayout style="@style/Ly_cardhome_top" >
+
+                        <TextView
+                            style="@style/Tv_CouponTopFont"
+                            android:text="@string/tv_cardvip_igl_od" />
+
+                        <TextView
+                            android:id="@+id/tv_cardvip_igl_od_sum"
+                            style="@style/Tv_cardhome_top" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <ProgressBar
+                    android:id="@+id/prog_top_nodata"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_gravity="center"
+                    android:visibility="visible" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:paddingTop="16dp" >
+
+                <com.huift.hfq.shop.view.MyGridView
+                    android:id="@+id/gv_card_query"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:horizontalSpacing="3dp"
+                    android:numColumns="1"
+                    android:verticalSpacing="3dp" />
+
+                <ProgressBar
+                    android:id="@+id/prog_center_nodata"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_gravity="center"
+                    android:visibility="visible" />
+            </FrameLayout>
+
+            <TextView style="@style/VLine" />
+
+            <TextView
+                android:id="@+id/tv_cardvip_growthchart"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:paddingLeft="10dp"
+                android:text="@string/tv_cardvip_growthchart"
+                android:textColor="@color/coupon_fontgrey" />
+
+            <TextView style="@style/VLine" />
+            <!-- 会员增长走势图 -->
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <LinearLayout
+                    style="@style/LyWHFourth"
+                    android:background="@color/white" >
+
+                    <LinearLayout
+                        style="@style/LyWHFourth"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/shape_border_" >
+
+                        <LinearLayout
+                            android:id="@+id/ly_cardvip_growthchart"
+                            android:layout_width="match_parent"
+                            android:layout_height="160dp"
+                            android:layout_margin="5dp"
+                            android:background="@color/white"
+                            android:orientation="vertical" >
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <ProgressBar
+                    android:id="@+id/prog_bottom1_nodata"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_gravity="center"
+                    android:visibility="visible" />
+            </FrameLayout>
+
+            <TextView style="@style/VLine" />
+
+            <TextView
+                android:id="@+id/tv_cardvip_csp_chart"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:paddingLeft="10dp"
+                android:text="@string/tv_cardvip_csp_chart"
+                android:textColor="@color/coupon_fontgrey" />
+
+            <TextView style="@style/VLine" />
+            <!-- 金额消费走势图  csp是消费 -->
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <LinearLayout
+                    style="@style/LyWHFourth"
+                    android:background="@color/white" >
+
+                    <LinearLayout
+                        style="@style/LyWHFourth"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/shape_border_" >
+
+                        <LinearLayout
+                            android:id="@+id/ly_cardvip_csp_chart"
+                            android:layout_width="match_parent"
+                            android:layout_height="160dp"
+                            android:layout_margin="5dp"
+                            android:background="@color/white"
+                            android:orientation="vertical" >
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <ProgressBar
+                    android:id="@+id/prog_bottom2_nodata"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_gravity="center"
+                    android:visibility="visible" />
+            </FrameLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

@@ -1,0 +1,19 @@
+<table class="fp-table table table-striped table-bordered" id="data_table">
+    <thead>
+    <tr>
+        <th>平台操作员</th>
+        <th>操作时间</th>
+        <th>操作日志</th>
+    </tr>
+    </thead>
+    <tbody>
+    <foreach name="dataList" item="item">
+        <tr>
+            <td>{$item.realName}</td>
+            <td>{$item.actionTime}</td>
+            <td>{$item.actionDes}</td>
+        </tr>
+    </foreach>
+    </tbody>
+</table>
+<include file="Application/Admin/View/Widget/pager.html" />

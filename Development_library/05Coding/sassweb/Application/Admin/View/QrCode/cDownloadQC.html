@@ -1,0 +1,103 @@
+<layout name="layout_admin" />
+<div class="container-fluid">
+    <div class="row">
+        <form id="frm-set-qr-code" action="/Admin/QrCode/setCDownloadQC" method="get">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="city">城市</label>
+                    <select class="form-control slt-city" name="cityIdName" id='city'>
+                        <option value="">请选择城市</option>
+                        <foreach name="openCityList" item="item">
+                            <option value="{$item.id}|{$item.name}">{$item.name}</option>
+                        </foreach>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="form-group">
+                    <label for="activityNbr">活动编码</label>
+                    <input type="text" name="activityNbr" id="activityNbr" class="form-control" placeholder="活动编码" maxlength="100"/>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label for="shopCode">
+                        商户
+                        <button type="button" class="btn btn-xs btn-success btn-slt-all-shop">选择所有商户</button>
+                        <button type="button" class="btn btn-xs btn-danger btn-clear-shop">清空商户</button>
+                    </label>
+                    <select name="shopCode[]" id="shopCode" class="form-control js-shop-select" multiple="multiple">
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <button type="submit" class="btn btn-primary" id="set_qrcode_btn">生成二维码</button>
+            </div>
+        </form>
+    </div>
+    <div class="row set-qr-code-ret-wrap"></div>
+</div>
+<script>
+    ;(function(){
+        // 初始化选择商户select
+        $('.js-shop-select').select2({
+            'placeholder' : '请选商户'
+        });
+        // 选择城市时，得到城市下的商户
+        $('.slt-city').on('change', function(){
+            var setQrCodeBtn = $('#set_qrcode_btn');
+            var jsShopSlt = $('.js-shop-select');
+            // 设置生成二维码按钮禁用
+            setQrCodeBtn.attr('disabled', 'disabled');
+            var cityIdName = $(this).val();
+            $.get('/Admin/Shop/getCityShop', {'cityIdName' : cityIdName}, function(resp){
+                if(resp.data.shopList) {
+                    // 清空原数据
+                    jsShopSlt.empty();
+                    // 初始化选择商户select
+                    var $jsShopSlt2 = jsShopSlt.select2({
+                        'placeholder' : '请选商户',
+                        'data' : resp.data.shopList
+                    });
+                    // 默认选择所有商户
+                    $jsShopSlt2.val(resp.data.shopCodeList).trigger("change");
+                    $('.btn-slt-all-shop').data('shopCodeList', resp.data.shopCodeList);
+                }
+                // 设置生成二维码按钮可用
+                setQrCodeBtn.attr('disabled', false);
+            });
+        });
+        // 选择所有商户
+        $('.btn-slt-all-shop').on('click', function(){
+            var shopCodeList = $(this).data('shopCodeList')
+            $('.js-shop-select').val(shopCodeList).trigger("change");
+        });
+        // 清空商户
+        $('.btn-clear-shop').on('click', function(){
+            $('.js-shop-select').val(null).trigger("change");
+        });
+        // 提交表单
+        $('#frm-set-qr-code').on('submit', function(){
+            $('.set-qr-code-ret-wrap').empty();
+            var btnSetQrcode  = $('#set_qrcode_btn');
+            btnSetQrcode.text('正在生成...').attr('disabled', 'disabled');
+            var frm = $(this);
+            $.get(frm.attr('action'), frm.serialize(), function(resp){
+                if(resp.status == sz.STATUS_SUCC) {
+                    var qrData = resp.data.qrData;
+                    var qrShopWrap = $('.set-qr-code-ret-wrap');
+                    var cityNameHtml = '<div class="col-md-12"><h3>' + resp.data.cityName + '</h3></div>';
+                    qrShopWrap.append(cityNameHtml);
+                    for(var i = 0; i < qrData.length; i++) {
+                        var html = '<div class="col-md-3"><h5>' + qrData[i]['shopName'] + '</h5><img src="' + qrData[i]['imgUrl'] + '"></div>';
+                        qrShopWrap.append(html)
+                    }
+                } else {
+                    sz.showErrMsg(resp.msg);
+                }
+                btnSetQrcode.text('生成二维码').attr('disabled', false);
+            });
+            return false;
+        });
+    })();
+</script>

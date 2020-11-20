@@ -1,0 +1,753 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/LyOutSet" >
+
+    <include layout="@layout/common_title_home" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/navigation_bar"
+                    android:layout_marginTop="20dp"
+                    android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" >
+
+                    <EditText
+                        android:id="@+id/et_accntcoupon_start"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/navigation_bar"
+                        android:layout_marginLeft="20dp"
+                        android:background="@null"
+                        android:editable="false"
+                        android:focusable="true"
+                        android:focusableInTouchMode="false"
+                        android:hint="@string/tv_actadd_starttime"
+                        android:inputType="number"
+                        android:singleLine="true"
+                        android:textColorHint="@color/actadd_gray"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+                <TextView style="@style/VLine" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/navigation_bar"
+                    android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" >
+
+                    <EditText
+                        android:id="@+id/et_accntcoupon_end"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/navigation_bar"
+                        android:layout_marginLeft="20dp"
+                        android:background="@null"
+                        android:editable="false"
+                        android:focusable="true"
+                        android:focusableInTouchMode="false"
+                        android:hint="@string/tv_actadd_starttime"
+                        android:inputType="number"
+                        android:textColorHint="@color/actadd_gray"
+                        android:textSize="16sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView style="@style/VLine" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="20dp"
+                android:orientation="vertical" >
+
+                <Button
+                    android:id="@+id/btn_couponok"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/navigation_bar"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/login_btn"
+                    android:text="统计"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+
+            <TextView
+                style="@style/VLine"
+                android:layout_marginTop="20dp" />
+
+            <!-- 1 n元购 -->
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/layout_height"
+                android:background="@color/white"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="20dp"
+                    android:text="@string/tv_n"
+                    android:textColor="@color/coupon_hometopfont" />
+
+                <TextView
+                    android:id="@+id/tv_couponn_full"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@+id/tv_couponnfull"
+                    android:text=""
+                    android:textColor="@color/coupon_hometopfont" />
+
+                <TextView
+                    android:id="@+id/tv_couponnfull"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="20dp"
+                    android:text="@string/tv_accntcoupon_paper" />
+            </RelativeLayout>
+
+            <TextView style="@style/VLine" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/layout_height"
+                android:background="@color/white"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="20dp"
+                    android:text="@string/tv_accntcoupon_all"
+                    android:textColor="@color/coupon_hometopfont" />
+
+                <TextView
+                    android:id="@+id/tv_couponn_all"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@+id/tv_couponnall"
+                    android:text=""
+                    android:textColor="@color/coupon_hometopfont" />
+
+                <TextView
+                    android:id="@+id/tv_couponnall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="20dp"
+                    android:text="@string/tv_accntcoupon_yuan" />
+            </RelativeLayout>
+
+            <TextView style="@style/VLine" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/layout_height"
+                android:background="@color/white"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="20dp"
+                    android:text="@string/tv_accntcoupon_our"
+                    android:textColor="@color/coupon_hometopfont" />
+
+                <TextView
+                    android:id="@+id/tv_couponn_our"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@+id/tv_couponnour"
+                    android:text=""
+                    android:textColor="@color/coupon_hometopfont" />
+
+                <TextView
+                    android:id="@+id/tv_couponnour"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="20dp"
+                    android:text="@string/tv_accntcoupon_yuan" />
+            </RelativeLayout>
+
+            <!-- 2满就送 -->
+            <!--
+    <RelativeLayout 
+	    android:layout_width="match_parent"
+	    android:layout_height="@dimen/layout_height"
+	    android:background="@color/white"
+	    android:layout_marginTop="20dp"
+	    android:orientation="horizontal">
+	    <TextView 
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginLeft="20dp"
+	        android:textColor="@color/coupon_hometopfont"
+	        android:layout_centerVertical="true"
+	        android:text="@string/tv_send"/>
+	     <TextView
+	        android:id="@+id/tv_couponsend_full"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:textColor="@color/coupon_hometopfont"
+	        android:layout_centerVertical="true"
+	        android:layout_toLeftOf="@+id/tv_couponsendfull"
+	        android:text=""/>
+	     
+	      <TextView
+		    android:id="@+id/tv_couponsendfull" 
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_alignParentRight="true"
+		    android:layout_centerVertical="true"
+		    android:layout_marginRight="20dp"
+		    android:layout_marginLeft="10dp"
+		    android:text="@string/tv_accntcoupon_paper"/>
+	    
+	     
+	</RelativeLayout>
+	
+	<TextView style="@style/VLine"/>
+	
+	<RelativeLayout 
+	    android:layout_width="match_parent"
+	    android:layout_height="@dimen/layout_height"
+	    android:background="@color/white"
+	    android:orientation="horizontal">
+	     
+	    <TextView 
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:textColor="@color/coupon_hometopfont"
+	        android:layout_marginLeft="20dp"
+	        android:layout_centerVertical="true"
+	        android:text="@string/tv_accntcoupon_all"/>
+	     <TextView
+	        android:id="@+id/tv_couponsend_all" 
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:textColor="@color/coupon_hometopfont"
+	        android:layout_centerVertical="true"
+	        android:layout_toLeftOf="@+id/tv_couponsendall"
+	        android:text=""/>
+	     
+	     <TextView
+		    android:id="@+id/tv_couponsendall" 
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_alignParentRight="true"
+		    android:layout_centerVertical="true"
+		    android:layout_marginRight="20dp"
+		    android:layout_marginLeft="10dp"
+		    android:text="@string/tv_accntcoupon_yuan"/>
+	    
+	</RelativeLayout>
+	
+	<TextView style="@style/VLine"/>
+	
+	<RelativeLayout 
+	    android:layout_width="match_parent"
+	    android:layout_height="@dimen/layout_height"
+	    android:background="@color/white"
+	    android:orientation="horizontal">
+	     
+	    <TextView
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:textColor="@color/coupon_hometopfont"
+	        android:layout_marginLeft="20dp"
+	        android:layout_centerVertical="true"
+	        android:text="@string/tv_accntcoupon_our"/>
+	     <TextView
+	        android:id="@+id/tv_couponsend_our"  
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:textColor="@color/coupon_hometopfont"
+	        android:layout_centerVertical="true"
+	        android:layout_toLeftOf="@+id/tv_couponsendour"
+	        android:text=""/>
+	     
+	     <TextView
+		    android:id="@+id/tv_couponsendour" 
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_alignParentRight="true"
+		    android:layout_centerVertical="true"
+		    android:layout_marginRight="20dp"
+		    android:layout_marginLeft="10dp"
+		    android:text="@string/tv_accntcoupon_yuan"/>
+	    
+	</RelativeLayout>
+            -->
+
+            <TextView style="@style/VLine" />
+
+            <!-- 3满就减 -->
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/layout_height"
+                android:layout_marginTop="20dp"
+                android:background="@color/white"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="20dp"
+                    android:text="@string/tv_fullreduce"
+                    android:textColor="@color/coupon_hometopfont" />
+
+                <TextView
+                    android:id="@+id/tv_couponfullreduce_full"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@+id/tv_fullreducefull"
+                    android:text=""
+                    android:textColor="@color/coupon_hometopfont" />
+
+                <TextView
+                    android:id="@+id/tv_fullreducefull"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="20dp"
+                    android:text="@string/tv_accntcoupon_paper" />
+            </RelativeLayout>
+
+            <TextView style="@style/VLine" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/layout_height"
+                android:background="@color/white"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="20dp"
+                    android:text="@string/tv_accntcoupon_all"
+                    android:textColor="@color/coupon_hometopfont" />
+
+                <TextView
+                    android:id="@+id/tv_couponfullreduce_all"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@+id/tv_couponfullreduceall"
+                    android:text=""
+                    android:textColor="@color/coupon_hometopfont" />
+
+                <TextView
+                    android:id="@+id/tv_couponfullreduceall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="20dp"
+                    android:text="@string/tv_accntcoupon_yuan" />
+            </RelativeLayout>
+
+            <TextView style="@style/VLine" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/layout_height"
+                android:background="@color/white"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="20dp"
+                    android:text="@string/tv_accntcoupon_our"
+                    android:textColor="@color/coupon_hometopfont" />
+
+                <TextView
+                    android:id="@+id/tv_couponfullreduce_our"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@+id/tv_couponfullreduceour"
+                    android:gravity="center"
+                    android:text=""
+                    android:textColor="@color/coupon_hometopfont" />
+
+                <TextView
+                    android:id="@+id/tv_couponfullreduceour"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="20dp"
+                    android:text="@string/tv_accntcoupon_yuan" />
+            </RelativeLayout>
+
+            <!-- 4限时购 -->
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/layout_height"
+                android:layout_marginTop="20dp"
+                android:background="@color/white"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="20dp"
+                    android:text="@string/tv_time"
+                    android:textColor="@color/coupon_hometopfont" />
+
+                <TextView
+                    android:id="@+id/tv_coupontime_full"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@+id/tv_coupontimefull"
+                    android:text=""
+                    android:textColor="@color/coupon_hometopfont" />
+
+                <TextView
+                    android:id="@+id/tv_coupontimefull"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="20dp"
+                    android:text="@string/tv_accntcoupon_paper" />
+            </RelativeLayout>
+
+            <TextView style="@style/VLine" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/layout_height"
+                android:background="@color/white"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="20dp"
+                    android:text="@string/tv_accntcoupon_all"
+                    android:textColor="@color/coupon_hometopfont" />
+
+                <TextView
+                    android:id="@+id/tv_coupontiem_all"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@+id/tv_coupontimeall"
+                    android:text=""
+                    android:textColor="@color/coupon_hometopfont" />
+
+                <TextView
+                    android:id="@+id/tv_coupontimeall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="20dp"
+                    android:text="@string/tv_accntcoupon_yuan" />
+            </RelativeLayout>
+
+            <TextView style="@style/VLine" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/layout_height"
+                android:background="@color/white"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="20dp"
+                    android:text="@string/tv_accntcoupon_our"
+                    android:textColor="@color/coupon_hometopfont" />
+
+                <TextView
+                    android:id="@+id/tv_coupontime_our"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@+id/tv_coupontimeour"
+                    android:text=""
+                    android:textColor="@color/coupon_hometopfont" />
+
+                <TextView
+                    android:id="@+id/tv_coupontimeour"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="20dp"
+                    android:text="@string/tv_accntcoupon_yuan" />
+            </RelativeLayout>
+
+            <!-- 5实物劵 -->
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/layout_height"
+                android:layout_marginTop="20dp"
+                android:background="@color/white"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="20dp"
+                    android:text="@string/tv_matter"
+                    android:textColor="@color/coupon_hometopfont" />
+
+                <TextView
+                    android:id="@+id/tv_couponmatter_full"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@+id/tv_couponmatterfull"
+                    android:text=""
+                    android:textColor="@color/coupon_hometopfont" />
+
+                <TextView
+                    android:id="@+id/tv_couponmatterfull"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="20dp"
+                    android:text="@string/tv_accntcoupon_paper" />
+            </RelativeLayout>
+
+            <TextView style="@style/VLine" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/layout_height"
+                android:background="@color/white"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="20dp"
+                    android:text="@string/tv_accntcoupon_all"
+                    android:textColor="@color/coupon_hometopfont" />
+
+                <TextView
+                    android:id="@+id/tv_couponmatter_all"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@+id/tv_couponmatterall"
+                    android:text=""
+                    android:textColor="@color/coupon_hometopfont" />
+
+                <TextView
+                    android:id="@+id/tv_couponmatterall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="20dp"
+                    android:text="@string/tv_accntcoupon_yuan" />
+            </RelativeLayout>
+
+            <TextView style="@style/VLine" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/layout_height"
+                android:background="@color/white"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="20dp"
+                    android:text="@string/tv_accntcoupon_our"
+                    android:textColor="@color/coupon_hometopfont" />
+
+                <TextView
+                    android:id="@+id/tv_couponmatter_our"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@+id/tv_couponmatterour"
+                    android:text=""
+                    android:textColor="@color/coupon_hometopfont" />
+
+                <TextView
+                    android:id="@+id/tv_couponmatterour"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="20dp"
+                    android:text="@string/tv_accntcoupon_yuan" />
+            </RelativeLayout>
+
+            <!-- 6体验券 -->
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/layout_height"
+                android:layout_marginTop="20dp"
+                android:background="@color/white"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="20dp"
+                    android:text="@string/tv_experience"
+                    android:textColor="@color/coupon_hometopfont" />
+
+                <TextView
+                    android:id="@+id/tv_couponexperience_full"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@+id/tv_couponexperiencefull"
+                    android:text=""
+                    android:textColor="@color/coupon_hometopfont" />
+
+                <TextView
+                    android:id="@+id/tv_couponexperiencefull"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="20dp"
+                    android:text="@string/tv_accntcoupon_paper" />
+            </RelativeLayout>
+
+            <TextView style="@style/VLine" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/layout_height"
+                android:background="@color/white"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="20dp"
+                    android:text="@string/tv_accntcoupon_all"
+                    android:textColor="@color/coupon_hometopfont" />
+
+                <TextView
+                    android:id="@+id/tv_couponexperience_all"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@+id/tv_couponexperienceall"
+                    android:text=""
+                    android:textColor="@color/coupon_hometopfont" />
+
+                <TextView
+                    android:id="@+id/tv_couponexperienceall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="20dp"
+                    android:text="@string/tv_accntcoupon_yuan" />
+            </RelativeLayout>
+
+            <TextView style="@style/VLine" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/layout_height"
+                android:background="@color/white"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="20dp"
+                    android:text="@string/tv_accntcoupon_our"
+                    android:textColor="@color/coupon_hometopfont" />
+
+                <TextView
+                    android:id="@+id/tv_couponexperience_our"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@+id/tv_couponexperienceour"
+                    android:text=""
+                    android:textColor="@color/coupon_hometopfont" />
+
+                <TextView
+                    android:id="@+id/tv_couponexperienceour"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="20dp"
+                    android:text="@string/tv_accntcoupon_yuan" />
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

@@ -1,0 +1,26 @@
+.lishui-act-wrap {
+    background-color: #68E4B5;
+    padding-left: 11px;
+    padding-right: 11px;
+}
+.lishui-act-wrap .div-img-wrap{
+    margin: 13px 0;
+}
+.lishui-act-wrap img {
+    width: 100%;
+}
+
+.quzhou-act-wrap {
+    background-color: #68E4B5;
+    padding-left: 11px;
+    padding-right: 11px;
+}
+.quzhou-act-wrap .div-img-wrap{
+    margin: 13px 0;
+}
+.quzhou-act-wrap img {
+    width: 100%;
+}
+
+.city-act-wrap {position: relative;}
+.city-act-wrap .bg-img {width: 100%;height: auto;}

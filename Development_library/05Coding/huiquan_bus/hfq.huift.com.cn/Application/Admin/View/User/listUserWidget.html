@@ -1,0 +1,99 @@
+<table class="fp-table table table-striped table-bordered table-condensed" id="data_table">
+    <thead>
+    <tr>
+        <th>手机号码</th>
+        <th>真实姓名</th>
+        <th>昵称</th>
+        <th>历史圈值</th>
+        <th>用户等级</th>
+        <th>注册时间</th>
+        <th>最后一次登陆时间</th>
+        <th>所属商圈</th>
+        <th>用户状态</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    <foreach name="dataList" item="item">
+        <tr>
+            <td><a href="/Admin/User/getUserInfo?userCode={$item.userCode}" title="{$item.realName}-详情"><if condition="$item.mobileNbr eq -1">暂无<else/>{$item.mobileNbr}</if></a></td>
+            <td>{$item.realName}</td>
+            <td>{$item.nickName}</td>
+            <td>
+                <a href="/Admin/User/listUserPoint?mobileNbr={$item.mobileNbr}" class="btn btn-xs btn-warning">
+                    <strong>{$item.histPoint}</strong>
+                </a>
+            </td>
+            <td>{$item.userLvl}</td>
+            <td>{$item.registerTime|substr=0,16}</td>
+            <td>{$item.lastLoginTime}</td>
+            <td>{:getName("Bank","name","id='".$item['bank_id']."'")}</td>
+            <td class="status">
+                <div class="dropdown">
+                    <switch name="item.status">
+                        <case value="1">
+                            <button type="button" class="btn btn-xs btn-success dropdown-toggle btn-user-status-{$item.userCode}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="status-text">启用</span><span class="caret"></span>
+                            </button>
+                        </case>
+                        <case value="2">
+                            <button type="button" class="btn btn-xs btn-default dropdown-toggle btn-user-status-{$item.userCode}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="status-text">未注测</span><span class="caret"></span>
+                            </button>
+                        </case>
+                        <case value="0">
+                            <button type="button" class="btn btn-xs btn-danger dropdown-toggle btn-user-status-{$item.userCode}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="status-text">禁用</span><span class="caret"></span>
+                            </button>
+                        </case>
+                    </switch>
+                    <ul class="dropdown-menu" style="min-width: 0">
+                        <li><a href="#" data-user-code="{$item.userCode}" data-status="0" class="change-user-status">禁用</a></li>
+                        <li><a href="#" data-user-code="{$item.userCode}" data-status="1" class="change-user-status">启用</a></li>
+                    </ul>
+                </div>
+            </td>
+            <td>
+                <a href="/Admin/User/editUser?userCode={$item.userCode}&page={$pager:page}" class="btn btn-xs btn-primary">编辑</a>
+                <!--<a href="/Admin/User/deleteUser" class="btn btn-xs btn-danger">删除</a>-->
+            </td>
+        </tr>
+    </foreach>
+    </tbody>
+</table>
+<script>
+    // 修改商家活动的状态
+    ;(function(){
+        $('.change-user-status').on('click', function(){
+            var userCode = $(this).data('userCode');
+            var status = $(this).data('status');
+
+            var btnUserStatus = $('.btn-user-status-' + userCode);
+            btnUserStatus.removeClass('btn-default').removeClass('btn-success').removeClass('btn-danger');
+            $.get(
+                    '/Admin/User/changeStatus',
+                    {'userCode': userCode, 'status': status},
+                    function(resp){
+                        if(resp.status == sz.STATUS_SUCC) {
+                            switch(status){
+                                case 1:
+                                    btnUserStatus.children().filter('.status-text').html('启用');
+                                    btnUserStatus.addClass('btn-success');
+                                    break;
+                                case 0:
+                                    btnUserStatus.children().filter('.status-text').html('禁用');
+                                    btnUserStatus.addClass('btn-danger');
+                                    break;
+                            }
+                            // 隐藏下拉框
+                            btnUserStatus.dropdown('toggle');
+                        } else {
+                            sz.showErrMsg(resp.msg)
+                        }
+                    }
+            );
+            return false;
+        });
+    })();
+</script>
+<include file="Application/Admin/View/Widget/pager.html" />

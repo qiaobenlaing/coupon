@@ -1,0 +1,64 @@
+<layout name="layout_api" />
+<!-- Views -->
+<div class="views">
+    <!-- Your main view, should have "view-main" class -->
+    <div class="view view-main">
+        <!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
+        <div class="pages toolbar-through">
+            <!-- Page, "data-page" contains page name -->
+            <div data-page="index" class="page">
+                <!--<div class="navbar">-->
+                <!--<div class="navbar-inner">-->
+                <!--<div class="left"><a href="javascript:history.go(-1);" class="external"><img src="/Public/img/icon/backup.png" /></a></div>-->
+                <!--<div class="center">{$title}</div>-->
+                <!--<div class="right">&nbsp;</div>-->
+                <!--</div>-->
+                <!--</div>-->
+
+                <!-- Scrollable page content -->
+                <div class="page-content">
+                    <div class="page_view">
+                    <!--<div class="game_title">-->
+                        <!--<img src="/Public/img/game/head.png" />-->
+                        <!--<img src="/Public/img/game/center.png" />-->
+                    <!--</div>-->
+                        <div style="padding:22% 0;"></div>
+                    <div class="rule">
+                        <strong style="font-size: 16px;">活动时间：</strong><br />
+                        <span>
+                            {$activityInfo.startTime|substr=0,16} - {$activityInfo.endTime|substr=0,16}
+                        </span>
+                    </div>
+                    <div class="rule" style="margin-bottom: 12%;">
+                        <strong style="font-size: 16px;">获奖规则：</strong><br />
+                        <!--<span>游戏闯关拿到礼盒后，将礼盒分享至微信好友/微信朋友圈，活动期间内，邀请好友帮忙拆礼盒，即有机会赢得心仪奖品。</span>-->
+                        <span>游戏过关获取礼盒后，分享给好友，邀请TA帮忙拆。48小时之内，帮您拆礼盒人数需达到69人，方可获得“悦四海自助海鲜”免费体验券一张。每日仅限两份，谁先拆完谁先得。</span>
+                    </div>
+                    <div class="join">
+                        <span>已有{$count}人参与了礼盒活动</span>
+                    </div>
+                    <a href="/Wechat/Index/cdownload" class="external a_join"><img src="/Public/img/game/join.png" ></a>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .navbar{background-color: rgb(182, 0, 12);}
+    .navbar-inner .left img{width: 70%;height: auto;margin-left: -15%;}
+    .page-content{background-color: rgb(247,184,81);}
+    .page_view{background-image: url('/Public/img/game/gameInfo.png');background-size: 100% 100%;background-repeat: no-repeat;height: 100%;text-align: center;}
+    .game_title{text-align: center;}
+    .game_title img:first-child{width: 100%;height: auto;}
+    .game_title img:last-child{width: 88%;height: auto;margin: 20px 0 0 0;}
+    .rule{background-color: rgb(250,214,139);padding: 2% 5%;margin-top: 8%;}
+    .join{text-align: center;}
+    .join span{margin-top:5%;color: #fff;background-color: rgb(221,132,0);padding: 5px 20px;font-size: 16px;border-radius: 4px;text-decoration: underline;}
+    .a_join img{margin: 7% 0 0 0;width: 40%;height: auto;}
+</style>
+<script>
+    $(function() {
+
+    });
+</script>

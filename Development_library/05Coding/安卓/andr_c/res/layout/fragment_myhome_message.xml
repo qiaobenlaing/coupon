@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/LyCommSet"
+    android:background="@color/white" >
+
+    <include
+        android:id="@+id/cardlistTop"
+        layout="@layout/common_title_home" />
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/app_title_bar_height"
+        android:background="@color/app_title_bg"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp" >
+
+        <!-- 优惠券 -->
+
+        <RadioButton
+            android:id="@+id/btn_cardlist_coupon"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/selector_radio_card_left"
+            android:button="@null"
+            android:checked="true"
+            android:gravity="center"
+            android:text="优惠券"
+            android:textColor="@drawable/selector_radio_card_checked_font" />
+
+        <!-- 会员卡 -->
+
+        <RadioButton
+            android:id="@+id/btn_cardlist_card"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/selector_radio_card_middle"
+            android:button="@null"
+            android:gravity="center"
+            android:text="会员卡"
+            android:textColor="@drawable/selector_radio_card_checked_font" />
+
+        <!-- 商家沟通 -->
+
+        <RadioButton
+            android:id="@+id/btn_cardlist_communicate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/selector_radio_card_middle"
+            android:button="@null"
+            android:gravity="center"
+            android:text="商家沟通"
+            android:textColor="@drawable/selector_radio_card_checked_font" />
+
+        <!-- 商家广播 -->
+
+        <RadioButton
+            android:id="@+id/btn_cardlist_broadcast"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/selector_radio_card_right"
+            android:button="@null"
+            android:gravity="center"
+            android:text="商家广播"
+            android:textColor="@drawable/selector_radio_card_checked_font" />
+    </RadioGroup>
+
+    <LinearLayout
+        android:id="@+id/linear_cardlist_content"
+        style="@style/LyWHFirst"
+        android:orientation="horizontal" >
+
+        <ListView
+            android:id="@+id/lv_message"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+        </ListView>
+    </LinearLayout>
+
+</LinearLayout>

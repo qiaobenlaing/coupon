@@ -1,0 +1,41 @@
+<layout name="layout_api" />
+<!-- Views -->
+<div class="views">
+    <!-- Your main view, should have "view-main" class -->
+    <div class="view view-main">
+        <!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
+        <div class="pages toolbar-through">
+            <!-- Page, "data-page" contains page name -->
+            <div data-page="index" class="page">
+                <!--<div class="navbar">-->
+                    <!--<div class="navbar-inner">-->
+                        <!--<div class="left"><a href="javascript:history.go(-1);" class="external"><img src="/Public/img/icon/backup.png" /></a></div>-->
+                        <!--<div class="center">{$title}</div>-->
+                        <!--<div class="right">&nbsp;</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+
+                <!-- Scrollable page content -->
+                <div class="page-content" style="padding-bottom: 0;">
+                    <div class="page_view">
+                        <div style="padding: 20% 20% 0 20%;font-size: 25px;color: #fff;">恭 喜 你 注 册 成 功</div>
+                        <a href="/Wechat/Index/cdownload" class="external" style="border-radius: 20px;background-color: rgb(246,178,11);color: rgb(220,98,12);font-size: 18px;margin: 15% 30%;padding: 10px 0;">下载惠圈</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .navbar{background-color: rgb(182, 0, 12);}
+    .navbar-inner .left img{width: 70%;height: auto;margin-left: -15%;}
+    .page_view{background-image: url('/Public/img/game/openBox.png');background-size: 100% 100%;background-repeat: no-repeat;height: 100%;text-align: center;}
+    .page_view a{display: block;}
+    .page_view span:first-child{color: #fff;background-color: rgb(221,132,0);padding: 5px 20px;font-size: 16px;border-radius: 4px;text-decoration: underline;}
+    .page-content a:last-child img{width: 40%;height: auto;}
+</style>
+<script>
+    $(function() {
+
+    });
+</script>

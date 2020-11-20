@@ -1,0 +1,440 @@
+<layout name="layout_api" />
+<link rel="stylesheet" href="/Public/css/Api/cApplyRefund.css"/>
+<!-- Views -->
+<div class="views">
+    <!-- Your main view, should have "view-main" class -->
+    <div class="view view-main">
+        <div class="navbar">
+            <div class="navbar-inner">
+                <div class="left">
+                    <eq name="backType" value="h5">
+                        <a href="/Api/Browser/unReceiveOrder?orderCode={$orderInfo.orderCode}" class="external">
+                            <div class="backup">
+                                <img src="/Public/img/icon/backup.png" />
+                            </div>
+                        </a>
+                        <else/>
+                        <a href="hs://backup" class="external">
+                            <div class="backup">
+                                <img src="/Public/img/icon/backup.png" />
+                            </div>
+                        </a>
+                    </eq>
+                </div>
+                <div class="center"><div class="head_col">{$title}</div></div>
+                <div class="right"><a href="#" class="external tel"><img src="/Public/img/icon/tel_other.png" /></a></div>
+            </div>
+    </div>
+        <!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
+        <div class="pages navbar-through">
+            <!-- Page, "data-page" contains page name -->
+            <div data-page="index" class="page">
+                <!-- Scrollable page content -->
+                <div class="page-content">
+                <if condition="$orderInfo.orderType neq 10 AND $orderInfo.orderType neq 30">
+                    <div class="order-good-apply-refund-wrap">
+                        <div class="list-block">
+                            <ul>
+                                <foreach name="orderProductList" item="orderProduct">
+                                    <li class="item-content">
+                                        <div class="item-inner">
+                                            <div class="item-title" style="width:50%">{$orderProduct.productName}</div>
+                                            <span style="width:32%">X{$orderProduct.productNbr}</span>
+                                            <span style="width:18%">&#65509;{$orderProduct.productUnitPrice}</span>
+                                        </div>
+                                    </li>
+                                </foreach>
+                                <li class="item-content">
+                                    <div class="item-inner" style="color:rgb(255, 89, 89);">
+                                        <span style="width:82%">配送费</span>
+                                        <span style="width:18%">&#65509;{$shopInfo.deliveryFee}</span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="list-block">
+                            <ul>
+                                <li class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title">消费金额</div>
+                                        <span style="color:rgb(255, 89, 89);;">{$orderInfo.orderAmount}元</span>
+                                    </div>
+                                </li>
+                                <li class="item-content">
+                                    <div class="item-inner" onclick="showDisplay($(this), $('.list-block').find('.discount_list'), 0);" data-type="1">
+                                        <div class="item-title">优惠金额</div>
+                                    <span style="color:rgb(255, 89, 89);;">{$consumeInfo.deduction|default=0.00}元
+                                        <button class="button_nothing" data-type="0">
+                                            <img src="/Public/img/icon/down_arrow.png" />
+                                        </button>
+                                    </span>
+                                    </div>
+                                </li>
+                                <div class="discount_list">
+                                    <div class="list-block">
+                                        <ul>
+                                            <li class="item-content">
+                                                <div class="item-inner">
+                                                    <div class="item-title">会员卡:</div>
+                                                    <span class="float_right">{$consumeInfo.cardDeduction|default=0.00}元</span>
+                                                </div>
+                                            </li>
+                                            <li class="item-content">
+                                                <div class="item-inner">
+                                                    <div class="item-title">
+                                                        优惠券:
+                                                        <eq name="consumeInfo.couponUsed" value="1">
+                                                            满{$userCouponInfo.availablePrice}元，
+                                                            <if condition="$userCouponInfo.couponType EQ 3">
+                                                                减{$userCouponInfo.insteadPrice}元
+                                                                <else/>
+                                                                打{$userCouponInfo.discountPercent}折
+                                                            </if>
+
+                                                        </eq>
+                                                    </div>
+                                                    <span class="float_right">{$consumeInfo.couponDeduction|default=0.00}元</span>
+                                                </div>
+                                            </li>
+                                            <li class="item-content">
+                                                <div class="item-inner">
+                                                    <div class="item-title">商家红包:</div>
+                                                    <span class="float_right">{$consumeInfo.shopBonus|default=0.00}元</span>
+                                                </div>
+                                            </li>
+                                            <li class="item-content">
+                                                <div class="item-inner">
+                                                    <div class="item-title">惠圈红包:</div>
+                                                    <span class="float_right">{$consumeInfo.platBonus|default=0.00}元</span>
+                                                </div>
+                                            </li>
+                                            <li class="item-content">
+                                                <div class="item-inner">
+                                                    <div class="item-title">银行卡折扣:</div>
+                                                    <span class="float_right">{$consumeInfo.bankCardDeduction|default=0.00}元</span>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <li class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title">全额退款</div>
+                                        <span class="refund_price">{$consumeInfo.realPay}元</span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <form id="refund_form" action="/Api/Browser/cApplyRefund" method="post">
+                            <input type="hidden" name="orderCode" value="{$orderInfo.orderCode}"/>
+                            <div class="list-block">
+                                <ul>
+                                    <li style="border-bottom: 1px solid #c8c7cc;line-height:3;">
+                                        <div class="refund_reason">
+                                            <span class="major">*</span>退款原因<span class="important">(非常重要)</span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="item-content">
+                                            <div class="item-inner" style="border-bottom: 0px solid #fff!important;">
+                                                <div class="item-input">
+                                                    <select name="refundReason" id="selectReason" style="height: 30px;border: 1px solid #c8c7cc;">
+                                                        <option value="">请选择退款原因(必选)</option>
+                                                        <option value="菜品与描述不符">菜品与描述不符</option>
+                                                        <option value="漏了菜品">漏了菜品</option>
+                                                        <option value="与卖家协商一致退款">与卖家协商一致退款</option>
+                                                        <option value="其他">其他</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="align-top">
+                                        <div class="item-content" >
+                                            <div class="item-inner">
+                                                <div class="item-input">
+                                                    <textarea placeholder="原因备注" name="refundRemark" style="border: 1px solid #c8c7cc;"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <a href="#" class="button button-big active" id="submit">确认退款</a>
+                        </form>
+                    </div>
+                <else/>
+                    <div class="order-coupon-apply-refund-wrap">
+                        <div class="order">
+                            <div class="order-info">
+                                <span class="order-type">订单类型：{$batchCouponInfo.couponName}</span>
+                            </div>
+                            <div class="order-status">
+                                <div class="order-status-info">
+                                    <img src="/Public/img/icon/tk.png" />
+                                    <div><span>退款状态：正在申请</span><br/>
+                                        <span style="font-size:12px">退款说明：3-10个工作日内退款至原支付账户</span><br/>
+                                        <span>订单编号：{$orderInfo.orderNbr}</span><br/>
+                                        <span style="font-weight: bold;">服务电话：{$serviceTel}</span><br/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="order-info">
+                                <a href="hs://getShopInfo?shopCode={$shopInfo.shopCode|urlencode}" class="external" style="color: #000000">
+                                    <span class="shop-name"><img src="/Public/img/icon/service.png"/>{$shopInfo.shopName}</span>
+                                    <span class="shop-url"><img src="/Public/img/icon/arrow_right.png"/></span>
+                                </a>
+                            </div>
+                            <div class="order-info">
+                                <span class="refund-title">退款内容</span>
+                            </div>
+                            <form id="frm-coupon-order-apply-refund" action="/Api/Browser/couponOrderApplyRefund" method="post">
+                                <input type="hidden" name="orderCode" value="{$orderInfo.orderCode}"/>
+                                <input type="hidden" name="payPrice" value="{$batchCouponInfo.payPrice}"/>
+                                <input type="hidden" name="realPay" value="{$consumeInfo.realPay}"/>
+                                <input type="hidden" name="platBonus" value="{$consumeInfo.platBonus}"/>
+                                <input type="hidden" name="shopBonus" value="{$consumeInfo.shopBonus}"/>
+                                <div class="refund-ticket">
+                                    <foreach name="orderCouponList" item="item">
+                                        <label class="ticket-list">
+                                            <div class="ticket-left">
+                                                <input class="ipt-order-coupon-code" type="checkbox" name="orderCouponCode[]" value="{$item.orderCouponCode}" <eq name="item.status" value="12">checked="checked" disabled="disabled"</eq>/>
+                                                {$batchCouponInfo.couponName}{$item.couponCode}
+                                            </div>
+                                            <div class="ticket-right">
+                                                <eq name="batchCouponInfo.couponType" value="8">
+                                                    {$batchCouponInfo.payPrice}元代{$batchCouponInfo.insteadPrice}元
+                                                    <else/>
+                                                    {$batchCouponInfo.function}
+                                                </eq>
+                                            </div>
+                                            <div class="clear"></div>
+                                        </label>
+                                    </foreach>
+                                </div>
+                                <div class="refund-ticket refund-real-amount-wrap">
+                                    <span class="actual-refund">实际退款金额</span>
+                                    <span></span>
+                                    <span><img src="/Public/img/icon/down_arrow.png" alt="" class="img-refund-real-amount-arrow"/></span>
+                                </div>
+                                <div class="refund-details">
+                                    <div>
+                                        <span class="refund-details-title">工行卡</span>
+                                        <span class="refund-details-amount rf-bankcard-amount">0</span>
+                                    </div>
+                                    <div>
+                                        <span class="refund-details-title">惠圈红包</span>
+                                        <span class="refund-details-amount rf-pb-amount">0</span>
+                                    </div>
+                                    <div>
+                                        <span class="refund-details-title">商家红包</span>
+                                        <span class="refund-details-amount rf-sb-amount">0</span>
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="refund-ticket">
+                                    <span>退款原因（至少选1项）</span>
+                                </div>
+                                <div class="refund-reason">
+                                    <label class="reason-list">
+                                        <input type="radio" name="refundReason" value="1"/>计划有变，没时间消费
+                                    </label><br/>
+                                    <label class="reason-list">
+                                        <input type="radio" name="refundReason" value="2"/>后悔了不想要
+                                    </label><br/>
+                                    <label class="reason-list">
+                                        <input type="radio" name="refundReason" value="3"/>买多了不想买了
+                                    </label><br/>
+                                    <label class="reason-list">
+                                        <input type="radio" name="refundReason" value="4"/>商家停业/装修/转让
+                                    </label><br/>
+                                    <label class="reason-list">
+                                        <input type="radio" name="refundReason" value="5"/>商家不承认
+                                    </label><br/>
+                                    <label class="reason-list">
+                                        <input type="radio" name="refundReason" value="6"/>商家说可以现在/刷卡来享受折扣
+                                    </label><br/>
+                                </div>
+                                <div class="more-reason">
+                                    <textarea placeholder="更多问题？请吐槽！" name="refundRemark"></textarea>
+                                </div>
+                                <div class="confirm">
+                                    <button type="submit" class="button button-big active" id="btn-coupon-order-apply">确认退款</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </if>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    ;(function(){
+        // 外卖订单，堂食订单的申请退款
+        $('#submit').on("click", function(){
+            var myForm = $("#refund_form");
+            var selectReason = $("#selectReason").val();
+            if(selectReason == '') {
+                myApp.modal({
+                    title:  '提醒',
+                    text: '请选择退款原因!',
+                    buttons: [
+                        {
+                            text: '确定'
+                        }
+                    ]
+                });
+            }else{
+                $.post(myForm.attr('action'), myForm.serialize(), function (resp) {
+                    if (resp.status == sz.STATUS_SUCC) {
+                        location.href = '/Api/Browser/unReceiveOrder?orderCode={$orderInfo.orderCode}';
+                    }else{
+
+                    }
+                });
+            }
+        });
+        // 购买优惠券订单的确认退款
+        $("#frm-coupon-order-apply-refund").on("submit", function(){
+            var myForm = $(this);
+            var selectReason = $("input[name=refundReason]:checked").val();
+            if(!selectReason) {
+                myApp.modal({
+                    title:  '提醒',
+                    text: '请选择退款原因!',
+                    buttons: [
+                        {
+                            text: '确定'
+                        }
+                    ]
+                });
+            } else {
+                var btn = $('#btn-coupon-order-apply');
+                btn.attr('disabled', 'disabled');
+                $.post(myForm.attr('action'), myForm.serialize(), function (resp) {
+                    console.log(resp);
+                    if (resp.status == sz.STATUS_SUCC) {
+                        location.href = '/Api/Browser/orderCouponRefund?orderCode={$orderInfo.orderCode}';
+                    }else{
+                        myApp.modal({
+                            title:  '提醒',
+                            text: resp.msg,
+                            buttons: [
+                                {
+                                    text: '确定'
+                                }
+                            ]
+                        });
+                        btn.attr('disabled', false);
+                    }
+                });
+            }
+            return false;
+        });
+
+        // 选择优惠券时，动态展示退款金额
+        $('.ticket-list').on('click', function(e){
+            // 获得选择的券的券码组成一维数组
+            var thisVal = $(this).find('.ipt-order-coupon-code').val();
+            var obj = $(".ipt-order-coupon-code");
+            var codeArr = [];
+            if(e.target.tagName == 'DIV') {
+                for(var i = 0; i < obj.length; i++){
+                    var check = $(obj.eq(i)).prop('checked');
+                    var value = $(obj.eq(i)).val();
+                    if((check && value != thisVal) || (!check && value == thisVal)){
+                        codeArr.push(value);
+                    }
+                }
+            } else {
+                for(var i = 0; i < obj.length; i++){
+                    var check = $(obj.eq(i)).prop('checked');
+                    var value = $(obj.eq(i)).val();
+                    if(check) {
+                        codeArr.push(value);
+                    }
+                }
+            }
+            var orderCode = $('input[name=orderCode]').val();
+            var payPrice = $('input[name=payPrice]').val();
+            var realPay = $('input[name=realPay]').val();
+            var platBonus = $('input[name=platBonus]').val();
+            var shopBonus = $('input[name=shopBonus]').val();
+            // 计算各部分退款金额
+            $.post(
+                    '/Api/Browser/calToRefundMoney',
+                    {
+                        'count': codeArr.length,
+                        'orderCode': orderCode,
+                        'payPrice': payPrice,
+                        'realPay': realPay,
+                        'platBonus': platBonus,
+                        'shopBonus': shopBonus
+                    },
+                    function(resp){
+                        $('.rf-bankcard-amount').text(resp.data.bankcardAmount);
+                        $('.rf-pb-amount').text(resp.data.platBonus);
+                        $('.rf-sb-amount').text(resp.data.shopBonus);
+                    }
+            );
+        });
+
+        // 点击展示或关闭退款详情
+        $('.refund-real-amount-wrap').on('click', function(){
+            var urlDown = '/Public/img/icon/down_arrow.png';
+            var urlUp = '/Public/img/icon/up_arrow.png';
+            var img = $('.img-refund-real-amount-arrow');
+            var imgUrl = img.attr('src');
+            var refundDetailDiv =  $('.refund-details');
+            if(imgUrl == urlDown) {
+                img.attr('src', urlUp);
+                refundDetailDiv.hide();
+            } else {
+                img.attr('src', urlDown);
+                refundDetailDiv.show();
+            }
+        });
+        $('.tel').on('click', function () {
+            var buttons1 = [
+                {
+                    text: '联系电话',
+                    label: true
+                },
+                {
+                    text: '<a href="hs://call?tel={$shopInfo.tel|urlencode}" class="external">商家电话：{$shopInfo.tel}</a>'
+                },
+                {
+                    text: '<a href="hs://call?tel={$serviceTel|urlencode}" class="external">客服电话：{$serviceTel}</a>'
+                }
+            ];
+            var buttons2 = [
+                {
+                    text: '取消',
+                    color: 'red'
+                }
+            ];
+            var groups = [buttons1, buttons2];
+            myApp.actions(groups);
+        });
+        // 显示或隐藏抵扣金额细节部分
+        function showDisplay(aObj, divObj, type) {
+            var val = aObj.attr("data-type");
+            var html = '';
+            if (type == 1) {
+                html = "width: 16px;height:auto;float: right;margin-top: 6px;";
+            } else if (type == 2) {
+                html = "";
+            }
+            if (val == 1) {
+                divObj.show();
+                aObj.attr("data-type", "0");
+                aObj.find('button').html('<img src="/Public/img/icon/up_arrow.png" style="'+html+'" />');
+            } else {
+                divObj.hide();
+                aObj.attr("data-type", "1");
+                aObj.find('button').html('<img src="/Public/img/icon/down_arrow.png" style="'+html+'" />');
+            }
+        };
+    })();
+</script>

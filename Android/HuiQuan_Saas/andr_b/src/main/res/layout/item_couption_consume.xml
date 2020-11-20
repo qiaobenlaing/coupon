@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/LyOutSet_" >
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/tv_coupon_csmid"
+                    style="@style/Tv_FontSize"
+                    android:text="@string/tv_coupon_csm_id" />
+                <!-- 券号id -->
+
+                <TextView
+                    android:id="@+id/tv_coupon_csm_id"
+                    style="@style/Tv_FontSize"
+                    android:layout_width="100dp"
+                    android:layout_toRightOf="@+id/tv_coupon_csmid"
+                    android:text="XXX" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/tv_coupon_csmpid"
+                    style="@style/Tv_FontSize"
+                    android:text="@string/tv_coupon_csm_pid" />
+                <!-- 使用人的id -->
+
+                <TextView
+                    android:id="@+id/tv_coupon_csm_pid"
+                    style="@style/Tv_FontSize"
+                    android:layout_toRightOf="@+id/tv_coupon_csmpid"
+                    android:text="XXX(001)" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp" >
+
+                <TextView
+                    android:id="@+id/tv_coupon_csmcost"
+                    style="@style/Tv_FontSize"
+                    android:text="@string/tv_coupon_costs" />
+                <!-- 面值 -->
+
+                <TextView
+                    android:id="@+id/tv_coupon_csm_cost"
+                    style="@style/Tv_FontSize"
+                    android:layout_toRightOf="@+id/tv_coupon_csmcost"
+                    android:text="XXX" />
+
+                <TextView
+                    style="@style/Tv_FontSize"
+                    android:layout_toRightOf="@+id/tv_coupon_csm_cost"
+                    android:text="@string/tv_coupon_ddt_money_yuan" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp" >
+
+                <TextView
+                    android:id="@+id/tv_coupon_csmmoney"
+                    style="@style/Tv_FontSize"
+                    android:text="@string/tv_coupon_csm_moneys" />
+
+                <TextView
+                    android:id="@+id/tv_coupon_csm_money"
+                    style="@style/Tv_FontSize"
+                    android:layout_toRightOf="@+id/tv_coupon_csmmoney"
+                    android:text="XXX" />
+
+                <TextView
+                    style="@style/Tv_FontSize"
+                    android:layout_toRightOf="@+id/tv_coupon_csm_money"
+                    android:text="@string/tv_coupon_ddt_money_yuan" />
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/tv_coupon_csmdate"
+            style="@style/Tv_FontSize"
+            android:text="@string/tv_coupon_limitcsm_time" />
+
+        <TextView
+            android:id="@+id/tv_coupon_csm_date"
+            style="@style/Tv_FontSize"
+            android:layout_toRightOf="@+id/tv_coupon_csmdate"
+            android:text="YYYY-MM-DD HH：MM：SS" />
+    </RelativeLayout>
+
+</LinearLayout>

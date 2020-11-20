@@ -1,0 +1,61 @@
+<layout name="layout_admin" />
+<div class="">
+    <form class="form-horizontal" id="frm_edit_client_app_log" action="/Admin/ClientAppLog/editClientAppLog" method="post">
+        <input type="hidden" name="logCode" value="{$logInfo.logCode}" />
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="versionName">版本名称</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control" name="versionName" value="{$logInfo.versionName}" id="versionName" placeholder="版本名称"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="versionCode">版本号</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control" name="versionCode" value="{$logInfo.versionCode}" id="versionCode" placeholder="版本号"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="updateUrl">更新路径</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control" name="updateUrl" value="{$logInfo.updateUrl}" id="updateUrl" placeholder="更新路径"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="updateContent">更新内容</label>
+            <div class="col-sm-9">
+                <textarea class="form-control" name="updateContent" cols="30" rows="10" id="updateContent" placeholder="更新内容">{$logInfo.updateContent}</textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">是否必须升级</label>
+            <div class="col-sm-9">
+                <label class="radio-inline">
+                    <input type="radio" name="isMustUpdate" id="isMustUpdate1" value="1" <eq name="logInfo.isMustUpdate" value="1">checked="checked"</eq>> 是
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="isMustUpdate" id="isMustUpdate0" value="0" <eq name="logInfo.isMustUpdate" value="0">checked="checked"</eq>> 否
+                </label>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-9">
+                <button type="submit" class="btn btn-primary" id="submit">保存</button>
+            </div>
+        </div>
+    </form>
+</div>
+<script type="text/javascript">
+    ;(function(){
+        $('#frm_edit_client_app_log').on('submit', function() {
+            var frm = $(this);
+            $.post(frm.attr('action'), frm.serialize(), function(resp) {
+                if (resp.status == sz.STATUS_SUCC) {
+                    location.href = '/Admin/ClientAppLog/listClientAppLog/page/{$page}'
+                } else {
+                    sz.showErrMsg(resp.msg, 3);
+                }
+            });
+            return false;
+        });
+    })();
+</script>

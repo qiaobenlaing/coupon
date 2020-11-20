@@ -1,0 +1,88 @@
+<layout name="layout_api" />
+<!-- Views -->
+<div class="views">
+    <!-- Your main view, should have "view-main" class -->
+    <div class="view view-main">
+        <!-- Navbar on index page -->
+        <div class="navbar">
+            <div class="navbar-inner">
+                <div class="left">
+                    <eq name="backup" value="h5">
+                        <if condition="$backAction eq cEatOrder">
+                            <a href="/Api/Browser/cEatOrder?shopCode={$productInfo.shopCode}&userCode={$userCode}&openId={$openId}&orderCode={$orderCode}" class="external">
+                                <img src="/Public/img/icon/backup.png" alt="" style="width: 50%;"/>
+                            </a>
+                            <elseif condition="$backAction eq cTakeawayOrder"/>
+                            <a href="/Api/Browser/cTakeawayOrder?shopCode={$productInfo.shopCode}&userCode={$userCode}&orderCode={$orderCode}" class="external">
+                                <img src="/Public/img/icon/backup.png" alt="" style="width: 50%;"/>
+                            </a>
+                            <elseif condition="$backAction eq shopProductList"/>
+                            <a href="/Api/Browser/shopProductList?shopCode={$productInfo.shopCode}&userCode={$userCode}&openId={$openId}" class="external">
+                                <img src="/Public/img/icon/backup.png" alt="" style="width: 50%;"/>
+                            </a>
+                        </if>
+                    <else/>
+                        <a href="hs://backup" class="external">
+                            <img src="/Public/img/icon/backup.png" alt="" style="width: 50%;"/>
+                        </a>
+                    </eq>
+                </div>
+                <div class="center">商品详情</div>
+                <div class="right">
+                    <a href="#" class="link"></a>
+                </div>
+            </div>
+        </div>
+        <!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
+        <div class="pages navbar-through">
+            <!-- Page, "data-page" contains page name -->
+            <div data-page="index" class="page">
+                <!-- Scrollable page content -->
+                <div class="page-content">
+                    <div class="shop-product-info-wrap">
+                        <div class="product-img-wrap">
+                            <img src="{$productInfo.productImg}" alt="{$productInfo.productName}"/>
+                        </div>
+                        <div class="product-info-wrap">
+                            <div class="product-price">
+                                <eq name="productInfo.isDiscount" value="1">
+                                    <span class="final-price">&yen;{$productInfo.finalPrice}</span>
+                                    <span class="origin-price">原价{$productInfo.originalPrice}</span>
+                                    <else/>
+                                    <span class="final-price">&yen;{$productInfo.originalPrice}</span>
+                                </eq>
+                                <div class="zan-wrap">
+                                    <span class="zan-icon-wrap <eq name="productInfo.isZan" value="1">zan-icon<else/>nzan-icon</eq>" data-user-code="{$userCode}" data-product-id="{$productInfo.productId}" data-is-zan="{$productInfo.isZan}">{$productInfo.zanCount}</span>
+                                </div>
+                            </div>
+                            <div class="product-name">{$productInfo.productName}</div>
+                            <!--<div class="product-des">{$productInfo.des}</div>-->
+                        </div>
+                        <div class="product-part-wrap">
+                        </div>
+                        <div class="product-detail-wrap">
+                        		详情
+                        </div>
+                        <neq name="shopInfo.isCatering" value="1">
+                            <div class="product-part-wrap"></div>
+                            <div class="product-detail-des-wrap">
+                                <span class="detail-title">商品/服务：</span><span class="detail-name">{$productInfo.productName}</span><br/>
+                                <span class="detail-title">价格说明：</span><span class="detail-name">无</span><br/>
+                                <span class="detail-title">性别：</span><span class="detail-name"><if condition="$productInfo.sexLimit eq 0">无限制<elseif condition="$productInfo.sexLimit eq 1"/>男<else/>女</if></span><br/>
+                                <span class="detail-title">年龄：</span><span class="detail-name"><eq name="productInfo.ageLimit" value="1">18岁以上<else/>无限制</eq></span><br/>
+                                <span class="detail-title">是否预约：</span><span class="detail-name"><eq name="productInfo.isBooking" value="1">是<else/>否</eq></span><br/>
+                            </div>
+                        </neq>
+                        <div class="product-part-wrap">
+                        </div>
+                        <div class="product-white">
+                            <div class="product-des">{$productInfo.des}</div>
+                        </div>
+                        <div class="product-last-wrap">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray_transparent"
+    android:orientation="vertical"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp" >
+
+    <LinearLayout
+        android:id="@+id/ll_popup"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="bottom"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:id="@+id/ly_sel_pic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/sel_login"
+            android:gravity="center_horizontal"
+            android:orientation="vertical" >
+
+            <Button
+                android:id="@+id/btn_myafterorder_user"
+                android:layout_width="match_parent"
+                android:layout_height="47dp"
+                android:background="@android:color/white"
+                android:text="联系用户"
+                android:textColor="@android:color/holo_blue_dark"
+                android:textSize="16sp" />
+
+            <TextView
+                style="@style/VLine"
+                android:layout_height="0.5dp"
+                android:background="@color/shallow_gray" />
+
+            <Button
+                android:id="@+id/btn_myafterorder_order_ok"
+                android:layout_width="fill_parent"
+                android:layout_height="47dp"
+                android:background="@android:color/white"
+                android:text="确认接单"
+                android:textColor="@android:color/holo_blue_dark"
+                android:textSize="16sp" />
+
+            <TextView
+                style="@style/VLine"
+                android:layout_height="0.5dp"
+                android:background="@color/shallow_gray" />
+
+            <Button
+                android:id="@+id/btn_myafterorder_order_back"
+                android:layout_width="fill_parent"
+                android:layout_height="47dp"
+                android:background="@android:color/white"
+                android:text="撤销订单"
+                android:textColor="@android:color/holo_blue_dark"
+                android:textSize="16sp" />
+
+            <TextView
+                style="@style/VLine"
+                android:layout_height="0.5dp"
+                android:background="@color/shallow_gray" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/sel_login"
+            android:gravity="center_horizontal"
+            android:orientation="vertical" >
+
+            <Button
+                android:id="@+id/btn_myafterorder_cancel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:text="@string/btn_cancel"
+                android:textColor="@android:color/holo_blue_dark"
+                android:textSize="16sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

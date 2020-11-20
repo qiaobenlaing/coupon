@@ -1,0 +1,133 @@
+<table class="fp-table table table-striped table-bordered table-condensed" id="data_table">
+    <thead>
+    <tr>
+        <th>批次号</th>
+        <th>类型</th>
+        <th>创建时间</th>
+        <th>发放数量</th>
+        <th>剩余数量</th>
+        <th>领用时间</th>
+        <th>使用时间</th>
+        <th>状态</th>
+        <th>所有商店可用</th>
+        <th>顾客端显示</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    <foreach name="dataList" item="item">
+        <tr>
+            <td>{$item.batchNbr}</td>
+            <td>
+                <switch name="item.couponType">
+                    <case value="1">
+                        <span class="label n-yuan-gou">N元购</span>
+                        <div class="">面值：{$item.insteadPrice}元</div>
+                    </case>
+                    <case value="3">
+                        <span class="label man-jian">抵扣券</span>
+                        <div class="">抵扣：{$item.insteadPrice}元</div>
+                    </case>
+                    <case value="4">
+                        <span class="label limit-time">折扣券</span>
+                        <div class="">折扣：{$item.discountPercent}折</div>
+                    </case>
+                    <case value="5">
+                        <span class="label shi-wu">实物券</span>
+                        <div class="">内容：{$item.function|default='空'}</div>
+                    </case>
+                    <case value="6">
+                        <span class="label ti-yan">体验券</span>
+                        <div class="">内容：{$item.function|default='空'}</div>
+                    </case>
+                    <case value="7">
+                        <span class="label dui-huan">兑换券</span>
+                        <div class="">内容：{$item.insteadPrice}元 {$item.function|default='空'}</div>
+                    </case>
+                    <case value="8">
+                        <span class="label dai-jin">代金券</span>
+                        <div class="">内容：￥{$item.payPrice}代{$item.insteadPrice}元{$item.function|default='空'}</div>
+                    </case>
+                    <case value="32">
+                        <span class="label label-default">送新用户抵扣券</span>
+                        <div class="">抵扣：{$item.insteadPrice}元</div>
+                    </case>
+                    <case value="33">
+                        <span class="label label-primary">送邀请人的抵扣券</span>
+                        <div class="">抵扣：{$item.insteadPrice}元</div>
+                    </case>
+                </switch>
+            </td>
+            <td>{$item.createTime}</td>
+            <td><eq name="item.totalVolume" value="-1">无限<else/>{$item.totalVolume}</eq></td>
+            <td><eq name="item.totalVolume" value="-1">无限<else/>{$item.remaining}</eq></td>
+            <td>
+                <eq name="item.endTakingTime" value="0000-00-00 00:00:00">
+                    无限期
+                <else/>
+                    {$item.startTakingTime|substr=0,10}至{$item.endTakingTime|substr=0,10}
+                </eq>
+            </td>
+            <td>
+                <in name="item.couponType" value="32,33">
+                    <eq name="item.validityPeriod" value="0">无限期
+                    <else/>领用后{$item.validityPeriod}天内有效
+                    </eq>
+                    <else/>
+                    {$item.startUsingTime|substr=0,10}至{$item.expireTime|substr=0,10}
+                </in>
+            </td>
+            <td>
+                <eq name="item.validityPeriod" value="0">
+                    <span class="label label-success">有效中</span>
+                <else/>
+                    <if condition='$nowTime gt strtotime($item["expireTime"])'><span class="label label-danger">已失效</span>
+                        <elseif condition='$nowTime lt strtotime($item["startUsingTime"])'/><span class="label label-default">未生效</span>
+                        <else /><span class="label label-success">有效中</span>
+                    </if>
+                </eq>
+            </td>
+            <td>
+                <eq name="item.isUniversal" value="1"><span class="label label-success">是</span><else/><span class="label label-danger">否</span></eq>
+            </td>
+            <td>
+                <eq name="item.isAvailable" value="1"><span class="label label-success">显示</span><else/><span class="label label-danger">不显示</span></eq>
+            </td>
+            <td>
+                <a href="/Admin/BatchCoupon/editCoupon?batchCouponCode={$item.batchCouponCode}&page={$pager:page}&batchNbr={$get.batchNbr}&couponType={$get.couponType}&isAvailable={$get.isAvailable}&back=Pf" class="btn btn-xs btn-primary">编辑</a>
+                <a href="#" class="btn btn-xs btn-danger del-batch-coupon" data-key="{$item.batchCouponCode}" data-pagenum="{$pager:page}">删除</a>
+            </td>
+        </tr>
+    </foreach>
+    </tbody>
+</table>
+<script>
+    // 删除优惠券
+    ;(function(){
+        $('.del-batch-coupon').on('click', function(){
+            var ret = confirm('确认删除吗？');
+            if(ret) {
+                var key = $(this).data('key');
+                var pageNum = $(this).data('pagenum');
+                $.post('/Admin/BatchCoupon/delBatchCoupon', {'key': key}, function(resp){
+                    if(resp.status == sz.STATUS_SUCC) {
+                        var searchFrm = $(sz.SEARCH_FORM_ID);
+                        $(sz.SEARCH_FORM_ID + ' input[name=page]').val(pageNum);
+                        // 提交FORM，更新数据
+                        $.get(searchFrm.attr('action'), searchFrm.serialize(), function(resp) {
+                            if (resp.status == sz.STATUS_SUCC) {
+                                $(sz.DATA_LIST_TABLE_WRAPPER_ID).html(resp.html);
+                            } else {
+                                sz.showErrMsg(resp.msg);
+                            }
+                        });
+                    } else {
+                        sz.showErrMsg(resp.msg);
+                    }
+                });
+            }
+        });
+    })();
+</script>
+<include file="Application/Admin/View/Widget/pager.html" />
+

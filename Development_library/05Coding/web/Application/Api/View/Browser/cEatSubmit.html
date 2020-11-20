@@ -1,0 +1,264 @@
+<layout name="layout_api" />
+<style>
+.body {
+	height: 100%;
+	background-color: #E2E0E0;
+}
+
+.head_col {
+	font-size: 18px;
+	font-weight: bold;
+	color: #fff;
+}
+
+.toolbar-through .page-content, .toolbar-fixed .page-content,
+	.tabbar-through .page-content, .tabbar-fixed .page-content {
+	padding-bottom: 0px;
+}
+
+.navbar-through .page-content, .navbar-fixed .page-content {
+	padding-top: 0;
+}
+
+.navbar {
+	position: absolute;
+}
+
+.backup img {
+	width: 60%;
+	height: auto;
+}
+
+.address_add {
+	background-color: #fff;
+	font-size: 18px;
+	line-height: 3;
+	margin: 0 0 0 0;
+	border-top: 1px solid rgb(231, 231, 231);
+	padding: 0 4%;
+	position: relative;
+}
+
+.address_add img {
+	position: absolute;
+	right: 4%;
+	top: 35%;
+	width: 13px;
+	height: auto;
+	top: 35%;
+	width: 13px;
+}
+
+.address_select {
+	background-color: #657081;
+	color: #fff;
+	font-size: 18px;
+	line-height: 3;
+	margin: 0 0 0 0;
+	border-top: 1px solid rgb(231, 231, 231);
+	padding: 0 4%;
+	position: relative;
+}
+
+.address_select img {
+	position: absolute;
+	right: 4%;
+	top: 10%;
+	width: 55px;
+	height: auto;
+	transform: rotate(180deg);
+	-ms-transform: rotate(180deg);
+	-webkit-transform: rotate(180deg);
+	-o-transform: rotate(180deg);
+	-moz-transform: rotate(180deg);
+}
+
+.content-block-title {
+	margin: 5px 5px -5px;
+	line-height: 25px;
+}
+
+.list-block {
+	margin: 10px 0;
+	font-size: 15px;
+}
+
+html.retina.ios-gt-7 .list-block li:not (:last-child ) .item-inner {
+	border-bottom-width: 1.5px;
+}
+
+.total_consumption .food_price {
+	float: right;
+	color: rgb(186, 14, 14);
+}
+
+.total_consumption {
+	background-color: #fff;
+	font-size: 18px;
+	line-height: 3;
+	margin: 0 0 0 0;
+	border-bottom: 1px solid rgb(231, 231, 231);
+	border-top: 1px solid rgb(231, 231, 231);
+	padding: 0 4%;
+	position: relative;
+	font-weight: bold;
+}
+
+.button.active {
+	background: rgb(186, 14, 14);
+	margin: 15px;
+}
+
+.button {
+	border: 1px solid rgb(186, 14, 14);
+}
+
+.address_inner1 {
+	height: 30px;
+}
+
+.address_inner2 {
+	font-size: 15px;
+}
+
+.distribution {
+	color: rgb(255, 89, 89);;
+	width: 100%
+}
+
+.distribution .item-title {
+	float: left;
+}
+
+.color {
+	line-height: 0px;
+	background-color: #fff;
+	width: 100%;
+}
+
+.color img {
+	width: 100%;
+}
+.navbar .left{
+	  margin-right: 0px;
+}
+.remark_title{
+	border-bottom: 1px solid rgb(231, 231, 231);
+	border-top: 1px solid rgb(231, 231, 231);
+	line-height:2;
+	background-color: #FDF8DD;
+	
+}
+</style>
+<!-- Views -->
+<div class="views">
+	<!-- Your main view, should have "view-main" class -->
+	<div class="view view-main">
+		<!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
+		<div class="pages toolbar-through">
+			<!-- Page, "data-page" contains page name -->
+			<div data-page="index" class="page navbar-fixed toolbar-fixed">
+				<!-- Scrollable page content -->
+				<div class="navbar">
+					<div class="navbar-inner">
+						<div class="left">
+						<empty name="openId">
+							<a href="/Api/Browser/cEatOrder?shopCode={$orderInfo.shopCode}&userCode={$orderInfo.clientCode}&orderCode={$orderInfo.orderCode}"
+								class="external">
+						<else/>
+							<a href="/Api/Browser/cEatOrder?shopCode={$orderInfo.shopCode}&userCode={$orderInfo.clientCode}&orderCode={$orderInfo.orderCode}&openId={$openId}"
+								class="external">
+						</empty>
+								<div class="backup">
+									<img src="/Public/img/icon/backup.png" />
+								</div>
+							</a>
+						</div>
+						<div class="center">
+							<div class="head_col">{$title}</div>
+						</div>
+						<div class="right"></div>
+					</div>
+				</div>
+				<div class="page-content">
+					<div class="body" style="padding: 0;">
+						<form id="my_form">
+							<input type="hidden" name="orderAmount" value="{$orderInfo.orderAmount}" /> 
+							<input type="hidden" name="shopCode" value="{$shopInfo.shopCode}" /> 
+							<input type="hidden" name="shopName" value="{$shopInfo.shopName}" /> 
+							<input type="hidden" name="logoUrl" value="{$shopInfo.logoUrl}" /> 
+							<input type="hidden" name="orderCode" value="{$orderInfo.orderCode}" />
+							<input type="hidden" name="orderNbr" value="{$orderInfo.orderNbr}" /> 
+							<input type="hidden" name="eatPayType" value="{$orderInfo.eatPayType}" />
+							<div class="list-block" style="margin: 53px 0 0 0;background-color:#fff;">
+								<div class="remark_title"><span style="padding-left:15px;">备注信息</span></div>
+								<div class="remark">
+									<input type="text" name="remark" placeholder="请填写备注信息" style="padding-left:15px;"/>
+								</div>										
+							</div>
+						</form>
+						<div class="list-block">
+							<ul>
+								<foreach name="orderProductList" item="orderProduct">
+								<li class="item-content">
+									<div class="item-inner">
+										<div class="item-title" style="width: 50%">{$orderProduct.productName}</div>
+										<div class="food_number" style="width: 40%">X{$orderProduct.productNbr}</div>
+										<div class="food_price" style="width: 10%">&#65509;{$orderProduct.productTotalPrice}</div>
+									</div>
+								</li>
+								</foreach>
+							</ul>
+						</div>
+						<div class="total_consumption">
+							消费金额
+							<div class="food_price">&#65509;{$orderInfo.orderAmount}</div>
+						</div>
+						<empty name="openId">
+						<a href="#" id="add_remark"
+							class="button button-big active external">提交订单</a>
+						<else/>
+						<a href="#" id="weixin_add_remark" class="button button-big active external">提交订单</a>
+						</empty>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+	$(function() {
+		$('#my_form').on('submit', function(){
+			return false;			
+		});
+		$("#weixin_add_remark").click(function(){
+			var frm = $("#my_form");
+			console.log(frm);
+			$.post('/Api/Browser/addNotTakeoutOrderOtherInfo', frm.serialize(), function(resp) {
+				if (resp.status == sz.STATUS_SUCC) {
+					location.href = '/Api/Browser/unReceiveOrder?orderCode={$orderInfo.orderCode}&openId={$openId}';
+				}else{
+					myApp.modal({
+					    title:  '提醒',
+					    text: '点餐失败!',
+					    buttons: [
+					      {
+					        text: '确定'
+					      }
+					    ]
+					  });
+				}
+			});
+		});
+		$('#add_remark').click(function() {
+			//$('#my_form').unbind('submit');
+			var formData = myApp.formToJSON('#my_form');
+			//console.log(formData);
+			params = JSON.stringify(formData);
+			//console.log(params);
+			var href = 'ho://icbcPay?params=';
+			href = href + encodeURIComponent(params);
+			$(this).attr('href', href);
+		});
+	});
+</script>

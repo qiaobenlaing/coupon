@@ -1,0 +1,165 @@
+<div class="row">
+    <div class="col-md-10">
+        <nav>
+            <ul class="pagination">
+                <li><a href="#" data-pagenum="1">首页</a></li>
+                <li class="<elt name="pager:page" value="1">disabled</elt>"><a href="#" data-pagenum="{$pager:page - 1}">&laquo; 前一页</a></li>
+                <gt name="pager:page - 3" value="0">
+                    <li class="disabled"><a href="#">···</a></li>
+                </gt>
+                <gt name="pager:page - 2" value="0">
+                    <li><a href="#"  data-pagenum="{$pager:page - 2}">{$pager:page - 2}</a></li>
+                </gt>
+                <gt name="pager:page - 1" value="0">
+                    <li><a href="#"  data-pagenum="{$pager:page - 1}">{$pager:page - 1}</a></li>
+                </gt>
+                <li class="disabled"><a href="#">{$pager:page}</a></li>
+                <lt name="pager:page" value="$pager:pageCount">
+                    <li><a href="#" data-pagenum="{$pager:page + 1}">{$pager:page + 1}</a></li>
+                </lt>
+                <lt name="pager:page + 1" value="$pager:pageCount">
+                    <li><a href="#" data-pagenum="{$pager:page + 2}">{$pager:page + 2}</a></li>
+                </lt>
+                <lt name="pager:page + 2" value="$pager:pageCount">
+                    <li class="disabled"><a href="#">···</a></li>
+                </lt>
+                <li class="<egt name="pager:page" value="$pager:pageCount">disabled</egt>"><a href="#" data-pagenum="{$pager:page + 1}">下一页 &raquo;</a></li>
+                <li><a href="#" data-pagenum="{$pager:pageCount}">末页</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="col-md-2">
+        <input type="text" id="ipt-page-num" value="" placeholder="页码"/>
+        <a href="#" class="btn btn-sm btn-default" id="a-go-to-the-page">前往</a>
+    </div>
+</div>
+<script type="text/javascript">
+    //$(document).ready(function() {
+    $('.pagination a').on('click', function() {
+        if (!$(this).parent().hasClass('disabled')) { // 如果该元素可点击
+            // 把待获取的页面塞到FORM中
+            var pageNum = $(this).data('pagenum');
+            var searchFrm = $(sz.SEARCH_FORM_ID);
+            $(sz.SEARCH_FORM_ID + ' input[name=page]').val(pageNum);
+            // 提交FORM，更新数据
+            $.get(searchFrm.attr('action'), searchFrm.serialize(), function(resp) {
+                if (resp.status == sz.STATUS_SUCC) {
+                    $(sz.DATA_LIST_TABLE_WRAPPER_ID).html(resp.html);
+                } else {
+                    sz.showErrMsg(resp.msg);
+                }
+            });
+        }
+        return false;
+    });
+    // 跳页
+    $('#a-go-to-the-page').on('click', function(){
+        // 把待获取的页面塞到FORM中
+        var pageNum = $('#ipt-page-num').val();
+        var searchFrm = $(sz.SEARCH_FORM_ID);
+        $(sz.SEARCH_FORM_ID + ' input[name=page]').val(pageNum);
+        //$(sz.SEARCH_FORM_ID).submit();
+        // 提交FORM，更新数据
+        $.get(searchFrm.attr('action'), searchFrm.serialize(), function(resp) {
+            if (resp.status == sz.STATUS_SUCC) {
+                $(sz.DATA_LIST_TABLE_WRAPPER_ID).html(resp.html);
+            } else {
+                sz.showErrMsg(resp.msg);
+            }
+        });
+        return false;
+    });
+    //});
+    $(sz.DELETE_BUTTON_ID).on('click', function() {
+        var ele = $(this);
+        var href = ele.attr("href");
+        bootbox.confirm('确认删除?', function(resp){
+            if(resp == true){
+                location.href = href;
+            }else {
+                return;
+            }
+        });
+        return false;
+    });
+    $(function(){
+        $(sz.CHANGE_BUTTON_ID).on('click', function(){
+            var openStatus = 1;
+            var closeStatus = 0;
+            var btn = $(this);
+            // 按钮的状态属性
+            var status = btn.attr('data-status');
+            // 修改状态后，按钮的状态属性
+            var dataStatus = status == openStatus ? closeStatus : openStatus;
+            // 修改后，按钮的文字
+            var btnText = btn.parent().prev().text();
+            // 状态的class
+            var statusClass = status == openStatus ? 'success' : 'danger';
+            // 状态的文字内容
+            var statusText = btn.text();
+            var htmlStatusText = '<span class="label label-' + statusClass + '">' + statusText + '</span>';
+            var url = btn.attr('href');
+            $.get(url, {status: status}, function(resp){
+                if(resp.status == sz.STATUS_SUCC) {
+                    btn.attr("data-status", dataStatus);
+                    btn.text(btnText);
+                    btn.parent().prev().html(htmlStatusText);
+                    sz.showSuccMsg(resp.msg, 0.8);
+                } else {
+                    sz.showErrMsg(resp.msg, 2);
+                }
+            });
+            return false;
+        })
+    });
+    $(function(){
+        $("#suggest_ul").hide(0);
+    });
+    $(function(){
+        $("#suggest_input").keyup(function(){
+            if($("#suggest_input").val().length==0){
+                $("#suggest_ul").hide(0);
+                return;
+            }
+            var sid = $("#suggest_input").val();
+            $.get('/Admin/Shop/getKeywords',{keywords:sid},function(resp){
+                console.log(resp);
+                if(resp.data == null){
+                    $("#suggest_ul").hide(0);
+                    return;
+                }
+                $("#suggest_ul").show(0);
+                var contents="";
+                for(var i=0;i<resp.data.length;i++){
+                    var keywords = resp.data[i]['shopName'];
+                    //alert(skey);
+                    contents = contents+"<li class='suggest_li'>"+keywords+"</li>";
+                }
+                //alert(contents);
+                $("#suggest_ul").html(contents);
+            })
+
+        });
+    });
+    $(function(){
+        $("#suggest_input").keyup(function(){
+            setInterval(changehover,300);
+            function changehover(){
+                $("#suggest_ul li").hover(function(){
+                    $(this).css("background","#eee");
+                },function(){
+                    $(this).css("background","#fff");
+                });
+                $("#suggest_ul li").click(function(){
+                    $("#suggest_input").val($(this).html());
+                    $("#suggest_ul").hide(0);
+                });
+                $("#suggest_ul li").click(function(){
+                    $("#data_search_form").submit();
+                });
+            }
+        });
+
+    });
+
+</script>

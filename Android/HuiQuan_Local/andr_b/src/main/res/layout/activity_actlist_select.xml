@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/LyOutSet" >
+
+    <include layout="@layout/common_title_commit" />
+
+    <ScrollView
+        android:id="@+id/sv_actdetail"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:fadingEdge="vertical"
+        android:scrollbars="vertical" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:gravity="center" >
+
+                <TextView
+                    android:id="@+id/tv_actDetail_theam"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="XXXXXXX活动"
+                    android:textSize="24sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/navigation_bar"
+                android:background="@color/white"
+                android:gravity="center_vertical" >
+
+                <TextView
+                    android:id="@+id/tv_actDetail_createDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:text="2015年4月22"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tv_actDetail_shopName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="XXXX商家"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <!--
+            <LinearLayout
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:background="@color/white"
+		        android:layout_marginBottom="10dp">
+		       	<ImageView
+		            android:id="@+id/iv_actDetail_activityImg"
+		            android:scaleType="centerCrop"
+		            android:layout_width="match_parent"
+		            android:layout_marginLeft="10dp"
+		        	android:layout_marginRight="10dp"
+		            android:layout_height="200dp"/>
+		    </LinearLayout>
+            -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:gravity="center_vertical" >
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@color/white" >
+
+                    <android.support.v4.view.ViewPager
+                        android:id="@+id/viewPager"
+                        style="@style/LyWHFirst" />
+
+                    <LinearLayout
+                        android:id="@+id/ly_gropview"
+                        style="@style/LyWHFirst"
+                        android:layout_marginBottom="5dp"
+                        android:gravity="center|bottom" >
+                    </LinearLayout>
+
+                    <ProgressBar
+                        android:id="@+id/pr_act_data"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:visibility="gone" />
+                </FrameLayout>
+            </LinearLayout>
+
+            <TextView style="@style/VLine" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/navigation_bar"
+                android:background="@color/white"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="15dp"
+                    android:text="@string/tv_actlist_time" />
+
+                <TextView
+                    android:id="@+id/tv_actDetail_startTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@+id/tv_actDetail_to"
+                    android:text="YYYY-MM-DD"
+                    android:textColor="@color/coupon_fontgrey" />
+
+                <TextView
+                    android:id="@+id/tv_actDetail_to"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@+id/tv_actDetail_endTime"
+                    android:text="@string/tv_actlist_to" />
+
+                <TextView
+                    android:id="@+id/tv_actDetail_endTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="15dp"
+                    android:text="YYYY-MM-DD"
+                    android:textColor="@color/coupon_fontgrey" />
+            </RelativeLayout>
+
+            <!--
+            <LinearLayout
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_marginTop="5dp"
+		        android:paddingLeft="20dp"
+		      	android:paddingRight="20dp"
+		        android:orientation="horizontal" >
+		    </LinearLayout>
+		    
+		    <LinearLayout
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_marginTop="5dp"
+		        android:paddingLeft="20dp"
+		      	android:paddingRight="20dp"
+		        android:orientation="horizontal" >
+		    </LinearLayout>
+            -->
+
+            <TextView style="@style/VLine" />
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/navigation_bar"
+                android:background="@color/white"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="15dp"
+                    android:text="@string/tv_actlist_loc" />
+
+                <TextView
+                    android:id="@+id/tv_actDetail_activityLocation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="15dp"
+                    android:text="XXXXXXXX"
+                    android:textColor="@color/coupon_fontgrey" />
+            </RelativeLayout>
+
+            <TextView style="@style/VLine" />
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/navigation_bar"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="15dp"
+                    android:text="@string/tv_actlist_peopleup" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@+id/tv_actDetail_limitedParticipators"
+                    android:text="@string/tv_actlist_peopleover"
+                    android:textColor="@color/coupon_fontgrey" />
+
+                <TextView
+                    android:id="@+id/tv_actDetail_limitedParticipators"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@+id/tv_actDetail_poeple"
+                    android:text="XX"
+                    android:textColor="@color/actadd_read" />
+
+                <TextView
+                    android:id="@+id/tv_actDetail_poeple"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="15dp"
+                    android:text="@string/tv_actlist_person"
+                    android:textColor="@color/coupon_fontgrey" />
+            </RelativeLayout>
+
+            <TextView style="@style/VLine" />
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/navigation_bar"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="15dp"
+                    android:text="@string/tv_actlist_other"
+                    android:textColor="@color/calendar_font" />
+            </RelativeLayout>
+
+            <TextView style="@style/VLine" />
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/navigation_bar"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/tv_actDetail_isRegisterRequired"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="15dp"
+                    android:text="@string/tv_actadd_baoming" />
+
+                <TextView
+                    android:id="@+id/tv_actDetail_isPrepayRequired"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/tv_actDetail_isRegisterRequired"
+                    android:text="@string/tv_actadd_face" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@+id/tv_actDetail_isPrepayRequired"
+                    android:text="@string/tv_actadd_money" />
+
+                <TextView
+                    android:id="@+id/tv_actDetail_prePayment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@+id/tv_actDetail_yuan"
+                    android:text="XX"
+                    android:textColor="@color/actadd_read" />
+
+                <TextView
+                    android:id="@+id/tv_actDetail_yuan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="15dp"
+                    android:text="元"
+                    android:textColor="@color/coupon_fontgrey" />
+            </RelativeLayout>
+
+            <TextView style="@style/VLine" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/navigation_bar"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:text="@string/tv_actlist_othercontent"
+                    android:textColor="@color/calendar_font" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white" >
+
+                <TextView
+                    android:id="@+id/tv_actDetail_richTextContent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="5dp"
+                    android:text="XXXXXXXXXXXXXXXXXXX" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

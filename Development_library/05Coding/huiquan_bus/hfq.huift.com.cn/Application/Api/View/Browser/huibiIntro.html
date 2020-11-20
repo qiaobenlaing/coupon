@@ -1,0 +1,168 @@
+<layout name="layout_api" />
+<style>
+    .huibi-wrap-upper{
+        border: 2px dashed #E47B00;
+        margin: 34px 34px 16px 34px;
+        border-radius: 13px;
+    }
+    .huibi-wrap-upper .title-wrap-center{
+        margin-top: 10px;
+        text-align: center;
+    }
+    .title{
+        background-color: #E47B00;
+        color: #fff;
+        text-align: center;
+        border-radius: 7px;
+        font-size: 17px;
+        padding-left: 34px;
+        padding-right: 34px;
+        padding-top: 2px;
+        padding-bottom: 2px;
+    }
+    .huibi-wrap-upper .content-wrap{
+        padding-right: 31px;
+        color: #2C2C2C;
+    }
+    .huibi .body ul li, .huibi-wrap-upper .content-wrap ul li{
+        list-style-image:url("/Public/img/webchat/huibiIntro/point.png");
+        list-style-type: disc;
+    }
+    .huibi .body .content {
+        font-size: 14px;
+    }
+    .huibi-wrap-lower {
+        background-image: url('/Public/img/webchat/huibiIntro/lowerbg.png');
+        background-size: 100%;
+        background-repeat: no-repeat;
+        height: 53%;
+        margin: 0 22px 0 22px;
+    }
+    .huibi .step-1-wrap img, .step-2-wrap img, .step-3-wrap img {
+        width: 20px;
+    }
+    .huibi .step-1-wrap img{
+        margin-right: 3px;
+    }
+    .huibi .step-2-wrap img{
+        margin-left: 3px;
+    }
+    .huibi .step-3-wrap img{
+        margin-right: 3px;
+    }
+    .huibi .step-1-wrap {
+        margin-left: 13px;
+        margin-bottom: -6px;
+    }
+    .huibi .step-2-wrap {
+        text-align: right;
+        margin-top: 19px;
+        margin-right: -8px;
+    }
+    .huibi .step-3-wrap {
+        margin-top: 18px;
+        margin-left: -8px;
+    }
+    .huibi .step-1-content-wrap ul, .huibi .step-3-content-wrap ul{
+        padding-left: 30px;
+    }
+    .huibi .step-1-content-wrap{
+        padding-top: 2px;
+        padding-right: 80px;
+    }
+    .huibi .step-2-content-wrap {
+        margin-top: -5px;
+        padding-left: 60px;
+        padding-right: 4px;
+    }
+    .huibi .step-3-content-wrap {
+        padding-top: 2px;
+        padding-right: 80px;
+    }
+    .huibi .step-content-wrap ul li{
+        list-style-image:url("/Public/img/webchat/huibiIntro/point.png");
+        list-style-type: disc;
+    }
+    .huibi .end-img{
+        width: 20px;
+        position: relative;
+        left: 96%;
+        top: -13px;
+    }
+</style>
+<!-- Views -->
+<div class="views">
+    <!-- Your main view, should have "view-main" class -->
+    <div class="view view-main">
+        <!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
+        <div class="pages">
+            <!-- Page, "data-page" contains page name -->
+            <div data-page="index" class="page">
+                <!-- Scrollable page content -->
+                <div class="page-content huibi">
+                    <div class="head">惠币介绍</div>
+                    <div class="huibi-wrap-upper">
+                        <div class="title-wrap-center">
+                            <span class="title">什么是惠圈价值？</span>
+                        </div>
+                        <div class="content-wrap">
+                            <ul>
+                                <li>
+                                    <p class="content">“圈值”（即惠币）是惠圈全新推出的线上线下日常消费通用积分，圈值覆盖业务面广，积分价值高，积分使用途径多元化！</p>
+                                </li>
+                                <li>
+                                    <p class="content">
+                                        通过注册、邀请、分享优惠券、使用优惠券等操作，可获得不同梯度的圈值。惠圈后续支持更多积分玩法！
+                                    </p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="step-1-wrap">
+                        <img src="/Public/img/webchat/huibiIntro/hollowCircle.png" alt=""/>
+                        <span class="title">STEP1 积累圈值</span>
+                    </div>
+                    <div class="huibi-wrap-lower">
+                        <div class="step-1-content-wrap step-content-wrap">
+                            <ul>
+                                <li>
+                                    <p class="content">
+                                        在惠圈合作商家消费后，根据您的支付现金和APP的支付频次，您能获得不同梯度的圈值。
+                                    </p>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="step-2-wrap">
+                            <span class="title">STEP2 圈值账户</span>
+                            <img src="/Public/img/webchat/huibiIntro/hollowCircle.png" alt=""/>
+                        </div>
+                        <div class="step-2-content-wrap step-content-wrap">
+                            <ul>
+                                <li>
+                                    <p class="content">
+                                        日常消费获得的圈值会累积到您的惠圈个人账户中。
+                                    </p>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="step-3-wrap">
+                            <img src="/Public/img/webchat/huibiIntro/hollowCircle.png" alt=""/>
+                            <span class="title">STEP3 使用圈值</span>
+                        </div>
+
+                        <div class="step-3-content-wrap step-content-wrap">
+                            <ul>
+                                <li>
+                                    <p class="content">
+                                        您的圈值可以后续兑换高价值的礼品、抽奖，还能用于抵扣现金，精彩不断。
+                                    </p>
+                                </li>
+                            </ul>
+                        </div>
+                        <img src="/Public/img/webchat/huibiIntro/bigPoint.png" alt="" class="end-img"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

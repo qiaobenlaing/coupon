@@ -1,0 +1,920 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>惠圈商圈服务平台</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/admin.css" rel="stylesheet">
+    <link href="css/bootstrap.min_1.css" rel="stylesheet">
+    <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+    <link href="css/umeditor.min.css" type="text/css" rel="stylesheet">
+    <link href="css/jasny-bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+    <link rel="stylesheet" type="text/css" href="css/select2.min.css" />
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="js/bootstrap-datetimepicker.fr.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="js/admin.js" charset="UTF-8"></script>
+    <script src="js/bootbox.js" charset="UTF-8"></script>
+    <script src="js/demos.js" charset="UTF-8"></script>
+    <script src="js/jasny-bootstrap.min.js" charset="UTF-8"></script>
+    <script src="js/example.js" charset="UTF-8"></script>
+    <script src="js/select2.min.js"></script>
+</head>
+<body data-spy="scroll" data-target="#myScrollspy">
+<div class="container-fluid">
+    <div class="alert alert-success alert-fixed-top alert-top-tip" style='display: none;text-align: center;'></div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="header_top">
+                <div class="col-md-10 col-sm-9 col-xs-9">
+                    <a href="/Admin/BmStaff/homepage" class='logo'>惠圈移动商圈服务平台</a>
+                </div>
+                <div class="col-md-2 col-sm-3 col-xs-3 login-info">
+                    <span>用户: </span>
+                    <span><a href="/Admin/BmStaff/editBmStaff?mobileNbr=15868179748">季华飞</a></span>
+                    <a href="/Admin/BmStaff/logout">退出</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <nav class="navbar navbar-default col-xs-12 col-sm-2 col-md-2" role="navigation" style="background-color: #fff;border: 0px">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#toall-nav" aria-expanded="false">
+                    <span class="sr-only">菜单</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!--<a class="navbar-brand" href="#">Brand</a>-->
+            </div>
+            <div class="collapse navbar-collapse"  id='toall-nav' >
+                <ul class="nav nav-stacked nav-tabs-totall" id="menu-bar">
+                    <li class="panel dropdown panel-active">
+                                                            <a data-toggle="collapse" data-parent="#menu-bar" href="#submenu_preShop" class='panel-active-a collapsed'>地推商户</a>
+                                <ul id='submenu_preShop' class="panel-collapse collapse">
+                                                                                                                    <li class='nav_second'><a href="/Admin/PreShop/listPreShop">商户列表</a></li>                                            <li class='nav_second'><a href="/Admin/PreShop/dataExport">数据导出</a></li>                                </ul>
+                        </li><li class="panel dropdown panel-active">
+                                                            <a data-toggle="collapse" data-parent="#menu-bar" href="#submenu_brand" class='panel-active-a collapsed'>品牌管理</a>
+                                <ul id='submenu_brand' class="panel-collapse collapse">
+                                                                                                                    <li class='nav_second'><a href="/Admin/Brand/listBrand">品牌列表</a></li>                                            <li class='nav_second'><a href="/Admin/Brand/editBrand">编辑品牌</a></li>                                </ul>
+                        </li><li class="panel dropdown panel-active">
+                                                            <a data-toggle="collapse" data-parent="#menu-bar" href="#submenu_shop" class='panel-active-a collapsed'>商户相关管理</a>
+                                <ul id='submenu_shop' class="panel-collapse collapse">
+                                                                                                                    <li class='nav_second'><a href="/Admin/Shop/listShop">商户列表</a></li>                                            <li class='nav_second'><a href="/Admin/Shop/editShop">编辑商户</a></li>                                            <li class='nav_second'><a href="/Admin/Shop/listApply">商户入驻申请</a></li>                                            <li class='nav_second'><a href="/Admin/ShopStaff/listShopStaff">商户员工列表</a></li>                                            <li class='nav_second'><a href="/Admin/ShopStaff/editShopStaff">编辑商户员工</a></li>                                            <li class='nav_second'><a href="/Admin/BatchCoupon/listSpCoupon">商户优惠券列表</a></li>                                            <li class='nav_second'><a href="/Admin/BatchCoupon/editCoupon">编辑优惠券</a></li>                                            <li class='nav_second'><a href="/Admin/ConsumeOrder/listConsumeOrder">商户订单列表</a></li>                                            <li class='nav_second'><a href="/Admin/UserConsume/listUserConsume">账单列表</a></li>                                            <li class='nav_second'><a href="/Admin/Bonus/listSpBonus">商户红包列表</a></li>                                            <li class='nav_second'><a href="/Admin/Bonus/editBonus">编辑红包</a></li>                                            <li class='nav_second'><a href="/Admin/Activity/listSpActivity">商户活动列表</a></li>                                            <li class='nav_second'><a href="/Admin/Activity/editActivity">编辑活动</a></li>                                            <li class='nav_second'><a href="/Admin/Card/listCard">商户会员卡列表</a></li>                                            <li class='nav_second'><a href="/Admin/Card/editCard">编辑会员卡</a></li>                                            <li class='nav_second'><a href="/Admin/ShopType/listShopType">商家类型列表</a></li>                                            <li class='nav_second'><a href="/Admin/ShopType/editShopType">编辑商家类型</a></li>                                </ul>
+                        </li><li class="panel dropdown panel-active">
+                                                            <a data-toggle="collapse" data-parent="#menu-bar" href="#submenu_user" class='panel-active-a collapsed'>用户相关管理</a>
+                                <ul id='submenu_user' class="panel-collapse collapse">
+                                                                                                                    <li class='nav_second'><a href="/Admin/User/listUser">用户列表</a></li>                                            <li class='nav_second'><a href="/Admin/User/editUser">用户添加</a></li>                                            <li class='nav_second'><a href="/Admin/UserCard/listUserCard">用户会员卡</a></li>                                            <li class='nav_second'><a href="/Admin/UserCoupon/listUsCoupon">用户优惠券</a></li>                                            <li class='nav_second'><a href="/Admin/UserBonus/listUserBonus">用户红包</a></li>                                            <li class='nav_second'><a href="/Admin/User/listUserPoint">用户圈值</a></li>                                            <li class='nav_second'><a href="/Admin/BankAccount/listBankAccount">用户银行卡</a></li>                                            <li class='nav_second'><a href="/Admin/User/exportExcelRegister">用户绑卡数据导出</a></li>                                </ul>
+                        </li><li class="panel dropdown panel-active">
+                                                            <a data-toggle="collapse" data-parent="#menu-bar" href="#submenu_plat" class='panel-active-a collapsed'>惠圈平台相关管理</a>
+                                <ul id='submenu_plat' class="panel-collapse collapse">
+                                                                                                                    <li class='nav_second'><a href="/Admin/BmStaff/listBmStaff">惠圈平台人员列表</a></li>                                            <li class='nav_second'><a href="/Admin/StaffActionLog/listActionLog">惠圈管理员日志</a></li>                                            <li class='nav_second'><a href="/Admin/BmStaff/editBmStaff">编辑人员</a></li>                                            <li class='nav_second'><a href="/Admin/BatchCoupon/listPfCoupon">惠圈平台优惠券</a></li>                                            <li class='nav_second'><a href="/Admin/BatchCoupon/editCoupon">编辑优惠券</a></li>                                            <li class='nav_second'><a href="/Admin/Bonus/listPfBonus">平台红包列表</a></li>                                            <li class='nav_second'><a href="/Admin/Bonus/editBonus">编辑红包</a></li>                                            <li class='nav_second'><a href="/Admin/Activity/listPfActivity">平台活动列表</a></li>                                            <li class='nav_second'><a href="/Admin/Activity/editActivity">编辑活动</a></li>                                </ul>
+                        </li><li class="panel dropdown panel-active">
+                                                            <a data-toggle="collapse" data-parent="#menu-bar" href="#submenu_activity" class='panel-active-a collapsed'>活动管理</a>
+                                <ul id='submenu_activity' class="panel-collapse collapse">
+                                                                                                                    <li class='nav_second'><a href="/Admin/Activity/listIcbcActivity">工行活动列表</a></li>                                </ul>
+                        </li><li class="panel dropdown panel-active">
+                                                            <a data-toggle="collapse" data-parent="#menu-bar" href="#submenu_message" class='panel-active-a collapsed'>消息管理</a>
+                                <ul id='submenu_message' class="panel-collapse collapse">
+                                                                                                                    <li class='nav_second'><a href="/Admin/Message/listMessage">平台消息</a></li>                                            <li class='nav_second'><a href="/Admin/Message/analysisMessage">消息查询统计</a></li>                                </ul>
+                        </li><li class="panel dropdown panel-active">
+                                                            <a data-toggle="collapse" data-parent="#menu-bar" href="#submenu_feedback" class='panel-active-a collapsed'>投诉反馈</a>
+                                <ul id='submenu_feedback' class="panel-collapse collapse">
+                                                                                                                    <li class='nav_second'><a href="/Admin/Feedback/listShopFeedback">商家反馈</a></li>                                            <li class='nav_second'><a href="/Admin/Feedback/listUserFeedback">用户反馈</a></li>                                </ul>
+                        </li><li class="panel dropdown panel-active">
+                                                            <a data-toggle="collapse" data-parent="#menu-bar" href="#submenu_city" class='panel-active-a collapsed'>城市开通管理</a>
+                                <ul id='submenu_city' class="panel-collapse collapse">
+                                                                                                                    <li class='nav_second'><a href="/Admin/District/listCity">城市列表</a></li>                                </ul>
+                        </li><li class="panel dropdown panel-active">
+                                                            <a data-toggle="collapse" data-parent="#menu-bar" href="#submenu_ShopAppLog" class='panel-active-a collapsed'>APP升级记录</a>
+                                <ul id='submenu_ShopAppLog' class="panel-collapse collapse">
+                                                                                                                    <li class='nav_second'><a href="/Admin/ShopAppLog/listShopAppLog">商家端升级记录</a></li>                                            <li class='nav_second'><a href="/Admin/ShopAppLog/editShopAppLog">编辑商家端升级记录</a></li>                                            <li class='nav_second'><a href="/Admin/ClientAppLog/listClientAppLog">顾客端升级记录</a></li>                                            <li class='nav_second'><a href="/Admin/ClientAppLog/editClientAppLog">编辑顾客端升级记录</a></li>                                            <li class='nav_second'><a href="/Admin/PcAppLog/listPcAppLog">PC端升级记录</a></li>                                            <li class='nav_second'><a href="/Admin/PcAppLog/editPcAppLog">编辑PC端升级记录</a></li>                                </ul>
+                        </li><li class="panel dropdown panel-active">
+                                                            <a data-toggle="collapse" data-parent="#menu-bar" href="#submenu_CrashLog" class='panel-active-a collapsed'>APP崩溃日志</a>
+                                <ul id='submenu_CrashLog' class="panel-collapse collapse">
+                                                                                                                    <li class='nav_second'><a href="/Admin/CrashLog/listClientCrashLog">顾客端APP崩溃日志</a></li>                                            <li class='nav_second'><a href="/Admin/CrashLog/listShopCrashLog">商家端APP崩溃日志</a></li>                                </ul>
+                        </li><li class="panel dropdown panel-active">
+                                                            <a data-toggle="collapse" data-parent="#menu-bar" href="#submenu_Module" class='panel-active-a collapsed'>APP配置管理</a>
+                                <ul id='submenu_Module' class="panel-collapse collapse">
+                                                                                                                    <li class='nav_second'><a href="/Admin/Module/listIndexModule">首页模块列表</a></li>                                            <li class='nav_second'><a href="/Admin/Module/listQuery">筛选条件管理</a></li>                                </ul>
+                        </li><li class="panel dropdown panel-active">
+                                                            <a data-toggle="collapse" data-parent="#menu-bar" href="#submenu_SystemParam" class='panel-active-a collapsed'>系统参数</a>
+                                <ul id='submenu_SystemParam' class="panel-collapse collapse">
+                                                                                                                    <li class='nav_second'><a href="/Admin/SystemParam/listClientSystemParam">顾客端</a></li>                                            <li class='nav_second'><a href="/Admin/SystemParam/listShopSystemParam">商家端</a></li>                                            <li class='nav_second'><a href="/Admin/SystemParam/editSystemParam">编辑系统参数</a></li>                                </ul>
+                        </li><li class="panel dropdown panel-active">
+                                                            <a data-toggle="collapse" data-parent="#menu-bar" href="#submenu_Statistics" class='panel-active-a collapsed'>统计分析</a>
+                                <ul id='submenu_Statistics' class="panel-collapse collapse">
+                                                                                                                    <li class='nav_second'><a href="/Admin/Shop/analysisShop">商户统计分析</a></li>                                            <li class='nav_second'><a href="/Admin/ConsumeOrder/listShopConsumeStatistics">商户订单统计</a></li>                                            <li class='nav_second'><a href="/Admin/ConsumeOrder/listOrderStatisticsByDay">按日订单成交统计</a></li>                                            <li class='nav_second'><a href="/Admin/Card/analysisCard">商户会员卡统计分析</a></li>                                            <li class='nav_second'><a href="/Admin/BatchCoupon/analysisCoupon">商户优惠券统计</a></li>                                            <li class='nav_second'><a href="/Admin/Activity/analysisActivity">活动统计分析</a></li>                                            <li class='nav_second'><a href="/Admin/Bonus/analysisBonus">红包统计分析</a></li>                                            <li class='nav_second'><a href="/Admin/User/userAnalysis">用户统计分析</a></li>                                            <li class='nav_second'><a href="/Admin/User/consumptionStatistics">用户消费统计</a></li>                                            <li class='nav_second'><a href="/Admin/QrCode/listLog">惠圈下载记录</a></li>                                </ul>
+                        </li><li class="panel dropdown panel-active">
+                                                            <a data-toggle="collapse" data-parent="#menu-bar" href="#submenu_QrCode" class='panel-active-a collapsed'>二维码生成</a>
+                                <ul id='submenu_QrCode' class="panel-collapse collapse">
+                                                                                                                    <li class='nav_second'><a href="/Admin/QrCode/cDownloadQC">生成下载惠圈二维码</a></li>                                </ul>
+                        </li><li class="panel dropdown panel-active">
+                                                            <a data-toggle="collapse" data-parent="#menu-bar" href="#submenu_Liquidation" class='panel-active-a collapsed'>商户资金清算</a>
+                                <ul id='submenu_Liquidation' class="panel-collapse collapse">
+                                                                                                                    <li class='nav_second'><a href="/Admin/Liquidation/getLiquidationFileList">文件列表</a></li>                                            <li class='nav_second'><a href="/Admin/Liquidation/getLiquidationRecord">生成请求文件</a></li>                                </ul>
+                        </li>                </ul>
+            </div>
+        </nav>
+        <div class="col-xs-12 col-sm-10 col-md-10">
+            <ol class="breadcrumb">
+                                <li class="active">修改商户</li>
+            </ol>
+            
+<script src="js/knockout.js" charset="UTF-8"></script>
+<script src="js/webuploader.js" charset="UTF-8"></script>
+<script src="js/upload.js" charset="UTF-8"></script>
+<script src="js/set.js" charset="UTF-8"></script>
+<link rel="stylesheet" href="css/set.css">
+<style>
+    .container-fluid .row .form-group label{text-align: right;}
+</style>
+<div class="container-fluid">
+    <form class="form-horizontal" id="frm-edit-pre-shop" action="/Admin/PreShop/editPreShop" method="post">
+        <input type="hidden" name="shopCode" value="e7d9c654-4d57-4ea1-5df2-77aac6cf1f49" id="shopCode" />
+        <input type="hidden" value="preShop" id="shopType" />
+        <div class="row">
+            <div class="col-md-12"><h4><strong>商家基本信息</strong></h4></div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <input type="hidden" value="" id="search_info_country"/>
+                    <label for="country" class="col-md-4">国家</label>
+                    <div class="col-md-8">
+                        <select class="form-control" name="country" id="country">
+                            <option value="中国" selected="selected">中国</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="hidden" value="浙江省" id="search-province"/>
+                    <label for="province" class="col-md-4"><span class='required-ele'>*</span>省份/直辖市/特别行政区</label>
+                    <div class="col-md-8">
+                        <select class="form-control" name="province" id='province'>
+                            <option value="">请选择省份</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="hidden" value="衢州市" id="search-city"/>
+                    <label for="city" class="col-md-4"><span class='required-ele'>*</span>城市/县区</label>
+                    <div class="col-md-8">
+                        <select class="form-control" name='city' id='city'>
+                            <option value="">请选择城市</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="hidden" value="柯城区" id="search-district"/>
+                    <label for="district" class="col-md-4"><span class='required-ele'>*</span>县区</label>
+                    <div class="col-md-8">
+                        <select class="form-control" name='district' id='district'>
+                            <option value="">请选择县区</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-4" for="street"><span class='required-ele'>*</span>街道地址</label>
+                    <div class="col-md-8">
+                        <textarea class="form-control" name="street" id="street" cols="30" rows="5" placeholder="街道地址" style="resize: none">衢化路988号1楼</textarea>
+                    </div>
+                </div>
+                <!--<div class="form-group">-->
+                    <!--<label for="sub-type" class="col-md-4">商户子类型</label>-->
+                    <!--<div class="col-md-8">-->
+                        <!--<input type="text" class="form-control" name="subType" value="0" id="sub-type" placeholder="商户子类型">-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                    <!--<label for="industryOfBigClass" class="col-md-4">行业大类</label>-->
+                    <!--<div class="col-md-8">-->
+                        <!--<input type="text" class="form-control" name="industryOfBigClass" value="" placeholder="行业大类" id="industryOfBigClass"/>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                    <!--<label for="industryOfBigClass" class="col-md-4">行业小类</label>-->
+                    <!--<div class="col-md-8">-->
+                        <!--<input type="text" class="form-control" name="industryOfSmallClass" value="" placeholder="行业大类" id="industryOfSmallClass"/>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                    <!--<label for="retrieveTag" class="col-md-4">商户检索标签</label>-->
+                    <!--<div class="col-md-8">-->
+                        <!--<input type="text" class="form-control" name="retrieveTag" value="" placeholder="商户检索标签" id="retrieveTag"/>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                    <!--<label for="specialInfo" class="col-md-4">商户特色信息</label>-->
+                    <!--<div class="col-md-8">-->
+                        <!--<input type="text" class="form-control" name="specialInfo" value="" placeholder="商户特色信息" id="specialInfo"/>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <div class="form-group">
+                    <label for="bigManager" class="col-md-4"><span class='required-ele'>*</span>大店长姓名</label>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control" name="bigManager" value="吴卸仙" id="bigManager" placeholder="大店长姓名" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="bMaMobileNbr" class="col-md-4"><span class='required-ele'>*</span>大店长手机号</label>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control" name="bMaMobileNbr" value="15857016239" placeholder="大店长手机号" id="bMaMobileNbr" />
+                    </div>
+                </div>
+                <!--<div class="form-group">-->
+                    <!--<label for="bankServiceSupport" class="col-md-4">商户支持的银行服务</label>-->
+                    <!--<div class="col-md-8">-->
+                        <!--<input type="text" class="form-control" name="bankServiceSupport" value="" placeholder="商户支持的银行服务" id="bankServiceSupport"/>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <div class="form-group">
+                    <label for="wechatPublic" class="col-md-4">微信公众号</label>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control" name="wechatPublic" value="" id="wechatPublic"/>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="shop-name" class="col-md-4"><span class='required-ele'>*</span>店铺名称</label>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control" name="shopName" value="米兰超市" placeholder="商户名称" id="shop-name"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="longitude" class="col-md-4">商店经度</label>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control" name="longitude" value="118.877753" id="longitude" placeholder="商店经度"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="latitude" class="col-md-4">商店纬度</label>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control" name="latitude" value="28.974345" id="latitude" placeholder="商店纬度"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="type" class="col-md-4"><span class='required-ele'>*</span>商户类型</label>
+                    <div class="col-md-8">
+                        <select class="form-control" name="type" id="type">
+                            <option value="">请选择商店类型</option>
+                            <option value="1" selected="selected">美食</option><option value="2" >丽人</option><option value="3" >健身</option><option value="4" >娱乐</option><option value="6" >其他</option><option value="11" >惠圈平台</option><option value="21" >银行</option><option value="0" >未知</option>                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="short-des" class="col-md-4">商户简介</label>
+                    <div class="col-md-8">
+                        <textarea class="form-control" name="shortDes" id="short-des"  cols="30" rows="5" placeholder="商户简介" style="resize: none"></textarea>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-4">
+                        <span class='required-ele'>*</span>营业时间
+                    </label>
+                    <div class="col-md-8">
+                        <button type="button" class="btn btn-success btn-xs plus" data-bind="click:addHour"><div class="glyphicon glyphicon-plus"></div></button>
+                    </div>
+                </div>
+                <!-- ko foreach: hour -->
+                <div class="form-group">
+                    <label class="col-md-4">
+                        <button type="button" class="btn btn-danger btn-xs minus" data-bind="click:$parent.delHour, style: { display: $index() == 0 ? 'none' : 'inline' }"><div class="glyphicon glyphicon-minus"></div></button>
+                    </label>
+                    <div class="col-md-8 input-group add-padding">
+                        <input type="text" class="business-start-time form-control ipt-date-time-picker" name="shopOpeningTime[]" data-bind="value:open" readonly placeholder="开始时间"/>
+                        <span class="input-group-addon frm-span">至</span>
+                        <input type="text" class="business-end-time form-control ipt-date-time-picker" name="shopClosedTime[]" data-bind="value:close" readonly placeholder="结束时间"/>
+                    </div>
+                </div>
+                <!-- /ko -->
+
+                <div class="form-group">
+                    <label for="licenseNbr" class="col-md-4"><span class='required-ele'>*</span>营业执照编号</label>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control" name="licenseNbr" value="330802605053354" placeholder="营业执照编号" id="licenseNbr"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="licenseExpireTime" class="col-md-4"><span class='required-ele'>*</span>营业执照到期日</label>
+                    <div class="col-md-8">
+                        <input type="text" class="form_datetime form-control ipt-date-time-picker" name="licenseExpireTime" value="2018-04-12" readonly id="licenseExpireTime"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="tel" class="col-md-4"><span class='required-ele'>*</span>商户固定电话</label>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control" name="tel" value="15857016239" placeholder="商户固定电话" id="tel"/>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12"><hr/></div>
+        </div>
+        <div class="row">
+            <div class="col-md-12"><h4><strong>商家服务</strong></h4></div>
+            <div class="col-md-2">
+                <div class="radio-title-shop">是否支持无线上网</div>
+                <label><input type="radio" name="hasWifi" value="1" checked="checked"> 是 </label>&nbsp;&nbsp;&nbsp;&nbsp;
+                <label><input type="radio" name="hasWifi" value="0" > 否 </label>
+            </div>
+            <div class="col-md-2">
+                <div class="radio-title-shop">是否免费停车</div>
+                <label><input type="radio" name="isFreeParking" value="1" checked="checked"> 是 </label>&nbsp;&nbsp;&nbsp;&nbsp;
+                <label><input type="radio" name="isFreeParking" value="0" > 否 </label>
+            </div>
+            <div class="col-md-2">
+                <div class="radio-title-shop">是否给新利开发票</div>
+                <label><input type="radio" name="isInvoiceToXinli" value="1" > 是 </label>&nbsp;&nbsp;&nbsp;&nbsp;
+                <label><input type="radio" name="isInvoiceToXinli" value="0" checked="checked"> 否 </label>
+            </div>
+            <div class="col-md-2">
+                <div class="radio-title-shop">是否受理银行卡</div>
+                <label><input type="radio" name="isAcceptBankCard" value="1" checked="checked"> 是 </label>&nbsp;&nbsp;&nbsp;&nbsp;
+                <label><input type="radio" name="isAcceptBankCard" value="0" > 否 </label>
+            </div>
+            <div class="col-md-2">
+                <div class="radio-title-shop">是否允许携带宠物</div>
+                <label><input type="radio" name="isAllowPet" value="1" > 是 </label>&nbsp;&nbsp;&nbsp;&nbsp;
+                <label><input type="radio" name="isAllowPet" value="0" checked="checked"> 否 </label>
+            </div>
+            <div class="col-md-12"><hr/></div>
+        </div>
+        <div class="row">
+            <div class="col-md-12"><h4><strong>商家的银行信息</strong></h4></div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="icbcShopName" class="col-md-4">商户名称</label>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control" name="icbcShopName" value="" placeholder="一级商户名称" id="icbcShopName"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="onlinePaymentDiscount" class="col-md-4">工行卡折扣</label>
+                    <div class="col-md-8">
+                        <div class="input-group">
+                            <input type="text" class="form-control" name="onlinePaymentDiscount" value="10" placeholder="工行卡折扣" id="onlinePaymentDiscount"/>
+                            <span class="input-group-addon frm-span">折</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <!--<div class="form-group">-->
+                    <!--<label for="icbcShopCode" class="col-md-4">一级商户代码</label>-->
+                    <!--<div class="col-md-8">-->
+                        <!--<input type="text" class="form-control" name="icbcShopCode" value="" placeholder="一级商户代码" id="icbcShopCode" />-->
+                    <!--</div>-->
+                <!--</div>-->
+                <div class="form-group">
+                    <label for="onlinePaymentDiscountUpperLimit" class="col-md-4">工行卡折扣上限金额（0表示无上限）</label>
+                    <div class="col-md-8">
+                        <div class="input-group">
+                            <input type="text" class="form-control" name="onlinePaymentDiscountUpperLimit" value="0" placeholder="工行卡折扣上限金额" id="onlinePaymentDiscountUpperLimit"/>
+                            <span class="input-group-addon frm-span">元</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12"><hr/></div>
+        </div>
+        <div class="row">
+            <div class="col-md-12"><h4><strong>餐饮类商家设置</strong></h4></div>
+            <div class="col-xs-6 col-sm-4 col-md-2">
+                <div class="radio-title-shop">是否为餐饮类商铺</div>
+                <label class="radio-inline">
+                    <input type="radio" name="isCatering" value="1" > 是
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="isCatering" value="0" checked="checked"> 否
+                </label>
+            </div>
+            <div class="col-xs-6 col-sm-4 col-md-2">
+                <div class="radio-title-shop">是否外卖</div>
+                <label class="radio-inline">
+                    <input type="radio" name="isOuttake" value="1" > 是
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="isOuttake" value="0" checked="checked"> 否
+                </label>
+            </div>
+            <div class="col-xs-6 col-sm-4 col-md-2">
+                <div class="radio-title-shop">是否开启外卖</div>
+                <label class="radio-inline">
+                    <input type="radio" name="isOpenTakeout" value="1" > 是
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="isOpenTakeout" value="0" checked="checked"> 否
+                </label>
+            </div>
+            <div class="col-xs-6 col-sm-4 col-md-2">
+                <div class="radio-title-shop">是否开启堂食</div>
+                <label class="radio-inline">
+                    <input type="radio" name="isOpenEat" value="1" > 是
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="isOpenEat" value="0" > 否
+                </label>
+            </div>
+            <div class="col-xs-6 col-sm-4 col-md-2">
+                <div class="radio-title-shop">堂食支付类型</div>
+                <label class="radio-inline">
+                    <input type="radio" name="eatPayType" value="1" > 餐前支付
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="eatPayType" value="2" > 餐后支付
+                </label>
+            </div>
+            <div class="col-xs-6 col-sm-4 col-md-2">
+                <div class="radio-title-shop">是否可预定</div>
+                <label class="radio-inline">
+                    <input type="radio" name="isOrderOn" value="1" > 是
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="isOrderOn" value="0" checked="checked"> 否
+                </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="takeout-require-price" class="col-md-4">起送价</label>
+                    <div class="col-md-8 input-group add-padding">
+                        <input type="text" class="form-control" name="takeoutRequirePrice" value="0" id="takeout-require-price"/>
+                        <span class="input-group-addon frm-span">元</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="delivery-fee" class="col-md-4">配送费</label>
+                    <div class="col-md-8 input-group add-padding">
+                        <input type="text" class="form-control" name="deliveryFee" value="0" id="delivery-fee"/>
+                        <span class="input-group-addon frm-span">元</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="delivery-distance" class="col-md-4">最远配送距离</label>
+                    <div class="col-md-8 input-group add-padding">
+                        <input type="text" class="form-control" name="deliveryDistance" value="0" id="delivery-distance"/>
+                        <span class="input-group-addon frm-span">米</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="delivery-start-time" class="col-md-4">外卖配送时间</label>
+                    <div class="col-md-8 input-group add-padding">
+                        <input type="text" class="form_time form-control" name="deliveryStartTime" value="00:00:00" readonly id="delivery-start-time" placeholder="开始时间"/>
+                        <span class="input-group-addon frm-span">至</span>
+                        <input type="text" class="form_time form-control" name="deliveryEndTime" value="00:00:00" readonly placeholder="结束时间"/>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12"><hr/></div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <input type="hidden" value="/Public/Uploads/20160331/56fd18124fd1a.jpg" name="logoUrl" id="logoUrl">
+                <label style="margin-top: 10px;font-size: 20px;">商店头像: </label>
+                <div class="row-fluid employee-item-img">
+                    <div class="employee-item-imgdiv">
+                        <img name="avatar" src="picture/56fd18124fd1a.jpg" class="avatar img-responsive img-rounded">
+                    </div>
+                    <div class="J_avatar"></div>
+                </div>
+            </div>
+            <div class="col-xs-3">
+                <input type="hidden" value="/Public/Uploads/20160331/56fd180a77711.jpg" name="licenseUrl" id="licenseUrl">
+                <label style="margin-top: 10px;">商店营业执照: </label>
+                <div class="row-fluid employee-item-img">
+                    <div class="employee-item-imgdiv">
+                        <img name="avatar" src="picture/56fd180a77711.jpg" class="license img-responsive img-rounded">
+                    </div>
+                    <div class="J_license"></div>
+                </div>
+            </div>
+            <div class="col-xs-3">
+                <input type="hidden" value="/Public/Uploads/20160331/56fd1810937d6.jpg" name="bankCardUrl" id="bankCardUrl">
+                <label style="margin-top: 10px;">银行卡: </label>
+                <div class="row-fluid employee-item-img">
+                    <div class="employee-item-imgdiv">
+                        <img name="avatar" src="picture/56fd1810937d6.jpg" class="bankCard img-responsive img-rounded">
+                    </div>
+                    <div class="J_bankcard"></div>
+                </div>
+            </div>
+            <div class="col-xs-3">
+                <input type="hidden" value="/Public/Uploads/20160331/56fd18148682b.jpg" name="protocolUrl" id="protocolUrl">
+                <label style="margin-top: 10px;">惠圈协议: </label>
+                <div class="row-fluid employee-item-img">
+                    <div class="employee-item-imgdiv">
+                        <img name="avatar" src="picture/56fd18148682b.jpg" class="protocol img-responsive img-rounded">
+                    </div>
+                    <div class="J_protocol"></div>
+                </div>
+            </div>
+            <div class="col-md-12"><hr/></div>
+        </div>
+        <div class="row">
+            <div class="col-md-12" style="font-size: 20px;margin-bottom: 10px">
+                开户人身份证
+                <a href="#" class="btn btn-danger btn-xs ready-to-del-idcard">删除</a>
+                <a href="#" class="btn btn-warning btn-xs cancel-del-idcard">取消删除</a>
+            </div>
+            <div class="col-xs-12">
+                <div id="shopIDcard">
+                    <div class="col-md-3 shop-idcard-wrap" id="shop-idcard-wrap-0">
+                            <div class="del-shop-idcard"></div>
+                            <img src="picture/56fd180ca5f03.jpg" class="img-responsive img-rounded decoration-img">
+                            <input type="hidden" class="form-control" name="IDcardUrl[]" value="/Public/Uploads/20160331/56fd180ca5f03.jpg" />
+                        </div><div class="col-md-3 shop-idcard-wrap" id="shop-idcard-wrap-1">
+                            <div class="del-shop-idcard"></div>
+                            <img src="picture/56fd180edd3c8.jpg" class="img-responsive img-rounded decoration-img">
+                            <input type="hidden" class="form-control" name="IDcardUrl[]" value="/Public/Uploads/20160331/56fd180edd3c8.jpg" />
+                        </div>                </div>
+                <div class="row-fluid employee-item-img">
+                    <div class="employee-item-imgdiv">
+                        <img name="id_card" src="picture/upload.png" class="J_id_card img-responsive img-rounded">
+                    </div>
+                    <div class="J_idcard"></div>
+                </div>
+            </div>
+            <div class="col-md-12"><hr/></div>
+        </div>
+        <div class="row">
+            <div class="col-md-12" style="font-size: 20px;margin-bottom: 10px">
+                商家环境图片（可一次选择多张上传）
+                <a href="#" class="btn btn-danger btn-xs ready-to-del-decoration">删除</a>
+                <a href="#" class="btn btn-warning btn-xs cancel-del-decoration">取消删除</a>
+            </div>
+            <div class="col-md-12">
+                <div id="shop-decoration-wrap">
+                    <div class="col-md-3 decoration-wrap" id="decoration-wrap-07c25512-910c-a156-fbce-ac672afa934b">
+                            <div class="del-shop-decoration"></div>
+                            <img src="picture/56fd185946281.jpg" class="img-responsive img-rounded decoration-img">
+                            <input type="hidden" class="form-control" name="decorationCode[]" value="07c25512-910c-a156-fbce-ac672afa934b" />
+                            <input type="hidden" class="form-control" name="imgUrl[]" value="/Public/Uploads/20160331/56fd185946281.jpg" />
+                            <div class="form-group">
+                                <label>标题</label>
+                                <input type="text" class="form-control" name="title[]" value="" placeholder="标题"/>
+                            </div>
+                            <div class="form-group">
+                                <label>描述</label>
+                                <textarea class="form-control decoration-short-des" name="decoShortDes[]" rows="4" placeholder="描述"></textarea>
+                            </div>
+                        </div><div class="col-md-3 decoration-wrap" id="decoration-wrap-1eab1628-0082-5450-dc0b-b6c68e951f63">
+                            <div class="del-shop-decoration"></div>
+                            <img src="picture/56fd183f62645.jpg" class="img-responsive img-rounded decoration-img">
+                            <input type="hidden" class="form-control" name="decorationCode[]" value="1eab1628-0082-5450-dc0b-b6c68e951f63" />
+                            <input type="hidden" class="form-control" name="imgUrl[]" value="/Public/Uploads/20160331/56fd183f62645.jpg" />
+                            <div class="form-group">
+                                <label>标题</label>
+                                <input type="text" class="form-control" name="title[]" value="" placeholder="标题"/>
+                            </div>
+                            <div class="form-group">
+                                <label>描述</label>
+                                <textarea class="form-control decoration-short-des" name="decoShortDes[]" rows="4" placeholder="描述"></textarea>
+                            </div>
+                        </div><div class="col-md-3 decoration-wrap" id="decoration-wrap-3c511e7e-10ef-58ab-e683-09812c409d23">
+                            <div class="del-shop-decoration"></div>
+                            <img src="picture/56fd183f757b9.jpg" class="img-responsive img-rounded decoration-img">
+                            <input type="hidden" class="form-control" name="decorationCode[]" value="3c511e7e-10ef-58ab-e683-09812c409d23" />
+                            <input type="hidden" class="form-control" name="imgUrl[]" value="/Public/Uploads/20160331/56fd183f757b9.jpg" />
+                            <div class="form-group">
+                                <label>标题</label>
+                                <input type="text" class="form-control" name="title[]" value="" placeholder="标题"/>
+                            </div>
+                            <div class="form-group">
+                                <label>描述</label>
+                                <textarea class="form-control decoration-short-des" name="decoShortDes[]" rows="4" placeholder="描述"></textarea>
+                            </div>
+                        </div><div class="col-md-3 decoration-wrap" id="decoration-wrap-477246b6-fe85-9b2f-1916-fc201bf24ad5">
+                            <div class="del-shop-decoration"></div>
+                            <img src="picture/56fd18593d32c.jpg" class="img-responsive img-rounded decoration-img">
+                            <input type="hidden" class="form-control" name="decorationCode[]" value="477246b6-fe85-9b2f-1916-fc201bf24ad5" />
+                            <input type="hidden" class="form-control" name="imgUrl[]" value="/Public/Uploads/20160331/56fd18593d32c.jpg" />
+                            <div class="form-group">
+                                <label>标题</label>
+                                <input type="text" class="form-control" name="title[]" value="" placeholder="标题"/>
+                            </div>
+                            <div class="form-group">
+                                <label>描述</label>
+                                <textarea class="form-control decoration-short-des" name="decoShortDes[]" rows="4" placeholder="描述"></textarea>
+                            </div>
+                        </div><div class="col-md-3 decoration-wrap" id="decoration-wrap-dde0754d-602e-c35e-8333-32ffa7a6ca0d">
+                            <div class="del-shop-decoration"></div>
+                            <img src="picture/56fd183f4de61.jpg" class="img-responsive img-rounded decoration-img">
+                            <input type="hidden" class="form-control" name="decorationCode[]" value="dde0754d-602e-c35e-8333-32ffa7a6ca0d" />
+                            <input type="hidden" class="form-control" name="imgUrl[]" value="/Public/Uploads/20160331/56fd183f4de61.jpg" />
+                            <div class="form-group">
+                                <label>标题</label>
+                                <input type="text" class="form-control" name="title[]" value="" placeholder="标题"/>
+                            </div>
+                            <div class="form-group">
+                                <label>描述</label>
+                                <textarea class="form-control decoration-short-des" name="decoShortDes[]" rows="4" placeholder="描述"></textarea>
+                            </div>
+                        </div><div class="col-md-3 decoration-wrap" id="decoration-wrap-ef3fc186-2e41-3ee9-72fb-84d5ed7137a0">
+                            <div class="del-shop-decoration"></div>
+                            <img src="picture/56fd18176e4f0.jpg" class="img-responsive img-rounded decoration-img">
+                            <input type="hidden" class="form-control" name="decorationCode[]" value="ef3fc186-2e41-3ee9-72fb-84d5ed7137a0" />
+                            <input type="hidden" class="form-control" name="imgUrl[]" value="/Public/Uploads/20160331/56fd18176e4f0.jpg" />
+                            <div class="form-group">
+                                <label>标题</label>
+                                <input type="text" class="form-control" name="title[]" value="" placeholder="标题"/>
+                            </div>
+                            <div class="form-group">
+                                <label>描述</label>
+                                <textarea class="form-control decoration-short-des" name="decoShortDes[]" rows="4" placeholder="描述"></textarea>
+                            </div>
+                        </div>                </div>
+                <div class="row-fluid employee-item-img">
+                    <div class="employee-item-imgdiv">
+                        <img src="picture/upload.png" class="J_business_card img-responsive img-rounded">
+                    </div>
+                    <div class="pre-shop-decoration-picker"></div>
+                </div>
+            </div>
+            <div class="col-md-12"><hr/></div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                <button type="submit" class="btn btn-primary btn-block" id="submit">保存</button>
+            </div>
+        </div>
+    </form>
+</div>
+<!--私人申请的AK-->
+<!--<script src="js/33f6cc07097941abb66e2105e4ba1686.js" type="text/javascript"></script>-->
+<script src="js/d714861af84a418dabda3fe25bfbed0b.js" type="text/javascript"></script>
+<div id="container"></div>
+<script type="text/javascript">
+    // 离开当前页面的提示
+    ;(function(){
+//        window.onbeforeunload = function() {
+//            return "是否离开当前页面？";
+//        }
+    })();
+    // 时间插件的初始化
+    ;(function(){
+        // 初始化时间
+        $('.form_time').datetimepicker({
+            format: 'hh:ii',
+            autoclose: true,
+            startView: 'day',
+            minuteStep: 1
+
+        });
+        // 初始化日期时间
+        $('.form_datetime').datetimepicker({
+            format: 'yyyy-mm-dd',
+            autoclose: true,
+            minView: 'month',
+            todayBtn: '1'
+        });
+    })();
+
+    // 初始化省份、城市、地区
+    ;(function(){
+        var defaultProvince = $('#search-province').val();
+        var defaultCity = $('#search-city').val();
+        var defaultDistrict = $('#search-district').val();
+        sz.initDistrict(defaultProvince, defaultCity, defaultDistrict);
+    })();
+
+    // 百度地图初始化，获取地址经纬度
+    ;(function(){
+        var map = new BMap.Map("container");
+        var point = new BMap.Point(118.879005, 28.966899);
+        map.centerAndZoom(point, 15);
+        var localSearch = new BMap.LocalSearch(map);
+        //根据地址获取经纬度
+        function searchByAddress(province, city, district) {
+            if(! province) {
+                province = $('#search-province').val();
+            }
+            if(! city) {
+                city = $('#search-city').val();
+            }
+            if(! district) {
+                district = $('#search-district').val();
+            }
+            var country = $('#country').val();
+            var street = $("#street").val();
+            var shopName = $('#shop-name').val();
+            var keyword = province + city + district + street + shopName;
+            localSearch.setSearchCompleteCallback(function (searchResult) {
+                var poi = searchResult.getPoi(0);
+                if(! poi) {
+                    sz.showErrMsg('没有找到相关地点，请仔细查看信息是否输入正确', 4);
+                    return false;
+                }
+                $("#longitude").val(poi.point.lng);
+                $("#latitude").val(poi.point.lat);
+            });
+            localSearch.search(keyword);
+        };
+        $('#province, #city, #district, #street').change(function(){
+            var province = $('#province').val();
+            var city = $('#city').val();
+            var district = $('#district').val();
+            searchByAddress(province, city, district);
+        });
+    })();
+
+    // 保存信息的表单提交
+    ;(function(){
+        $('#frm-edit-pre-shop').on('submit', function() {
+            var btn = $('#submit');
+            btn.attr('disabled', 'disabled');
+            var frm = $(this);
+            $.post(frm.attr('action'), frm.serialize(), function(resp) {
+                if (resp.status == sz.STATUS_SUCC) {
+                    location.href = '/Admin/PreShop/listPreShop?page=1';
+                } else {
+                    btn.attr('disabled', false);
+                    sz.showErrMsg(resp.msg, 3);
+                }
+            });
+            return false;
+        });
+    })();
+
+    // 删除商家环境图片相关
+    ;(function(){
+        // 预备删除商家环境图片
+        $('.ready-to-del-decoration').on('click', function(){
+            var html = '<a class="btn btn-danger btn-xs del-shop-decoration-btn">删除</a>';
+            $('.del-shop-decoration').html(html).show();
+            $('.del-shop-decoration-btn').on('click', function(){
+                var btn = $(this);
+                btn.parent().parent().remove();
+                return false;
+            });
+            $(this).hide();
+            $('.cancel-del-decoration').show();
+            return false;
+        });
+        // 取消删除商家环境图片
+        $('.cancel-del-decoration').on('click', function(){
+            $('.del-shop-decoration').empty().hide();
+            $(this).hide();
+            $('.ready-to-del-decoration').show();
+            return false;
+        });
+    })();
+
+    // 删除商户开户人身份证图片
+    ;(function(){
+        // 预备删除商户开户人身份证图片
+        $('.ready-to-del-idcard').on('click', function(){
+            var html = '<a class="btn btn-danger btn-xs del-shop-idcard-btn">删除</a>';
+            $('.del-shop-idcard').html(html).show();
+            $('.del-shop-idcard-btn').on('click', function(){
+                var btn = $(this);
+                btn.parent().parent().remove();
+                return false;
+            });
+            $(this).hide();
+            $('.cancel-del-idcard').show();
+            return false;
+        });
+        // 取消删除商户开户人身份证图片
+        $('.cancel-del-idcard').on('click', function(){
+            $('.del-shop-idcard').empty().hide();
+            $(this).hide();
+            $('.ready-to-del-idcard').show();
+            return false;
+        });
+    })();
+
+    ;(function(){
+        // 营业时间初始化时间选择器
+        function initBusinessTime() {
+            // 营业开始时间的初始化时间选择器
+            $('.business-start-time').datetimepicker({
+                format: 'hh:ii',
+                autoclose: true,
+                startView: 'day',
+                minuteStep: 1
+            });
+            // 营业结束时间的初始化时间选择器
+            $('.business-end-time').datetimepicker({
+                format: 'hh:ii',
+                autoclose: true,
+                startView: 'day',
+                minuteStep: 1
+            });
+        };
+
+        var __businessHours = [{"open":"08:30","close":"21:00"}];
+        __businessHours = __businessHours || [];
+        var viewMdl = function(data){
+            var self = this;
+            self.hour = ko.observableArray(data);
+            self.addHour = function(){
+                self.hour.push({
+                    open: '',
+                    close: ''
+                });
+                initBusinessTime();
+            };
+            self.delHour = function(){
+                self.hour.remove(this);
+            };
+        };
+        ko.applyBindings(new viewMdl(__businessHours));
+
+        initBusinessTime();
+    })();
+</script>
+        </div>
+    </div>
+</div>
+</body>
+</html><div id="think_page_trace" style="position: fixed;bottom:0;right:0;font-size:14px;width:100%;z-index: 999999;color: #000;text-align:left;font-family:'微软雅黑';">
+<div id="think_page_trace_tab" style="display: none;background:white;margin:0;height: 250px;">
+<div id="think_page_trace_tab_tit" style="height:30px;padding: 6px 12px 0;border-bottom:1px solid #ececec;border-top:1px solid #ececec;font-size:16px">
+	    <span style="color:#000;padding-right:12px;height:30px;line-height: 30px;display:inline-block;margin-right:3px;cursor: pointer;font-weight:700">基本</span>
+        <span style="color:#000;padding-right:12px;height:30px;line-height: 30px;display:inline-block;margin-right:3px;cursor: pointer;font-weight:700">文件</span>
+        <span style="color:#000;padding-right:12px;height:30px;line-height: 30px;display:inline-block;margin-right:3px;cursor: pointer;font-weight:700">流程</span>
+        <span style="color:#000;padding-right:12px;height:30px;line-height: 30px;display:inline-block;margin-right:3px;cursor: pointer;font-weight:700">错误</span>
+        <span style="color:#000;padding-right:12px;height:30px;line-height: 30px;display:inline-block;margin-right:3px;cursor: pointer;font-weight:700">SQL</span>
+        <span style="color:#000;padding-right:12px;height:30px;line-height: 30px;display:inline-block;margin-right:3px;cursor: pointer;font-weight:700">调试</span>
+    </div>
+<div id="think_page_trace_tab_cont" style="overflow:auto;height:212px;padding: 0; line-height: 24px">
+		    <div style="display:none;">
+    <ol style="padding: 0; margin:0">
+	<li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">请求信息 : 2017-12-07 10:14:35 HTTP/1.1 GET : /Admin/PreShop/editPreShop?shopCode=e7d9c654-4d57-4ea1-5df2-77aac6cf1f49&amp;page=1</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">运行时间 : 0.0483s ( Load:0.0066s Init:0.0025s Exec:0.0226s Template:0.0166s )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">吞吐率 : 20.70req/s</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">内存开销 : 3,090.91 kb</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">查询信息 : 3 queries 1 writes </li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">文件加载 : 47</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">缓存信息 : 0 gets 0 writes </li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">配置加载 : 246</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">会话信息 : SESSION_ID=ajl4c0t6nibsb45mtjfiqi4j94</li>    </ol>
+    </div>
+        <div style="display:none;">
+    <ol style="padding: 0; margin:0">
+	<li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/index.php ( 1.10 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/ThinkPHP/ThinkPHP.php ( 4.61 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/ThinkPHP/Library/Think/Think.class.php ( 11.98 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/ThinkPHP/Library/Think/Storage.class.php ( 1.34 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/ThinkPHP/Library/Think/Storage/Driver/File.class.php ( 3.44 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/ThinkPHP/Mode/common.php ( 2.75 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/ThinkPHP/Common/functions.php ( 52.41 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/ThinkPHP/Library/Think/Hook.class.php ( 3.91 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/ThinkPHP/Library/Think/App.class.php ( 13.26 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/ThinkPHP/Library/Think/Dispatcher.class.php ( 14.75 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/ThinkPHP/Library/Think/Route.class.php ( 13.07 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/ThinkPHP/Library/Think/Controller.class.php ( 10.65 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/ThinkPHP/Library/Think/View.class.php ( 7.73 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/ThinkPHP/Library/Behavior/BuildLiteBehavior.class.php ( 3.61 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/ThinkPHP/Library/Behavior/ParseTemplateBehavior.class.php ( 3.80 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/ThinkPHP/Library/Behavior/ContentReplaceBehavior.class.php ( 1.87 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/ThinkPHP/Conf/convention.php ( 11.02 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/Application/Common/Conf/config.php ( 1.41 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/Application/Common/Conf/tags.php ( 0.23 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/ThinkPHP/Lang/zh-cn.php ( 2.52 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/ThinkPHP/Conf/debug.php ( 1.48 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/Application/Common/Conf/debug.php ( 0.32 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/Application/Common/Conf/const.php ( 50.79 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/Application/Common/Conf/function.php ( 1.13 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/Application/Admin/Conf/config.php ( 19.96 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/Application/Admin/Conf/menu.php ( 8.99 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/ThinkPHP/Library/Behavior/ReadHtmlCacheBehavior.class.php ( 5.51 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/Application/Admin/Controller/PreShopController.class.php ( 22.42 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/Application/Admin/Controller/AdminBaseController.class.php ( 3.29 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/Application/Admin/Controller/MwBaseController.class.php ( 1.94 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/Application/Common/Model/Pager.class.php ( 1.49 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/Application/Common/Model/StaffActionLogModel.class.php ( 2.43 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/Application/Common/Model/BaseModel.class.php ( 26.18 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/ThinkPHP/Library/Think/Model.class.php ( 64.98 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/ThinkPHP/Library/Think/Exception.class.php ( 0.67 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/ThinkPHP/Library/Think/Db.class.php ( 5.55 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/ThinkPHP/Library/Think/Db/Driver/Mysql.class.php ( 6.79 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/ThinkPHP/Library/Think/Db/Driver.class.php ( 40.21 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/Application/Common/Model/PreShopModel.class.php ( 5.88 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/Application/Common/Model/ShopDecorationModel.class.php ( 7.63 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/Application/Common/Model/ShopTypeModel.class.php ( 2.97 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/ThinkPHP/Library/Think/Template.class.php ( 27.66 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/ThinkPHP/Library/Think/Template/TagLib/Cx.class.php ( 22.02 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/ThinkPHP/Library/Think/Template/TagLib.class.php ( 8.95 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/Application/Runtime/Cache/Admin/4a3d30502c02b715fb98f9cdbb00765b.php ( 41.84 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/ThinkPHP/Library/Behavior/WriteHtmlCacheBehavior.class.php ( 1.40 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/ThinkPHP/Library/Behavior/ShowPageTraceBehavior.class.php ( 5.15 KB )</li>    </ol>
+    </div>
+        <div style="display:none;">
+    <ol style="padding: 0; margin:0">
+	<li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[ app_init ] --START--</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">Run Behavior\BuildLiteBehavior [ RunTime:0.000009s ]</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[ app_init ] --END-- [ RunTime:0.000045s ]</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[ app_begin ] --START--</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000308s ]</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[ app_begin ] --END-- [ RunTime:0.000342s ]</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[ view_parse ] --START--</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[ template_filter ] --START--</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">Run Behavior\ContentReplaceBehavior [ RunTime:0.000108s ]</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[ template_filter ] --END-- [ RunTime:0.000144s ]</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">Run Behavior\ParseTemplateBehavior [ RunTime:0.015699s ]</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[ view_parse ] --END-- [ RunTime:0.015731s ]</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[ view_filter ] --START--</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000095s ]</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[ view_filter ] --END-- [ RunTime:0.000120s ]</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[ app_end ] --START--</li>    </ol>
+    </div>
+        <div style="display:none;">
+    <ol style="padding: 0; margin:0">
+	<li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined variable: route /data/huiquan/webApp/api/Application/Runtime/Cache/Admin/4a3d30502c02b715fb98f9cdbb00765b.php 第 74 行.</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined index: isOpenEat /data/huiquan/webApp/api/Application/Runtime/Cache/Admin/4a3d30502c02b715fb98f9cdbb00765b.php 第 366 行.</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined index: isOpenEat /data/huiquan/webApp/api/Application/Runtime/Cache/Admin/4a3d30502c02b715fb98f9cdbb00765b.php 第 369 行.</li>    </ol>
+    </div>
+        <div style="display:none;">
+    <ol style="padding: 0; margin:0">
+	<li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">INSERT INTO `StaffActionLog` (`logCode`,`staffId`,`actionDes`,`actionTime`,`ipAddr`) VALUES ('bbba921d-2018-0305-03a2-562ad0801ae2','c00803ca-fec6-11e4-ac45-00163e021731',NULL,'2017-12-07 10:14:35','219.139.230.189') [ RunTime:0.0035s ]</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">SELECT * FROM `PreShop` WHERE `shopCode` = 'e7d9c654-4d57-4ea1-5df2-77aac6cf1f49' LIMIT 1   [ RunTime:0.0003s ]</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">SELECT `decorationCode`,`imgUrl`,`shortDes`,`title` FROM `ShopDecoration` WHERE `shopCode` = 'e7d9c654-4d57-4ea1-5df2-77aac6cf1f49' ORDER BY createTime asc  [ RunTime:0.0092s ]</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">SELECT `shopTypeId`,`typeValue`,`typeZh` FROM `ShopType`  [ RunTime:0.0002s ]</li>    </ol>
+    </div>
+        <div style="display:none;">
+    <ol style="padding: 0; margin:0">
+	    </ol>
+    </div>
+    </div>
+</div>
+<div id="think_page_trace_close" style="display:none;text-align:right;height:15px;position:absolute;top:10px;right:12px;cursor: pointer;"><img style="vertical-align:top;" src="data:image/gif;base64,R0lGODlhDwAPAJEAAAAAAAMDA////wAAACH/C1hNUCBEYXRhWE1QPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS4wLWMwNjAgNjEuMTM0Nzc3LCAyMDEwLzAyLzEyLTE3OjMyOjAwICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdFJlZj0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlUmVmIyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IFdpbmRvd3MiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MUQxMjc1MUJCQUJDMTFFMTk0OUVGRjc3QzU4RURFNkEiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MUQxMjc1MUNCQUJDMTFFMTk0OUVGRjc3QzU4RURFNkEiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDoxRDEyNzUxOUJBQkMxMUUxOTQ5RUZGNzdDNThFREU2QSIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDoxRDEyNzUxQUJBQkMxMUUxOTQ5RUZGNzdDNThFREU2QSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PgH//v38+/r5+Pf29fTz8vHw7+7t7Ovq6ejn5uXk4+Lh4N/e3dzb2tnY19bV1NPS0dDPzs3My8rJyMfGxcTDwsHAv769vLu6ubi3trW0s7KxsK+urayrqqmop6alpKOioaCfnp2cm5qZmJeWlZSTkpGQj46NjIuKiYiHhoWEg4KBgH9+fXx7enl4d3Z1dHNycXBvbm1sa2ppaGdmZWRjYmFgX15dXFtaWVhXVlVUU1JRUE9OTUxLSklIR0ZFRENCQUA/Pj08Ozo5ODc2NTQzMjEwLy4tLCsqKSgnJiUkIyIhIB8eHRwbGhkYFxYVFBMSERAPDg0MCwoJCAcGBQQDAgEAACH5BAAAAAAALAAAAAAPAA8AAAIdjI6JZqotoJPR1fnsgRR3C2jZl3Ai9aWZZooV+RQAOw==" /></div>
+</div>
+<div id="think_page_trace_open" style="height:30px;float:right;text-align: right;overflow:hidden;position:fixed;bottom:0;right:0;color:#000;line-height:30px;cursor:pointer;"><div style="background:#232323;color:#FFF;padding:0 6px;float:right;line-height:30px;font-size:14px">0.0483s </div><img width="30" style="" title="ShowPageTrace" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyBpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBXaW5kb3dzIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjVERDVENkZGQjkyNDExRTE5REY3RDQ5RTQ2RTRDQUJCIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjVERDVENzAwQjkyNDExRTE5REY3RDQ5RTQ2RTRDQUJCIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6NURENUQ2RkRCOTI0MTFFMTlERjdENDlFNDZFNENBQkIiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6NURENUQ2RkVCOTI0MTFFMTlERjdENDlFNDZFNENBQkIiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz5fx6IRAAAMCElEQVR42sxae3BU1Rk/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"></div>
+<script type="text/javascript">
+(function(){
+var tab_tit  = document.getElementById('think_page_trace_tab_tit').getElementsByTagName('span');
+var tab_cont = document.getElementById('think_page_trace_tab_cont').getElementsByTagName('div');
+var open     = document.getElementById('think_page_trace_open');
+var close    = document.getElementById('think_page_trace_close').childNodes[0];
+var trace    = document.getElementById('think_page_trace_tab');
+var cookie   = document.cookie.match(/thinkphp_show_page_trace=(\d\|\d)/);
+var history  = (cookie && typeof cookie[1] != 'undefined' && cookie[1].split('|')) || [0,0];
+open.onclick = function(){
+	trace.style.display = 'block';
+	this.style.display = 'none';
+	close.parentNode.style.display = 'block';
+	history[0] = 1;
+	document.cookie = 'thinkphp_show_page_trace='+history.join('|')
+}
+close.onclick = function(){
+	trace.style.display = 'none';
+this.parentNode.style.display = 'none';
+	open.style.display = 'block';
+	history[0] = 0;
+	document.cookie = 'thinkphp_show_page_trace='+history.join('|')
+}
+for(var i = 0; i < tab_tit.length; i++){
+	tab_tit[i].onclick = (function(i){
+		return function(){
+			for(var j = 0; j < tab_cont.length; j++){
+				tab_cont[j].style.display = 'none';
+				tab_tit[j].style.color = '#999';
+			}
+			tab_cont[i].style.display = 'block';
+			tab_tit[i].style.color = '#000';
+			history[1] = i;
+			document.cookie = 'thinkphp_show_page_trace='+history.join('|')
+		}
+	})(i)
+}
+parseInt(history[0]) && open.click();
+(tab_tit[history[1]] || tab_tit[0]).click();
+})();
+</script>

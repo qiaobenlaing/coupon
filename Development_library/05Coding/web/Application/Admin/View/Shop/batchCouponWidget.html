@@ -1,0 +1,70 @@
+<table class="fp-table table table-striped table-bordered" id="data_table">
+    <thead>
+    <tr>
+        <th>优惠券号</th>
+        <th>类型</th>
+        <th>发放数量</th>
+        <th>剩余数量</th>
+        <th>有效期</th>
+        <th>状态</th>
+        <th style="width: 53px;">操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    <foreach name="dataList" item="item">
+        <tr>
+            <td>{$item.batchCouponCode}</td>
+            <td>
+                <switch name="item.couponType">
+                    <case value="1">
+                        <span class="label n-yuan-gou">N元购</span>
+                        <div class="">面值：{$item.insteadPrice}元</div>
+                    </case>
+                    <case value="3">
+                        <span class="label man-jian">抵扣券</span>
+                        <div class="">抵扣：{$item.insteadPrice}元</div>
+                    </case>
+                    <case value="4">
+                        <span class="label limit-time">折扣券</span>
+                        <div class="">折扣：{$item.discountPercent}折</div>
+                    </case>
+                    <case value="5">
+                        <span class="label shi-wu">实物券</span>
+                        <div class="">内容：{$item.function|default='空'}</div>
+                    </case>
+                    <case value="6">
+                        <span class="label ti-yan">体验券</span>
+                        <div class="">内容：{$item.function|default='空'}</div>
+                    </case>
+                    <case value="7">
+                        <span class="label dui-huan">兑换券</span>
+                        <div class="">内容：{$item.insteadPrice}元 {$item.function|default='空'}</div>
+                    </case>
+                    <case value="8">
+                        <span class="label dai-jin">代金券</span>
+                        <div class="">内容：￥{$item.payPrice}代{$item.insteadPrice}元{$item.function|default='空'}</div>
+                    </case>
+                </switch>
+            </td>
+            <td><eq name="item.totalVolume" value="-1">无限<else />{$item.totalVolume}</eq></td>
+            <td><eq name="item.totalVolume" value="-1">无限<else />{$item.remaining}</eq></td>
+            <td>{$item.startUsingTime}至{$item.expireTime}</td>
+            <td>
+                <eq name="item.validityPeriod" value="0">
+                    <span class="green">没有期限</span>
+                    <else/>
+                    <if condition='$nowTime gt strtotime($item["expireTime"])'><span class="red">已失效</span>
+                        <elseif condition='$nowTime lt strtotime($item["startUsingTime"])'/><span class="grey">未生效</span>
+                        <else /><span class="green">使用中</span>
+                    </if>
+                </eq>
+            </td>
+            <td>
+                <a href="/Admin/BatchCoupon/editCoupon?batchCouponCode={$item.batchCouponCode}&page={$pager}" class="btn btn-xs btn-primary">编辑</a>
+            </td>
+        </tr>
+    </foreach>
+    </tbody>
+</table>
+<include file="Application/Admin/View/Widget/pager.html" />
+

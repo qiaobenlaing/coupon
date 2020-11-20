@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/LyWHFourth"
+    android:orientation="vertical" >
+
+    <FrameLayout
+        style="@style/LyWHSecond"
+        android:layout_gravity="center"
+        android:background="@drawable/bg_border_one" >
+
+        <ImageView
+            android:id="@+id/iv_up_newphoto"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:scaleType="centerCrop" />
+
+        <ImageView
+            android:id="@+id/iv_isnew"
+            style="@style/LyWHSecond"
+            android:layout_gravity="top|left"
+            android:background="@drawable/new_top" />
+    </FrameLayout>
+
+</LinearLayout>

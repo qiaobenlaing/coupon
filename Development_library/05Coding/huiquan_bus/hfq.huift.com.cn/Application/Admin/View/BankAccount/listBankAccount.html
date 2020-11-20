@@ -1,0 +1,62 @@
+<layout name="layout_admin" />
+<div>
+    <form class="form-inline" id="data_search_form" action="#" method="get">
+        <div class="form-group">
+            <label for="order-nbr">订单号</label>
+            <input type="text" class="form-control" name="orderNbr" id="order-nbr" value="{$get.orderNbr}" placeholder="订单号"/>
+        </div>
+        <div class="form-group">
+            <label for="user-mobile-nbr">用户手机号</label>
+            <input type="text" class="form-control" name="userMobileNbr" id="user-mobile-nbr" value="{$get.userMobileNbr}" placeholder="用户手机号"/>
+        </div>
+    	<div class="form-group">
+            <label for="start-time">创建时间</label>
+            <input type="text" class="form_datetime form-control ipt-date-time-picker" name="startTime" value="{$get.startTime}" placeholder="开始时间" readonly id="start-time">
+        </div>
+        <div class="form-group">
+            <label for="end-time">至</label>
+            <input type="text" class="form_datetime form-control ipt-date-time-picker" name="endTime" value="{$get.endTime}" placeholder="结束时间" readonly id="end-time">
+        </div>
+        <div class="form-group">
+            <label for="mobile-nbr">预留手机号</label>
+            <input type="text" class="form-control" name="mobileNbr" id="mobile-nbr" value="{$get.mobileNbr}" placeholder="手机号码"/>
+        </div>
+        <div class="form-group">
+            <label for="status">签约状态</label>
+            <select name="status[]" class="js-status-select" id="status" multiple="multiple">
+                <option value=""></option>
+                <option value="0" <foreach name="get.status" item="item"><eq name="item" value="0">selected="selected"</eq></foreach>>禁用</option>
+                <option value="1" <foreach name="get.status" item="item"><eq name="item" value="1">selected="selected"</eq></foreach>>未签订协议</option>
+                <option value="2" <foreach name="get.status" item="item"><eq name="item" value="2">selected="selected"</eq></foreach>>已签订协议</option>
+                <option value="3" <foreach name="get.status" item="item"><eq name="item" value="3">selected="selected"</eq></foreach>>已解除协议</option>
+                <option value="4" <foreach name="get.status" item="item"><eq name="item" value="4">selected="selected"</eq></foreach>>已取消签订协议</option>
+            </select>
+        </div>
+    	<button type="submit" class="btn btn-primary btn-sm" id="search_form_submit_btn">查询</button>
+        <button type="button" class="btn btn-sm btn-primary" id="export">导出</button>
+        <input type="hidden" id="frm_ele_page" name="page" value="1" />
+    </form>
+</div>
+<div id="data_table_wrapper">
+	<include file="./Application/Admin/View/BankAccount/listBankAccountWidget.html" />
+</div>
+<script>
+    ;(function(){
+        $(".form_datetime").datetimepicker({
+        	format: 'yyyy-mm-dd',
+            autoclose: true,
+            todayBtn: true,
+            minView: 'month'
+        });
+        // 初始化签约状态选择框
+        $('.js-status-select').select2({
+            placeholder: "签约状态（多选）"
+        });
+
+        // 导出信息
+        $('#export').click(function(){
+            var frm = $('#data_search_form');
+            location.href = '/Admin/BankAccount/exportBankAccount?' + frm.serialize() + '&page=0';
+        });
+    })();
+</script>

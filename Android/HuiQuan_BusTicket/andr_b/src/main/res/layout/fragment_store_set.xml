@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/LyOutSet"
+    android:background="@color/white" >
+
+    <include layout="@layout/common_title_commit" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:scrollbars="none" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@color/app_item_bg"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:id="@+id/ly_nodate"
+                style="@style/LyWHFirst"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:visibility="visible" >
+
+                <ProgressBar
+                    android:id="@+id/prog_nodata"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="正在加载数据" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ly_content"
+                style="@style/LyWHFourth"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    style="@style/LyWHFourth"
+                    android:layout_height="48dp"
+                    android:background="@color/white" >
+
+                    <TextView
+                        style="@style/LyWHSecond"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="10dp"
+                        android:text="店长"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <TextView style="@style/VLine" />
+
+                <LinearLayout
+                    style="@style/LyWHFourth"
+                    android:layout_height="48dp"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/tv_set_manager_name"
+                        style="@style/LyWHSecond"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="10dp"
+                        android:text="大店长姓名:"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/tv_set_manager_phone"
+                        style="@style/LyWHSecond"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="10dp"
+                        android:text="15868179748"
+                        android:textSize="18sp" />
+                </LinearLayout>
+
+                <TextView style="@style/VLine" />
+
+                <LinearLayout
+                    style="@style/LyWHFourth"
+                    android:layout_height="48dp"
+                    android:background="@color/app_bg" >
+
+                    <TextView
+                        style="@style/LyWHSecond"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="10dp"
+                        android:text="门店管理"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <TextView style="@style/VLine" />
+
+                <com.huift.hfq.base.view.MyListView
+                    android:id="@+id/lv_store_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:cacheColorHint="#00000000"
+                    android:divider="@color/light_grey"
+                    android:dividerHeight="0.5dp"
+                    android:scrollbars="none" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/LyOutSet" >
+
+    <include layout="@layout/common_title_commit" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none" >
+
+        <LinearLayout
+            style="@style/LyWHFourth"
+            android:orientation="vertical" >
+
+            <TextView
+                style="@style/VSpace"
+                android:background="@color/app_bg" />
+
+            <RelativeLayout
+                style="@style/LyWHFourth"
+                android:layout_height="@dimen/navigation_bar"
+                android:background="@color/white" >
+
+                <TextView
+                    style="@style/LyWHSecond"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:text="商家名称"
+                    android:textColor="@color/pop_textcolor"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tv_shop_name"
+                    style="@style/LyWHSecond"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:textColor="@color/pop_textcolor"
+                    android:textSize="16sp" />
+            </RelativeLayout>
+
+            <TextView
+                style="@style/VLine"
+                android:layout_height="0.5dp"
+                android:background="@color/shallow_gray" />
+
+            <RelativeLayout
+                style="@style/LyWHFourth"
+                android:background="@color/white"
+                android:minHeight="@dimen/layout_mheight" >
+
+                <LinearLayout
+                    style="@style/LyWHFourth"
+                    android:layout_centerInParent="true"
+                    android:gravity="center|left"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        style="@style/LyWHSecond"
+                        android:layout_marginLeft="10dp"
+                        android:text="优惠劵:"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/tv_coupontype"
+                        style="@style/LyWHSecond"
+                        android:layout_marginLeft="10dp"
+                        android:textColor="@color/pop_textcolor"
+                        android:textSize="16sp" />
+                </LinearLayout>
+            </RelativeLayout>
+
+            <TextView
+                style="@style/VLine"
+                android:layout_height="0.5dp"
+                android:background="@color/shallow_gray" />
+
+            <RelativeLayout
+                style="@style/LyWHFourth"
+                android:background="@color/white"
+                android:minHeight="@dimen/layout_mheight" >
+
+                <LinearLayout
+                    style="@style/LyWHFourth"
+                    android:layout_centerInParent="true"
+                    android:gravity="center|left"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        style="@style/LyWHSecond"
+                        android:layout_marginLeft="10dp"
+                        android:text="优惠劵说明:"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/tv_coupon_detail"
+                        style="@style/LyWHSecond"
+                        android:layout_marginLeft="10dp"
+                        android:textColor="@color/pop_textcolor"
+                        android:textSize="16sp" />
+                </LinearLayout>
+            </RelativeLayout>
+
+            <TextView
+                style="@style/VLine"
+                android:layout_height="0.5dp"
+                android:background="@color/shallow_gray" />
+
+            <RelativeLayout
+                style="@style/LyWHFourth"
+                android:layout_height="@dimen/navigation_bar"
+                android:background="@color/white" >
+
+                <TextView
+                    style="@style/LyWHSecond"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:text="支付"
+                    android:textColor="@color/pop_textcolor"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tv_pay_money"
+                    style="@style/LyWHSecond"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:text="@string/num_zero"
+                    android:textColor="@color/red"
+                    android:textSize="16sp" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/ly_shopdetail"
+                style="@style/LyWHFourth"
+                android:layout_height="wrap_content"
+                android:background="@color/app_bg"
+                android:gravity="center"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/tv_paycard"
+                    style="@style/LyWHSecond"
+                    android:layout_height="@dimen/layout_height"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/login_btn"
+                    android:gravity="center"
+                    android:text="刷卡支付"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/tv_onlinepay"
+                    style="@style/LyWHSecond"
+                    android:layout_height="@dimen/layout_height"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/login_btn"
+                    android:gravity="center"
+                    android:text="@string/btn_icbc_pay"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

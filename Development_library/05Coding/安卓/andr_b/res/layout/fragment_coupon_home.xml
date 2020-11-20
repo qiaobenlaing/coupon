@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/LyOutSet"
+    android:background="@color/white" >
+
+    <include layout="@layout/common_title_home" />
+
+    <ScrollView
+        android:id="@+id/sv_coupon"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:fadingEdge="vertical"
+        android:scrollbars="none" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/bgall"
+            android:orientation="vertical" >
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
+
+                    <RelativeLayout
+                        android:id="@+id/rl_couponfirst"
+                        style="@style/LyWHFourth"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/right_allcoupon" >
+
+                        <LinearLayout
+                            android:id="@+id/ly_couponpic"
+                            android:layout_width="80dp"
+                            android:layout_height="wrap_content"
+                            android:layout_alignBottom="@+id/home_coupon_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignTop="@+id/home_coupon_content"
+                            android:background="@drawable/no_data"
+                            android:gravity="center_vertical"
+                            android:orientation="vertical" >
+
+                            <LinearLayout
+                                style="@style/LyWHFourth"
+                                android:gravity="center_horizontal"
+                                android:orientation="horizontal" >
+
+                                <TextView
+                                    android:id="@+id/tv_money"
+                                    style="@style/LyWHSecond"
+                                    android:text="@string/home_money"
+                                    android:textColor="@color/white"
+                                    android:textSize="16sp" />
+
+                                <TextView
+                                    android:id="@+id/tv_insteadPrice"
+                                    style="@style/LyWHSecond"
+                                    android:text="0"
+                                    android:textColor="@color/white"
+                                    android:textSize="22sp" />
+
+                                <TextView
+                                    android:id="@+id/tv_symbol"
+                                    style="@style/LyWHSecond"
+                                    android:text="@string/home_discount"
+                                    android:textColor="@color/white"
+                                    android:textSize="16sp"
+                                    android:visibility="gone" />
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/home_coupon_content"
+                            style="@style/LyWHFourth"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="10dp"
+                            android:layout_toRightOf="@+id/ly_couponpic"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp" >
+
+                            <TextView
+                                android:id="@+id/coupon_batch"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentLeft="true"
+                                android:layout_marginBottom="5dp"
+                                android:text="批次:0"
+                                android:textColor="@color/coupon_hometopfont" />
+
+                            <TextView
+                                android:id="@+id/coupon_available"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentLeft="true"
+                                android:layout_below="@+id/coupon_batch"
+                                android:layout_marginBottom="5dp"
+                                android:layout_toLeftOf="@+id/iv_share"
+                                android:text="满0减0元"
+                                android:textColor="@color/coupon_hometopfont" />
+
+                            <ImageView
+                                android:id="@+id/iv_share"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_toLeftOf="@+id/btn_draw"
+                                android:paddingRight="5dp"
+                                android:src="@drawable/share"
+                                android:visibility="invisible" />
+
+                            <Button
+                                android:id="@+id/btn_draw"
+                                android:layout_width="wrap_content"
+                                android:layout_height="30dp"
+                                android:layout_alignParentRight="true"
+                                android:layout_marginRight="10dp"
+                                android:layout_marginTop="5dp"
+                                android:background="@drawable/enroll_nomal"
+                                android:text="领取人员"
+                                android:textColor="@color/red"
+                                android:textSize="12sp" />
+
+                            <LinearLayout
+                                android:id="@+id/ly_progess"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/coupon_available"
+                                android:layout_marginBottom="5dp"
+                                android:layout_marginRight="5dp"
+                                android:orientation="vertical" >
+
+                                <com.huift.hfq.base.utils.MyProgress
+                                    android:id="@+id/progress_drawcoupon"
+                                    style="@style/StyleProgressBarMini"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="10dp"
+                                    android:layout_marginBottom="5dp"
+                                    android:layout_marginRight="5dp"
+                                    android:background="@drawable/shape_progressbar_bg"
+                                    android:minWidth="150dp" />
+
+                                <TextView
+                                    android:id="@+id/coupon_percentage"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="已领取 0%(0/0)"
+                                    android:textColor="@color/coupon_hometopfont"
+                                    android:textSize="12sp" />
+                            </LinearLayout>
+                        </RelativeLayout>
+
+                        <LinearLayout
+                            android:layout_width="80dp"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/ly_couponpic"
+                            android:layout_marginTop="-18dp"
+                            android:gravity="center_horizontal" >
+
+                            <TextView
+                                android:id="@+id/tv_coupontype"
+                                style="@style/LyWHSecond"
+                                android:text="实物券"
+                                android:textColor="@color/white"
+                                android:textSize="12sp"
+                                android:visibility="visible" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/ly_home_unavailable"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_centerVertical="true"
+                            android:visibility="gone" >
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:scaleType="centerInside"
+                                android:src="@drawable/unavailable" />
+                        </LinearLayout>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/rl_issuecoupon"
+                        style="@style/LyWHFourth"
+                        android:layout_marginBottom="10dp"
+                        android:background="@color/white" >
+
+                        <TextView
+                            style="@style/Tv_CouponTopFont"
+                            android:layout_alignParentLeft="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="10dp"
+                            android:text="@string/add_coupon" />
+
+                        <ImageView
+                            android:id="@+id/coupon_arrow"
+                            style="@style/Tv_CouponTopFont"
+                            android:layout_height="48dp"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginRight="10dp"
+                            android:src="@drawable/shop_arrow" />
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        style="@style/LyWHFourth"
+                        android:layout_gravity="center_vertical"
+                        android:background="@color/white"
+                        android:orientation="vertical" >
+
+                        <LinearLayout style="@style/Ly_cardhome_top" >
+
+                            <TextView
+                                style="@style/Tv_CouponTopFont"
+                                android:text="@string/tv_coupon_batch_title" />
+
+                            <TextView
+                                android:id="@+id/tv_coupon_batch"
+                                style="@style/Tv_cardhome_top" />
+                        </LinearLayout>
+
+                        <TextView style="@style/VLine" />
+
+                        <LinearLayout style="@style/Ly_cardhome_top" >
+
+                            <TextView
+                                style="@style/Tv_CouponTopFont"
+                                android:text="@string/tv_coupon_ddt_money_title" />
+
+                            <TextView
+                                android:id="@+id/tv_coupon_ddt_money"
+                                style="@style/Tv_cardhome_top" />
+                        </LinearLayout>
+
+                        <TextView style="@style/VLine" />
+
+                        <LinearLayout style="@style/Ly_cardhome_top" >
+
+                            <TextView
+                                style="@style/Tv_CouponTopFont"
+                                android:text="@string/tv_coupon_csm_money_title" />
+
+                            <TextView
+                                android:id="@+id/tv_coupon_csm_money"
+                                style="@style/Tv_cardhome_top" />
+                        </LinearLayout>
+
+                        <TextView style="@style/VLine" />
+
+                        <LinearLayout style="@style/Ly_cardhome_top" >
+
+                            <TextView
+                                style="@style/Tv_CouponTopFont"
+                                android:text="@string/tv_coupon_csm_p_title" />
+
+                            <TextView
+                                android:id="@+id/tv_coupon_csm_person"
+                                style="@style/Tv_cardhome_top" />
+                        </LinearLayout>
+
+                        <TextView style="@style/VLine" />
+
+                        <LinearLayout style="@style/Ly_cardhome_top" >
+
+                            <TextView
+                                style="@style/Tv_CouponTopFont"
+                                android:text="@string/tv_coupon_uncsm_title" />
+
+                            <TextView
+                                android:id="@+id/tv_coupon_uncsm_sum"
+                                style="@style/Tv_cardhome_top" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <TextView style="@style/VLine" />
+                    <!--
+            <TextView style="@style/VSpaceSmall"
+                android:background="@color/bgall"/>
+            <TextView style="@style/VSpaceSmall"/>
+            <cn.suanzi.baomi.shop.view.MyGridView
+                android:id="@+id/gv_coupon_query"
+                style="@style/LyWHFirst"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:gravity="center"
+                android:background="@color/white"
+                android:horizontalSpacing="5dp"
+                android:numColumns="2"
+                android:scrollbars="none"
+                android:stretchMode="columnWidth"
+                android:verticalSpacing="5dp" />
+			<TextView style="@style/VSpaceSmall"/>                    -->
+
+                    <TextView
+                        android:id="@+id/tv_coupon_csmchart"
+                        style="@style/LyWHFourth"
+                        android:layout_height="@dimen/navigation_bar"
+                        android:background="@color/bgall"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="10dp"
+                        android:text="@string/tv_coupon_growthchart"
+                        android:textColor="@color/coupon_fontgrey" />
+
+                    <TextView style="@style/VLine" />
+                    <!-- 每批次消费走势图 -->
+
+                    <LinearLayout
+                        style="@style/LyWHFourth"
+                        android:background="@color/white" >
+
+                        <LinearLayout
+                            style="@style/LyWHFourth"
+                            android:layout_margin="10dp"
+                            android:background="@drawable/shape_border_" >
+
+                            <LinearLayout
+                                android:id="@+id/ly_coupon_csmchart"
+                                style="@style/LyWHFourth"
+                                android:layout_height="160dp"
+                                android:layout_margin="5dp"
+                                android:orientation="vertical" >
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <TextView style="@style/VLine" />
+
+                    <TextView
+                        android:id="@+id/tv_coupone_pchart"
+                        style="@style/LyWHFourth"
+                        android:layout_height="@dimen/navigation_bar"
+                        android:background="@color/bgall"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="10dp"
+                        android:text="@string/tv_coupon_igt_chart"
+                        android:textColor="@color/coupon_fontgrey" />
+
+                    <TextView style="@style/VLine" />
+                    <!-- 每批次消费人次走势图 -->
+
+                    <LinearLayout
+                        style="@style/LyWHFourth"
+                        android:background="@color/white" >
+
+                        <LinearLayout
+                            style="@style/LyWHFourth"
+                            android:layout_margin="10dp"
+                            android:background="@drawable/shape_border_" >
+
+                            <LinearLayout
+                                android:id="@+id/ly_coupon_pchart"
+                                style="@style/LyWHFourth"
+                                android:layout_height="160dp"
+                                android:layout_margin="5dp" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <ProgressBar
+                    android:id="@+id/prog_center_nodata"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_gravity="center_horizontal"
+                    android:visibility="visible" />
+            </FrameLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

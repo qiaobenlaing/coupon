@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_bigphoto"
+    style="@style/LyWHFirst"
+    android:background="@color/gray_transparent"
+    android:gravity="center"
+    android:orientation="vertical" >
+
+    <FrameLayout style="@style/LyWHFirst" >
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewPager"
+            style="@style/LyWHFirst" />
+
+        <RelativeLayout
+            style="@style/LyWHFourth"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/tv_del"
+                style="@style/LyWHSecond"
+                android:layout_alignParentTop="true"
+                android:layout_margin="10dp"
+                android:text="@string/btn_take_photo_delete"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_edit"
+                style="@style/LyWHSecond"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:layout_gravity="right"
+                android:layout_margin="10dp"
+                android:text="@string/btn_edit"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+        </RelativeLayout>
+
+        <LinearLayout
+            style="@style/LyWHFourth"
+            android:layout_gravity="bottom"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/tv_name"
+                style="@style/LyWHSecond"
+                android:layout_margin="10dp"
+                android:text="xxx"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+            <RelativeLayout
+                style="@style/LyWHFourth"
+                android:layout_marginBottom="20dp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/tv_product_price"
+                    style="@style/LyWHSecond"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:layout_margin="10dp"
+                    android:layout_toLeftOf="@+id/tv_num"
+                    android:text="￥xxxx"
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tv_num"
+                    style="@style/LyWHSecond"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="right"
+                    android:layout_marginRight="10dp"
+                    android:text="50"
+                    android:textColor="@color/white" />
+            </RelativeLayout>
+        </LinearLayout>
+    </FrameLayout>
+
+</LinearLayout>

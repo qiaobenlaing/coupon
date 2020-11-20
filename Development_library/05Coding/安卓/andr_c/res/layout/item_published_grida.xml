@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <FrameLayout
+         android:id="@+id/fl_msg"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content">
+         
+        <ImageView
+	        android:id="@+id/item_errorinfo_image"
+	        android:layout_width="@dimen/layout_lheight"
+	        android:layout_height="@dimen/layout_lheight"
+	        android:scaleType="centerCrop"
+	        android:src="@drawable/ic_launcher" />
+          
+        <TextView
+	       android:id="@+id/ly_image_cancel"
+	       android:layout_width="25dp"
+	       android:layout_height="25dp"
+	       android:layout_gravity="right"
+	       android:background="@drawable/image_cancel"
+	       android:gravity="center_vertical|center_horizontal"
+	       android:textColor="@color/white"
+	       android:textSize="12sp"
+	       android:visibility="visible" />
+    
+	</FrameLayout>
+
+</LinearLayout>

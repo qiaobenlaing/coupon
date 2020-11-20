@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="menuTitle">
+        <item>N元购</item>
+        <item>满就减</item>
+        <item>满就送</item>
+        <item>限时购</item>
+        <item>实物券</item>
+        <item>体验券</item>
+    </string-array>
+    <!-- 会员卡等级 -->
+    <string-array name="gradeTitle">
+        <item>	1  </item>
+        <item>	2  </item>
+        <item> 3  </item>
+        <item> 4  </item>
+        <item> 5  </item>
+    </string-array>
+    <string-array name="week">
+        <item>日</item>
+        <item>一</item>
+        <item>二</item>
+        <item>三</item>
+        <item>四</item>
+        <item>五</item>
+        <item>六</item>
+    </string-array>
+
+</resources>

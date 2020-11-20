@@ -1,0 +1,19 @@
+<layout name="layout_admin" />
+<form class="form-inline" role="form" id="data_search_form" action="#" method="get">
+    <div class="form-group">
+        <label for="name">名称</label>
+        <input type="text" class="form-control" id="name" placeholder="名称" name="name" value="{$get.name}">
+    </div>
+    <button type="submit" class="btn btn-primary btn-sm" id="search_form_submit_btn">查询</button>
+    <input type="hidden" id="frm_ele_page" name="page" value="1" />
+</form>		
+<div id="data_table_wrapper">
+    <h6 style="text-align: left">
+        <span class='required-ele'>*</span>
+        <span><span style="color: red">温馨提示 ：</span>
+           <span>公众号菜单url配置规则：https://{:$_SERVER['HTTP_HOST']}/Admin/OpenId/getUserOpenId?zoneId+所属商圈ID编号</span><br/>
+            <span style="color: grey">例如： https://{:$_SERVER['HTTP_HOST']}/Admin/OpenId/getUserOpenId?zoneId=2 </span>
+        </span>
+    </h6>
+  <include file="./Application/Admin/View/Bank/listBankWidget.html" />
+</div>

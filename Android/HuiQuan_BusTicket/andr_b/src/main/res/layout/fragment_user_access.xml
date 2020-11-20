@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/LyOutSet"
+    android:background="@color/white" >
+
+    <include layout="@layout/common_title_commit" />
+
+    <LinearLayout
+        style="@style/LyWHFourth"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:id="@+id/iv_access_logo"
+            style="@style/LyWHSecond"
+            android:background="@drawable/total_pageviews" />
+
+        <TextView
+            android:id="@+id/tv_access_count"
+            style="@style/LyWHSecond"
+            android:layout_marginTop="10dp"
+            android:textSize="18sp" />
+
+        <TextView
+            style="@style/LyWHSecond"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:text="总浏览量" />
+    </LinearLayout>
+    <!-- 会员增长走势图 -->
+
+    <LinearLayout
+        style="@style/LyWHFourth"
+        android:background="@drawable/shape_accesscount_border_"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            style="@style/LyWHFourth"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp" >
+
+            <LinearLayout
+                android:id="@+id/ly_today_title"
+                style="@style/LyWHFourth"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/tv_today_title"
+                    style="@style/LyWHSecond"
+                    android:layout_marginLeft="10dp"
+                    android:text="今日访问量" />
+
+                <TextView
+                    style="@style/LyWHFourth"
+                    android:layout_marginRight="10dp"
+                    android:gravity="right"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_today_access"
+                style="@style/LyWHSecond"
+                android:layout_below="@+id/ly_today_title"
+                android:layout_marginLeft="20dp"/>
+        </RelativeLayout>
+
+        <TextView style="@style/VLine" />
+
+        <LinearLayout
+            style="@style/LyWHFourth"
+            android:layout_margin="10dp" >
+
+            <LinearLayout
+                android:id="@+id/ly_user_access"
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                android:layout_margin="5dp"
+                android:background="@color/white"
+                android:orientation="vertical" >
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+    <!--
+          <ProgressBar
+            android:id="@+id/prog_bottom1_nodata"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center"
+            android:visibility="visible" />
+    -->
+
+</LinearLayout>

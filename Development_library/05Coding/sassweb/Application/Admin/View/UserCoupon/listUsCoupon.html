@@ -1,0 +1,80 @@
+<layout name="layout_admin" />
+<div>
+    <form class="form-inline" id="data_search_form" action="#" method="get">
+        <div class="form-group">
+            <label for="mobile-nbr">手机号</label>
+            <input type="text" class="form-control" name="mobileNbr" value="{$get.mobileNbr}" id="mobile-nbr" placeholder="用户手机号">
+        </div>
+        <div class="form-group">
+            <label for="shop-name">商户名</label>
+            <input type="text" class="form-control" name="shopName" value="{$get.shopName}" id="shop-name" placeholder="商户名">
+        </div>
+        <div class="form-group">
+            <label for="batch-nbr">优惠券批次</label>
+            <input type="text" class="form-control" name="batchNbr" value="{$get.batchNbr}" id="batch-nbr" placeholder="优惠券批次">
+        </div>
+        <div class="form-group">
+            <label for="user-coupon-nbr">券号</label>
+            <input type="text" class="form-control" name="userCouponNbr" value="{$get.userCouponNbr}" id="user-coupon-nbr" placeholder="券号">
+        </div>
+        <div class="form-group">
+            <label for="coupon-type">类型</label>
+            <select class="form-control" name="couponType" id="coupon-type">
+                <option value="">全部类型</option>
+                <foreach name="couponTypeList" item="vo">
+                <option value="{$vo.value}" <eq name="get.couponType" value="$vo.value">selected="selected"</eq>>{$vo.name}</option>
+                    </foreach>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="reg-date">领取时间</label>
+            <div class="input-group date reg_date">
+                <input type="text" class="form-control ipt-date-time-picker" id="reg-date" name="applyTimeStart" value="{$get.applyTimeStart}" readonly placeholder="开始时间" />
+                <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="reg-end-date">至</label>
+            <div class="input-group date reg_date">
+                <input type="text" class="form-control ipt-date-time-picker" id="reg-end-date" name="applyTimeEnd" value="{$get.applyTimeEnd}" readonly placeholder="结束时间" />
+                <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="status">状态</label>
+            <div class="form-group">
+                <select class="form-control" name="status" id="status">
+                    <option value="">所有状态</option>
+                    <option value="0" <eq name="get.status" value="0">selected="selected"</eq>>不可用</option>
+                    <option value="1" <eq name="get.status" value="1">selected="selected"</eq>>可用</option>
+                    <option value="2" <eq name="get.status" value="2">selected="selected"</eq>>已使用</option>
+                    <option value="3" <eq name="get.status" value="3">selected="selected"</eq>>冻结</option>
+                </select>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-sm btn-primary" id="search_form_submit_btn">查询</button>
+        <button type="button" class="btn btn-sm btn-primary" id="export">导出</button>
+        <input type="hidden" id="frm_ele_page" name="page" value="1" />
+    </form>
+</div>
+<div id="data_table_wrapper">
+  <include file="./Application/Admin/View/UserCoupon/listUsCouponWidget.html" />
+</div>
+<script>
+    $(function(){
+        $('.reg_date').datetimepicker({
+            format: 'yyyy-mm-dd',
+            autoclose: true,
+            todayBtn: true,
+            minView: 'month',
+            pickerPosition: "bottom-left"
+        });
+        // 导出信息
+        $('#export').click(function(){
+            var frm = $('#data_search_form');
+            location.href = '/Admin/UserCoupon/exportCoupon?' + frm.serialize() + '&page=0';
+        });
+    });
+</script>

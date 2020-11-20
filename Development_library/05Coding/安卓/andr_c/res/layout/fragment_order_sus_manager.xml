@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/LyOutSet"
+    android:background="@color/bgall" >
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/index_swipe_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible" >
+
+        <com.huift.hfq.base.view.XListView
+            android:id="@+id/listView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/app_bg"
+            android:cacheColorHint="#00000000"
+            android:divider="@color/transparent"
+            android:scrollbars="none"
+            android:visibility="visible" />
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+    <include layout="@layout/comm_no_data" />
+
+</FrameLayout>

@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/app_bg" >
+    
+  	<include layout="@layout/common_title_commit" />
+	
+  	<RelativeLayout 
+  	    android:layout_width="match_parent"
+  	    android:layout_height="wrap_content"
+  	   	android:padding="10dp"
+  	   	android:background="@color/app_item_bg">
+  	    <TextView 
+  	        android:layout_width="wrap_content"
+  	        android:layout_height="wrap_content"
+  	        android:text="@string/shop_name"/>
+  	    <TextView 
+  	        android:id="@+id/tv_coupon_buy_shopname"
+  	        android:layout_width="wrap_content"
+  	        android:layout_height="wrap_content"
+  	        android:layout_alignParentRight="true"/>
+  	</RelativeLayout>
+  	
+  	<RelativeLayout 
+  	    android:layout_width="match_parent"
+  	    android:layout_height="wrap_content"
+  	    android:padding="10dp"
+  	    android:layout_marginTop="5dp"
+  	 	android:background="@color/app_item_bg">
+  	    <TextView 
+  	        android:id="@+id/tv_coupon_buy_type"
+  	        android:layout_width="wrap_content"
+  	        android:layout_height="wrap_content"
+  	        android:text="优惠券类型"/>
+  	    
+  	    <TextView 
+  	        android:id="@+id/tv_coupon_buy_describle"
+  	        android:layout_width="wrap_content"
+  	        android:layout_height="wrap_content"
+  	        android:layout_centerHorizontal="true"/>
+  	    <TextView 
+  	        android:id="@+id/tv_coupon_buy_univalent"
+  	        android:layout_width="wrap_content"
+  	        android:layout_height="wrap_content"
+  	        android:layout_alignParentRight="true"/>
+  	</RelativeLayout>
+  	
+  	<RelativeLayout 
+  	    android:layout_width="match_parent"
+  	    android:layout_height="wrap_content"
+  	    android:padding="10dp"
+  	    android:layout_marginTop="5dp"
+  	    android:background="@color/app_item_bg">
+  	    <TextView 
+  	        android:layout_width="wrap_content"
+  	        android:layout_height="wrap_content"
+  	        android:text="@string/count"/>
+  	   
+  
+  	      	<LinearLayout
+  	      	    android:id="@+id/lv_coupon_buy_many"
+  	      	    android:layout_width="wrap_content"
+  	      	    android:layout_height="wrap_content"
+  	      	    android:orientation="horizontal"
+  	      	    android:layout_alignParentRight="true">
+  	      	     <TextView 
+		  	        android:id="@+id/tv_coupon_buy_minus"
+		  	        android:gravity="center"
+		  	        android:layout_width="18dp"
+		  	        android:layout_height="18dp"
+		  	        android:text="-"
+		  	        android:textColor="@color/red"
+		  	        android:background="@drawable/red_border"
+		  	        android:layout_marginRight="5dp"/>
+  	      	    
+		  	     <TextView 
+		  	    	android:id="@+id/tv_coupon_buy_count"
+		  	        android:layout_width="wrap_content"
+		  	        android:layout_height="wrap_content"
+		  	      	android:layout_marginRight="5dp"/>
+  	    
+		  	     <TextView 
+		  	        android:id="@+id/tv_coupon_buy_plus"
+		  	        android:gravity="center"
+		  	        android:layout_width="18dp"
+		  	        android:layout_height="18dp"
+		  	        android:text="+"
+		  	        android:textColor="@color/red"
+		  	        android:background="@drawable/red_border"/>
+  	      	</LinearLayout>
+  	      	
+  	      	<TextView 
+  	      	    android:visibility="gone"
+  	      	    android:id="@+id/tv_coupon_buy_single"
+  	      	    android:layout_width="wrap_content"
+  	      	    android:layout_height="wrap_content"
+  	      	    android:text="1张"
+  	      	    android:layout_alignParentRight="true"/>
+  	</RelativeLayout>
+  	
+  	<RelativeLayout 
+  	    android:id="@+id/rl_coupon_buy_mention"
+  	    android:layout_width="match_parent"
+  	    android:layout_height="wrap_content"
+  	    android:padding="10dp"
+  	    android:layout_marginTop="5dp"
+	    android:background="@color/app_item_bg">
+  	    <TextView 
+  	        android:id="@+id/tv_coupon_buy_limited"
+  	        android:layout_width="wrap_content"
+  	        android:layout_height="wrap_content"
+  	        android:layout_alignParentRight="true"/>
+  	</RelativeLayout>
+  	
+  	<LinearLayout 
+  	    android:layout_width="match_parent"
+  	    android:layout_height="wrap_content"
+  	    android:padding="10dp"
+  	    android:orientation="vertical"
+  	    android:layout_marginTop="5dp"
+  	    android:background="@color/app_item_bg">
+  	    <TextView 
+  	        android:layout_width="wrap_content"
+  	        android:layout_height="wrap_content"
+  	        android:text="优惠券说明"/>
+  	     <TextView 
+  	        android:id="@+id/tv_coupon_buy_remark"
+  	        android:layout_width="wrap_content"
+  	        android:layout_height="wrap_content"
+  	        android:textSize="12sp"/>
+  	</LinearLayout>
+  	
+  	<RelativeLayout 
+  	    android:layout_width="match_parent"
+  	    android:layout_height="wrap_content"
+  	    android:padding="10dp"
+  	    android:layout_marginTop="5dp"
+  	    android:background="@color/app_item_bg">
+  	     <TextView 
+  	         android:layout_width="wrap_content"
+  	         android:layout_height="wrap_content"
+  	         android:text="@string/pay_totalmoney"/>
+  	     
+  	    <TextView 
+  	        android:id="@+id/tv_coupon_buy_pay"
+  	        android:layout_width="wrap_content"
+  	        android:layout_height="wrap_content"
+  	        android:textColor="@color/red"
+  	        android:layout_alignParentRight="true"/>
+  	</RelativeLayout>
+  	
+ 	  <LinearLayout
+         android:id="@+id/ly_plat_bouns"
+         android:layout_width="match_parent"
+         android:layout_height="@dimen/layout_height"
+         android:gravity="center_vertical"
+         android:paddingLeft="10dp"
+         android:paddingRight="10dp"
+         android:layout_marginTop="5dp"
+         android:background="@color/app_item_bg"
+         android:visibility="gone">
+
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="@string/huiquan_bouns"
+             android:textColor="@color/deep_textcolor" />
+
+         <EditText
+             android:id="@+id/platform_bounsprice"
+             android:layout_width="0dp"
+             android:layout_height="wrap_content"
+             android:layout_weight="1"
+             android:background="@color/white"
+             android:gravity="center"
+             android:hint="@string/num_zero"
+             android:inputType="numberDecimal"
+             android:maxLength="6"
+             android:paddingLeft="10dp"
+             android:textColor="@color/red"
+             android:textColorHint="@color/red" />
+
+         <TextView
+             android:id="@+id/platform_bounsmoeny"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_marginLeft="1dp"
+             android:text="@string/money_unit"
+             android:textColor="@color/deep_textcolor" />
+
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_marginLeft="10dp"
+             android:text="@string/platbouns"
+             android:textColor="@color/tv_content_color" />
+
+         <TextView
+             android:id="@+id/plat_canbouns"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_marginLeft="1dp"
+             android:layout_marginRight="1dp"
+             android:text="@string/num_zero"
+             android:textColor="@color/tv_content_color" />
+
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="@string/money_unit"
+             android:textColor="@color/tv_content_color" />
+    </LinearLayout>
+    
+   <LinearLayout
+	   android:id="@+id/ly_shop_bouns"
+	   android:layout_width="match_parent"
+	   android:layout_height="@dimen/layout_height"
+	   android:gravity="center_vertical"
+	   android:paddingLeft="10dp"
+	   android:paddingRight="10dp"
+	   android:layout_marginTop="5dp"
+       android:background="@color/app_item_bg"
+       android:visibility="gone">
+	
+	   <TextView
+	       android:id="@+id/left_three"
+	       android:layout_width="wrap_content"
+	       android:layout_height="wrap_content"
+	       android:text="@string/shop_bouns"
+	       android:textColor="@color/deep_textcolor" />
+	
+	   <EditText
+	       android:id="@+id/shop_bounsprice"
+	       android:layout_width="0dp"
+	       android:layout_height="wrap_content"
+	       android:layout_weight="1"
+	       android:background="@color/white"
+	       android:gravity="center"
+	       android:hint="@string/num_zero"
+	       android:inputType="numberDecimal"
+	       android:maxLength="6"
+	       android:paddingLeft="10dp"
+	       android:textColor="@color/red"
+	       android:textColorHint="@color/red" />
+	
+	   <TextView
+	       android:id="@+id/shop_bounspricemoney"
+	       android:layout_width="wrap_content"
+	       android:layout_height="wrap_content"
+	       android:layout_marginLeft="1dp"
+	       android:text="@string/money_unit"
+	       android:textColor="@color/deep_textcolor" />
+	
+	   <TextView
+	       android:layout_width="wrap_content"
+	       android:layout_height="wrap_content"
+	       android:layout_marginLeft="10dp"
+	       android:text="@string/shopbouns"
+	       android:textColor="@color/tv_content_color" />
+	
+	   <TextView
+	       android:id="@+id/shop_canbouns"
+	       android:layout_width="wrap_content"
+	       android:layout_height="wrap_content"
+	       android:layout_marginLeft="1dp"
+	       android:layout_marginRight="1dp"
+	       android:text="@string/num_zero"
+	       android:textColor="@color/tv_content_color" />
+	
+	   <TextView
+	       android:layout_width="wrap_content"
+	       android:layout_height="wrap_content"
+	       android:text="@string/money_unit"
+	       android:textColor="@color/tv_content_color" />
+    </LinearLayout>
+  	
+  	<View
+  	    android:layout_width="match_parent"
+  	    android:layout_height="0dp"
+  	    android:layout_weight="1"/>
+  	<Button 
+  	    android:id="@+id/btn_coupon_buy"
+  	    android:layout_width="match_parent"
+  	    android:layout_height="wrap_content"
+  	    android:text="@string/btn_icbc_pay"
+  	    android:background="@drawable/login_btn"
+  	    android:layout_gravity="bottom"
+  	    android:layout_margin="10dp"
+  	    android:textColor="@color/white"/>
+</LinearLayout>

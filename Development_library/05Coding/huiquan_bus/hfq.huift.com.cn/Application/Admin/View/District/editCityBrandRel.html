@@ -1,0 +1,109 @@
+<layout name="layout_admin" />
+<div class="row">
+    <div class="col-md-11">
+        <form id="linked_add_form" action="/Admin/District/editCityBrandRel" method="post" class="form-horizontal">
+            <input type="hidden" name="cityId" value="{$cityId}" />
+            <table class="fp-table table table-bordered">
+                <thead>
+                <tr>
+                    <td>品牌</td>
+                    <td>链接类型</td>
+                    <td>内容(链接类型为“H5”,则要填写)</td>
+                </tr>
+                </thead>
+                <tbody>
+                <foreach name="brandList" item="item">
+                    <tr <foreach name="cityBrandRelList" item="linkedBrand"><eq name="linkedBrand.brandId" value="$item.brandId">class="checked_tr"</eq></foreach>>
+                    <td class="brand" data-brand-id="{$item.brandId}">
+                        <label class="checkbox-inline">
+                            <input type="checkbox" name="linkedBrand[]" value="{$item.brandId}" <foreach name="cityBrandRelList" item="linkedBrand"><eq name="linkedBrand.brandId" value="$item.brandId">checked="checked"</eq></foreach>> {$item.brandName}
+                        </label>
+                    </td>
+                    <td class="link">
+                        <label class="radio-inline">
+                            <input type="radio" name="linkType[{$item.brandId}]" value="0" <foreach name="cityBrandRelList" item="linkedBrand"><if condition="$linkedBrand.linkType neq 1 AND $linkedBrand.linkType neq 2 AND $linkedBrand.linkType neq 3">checked="checked"</if></foreach>> H5
+                        </label>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <label class="radio-inline">
+                            <input type="radio" name="linkType[{$item.brandId}]" value="1" <foreach name="cityBrandRelList" item="linkedBrand"><if condition="$linkedBrand.brandId eq $item.brandId AND $linkedBrand.linkType eq 1">checked="checked"</if></foreach>> 商家列表
+                        </label>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <label class="radio-inline">
+                            <input type="radio" name="linkType[{$item.brandId}]" value="2" <foreach name="cityBrandRelList" item="linkedBrand"><if condition="$linkedBrand.brandId eq $item.brandId AND $linkedBrand.linkType eq 2">checked="checked"</if></foreach>> 优惠券列表
+                        </label>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <label class="radio-inline">
+                            <input type="radio" name="linkType[{$item.brandId}]" value="3" <foreach name="cityBrandRelList" item="linkedBrand"><if condition="$linkedBrand.brandId eq $item.brandId AND $linkedBrand.linkType eq 3">checked="checked"</if></foreach>> 工银特惠
+                        </label>
+                    </td>
+                    <td class="content">
+                        <foreach name="cityBrandRelList" item="linkedBrand">
+                            <eq name="linkedBrand.brandId" value="$item.brandId">
+                                <if condition="$linkedBrand.linkType neq 1 AND $linkedBrand.linkType neq 2 AND $linkedBrand.linkType neq 3">
+                                    <input type="text" class="form-control" placeholder="链接" name="content[{$item.brandId}]" value="{$linkedBrand.content}">
+                                    <else />
+                                    <input type="text" class="form-control" placeholder="链接" name="content[{$item.brandId}]" disabled>
+                                </if>
+                            </eq>
+                        </foreach>
+                    </td>
+                    </tr>
+                </foreach>
+                </tbody>
+            </table>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-primary">保存</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<style>
+    .checked_tr{background-color: #C1EDFF;}
+</style>
+<script type="text/javascript">
+    $(function(){
+        $('#linked_add_form').on('submit', function() {
+            $('button[type="submit"]').attr('disabled', true);
+            var frm = $(this);
+            $.post(frm.attr('action'), frm.serialize(), function(resp) {
+                if (resp.status == sz.STATUS_SUCC) {
+                    sz.showSuccMsg(resp.msg, 3);
+                    location.href = '/Admin/District/listCityIndexModule?id={$cityId}';
+                } else {
+                    sz.showErrMsg(resp.msg, 3);
+                    $('button[type="submit"]').attr('disabled', false);
+                }
+            });
+            return false;
+        });
+
+        $('.brand').click(function(){
+            var brandId = $(this).data('brandId');
+            var obj = $(this).parent();
+            var check = obj.find('input[type="checkbox"]').prop('checked');
+            if(check){
+                obj.addClass('checked_tr');
+                var content = obj.find('.content').html();
+                if(content.length <= 45){
+                    obj.find('.content').append('<input type="text" class="form-control" placeholder="链接" name="content['+brandId+']">');
+                }else{
+                    obj.find('input[type="text"]').show();
+                }
+            }else{
+                obj.removeClass('checked_tr');
+                obj.find('input[type="text"]').hide();
+            }
+        });
+
+        $('.link').click(function(){
+            var obj = $(this).parent();
+            obj.find('input[type="radio"]').change(function(){
+                var value = $(this).parent().find('input[type="radio"]:checked').val();
+                if(value == 0){
+                    obj.find('input[type="text"]').attr('disabled', false);
+                }else{
+                    obj.find('input[type="text"]').attr('disabled', true);
+                }
+            });
+        });
+    });
+</script>

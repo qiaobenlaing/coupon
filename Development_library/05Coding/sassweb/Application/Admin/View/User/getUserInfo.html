@@ -1,0 +1,89 @@
+<layout name="layout_admin" />
+<div class="row">
+    <div class="col-md-2">
+        <img src="{$userInfo.avatarUrl}" title="用户头像" alt="用户头像" class="img-responsive img-rounded" style="width: 140px;height: 140px" />
+    </div>
+    <div class="col-md-4">
+        <p>真实姓名：{$userInfo.realName}</p>
+        <p>昵称：{$userInfo.nickName}</p>
+        <p>性别：
+            <if condition="$userInfo.sex EQ M">先生
+            <elseif condition="$userInfo.sex EQ F"/>女士
+            <else/>未知
+            </if>
+        </p>
+        <p>手机号码：{$userInfo.mobileNbr}</p>
+        <p>地区：{$userInfo.province}/{$userInfo.city}/{$userInfo.district}</p>
+    </div>
+    <div class="col-md-4">
+    </div>
+</div>
+<ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active">
+        <a href="#userCouponList" role="tab" data-toggle="tab">用户优惠券</a>
+    </li>
+    <li role="presentation">
+        <a href="#userBonusList" role="tab" data-toggle="tab">用户红包</a>
+    </li>
+    <li role="presentation">
+        <a href="#userCardList" role="tab" data-toggle="tab">用户会员卡</a>
+    </li>
+</ul>
+<div class="tab-content">
+    <form action="#" method="get" id="data_search_form" role="form">
+        <input type="hidden" id="userCode" name="userCode" value="{$userInfo.userCode}"/>
+        <input type="hidden" id="frm_ele_page" name="page" value="1" />
+    </form>
+    <div class="tab-pane active" id='userCouponList' data-url="UserCoupon/getUserCouponList">
+        <div></div>
+    </div>
+    <div class="tab-pane" id='userBonusList' data-url="UserBonus/getUserBonusList">
+        <div></div>
+    </div>
+    <div class="tab-pane" id='userCardList' data-url="UserCard/getUserCardList">
+        <div></div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function(){
+        ;(function(){
+            var divTable = $('div.tab-content div.active');
+            var linkAddress = divTable.data('url');
+            var searchFrm = $(sz.SEARCH_FORM_ID);
+            searchFrm.attr('action','/Admin/'+linkAddress);
+            linkAddress = searchFrm.attr('action');
+            $.get(linkAddress, searchFrm.serialize(),function(resp){
+                if (resp.status == sz.STATUS_SUCC) {
+                    if(resp.html) {
+                        divTable.find('div').html(resp.html);
+                    }else {
+                        divTable.find('div').text('暂无记录!');
+                    }
+                    divTable.find('div').attr('id','data_table_wrapper');
+                } else {
+                    sz.showErrMsg(resp.msg);
+                }
+            });
+        })();
+        $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+            var divTable = $('div.tab-content div.active');
+            var linkAddress = divTable.data('url');
+            var searchFrm = $(sz.SEARCH_FORM_ID);
+            searchFrm.attr('action','/Admin/'+linkAddress);
+            linkAddress = searchFrm.attr('action');
+            $.get(linkAddress, searchFrm.serialize(),function(resp){
+                if (resp.status == sz.STATUS_SUCC) {
+                    if(resp.html) {
+                        divTable.find('div').html(resp.html);
+                    }else {
+                        divTable.find('div').text('暂无记录!');
+                    }
+                    $(sz.DATA_LIST_TABLE_WRAPPER_ID).removeAttr('id');
+                    divTable.find('div').attr('id','data_table_wrapper');
+                } else {
+                    sz.showErrMsg(resp.msg);
+                }
+            });
+        })
+    });
+</script>

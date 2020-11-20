@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/LyOutSet_" >
+
+    <include layout="@layout/common_title_home" />
+
+    <!-- 每批优惠券设置列表 -->
+
+    <com.huift.hfq.base.view.XListView
+        android:id="@+id/lv_coupon_csm_dtl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:cacheColorHint="#00000000"
+        android:divider="@color/white"
+        android:dividerHeight="0dp" >
+    </com.huift.hfq.base.view.XListView>
+
+    <LinearLayout
+        android:id="@+id/ly_nodate"
+        style="@style/LyWHFirst"
+        android:background="@color/nodate_bg"
+        android:gravity="center"
+        android:visibility="gone" >
+
+        <ImageView
+            style="@style/LyWHSecond"
+            android:layout_gravity="center"
+            android:scaleType="center"
+            android:src="@drawable/no_data" />
+    </LinearLayout>
+
+</LinearLayout>

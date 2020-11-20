@@ -1,0 +1,465 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--
+        Base application theme, dependent on API level. This theme is replaced
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+    -->
+    <style name="AppBaseTheme" parent="android:Theme.Light">
+        <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        -->
+    </style>
+    
+    
+
+    <!-- Application theme. -->
+    <style name="AppTheme" parent="AppBaseTheme">
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
+    <!-- comm -->
+    <style name="LyWHFirst">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <style name="mycommoned">
+        <item name="android:background">@color/red</item>
+    </style>
+
+    <style name="LyWHSecond">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="LyWHThird">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <style name="LyWHFourth">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    <!-- 垂直方向的空白空间 -->
+    <style name="VSpace">
+        <item name="android:background">@color/app_bg</item>
+        <item name="android:layout_height">16dp</item>
+        <item name="android:layout_width">fill_parent</item>
+    </style>
+
+    <style name="VSpaceN">
+        <item name="android:layout_height">16dp</item>
+        <item name="android:layout_width">fill_parent</item>
+    </style>
+
+    <style name="VLineH">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0.5dp</item>
+        <item name="android:background">@color/shopdetail_divider</item>
+    </style>
+
+    <style name="VLineV">
+        <item name="android:layout_width">0.5px</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@color/line_gray</item>
+    </style>
+
+    <style name="EdtInput">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/sel_edt_input</item>
+    </style>
+
+    <style name="LyCommSet">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:focusable">true</item>
+        <item name="android:focusableInTouchMode">true</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:background">@color/app_bg</item>
+    </style>
+
+    <style name="LyCommSet_">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:background">@color/app_bg</item>
+    </style>
+    <!-- 对图片进行设置 -->
+    <style name="IvStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="linear_bottom">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="rbt_bottom">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:button">@null</item>
+        <item name="android:ellipsize">marquee</item>
+        <item name="android:paddingBottom">2dp</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="homerbt_bottom">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:button">@null</item>
+        <item name="android:ellipsize">marquee</item>
+        <item name="android:paddingBottom">2dp</item>
+        <item name="android:paddingTop">2dp</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/home_font</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_marginBottom">10dp</item>
+    </style>
+    <!-- CardListActivity -->
+    <!-- 对一般的Button控件进行设置 -->
+    <style name="BtnContent">
+        <item name="android:layout_width">90dp</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:background">@drawable/shape_btncardset</item>
+        <item name="android:focusable">true</item>
+        <item name="android:textColor">#3333CC</item>
+        <item name="android:layout_marginTop">3dp</item>
+        <item name="android:layout_marginBottom">3dp</item>
+    </style>
+    <!-- 对一般的ImageView控件进行设置 -->
+    <style name="IvContent">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    <!-- 对一般的TextView控件进行设置 -->
+    <style name="TvContent">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:layout_marginLeft">20dp</item>
+    </style>
+    <!-- 对一般的LinerLayout控件进行设置 -->
+    <style name="LyContent">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">47dp</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <!-- 对一般的TextView控件进行设置 -->
+    <style name="TvStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">5dp</item>
+    </style>
+
+    <style name="TvSet">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    <!-- homeFragment -->
+    <style name="ViewSet">
+        <item name="android:layout_width">5dip</item>
+        <item name="android:layout_height">5dip</item>
+        <item name="android:layout_marginLeft">2dip</item>
+        <item name="android:layout_marginRight">2dip</item>
+        <item name="android:background">@drawable/dot_normal</item>
+    </style>
+
+    <style name="IvImage">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">18dp</item>
+    </style>
+
+    <style name="IvShopTypeImage">
+        <item name="android:layout_width">48dp</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:layout_marginTop">8dp</item>
+    </style>
+
+    <style name="TvHomeImge">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">8dp</item>
+    </style>
+
+    <style name="BtnActTime">
+        <item name="android:layout_width">30dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/countdown_box</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/red</item>
+    </style>
+
+    <!-- 对EditText进行设置 -->
+    <style name="MyEditText">
+        <item name="android:layout_width">230dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">5dp</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
+    <!-- 下拉列表 -->
+    <style name="mySpinner">
+        <item name="android:layout_width">230dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <!-- 银行卡详情  LinerLayout -->
+    <style name="LyContentBank">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:padding">10dp</item>
+    </style>
+    <!-- 银行卡详情 ImageView -->
+    <style name="IvBankImage">
+        <item name="android:layout_width">30dp</item>
+        <item name="android:layout_height">30dp</item>
+    </style>
+    <!-- 银行卡详情  EditText -->
+    <style name="EtBank">
+        <item name="android:layout_width">130dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">8dp</item>
+    </style>
+    <!-- 对银行卡LinerLayout控件进行设置 -->
+    <style name="LyBankContent">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:paddingBottom">5dp</item>
+    </style>
+
+    <style name="Tv_cardhome_center">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">30dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:layout_marginBottom">3dp</item>
+    </style>
+    <!-- 与会员交流界面 -->
+    <style name="chat_text_date_style">
+        <item name="android:padding">2dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:background">#bfbfbf</item>
+    </style>
+
+    <style name="chat_content_date_style">
+        <item name="android:minHeight">50dp</item>
+        <item name="android:gravity">left|center</item>
+        <item name="android:textColor">#000000</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:lineSpacingExtra">2dp</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="android:background">#bfbfbf</item>
+    </style>
+
+    <style name="chat_text_name_style">
+        <item name="android:textColor">#818181</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="LyCradGradeImage">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginRight">10dp</item>
+        <item name="android:layout_marginLeft">10dp</item>
+    </style>
+    <!-- 会员卡等级显示界面 -->
+    <style name="LyCradGradeSet">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">58dp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+    <!-- 我的消息 -->
+    <style name="MsgBtn">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:focusable">true</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/red</item>
+    </style>
+
+    <style name="Tv_CouponSetFont">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/home_topfont</item>
+        <item name="android:singleLine">true</item>
+    </style>
+    <!-- 窗口模式activity样式 -->
+    <style name="activity_dialog_style">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+        <item name="android:backgroundDimEnabled">true</item>
+    </style>
+
+    <style name="information_style">
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">right</item>
+        <item name="android:background">@null</item>
+    </style>
+    <!-- shopFragment -->
+    <style name="btn_shop">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:gravity">center_vertical|center_horizontal</item>
+    </style>
+    <!-- 登陆对话框 -->
+    <style name="dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:backgroundDimAmount">0.6</item>
+        <!-- 灰度 -->
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <!-- 活动退款UI -->
+    <style name="tvActRefund">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">5dp</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+    <!-- 活动退款金额布局 -->
+    <style name="tvActRefundPrice">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/prompt_font</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+    <!-- 活动退款金额布局 -->
+    <style name="rlActRefundPrice">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingBottom">5dp</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingRight">10dp</item>
+        <item name="android:background">@color/white</item>
+    </style>
+    <!-- 活动退款原因 -->
+    <style name="rlActRefundReason">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingRight">10dp</item>
+        <item name="android:background">@color/white</item>
+    </style>
+    <!-- 活动退款原因 -->
+    <style name="tvActRefundReason">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingBottom">10dp</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+    <!-- 活动退款建议 -->
+    <style name="edtActRefundSuggest">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingBottom">8dp</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:layout_marginRight">10dp</item>
+        <item name="android:background">@drawable/shape_act_refund_border</item>
+        <item name="android:gravity">top</item>
+        <item name="android:maxLines">7</item>
+        <item name="android:minLines">5</item>
+        <item name="android:scrollbars">vertical</item>
+        <item name="android:padding">5dp</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+    <!-- 选中原因 -->
+    <style name="ckbActRefundReason">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingBottom">8dp</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingRight">8dp</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:background">@drawable/radio_no</item>
+    </style>
+    <!-- 圈广场 -->
+    <style name="tvCircleTitle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:layout_marginRight">10dp</item>
+    </style>
+    <!-- 圈广场 -->
+    <style name="tvViewLine">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">3dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:layout_marginRight">10dp</item>
+    </style>
+    <!-- 圈广场 -->
+    <style name="lyCircleView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+    <!-- 圈广场 -->
+     <style name="VLineVCircle">
+        <item name="android:layout_width">1dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@color/line_gray</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_marginBottom">10dp</item>
+    </style>
+    <!-- 扫描支付成功  -->
+     <style name="rlScanPaySucc">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingBottom">10dp</item>
+    </style>
+     <style name="tvScanPayLeft">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+     <style name="tvScanPayRight">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:paddingRight">10dp</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/gray</item>
+    </style>
+    
+
+</resources>

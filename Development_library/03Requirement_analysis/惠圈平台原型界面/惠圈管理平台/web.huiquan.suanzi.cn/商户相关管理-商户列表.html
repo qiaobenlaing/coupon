@@ -1,0 +1,1643 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>惠圈商圈服务平台</title>
+    <link href="css/bootstrap.min_14.css" rel="stylesheet">
+    <link href="css/admin_7.css" rel="stylesheet">
+    <link href="css/bootstrap.min_15.css" rel="stylesheet">
+    <link href="css/bootstrap-datetimepicker.min_7.css" rel="stylesheet">
+    <link href="css/umeditor.min_7.css" type="text/css" rel="stylesheet">
+    <link href="css/jasny-bootstrap.min_7.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/main_7.css" />
+    <link rel="stylesheet" type="text/css" href="css/select2.min_7.css" />
+    <script src="js/jquery.min_7.js"></script>
+    <script src="js/bootstrap.min_7.js"></script>
+    <script type="text/javascript" src="js/bootstrap-datetimepicker_6.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="js/bootstrap-datetimepicker.fr_7.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="js/admin_7.js" charset="UTF-8"></script>
+    <script src="js/bootbox_7.js" charset="UTF-8"></script>
+    <script src="js/demos_7.js" charset="UTF-8"></script>
+    <script src="js/jasny-bootstrap.min_7.js" charset="UTF-8"></script>
+    <script src="js/example_7.js" charset="UTF-8"></script>
+    <script src="js/select2.min_7.js"></script>
+</head>
+<body data-spy="scroll" data-target="#myScrollspy">
+<div class="container-fluid">
+    <div class="alert alert-success alert-fixed-top alert-top-tip" style='display: none;text-align: center;'></div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="header_top">
+                <div class="col-md-10 col-sm-9 col-xs-9">
+                    <a href="/Admin/BmStaff/homepage" class='logo'>惠圈移动商圈服务平台</a>
+                </div>
+                <div class="col-md-2 col-sm-3 col-xs-3 login-info">
+                    <span>用户: </span>
+                    <span><a href="/Admin/BmStaff/editBmStaff?mobileNbr=15868179748">季华飞</a></span>
+                    <a href="/Admin/BmStaff/logout">退出</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <nav class="navbar navbar-default col-xs-12 col-sm-2 col-md-2" role="navigation" style="background-color: #fff;border: 0px">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#toall-nav" aria-expanded="false">
+                    <span class="sr-only">菜单</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!--<a class="navbar-brand" href="#">Brand</a>-->
+            </div>
+            <div class="collapse navbar-collapse"  id='toall-nav' >
+                <ul class="nav nav-stacked nav-tabs-totall" id="menu-bar">
+                    <li class="panel dropdown panel-active">
+                                                            <a data-toggle="collapse" data-parent="#menu-bar" href="#submenu_preShop" class='panel-active-a collapsed'>地推商户</a>
+                                <ul id='submenu_preShop' class="panel-collapse collapse">
+                                                                                                                    <li class='nav_second'><a href="/Admin/PreShop/listPreShop">商户列表</a></li>                                            <li class='nav_second'><a href="/Admin/PreShop/dataExport">数据导出</a></li>                                </ul>
+                        </li><li class="panel dropdown panel-active">
+                                                            <a data-toggle="collapse" data-parent="#menu-bar" href="#submenu_brand" class='panel-active-a collapsed'>品牌管理</a>
+                                <ul id='submenu_brand' class="panel-collapse collapse">
+                                                                                                                    <li class='nav_second'><a href="/Admin/Brand/listBrand">品牌列表</a></li>                                            <li class='nav_second'><a href="/Admin/Brand/editBrand">编辑品牌</a></li>                                </ul>
+                        </li><li class="panel dropdown panel-active">
+                                                        <a data-toggle="collapse" data-parent="#menu-bar" href="#submenu_shop" class='panel-active-a menu-focus'>商户相关管理</a>
+                            <ul id='submenu_shop' class="panel-collapse in">
+                                                                    <li class='nav_second submenu-focus'><a href="/Admin/Shop/listShop">商户列表</a></li>
+                                                                                        <li class='nav_second'><a href="/Admin/Shop/editShop">编辑商户</a></li>                                            <li class='nav_second'><a href="/Admin/Shop/listApply">商户入驻申请</a></li>                                            <li class='nav_second'><a href="/Admin/ShopStaff/listShopStaff">商户员工列表</a></li>                                            <li class='nav_second'><a href="/Admin/ShopStaff/editShopStaff">编辑商户员工</a></li>                                            <li class='nav_second'><a href="/Admin/BatchCoupon/listSpCoupon">商户优惠券列表</a></li>                                            <li class='nav_second'><a href="/Admin/BatchCoupon/editCoupon">编辑优惠券</a></li>                                            <li class='nav_second'><a href="/Admin/ConsumeOrder/listConsumeOrder">商户订单列表</a></li>                                            <li class='nav_second'><a href="/Admin/UserConsume/listUserConsume">账单列表</a></li>                                            <li class='nav_second'><a href="/Admin/Bonus/listSpBonus">商户红包列表</a></li>                                            <li class='nav_second'><a href="/Admin/Bonus/editBonus">编辑红包</a></li>                                            <li class='nav_second'><a href="/Admin/Activity/listSpActivity">商户活动列表</a></li>                                            <li class='nav_second'><a href="/Admin/Activity/editActivity">编辑活动</a></li>                                            <li class='nav_second'><a href="/Admin/Card/listCard">商户会员卡列表</a></li>                                            <li class='nav_second'><a href="/Admin/Card/editCard">编辑会员卡</a></li>                                            <li class='nav_second'><a href="/Admin/ShopType/listShopType">商家类型列表</a></li>                                            <li class='nav_second'><a href="/Admin/ShopType/editShopType">编辑商家类型</a></li>                                </ul>
+                        </li><li class="panel dropdown panel-active">
+                                                            <a data-toggle="collapse" data-parent="#menu-bar" href="#submenu_user" class='panel-active-a collapsed'>用户相关管理</a>
+                                <ul id='submenu_user' class="panel-collapse collapse">
+                                                                                                                    <li class='nav_second'><a href="/Admin/User/listUser">用户列表</a></li>                                            <li class='nav_second'><a href="/Admin/User/editUser">用户添加</a></li>                                            <li class='nav_second'><a href="/Admin/UserCard/listUserCard">用户会员卡</a></li>                                            <li class='nav_second'><a href="/Admin/UserCoupon/listUsCoupon">用户优惠券</a></li>                                            <li class='nav_second'><a href="/Admin/UserBonus/listUserBonus">用户红包</a></li>                                            <li class='nav_second'><a href="/Admin/User/listUserPoint">用户圈值</a></li>                                            <li class='nav_second'><a href="/Admin/BankAccount/listBankAccount">用户银行卡</a></li>                                            <li class='nav_second'><a href="/Admin/User/exportExcelRegister">用户绑卡数据导出</a></li>                                </ul>
+                        </li><li class="panel dropdown panel-active">
+                                                            <a data-toggle="collapse" data-parent="#menu-bar" href="#submenu_plat" class='panel-active-a collapsed'>惠圈平台相关管理</a>
+                                <ul id='submenu_plat' class="panel-collapse collapse">
+                                                                                                                    <li class='nav_second'><a href="/Admin/BmStaff/listBmStaff">惠圈平台人员列表</a></li>                                            <li class='nav_second'><a href="/Admin/StaffActionLog/listActionLog">惠圈管理员日志</a></li>                                            <li class='nav_second'><a href="/Admin/BmStaff/editBmStaff">编辑人员</a></li>                                            <li class='nav_second'><a href="/Admin/BatchCoupon/listPfCoupon">惠圈平台优惠券</a></li>                                            <li class='nav_second'><a href="/Admin/BatchCoupon/editCoupon">编辑优惠券</a></li>                                            <li class='nav_second'><a href="/Admin/Bonus/listPfBonus">平台红包列表</a></li>                                            <li class='nav_second'><a href="/Admin/Bonus/editBonus">编辑红包</a></li>                                            <li class='nav_second'><a href="/Admin/Activity/listPfActivity">平台活动列表</a></li>                                            <li class='nav_second'><a href="/Admin/Activity/editActivity">编辑活动</a></li>                                </ul>
+                        </li><li class="panel dropdown panel-active">
+                                                            <a data-toggle="collapse" data-parent="#menu-bar" href="#submenu_activity" class='panel-active-a collapsed'>活动管理</a>
+                                <ul id='submenu_activity' class="panel-collapse collapse">
+                                                                                                                    <li class='nav_second'><a href="/Admin/Activity/listIcbcActivity">工行活动列表</a></li>                                </ul>
+                        </li><li class="panel dropdown panel-active">
+                                                            <a data-toggle="collapse" data-parent="#menu-bar" href="#submenu_message" class='panel-active-a collapsed'>消息管理</a>
+                                <ul id='submenu_message' class="panel-collapse collapse">
+                                                                                                                    <li class='nav_second'><a href="/Admin/Message/listMessage">平台消息</a></li>                                            <li class='nav_second'><a href="/Admin/Message/analysisMessage">消息查询统计</a></li>                                </ul>
+                        </li><li class="panel dropdown panel-active">
+                                                            <a data-toggle="collapse" data-parent="#menu-bar" href="#submenu_feedback" class='panel-active-a collapsed'>投诉反馈</a>
+                                <ul id='submenu_feedback' class="panel-collapse collapse">
+                                                                                                                    <li class='nav_second'><a href="/Admin/Feedback/listShopFeedback">商家反馈</a></li>                                            <li class='nav_second'><a href="/Admin/Feedback/listUserFeedback">用户反馈</a></li>                                </ul>
+                        </li><li class="panel dropdown panel-active">
+                                                            <a data-toggle="collapse" data-parent="#menu-bar" href="#submenu_city" class='panel-active-a collapsed'>城市开通管理</a>
+                                <ul id='submenu_city' class="panel-collapse collapse">
+                                                                                                                    <li class='nav_second'><a href="/Admin/District/listCity">城市列表</a></li>                                </ul>
+                        </li><li class="panel dropdown panel-active">
+                                                            <a data-toggle="collapse" data-parent="#menu-bar" href="#submenu_ShopAppLog" class='panel-active-a collapsed'>APP升级记录</a>
+                                <ul id='submenu_ShopAppLog' class="panel-collapse collapse">
+                                                                                                                    <li class='nav_second'><a href="/Admin/ShopAppLog/listShopAppLog">商家端升级记录</a></li>                                            <li class='nav_second'><a href="/Admin/ShopAppLog/editShopAppLog">编辑商家端升级记录</a></li>                                            <li class='nav_second'><a href="/Admin/ClientAppLog/listClientAppLog">顾客端升级记录</a></li>                                            <li class='nav_second'><a href="/Admin/ClientAppLog/editClientAppLog">编辑顾客端升级记录</a></li>                                            <li class='nav_second'><a href="/Admin/PcAppLog/listPcAppLog">PC端升级记录</a></li>                                            <li class='nav_second'><a href="/Admin/PcAppLog/editPcAppLog">编辑PC端升级记录</a></li>                                </ul>
+                        </li><li class="panel dropdown panel-active">
+                                                            <a data-toggle="collapse" data-parent="#menu-bar" href="#submenu_CrashLog" class='panel-active-a collapsed'>APP崩溃日志</a>
+                                <ul id='submenu_CrashLog' class="panel-collapse collapse">
+                                                                                                                    <li class='nav_second'><a href="/Admin/CrashLog/listClientCrashLog">顾客端APP崩溃日志</a></li>                                            <li class='nav_second'><a href="/Admin/CrashLog/listShopCrashLog">商家端APP崩溃日志</a></li>                                </ul>
+                        </li><li class="panel dropdown panel-active">
+                                                            <a data-toggle="collapse" data-parent="#menu-bar" href="#submenu_Module" class='panel-active-a collapsed'>APP配置管理</a>
+                                <ul id='submenu_Module' class="panel-collapse collapse">
+                                                                                                                    <li class='nav_second'><a href="/Admin/Module/listIndexModule">首页模块列表</a></li>                                            <li class='nav_second'><a href="/Admin/Module/listQuery">筛选条件管理</a></li>                                </ul>
+                        </li><li class="panel dropdown panel-active">
+                                                            <a data-toggle="collapse" data-parent="#menu-bar" href="#submenu_SystemParam" class='panel-active-a collapsed'>系统参数</a>
+                                <ul id='submenu_SystemParam' class="panel-collapse collapse">
+                                                                                                                    <li class='nav_second'><a href="/Admin/SystemParam/listClientSystemParam">顾客端</a></li>                                            <li class='nav_second'><a href="/Admin/SystemParam/listShopSystemParam">商家端</a></li>                                            <li class='nav_second'><a href="/Admin/SystemParam/editSystemParam">编辑系统参数</a></li>                                </ul>
+                        </li><li class="panel dropdown panel-active">
+                                                            <a data-toggle="collapse" data-parent="#menu-bar" href="#submenu_Statistics" class='panel-active-a collapsed'>统计分析</a>
+                                <ul id='submenu_Statistics' class="panel-collapse collapse">
+                                                                                                                    <li class='nav_second'><a href="/Admin/Shop/analysisShop">商户统计分析</a></li>                                            <li class='nav_second'><a href="/Admin/ConsumeOrder/listShopConsumeStatistics">商户订单统计</a></li>                                            <li class='nav_second'><a href="/Admin/ConsumeOrder/listOrderStatisticsByDay">按日订单成交统计</a></li>                                            <li class='nav_second'><a href="/Admin/Card/analysisCard">商户会员卡统计分析</a></li>                                            <li class='nav_second'><a href="/Admin/BatchCoupon/analysisCoupon">商户优惠券统计</a></li>                                            <li class='nav_second'><a href="/Admin/Activity/analysisActivity">活动统计分析</a></li>                                            <li class='nav_second'><a href="/Admin/Bonus/analysisBonus">红包统计分析</a></li>                                            <li class='nav_second'><a href="/Admin/User/userAnalysis">用户统计分析</a></li>                                            <li class='nav_second'><a href="/Admin/User/consumptionStatistics">用户消费统计</a></li>                                            <li class='nav_second'><a href="/Admin/QrCode/listLog">惠圈下载记录</a></li>                                </ul>
+                        </li><li class="panel dropdown panel-active">
+                                                            <a data-toggle="collapse" data-parent="#menu-bar" href="#submenu_QrCode" class='panel-active-a collapsed'>二维码生成</a>
+                                <ul id='submenu_QrCode' class="panel-collapse collapse">
+                                                                                                                    <li class='nav_second'><a href="/Admin/QrCode/cDownloadQC">生成下载惠圈二维码</a></li>                                </ul>
+                        </li><li class="panel dropdown panel-active">
+                                                            <a data-toggle="collapse" data-parent="#menu-bar" href="#submenu_Liquidation" class='panel-active-a collapsed'>商户资金清算</a>
+                                <ul id='submenu_Liquidation' class="panel-collapse collapse">
+                                                                                                                    <li class='nav_second'><a href="/Admin/Liquidation/getLiquidationFileList">文件列表</a></li>                                            <li class='nav_second'><a href="/Admin/Liquidation/getLiquidationRecord">生成请求文件</a></li>                                </ul>
+                        </li>                </ul>
+            </div>
+        </nav>
+        <div class="col-xs-12 col-sm-10 col-md-10">
+            <ol class="breadcrumb">
+                <li><a href="/Admin/Index/index">首页</a></li>                <li class="active">商户列表</li>
+            </ol>
+            
+<div class="container-fluid">
+    <div class="row shop-search-wrap">
+        <form class="form-inline" id="data_search_form" action="#" method="get">
+            <div class="col-md-12">
+                <div style="width: 250px;float: left;">
+                    <div class="form-group">
+                        <label class="sr-only" for="shop-id">商家号</label>
+                        <div class="input-group input-group-sm">
+                            <div class="input-group-addon search-label">商家号</div>
+                            <input type="text" class="form-control" id="shop-id" placeholder="商家号" name="shopId" value="" autocomplete="off">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="sr-only" for="suggest_input">商家名</label>
+                        <div class="input-group input-group-sm">
+                            <div class="input-group-addon search-label">商家名</div>
+                            <input type="text" class="form-control" id="suggest_input" placeholder="商家名" name="shopName" value="" autocomplete="off">
+                            <ul id="suggest_ul"></ul>
+                        </div>
+                    </div>
+                </div>
+                <div style="width: 250px;float: left;">
+                    <div class="form-group">
+                        <label class="sr-only" for="hq-icbc-shop-nbr">内部商户号</label>
+                        <div class="input-group input-group-sm">
+                            <div class="input-group-addon search-label">内部商户号</div>
+                            <input type="text" class="form-control" id="hq-icbc-shop-nbr" placeholder="内部商户号" name="hqIcbcShopNbr" value=""/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="sr-only" for="mobile-nbr">手机号</label>
+                        <div class="input-group input-group-sm">
+                            <div class="input-group-addon search-label">手机号</div>
+                            <input type="text" class="form-control" id="mobile-nbr" placeholder="手机号" name="mobileNbr" value=""/>
+                        </div>
+                    </div>
+                </div>
+                <div style="width: 319px;float: left;">
+                    <div class="form-group">
+                        <label class="sr-only" for="reg-date">注册开始时间</label>
+                        <div class="input-group date reg_date input-group-sm">
+                            <div class="input-group-addon search-label">注册开始时间</div>
+                            <input type="text" class="form-control ipt-date-time-picker" id="reg-date" name="createDateStart" value="" readonly placeholder="开始时间"/>
+                            <div class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></div>
+                            <div class="input-group-addon"><span class="glyphicon glyphicon-th"></span></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="sr-only" for="reg-end-time">注册结束时间</label>
+                        <div class="input-group date reg_date input-group-sm">
+                            <div class="input-group-addon search-label">注册结束时间</div>
+                            <input type="text" class="form-control ipt-date-time-picker" name="createDateEnd" value="" readonly placeholder="结束时间" id="reg-end-time"/>
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+                        </div>
+                    </div>
+                </div>
+                <div style="">
+                    <div class="form-group">
+                        <label class="sr-only" for="status">商户状态</label>
+                        <div class="input-group input-group-sm">
+                            <div class="input-group-addon search-label">商户状态</div>
+                            <select class="form-control" name="status" id="status">
+                                <option value="" selected="selected">所有</option>
+                                <!--<option value="2" >待审核</option>-->
+                                <option value="1" >启用</option>
+                                <option value="0" >禁用</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="sr-only" for="shop-status">入驻状态</label>
+                        <div class="input-group input-group-sm">
+                            <div class="input-group-addon search-label">入驻状态</div>
+                            <select class="form-control" name="shopStatus" id="shop-status">
+                                <option value="" selected="selected">所有</option>
+                                <option value="1" >未入驻</option>
+                                <option value="2" >已入驻</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="sr-only" for="type-id">类型</label>
+                        <div class="input-group input-group-sm">
+                            <div class="input-group-addon search-label">类型</div>
+                            <select class="form-control" name="typeId" id="type-id">
+                                <option value="" selected="selected">所有</option>
+                                <option value="1" >美食</option><option value="2" >丽人</option><option value="3" >健身</option><option value="4" >娱乐</option><option value="5" >其他</option><option value="6" >惠圈平台</option><option value="7" >银行</option><option value="8" >未知</option>                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label class="sr-only" for="slt-province">地区</label>
+                    <div class="input-group input-group-sm">
+                        <div class="input-group-addon search-label">地区</div>
+                        <select class="form-control" name="province" id="slt-province"></select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group input-group-sm">
+                        <!--<div class="input-group-addon"></div>-->
+                        <select class="form-control" name="city" id="slt-city"></select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group input-group-sm">
+                        <select class="form-control" name="district" id="slt-district"></select>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-sm btn-primary" id="search_form_submit_btn">查询</button>
+                <button type="button" class="btn btn-sm btn-primary" id="export-shop">导出EXCEL</button>
+                <button type="button" class="btn btn-sm btn-primary" id="exportAll">商户清算导出</button>
+            </div>
+            <input type="hidden" id="frm_ele_page" name="page" value="1" />
+        </form>
+    </div>
+</div>
+<div id="data_table_wrapper">
+    <table class="fp-table table table-striped table-bordered table-condensed" id="data_table">
+    <thead>
+    <tr>
+        <th style="width: 112px;">商家编码</th>
+        <th>商家号</th>
+        <th>商家名</th>
+        <th>类型</th>
+        <th>预留手机</th>
+        <th>营业执照</th>
+        <th>内部商户号</th>
+        <th>注册时间</th>
+        <th style="width: 53px;">地址</th>
+        <th>大店长</th>
+        <th>红包</th>
+        <th style="width: 80px;">优惠券</th>
+        <th>入驻状态</th>
+        <th style="width: 47px;">状态</th>
+        <th style="width: 95px;">操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+            <td>2ca9f21f-340e-5477-88f4-851364e29f48</td>
+            <td>1603310023</td>
+            <td>
+                <a href="/Admin/Shop/shopInfo?shopCode=2ca9f21f-340e-5477-88f4-851364e29f48">大森保温</a><br/>
+            </td>
+            <td>
+                <span class="label label-6">其他</span><br/>            </td>
+            <td>15355788367</td>
+            <td>331102670062176</td>
+            <td>1210160313</td>
+            <td>2016-03-31 15:33:50</td>
+            <td>浙江省丽水市</td>
+            <td>
+                姓名：金春慧<br/>
+                手机号：15355788367                <a href="/Admin/Shop/editShopStaffRel?shopCode=2ca9f21f-340e-5477-88f4-851364e29f48" class="btn btn-xs btn-default">
+                    编辑大店长
+                </a>
+            </td>
+            <td>
+                <a href="/Admin/Bonus/shopBonusAnalysis?shopCode=2ca9f21f-340e-5477-88f4-851364e29f48" class="btn btn-xs btn-default">红包分析</a>
+            </td>
+            <td class="data-list-operation-wrap">
+                <a href="/Admin/BatchCoupon/editCoupon/shopCode/2ca9f21f-340e-5477-88f4-851364e29f48" class="btn btn-xs btn-default">添加优惠券</a>
+                <a href="/Admin/BatchCoupon/shopCouponAnalysis?shopCode=2ca9f21f-340e-5477-88f4-851364e29f48" class="btn btn-xs btn-default">优惠券分析</a>
+            </td>
+            <td>
+                <div class="dropdown">
+                    <button type="button" class="btn btn-xs btn-success dropdown-toggle btn-shop-enter-status-2ca9f21f-340e-5477-88f4-851364e29f48" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="status-text">已入驻</span><span class="caret"></span>
+                            </button>                    <ul class="dropdown-menu" style="min-width: 0">
+                        <li><a href="#" data-shop-code="2ca9f21f-340e-5477-88f4-851364e29f48" data-enter-status="1" class="change-shop-enter-status">未入驻</a></li>
+                        <li><a href="#" data-shop-code="2ca9f21f-340e-5477-88f4-851364e29f48" data-enter-status="2" class="change-shop-enter-status">已入驻</a></li>
+                    </ul>
+                </div>
+                            </td>
+            <td class="status">
+                <div class="dropdown">
+                    <button type="button" class="btn btn-xs btn-success dropdown-toggle btn-shop-status-2ca9f21f-340e-5477-88f4-851364e29f48" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="status-text">启用</span><span class="caret"></span>
+                            </button>                    <ul class="dropdown-menu" style="min-width: 0">
+                        <li><a href="#" data-shop-code="2ca9f21f-340e-5477-88f4-851364e29f48" data-status="0" class="change-shop-status">禁用</a></li>
+                        <li><a href="#" data-shop-code="2ca9f21f-340e-5477-88f4-851364e29f48" data-status="1" class="change-shop-status">启用</a></li>
+                    </ul>
+                </div>
+            </td>
+            <td class="data-list-operation-wrap">
+                <a href="/Admin/Shop/editShop?shopCode=2ca9f21f-340e-5477-88f4-851364e29f48&page=1" class="btn btn-xs btn-primary">编辑</a><br/>
+                <a href="/Admin/Shop/deleteShop?shopCode=2ca9f21f-340e-5477-88f4-851364e29f48" class="btn btn-xs btn-danger" onclick="return confirm('删除后，商店优惠券和红包数据也会消失。确认删除吗？')">删除</a><br/>
+                                    <a href="/Admin/Shop/updateIsAcceptBankCard" class="btn btn-xs btn-success update-accept-ghpay" data-is-accept-bank-card="1" data-shop-code="2ca9f21f-340e-5477-88f4-851364e29f48">开启工行支付</a>            </td>
+        </tr><tr>
+            <td>26a50fbf-4bff-5bb9-d312-c3b7a55afacd</td>
+            <td>1603310022</td>
+            <td>
+                <a href="/Admin/Shop/shopInfo?shopCode=26a50fbf-4bff-5bb9-d312-c3b7a55afacd">尚水皇家都会</a><br/>
+            </td>
+            <td>
+                <span class="label label-4">娱乐</span><br/>            </td>
+            <td>15990894026</td>
+            <td>331121680035735</td>
+            <td>1210436684</td>
+            <td>2016-03-31 11:15:49</td>
+            <td>浙江省丽水市</td>
+            <td>
+                姓名：徐晓芬<br/>
+                手机号：15990894026                <a href="/Admin/Shop/editShopStaffRel?shopCode=26a50fbf-4bff-5bb9-d312-c3b7a55afacd" class="btn btn-xs btn-default">
+                    编辑大店长
+                </a>
+            </td>
+            <td>
+                <a href="/Admin/Bonus/shopBonusAnalysis?shopCode=26a50fbf-4bff-5bb9-d312-c3b7a55afacd" class="btn btn-xs btn-default">红包分析</a>
+            </td>
+            <td class="data-list-operation-wrap">
+                <a href="/Admin/BatchCoupon/editCoupon/shopCode/26a50fbf-4bff-5bb9-d312-c3b7a55afacd" class="btn btn-xs btn-default">添加优惠券</a>
+                <a href="/Admin/BatchCoupon/shopCouponAnalysis?shopCode=26a50fbf-4bff-5bb9-d312-c3b7a55afacd" class="btn btn-xs btn-default">优惠券分析</a>
+            </td>
+            <td>
+                <div class="dropdown">
+                    <button type="button" class="btn btn-xs btn-success dropdown-toggle btn-shop-enter-status-26a50fbf-4bff-5bb9-d312-c3b7a55afacd" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="status-text">已入驻</span><span class="caret"></span>
+                            </button>                    <ul class="dropdown-menu" style="min-width: 0">
+                        <li><a href="#" data-shop-code="26a50fbf-4bff-5bb9-d312-c3b7a55afacd" data-enter-status="1" class="change-shop-enter-status">未入驻</a></li>
+                        <li><a href="#" data-shop-code="26a50fbf-4bff-5bb9-d312-c3b7a55afacd" data-enter-status="2" class="change-shop-enter-status">已入驻</a></li>
+                    </ul>
+                </div>
+                            </td>
+            <td class="status">
+                <div class="dropdown">
+                    <button type="button" class="btn btn-xs btn-success dropdown-toggle btn-shop-status-26a50fbf-4bff-5bb9-d312-c3b7a55afacd" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="status-text">启用</span><span class="caret"></span>
+                            </button>                    <ul class="dropdown-menu" style="min-width: 0">
+                        <li><a href="#" data-shop-code="26a50fbf-4bff-5bb9-d312-c3b7a55afacd" data-status="0" class="change-shop-status">禁用</a></li>
+                        <li><a href="#" data-shop-code="26a50fbf-4bff-5bb9-d312-c3b7a55afacd" data-status="1" class="change-shop-status">启用</a></li>
+                    </ul>
+                </div>
+            </td>
+            <td class="data-list-operation-wrap">
+                <a href="/Admin/Shop/editShop?shopCode=26a50fbf-4bff-5bb9-d312-c3b7a55afacd&page=1" class="btn btn-xs btn-primary">编辑</a><br/>
+                <a href="/Admin/Shop/deleteShop?shopCode=26a50fbf-4bff-5bb9-d312-c3b7a55afacd" class="btn btn-xs btn-danger" onclick="return confirm('删除后，商店优惠券和红包数据也会消失。确认删除吗？')">删除</a><br/>
+                <a href="/Admin/Shop/updateIsAcceptBankCard" class="btn btn-xs btn-warning update-accept-ghpay" data-is-accept-bank-card="0" data-shop-code="26a50fbf-4bff-5bb9-d312-c3b7a55afacd">关闭工行支付</a>
+                                </td>
+        </tr><tr>
+            <td>2be6cbfc-59d7-5c9c-9f22-be78eedb8b00</td>
+            <td>1603310021</td>
+            <td>
+                <a href="/Admin/Shop/shopInfo?shopCode=2be6cbfc-59d7-5c9c-9f22-be78eedb8b00">如家超市</a><br/>
+            </td>
+            <td>
+                <span class="label label-6">其他</span><br/>            </td>
+            <td>15990894026</td>
+            <td>331121680027542</td>
+            <td>1210645593</td>
+            <td>2016-03-31 11:15:39</td>
+            <td>浙江省丽水市</td>
+            <td>
+                姓名：徐晓芬<br/>
+                手机号：15990894026                <a href="/Admin/Shop/editShopStaffRel?shopCode=2be6cbfc-59d7-5c9c-9f22-be78eedb8b00" class="btn btn-xs btn-default">
+                    编辑大店长
+                </a>
+            </td>
+            <td>
+                <a href="/Admin/Bonus/shopBonusAnalysis?shopCode=2be6cbfc-59d7-5c9c-9f22-be78eedb8b00" class="btn btn-xs btn-default">红包分析</a>
+            </td>
+            <td class="data-list-operation-wrap">
+                <a href="/Admin/BatchCoupon/editCoupon/shopCode/2be6cbfc-59d7-5c9c-9f22-be78eedb8b00" class="btn btn-xs btn-default">添加优惠券</a>
+                <a href="/Admin/BatchCoupon/shopCouponAnalysis?shopCode=2be6cbfc-59d7-5c9c-9f22-be78eedb8b00" class="btn btn-xs btn-default">优惠券分析</a>
+            </td>
+            <td>
+                <div class="dropdown">
+                    <button type="button" class="btn btn-xs btn-success dropdown-toggle btn-shop-enter-status-2be6cbfc-59d7-5c9c-9f22-be78eedb8b00" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="status-text">已入驻</span><span class="caret"></span>
+                            </button>                    <ul class="dropdown-menu" style="min-width: 0">
+                        <li><a href="#" data-shop-code="2be6cbfc-59d7-5c9c-9f22-be78eedb8b00" data-enter-status="1" class="change-shop-enter-status">未入驻</a></li>
+                        <li><a href="#" data-shop-code="2be6cbfc-59d7-5c9c-9f22-be78eedb8b00" data-enter-status="2" class="change-shop-enter-status">已入驻</a></li>
+                    </ul>
+                </div>
+                            </td>
+            <td class="status">
+                <div class="dropdown">
+                    <button type="button" class="btn btn-xs btn-success dropdown-toggle btn-shop-status-2be6cbfc-59d7-5c9c-9f22-be78eedb8b00" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="status-text">启用</span><span class="caret"></span>
+                            </button>                    <ul class="dropdown-menu" style="min-width: 0">
+                        <li><a href="#" data-shop-code="2be6cbfc-59d7-5c9c-9f22-be78eedb8b00" data-status="0" class="change-shop-status">禁用</a></li>
+                        <li><a href="#" data-shop-code="2be6cbfc-59d7-5c9c-9f22-be78eedb8b00" data-status="1" class="change-shop-status">启用</a></li>
+                    </ul>
+                </div>
+            </td>
+            <td class="data-list-operation-wrap">
+                <a href="/Admin/Shop/editShop?shopCode=2be6cbfc-59d7-5c9c-9f22-be78eedb8b00&page=1" class="btn btn-xs btn-primary">编辑</a><br/>
+                <a href="/Admin/Shop/deleteShop?shopCode=2be6cbfc-59d7-5c9c-9f22-be78eedb8b00" class="btn btn-xs btn-danger" onclick="return confirm('删除后，商店优惠券和红包数据也会消失。确认删除吗？')">删除</a><br/>
+                <a href="/Admin/Shop/updateIsAcceptBankCard" class="btn btn-xs btn-warning update-accept-ghpay" data-is-accept-bank-card="0" data-shop-code="2be6cbfc-59d7-5c9c-9f22-be78eedb8b00">关闭工行支付</a>
+                                </td>
+        </tr><tr>
+            <td>191a23bd-ead6-533c-191e-4a2eb846e21b</td>
+            <td>1603310020</td>
+            <td>
+                <a href="/Admin/Shop/shopInfo?shopCode=191a23bd-ead6-533c-191e-4a2eb846e21b">俪晶商务酒店</a><br/>
+            </td>
+            <td>
+                <span class="label label-6">其他</span><br/>            </td>
+            <td>15990894026</td>
+            <td>331121000031157</td>
+            <td>1210523545</td>
+            <td>2016-03-31 11:15:17</td>
+            <td>浙江省丽水市</td>
+            <td>
+                姓名：徐晓芬<br/>
+                手机号：15990894026                <a href="/Admin/Shop/editShopStaffRel?shopCode=191a23bd-ead6-533c-191e-4a2eb846e21b" class="btn btn-xs btn-default">
+                    编辑大店长
+                </a>
+            </td>
+            <td>
+                <a href="/Admin/Bonus/shopBonusAnalysis?shopCode=191a23bd-ead6-533c-191e-4a2eb846e21b" class="btn btn-xs btn-default">红包分析</a>
+            </td>
+            <td class="data-list-operation-wrap">
+                <a href="/Admin/BatchCoupon/editCoupon/shopCode/191a23bd-ead6-533c-191e-4a2eb846e21b" class="btn btn-xs btn-default">添加优惠券</a>
+                <a href="/Admin/BatchCoupon/shopCouponAnalysis?shopCode=191a23bd-ead6-533c-191e-4a2eb846e21b" class="btn btn-xs btn-default">优惠券分析</a>
+            </td>
+            <td>
+                <div class="dropdown">
+                    <button type="button" class="btn btn-xs btn-success dropdown-toggle btn-shop-enter-status-191a23bd-ead6-533c-191e-4a2eb846e21b" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="status-text">已入驻</span><span class="caret"></span>
+                            </button>                    <ul class="dropdown-menu" style="min-width: 0">
+                        <li><a href="#" data-shop-code="191a23bd-ead6-533c-191e-4a2eb846e21b" data-enter-status="1" class="change-shop-enter-status">未入驻</a></li>
+                        <li><a href="#" data-shop-code="191a23bd-ead6-533c-191e-4a2eb846e21b" data-enter-status="2" class="change-shop-enter-status">已入驻</a></li>
+                    </ul>
+                </div>
+                            </td>
+            <td class="status">
+                <div class="dropdown">
+                    <button type="button" class="btn btn-xs btn-success dropdown-toggle btn-shop-status-191a23bd-ead6-533c-191e-4a2eb846e21b" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="status-text">启用</span><span class="caret"></span>
+                            </button>                    <ul class="dropdown-menu" style="min-width: 0">
+                        <li><a href="#" data-shop-code="191a23bd-ead6-533c-191e-4a2eb846e21b" data-status="0" class="change-shop-status">禁用</a></li>
+                        <li><a href="#" data-shop-code="191a23bd-ead6-533c-191e-4a2eb846e21b" data-status="1" class="change-shop-status">启用</a></li>
+                    </ul>
+                </div>
+            </td>
+            <td class="data-list-operation-wrap">
+                <a href="/Admin/Shop/editShop?shopCode=191a23bd-ead6-533c-191e-4a2eb846e21b&page=1" class="btn btn-xs btn-primary">编辑</a><br/>
+                <a href="/Admin/Shop/deleteShop?shopCode=191a23bd-ead6-533c-191e-4a2eb846e21b" class="btn btn-xs btn-danger" onclick="return confirm('删除后，商店优惠券和红包数据也会消失。确认删除吗？')">删除</a><br/>
+                <a href="/Admin/Shop/updateIsAcceptBankCard" class="btn btn-xs btn-warning update-accept-ghpay" data-is-accept-bank-card="0" data-shop-code="191a23bd-ead6-533c-191e-4a2eb846e21b">关闭工行支付</a>
+                                </td>
+        </tr><tr>
+            <td>e2bb43d7-b18e-890a-c96d-b417c61f7ba1</td>
+            <td>1603310019</td>
+            <td>
+                <a href="/Admin/Shop/shopInfo?shopCode=e2bb43d7-b18e-890a-c96d-b417c61f7ba1">特色鮰鱼馆</a><br/>
+            </td>
+            <td>
+                <span class="label label-1">美食</span><br/>            </td>
+            <td>13185703790</td>
+            <td>33088166723187</td>
+            <td>1209817242</td>
+            <td>2016-03-31 10:44:27</td>
+            <td>浙江省衢州市</td>
+            <td>
+                姓名：祝新春<br/>
+                手机号：13185703790                <a href="/Admin/Shop/editShopStaffRel?shopCode=e2bb43d7-b18e-890a-c96d-b417c61f7ba1" class="btn btn-xs btn-default">
+                    编辑大店长
+                </a>
+            </td>
+            <td>
+                <a href="/Admin/Bonus/shopBonusAnalysis?shopCode=e2bb43d7-b18e-890a-c96d-b417c61f7ba1" class="btn btn-xs btn-default">红包分析</a>
+            </td>
+            <td class="data-list-operation-wrap">
+                <a href="/Admin/BatchCoupon/editCoupon/shopCode/e2bb43d7-b18e-890a-c96d-b417c61f7ba1" class="btn btn-xs btn-default">添加优惠券</a>
+                <a href="/Admin/BatchCoupon/shopCouponAnalysis?shopCode=e2bb43d7-b18e-890a-c96d-b417c61f7ba1" class="btn btn-xs btn-default">优惠券分析</a>
+            </td>
+            <td>
+                <div class="dropdown">
+                    <button type="button" class="btn btn-xs btn-success dropdown-toggle btn-shop-enter-status-e2bb43d7-b18e-890a-c96d-b417c61f7ba1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="status-text">已入驻</span><span class="caret"></span>
+                            </button>                    <ul class="dropdown-menu" style="min-width: 0">
+                        <li><a href="#" data-shop-code="e2bb43d7-b18e-890a-c96d-b417c61f7ba1" data-enter-status="1" class="change-shop-enter-status">未入驻</a></li>
+                        <li><a href="#" data-shop-code="e2bb43d7-b18e-890a-c96d-b417c61f7ba1" data-enter-status="2" class="change-shop-enter-status">已入驻</a></li>
+                    </ul>
+                </div>
+                            </td>
+            <td class="status">
+                <div class="dropdown">
+                    <button type="button" class="btn btn-xs btn-success dropdown-toggle btn-shop-status-e2bb43d7-b18e-890a-c96d-b417c61f7ba1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="status-text">启用</span><span class="caret"></span>
+                            </button>                    <ul class="dropdown-menu" style="min-width: 0">
+                        <li><a href="#" data-shop-code="e2bb43d7-b18e-890a-c96d-b417c61f7ba1" data-status="0" class="change-shop-status">禁用</a></li>
+                        <li><a href="#" data-shop-code="e2bb43d7-b18e-890a-c96d-b417c61f7ba1" data-status="1" class="change-shop-status">启用</a></li>
+                    </ul>
+                </div>
+            </td>
+            <td class="data-list-operation-wrap">
+                <a href="/Admin/Shop/editShop?shopCode=e2bb43d7-b18e-890a-c96d-b417c61f7ba1&page=1" class="btn btn-xs btn-primary">编辑</a><br/>
+                <a href="/Admin/Shop/deleteShop?shopCode=e2bb43d7-b18e-890a-c96d-b417c61f7ba1" class="btn btn-xs btn-danger" onclick="return confirm('删除后，商店优惠券和红包数据也会消失。确认删除吗？')">删除</a><br/>
+                <a href="/Admin/Shop/updateIsAcceptBankCard" class="btn btn-xs btn-warning update-accept-ghpay" data-is-accept-bank-card="0" data-shop-code="e2bb43d7-b18e-890a-c96d-b417c61f7ba1">关闭工行支付</a>
+                                </td>
+        </tr><tr>
+            <td>1de12dda-0aed-a4ef-bdfd-881e7d538f11</td>
+            <td>1603310018</td>
+            <td>
+                <a href="/Admin/Shop/shopInfo?shopCode=1de12dda-0aed-a4ef-bdfd-881e7d538f11">弹丸滋地（景鸿店）</a><br/>
+            </td>
+            <td>
+                <span class="label label-1">美食</span><br/>            </td>
+            <td>18758014787</td>
+            <td>在办</td>
+            <td>1205657370</td>
+            <td>2016-03-31 10:21:09</td>
+            <td>浙江省湖州市</td>
+            <td>
+                姓名：高树敏<br/>
+                手机号：18758014787                <a href="/Admin/Shop/editShopStaffRel?shopCode=1de12dda-0aed-a4ef-bdfd-881e7d538f11" class="btn btn-xs btn-default">
+                    编辑大店长
+                </a>
+            </td>
+            <td>
+                <a href="/Admin/Bonus/shopBonusAnalysis?shopCode=1de12dda-0aed-a4ef-bdfd-881e7d538f11" class="btn btn-xs btn-default">红包分析</a>
+            </td>
+            <td class="data-list-operation-wrap">
+                <a href="/Admin/BatchCoupon/editCoupon/shopCode/1de12dda-0aed-a4ef-bdfd-881e7d538f11" class="btn btn-xs btn-default">添加优惠券</a>
+                <a href="/Admin/BatchCoupon/shopCouponAnalysis?shopCode=1de12dda-0aed-a4ef-bdfd-881e7d538f11" class="btn btn-xs btn-default">优惠券分析</a>
+            </td>
+            <td>
+                <div class="dropdown">
+                    <button type="button" class="btn btn-xs btn-success dropdown-toggle btn-shop-enter-status-1de12dda-0aed-a4ef-bdfd-881e7d538f11" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="status-text">已入驻</span><span class="caret"></span>
+                            </button>                    <ul class="dropdown-menu" style="min-width: 0">
+                        <li><a href="#" data-shop-code="1de12dda-0aed-a4ef-bdfd-881e7d538f11" data-enter-status="1" class="change-shop-enter-status">未入驻</a></li>
+                        <li><a href="#" data-shop-code="1de12dda-0aed-a4ef-bdfd-881e7d538f11" data-enter-status="2" class="change-shop-enter-status">已入驻</a></li>
+                    </ul>
+                </div>
+                            </td>
+            <td class="status">
+                <div class="dropdown">
+                    <button type="button" class="btn btn-xs btn-success dropdown-toggle btn-shop-status-1de12dda-0aed-a4ef-bdfd-881e7d538f11" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="status-text">启用</span><span class="caret"></span>
+                            </button>                    <ul class="dropdown-menu" style="min-width: 0">
+                        <li><a href="#" data-shop-code="1de12dda-0aed-a4ef-bdfd-881e7d538f11" data-status="0" class="change-shop-status">禁用</a></li>
+                        <li><a href="#" data-shop-code="1de12dda-0aed-a4ef-bdfd-881e7d538f11" data-status="1" class="change-shop-status">启用</a></li>
+                    </ul>
+                </div>
+            </td>
+            <td class="data-list-operation-wrap">
+                <a href="/Admin/Shop/editShop?shopCode=1de12dda-0aed-a4ef-bdfd-881e7d538f11&page=1" class="btn btn-xs btn-primary">编辑</a><br/>
+                <a href="/Admin/Shop/deleteShop?shopCode=1de12dda-0aed-a4ef-bdfd-881e7d538f11" class="btn btn-xs btn-danger" onclick="return confirm('删除后，商店优惠券和红包数据也会消失。确认删除吗？')">删除</a><br/>
+                <a href="/Admin/Shop/updateIsAcceptBankCard" class="btn btn-xs btn-warning update-accept-ghpay" data-is-accept-bank-card="0" data-shop-code="1de12dda-0aed-a4ef-bdfd-881e7d538f11">关闭工行支付</a>
+                                </td>
+        </tr><tr>
+            <td>641d1ca8-617f-7f7c-5a29-659fea62d89a</td>
+            <td>1603310017</td>
+            <td>
+                <a href="/Admin/Shop/shopInfo?shopCode=641d1ca8-617f-7f7c-5a29-659fea62d89a">相约造型（织里店）</a><br/>
+            </td>
+            <td>
+                <span class="label label-2">丽人</span><br/>            </td>
+            <td>13385826687</td>
+            <td>在办</td>
+            <td>1205894782</td>
+            <td>2016-03-31 10:19:55</td>
+            <td>浙江省湖州市</td>
+            <td>
+                姓名：周利琴<br/>
+                手机号：13385826687                <a href="/Admin/Shop/editShopStaffRel?shopCode=641d1ca8-617f-7f7c-5a29-659fea62d89a" class="btn btn-xs btn-default">
+                    编辑大店长
+                </a>
+            </td>
+            <td>
+                <a href="/Admin/Bonus/shopBonusAnalysis?shopCode=641d1ca8-617f-7f7c-5a29-659fea62d89a" class="btn btn-xs btn-default">红包分析</a>
+            </td>
+            <td class="data-list-operation-wrap">
+                <a href="/Admin/BatchCoupon/editCoupon/shopCode/641d1ca8-617f-7f7c-5a29-659fea62d89a" class="btn btn-xs btn-default">添加优惠券</a>
+                <a href="/Admin/BatchCoupon/shopCouponAnalysis?shopCode=641d1ca8-617f-7f7c-5a29-659fea62d89a" class="btn btn-xs btn-default">优惠券分析</a>
+            </td>
+            <td>
+                <div class="dropdown">
+                    <button type="button" class="btn btn-xs btn-success dropdown-toggle btn-shop-enter-status-641d1ca8-617f-7f7c-5a29-659fea62d89a" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="status-text">已入驻</span><span class="caret"></span>
+                            </button>                    <ul class="dropdown-menu" style="min-width: 0">
+                        <li><a href="#" data-shop-code="641d1ca8-617f-7f7c-5a29-659fea62d89a" data-enter-status="1" class="change-shop-enter-status">未入驻</a></li>
+                        <li><a href="#" data-shop-code="641d1ca8-617f-7f7c-5a29-659fea62d89a" data-enter-status="2" class="change-shop-enter-status">已入驻</a></li>
+                    </ul>
+                </div>
+                            </td>
+            <td class="status">
+                <div class="dropdown">
+                    <button type="button" class="btn btn-xs btn-success dropdown-toggle btn-shop-status-641d1ca8-617f-7f7c-5a29-659fea62d89a" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="status-text">启用</span><span class="caret"></span>
+                            </button>                    <ul class="dropdown-menu" style="min-width: 0">
+                        <li><a href="#" data-shop-code="641d1ca8-617f-7f7c-5a29-659fea62d89a" data-status="0" class="change-shop-status">禁用</a></li>
+                        <li><a href="#" data-shop-code="641d1ca8-617f-7f7c-5a29-659fea62d89a" data-status="1" class="change-shop-status">启用</a></li>
+                    </ul>
+                </div>
+            </td>
+            <td class="data-list-operation-wrap">
+                <a href="/Admin/Shop/editShop?shopCode=641d1ca8-617f-7f7c-5a29-659fea62d89a&page=1" class="btn btn-xs btn-primary">编辑</a><br/>
+                <a href="/Admin/Shop/deleteShop?shopCode=641d1ca8-617f-7f7c-5a29-659fea62d89a" class="btn btn-xs btn-danger" onclick="return confirm('删除后，商店优惠券和红包数据也会消失。确认删除吗？')">删除</a><br/>
+                <a href="/Admin/Shop/updateIsAcceptBankCard" class="btn btn-xs btn-warning update-accept-ghpay" data-is-accept-bank-card="0" data-shop-code="641d1ca8-617f-7f7c-5a29-659fea62d89a">关闭工行支付</a>
+                                </td>
+        </tr><tr>
+            <td>03a56646-1136-b935-db2f-c53be84a84b7</td>
+            <td>1603310016</td>
+            <td>
+                <a href="/Admin/Shop/shopInfo?shopCode=03a56646-1136-b935-db2f-c53be84a84b7">杨国福麻辣烫</a><br/>
+            </td>
+            <td>
+                <span class="label label-1">美食</span><br/>            </td>
+            <td>13706721322</td>
+            <td>在办</td>
+            <td>1205118683</td>
+            <td>2016-03-31 10:18:29</td>
+            <td>浙江省湖州市</td>
+            <td>
+                姓名：吴淦庆<br/>
+                手机号：13706721322                <a href="/Admin/Shop/editShopStaffRel?shopCode=03a56646-1136-b935-db2f-c53be84a84b7" class="btn btn-xs btn-default">
+                    编辑大店长
+                </a>
+            </td>
+            <td>
+                <a href="/Admin/Bonus/shopBonusAnalysis?shopCode=03a56646-1136-b935-db2f-c53be84a84b7" class="btn btn-xs btn-default">红包分析</a>
+            </td>
+            <td class="data-list-operation-wrap">
+                <a href="/Admin/BatchCoupon/editCoupon/shopCode/03a56646-1136-b935-db2f-c53be84a84b7" class="btn btn-xs btn-default">添加优惠券</a>
+                <a href="/Admin/BatchCoupon/shopCouponAnalysis?shopCode=03a56646-1136-b935-db2f-c53be84a84b7" class="btn btn-xs btn-default">优惠券分析</a>
+            </td>
+            <td>
+                <div class="dropdown">
+                    <button type="button" class="btn btn-xs btn-success dropdown-toggle btn-shop-enter-status-03a56646-1136-b935-db2f-c53be84a84b7" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="status-text">已入驻</span><span class="caret"></span>
+                            </button>                    <ul class="dropdown-menu" style="min-width: 0">
+                        <li><a href="#" data-shop-code="03a56646-1136-b935-db2f-c53be84a84b7" data-enter-status="1" class="change-shop-enter-status">未入驻</a></li>
+                        <li><a href="#" data-shop-code="03a56646-1136-b935-db2f-c53be84a84b7" data-enter-status="2" class="change-shop-enter-status">已入驻</a></li>
+                    </ul>
+                </div>
+                            </td>
+            <td class="status">
+                <div class="dropdown">
+                    <button type="button" class="btn btn-xs btn-success dropdown-toggle btn-shop-status-03a56646-1136-b935-db2f-c53be84a84b7" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="status-text">启用</span><span class="caret"></span>
+                            </button>                    <ul class="dropdown-menu" style="min-width: 0">
+                        <li><a href="#" data-shop-code="03a56646-1136-b935-db2f-c53be84a84b7" data-status="0" class="change-shop-status">禁用</a></li>
+                        <li><a href="#" data-shop-code="03a56646-1136-b935-db2f-c53be84a84b7" data-status="1" class="change-shop-status">启用</a></li>
+                    </ul>
+                </div>
+            </td>
+            <td class="data-list-operation-wrap">
+                <a href="/Admin/Shop/editShop?shopCode=03a56646-1136-b935-db2f-c53be84a84b7&page=1" class="btn btn-xs btn-primary">编辑</a><br/>
+                <a href="/Admin/Shop/deleteShop?shopCode=03a56646-1136-b935-db2f-c53be84a84b7" class="btn btn-xs btn-danger" onclick="return confirm('删除后，商店优惠券和红包数据也会消失。确认删除吗？')">删除</a><br/>
+                <a href="/Admin/Shop/updateIsAcceptBankCard" class="btn btn-xs btn-warning update-accept-ghpay" data-is-accept-bank-card="0" data-shop-code="03a56646-1136-b935-db2f-c53be84a84b7">关闭工行支付</a>
+                                </td>
+        </tr><tr>
+            <td>45330c38-01ec-8af8-e84f-1eb1775ea241</td>
+            <td>1603310015</td>
+            <td>
+                <a href="/Admin/Shop/shopInfo?shopCode=45330c38-01ec-8af8-e84f-1eb1775ea241">可浓台湾甜品</a><br/>
+            </td>
+            <td>
+                <span class="label label-1">美食</span><br/>            </td>
+            <td>13735145108</td>
+            <td>330508600063965</td>
+            <td>1205845419</td>
+            <td>2016-03-31 10:14:35</td>
+            <td>浙江省湖州市</td>
+            <td>
+                姓名：王松仙<br/>
+                手机号：13735145108                <a href="/Admin/Shop/editShopStaffRel?shopCode=45330c38-01ec-8af8-e84f-1eb1775ea241" class="btn btn-xs btn-default">
+                    编辑大店长
+                </a>
+            </td>
+            <td>
+                <a href="/Admin/Bonus/shopBonusAnalysis?shopCode=45330c38-01ec-8af8-e84f-1eb1775ea241" class="btn btn-xs btn-default">红包分析</a>
+            </td>
+            <td class="data-list-operation-wrap">
+                <a href="/Admin/BatchCoupon/editCoupon/shopCode/45330c38-01ec-8af8-e84f-1eb1775ea241" class="btn btn-xs btn-default">添加优惠券</a>
+                <a href="/Admin/BatchCoupon/shopCouponAnalysis?shopCode=45330c38-01ec-8af8-e84f-1eb1775ea241" class="btn btn-xs btn-default">优惠券分析</a>
+            </td>
+            <td>
+                <div class="dropdown">
+                    <button type="button" class="btn btn-xs btn-success dropdown-toggle btn-shop-enter-status-45330c38-01ec-8af8-e84f-1eb1775ea241" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="status-text">已入驻</span><span class="caret"></span>
+                            </button>                    <ul class="dropdown-menu" style="min-width: 0">
+                        <li><a href="#" data-shop-code="45330c38-01ec-8af8-e84f-1eb1775ea241" data-enter-status="1" class="change-shop-enter-status">未入驻</a></li>
+                        <li><a href="#" data-shop-code="45330c38-01ec-8af8-e84f-1eb1775ea241" data-enter-status="2" class="change-shop-enter-status">已入驻</a></li>
+                    </ul>
+                </div>
+                            </td>
+            <td class="status">
+                <div class="dropdown">
+                    <button type="button" class="btn btn-xs btn-success dropdown-toggle btn-shop-status-45330c38-01ec-8af8-e84f-1eb1775ea241" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="status-text">启用</span><span class="caret"></span>
+                            </button>                    <ul class="dropdown-menu" style="min-width: 0">
+                        <li><a href="#" data-shop-code="45330c38-01ec-8af8-e84f-1eb1775ea241" data-status="0" class="change-shop-status">禁用</a></li>
+                        <li><a href="#" data-shop-code="45330c38-01ec-8af8-e84f-1eb1775ea241" data-status="1" class="change-shop-status">启用</a></li>
+                    </ul>
+                </div>
+            </td>
+            <td class="data-list-operation-wrap">
+                <a href="/Admin/Shop/editShop?shopCode=45330c38-01ec-8af8-e84f-1eb1775ea241&page=1" class="btn btn-xs btn-primary">编辑</a><br/>
+                <a href="/Admin/Shop/deleteShop?shopCode=45330c38-01ec-8af8-e84f-1eb1775ea241" class="btn btn-xs btn-danger" onclick="return confirm('删除后，商店优惠券和红包数据也会消失。确认删除吗？')">删除</a><br/>
+                <a href="/Admin/Shop/updateIsAcceptBankCard" class="btn btn-xs btn-warning update-accept-ghpay" data-is-accept-bank-card="0" data-shop-code="45330c38-01ec-8af8-e84f-1eb1775ea241">关闭工行支付</a>
+                                </td>
+        </tr><tr>
+            <td>80ac53a2-5e43-e438-73bd-95683b813d24</td>
+            <td>1603310014</td>
+            <td>
+                <a href="/Admin/Shop/shopInfo?shopCode=80ac53a2-5e43-e438-73bd-95683b813d24">神户川创意寿司</a><br/>
+            </td>
+            <td>
+                <span class="label label-1">美食</span><br/>            </td>
+            <td>13757801684</td>
+            <td>331102600045476</td>
+            <td>1210631766</td>
+            <td>2016-03-31 10:13:04</td>
+            <td>浙江省丽水市</td>
+            <td>
+                姓名：李丰华<br/>
+                手机号：13757801684                <a href="/Admin/Shop/editShopStaffRel?shopCode=80ac53a2-5e43-e438-73bd-95683b813d24" class="btn btn-xs btn-default">
+                    编辑大店长
+                </a>
+            </td>
+            <td>
+                <a href="/Admin/Bonus/shopBonusAnalysis?shopCode=80ac53a2-5e43-e438-73bd-95683b813d24" class="btn btn-xs btn-default">红包分析</a>
+            </td>
+            <td class="data-list-operation-wrap">
+                <a href="/Admin/BatchCoupon/editCoupon/shopCode/80ac53a2-5e43-e438-73bd-95683b813d24" class="btn btn-xs btn-default">添加优惠券</a>
+                <a href="/Admin/BatchCoupon/shopCouponAnalysis?shopCode=80ac53a2-5e43-e438-73bd-95683b813d24" class="btn btn-xs btn-default">优惠券分析</a>
+            </td>
+            <td>
+                <div class="dropdown">
+                    <button type="button" class="btn btn-xs btn-success dropdown-toggle btn-shop-enter-status-80ac53a2-5e43-e438-73bd-95683b813d24" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="status-text">已入驻</span><span class="caret"></span>
+                            </button>                    <ul class="dropdown-menu" style="min-width: 0">
+                        <li><a href="#" data-shop-code="80ac53a2-5e43-e438-73bd-95683b813d24" data-enter-status="1" class="change-shop-enter-status">未入驻</a></li>
+                        <li><a href="#" data-shop-code="80ac53a2-5e43-e438-73bd-95683b813d24" data-enter-status="2" class="change-shop-enter-status">已入驻</a></li>
+                    </ul>
+                </div>
+                            </td>
+            <td class="status">
+                <div class="dropdown">
+                    <button type="button" class="btn btn-xs btn-success dropdown-toggle btn-shop-status-80ac53a2-5e43-e438-73bd-95683b813d24" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="status-text">启用</span><span class="caret"></span>
+                            </button>                    <ul class="dropdown-menu" style="min-width: 0">
+                        <li><a href="#" data-shop-code="80ac53a2-5e43-e438-73bd-95683b813d24" data-status="0" class="change-shop-status">禁用</a></li>
+                        <li><a href="#" data-shop-code="80ac53a2-5e43-e438-73bd-95683b813d24" data-status="1" class="change-shop-status">启用</a></li>
+                    </ul>
+                </div>
+            </td>
+            <td class="data-list-operation-wrap">
+                <a href="/Admin/Shop/editShop?shopCode=80ac53a2-5e43-e438-73bd-95683b813d24&page=1" class="btn btn-xs btn-primary">编辑</a><br/>
+                <a href="/Admin/Shop/deleteShop?shopCode=80ac53a2-5e43-e438-73bd-95683b813d24" class="btn btn-xs btn-danger" onclick="return confirm('删除后，商店优惠券和红包数据也会消失。确认删除吗？')">删除</a><br/>
+                <a href="/Admin/Shop/updateIsAcceptBankCard" class="btn btn-xs btn-warning update-accept-ghpay" data-is-accept-bank-card="0" data-shop-code="80ac53a2-5e43-e438-73bd-95683b813d24">关闭工行支付</a>
+                                </td>
+        </tr><tr>
+            <td>790f3414-b6ae-a8e9-2537-ac1ecfbc1856</td>
+            <td>1603310013</td>
+            <td>
+                <a href="/Admin/Shop/shopInfo?shopCode=790f3414-b6ae-a8e9-2537-ac1ecfbc1856">北疆饭店</a><br/>
+            </td>
+            <td>
+                <span class="label label-1">美食</span><br/>            </td>
+            <td>18657241976</td>
+            <td>330503000125216</td>
+            <td>1205885724</td>
+            <td>2016-03-31 10:09:51</td>
+            <td>浙江省湖州市</td>
+            <td>
+                姓名：周璐娜<br/>
+                手机号：18657241976                <a href="/Admin/Shop/editShopStaffRel?shopCode=790f3414-b6ae-a8e9-2537-ac1ecfbc1856" class="btn btn-xs btn-default">
+                    编辑大店长
+                </a>
+            </td>
+            <td>
+                <a href="/Admin/Bonus/shopBonusAnalysis?shopCode=790f3414-b6ae-a8e9-2537-ac1ecfbc1856" class="btn btn-xs btn-default">红包分析</a>
+            </td>
+            <td class="data-list-operation-wrap">
+                <a href="/Admin/BatchCoupon/editCoupon/shopCode/790f3414-b6ae-a8e9-2537-ac1ecfbc1856" class="btn btn-xs btn-default">添加优惠券</a>
+                <a href="/Admin/BatchCoupon/shopCouponAnalysis?shopCode=790f3414-b6ae-a8e9-2537-ac1ecfbc1856" class="btn btn-xs btn-default">优惠券分析</a>
+            </td>
+            <td>
+                <div class="dropdown">
+                    <button type="button" class="btn btn-xs btn-success dropdown-toggle btn-shop-enter-status-790f3414-b6ae-a8e9-2537-ac1ecfbc1856" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="status-text">已入驻</span><span class="caret"></span>
+                            </button>                    <ul class="dropdown-menu" style="min-width: 0">
+                        <li><a href="#" data-shop-code="790f3414-b6ae-a8e9-2537-ac1ecfbc1856" data-enter-status="1" class="change-shop-enter-status">未入驻</a></li>
+                        <li><a href="#" data-shop-code="790f3414-b6ae-a8e9-2537-ac1ecfbc1856" data-enter-status="2" class="change-shop-enter-status">已入驻</a></li>
+                    </ul>
+                </div>
+                            </td>
+            <td class="status">
+                <div class="dropdown">
+                    <button type="button" class="btn btn-xs btn-success dropdown-toggle btn-shop-status-790f3414-b6ae-a8e9-2537-ac1ecfbc1856" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="status-text">启用</span><span class="caret"></span>
+                            </button>                    <ul class="dropdown-menu" style="min-width: 0">
+                        <li><a href="#" data-shop-code="790f3414-b6ae-a8e9-2537-ac1ecfbc1856" data-status="0" class="change-shop-status">禁用</a></li>
+                        <li><a href="#" data-shop-code="790f3414-b6ae-a8e9-2537-ac1ecfbc1856" data-status="1" class="change-shop-status">启用</a></li>
+                    </ul>
+                </div>
+            </td>
+            <td class="data-list-operation-wrap">
+                <a href="/Admin/Shop/editShop?shopCode=790f3414-b6ae-a8e9-2537-ac1ecfbc1856&page=1" class="btn btn-xs btn-primary">编辑</a><br/>
+                <a href="/Admin/Shop/deleteShop?shopCode=790f3414-b6ae-a8e9-2537-ac1ecfbc1856" class="btn btn-xs btn-danger" onclick="return confirm('删除后，商店优惠券和红包数据也会消失。确认删除吗？')">删除</a><br/>
+                <a href="/Admin/Shop/updateIsAcceptBankCard" class="btn btn-xs btn-warning update-accept-ghpay" data-is-accept-bank-card="0" data-shop-code="790f3414-b6ae-a8e9-2537-ac1ecfbc1856">关闭工行支付</a>
+                                </td>
+        </tr><tr>
+            <td>b7e2c305-4382-2105-8678-f126a6db3677</td>
+            <td>1603310012</td>
+            <td>
+                <a href="/Admin/Shop/shopInfo?shopCode=b7e2c305-4382-2105-8678-f126a6db3677">本草养生馆</a><br/>
+            </td>
+            <td>
+                <span class="label label-2">丽人</span><br/>            </td>
+            <td>13645708413</td>
+            <td>330802602083465</td>
+            <td>1209405231</td>
+            <td>2016-03-31 10:06:53</td>
+            <td>浙江省衢州市</td>
+            <td>
+                姓名：邱圆圆<br/>
+                手机号：13645708413                <a href="/Admin/Shop/editShopStaffRel?shopCode=b7e2c305-4382-2105-8678-f126a6db3677" class="btn btn-xs btn-default">
+                    编辑大店长
+                </a>
+            </td>
+            <td>
+                <a href="/Admin/Bonus/shopBonusAnalysis?shopCode=b7e2c305-4382-2105-8678-f126a6db3677" class="btn btn-xs btn-default">红包分析</a>
+            </td>
+            <td class="data-list-operation-wrap">
+                <a href="/Admin/BatchCoupon/editCoupon/shopCode/b7e2c305-4382-2105-8678-f126a6db3677" class="btn btn-xs btn-default">添加优惠券</a>
+                <a href="/Admin/BatchCoupon/shopCouponAnalysis?shopCode=b7e2c305-4382-2105-8678-f126a6db3677" class="btn btn-xs btn-default">优惠券分析</a>
+            </td>
+            <td>
+                <div class="dropdown">
+                    <button type="button" class="btn btn-xs btn-success dropdown-toggle btn-shop-enter-status-b7e2c305-4382-2105-8678-f126a6db3677" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="status-text">已入驻</span><span class="caret"></span>
+                            </button>                    <ul class="dropdown-menu" style="min-width: 0">
+                        <li><a href="#" data-shop-code="b7e2c305-4382-2105-8678-f126a6db3677" data-enter-status="1" class="change-shop-enter-status">未入驻</a></li>
+                        <li><a href="#" data-shop-code="b7e2c305-4382-2105-8678-f126a6db3677" data-enter-status="2" class="change-shop-enter-status">已入驻</a></li>
+                    </ul>
+                </div>
+                            </td>
+            <td class="status">
+                <div class="dropdown">
+                    <button type="button" class="btn btn-xs btn-success dropdown-toggle btn-shop-status-b7e2c305-4382-2105-8678-f126a6db3677" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="status-text">启用</span><span class="caret"></span>
+                            </button>                    <ul class="dropdown-menu" style="min-width: 0">
+                        <li><a href="#" data-shop-code="b7e2c305-4382-2105-8678-f126a6db3677" data-status="0" class="change-shop-status">禁用</a></li>
+                        <li><a href="#" data-shop-code="b7e2c305-4382-2105-8678-f126a6db3677" data-status="1" class="change-shop-status">启用</a></li>
+                    </ul>
+                </div>
+            </td>
+            <td class="data-list-operation-wrap">
+                <a href="/Admin/Shop/editShop?shopCode=b7e2c305-4382-2105-8678-f126a6db3677&page=1" class="btn btn-xs btn-primary">编辑</a><br/>
+                <a href="/Admin/Shop/deleteShop?shopCode=b7e2c305-4382-2105-8678-f126a6db3677" class="btn btn-xs btn-danger" onclick="return confirm('删除后，商店优惠券和红包数据也会消失。确认删除吗？')">删除</a><br/>
+                <a href="/Admin/Shop/updateIsAcceptBankCard" class="btn btn-xs btn-warning update-accept-ghpay" data-is-accept-bank-card="0" data-shop-code="b7e2c305-4382-2105-8678-f126a6db3677">关闭工行支付</a>
+                                </td>
+        </tr><tr>
+            <td>3440390b-e466-d9f3-a645-bd1b1c27c0d6</td>
+            <td>1603310011</td>
+            <td>
+                <a href="/Admin/Shop/shopInfo?shopCode=3440390b-e466-d9f3-a645-bd1b1c27c0d6">安琪美容</a><br/>
+            </td>
+            <td>
+                <span class="label label-2">丽人</span><br/>            </td>
+            <td>15005701480</td>
+            <td>330881602084377</td>
+            <td>1209205005</td>
+            <td>2016-03-31 10:04:23</td>
+            <td>浙江省衢州市</td>
+            <td>
+                姓名：叶堔<br/>
+                手机号：15005701480                <a href="/Admin/Shop/editShopStaffRel?shopCode=3440390b-e466-d9f3-a645-bd1b1c27c0d6" class="btn btn-xs btn-default">
+                    编辑大店长
+                </a>
+            </td>
+            <td>
+                <a href="/Admin/Bonus/shopBonusAnalysis?shopCode=3440390b-e466-d9f3-a645-bd1b1c27c0d6" class="btn btn-xs btn-default">红包分析</a>
+            </td>
+            <td class="data-list-operation-wrap">
+                <a href="/Admin/BatchCoupon/editCoupon/shopCode/3440390b-e466-d9f3-a645-bd1b1c27c0d6" class="btn btn-xs btn-default">添加优惠券</a>
+                <a href="/Admin/BatchCoupon/shopCouponAnalysis?shopCode=3440390b-e466-d9f3-a645-bd1b1c27c0d6" class="btn btn-xs btn-default">优惠券分析</a>
+            </td>
+            <td>
+                <div class="dropdown">
+                    <button type="button" class="btn btn-xs btn-success dropdown-toggle btn-shop-enter-status-3440390b-e466-d9f3-a645-bd1b1c27c0d6" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="status-text">已入驻</span><span class="caret"></span>
+                            </button>                    <ul class="dropdown-menu" style="min-width: 0">
+                        <li><a href="#" data-shop-code="3440390b-e466-d9f3-a645-bd1b1c27c0d6" data-enter-status="1" class="change-shop-enter-status">未入驻</a></li>
+                        <li><a href="#" data-shop-code="3440390b-e466-d9f3-a645-bd1b1c27c0d6" data-enter-status="2" class="change-shop-enter-status">已入驻</a></li>
+                    </ul>
+                </div>
+                            </td>
+            <td class="status">
+                <div class="dropdown">
+                    <button type="button" class="btn btn-xs btn-success dropdown-toggle btn-shop-status-3440390b-e466-d9f3-a645-bd1b1c27c0d6" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="status-text">启用</span><span class="caret"></span>
+                            </button>                    <ul class="dropdown-menu" style="min-width: 0">
+                        <li><a href="#" data-shop-code="3440390b-e466-d9f3-a645-bd1b1c27c0d6" data-status="0" class="change-shop-status">禁用</a></li>
+                        <li><a href="#" data-shop-code="3440390b-e466-d9f3-a645-bd1b1c27c0d6" data-status="1" class="change-shop-status">启用</a></li>
+                    </ul>
+                </div>
+            </td>
+            <td class="data-list-operation-wrap">
+                <a href="/Admin/Shop/editShop?shopCode=3440390b-e466-d9f3-a645-bd1b1c27c0d6&page=1" class="btn btn-xs btn-primary">编辑</a><br/>
+                <a href="/Admin/Shop/deleteShop?shopCode=3440390b-e466-d9f3-a645-bd1b1c27c0d6" class="btn btn-xs btn-danger" onclick="return confirm('删除后，商店优惠券和红包数据也会消失。确认删除吗？')">删除</a><br/>
+                <a href="/Admin/Shop/updateIsAcceptBankCard" class="btn btn-xs btn-warning update-accept-ghpay" data-is-accept-bank-card="0" data-shop-code="3440390b-e466-d9f3-a645-bd1b1c27c0d6">关闭工行支付</a>
+                                </td>
+        </tr><tr>
+            <td>c6a4fa74-1d22-ed8e-b9a7-eebfc14c69fe</td>
+            <td>1603310010</td>
+            <td>
+                <a href="/Admin/Shop/shopInfo?shopCode=c6a4fa74-1d22-ed8e-b9a7-eebfc14c69fe">无限极</a><br/>
+            </td>
+            <td>
+                <span class="label label-6">其他</span><br/>            </td>
+            <td>18657041322</td>
+            <td>330802605034202</td>
+            <td>1209633276</td>
+            <td>2016-03-31 10:00:35</td>
+            <td>浙江省衢州市</td>
+            <td>
+                姓名：徐惠仙<br/>
+                手机号：18657041322                <a href="/Admin/Shop/editShopStaffRel?shopCode=c6a4fa74-1d22-ed8e-b9a7-eebfc14c69fe" class="btn btn-xs btn-default">
+                    编辑大店长
+                </a>
+            </td>
+            <td>
+                <a href="/Admin/Bonus/shopBonusAnalysis?shopCode=c6a4fa74-1d22-ed8e-b9a7-eebfc14c69fe" class="btn btn-xs btn-default">红包分析</a>
+            </td>
+            <td class="data-list-operation-wrap">
+                <a href="/Admin/BatchCoupon/editCoupon/shopCode/c6a4fa74-1d22-ed8e-b9a7-eebfc14c69fe" class="btn btn-xs btn-default">添加优惠券</a>
+                <a href="/Admin/BatchCoupon/shopCouponAnalysis?shopCode=c6a4fa74-1d22-ed8e-b9a7-eebfc14c69fe" class="btn btn-xs btn-default">优惠券分析</a>
+            </td>
+            <td>
+                <div class="dropdown">
+                    <button type="button" class="btn btn-xs btn-success dropdown-toggle btn-shop-enter-status-c6a4fa74-1d22-ed8e-b9a7-eebfc14c69fe" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="status-text">已入驻</span><span class="caret"></span>
+                            </button>                    <ul class="dropdown-menu" style="min-width: 0">
+                        <li><a href="#" data-shop-code="c6a4fa74-1d22-ed8e-b9a7-eebfc14c69fe" data-enter-status="1" class="change-shop-enter-status">未入驻</a></li>
+                        <li><a href="#" data-shop-code="c6a4fa74-1d22-ed8e-b9a7-eebfc14c69fe" data-enter-status="2" class="change-shop-enter-status">已入驻</a></li>
+                    </ul>
+                </div>
+                            </td>
+            <td class="status">
+                <div class="dropdown">
+                    <button type="button" class="btn btn-xs btn-success dropdown-toggle btn-shop-status-c6a4fa74-1d22-ed8e-b9a7-eebfc14c69fe" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="status-text">启用</span><span class="caret"></span>
+                            </button>                    <ul class="dropdown-menu" style="min-width: 0">
+                        <li><a href="#" data-shop-code="c6a4fa74-1d22-ed8e-b9a7-eebfc14c69fe" data-status="0" class="change-shop-status">禁用</a></li>
+                        <li><a href="#" data-shop-code="c6a4fa74-1d22-ed8e-b9a7-eebfc14c69fe" data-status="1" class="change-shop-status">启用</a></li>
+                    </ul>
+                </div>
+            </td>
+            <td class="data-list-operation-wrap">
+                <a href="/Admin/Shop/editShop?shopCode=c6a4fa74-1d22-ed8e-b9a7-eebfc14c69fe&page=1" class="btn btn-xs btn-primary">编辑</a><br/>
+                <a href="/Admin/Shop/deleteShop?shopCode=c6a4fa74-1d22-ed8e-b9a7-eebfc14c69fe" class="btn btn-xs btn-danger" onclick="return confirm('删除后，商店优惠券和红包数据也会消失。确认删除吗？')">删除</a><br/>
+                <a href="/Admin/Shop/updateIsAcceptBankCard" class="btn btn-xs btn-warning update-accept-ghpay" data-is-accept-bank-card="0" data-shop-code="c6a4fa74-1d22-ed8e-b9a7-eebfc14c69fe">关闭工行支付</a>
+                                </td>
+        </tr><tr>
+            <td>279b2d83-48bf-6319-3e38-cb3656fbdd2a</td>
+            <td>1603310009</td>
+            <td>
+                <a href="/Admin/Shop/shopInfo?shopCode=279b2d83-48bf-6319-3e38-cb3656fbdd2a">完美</a><br/>
+            </td>
+            <td>
+                <span class="label label-6">其他</span><br/>            </td>
+            <td>15858106836</td>
+            <td>330802605046505</td>
+            <td>1209248112</td>
+            <td>2016-03-31 09:58:48</td>
+            <td>浙江省衢州市</td>
+            <td>
+                姓名：谢芳<br/>
+                手机号：15858106836                <a href="/Admin/Shop/editShopStaffRel?shopCode=279b2d83-48bf-6319-3e38-cb3656fbdd2a" class="btn btn-xs btn-default">
+                    编辑大店长
+                </a>
+            </td>
+            <td>
+                <a href="/Admin/Bonus/shopBonusAnalysis?shopCode=279b2d83-48bf-6319-3e38-cb3656fbdd2a" class="btn btn-xs btn-default">红包分析</a>
+            </td>
+            <td class="data-list-operation-wrap">
+                <a href="/Admin/BatchCoupon/editCoupon/shopCode/279b2d83-48bf-6319-3e38-cb3656fbdd2a" class="btn btn-xs btn-default">添加优惠券</a>
+                <a href="/Admin/BatchCoupon/shopCouponAnalysis?shopCode=279b2d83-48bf-6319-3e38-cb3656fbdd2a" class="btn btn-xs btn-default">优惠券分析</a>
+            </td>
+            <td>
+                <div class="dropdown">
+                    <button type="button" class="btn btn-xs btn-success dropdown-toggle btn-shop-enter-status-279b2d83-48bf-6319-3e38-cb3656fbdd2a" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="status-text">已入驻</span><span class="caret"></span>
+                            </button>                    <ul class="dropdown-menu" style="min-width: 0">
+                        <li><a href="#" data-shop-code="279b2d83-48bf-6319-3e38-cb3656fbdd2a" data-enter-status="1" class="change-shop-enter-status">未入驻</a></li>
+                        <li><a href="#" data-shop-code="279b2d83-48bf-6319-3e38-cb3656fbdd2a" data-enter-status="2" class="change-shop-enter-status">已入驻</a></li>
+                    </ul>
+                </div>
+                            </td>
+            <td class="status">
+                <div class="dropdown">
+                    <button type="button" class="btn btn-xs btn-success dropdown-toggle btn-shop-status-279b2d83-48bf-6319-3e38-cb3656fbdd2a" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="status-text">启用</span><span class="caret"></span>
+                            </button>                    <ul class="dropdown-menu" style="min-width: 0">
+                        <li><a href="#" data-shop-code="279b2d83-48bf-6319-3e38-cb3656fbdd2a" data-status="0" class="change-shop-status">禁用</a></li>
+                        <li><a href="#" data-shop-code="279b2d83-48bf-6319-3e38-cb3656fbdd2a" data-status="1" class="change-shop-status">启用</a></li>
+                    </ul>
+                </div>
+            </td>
+            <td class="data-list-operation-wrap">
+                <a href="/Admin/Shop/editShop?shopCode=279b2d83-48bf-6319-3e38-cb3656fbdd2a&page=1" class="btn btn-xs btn-primary">编辑</a><br/>
+                <a href="/Admin/Shop/deleteShop?shopCode=279b2d83-48bf-6319-3e38-cb3656fbdd2a" class="btn btn-xs btn-danger" onclick="return confirm('删除后，商店优惠券和红包数据也会消失。确认删除吗？')">删除</a><br/>
+                <a href="/Admin/Shop/updateIsAcceptBankCard" class="btn btn-xs btn-warning update-accept-ghpay" data-is-accept-bank-card="0" data-shop-code="279b2d83-48bf-6319-3e38-cb3656fbdd2a">关闭工行支付</a>
+                                </td>
+        </tr><tr>
+            <td>0c395973-ba08-0c90-cc44-adedfa5c6f9f</td>
+            <td>1603310008</td>
+            <td>
+                <a href="/Admin/Shop/shopInfo?shopCode=0c395973-ba08-0c90-cc44-adedfa5c6f9f">金万年</a><br/>
+            </td>
+            <td>
+                <span class="label label-6">其他</span><br/>            </td>
+            <td>18167193867</td>
+            <td>9133080255403223117</td>
+            <td>1209208455</td>
+            <td>2016-03-31 09:55:29</td>
+            <td>浙江省衢州市</td>
+            <td>
+                姓名：孙荣香<br/>
+                手机号：18167193867                <a href="/Admin/Shop/editShopStaffRel?shopCode=0c395973-ba08-0c90-cc44-adedfa5c6f9f" class="btn btn-xs btn-default">
+                    编辑大店长
+                </a>
+            </td>
+            <td>
+                <a href="/Admin/Bonus/shopBonusAnalysis?shopCode=0c395973-ba08-0c90-cc44-adedfa5c6f9f" class="btn btn-xs btn-default">红包分析</a>
+            </td>
+            <td class="data-list-operation-wrap">
+                <a href="/Admin/BatchCoupon/editCoupon/shopCode/0c395973-ba08-0c90-cc44-adedfa5c6f9f" class="btn btn-xs btn-default">添加优惠券</a>
+                <a href="/Admin/BatchCoupon/shopCouponAnalysis?shopCode=0c395973-ba08-0c90-cc44-adedfa5c6f9f" class="btn btn-xs btn-default">优惠券分析</a>
+            </td>
+            <td>
+                <div class="dropdown">
+                    <button type="button" class="btn btn-xs btn-success dropdown-toggle btn-shop-enter-status-0c395973-ba08-0c90-cc44-adedfa5c6f9f" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="status-text">已入驻</span><span class="caret"></span>
+                            </button>                    <ul class="dropdown-menu" style="min-width: 0">
+                        <li><a href="#" data-shop-code="0c395973-ba08-0c90-cc44-adedfa5c6f9f" data-enter-status="1" class="change-shop-enter-status">未入驻</a></li>
+                        <li><a href="#" data-shop-code="0c395973-ba08-0c90-cc44-adedfa5c6f9f" data-enter-status="2" class="change-shop-enter-status">已入驻</a></li>
+                    </ul>
+                </div>
+                            </td>
+            <td class="status">
+                <div class="dropdown">
+                    <button type="button" class="btn btn-xs btn-success dropdown-toggle btn-shop-status-0c395973-ba08-0c90-cc44-adedfa5c6f9f" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="status-text">启用</span><span class="caret"></span>
+                            </button>                    <ul class="dropdown-menu" style="min-width: 0">
+                        <li><a href="#" data-shop-code="0c395973-ba08-0c90-cc44-adedfa5c6f9f" data-status="0" class="change-shop-status">禁用</a></li>
+                        <li><a href="#" data-shop-code="0c395973-ba08-0c90-cc44-adedfa5c6f9f" data-status="1" class="change-shop-status">启用</a></li>
+                    </ul>
+                </div>
+            </td>
+            <td class="data-list-operation-wrap">
+                <a href="/Admin/Shop/editShop?shopCode=0c395973-ba08-0c90-cc44-adedfa5c6f9f&page=1" class="btn btn-xs btn-primary">编辑</a><br/>
+                <a href="/Admin/Shop/deleteShop?shopCode=0c395973-ba08-0c90-cc44-adedfa5c6f9f" class="btn btn-xs btn-danger" onclick="return confirm('删除后，商店优惠券和红包数据也会消失。确认删除吗？')">删除</a><br/>
+                <a href="/Admin/Shop/updateIsAcceptBankCard" class="btn btn-xs btn-warning update-accept-ghpay" data-is-accept-bank-card="0" data-shop-code="0c395973-ba08-0c90-cc44-adedfa5c6f9f">关闭工行支付</a>
+                                </td>
+        </tr><tr>
+            <td>98a2cc1b-756a-c31c-5032-1890d20e6576</td>
+            <td>1603310007</td>
+            <td>
+                <a href="/Admin/Shop/shopInfo?shopCode=98a2cc1b-756a-c31c-5032-1890d20e6576">永明家电</a><br/>
+            </td>
+            <td>
+                <span class="label label-6">其他</span><br/>            </td>
+            <td>18857031299</td>
+            <td>330802604002730</td>
+            <td>1209925193</td>
+            <td>2016-03-31 09:45:12</td>
+            <td>浙江省衢州市</td>
+            <td>
+                姓名：余翠贞<br/>
+                手机号：18857031299                <a href="/Admin/Shop/editShopStaffRel?shopCode=98a2cc1b-756a-c31c-5032-1890d20e6576" class="btn btn-xs btn-default">
+                    编辑大店长
+                </a>
+            </td>
+            <td>
+                <a href="/Admin/Bonus/shopBonusAnalysis?shopCode=98a2cc1b-756a-c31c-5032-1890d20e6576" class="btn btn-xs btn-default">红包分析</a>
+            </td>
+            <td class="data-list-operation-wrap">
+                <a href="/Admin/BatchCoupon/editCoupon/shopCode/98a2cc1b-756a-c31c-5032-1890d20e6576" class="btn btn-xs btn-default">添加优惠券</a>
+                <a href="/Admin/BatchCoupon/shopCouponAnalysis?shopCode=98a2cc1b-756a-c31c-5032-1890d20e6576" class="btn btn-xs btn-default">优惠券分析</a>
+            </td>
+            <td>
+                <div class="dropdown">
+                    <button type="button" class="btn btn-xs btn-success dropdown-toggle btn-shop-enter-status-98a2cc1b-756a-c31c-5032-1890d20e6576" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="status-text">已入驻</span><span class="caret"></span>
+                            </button>                    <ul class="dropdown-menu" style="min-width: 0">
+                        <li><a href="#" data-shop-code="98a2cc1b-756a-c31c-5032-1890d20e6576" data-enter-status="1" class="change-shop-enter-status">未入驻</a></li>
+                        <li><a href="#" data-shop-code="98a2cc1b-756a-c31c-5032-1890d20e6576" data-enter-status="2" class="change-shop-enter-status">已入驻</a></li>
+                    </ul>
+                </div>
+                            </td>
+            <td class="status">
+                <div class="dropdown">
+                    <button type="button" class="btn btn-xs btn-success dropdown-toggle btn-shop-status-98a2cc1b-756a-c31c-5032-1890d20e6576" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="status-text">启用</span><span class="caret"></span>
+                            </button>                    <ul class="dropdown-menu" style="min-width: 0">
+                        <li><a href="#" data-shop-code="98a2cc1b-756a-c31c-5032-1890d20e6576" data-status="0" class="change-shop-status">禁用</a></li>
+                        <li><a href="#" data-shop-code="98a2cc1b-756a-c31c-5032-1890d20e6576" data-status="1" class="change-shop-status">启用</a></li>
+                    </ul>
+                </div>
+            </td>
+            <td class="data-list-operation-wrap">
+                <a href="/Admin/Shop/editShop?shopCode=98a2cc1b-756a-c31c-5032-1890d20e6576&page=1" class="btn btn-xs btn-primary">编辑</a><br/>
+                <a href="/Admin/Shop/deleteShop?shopCode=98a2cc1b-756a-c31c-5032-1890d20e6576" class="btn btn-xs btn-danger" onclick="return confirm('删除后，商店优惠券和红包数据也会消失。确认删除吗？')">删除</a><br/>
+                <a href="/Admin/Shop/updateIsAcceptBankCard" class="btn btn-xs btn-warning update-accept-ghpay" data-is-accept-bank-card="0" data-shop-code="98a2cc1b-756a-c31c-5032-1890d20e6576">关闭工行支付</a>
+                                </td>
+        </tr><tr>
+            <td>d7dcd2b1-10be-37fe-1ad0-ce302d34039d</td>
+            <td>1603310006</td>
+            <td>
+                <a href="/Admin/Shop/shopInfo?shopCode=d7dcd2b1-10be-37fe-1ad0-ce302d34039d">四季养生会所</a><br/>
+            </td>
+            <td>
+                <span class="label label-6">其他</span><br/>            </td>
+            <td>15157011084</td>
+            <td>330800602013672</td>
+            <td>1209480553</td>
+            <td>2016-03-31 09:39:44</td>
+            <td>浙江省衢州市</td>
+            <td>
+                姓名：邢利袁<br/>
+                手机号：15157011084                <a href="/Admin/Shop/editShopStaffRel?shopCode=d7dcd2b1-10be-37fe-1ad0-ce302d34039d" class="btn btn-xs btn-default">
+                    编辑大店长
+                </a>
+            </td>
+            <td>
+                <a href="/Admin/Bonus/shopBonusAnalysis?shopCode=d7dcd2b1-10be-37fe-1ad0-ce302d34039d" class="btn btn-xs btn-default">红包分析</a>
+            </td>
+            <td class="data-list-operation-wrap">
+                <a href="/Admin/BatchCoupon/editCoupon/shopCode/d7dcd2b1-10be-37fe-1ad0-ce302d34039d" class="btn btn-xs btn-default">添加优惠券</a>
+                <a href="/Admin/BatchCoupon/shopCouponAnalysis?shopCode=d7dcd2b1-10be-37fe-1ad0-ce302d34039d" class="btn btn-xs btn-default">优惠券分析</a>
+            </td>
+            <td>
+                <div class="dropdown">
+                    <button type="button" class="btn btn-xs btn-success dropdown-toggle btn-shop-enter-status-d7dcd2b1-10be-37fe-1ad0-ce302d34039d" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="status-text">已入驻</span><span class="caret"></span>
+                            </button>                    <ul class="dropdown-menu" style="min-width: 0">
+                        <li><a href="#" data-shop-code="d7dcd2b1-10be-37fe-1ad0-ce302d34039d" data-enter-status="1" class="change-shop-enter-status">未入驻</a></li>
+                        <li><a href="#" data-shop-code="d7dcd2b1-10be-37fe-1ad0-ce302d34039d" data-enter-status="2" class="change-shop-enter-status">已入驻</a></li>
+                    </ul>
+                </div>
+                            </td>
+            <td class="status">
+                <div class="dropdown">
+                    <button type="button" class="btn btn-xs btn-success dropdown-toggle btn-shop-status-d7dcd2b1-10be-37fe-1ad0-ce302d34039d" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="status-text">启用</span><span class="caret"></span>
+                            </button>                    <ul class="dropdown-menu" style="min-width: 0">
+                        <li><a href="#" data-shop-code="d7dcd2b1-10be-37fe-1ad0-ce302d34039d" data-status="0" class="change-shop-status">禁用</a></li>
+                        <li><a href="#" data-shop-code="d7dcd2b1-10be-37fe-1ad0-ce302d34039d" data-status="1" class="change-shop-status">启用</a></li>
+                    </ul>
+                </div>
+            </td>
+            <td class="data-list-operation-wrap">
+                <a href="/Admin/Shop/editShop?shopCode=d7dcd2b1-10be-37fe-1ad0-ce302d34039d&page=1" class="btn btn-xs btn-primary">编辑</a><br/>
+                <a href="/Admin/Shop/deleteShop?shopCode=d7dcd2b1-10be-37fe-1ad0-ce302d34039d" class="btn btn-xs btn-danger" onclick="return confirm('删除后，商店优惠券和红包数据也会消失。确认删除吗？')">删除</a><br/>
+                <a href="/Admin/Shop/updateIsAcceptBankCard" class="btn btn-xs btn-warning update-accept-ghpay" data-is-accept-bank-card="0" data-shop-code="d7dcd2b1-10be-37fe-1ad0-ce302d34039d">关闭工行支付</a>
+                                </td>
+        </tr><tr>
+            <td>5a3797ac-4b56-bb12-94a4-b0ef8fd43f66</td>
+            <td>1603310005</td>
+            <td>
+                <a href="/Admin/Shop/shopInfo?shopCode=5a3797ac-4b56-bb12-94a4-b0ef8fd43f66">自由人奶茶</a><br/>
+            </td>
+            <td>
+                <span class="label label-1">美食</span><br/>            </td>
+            <td>13905883360</td>
+            <td>331102691008205</td>
+            <td>1210989409</td>
+            <td>2016-03-31 09:37:26</td>
+            <td>浙江省丽水市</td>
+            <td>
+                姓名：蓝平<br/>
+                手机号：13905883360                <a href="/Admin/Shop/editShopStaffRel?shopCode=5a3797ac-4b56-bb12-94a4-b0ef8fd43f66" class="btn btn-xs btn-default">
+                    编辑大店长
+                </a>
+            </td>
+            <td>
+                <a href="/Admin/Bonus/shopBonusAnalysis?shopCode=5a3797ac-4b56-bb12-94a4-b0ef8fd43f66" class="btn btn-xs btn-default">红包分析</a>
+            </td>
+            <td class="data-list-operation-wrap">
+                <a href="/Admin/BatchCoupon/editCoupon/shopCode/5a3797ac-4b56-bb12-94a4-b0ef8fd43f66" class="btn btn-xs btn-default">添加优惠券</a>
+                <a href="/Admin/BatchCoupon/shopCouponAnalysis?shopCode=5a3797ac-4b56-bb12-94a4-b0ef8fd43f66" class="btn btn-xs btn-default">优惠券分析</a>
+            </td>
+            <td>
+                <div class="dropdown">
+                    <button type="button" class="btn btn-xs btn-success dropdown-toggle btn-shop-enter-status-5a3797ac-4b56-bb12-94a4-b0ef8fd43f66" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="status-text">已入驻</span><span class="caret"></span>
+                            </button>                    <ul class="dropdown-menu" style="min-width: 0">
+                        <li><a href="#" data-shop-code="5a3797ac-4b56-bb12-94a4-b0ef8fd43f66" data-enter-status="1" class="change-shop-enter-status">未入驻</a></li>
+                        <li><a href="#" data-shop-code="5a3797ac-4b56-bb12-94a4-b0ef8fd43f66" data-enter-status="2" class="change-shop-enter-status">已入驻</a></li>
+                    </ul>
+                </div>
+                            </td>
+            <td class="status">
+                <div class="dropdown">
+                    <button type="button" class="btn btn-xs btn-success dropdown-toggle btn-shop-status-5a3797ac-4b56-bb12-94a4-b0ef8fd43f66" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="status-text">启用</span><span class="caret"></span>
+                            </button>                    <ul class="dropdown-menu" style="min-width: 0">
+                        <li><a href="#" data-shop-code="5a3797ac-4b56-bb12-94a4-b0ef8fd43f66" data-status="0" class="change-shop-status">禁用</a></li>
+                        <li><a href="#" data-shop-code="5a3797ac-4b56-bb12-94a4-b0ef8fd43f66" data-status="1" class="change-shop-status">启用</a></li>
+                    </ul>
+                </div>
+            </td>
+            <td class="data-list-operation-wrap">
+                <a href="/Admin/Shop/editShop?shopCode=5a3797ac-4b56-bb12-94a4-b0ef8fd43f66&page=1" class="btn btn-xs btn-primary">编辑</a><br/>
+                <a href="/Admin/Shop/deleteShop?shopCode=5a3797ac-4b56-bb12-94a4-b0ef8fd43f66" class="btn btn-xs btn-danger" onclick="return confirm('删除后，商店优惠券和红包数据也会消失。确认删除吗？')">删除</a><br/>
+                <a href="/Admin/Shop/updateIsAcceptBankCard" class="btn btn-xs btn-warning update-accept-ghpay" data-is-accept-bank-card="0" data-shop-code="5a3797ac-4b56-bb12-94a4-b0ef8fd43f66">关闭工行支付</a>
+                                </td>
+        </tr><tr>
+            <td>6baa4bc9-f678-3859-eeb1-3311f0892db0</td>
+            <td>1603310004</td>
+            <td>
+                <a href="/Admin/Shop/shopInfo?shopCode=6baa4bc9-f678-3859-eeb1-3311f0892db0">独品发型工作室</a><br/>
+            </td>
+            <td>
+                <span class="label label-2">丽人</span><br/>            </td>
+            <td>15857016653</td>
+            <td>330825605009038</td>
+            <td>1209371588</td>
+            <td>2016-03-31 09:36:06</td>
+            <td>浙江省衢州市</td>
+            <td>
+                姓名：雷建斌<br/>
+                手机号：15857016653                <a href="/Admin/Shop/editShopStaffRel?shopCode=6baa4bc9-f678-3859-eeb1-3311f0892db0" class="btn btn-xs btn-default">
+                    编辑大店长
+                </a>
+            </td>
+            <td>
+                <a href="/Admin/Bonus/shopBonusAnalysis?shopCode=6baa4bc9-f678-3859-eeb1-3311f0892db0" class="btn btn-xs btn-default">红包分析</a>
+            </td>
+            <td class="data-list-operation-wrap">
+                <a href="/Admin/BatchCoupon/editCoupon/shopCode/6baa4bc9-f678-3859-eeb1-3311f0892db0" class="btn btn-xs btn-default">添加优惠券</a>
+                <a href="/Admin/BatchCoupon/shopCouponAnalysis?shopCode=6baa4bc9-f678-3859-eeb1-3311f0892db0" class="btn btn-xs btn-default">优惠券分析</a>
+            </td>
+            <td>
+                <div class="dropdown">
+                    <button type="button" class="btn btn-xs btn-success dropdown-toggle btn-shop-enter-status-6baa4bc9-f678-3859-eeb1-3311f0892db0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="status-text">已入驻</span><span class="caret"></span>
+                            </button>                    <ul class="dropdown-menu" style="min-width: 0">
+                        <li><a href="#" data-shop-code="6baa4bc9-f678-3859-eeb1-3311f0892db0" data-enter-status="1" class="change-shop-enter-status">未入驻</a></li>
+                        <li><a href="#" data-shop-code="6baa4bc9-f678-3859-eeb1-3311f0892db0" data-enter-status="2" class="change-shop-enter-status">已入驻</a></li>
+                    </ul>
+                </div>
+                            </td>
+            <td class="status">
+                <div class="dropdown">
+                    <button type="button" class="btn btn-xs btn-success dropdown-toggle btn-shop-status-6baa4bc9-f678-3859-eeb1-3311f0892db0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="status-text">启用</span><span class="caret"></span>
+                            </button>                    <ul class="dropdown-menu" style="min-width: 0">
+                        <li><a href="#" data-shop-code="6baa4bc9-f678-3859-eeb1-3311f0892db0" data-status="0" class="change-shop-status">禁用</a></li>
+                        <li><a href="#" data-shop-code="6baa4bc9-f678-3859-eeb1-3311f0892db0" data-status="1" class="change-shop-status">启用</a></li>
+                    </ul>
+                </div>
+            </td>
+            <td class="data-list-operation-wrap">
+                <a href="/Admin/Shop/editShop?shopCode=6baa4bc9-f678-3859-eeb1-3311f0892db0&page=1" class="btn btn-xs btn-primary">编辑</a><br/>
+                <a href="/Admin/Shop/deleteShop?shopCode=6baa4bc9-f678-3859-eeb1-3311f0892db0" class="btn btn-xs btn-danger" onclick="return confirm('删除后，商店优惠券和红包数据也会消失。确认删除吗？')">删除</a><br/>
+                <a href="/Admin/Shop/updateIsAcceptBankCard" class="btn btn-xs btn-warning update-accept-ghpay" data-is-accept-bank-card="0" data-shop-code="6baa4bc9-f678-3859-eeb1-3311f0892db0">关闭工行支付</a>
+                                </td>
+        </tr>    </tbody>
+</table>
+<script>
+    ;(function(){
+        // 修改是否支持工行卡支付
+        $('.update-accept-ghpay').on('click', function(){
+            var btn = $(this);
+            var href = btn.attr('href');
+            var isAcceptBankCard = btn.data('isAcceptBankCard');
+            var shopCode = btn.data('shopCode');
+            $.get(href, {'shopCode' : shopCode, 'isAcceptBankCard' : isAcceptBankCard}, function(resp){
+                if(resp.status == sz.STATUS_SUCC) {
+                    btn.addClass(resp.data.newClass).removeClass(resp.data.oldClass).data('isAcceptBankCard', resp.data.isAcceptBankCard).text(resp.data.text);
+                    sz.showSuccMsg(resp.msg, 3);
+                } else {
+                    sz.showErrMsg(resp.msg, 3);
+                }
+            });
+            return false;
+        })
+    })();
+    // 修改商家的状态
+    ;(function(){
+        $('.change-shop-status').on('click', function(){
+            var shopCode = $(this).data('shopCode');
+            var status = $(this).data('status');
+
+            var btnShopStatus = $('.btn-shop-status-' + shopCode);
+            btnShopStatus.removeClass('btn-default').removeClass('btn-success').removeClass('btn-danger');
+            $.get(
+                    '/Admin/Shop/changeStatus',
+                    {'shopCode': shopCode, 'status': status},
+                    function(resp){
+                        if(resp.status == sz.STATUS_SUCC) {
+                            switch(status){
+                                case 1:
+                                    btnShopStatus.children().filter('.status-text').html('启用');
+                                    btnShopStatus.addClass('btn-success');
+                                    break;
+                                case 0:
+                                    btnShopStatus.children().filter('.status-text').html('禁用');
+                                    btnShopStatus.addClass('btn-danger');
+                                    break;
+                            }
+                            // 隐藏下拉框
+                            btnShopStatus.dropdown('toggle');
+                        } else {
+                            sz.showErrMsg(resp.msg)
+                        }
+                    }
+            );
+            return false;
+        });
+    })();
+    // 修改商家入驻的状态
+    ;(function(){
+        $('.change-shop-enter-status').on('click', function(){
+            var shopCode = $(this).data('shopCode');
+            var enterStatus = $(this).data('enterStatus');
+
+            var btnShopStatus = $('.btn-shop-enter-status-' + shopCode);
+            btnShopStatus.removeClass('btn-default').removeClass('btn-success').removeClass('btn-danger');
+            $.get(
+                    '/Admin/Shop/changeShopEnterStatus',
+                    {'shopCode': shopCode, 'shopStatus': enterStatus},
+                    function(resp){
+                        if(resp.status == sz.STATUS_SUCC) {
+                            switch(enterStatus){
+                                case 1:
+                                    btnShopStatus.children().filter('.status-text').html('未入驻');
+                                    btnShopStatus.addClass('btn-danger');
+                                    break;
+                                case 2:
+                                    btnShopStatus.children().filter('.status-text').html('已入驻');
+                                    btnShopStatus.addClass('btn-success');
+                                    break;
+                            }
+                            // 隐藏下拉框
+                            btnShopStatus.dropdown('toggle');
+                        } else {
+                            sz.showErrMsg(resp.msg)
+                        }
+                    }
+            );
+            return false;
+        });
+
+    })();
+</script>
+<div class="row">
+    <div class="col-md-10">
+        <nav>
+            <ul class="pagination">
+                <li><a href="#" data-pagenum="1">首页</a></li>
+                <li class="disabled"><a href="#" data-pagenum="0">&laquo; 前一页</a></li>
+                                                                <li class="disabled"><a href="#">1</a></li>
+                <li><a href="#" data-pagenum="2">2</a></li>                <li><a href="#" data-pagenum="3">3</a></li>                <li class="disabled"><a href="#">···</a></li>                <li class=""><a href="#" data-pagenum="2">下一页 &raquo;</a></li>
+                <li><a href="#" data-pagenum="186">末页</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="col-md-2">
+        <input type="text" id="ipt-page-num" value="" placeholder="页码"/>
+        <a href="#" class="btn btn-sm btn-default" id="a-go-to-the-page">前往</a>
+    </div>
+</div>
+<script type="text/javascript">
+    //$(document).ready(function() {
+    $('.pagination a').on('click', function() {
+        if (!$(this).parent().hasClass('disabled')) { // 如果该元素可点击
+            // 把待获取的页面塞到FORM中
+            var pageNum = $(this).data('pagenum');
+            var searchFrm = $(sz.SEARCH_FORM_ID);
+            $(sz.SEARCH_FORM_ID + ' input[name=page]').val(pageNum);
+            // 提交FORM，更新数据
+            $.get(searchFrm.attr('action'), searchFrm.serialize(), function(resp) {
+                if (resp.status == sz.STATUS_SUCC) {
+                    $(sz.DATA_LIST_TABLE_WRAPPER_ID).html(resp.html);
+                } else {
+                    sz.showErrMsg(resp.msg);
+                }
+            });
+        }
+        return false;
+    });
+    // 跳页
+    $('#a-go-to-the-page').on('click', function(){
+        // 把待获取的页面塞到FORM中
+        var pageNum = $('#ipt-page-num').val();
+        var searchFrm = $(sz.SEARCH_FORM_ID);
+        $(sz.SEARCH_FORM_ID + ' input[name=page]').val(pageNum);
+        //$(sz.SEARCH_FORM_ID).submit();
+        // 提交FORM，更新数据
+        $.get(searchFrm.attr('action'), searchFrm.serialize(), function(resp) {
+            if (resp.status == sz.STATUS_SUCC) {
+                $(sz.DATA_LIST_TABLE_WRAPPER_ID).html(resp.html);
+            } else {
+                sz.showErrMsg(resp.msg);
+            }
+        });
+        return false;
+    });
+    //});
+    $(sz.DELETE_BUTTON_ID).on('click', function() {
+        var ele = $(this);
+        var href = ele.attr("href");
+        bootbox.confirm('确认删除?', function(resp){
+            if(resp == true){
+                location.href = href;
+            }else {
+                return;
+            }
+        });
+        return false;
+    });
+    $(function(){
+        $(sz.CHANGE_BUTTON_ID).on('click', function(){
+            var openStatus = 1;
+            var closeStatus = 0;
+            var btn = $(this);
+            // 按钮的状态属性
+            var status = btn.attr('data-status');
+            // 修改状态后，按钮的状态属性
+            var dataStatus = status == openStatus ? closeStatus : openStatus;
+            // 修改后，按钮的文字
+            var btnText = btn.parent().prev().text();
+            // 状态的class
+            var statusClass = status == openStatus ? 'success' : 'danger';
+            // 状态的文字内容
+            var statusText = btn.text();
+            var htmlStatusText = '<span class="label label-' + statusClass + '">' + statusText + '</span>';
+            var url = btn.attr('href');
+            $.get(url, {status: status}, function(resp){
+                if(resp.status == sz.STATUS_SUCC) {
+                    btn.attr("data-status", dataStatus);
+                    btn.text(btnText);
+                    btn.parent().prev().html(htmlStatusText);
+                    sz.showSuccMsg(resp.msg, 0.8);
+                } else {
+                    sz.showErrMsg(resp.msg, 2);
+                }
+            });
+            return false;
+        })
+    });
+    $(function(){
+        $("#suggest_ul").hide(0);
+    });
+    $(function(){
+        $("#suggest_input").keyup(function(){
+            if($("#suggest_input").val().length==0){
+                $("#suggest_ul").hide(0);
+                return;
+            }
+            var sid = $("#suggest_input").val();
+            $.get('/Admin/Shop/getKeywords',{keywords:sid},function(resp){
+                console.log(resp);
+                if(resp.data == null){
+                    $("#suggest_ul").hide(0);
+                    return;
+                }
+                $("#suggest_ul").show(0);
+                var contents="";
+                for(var i=0;i<resp.data.length;i++){
+                    var keywords = resp.data[i]['shopName'];
+                    //alert(skey);
+                    contents = contents+"<li class='suggest_li'>"+keywords+"</li>";
+                }
+                //alert(contents);
+                $("#suggest_ul").html(contents);
+            })
+
+        });
+    });
+    $(function(){
+        $("#suggest_input").keyup(function(){
+            setInterval(changehover,300);
+            function changehover(){
+                $("#suggest_ul li").hover(function(){
+                    $(this).css("background","#eee");
+                },function(){
+                    $(this).css("background","#fff");
+                });
+                $("#suggest_ul li").click(function(){
+                    $("#suggest_input").val($(this).html());
+                    $("#suggest_ul").hide(0);
+                });
+                $("#suggest_ul li").click(function(){
+                    $("#data_search_form").submit();
+                });
+            }
+        });
+
+    });
+
+</script>
+
+
+</div>
+<script>
+    $(function(){
+        $('.reg_date').datetimepicker({
+            format: 'yyyy-mm-dd',
+            autoclose: true,
+            todayBtn: true,
+            minView: 'month',
+            pickerPosition: "bottom-left"
+        });
+        // 初始化select2
+        $('.js-brand-single').select2({
+            placeholder: "请选品牌",
+            allowClear: true
+        });
+        // 导出符合条件的商户excel
+        $('#export-shop').on('click', function(){
+            var frm = $('#data_search_form');
+            var url = '/Admin/Shop/exportShop?' + frm.serialize() + '&page=0';
+            location.href = url;
+        });
+        // 导出商户excel
+        $('#exportAll').on('click', function(){
+            var frm = $('#data_search_form');
+            var url = '/Admin/Shop/exportAllShop?' + frm.serialize() + '&page=0';
+            location.href = url;
+        });
+        // 地区初始化
+        sz.initDistrict('', '', '', '#slt-province', '#slt-city', '#slt-district');
+    });
+</script>
+
+        </div>
+    </div>
+</div>
+</body>
+</html><div id="think_page_trace" style="position: fixed;bottom:0;right:0;font-size:14px;width:100%;z-index: 999999;color: #000;text-align:left;font-family:'微软雅黑';">
+<div id="think_page_trace_tab" style="display: none;background:white;margin:0;height: 250px;">
+<div id="think_page_trace_tab_tit" style="height:30px;padding: 6px 12px 0;border-bottom:1px solid #ececec;border-top:1px solid #ececec;font-size:16px">
+	    <span style="color:#000;padding-right:12px;height:30px;line-height: 30px;display:inline-block;margin-right:3px;cursor: pointer;font-weight:700">基本</span>
+        <span style="color:#000;padding-right:12px;height:30px;line-height: 30px;display:inline-block;margin-right:3px;cursor: pointer;font-weight:700">文件</span>
+        <span style="color:#000;padding-right:12px;height:30px;line-height: 30px;display:inline-block;margin-right:3px;cursor: pointer;font-weight:700">流程</span>
+        <span style="color:#000;padding-right:12px;height:30px;line-height: 30px;display:inline-block;margin-right:3px;cursor: pointer;font-weight:700">错误</span>
+        <span style="color:#000;padding-right:12px;height:30px;line-height: 30px;display:inline-block;margin-right:3px;cursor: pointer;font-weight:700">SQL</span>
+        <span style="color:#000;padding-right:12px;height:30px;line-height: 30px;display:inline-block;margin-right:3px;cursor: pointer;font-weight:700">调试</span>
+    </div>
+<div id="think_page_trace_tab_cont" style="overflow:auto;height:212px;padding: 0; line-height: 24px">
+		    <div style="display:none;">
+    <ol style="padding: 0; margin:0">
+	<li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">请求信息 : 2017-12-06 17:23:24 HTTP/1.1 GET : /Admin/Shop/listShop</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">运行时间 : 16.2628s ( Load:0.0066s Init:0.0025s Exec:16.0927s Template:0.1610s )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">吞吐率 : 0.06req/s</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">内存开销 : 3,913.67 kb</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">查询信息 : 43 queries 1 writes </li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">文件加载 : 49</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">缓存信息 : 0 gets 0 writes </li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">配置加载 : 246</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">会话信息 : SESSION_ID=seckuj0i8edjctv7oqisuj4af5</li>    </ol>
+    </div>
+        <div style="display:none;">
+    <ol style="padding: 0; margin:0">
+	<li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/index.php ( 1.10 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/ThinkPHP/ThinkPHP.php ( 4.61 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/ThinkPHP/Library/Think/Think.class.php ( 11.98 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/ThinkPHP/Library/Think/Storage.class.php ( 1.34 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/ThinkPHP/Library/Think/Storage/Driver/File.class.php ( 3.44 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/ThinkPHP/Mode/common.php ( 2.75 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/ThinkPHP/Common/functions.php ( 52.41 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/ThinkPHP/Library/Think/Hook.class.php ( 3.91 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/ThinkPHP/Library/Think/App.class.php ( 13.26 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/ThinkPHP/Library/Think/Dispatcher.class.php ( 14.75 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/ThinkPHP/Library/Think/Route.class.php ( 13.07 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/ThinkPHP/Library/Think/Controller.class.php ( 10.65 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/ThinkPHP/Library/Think/View.class.php ( 7.73 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/ThinkPHP/Library/Behavior/BuildLiteBehavior.class.php ( 3.61 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/ThinkPHP/Library/Behavior/ParseTemplateBehavior.class.php ( 3.80 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/ThinkPHP/Library/Behavior/ContentReplaceBehavior.class.php ( 1.87 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/ThinkPHP/Conf/convention.php ( 11.02 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/Application/Common/Conf/config.php ( 1.41 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/Application/Common/Conf/tags.php ( 0.23 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/ThinkPHP/Lang/zh-cn.php ( 2.52 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/ThinkPHP/Conf/debug.php ( 1.48 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/Application/Common/Conf/debug.php ( 0.32 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/Application/Common/Conf/const.php ( 50.79 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/Application/Common/Conf/function.php ( 1.13 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/Application/Admin/Conf/config.php ( 19.96 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/Application/Admin/Conf/menu.php ( 8.99 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/ThinkPHP/Library/Behavior/ReadHtmlCacheBehavior.class.php ( 5.51 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/Application/Admin/Controller/ShopController.class.php ( 62.59 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/Application/Admin/Controller/AdminBaseController.class.php ( 3.29 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/Application/Admin/Controller/MwBaseController.class.php ( 1.94 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/Application/Common/Model/Pager.class.php ( 1.49 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/Application/Common/Model/StaffActionLogModel.class.php ( 2.43 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/Application/Common/Model/BaseModel.class.php ( 26.18 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/ThinkPHP/Library/Think/Model.class.php ( 64.98 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/ThinkPHP/Library/Think/Exception.class.php ( 0.67 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/ThinkPHP/Library/Think/Db.class.php ( 5.55 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/ThinkPHP/Library/Think/Db/Driver/Mysql.class.php ( 6.79 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/ThinkPHP/Library/Think/Db/Driver.class.php ( 40.21 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/Application/Common/Model/ShopModel.class.php ( 65.17 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/Application/Common/Model/PreShopModel.class.php ( 5.88 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/Application/Common/Model/ShopTypeRelModel.class.php ( 2.47 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/Application/Common/Model/ShopStaffRelModel.class.php ( 7.25 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/Application/Common/Model/ShopTypeModel.class.php ( 2.97 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/ThinkPHP/Library/Think/Template.class.php ( 27.66 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/ThinkPHP/Library/Think/Template/TagLib/Cx.class.php ( 22.02 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/ThinkPHP/Library/Think/Template/TagLib.class.php ( 8.95 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/Application/Runtime/Cache/Admin/13b703170bd4ebd3feafb955e2ab7f6c.php ( 32.21 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/ThinkPHP/Library/Behavior/WriteHtmlCacheBehavior.class.php ( 1.40 KB )</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/data/huiquan/webApp/api/ThinkPHP/Library/Behavior/ShowPageTraceBehavior.class.php ( 5.15 KB )</li>    </ol>
+    </div>
+        <div style="display:none;">
+    <ol style="padding: 0; margin:0">
+	<li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[ app_init ] --START--</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">Run Behavior\BuildLiteBehavior [ RunTime:0.000009s ]</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[ app_init ] --END-- [ RunTime:0.000042s ]</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[ app_begin ] --START--</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000307s ]</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[ app_begin ] --END-- [ RunTime:0.000343s ]</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[ view_parse ] --START--</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[ template_filter ] --START--</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">Run Behavior\ContentReplaceBehavior [ RunTime:0.000082s ]</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[ template_filter ] --END-- [ RunTime:0.000117s ]</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">Run Behavior\ParseTemplateBehavior [ RunTime:0.023476s ]</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[ view_parse ] --END-- [ RunTime:0.023507s ]</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[ view_filter ] --START--</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000099s ]</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[ view_filter ] --END-- [ RunTime:0.000123s ]</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[ app_end ] --START--</li>    </ol>
+    </div>
+        <div style="display:none;">
+    <ol style="padding: 0; margin:0">
+	<li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined index: page /data/huiquan/webApp/api/Application/Common/Model/BaseModel.class.php 第 92 行.</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined index: pageSize /data/huiquan/webApp/api/Application/Common/Model/BaseModel.class.php 第 95 行.</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined index: status /data/huiquan/webApp/api/Application/Common/Model/ShopModel.class.php 第 1216 行.</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined index: status /data/huiquan/webApp/api/Application/Common/Model/ShopModel.class.php 第 1216 行.</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined index: typeId /data/huiquan/webApp/api/Application/Common/Model/ShopModel.class.php 第 1220 行.</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined index: typeId /data/huiquan/webApp/api/Application/Common/Model/ShopModel.class.php 第 1220 行.</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined index: createDateStart /data/huiquan/webApp/api/Application/Common/Model/ShopModel.class.php 第 1224 行.</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined index: createDateStart /data/huiquan/webApp/api/Application/Common/Model/ShopModel.class.php 第 1226 行.</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined index: createDateStart /data/huiquan/webApp/api/Application/Common/Model/ShopModel.class.php 第 1228 行.</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined index: createDateEnd /data/huiquan/webApp/api/Application/Common/Model/ShopModel.class.php 第 1228 行.</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined index: status /data/huiquan/webApp/api/Application/Common/Model/ShopModel.class.php 第 1216 行.</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined index: status /data/huiquan/webApp/api/Application/Common/Model/ShopModel.class.php 第 1216 行.</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined index: typeId /data/huiquan/webApp/api/Application/Common/Model/ShopModel.class.php 第 1220 行.</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined index: typeId /data/huiquan/webApp/api/Application/Common/Model/ShopModel.class.php 第 1220 行.</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined index: createDateStart /data/huiquan/webApp/api/Application/Common/Model/ShopModel.class.php 第 1224 行.</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined index: createDateStart /data/huiquan/webApp/api/Application/Common/Model/ShopModel.class.php 第 1226 行.</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined index: createDateStart /data/huiquan/webApp/api/Application/Common/Model/ShopModel.class.php 第 1228 行.</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined index: createDateEnd /data/huiquan/webApp/api/Application/Common/Model/ShopModel.class.php 第 1228 行.</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined index: shopId /data/huiquan/webApp/api/Application/Runtime/Cache/Admin/13b703170bd4ebd3feafb955e2ab7f6c.php 第 87 行.</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined index: shopName /data/huiquan/webApp/api/Application/Runtime/Cache/Admin/13b703170bd4ebd3feafb955e2ab7f6c.php 第 94 行.</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined index: hqIcbcShopNbr /data/huiquan/webApp/api/Application/Runtime/Cache/Admin/13b703170bd4ebd3feafb955e2ab7f6c.php 第 104 行.</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined index: mobileNbr /data/huiquan/webApp/api/Application/Runtime/Cache/Admin/13b703170bd4ebd3feafb955e2ab7f6c.php 第 111 行.</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined index: createDateStart /data/huiquan/webApp/api/Application/Runtime/Cache/Admin/13b703170bd4ebd3feafb955e2ab7f6c.php 第 120 行.</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined index: createDateEnd /data/huiquan/webApp/api/Application/Runtime/Cache/Admin/13b703170bd4ebd3feafb955e2ab7f6c.php 第 129 行.</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined index: status /data/huiquan/webApp/api/Application/Runtime/Cache/Admin/13b703170bd4ebd3feafb955e2ab7f6c.php 第 141 行.</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined index: status /data/huiquan/webApp/api/Application/Runtime/Cache/Admin/13b703170bd4ebd3feafb955e2ab7f6c.php 第 142 行.</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined index: status /data/huiquan/webApp/api/Application/Runtime/Cache/Admin/13b703170bd4ebd3feafb955e2ab7f6c.php 第 143 行.</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined index: status /data/huiquan/webApp/api/Application/Runtime/Cache/Admin/13b703170bd4ebd3feafb955e2ab7f6c.php 第 144 行.</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined index: shopStatus /data/huiquan/webApp/api/Application/Runtime/Cache/Admin/13b703170bd4ebd3feafb955e2ab7f6c.php 第 153 行.</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined index: shopStatus /data/huiquan/webApp/api/Application/Runtime/Cache/Admin/13b703170bd4ebd3feafb955e2ab7f6c.php 第 154 行.</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined index: shopStatus /data/huiquan/webApp/api/Application/Runtime/Cache/Admin/13b703170bd4ebd3feafb955e2ab7f6c.php 第 155 行.</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined index: typeId /data/huiquan/webApp/api/Application/Runtime/Cache/Admin/13b703170bd4ebd3feafb955e2ab7f6c.php 第 164 行.</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined index: typeId /data/huiquan/webApp/api/Application/Runtime/Cache/Admin/13b703170bd4ebd3feafb955e2ab7f6c.php 第 165 行.</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined index: typeId /data/huiquan/webApp/api/Application/Runtime/Cache/Admin/13b703170bd4ebd3feafb955e2ab7f6c.php 第 165 行.</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined index: typeId /data/huiquan/webApp/api/Application/Runtime/Cache/Admin/13b703170bd4ebd3feafb955e2ab7f6c.php 第 165 行.</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined index: typeId /data/huiquan/webApp/api/Application/Runtime/Cache/Admin/13b703170bd4ebd3feafb955e2ab7f6c.php 第 165 行.</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined index: typeId /data/huiquan/webApp/api/Application/Runtime/Cache/Admin/13b703170bd4ebd3feafb955e2ab7f6c.php 第 165 行.</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined index: typeId /data/huiquan/webApp/api/Application/Runtime/Cache/Admin/13b703170bd4ebd3feafb955e2ab7f6c.php 第 165 行.</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined index: typeId /data/huiquan/webApp/api/Application/Runtime/Cache/Admin/13b703170bd4ebd3feafb955e2ab7f6c.php 第 165 行.</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined index: typeId /data/huiquan/webApp/api/Application/Runtime/Cache/Admin/13b703170bd4ebd3feafb955e2ab7f6c.php 第 165 行.</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined index: province /data/huiquan/webApp/api/Application/Runtime/Cache/Admin/13b703170bd4ebd3feafb955e2ab7f6c.php 第 563 行.</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined index: city /data/huiquan/webApp/api/Application/Runtime/Cache/Admin/13b703170bd4ebd3feafb955e2ab7f6c.php 第 563 行.</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[8] Undefined index: district /data/huiquan/webApp/api/Application/Runtime/Cache/Admin/13b703170bd4ebd3feafb955e2ab7f6c.php 第 563 行.</li>    </ol>
+    </div>
+        <div style="display:none;">
+    <ol style="padding: 0; margin:0">
+	<li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">INSERT INTO `StaffActionLog` (`logCode`,`staffId`,`actionDes`,`actionTime`,`ipAddr`) VALUES ('4e3359ff-032a-ea2d-a292-111d910e3523','c00803ca-fec6-11e4-ac45-00163e021731','商户列表','2017-12-06 17:23:24','219.139.230.189') [ RunTime:0.0296s ]</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">SELECT Shop.shopCode AS `shopCode`,`shopName`,`icbcShopName`,`licenseNbr`,`hqIcbcShopNbr`,Shop.type,`mobileNbr`,`wechatPublic`,`onlinePaymentDiscount`,`creditPoint`,count(activityCode) AS `countActivity`,`nbrOfMember`,`isContractOn`,`country`,`province`,`city`,`street`,`district`,Shop.status AS `status`,`createDate`,`shopId`,`popularity`,`repeatCustomers`,`isAcceptBankCard`,`ownerCode`,`brandId`,`shopStatus`,`addCardNo`,`addCardUserName` FROM `Shop` LEFT JOIN Activity ON Shop.shopCode = Activity.shopCode LEFT JOIN ShopTypeRel ON ShopTypeRel.shopCode = Shop.shopCode  GROUP BY Shop.shopCode ORDER BY createDate DESC LIMIT 0,20   [ RunTime:12.6490s ]</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">SELECT ShopStaffRel.id,ShopStaffRel.shopCode,ShopStaff.staffCode,ShopStaff.realName,ShopStaff.mobileNbr,ShopStaff.access,ShopStaff.status FROM `ShopStaffRel` left JOIN ShopStaff ON ShopStaff.staffCode = ShopStaffRel.staffCode  WHERE ShopStaffRel.shopCode = '2ca9f21f-340e-5477-88f4-851364e29f48' AND `userLvl` = 3 LIMIT 1   [ RunTime:0.0085s ]</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">SELECT `typeValue` FROM `ShopTypeRel` INNER JOIN ShopType ON ShopType.shopTypeId = ShopTypeRel.typeId  WHERE `shopCode` = '2ca9f21f-340e-5477-88f4-851364e29f48'  [ RunTime:0.0014s ]</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">SELECT ShopStaffRel.id,ShopStaffRel.shopCode,ShopStaff.staffCode,ShopStaff.realName,ShopStaff.mobileNbr,ShopStaff.access,ShopStaff.status FROM `ShopStaffRel` left JOIN ShopStaff ON ShopStaff.staffCode = ShopStaffRel.staffCode  WHERE ShopStaffRel.shopCode = '26a50fbf-4bff-5bb9-d312-c3b7a55afacd' AND `userLvl` = 3 LIMIT 1   [ RunTime:0.0118s ]</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">SELECT `typeValue` FROM `ShopTypeRel` INNER JOIN ShopType ON ShopType.shopTypeId = ShopTypeRel.typeId  WHERE `shopCode` = '26a50fbf-4bff-5bb9-d312-c3b7a55afacd'  [ RunTime:0.0013s ]</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">SELECT ShopStaffRel.id,ShopStaffRel.shopCode,ShopStaff.staffCode,ShopStaff.realName,ShopStaff.mobileNbr,ShopStaff.access,ShopStaff.status FROM `ShopStaffRel` left JOIN ShopStaff ON ShopStaff.staffCode = ShopStaffRel.staffCode  WHERE ShopStaffRel.shopCode = '2be6cbfc-59d7-5c9c-9f22-be78eedb8b00' AND `userLvl` = 3 LIMIT 1   [ RunTime:0.0013s ]</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">SELECT `typeValue` FROM `ShopTypeRel` INNER JOIN ShopType ON ShopType.shopTypeId = ShopTypeRel.typeId  WHERE `shopCode` = '2be6cbfc-59d7-5c9c-9f22-be78eedb8b00'  [ RunTime:0.0013s ]</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">SELECT ShopStaffRel.id,ShopStaffRel.shopCode,ShopStaff.staffCode,ShopStaff.realName,ShopStaff.mobileNbr,ShopStaff.access,ShopStaff.status FROM `ShopStaffRel` left JOIN ShopStaff ON ShopStaff.staffCode = ShopStaffRel.staffCode  WHERE ShopStaffRel.shopCode = '191a23bd-ead6-533c-191e-4a2eb846e21b' AND `userLvl` = 3 LIMIT 1   [ RunTime:0.0013s ]</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">SELECT `typeValue` FROM `ShopTypeRel` INNER JOIN ShopType ON ShopType.shopTypeId = ShopTypeRel.typeId  WHERE `shopCode` = '191a23bd-ead6-533c-191e-4a2eb846e21b'  [ RunTime:0.0013s ]</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">SELECT ShopStaffRel.id,ShopStaffRel.shopCode,ShopStaff.staffCode,ShopStaff.realName,ShopStaff.mobileNbr,ShopStaff.access,ShopStaff.status FROM `ShopStaffRel` left JOIN ShopStaff ON ShopStaff.staffCode = ShopStaffRel.staffCode  WHERE ShopStaffRel.shopCode = 'e2bb43d7-b18e-890a-c96d-b417c61f7ba1' AND `userLvl` = 3 LIMIT 1   [ RunTime:0.0013s ]</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">SELECT `typeValue` FROM `ShopTypeRel` INNER JOIN ShopType ON ShopType.shopTypeId = ShopTypeRel.typeId  WHERE `shopCode` = 'e2bb43d7-b18e-890a-c96d-b417c61f7ba1'  [ RunTime:0.0013s ]</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">SELECT ShopStaffRel.id,ShopStaffRel.shopCode,ShopStaff.staffCode,ShopStaff.realName,ShopStaff.mobileNbr,ShopStaff.access,ShopStaff.status FROM `ShopStaffRel` left JOIN ShopStaff ON ShopStaff.staffCode = ShopStaffRel.staffCode  WHERE ShopStaffRel.shopCode = '1de12dda-0aed-a4ef-bdfd-881e7d538f11' AND `userLvl` = 3 LIMIT 1   [ RunTime:0.0085s ]</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">SELECT `typeValue` FROM `ShopTypeRel` INNER JOIN ShopType ON ShopType.shopTypeId = ShopTypeRel.typeId  WHERE `shopCode` = '1de12dda-0aed-a4ef-bdfd-881e7d538f11'  [ RunTime:0.0013s ]</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">SELECT ShopStaffRel.id,ShopStaffRel.shopCode,ShopStaff.staffCode,ShopStaff.realName,ShopStaff.mobileNbr,ShopStaff.access,ShopStaff.status FROM `ShopStaffRel` left JOIN ShopStaff ON ShopStaff.staffCode = ShopStaffRel.staffCode  WHERE ShopStaffRel.shopCode = '641d1ca8-617f-7f7c-5a29-659fea62d89a' AND `userLvl` = 3 LIMIT 1   [ RunTime:0.0013s ]</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">SELECT `typeValue` FROM `ShopTypeRel` INNER JOIN ShopType ON ShopType.shopTypeId = ShopTypeRel.typeId  WHERE `shopCode` = '641d1ca8-617f-7f7c-5a29-659fea62d89a'  [ RunTime:0.0013s ]</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">SELECT ShopStaffRel.id,ShopStaffRel.shopCode,ShopStaff.staffCode,ShopStaff.realName,ShopStaff.mobileNbr,ShopStaff.access,ShopStaff.status FROM `ShopStaffRel` left JOIN ShopStaff ON ShopStaff.staffCode = ShopStaffRel.staffCode  WHERE ShopStaffRel.shopCode = '03a56646-1136-b935-db2f-c53be84a84b7' AND `userLvl` = 3 LIMIT 1   [ RunTime:0.0013s ]</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">SELECT `typeValue` FROM `ShopTypeRel` INNER JOIN ShopType ON ShopType.shopTypeId = ShopTypeRel.typeId  WHERE `shopCode` = '03a56646-1136-b935-db2f-c53be84a84b7'  [ RunTime:0.0014s ]</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">SELECT ShopStaffRel.id,ShopStaffRel.shopCode,ShopStaff.staffCode,ShopStaff.realName,ShopStaff.mobileNbr,ShopStaff.access,ShopStaff.status FROM `ShopStaffRel` left JOIN ShopStaff ON ShopStaff.staffCode = ShopStaffRel.staffCode  WHERE ShopStaffRel.shopCode = '45330c38-01ec-8af8-e84f-1eb1775ea241' AND `userLvl` = 3 LIMIT 1   [ RunTime:0.0118s ]</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">SELECT `typeValue` FROM `ShopTypeRel` INNER JOIN ShopType ON ShopType.shopTypeId = ShopTypeRel.typeId  WHERE `shopCode` = '45330c38-01ec-8af8-e84f-1eb1775ea241'  [ RunTime:0.0015s ]</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">SELECT ShopStaffRel.id,ShopStaffRel.shopCode,ShopStaff.staffCode,ShopStaff.realName,ShopStaff.mobileNbr,ShopStaff.access,ShopStaff.status FROM `ShopStaffRel` left JOIN ShopStaff ON ShopStaff.staffCode = ShopStaffRel.staffCode  WHERE ShopStaffRel.shopCode = '80ac53a2-5e43-e438-73bd-95683b813d24' AND `userLvl` = 3 LIMIT 1   [ RunTime:0.0013s ]</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">SELECT `typeValue` FROM `ShopTypeRel` INNER JOIN ShopType ON ShopType.shopTypeId = ShopTypeRel.typeId  WHERE `shopCode` = '80ac53a2-5e43-e438-73bd-95683b813d24'  [ RunTime:0.0013s ]</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">SELECT ShopStaffRel.id,ShopStaffRel.shopCode,ShopStaff.staffCode,ShopStaff.realName,ShopStaff.mobileNbr,ShopStaff.access,ShopStaff.status FROM `ShopStaffRel` left JOIN ShopStaff ON ShopStaff.staffCode = ShopStaffRel.staffCode  WHERE ShopStaffRel.shopCode = '790f3414-b6ae-a8e9-2537-ac1ecfbc1856' AND `userLvl` = 3 LIMIT 1   [ RunTime:0.0013s ]</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">SELECT `typeValue` FROM `ShopTypeRel` INNER JOIN ShopType ON ShopType.shopTypeId = ShopTypeRel.typeId  WHERE `shopCode` = '790f3414-b6ae-a8e9-2537-ac1ecfbc1856'  [ RunTime:0.0013s ]</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">SELECT ShopStaffRel.id,ShopStaffRel.shopCode,ShopStaff.staffCode,ShopStaff.realName,ShopStaff.mobileNbr,ShopStaff.access,ShopStaff.status FROM `ShopStaffRel` left JOIN ShopStaff ON ShopStaff.staffCode = ShopStaffRel.staffCode  WHERE ShopStaffRel.shopCode = 'b7e2c305-4382-2105-8678-f126a6db3677' AND `userLvl` = 3 LIMIT 1   [ RunTime:0.0013s ]</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">SELECT `typeValue` FROM `ShopTypeRel` INNER JOIN ShopType ON ShopType.shopTypeId = ShopTypeRel.typeId  WHERE `shopCode` = 'b7e2c305-4382-2105-8678-f126a6db3677'  [ RunTime:0.0013s ]</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">SELECT ShopStaffRel.id,ShopStaffRel.shopCode,ShopStaff.staffCode,ShopStaff.realName,ShopStaff.mobileNbr,ShopStaff.access,ShopStaff.status FROM `ShopStaffRel` left JOIN ShopStaff ON ShopStaff.staffCode = ShopStaffRel.staffCode  WHERE ShopStaffRel.shopCode = '3440390b-e466-d9f3-a645-bd1b1c27c0d6' AND `userLvl` = 3 LIMIT 1   [ RunTime:0.0087s ]</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">SELECT `typeValue` FROM `ShopTypeRel` INNER JOIN ShopType ON ShopType.shopTypeId = ShopTypeRel.typeId  WHERE `shopCode` = '3440390b-e466-d9f3-a645-bd1b1c27c0d6'  [ RunTime:0.0013s ]</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">SELECT ShopStaffRel.id,ShopStaffRel.shopCode,ShopStaff.staffCode,ShopStaff.realName,ShopStaff.mobileNbr,ShopStaff.access,ShopStaff.status FROM `ShopStaffRel` left JOIN ShopStaff ON ShopStaff.staffCode = ShopStaffRel.staffCode  WHERE ShopStaffRel.shopCode = 'c6a4fa74-1d22-ed8e-b9a7-eebfc14c69fe' AND `userLvl` = 3 LIMIT 1   [ RunTime:0.0013s ]</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">SELECT `typeValue` FROM `ShopTypeRel` INNER JOIN ShopType ON ShopType.shopTypeId = ShopTypeRel.typeId  WHERE `shopCode` = 'c6a4fa74-1d22-ed8e-b9a7-eebfc14c69fe'  [ RunTime:0.0013s ]</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">SELECT ShopStaffRel.id,ShopStaffRel.shopCode,ShopStaff.staffCode,ShopStaff.realName,ShopStaff.mobileNbr,ShopStaff.access,ShopStaff.status FROM `ShopStaffRel` left JOIN ShopStaff ON ShopStaff.staffCode = ShopStaffRel.staffCode  WHERE ShopStaffRel.shopCode = '279b2d83-48bf-6319-3e38-cb3656fbdd2a' AND `userLvl` = 3 LIMIT 1   [ RunTime:0.0013s ]</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">SELECT `typeValue` FROM `ShopTypeRel` INNER JOIN ShopType ON ShopType.shopTypeId = ShopTypeRel.typeId  WHERE `shopCode` = '279b2d83-48bf-6319-3e38-cb3656fbdd2a'  [ RunTime:0.0013s ]</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">SELECT ShopStaffRel.id,ShopStaffRel.shopCode,ShopStaff.staffCode,ShopStaff.realName,ShopStaff.mobileNbr,ShopStaff.access,ShopStaff.status FROM `ShopStaffRel` left JOIN ShopStaff ON ShopStaff.staffCode = ShopStaffRel.staffCode  WHERE ShopStaffRel.shopCode = '0c395973-ba08-0c90-cc44-adedfa5c6f9f' AND `userLvl` = 3 LIMIT 1   [ RunTime:0.0116s ]</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">SELECT `typeValue` FROM `ShopTypeRel` INNER JOIN ShopType ON ShopType.shopTypeId = ShopTypeRel.typeId  WHERE `shopCode` = '0c395973-ba08-0c90-cc44-adedfa5c6f9f'  [ RunTime:0.0013s ]</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">SELECT ShopStaffRel.id,ShopStaffRel.shopCode,ShopStaff.staffCode,ShopStaff.realName,ShopStaff.mobileNbr,ShopStaff.access,ShopStaff.status FROM `ShopStaffRel` left JOIN ShopStaff ON ShopStaff.staffCode = ShopStaffRel.staffCode  WHERE ShopStaffRel.shopCode = '98a2cc1b-756a-c31c-5032-1890d20e6576' AND `userLvl` = 3 LIMIT 1   [ RunTime:0.0013s ]</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">SELECT `typeValue` FROM `ShopTypeRel` INNER JOIN ShopType ON ShopType.shopTypeId = ShopTypeRel.typeId  WHERE `shopCode` = '98a2cc1b-756a-c31c-5032-1890d20e6576'  [ RunTime:0.0013s ]</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">SELECT ShopStaffRel.id,ShopStaffRel.shopCode,ShopStaff.staffCode,ShopStaff.realName,ShopStaff.mobileNbr,ShopStaff.access,ShopStaff.status FROM `ShopStaffRel` left JOIN ShopStaff ON ShopStaff.staffCode = ShopStaffRel.staffCode  WHERE ShopStaffRel.shopCode = 'd7dcd2b1-10be-37fe-1ad0-ce302d34039d' AND `userLvl` = 3 LIMIT 1   [ RunTime:0.0013s ]</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">SELECT `typeValue` FROM `ShopTypeRel` INNER JOIN ShopType ON ShopType.shopTypeId = ShopTypeRel.typeId  WHERE `shopCode` = 'd7dcd2b1-10be-37fe-1ad0-ce302d34039d'  [ RunTime:0.0013s ]</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">SELECT ShopStaffRel.id,ShopStaffRel.shopCode,ShopStaff.staffCode,ShopStaff.realName,ShopStaff.mobileNbr,ShopStaff.access,ShopStaff.status FROM `ShopStaffRel` left JOIN ShopStaff ON ShopStaff.staffCode = ShopStaffRel.staffCode  WHERE ShopStaffRel.shopCode = '5a3797ac-4b56-bb12-94a4-b0ef8fd43f66' AND `userLvl` = 3 LIMIT 1   [ RunTime:0.0013s ]</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">SELECT `typeValue` FROM `ShopTypeRel` INNER JOIN ShopType ON ShopType.shopTypeId = ShopTypeRel.typeId  WHERE `shopCode` = '5a3797ac-4b56-bb12-94a4-b0ef8fd43f66'  [ RunTime:0.0013s ]</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">SELECT ShopStaffRel.id,ShopStaffRel.shopCode,ShopStaff.staffCode,ShopStaff.realName,ShopStaff.mobileNbr,ShopStaff.access,ShopStaff.status FROM `ShopStaffRel` left JOIN ShopStaff ON ShopStaff.staffCode = ShopStaffRel.staffCode  WHERE ShopStaffRel.shopCode = '6baa4bc9-f678-3859-eeb1-3311f0892db0' AND `userLvl` = 3 LIMIT 1   [ RunTime:0.0087s ]</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">SELECT `typeValue` FROM `ShopTypeRel` INNER JOIN ShopType ON ShopType.shopTypeId = ShopTypeRel.typeId  WHERE `shopCode` = '6baa4bc9-f678-3859-eeb1-3311f0892db0'  [ RunTime:0.0013s ]</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">SELECT COUNT(distinct(Shop.shopCode)) AS tp_count FROM `Shop` LEFT JOIN Activity ON Shop.shopCode = Activity.shopCode LEFT JOIN ShopTypeRel ON ShopTypeRel.shopCode = Shop.shopCode  LIMIT 1   [ RunTime:3.2731s ]</li><li style="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">SELECT `shopTypeId`,`typeValue`,`typeZh` FROM `ShopType`  [ RunTime:0.0002s ]</li>    </ol>
+    </div>
+        <div style="display:none;">
+    <ol style="padding: 0; margin:0">
+	    </ol>
+    </div>
+    </div>
+</div>
+<div id="think_page_trace_close" style="display:none;text-align:right;height:15px;position:absolute;top:10px;right:12px;cursor: pointer;"><img style="vertical-align:top;" src="data:image/gif;base64,R0lGODlhDwAPAJEAAAAAAAMDA////wAAACH/C1hNUCBEYXRhWE1QPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS4wLWMwNjAgNjEuMTM0Nzc3LCAyMDEwLzAyLzEyLTE3OjMyOjAwICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdFJlZj0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlUmVmIyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IFdpbmRvd3MiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MUQxMjc1MUJCQUJDMTFFMTk0OUVGRjc3QzU4RURFNkEiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MUQxMjc1MUNCQUJDMTFFMTk0OUVGRjc3QzU4RURFNkEiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDoxRDEyNzUxOUJBQkMxMUUxOTQ5RUZGNzdDNThFREU2QSIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDoxRDEyNzUxQUJBQkMxMUUxOTQ5RUZGNzdDNThFREU2QSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PgH//v38+/r5+Pf29fTz8vHw7+7t7Ovq6ejn5uXk4+Lh4N/e3dzb2tnY19bV1NPS0dDPzs3My8rJyMfGxcTDwsHAv769vLu6ubi3trW0s7KxsK+urayrqqmop6alpKOioaCfnp2cm5qZmJeWlZSTkpGQj46NjIuKiYiHhoWEg4KBgH9+fXx7enl4d3Z1dHNycXBvbm1sa2ppaGdmZWRjYmFgX15dXFtaWVhXVlVUU1JRUE9OTUxLSklIR0ZFRENCQUA/Pj08Ozo5ODc2NTQzMjEwLy4tLCsqKSgnJiUkIyIhIB8eHRwbGhkYFxYVFBMSERAPDg0MCwoJCAcGBQQDAgEAACH5BAAAAAAALAAAAAAPAA8AAAIdjI6JZqotoJPR1fnsgRR3C2jZl3Ai9aWZZooV+RQAOw==" /></div>
+</div>
+<div id="think_page_trace_open" style="height:30px;float:right;text-align: right;overflow:hidden;position:fixed;bottom:0;right:0;color:#000;line-height:30px;cursor:pointer;"><div style="background:#232323;color:#FFF;padding:0 6px;float:right;line-height:30px;font-size:14px">16.2628s </div><img width="30" style="" title="ShowPageTrace" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyBpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBXaW5kb3dzIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjVERDVENkZGQjkyNDExRTE5REY3RDQ5RTQ2RTRDQUJCIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjVERDVENzAwQjkyNDExRTE5REY3RDQ5RTQ2RTRDQUJCIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6NURENUQ2RkRCOTI0MTFFMTlERjdENDlFNDZFNENBQkIiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6NURENUQ2RkVCOTI0MTFFMTlERjdENDlFNDZFNENBQkIiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz5fx6IRAAAMCElEQVR42sxae3BU1Rk/9+69+8xuNtkHJAFCSIAkhMgjCCJQUi0GtEIVbP8Qq9LH2No6TmfaztjO2OnUdvqHFMfOVFTqIK0vUEEeqUBARCsEeYQkEPJoEvIiELLvvc9z+p27u2F3s5tsBB1OZiebu5dzf7/v/L7f952zMM8cWIwY+Mk2ulCp92Fnq3XvnzArr2NZnYNldDp0Gw+/OEQ4+obQn5D+4Ubb22+YOGsWi/Todh8AHglKEGkEsnHBQ162511GZFgW6ZCBM9/W4H3iNSQqIe09O196dLKX7d1O39OViP/wthtkND62if/wj/DbMpph8BY/m9xy8BoBmQk+mHqZQGNy4JYRwCoRbwa8l4JXw6M+orJxpU0U6ToKy/5bQsAiTeokGKkTx46RRxxEUgrwGgF4MWNNEJCGgYTvpgnY1IJWg5RzfqLgvcIgktX0i8dmMlFA8qCQ5L0Z/WObPLUxT1i4lWSYDISoEfBYGvM+LlMQQdkLHoWRRZ8zYQI62Thswe5WTORGwNXDcGjqeOA9AF7B8rhzsxMBEoJ8oJKaqPu4hblHMCMPwl9XeNWyb8xkB/DDGYKfMAE6aFL7xesZ389JlgG3XHEMI6UPDOP6JHHu67T2pwNPI69mCP4rEaBDUAJaKc/AOuXiwH07VCS3w5+UQMAuF/WqGI+yFIwVNBwemBD4r0wgQiKoFZa00sEYTwss32lA1tPwVxtc8jQ5/gWCwmGCyUD8vRT0sHBFW4GJDvZmrJFWRY1EkrGA6ZB8/10fOZSSj0E6F+BSP7xidiIzhBmKB09lEwHPkG+UQIyEN44EBiT5vrv2uJXyPQqSqO930fxvcvwbR/+JAkD9EfASgI9EHlp6YiHO4W+cAB20SnrFqxBbNljiXf1Pl1K2S0HCWfiog3YlAD5RGwwxK6oUjTweuVigLjyB0mX410mAFnMoVK1lvvUvgt8fUJH0JVyjuvcmg4dE5mUiFtD24AZ4qBVELxXKS+pMxN43kSdzNwudJ+bQbLlmnxvPOQoCugSap1GnSRoG8KOiKbH+rIA0lEeSAg3y6eeQ6XI2nrYnrPM89bUTgI0Pdqvl50vlNbtZxDUBcLBK0kPd5jPziyLdojJIN0pq5/mdzwL4UVvVInV5ncQEPNOUxa9d0TU+CW5l+FoI0GSDKHVVSOs+0KOsZoxwOzSZNFGv0mQ9avyLCh2Hpm+70Y0YJoJVgmQv822wnDC8Miq6VjJ5IFed0QD1YiAbT+nQE8v/RMZfmgmcCRHIIu7Bmcp39oM9fqEychcA747KxQ/AEyqQonl7hATtJmnhO2XYtgcia01aSbVMenAXrIomPcLgEBA4liGBzFZAT8zBYqW6brI67wg8sFVhxBhwLwBP2+tqBQqqK7VJKGh/BRrfTr6nWL7nYBaZdBJHqrX3kPEPap56xwE/GvjJTRMADeMCdcGpGXL1Xh4ZL8BDOlWkUpegfi0CeDzeA5YITzEnddv+IXL+UYCmqIvqC9UlUC/ki9FipwVjunL3yX7dOTLeXmVMAhbsGporPfyOBTm/BJ23gTVehsvXRnSewagUfpBXF3p5pygKS7OceqTjb7h2vjr/XKm0ZofKSI2Q/J102wHzatZkJPYQ5JoKsuK+EoHJakVzubzuLQDepCKllTZi9AG0DYg9ZLxhFaZsOu7bvlmVI5oPXJMQJcHxHClSln1apFTvAimeg48u0RWFeZW4lVcjbQWZuIQK1KozZfIDO6CSQmQQXdpBaiKZyEWThVK1uEc6v7V7uK0ysduExPZx4vysDR+4SelhBYm0R6LBuR4PXts8MYMcJPsINo4YZCDLj0sgB0/vLpPXvA2Tn42Cv5rsLulGubzW0sEd3d4W/mJt2Kck+DzDMijfPLOjyrDhXSh852B+OvflqAkoyXO1cYfujtc/i3jJSAwhgfFlp20laMLOku/bC7prgqW7lCn4auE5NhcXPd3M7x70+IceSgZvNljCd9k3fLjYsPElqLR14PXQZqD2ZNkkrAB79UeJUebFQmXpf8ZcAQt2XrMQdyNUVBqZoUzAFyp3V3xi/MubUA/mCT4Fhf038PC8XplhWnCmnK/ZzyC2BSTRSqKVOuY2kB8Jia0lvvRIVoP+vVWJbYarf6p655E2/nANBMCWkgD49DA0VAMyI1OLFMYCXiU9bmzi9/y5i/vsaTpHPHidTofzLbM65vMPva9HlovgXp0AvjtaqYMfDD0/4mAsYE92pxa+9k1QgCnRVObCpojpzsKTPvayPetTEgBdwnssjuc0kOBFX+q3HwRQxdrOLAqeYRjkMk/trTSu2Z9Lik7CfF0AvjtqAhS4NHobGXUnB5DQs8hG8p/wMX1r4+8xkmyvQ50JVq72TVeXbz3HvpWaQJi57hJYTw4kGbtS+C2TigQUtZUX+X27QQq2ePBZBru/0lxTm8fOOQ5yaZOZMAV+he4FqIMB+LQB0UgMSajANX29j+vbmly8ipRvHeSQoQOkM5iFXcPQCVwDMs5RBCQmaPOyvbNd6uwvQJ183BZQG3Zc+Eiv7vQOKu8YeDmMcJlt2ckyftVeMIGLBCmdMHl/tFILYwGPjXWO3zOfSq/+om+oa7Mlh2fpSsRGLp7RAW3FUVjNHgiMhyE6zBFjM2BdkdJGO7nP1kJXWAtBuBpPIAu7f+hhu7bFXIuC5xWrf0X2xreykOsUyKkF2gwadbrXDcXrfKxR43zGcSj4t/cCgr+a1iy6EjE5GYktUCl9fwfMeylyooGF48bN2IGLTw8x7StS7sj8TF9FmPGWQhm3rRR+o9lhvjJvSYAdfDUevI1M6bnX/OwWaDMOQ8RPgKRo0eulBTdT8AW2kl8e9L7UHghHwMfLiZPNoSpx0yugpQZaFqKWqxVSM3a2pN1SAhC2jf94I7ybBI7EL5A2Wvu5ht3xsoEt4+Ay/abXgCQAxyOeDsDlTCQzy75ohcGgv9Tra9uiymRUYTLrswOLlCdfAQf7HPDQQ4ErAH5EDXB9cMxWYpjtXApRncojS0sbV/cCgHTHwGNBJy+1PQE2x56FpaVR7wfQGZ37V+V+19EiHNvR6q1fRUjqvbjbMq1/qfHxbTrE10ePY2gPFk48D2CVMTf1AF4PXvyYR9dV6Wf7H413m3xTWQvYGhQ7mfYwA5mAX+18Vue05v/8jG/fZX/IW5MKPKtjSYlt0ellxh+/BOCPAwYaeVr0QofZFxJWVWC8znG70au6llVmktsF0bfHF6k8fvZ5esZJbwHwwnjg59tXz6sL/P0NUZDuSNu1mnJ8Vab17+cy005A9wtOpp3i0bZdpJLUil00semAwN45LgEViZYe3amNye0B6A9chviSlzXVsFtyN5/1H3gaNmMpn8Fz0GpYFp6Zw615H/LpUuRQQDMCL82n5DpBSawkvzIdN2ypiT8nSLth8Pk9jnjwdFzH3W4XW6KMBfwB569NdcGX93mC16tTflcArcYUc/mFuYbV+8zY0SAjAVoNErNgWjtwumJ3wbn/HlBFYdxHvSkJJEc+Ngal9opSwyo9YlITX2C/P/+gf8sxURSLR+mcZUmeqaS9wrh6vxW5zxFCOqFi90RbDWq/YwZmnu1+a6OvdpvRqkNxxe44lyl4OobEnpKA6Uox5EfH9xzPs/HRKrTPWdIQrK1VZDU7ETiD3Obpl+8wPPCRBbkbwNtpW9AbBe5L1SMlj3tdTxk/9W47JUmqS5HU+JzYymUKXjtWVmT9RenIhgXc+nroWLyxXJhmL112OdB8GCsk4f8oZJucnvmmtR85mBn10GZ0EKSCMUSAR3ukcXd5s7LvLD3me61WkuTCpJzYAyRurMB44EdEJzTfU271lUJC03YjXJXzYOGZwN4D8eB5jlfLrdWfzGRW7icMPfiSO6Oe7s20bmhdgLX4Z23B+s3JgQESzUDiMboSzDMHFpNMwccGePauhfwjzwnI2wu9zKGgEFg80jcZ7MHllk07s1H+5yojtUQTlH4nFdLKTGwDmPbIklOb1L1zO4T6N8NCuDLFLS/C63c0eNRimZ++s5BMBHxU11jHchI9oFVUxRh/eMDzHEzGYu0Lg8gJ7oS/tFCwoic44fyUtix0n/46vP4bf+//BRgAYwDDar4ncHIAAAAASUVORK5CYII="></div>
+<script type="text/javascript">
+(function(){
+var tab_tit  = document.getElementById('think_page_trace_tab_tit').getElementsByTagName('span');
+var tab_cont = document.getElementById('think_page_trace_tab_cont').getElementsByTagName('div');
+var open     = document.getElementById('think_page_trace_open');
+var close    = document.getElementById('think_page_trace_close').childNodes[0];
+var trace    = document.getElementById('think_page_trace_tab');
+var cookie   = document.cookie.match(/thinkphp_show_page_trace=(\d\|\d)/);
+var history  = (cookie && typeof cookie[1] != 'undefined' && cookie[1].split('|')) || [0,0];
+open.onclick = function(){
+	trace.style.display = 'block';
+	this.style.display = 'none';
+	close.parentNode.style.display = 'block';
+	history[0] = 1;
+	document.cookie = 'thinkphp_show_page_trace='+history.join('|')
+}
+close.onclick = function(){
+	trace.style.display = 'none';
+this.parentNode.style.display = 'none';
+	open.style.display = 'block';
+	history[0] = 0;
+	document.cookie = 'thinkphp_show_page_trace='+history.join('|')
+}
+for(var i = 0; i < tab_tit.length; i++){
+	tab_tit[i].onclick = (function(i){
+		return function(){
+			for(var j = 0; j < tab_cont.length; j++){
+				tab_cont[j].style.display = 'none';
+				tab_tit[j].style.color = '#999';
+			}
+			tab_cont[i].style.display = 'block';
+			tab_tit[i].style.color = '#000';
+			history[1] = i;
+			document.cookie = 'thinkphp_show_page_trace='+history.join('|')
+		}
+	})(i)
+}
+parseInt(history[0]) && open.click();
+(tab_tit[history[1]] || tab_tit[0]).click();
+})();
+</script>

@@ -1,0 +1,56 @@
+<layout name="layout_admin" />
+<div class="container-fluid">
+    <div id='staff-homepage'>
+        <if condition="$Think.session.USER.userLvl EQ 1">
+            <div class="row">
+                <div class="col-md-3">
+                    <div>
+                        <h4>
+                            <a href="/Admin/Message/listMessage" class="btn btn-danger btn-sm">
+                                平台消息维护<span class="badge"></span>
+                            </a>
+                        </h4>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div>
+                        <h4>
+                            <a href="/Admin/Feedback/listShopFeedback" class="btn btn-danger btn-sm">
+                                待回复投诉<span class="badge"></span> ({$fdUnreadCount} 未读)
+                            </a>
+                        </h4>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="shop-wrap">
+                        <div class="msg">一共有<strong>{$countShop}</strong>个商户</div>
+                        <div class="msg odd">开通支付商户<strong>{$onlinePayShopCount}</strong>个</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="succeed">
+                        <div class="msg">总用户数：<strong>{$countUser}</strong></div>
+                        <div class="msg odd">总注册用户数：<strong>{$regUserCount}</strong></div>
+                        <div class="msg">上周注册用户数：<strong>{$lastWeekRegCount}</strong></div>
+                        <div class="msg odd">昨日注册用户数：<strong>{$yesterdayRegUserCount}</strong></div>
+                        <div class="msg">总绑卡用户数：<strong>{$signCardCount}</strong></div>
+                        <div class="msg odd">上月绑卡用户数：<strong>{$lMSignCardCount}</strong></div>
+                        <div class="msg">昨日总绑卡用户数：<strong>{$ystdSignCardCount}</strong></div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="new_rcmm">
+                        <span>今日新增会员卡:<strong>{$todayAddCard}</strong></span>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="new_cus">
+                        <span>今日新增优惠券:<strong>{$todayAddBatchCoupon}</strong></span>
+                    </div>
+                </div>
+            </div>
+        </if>
+    </div>
+</div>

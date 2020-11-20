@@ -1,0 +1,32 @@
+<table class="fp-table table table-striped table-bordered" id="data_table">
+    <thead>
+    <tr>
+        <th>商户名称</th>
+        <th>红包名字</th>
+        <!--<th>红包批次</th>-->
+        <th>红包总额</th>
+        <th>发放个数</th>
+        <th>红包区间</th>
+        <th>领用总额</th>
+        <th>领用个数</th>
+        <!--<th>使用总额</th>-->
+        <!--<th>使用人次</th>-->
+    </tr>
+    </thead>
+    <tbody>
+    <foreach name="data" item="vo">
+        <tr>
+            <td>{$vo.bonusCode}{$vo.shopName}</td>
+            <td>{$vo.bonusName}</td>
+            <td>{$vo.totalValue}</td>
+            <td>{$vo.totalVolume}</td>
+            <td>{$vo.lowerPrice} - {$vo.upperPrice}</td>
+            <td>{$vo.totalGrabValue}</td>
+            <td>{$vo.countGrab}</td>
+            <!--<td>{$vo.totalUseValue}</td>-->
+            <!--<td>{$vo.countUse}</td>-->
+        </tr>
+    </foreach>
+    </tbody>
+</table>
+<include file="Application/Admin/View/Widget/pager.html" />

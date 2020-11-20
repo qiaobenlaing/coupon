@@ -1,0 +1,114 @@
+<table class="fp-table table table-striped table-bordered" id="data_table">
+    <thead>
+    <tr>
+        <th style="width: 5px">#</th>
+        <th>姓名</th>
+        <th>账号</th>
+        <th>所属平台</th>
+        <th>角色</th>
+        <th>状态</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    <foreach name="dataList" key="k" item="item">
+        <tr>
+            <td>{$k+1}</td>
+            <td>{$item.realName}</td>
+            <td>{$item.mobileNbr}</td>
+            <td>{$item.pingtaiName}</td>
+            <td>
+                <switch name="item.userLvl">
+                    <case value="1">管理员</case>
+                    <case value="10">地面推广人员</case>
+                </switch>
+            </td>
+            <td class="status">
+                <div class="btn-group">
+                    <switch name="item.status">
+                        <case value="1">
+                            <button type="button" class="btn btn-xs btn-success dropdown-toggle btn-staff-status-{$item.staffCode}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="status-text">启用</span><span class="caret"></span>
+                            </button>
+                        </case>
+                        <case value="0">
+                            <button type="button" class="btn btn-xs btn-danger dropdown-toggle btn-staff-status-{$item.staffCode}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="status-text">禁用</span><span class="caret"></span>
+                            </button>
+                        </case>
+                        <default />
+                        <button type="button" class="btn btn-xs btn-default dropdown-toggle btn-staff-status-{$item.staffCode}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            未知<span class="caret"></span>
+                        </button>
+                    </switch>
+                    <ul class="dropdown-menu" style="min-width: 0">
+                        <li><a href="#" data-staff-code="{$item.staffCode}" data-status="0" class="change-hq-staff-status">禁用</a></li>
+                        <li><a href="#" data-staff-code="{$item.staffCode}" data-status="1" class="change-hq-staff-status">启用</a></li>
+                    </ul>
+                </div>
+            </td>
+            <td>
+                <a href="/Admin/BmStaff/editBmStaff?mobileNbr={$item.mobileNbr}" class="btn btn-xs btn-primary">编辑</a>
+                <a href="#" class="delete btn btn-xs btn-danger" data-staff-code="{$item.staffCode}" >删除</a>
+            </td>
+        </tr>
+    </foreach>
+    </tbody>
+</table>
+<script>
+    ;(function(){
+        // 修改惠圈员工的状态
+        $('.change-hq-staff-status').on('click', function(){
+            var staffCode = $(this).data('staffCode');
+            var status = $(this).data('status');
+
+            var btnStaffStatus = $('.btn-staff-status-' + staffCode);
+            btnStaffStatus.removeClass('btn-default').removeClass('btn-success').removeClass('btn-danger');
+            $.get(
+                    '/Admin/BmStaff/changeStatus',
+                    {'staffCode': staffCode, 'status': status},
+                    function(resp){
+                        if(resp.status == sz.STATUS_SUCC) {
+                            switch(status){
+                                case 1:
+                                    btnStaffStatus.children().filter('.status-text').html('启用');
+                                    btnStaffStatus.addClass('btn-success');
+                                    break;
+                                case 0:
+                                    btnStaffStatus.children().filter('.status-text').html('禁用');
+                                    btnStaffStatus.addClass('btn-danger');
+                                    break;
+                            }
+                            btnStaffStatus.dropdown('toggle');
+                        } else {
+                            sz.showErrMsg(resp.msg)
+                        }
+                    }
+            );
+            return false;
+        });
+        // 删除惠圈员工
+        $('.delete').on('click', function(){
+            var btn = $(this);
+            var staffCode = btn.data('staffCode');
+            $.post('/Admin/BmStaff/deleteHqStaff', {'staffCode': staffCode}, function(resp){
+                if(resp.status == sz.STATUS_SUCC){
+                    var searchFrm = $(sz.SEARCH_FORM_ID);
+                    // 提交FORM，更新数据
+                    $.get(searchFrm.attr('action'), searchFrm.serialize(), function(resp2) {
+                        if (resp2.status == sz.STATUS_SUCC) {
+                            console.log(resp2.html);
+                            $(sz.DATA_LIST_TABLE_WRAPPER_ID).html(resp2.html);
+                        } else {
+                            sz.showErrMsg(resp2.msg);
+                        }
+                    });
+                } else {
+                    sz.showErrMsg(resp.msg);
+                }
+            });
+            return false;
+        })
+    })();
+</script>
+<include file="Application/Admin/View/Widget/pager.html" />

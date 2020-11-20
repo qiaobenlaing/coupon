@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/LyWHFirst"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/ly_into_shopdeatil"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingBottom="10dp"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp" >
+
+        <LinearLayout
+            style="@style/LyWHSecond"
+            android:background="@drawable/bg_border" >
+
+            <ImageView
+                android:id="@+id/iv_myfoucus_logo"
+                android:layout_width="62dp"
+                android:layout_height="62dp"
+                android:layout_gravity="center"
+                android:scaleType="fitXY"
+                android:src="@drawable/activityimage" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:gravity="center_vertical"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/tv_myfocus_shopname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_toLeftOf="@+id/tv_focus_distance"
+                    android:singleLine="true"
+                    android:text="xxxxxxxxxxxxxxxxx"
+                    android:textColor="@color/shop_namefont"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tv_focus_distance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="10dp"
+                    android:text="00KM"
+                    android:textColor="@color/dove_color" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/tv_myfocus_address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="xxxxxx"
+                    android:textColor="@color/shop_nameother"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/tv_myfocus_type"
+                    style="@style/LyWHSecond"
+                    android:layout_centerVertical="true"
+                    android:text="xxxx"
+                    android:textColor="@color/shop_nameother"
+                    android:textSize="12sp" />
+
+                <ImageView
+                    android:id="@+id/iv_popularoty"
+                    style="@style/LyWHSecond"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@+id/tv_myfocus_popularoty"
+                    android:background="@drawable/popularoty" />
+
+                <TextView
+                    android:id="@+id/tv_myfocus_popularoty"
+                    style="@style/LyWHSecond"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="15dp"
+                    android:text="xxxx"
+                    android:textColor="@color/shop_nameother"
+                    android:textSize="12sp" />
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView style="@style/VLine" />
+
+    <LinearLayout
+        android:id="@+id/ly_new_photo"
+        style="@style/LyWHFourth"
+        android:orientation="vertical" >
+
+        <!--
+                <TextView
+		        android:id="@+id/up_newphoto"
+		        style="@style/LyWHSecond"
+		        android:layout_centerVertical="true"
+		        android:layout_marginLeft="10dp"
+		        android:layout_marginTop="5dp"
+		        android:background="@color/light_green"
+		        android:padding="2dp"
+		        android:text="上新"
+		        android:textColor="@color/white" />
+        -->
+
+        <GridView
+            android:id="@+id/gv_myfocus_newphotolist"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:horizontalSpacing="10dp"
+            android:numColumns="3"
+            android:scrollbars="none"
+            android:stretchMode="columnWidth"
+            android:visibility="visible" >
+        </GridView>
+
+        <TextView
+            android:id="@+id/tv_line"
+            style="@style/VLine"
+            android:layout_marginTop="5dp" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/ry_have_activity"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/layout_height" >
+
+        <TextView
+            android:id="@+id/tv_mycommon_act"
+            style="@style/LyWHSecond"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="25dp"
+            android:background="@drawable/shape_yellowbtn_onclick"
+            android:text="活动"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/tv_myfocus_actname"
+            style="@style/LyWHSecond"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/tv_mycommon_act"
+            android:text="这里有一个活动" />
+
+        <ImageView
+            style="@style/LyWHSecond"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/shop_arrow" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_have_activityline"
+        style="@style/VLine" />
+
+    <RelativeLayout
+        android:id="@+id/ry_into_shopdetail"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/layout_height"
+        android:layout_marginLeft="25dp" >
+
+        <TextView
+            android:id="@+id/tv_less_money"
+            style="@style/LyWHSecond"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/shape_isfirst"
+            android:text="首立减"
+            android:textColor="@color/white"
+            android:visibility="visible" />
+
+        <TextView
+            android:id="@+id/tv_bankdiscount"
+            style="@style/LyWHSecond"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:layout_toRightOf="@+id/tv_less_money"
+            android:background="@drawable/shape_icbc_discount"
+            android:text="建行折扣"
+            android:textColor="@color/white"
+            android:visibility="visible" />
+
+        <TextView
+            android:id="@+id/tv_coupon"
+            style="@style/LyWHSecond"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/tv_bankdiscount"
+            android:background="@drawable/shape_shop_coupon"
+            android:text="优惠"
+            android:textColor="@color/white"
+            android:visibility="visible" />
+
+        <TextView
+            android:id="@+id/tv_myfocus_shop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/shape_redbtn_onclick"
+            android:gravity="center"
+            android:text="进入店铺"
+            android:textColor="@color/saffron_yellow" />
+    </RelativeLayout>
+
+    <TextView
+        style="@style/VSpace"
+        android:layout_height="10dp" />
+
+</LinearLayout>

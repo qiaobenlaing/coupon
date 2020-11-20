@@ -1,0 +1,56 @@
+<layout name="layout_normal" />
+<!-- Views -->
+<div class="views">
+    <!-- Your main view, should have "view-main" class -->
+    <div class="view view-main">
+        <!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
+        <div class="pages">
+            <!-- Page, "data-page" contains page name -->
+            <div data-page="index" class="page">
+                <!-- Scrollable page content -->
+                <div class="page-content download-wrap">
+                    <div class="invite-code-wrap">
+                        <div class="text">
+                            <img class="text-img" src="/Public/img/webchat/inviteCode/text.png" alt=""/>
+                        </div>
+                        <div class="huiquan-download-wrap">
+                            <a href="https://appsto.re/cn/FSTq9.i" class="external download"><div class="huiquan-download-bg">iphone惠圈商家端下载</div></a>
+                        </div>
+                        <div class="huiquan-download-wrap">
+                            <a href="{$sDownloadUrl}" class="external download"><div class="huiquan-download-bg">安卓惠圈商家端下载</div></a>
+                        </div>
+                        <div class="huiquan-divide-line-wrap">
+                            <div class="huiquan-divide-line-bg">
+                                <div class="huiquan-divide-line-text">惠圈简介</div>
+                            </div>
+                        </div>
+                        <div class="huiquan-intro-wrap">
+                            通过惠圈管家，商家可以随时随地在手机上实现对店铺的经营管理，营销活动设置，实现店铺的外卖与在线订餐功能，还可以进行行业分析CRM会员管理订单查询，销售数据分析等
+                        </div>
+                    </div>
+                    <div class="shadow">
+                        <img src="/Public/img/webchat/jiantou.png" alt="" />
+                        <div class="tip"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    ;(function(){
+        function isWeiXin(){
+            var navgator = window.navigator.userAgent.toLowerCase();
+            if(navgator.match(/MicroMessenger/i) == 'micromessenger'){
+                $('.shadow').show();
+                return false;
+            }else{
+                return true;
+            }
+        }
+        $('.download').on('click', isWeiXin);
+        $('.shadow').on('click', function(){
+            $(this).hide();
+        })
+    })();
+</script>

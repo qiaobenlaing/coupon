@@ -1,0 +1,15 @@
+<layout name="layout_admin" />
+<div>
+    <form class="form-inline" id="data_search_form" action="#" method="get">
+        <div class="form-group">
+            <label for="act-name">活动名</label>
+            <input type="text" class="form-control" id="act-name" name="activityName" value="{$get.activityName}" placeholder="活动名"/>
+        </div>
+        <button type="submit" class="btn btn-primary" id="search_form_submit_btn">查询</button>
+        <input type="hidden" id="frm_ele_page" name="page" value="1" />
+    </form>
+</div>
+<div id="data_table_wrapper">
+	<include
+		file="./Application/Admin/View/Activity/listIcbcActivityWidget.html" />
+</div>

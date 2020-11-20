@@ -1,0 +1,36 @@
+<table class="fp-table table table-striped table-bordered table-condensed" id="data_table">
+    <thead>
+    <tr>
+        <!--<th>商户号</th>-->
+        <th>商户</th>
+        <th>所属商圈</th>
+        <th>成交金额（元）</th>
+        <th>实际支付（元）</th>
+        <th>用券金额（元）</th>
+        <th>成交笔数</th>
+        <th>优惠券使用张数</th>
+        <th>人气</th>
+        <th>回头客</th>
+        <th>客单价</th>
+    </tr>
+    </thead>
+    <tbody>
+    <foreach name="dataList" item="item">
+        <tr>
+            <td>{$item.shopName}</td>
+            <td>{$item.bankName}</td>
+            <td>{$item.orderAmount}</td>
+            <td>{$item.realPay}</td>
+            <td>{$item.couponDeduction}</td>
+            <td>{$item.consumeCount}</td>
+            <td>{$item.couponUsed}</td>
+            <td>{$item.popularity}</td>
+            <td>{$item.repeatCustomers}</td>
+            <td>{$item.perCustomerTransaction}</td>
+        </tr>
+    </foreach>
+    </tbody>
+</table>
+<include file="Application/Admin/View/Widget/pager.html" />
+
+

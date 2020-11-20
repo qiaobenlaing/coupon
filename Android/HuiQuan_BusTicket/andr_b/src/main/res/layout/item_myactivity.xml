@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/LyWHFirst"
+    android:layout_marginBottom="5dp"
+    android:background="@color/bgall"
+    android:orientation="horizontal" >
+
+    <RelativeLayout
+        android:id="@+id/rl_actlist"
+        style="@style/LyWHFourth"
+        android:layout_height="@dimen/navigation_bar"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/right_allcoupon" >
+
+        <TextView
+            android:id="@+id/tv_activity_name"
+            style="@style/LyWHSecond"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:text="xxxxxxx" />
+        <!--
+             <ImageView 
+		    android:id="@+id/iv_back_arrow"
+            style="@style/LyWHSecond"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/back_decoration"/>
+        -->
+    </RelativeLayout>
+
+</LinearLayout>

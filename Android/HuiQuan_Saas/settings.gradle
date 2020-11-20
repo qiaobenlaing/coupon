@@ -1,0 +1,4 @@
+
+//include ':baiduintsdk'
+include ':andr_base'
+include ':andr_b'

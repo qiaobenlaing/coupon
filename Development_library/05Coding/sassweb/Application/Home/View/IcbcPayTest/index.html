@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>工行非面对面API测试</title>
+    <link href="__PUBLIC__/css/bootstrap.min.css" rel="stylesheet">
+    <script type="text/javascript" src="__PUBLIC__/js/jquery.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/js/bootstrap.min.js"></script>
+</head>
+<body style="margin-left:20px;margin-right:20px">
+<h1>工行非面对面API测试</h1>
+
+<SELECT id="selMethod" name="selMethod" class="form-control" style="font-size:16px;margin-top:16px;margin-bottom:16px">
+    <OPTION value="0">-- 选择方法 --</OPTION>
+    <volist name="apiMethods" id="method">
+        <OPTION value="{$key}">{$method.name} - {$key}</OPTION>
+    </volist>
+</SELECT>
+
+<form method="post" action="/Home/IcbcPayTest/processPay">
+	<table class="table table-striped" id="tblParams">
+	    <tr id="tblParamsTitle"><th style="width:120px">参数名</th><th style="width:150px">设值</th><th>说明</th></tr>
+	    <tr><td colspan="3" style="text-align:center">----------- 公共参数 ------------</td></tr>
+	    <tr><td>G_TRANSCODE</td><td><input name="G_TRANSCODE" value="pub" /></td><td>char(5),前置系统G_TRANSCODE，应为apiId</td></tr>
+	    <tr><td>交易码</td><td><input name="txcode" value="88888" /></td><td>char(5),apiId</td></tr>
+	    <tr><td>城市号</td><td><input name="cityno" value="1202" /></td><td>char(4),交易发生地信息，一般为商户所在地，合作商户默认上送1202； </td></tr>
+	    <tr><td>公司交易日期</td><td><input name="cmpdate" value="" /></td><td>char(8),YYYYMMDD</td></tr>
+	    <tr><td>公司交易时间</td><td><input name="cmptime" value="" /></td><td>char(6),hhmmss</td></tr>
+	    <tr><td>公司方流水号</td><td><input name="cmptxsno" value="" /></td><td>不超过20位。格式：公司方流水号。说明：公司方必须保证流水号的唯一性。建议在流水前增加日期以确保唯一。</td></tr>
+	    <tr><td>快捷支付类型</td><td><input name="paytype" value="1" /></td><td>Char(1)；1 – 借记卡，2 – 贷记卡</td></tr>
+        <tr><td>商户号</td><td><input name="sellerid" value="" /></td><td>Char(20)，商户号</td></tr>
+	    <tr><td colspan="3" style="text-align:center">----------- 私有参数 ------------</td></tr>
+	</table>
+	<button type="button" id="btnStartTest" class="btn btn-primary">|| 测试 ||</button>
+</form>
+
+<!-- <div id="result" style="margin-top:30px;margin-bottom:30px"></div>-->
+<textarea id="result" rows="15" style="width:100%;margin-top:15px;"></textarea>
+
+<script language="JavaScript" type="text/javascript">
+$(function($) {
+    $('#selMethod').on('change', function() {
+    	$('#result').val('');
+    	
+        var table = $('#tblParams');
+    	//table.empty().append('<tr id="tblParamsTitle"><th style="min-width:100px">参数名</th><th>设值</th><th>说明</th></tr>');
+    	table.find('.privateParam').remove();
+    	$('#result').empty();
+    	
+    	
+        /* console.log('onChange()'); */
+        var apiId = $(this).children('option:selected').val();
+        if (apiId == 0)
+        	return;
+        
+        // 设置公共参数的值
+        //$('input[name=G_TRANSCODE]').val(apiId);
+        $('input[name=txcode]').val(apiId); 
+        var date = new Date();
+        $('input[name=cmpdate]').val(date.pattern("yyyyMMdd"));
+        $('input[name=cmptime]').val(date.pattern("HHmmss"));
+        $('input[name=cmptxsno]').val(parseInt(100000000 * Math.random()) + 100000000); //[一亿, 两亿]
+        
+        // 获取私有参数列表
+        $.get('/Home/IcbcPayTest/getApiParams', {apiId: apiId}, function(params) {
+            for (var i in params) {
+                var param = params[i];
+                $row = $('<tr class="privateParam"><th>' + param[1] + '</th>'
+                        + '<td><input name="' + param[0] + '" value="' + param[3] + '"/></td>'
+                        + '<td>' + param[2] + '</td></tr>');
+                table.append($row);
+            }
+            
+            // 公司方交易流水号	, Char(60)。待查询交易的流水号。格式：日期（yyyymmdd，8位）＋公司方流水号
+            $('input[name=cmptxosno]').val($('input[name=cmpdate]').val() + $('input[name=cmptxsno]').val());
+        });
+    });
+    
+    /** 测试按钮点击事件，发送请求，并显示结果 */
+    $('#btnStartTest').on('click', function() {
+    	$('#result').val('processing...');
+    	var f = $('form');
+        console.log(f.serialize());
+    	$.post(f.attr('action'), f.serialize(), function(res) {
+    		//$('#result').html(res);
+            console.log(res);
+    		$('#result').val(formatXml(res));
+    	}, 'html')
+    });
+});
+
+/**
+ * 日期扩展，增加格式化。
+ */
+Date.prototype.pattern=function(fmt) {         
+    var o = {         
+    "M+" : this.getMonth()+1, //月份         
+    "d+" : this.getDate(), //日         
+    "h+" : this.getHours()%12 == 0 ? 12 : this.getHours()%12, //小时         
+    "H+" : this.getHours(), //小时         
+    "m+" : this.getMinutes(), //分         
+    "s+" : this.getSeconds(), //秒         
+    "q+" : Math.floor((this.getMonth()+3)/3), //季度         
+    "S" : this.getMilliseconds() //毫秒         
+    };         
+    var week = {         
+    "0" : "/u65e5",         
+    "1" : "/u4e00",         
+    "2" : "/u4e8c",         
+    "3" : "/u4e09",         
+    "4" : "/u56db",         
+    "5" : "/u4e94",         
+    "6" : "/u516d"        
+    };         
+    if(/(y+)/.test(fmt)){         
+        fmt=fmt.replace(RegExp.$1, (this.getFullYear()+"").substr(4 - RegExp.$1.length));         
+    }         
+    if(/(E+)/.test(fmt)){         
+        fmt=fmt.replace(RegExp.$1, ((RegExp.$1.length>1) ? (RegExp.$1.length>2 ? "/u661f/u671f" : "/u5468") : "")+week[this.getDay()+""]);         
+    }         
+    for(var k in o){         
+        if(new RegExp("("+ k +")").test(fmt)){         
+            fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));         
+        }         
+    }         
+    return fmt;         
+}
+// --------- 以下为XML格式化 ----------
+String.prototype.removeLineEnd = function()
+{
+    return this.replace(/(<.+?\s+?)(?:\n\s*?(.+?=".*?"))/g,'$1 $2')
+}
+function formatXml(text)
+{
+    //去掉多余的空格
+    text = '\n' + text.replace(/(<\w+)(\s.*?>)/g,function($0, name, props)
+    {
+        return name + ' ' + props.replace(/\s+(\w+=)/g," $1");
+    }).replace(/>\s*?</g,">\n<");
+
+    //把注释编码
+    text = text.replace(/\n/g,'\r').replace(/<!--(.+?)-->/g,function($0, text)
+    {
+        var ret = '<!--' + escape(text) + '-->';
+        //alert(ret);
+        return ret;
+    }).replace(/\r/g,'\n');
+
+    //调整格式
+    var rgx = /\n(<(([^\?]).+?)(?:\s|\s*?>|\s*?(\/)>)(?:.*?(?:(?:(\/)>)|(?:<(\/)\2>)))?)/mg;
+    var nodeStack = [];
+    var output = text.replace(rgx,function($0,all,name,isBegin,isCloseFull1,isCloseFull2 ,isFull1,isFull2){
+        var isClosed = (isCloseFull1 == '/') || (isCloseFull2 == '/' ) || (isFull1 == '/') || (isFull2 == '/');
+        //alert([all,isClosed].join('='));
+        var prefix = '';
+        if(isBegin == '!')
+        {
+            prefix = getPrefix(nodeStack.length);
+        }
+        else 
+        {
+            if(isBegin != '/')
+            {
+                prefix = getPrefix(nodeStack.length);
+                if(!isClosed)
+                {
+                    nodeStack.push(name);
+                }
+            }
+            else
+            {
+                nodeStack.pop();
+                prefix = getPrefix(nodeStack.length);
+            }
+
+        }
+            var ret =  '\n' + prefix + all;
+            return ret;
+    });
+
+    var prefixSpace = -1;
+    var outputText = output.substring(1);
+    //alert(outputText);
+
+    //把注释还原并解码，调格式
+    outputText = outputText.replace(/\n/g,'\r').replace(/(\s*)<!--(.+?)-->/g,function($0, prefix,  text)
+    {
+        //alert(['[',prefix,']=',prefix.length].join(''));
+        if(prefix.charAt(0) == '\r')
+            prefix = prefix.substring(1);
+        text = unescape(text).replace(/\r/g,'\n');
+        var ret = '\n' + prefix + '<!--' + text.replace(/^\s*/mg, prefix ) + '-->';
+        //alert(ret);
+        return ret;
+    });
+
+    return outputText.replace(/\s+$/g,'').replace(/\r/g,'\r\n');
+}
+function getPrefix(prefixIndex)
+{
+    var span = '    ';
+    var output = [];
+    for(var i = 0 ; i < prefixIndex; ++i)
+    {
+        output.push(span);
+    }
+
+    return output.join('');
+} 
+</script>
+</body>
+</html>

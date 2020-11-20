@@ -1,0 +1,74 @@
+<layout name="layout_admin" />
+<div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="tab_basic_info">
+        <form class="form-horizontal" role="form" id="frm_export" action="/Admin/User/exportExcelRegister" method="post">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">开始时间：</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form_datetime form-control ipt-date-time-picker" name="startTime" value="{$data.startTime}" readonly placeholder="开始时间">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">结束时间：</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form_datetime form-control ipt-date-time-picker" name="endTime" value="{$data.endTime}" readonly placeholder="结束时间">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">手机号归属地：</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" name="mobileBelonging" value="{$data.mobileBelonging|default='浙江'}" placeholder="比如：浙江/杭州/浙江杭州">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">是否绑过卡：</label>
+                <div class="col-sm-4">
+                    <label class="radio-inline">
+                        <input type="radio" name="isTiedCard" value="1" <neq name="data.isTiedCard" value="0">checked="checked"</neq>> 是
+                    </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <label class="radio-inline">
+                        <input type="radio" name="isTiedCard" value="0" <eq name="data.isTiedCard" value="0">checked="checked"</eq>> 否
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">用户状态：</label>
+                <div class="col-sm-4">
+                    <label class="radio-inline">
+                        <input type="radio" name="userStatus" value="1" <?php if(!isset($data['userStatus'])):?>checked="checked"<?php else:?><if condition="$data.userStatus neq 0 AND $data.userStatus neq 2">checked="checked"</if><?php endif;?>> 启用
+                    </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <label class="radio-inline">
+                        <input type="radio" name="userStatus" value="0" <eq name="data.userStatus" value="0">checked="checked"</eq>> 禁用
+                    </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <label class="radio-inline">
+                        <input type="radio" name="userStatus" value="2" <eq name="data.userStatus" value="2">checked="checked"</eq>> 未注册
+                    </label>
+                </div>
+            </div>
+            <div class="row row-top">
+                <div class="btn-group col-sm-offset-3">
+                    <input type="submit" class="btn btn-primary" id="export" value="导出" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function() {
+        $(".form_datetime").datetimepicker({
+            format: 'yyyy-mm-dd',
+            autoclose: true,
+            todayBtn: true,
+            minView: "month"
+        });
+
+        $('#export').click(function(){
+            var startTime = $('input[name="startTime"]').val();
+            var endTime = $('input[name="endTime"]').val();
+            if(startTime == '' || endTime == ''){
+                alert('请填写时间！');
+                return false;
+            }
+        });
+    });
+</script>

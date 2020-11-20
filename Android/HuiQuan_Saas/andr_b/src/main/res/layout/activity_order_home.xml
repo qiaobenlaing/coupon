@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/LyOutSet" >
+
+    <include layout="@layout/common_title_order_scan" />
+
+    <LinearLayout
+        android:id="@+id/ry_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="@drawable/shape_divider"
+        android:orientation="vertical"
+        android:showDividers="middle"
+        android:visibility="gone" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@color/white"
+            android:layout_marginBottom="8dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="4dp" >
+
+            <EditText
+                android:id="@+id/et_eat_ordernbr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/shape_my_order"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dp"
+                android:gravity="left"
+                android:hint="输入订单号后4位/手机号/餐号"
+                android:inputType="number"
+                android:paddingLeft="25dp"
+                android:singleLine="true"
+                android:textColor="@color/gray"
+                android:textColorHint="@color/hint_light_gray"
+                android:textSize="14sp" />
+            <!--android:layout_toLeftOf="@+id/tv_eat_ordernbr"-->
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:src="@drawable/order_seach" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/ry_store_order"
+            android:background="@color/white"
+            style="@style/LyWHSecond" >
+
+            <TextView
+                android:id="@+id/tv_fail_shopname"
+                style="@style/LyWHSecond"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:text="@string/store_order" />
+
+            <TextView
+                android:id="@+id/tv_storeorder_count"
+                style="@style/LyWHSecond"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/iv_arrow"
+                android:background="@drawable/shape_red_round"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="11"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/iv_arrow"
+                style="@style/LyWHSecond"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/shop_arrow" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/ry_outside_order"
+            android:background="@color/white"
+            style="@style/LyWHSecond" >
+
+            <TextView
+                style="@style/LyWHSecond"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:paddingRight="25dp"
+                android:text="@string/outside_order" />
+
+            <TextView
+                android:id="@+id/tv_outsideorder_count"
+                style="@style/LyWHSecond"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/iv_arrow1"
+                android:background="@drawable/shape_red_round"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="11"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/iv_arrow1"
+                style="@style/LyWHSecond"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/shop_arrow" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/fl_order"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <include
+                android:id="@+id/layout_top"
+                android:layout_alignParentTop="true"
+                layout="@layout/item_listview_head" />
+
+            <!-- <android.support.v4.widget.SwipeRefreshLayout -->
+            <!-- android:id="@+id/index_swipe_refresh" -->
+            <!-- android:layout_width="match_parent" -->
+            <!-- android:layout_height="match_parent" -->
+            <!-- android:visibility="visible" > -->
+
+            <com.huift.hfq.base.view.XListView
+                android:id="@+id/lv_order"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/layout_top"
+                android:background="@color/app_bg"
+                android:cacheColorHint="#000000"
+                android:divider="@color/shopdetail_divider"
+                android:dividerHeight="0.5px"
+                android:scrollbars="none"
+                android:visibility="visible" />
+            <!-- </android.support.v4.widget.SwipeRefreshLayout> -->
+        </RelativeLayout>
+
+        <include layout="@layout/comm_no_data" />
+    </FrameLayout>
+
+</LinearLayout>
